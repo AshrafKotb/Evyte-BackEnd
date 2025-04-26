@@ -1,0 +1,94 @@
+﻿@model Evyte.ApplicationCore.Models.ViewModels.HeaderVM
+
+<div class="header-container">
+    <div class="search-box">
+        <form action="/Search" method="get">
+            <input type="text" placeholder="Search..." name="query">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+
+    <div class="header-actions">
+        <div class="notification-dropdown">
+            <button class="notification-btn" id="notificationBtn">
+                <i class="fas fa-bell"></i>
+                @if (Model.NotificationsNumber > 0)
+                {
+                    <span class="badge">@Model.NotificationsNumber</span>
+                }
+            </button>
+            <div class="notification-dropdown-content">
+                <div class="notification-header">
+                    <h5>Notifications (@Model.NotificationsNumber)</h5>
+                    <a href="#" class="mark-all-read">Mark all as read</a>
+                </div>
+                <div class="notification-list">
+                    @if (Model.Notifications.Any())
+                    {
+                        foreach (var notification in Model.Notifications)
+                        {
+                            <a href="@notification.Link" class="notification-item @(!notification.IsSeen ? "unread" : "")">
+                                <div class="notification-icon">
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <h6>@notification.Title</h6>
+                                    <p>@notification.Body</p>
+                                    <small>@notification.CreatedDate</small>
+                                </div>
+                            </a>
+                        }
+                    }
+                    else
+                    {
+                        <div class="empty-notifications">
+                            <p>No notifications available</p>
+                        </div>
+                    }
+                </div>
+                <div class="notification-footer">
+                    <a href="/Notifications">View all notifications</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="user-dropdown">
+            <button class="user-btn">
+                <div class="user-avatar">
+                    <img src="/images/default-profile.png" alt="User Avatar">
+                </div>
+                <span>@Model.Name</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="user-dropdown-content">
+                <a href="/Profile"><i class="fas fa-user"></i> Profile</a>
+                <a href="/Settings"><i class="fas fa-cog"></i> Settings</a>
+                <a href="/Account/Logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Toggle notification dropdown
+            $('#notificationBtn').click(function(e) {
+                e.stopPropagation();
+                $('.notification-dropdown-content').toggleClass('show');
+            });
+
+            // Close dropdown when clicking outside
+            $(document).click(function() {
+                $('.notification-dropdown-content').removeClass('show');
+                $('.user-dropdown-content').removeClass('show');
+            });
+
+            // Toggle user dropdown
+            $('.user-btn').click(function(e) {
+                e.stopPropagation();
+                $('.user-dropdown-content').toggleClass('show');
+            });
+        });
+    </script>
+}

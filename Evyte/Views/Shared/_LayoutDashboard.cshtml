@@ -1,0 +1,72 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Evyte Dashboard</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Bootstrap RTL -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/dashboard.css" />
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body class="dashboard-layout">
+    <div class="page-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar-wrapper" data-simplebar="true">
+            @await Component.InvokeAsync("AdminSideMenu")
+        </aside>
+
+        <!-- Main Content -->
+        <div class="page-content">
+            <!-- Header -->
+            <header class="navbar navbar-expand-lg navbar-light bg-light">
+                @await Component.InvokeAsync("Header")
+            </header>
+
+            <!-- Main Content -->
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>&copy; @DateTime.Now.Year - Evyte. All rights reserved.</p>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <p>Version 1.0.0</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="/js/dashboard.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

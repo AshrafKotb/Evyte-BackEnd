@@ -1,0 +1,71 @@
+﻿@using System.Security.Claims
+@{
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+}
+
+<style>
+    .ar {
+        left: unset !important;
+        right: 0;
+    }
+</style>
+
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme ar">
+    <div class="app-brand demo" style="height:unset;">
+        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+        </a>
+    </div>
+
+    <div class="menu-inner-shadow"></div>
+
+    <ul class="menu-inner py-1">
+        <li class="menu-header">
+            <span class="menu-header-text">لوحة التحكم</span>
+        </li>
+        <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active" : "")">
+            <a href="@Url.Action("Index","Home")" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">لوحة التحكم</div>
+            </a>
+        </li>
+        <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "MainPage" ? "active" : "")">
+            <a href="@Url.Action("Index","MainPage")" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts">الصفح الرئيسية</div>
+            </a>
+        </li>
+        <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "SubPage" ? "active" : "")">
+            <a href="@Url.Action("index","SubPage")" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings">الصفح الفرعية</div>
+            </a>
+        </li>
+        <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Page" ? "active" : "")">
+            <a href="@Url.Action("Index","Page")" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-wallet"></i>
+                <div data-i18n="Layouts">الصفح</div>
+            </a>
+        </li>
+
+        <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Permission" ? "active" : "")">
+            <a href="@Url.Action("Index","Permission")" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-wallet"></i>
+                <div data-i18n="Layouts">الصلاحيات</div>
+            </a>
+        </li>
+        <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Company" ? "active" : "")">
+            <a href="@Url.Action("Index","Company")" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-wallet"></i>
+                <div data-i18n="Layouts">الشركات</div>
+            </a>
+        </li>
+
+        <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "User" ? "active" : "")">
+            <a href="@Url.Action("Index","User")" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-wallet"></i>
+                <div data-i18n="Layouts">المستخدمين</div>
+            </a>
+        </li>
+    </ul>
+</aside>
