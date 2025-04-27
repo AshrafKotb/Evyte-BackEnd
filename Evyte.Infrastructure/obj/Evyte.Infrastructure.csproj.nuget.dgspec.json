@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\iT\\source\\repos\\OurProjects\\Evyte-BackEnd\\Evyte.Infrastructure\\Evyte.Infrastructure.csproj": {}
+    "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte.Infrastructure\\Evyte.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\iT\\source\\repos\\OurProjects\\Evyte-BackEnd\\Evyte.Domain\\Evyte.Domain.csproj": {
+    "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte.Domain\\Evyte.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\iT\\source\\repos\\OurProjects\\Evyte-BackEnd\\Evyte.Domain\\Evyte.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte.Domain\\Evyte.Domain.csproj",
         "projectName": "Evyte.Domain",
-        "projectPath": "C:\\Users\\iT\\source\\repos\\OurProjects\\Evyte-BackEnd\\Evyte.Domain\\Evyte.Domain.csproj",
+        "projectPath": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte.Domain\\Evyte.Domain.csproj",
         "packagesPath": "C:\\Users\\iT\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\iT\\source\\repos\\OurProjects\\Evyte-BackEnd\\Evyte.Domain\\obj\\",
+        "outputPath": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -80,14 +80,14 @@
         }
       }
     },
-    "C:\\Users\\iT\\source\\repos\\OurProjects\\Evyte-BackEnd\\Evyte.Infrastructure\\Evyte.Infrastructure.csproj": {
+    "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte.Infrastructure\\Evyte.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\iT\\source\\repos\\OurProjects\\Evyte-BackEnd\\Evyte.Infrastructure\\Evyte.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte.Infrastructure\\Evyte.Infrastructure.csproj",
         "projectName": "Evyte.Infrastructure",
-        "projectPath": "C:\\Users\\iT\\source\\repos\\OurProjects\\Evyte-BackEnd\\Evyte.Infrastructure\\Evyte.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte.Infrastructure\\Evyte.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\iT\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\iT\\source\\repos\\OurProjects\\Evyte-BackEnd\\Evyte.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -109,8 +109,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\iT\\source\\repos\\OurProjects\\Evyte-BackEnd\\Evyte.Domain\\Evyte.Domain.csproj": {
-                "projectPath": "C:\\Users\\iT\\source\\repos\\OurProjects\\Evyte-BackEnd\\Evyte.Domain\\Evyte.Domain.csproj"
+              "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte.Domain\\Evyte.Domain.csproj": {
+                "projectPath": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte.Domain\\Evyte.Domain.csproj"
               }
             }
           }

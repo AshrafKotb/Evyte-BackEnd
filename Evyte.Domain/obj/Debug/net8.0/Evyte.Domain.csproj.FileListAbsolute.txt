@@ -10,3 +10,16 @@ C:\Users\iT\source\repos\OurProjects\Evyte\Evyte.Domain\obj\Debug\net8.0\Evyte.D
 C:\Users\iT\source\repos\OurProjects\Evyte\Evyte.Domain\obj\Debug\net8.0\refint\Evyte.Domain.dll
 C:\Users\iT\source\repos\OurProjects\Evyte\Evyte.Domain\obj\Debug\net8.0\Evyte.Domain.pdb
 C:\Users\iT\source\repos\OurProjects\Evyte\Evyte.Domain\obj\Debug\net8.0\ref\Evyte.Domain.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte.Domain\bin\Debug\net8.0\Evyte.Domain.deps.json
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte.Domain\bin\Debug\net8.0\Evyte.Domain.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte.Domain\bin\Debug\net8.0\Evyte.Domain.pdb
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte.Domain\obj\Debug\net8.0\Evyte.Domain.csproj.AssemblyReference.cache
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte.Domain\obj\Debug\net8.0\Evyte.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte.Domain\obj\Debug\net8.0\Evyte.Domain.AssemblyInfoInputs.cache
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte.Domain\obj\Debug\net8.0\Evyte.Domain.AssemblyInfo.cs
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte.Domain\obj\Debug\net8.0\Evyte.Domain.csproj.CoreCompileInputs.cache
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte.Domain\obj\Debug\net8.0\Evyte.Domain.sourcelink.json
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte.Domain\obj\Debug\net8.0\Evyte.Domain.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte.Domain\obj\Debug\net8.0\refint\Evyte.Domain.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte.Domain\obj\Debug\net8.0\Evyte.Domain.pdb
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte.Domain\obj\Debug\net8.0\ref\Evyte.Domain.dll

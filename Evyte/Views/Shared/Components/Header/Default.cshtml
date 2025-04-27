@@ -1,94 +1,98 @@
-﻿@model Evyte.ApplicationCore.Models.ViewModels.HeaderVM
-
-<div class="header-container">
-    <div class="search-box">
-        <form action="/Search" method="get">
-            <input type="text" placeholder="Search..." name="query">
-            <button type="submit"><i class="fas fa-search"></i></button>
-        </form>
-    </div>
-
-    <div class="header-actions">
-        <div class="notification-dropdown">
-            <button class="notification-btn" id="notificationBtn">
-                <i class="fas fa-bell"></i>
-                @if (Model.NotificationsNumber > 0)
-                {
-                    <span class="badge">@Model.NotificationsNumber</span>
-                }
-            </button>
-            <div class="notification-dropdown-content">
-                <div class="notification-header">
-                    <h5>Notifications (@Model.NotificationsNumber)</h5>
-                    <a href="#" class="mark-all-read">Mark all as read</a>
-                </div>
-                <div class="notification-list">
-                    @if (Model.Notifications.Any())
-                    {
-                        foreach (var notification in Model.Notifications)
+﻿@model HeaderVM
+<header class="main-header">
+    <!-- Logo -->
+    <a href="@Url.Action("Index", "cp")" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>Evyte</b></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>Evyte</b></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell"></i>
+                        <span class="label label-warning" style="display:@(Model.NotificationsNumber <= 0 ? "none" : "")" id="outside-notifications-number">@Model.NotificationsNumber</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @if (Model.NotificationsNumber > 0)
                         {
-                            <a href="@notification.Link" class="notification-item @(!notification.IsSeen ? "unread" : "")">
-                                <div class="notification-icon">
-                                    <i class="fas fa-bell"></i>
-                                </div>
-                                <div class="notification-content">
-                                    <h6>@notification.Title</h6>
-                                    <p>@notification.Body</p>
-                                    <small>@notification.CreatedDate</small>
-                                </div>
-                            </a>
+                            <li class="header text-center" style="color:brown">
+                                لديك <span id="inside-notifications-number">@Model.NotificationsNumber</span> اشعار جديد
+                            </li>
                         }
-                    }
-                    else
-                    {
-                        <div class="empty-notifications">
-                            <p>No notifications available</p>
-                        </div>
-                    }
-                </div>
-                <div class="notification-footer">
-                    <a href="/Notifications">View all notifications</a>
-                </div>
-            </div>
+                        else
+                        {
+                            <li class="header text-center" style="color:blue">
+                                ليس لديك اشعارات جديدة
+                            </li>
+                        }
+                        @if (Model.Notifications != null && Model.Notifications.Count > 0)
+                        {
+                            <li>
+                                <ul class="menu" id="notification-list">
+                                    @foreach (var notification in Model.Notifications)
+                                    {
+                                        <li id="not_@notification.Id" style="@(!notification.IsSeen ? "background-color:#f3f3f3;border-bottom: 1px solid #e4e4e4;" : "")">
+                                            <a onclick="MarkNotificationAsSeen('@notification.Id')" href="#" @*href="@HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)@notification.Link"*@ style="white-space: initial;">
+                                                <i class="fa fa-dot-circle-o text-@(notification.IsSeen == true ? "green" : "yellow")"></i>
+                                                <span>@notification.Body</span>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="@Url.Action("All","Notifications")">عرض الجميع</a></li>
+                        }
+                        else
+                        {
+                            <li class="footer"><a href="#">ليس هناك بيانات متاحه</a></li>
+                        }
+                    </ul>
+                </li>
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        @if (Model.UserImage != null)
+                        {
+                            <img src="~/Content/Images/Users/@Model.UserImage" class="user-image" alt="@Model.Name" />
+                        }
+                        else
+                        {
+                            <img src="~/Content/assets/imgs/avatar.png" class="user-image" alt="@Model.Name" />
+                        }
+                        <span class="hidden-xs">@Model.Name</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <img src="~/Images/avatar.png" class="img-circle" alt="@Model.Name" />
+                            <p>
+                                @Model.Name
+                            </p>
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-right">
+                                <a href="@Url.Action("ChangePassword", "cp",new{id=ViewBag.UserId})" class="btn btn-default btn-flat">تغيير كلمه السر</a>
+                            </div>
+                            <div class="pull-left">
+                                @using (Html.BeginForm("Logout", "cp", FormMethod.Get))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" href="#" class="btn btn-default btn-flat">تسجيل الخروج</button>
+                                }
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-
-        <div class="user-dropdown">
-            <button class="user-btn">
-                <div class="user-avatar">
-                    <img src="/images/default-profile.png" alt="User Avatar">
-                </div>
-                <span>@Model.Name</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="user-dropdown-content">
-                <a href="/Profile"><i class="fas fa-user"></i> Profile</a>
-                <a href="/Settings"><i class="fas fa-cog"></i> Settings</a>
-                <a href="/Account/Logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-@section Scripts {
-    <script>
-        $(document).ready(function() {
-            // Toggle notification dropdown
-            $('#notificationBtn').click(function(e) {
-                e.stopPropagation();
-                $('.notification-dropdown-content').toggleClass('show');
-            });
-
-            // Close dropdown when clicking outside
-            $(document).click(function() {
-                $('.notification-dropdown-content').removeClass('show');
-                $('.user-dropdown-content').removeClass('show');
-            });
-
-            // Toggle user dropdown
-            $('.user-btn').click(function(e) {
-                e.stopPropagation();
-                $('.user-dropdown-content').toggleClass('show');
-            });
-        });
-    </script>
-}
+    </nav>
+</header>

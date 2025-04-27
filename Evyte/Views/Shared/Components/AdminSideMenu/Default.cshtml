@@ -1,71 +1,47 @@
-﻿@using System.Security.Claims
-@{
-    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-}
+﻿@model SideMenuVM
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-right image">
+                <img src="~/Images/avatar.png" style="height:45px" class="img-circle" alt="@Model.Name" />
+            </div>
+            <div class="pull-left info">
+                <p>@Model.Name</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> متواجد</a>
+            </div>
+        </div>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <li class="treeview @(Context.Request.Path.ToString().ToLower().Contains("cp") ? "active" : "")">
+                <a href="/Dashboard/Index" class="nav-link link-body-emphasis">
+                    <i class="fa fa-chart-bar"></i> التقارير
+                </a>
+            </li>
 
-<style>
-    .ar {
-        left: unset !important;
-        right: 0;
-    }
-</style>
+            <li class="treeview @(Context.Request.Path.ToString().ToLower().Contains("orders") ? "active" : "")">
+                <a href="/Orders/" class="nav-link link-body-emphasis">
+                    <i class="fa fa-shopping-bag"></i> كل الطلبات
+                </a>
+            </li>
 
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme ar">
-    <div class="app-brand demo" style="height:unset;">
-        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-            <i class="bx bx-chevron-left bx-sm align-middle"></i>
-        </a>
-    </div>
 
-    <div class="menu-inner-shadow"></div>
+            <li class="treeview @(Context.Request.Path.ToString().ToLower().Contains("Agents") ? "active" : "")">
+                <a href="#">
+                    <i class="fas fa-Agent"></i>
+                    <span>إدارة المتاجر</span>
+                    <i class="fa fa-angle-left pull-left"></i>
+                </a>
 
-    <ul class="menu-inner py-1">
-        <li class="menu-header">
-            <span class="menu-header-text">لوحة التحكم</span>
-        </li>
-        <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active" : "")">
-            <a href="@Url.Action("Index","Home")" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">لوحة التحكم</div>
-            </a>
-        </li>
-        <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "MainPage" ? "active" : "")">
-            <a href="@Url.Action("Index","MainPage")" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">الصفح الرئيسية</div>
-            </a>
-        </li>
-        <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "SubPage" ? "active" : "")">
-            <a href="@Url.Action("index","SubPage")" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">الصفح الفرعية</div>
-            </a>
-        </li>
-        <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Page" ? "active" : "")">
-            <a href="@Url.Action("Index","Page")" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-wallet"></i>
-                <div data-i18n="Layouts">الصفح</div>
-            </a>
-        </li>
+                <ul class="treeview-menu @(Context.Request.Path.ToString().ToLower().Contains("stores/new") ? "menuopen" : "")">
+                    <li><a href="@Url.Action("New", "Stores")"><i class="fa fa-plus-circle"></i>  متجر جديد  </a></li>
+                </ul>
 
-        <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Permission" ? "active" : "")">
-            <a href="@Url.Action("Index","Permission")" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-wallet"></i>
-                <div data-i18n="Layouts">الصلاحيات</div>
-            </a>
-        </li>
-        <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Company" ? "active" : "")">
-            <a href="@Url.Action("Index","Company")" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-wallet"></i>
-                <div data-i18n="Layouts">الشركات</div>
-            </a>
-        </li>
 
-        <li class="menu-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "User" ? "active" : "")">
-            <a href="@Url.Action("Index","User")" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-wallet"></i>
-                <div data-i18n="Layouts">المستخدمين</div>
-            </a>
-        </li>
-    </ul>
+            </li>
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
 </aside>
