@@ -1,0 +1,91 @@
+﻿@* @model CreateUpdateCategoryVM
+
+<div class="form-card">
+    <div class="form-header">
+        <h1>@ViewData["Title"]</h1>
+        <p class="text-muted">الرجاء ملء جميع الحقول المطلوبة</p>
+    </div>
+
+    <div class="form-group mb-4">
+        <label class="form-label" asp-for="NameEn"></label>
+        <div class="input-group-icon">
+            <i class="fas fa-tag"></i>
+            <input asp-for="NameEn" class="form-control" placeholder="Enter English name">
+        </div>
+        <span asp-validation-for="NameEn" class="text-danger small"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label class="form-label" asp-for="NameAr"></label>
+        <div class="input-group-icon">
+            <i class="fas fa-tag"></i>
+            <input asp-for="NameAr" class="form-control text-end" placeholder="أدخل الاسم العربي">
+        </div>
+        <span asp-validation-for="NameAr" class="text-danger small"></span>
+    </div>
+    <div class="form-group mb-4">
+        <label class="form-label" asp-for="DescriptionEn"></label>
+        <div class="input-group-icon">
+            <i class="fas fa-align-left"></i>
+            <textarea asp-for="DescriptionEn" class="form-control"
+                      placeholder="Enter English description" rows="3">
+                  </textarea>
+        </div>
+        <span asp-validation-for="DescriptionEn" class="text-danger small"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label class="form-label" asp-for="DescriptionAr"></label>
+        <div class="input-group-icon">
+            <i class="fas fa-align-right"></i>
+            <textarea asp-for="DescriptionAr" class="form-control text-end"
+                      placeholder="أدخل الوصف العربي" rows="3"></textarea>
+        </div>
+        <span asp-validation-for="DescriptionAr" class="text-danger small"></span>
+    </div>
+    <div class="form-group mb-4">
+        <label class="form-label" asp-for="SortingNumber"></label>
+        <div class="input-group-icon">
+            <i class="fas fa-sort-numeric-down"></i>
+            <input asp-for="SortingNumber" class="form-control" placeholder="Enter sorting number">
+        </div>
+        <span asp-validation-for="SortingNumber" class="text-danger small"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label class="form-label">Category Image</label>
+        <div class="image-upload-container">
+            <div class="mb-3">
+                <i class="fas fa-cloud-upload-alt fa-2x text-muted mb-3"></i>
+                <p class="mb-2">Drag & drop image or</p>
+                <input type="file" asp-for="Image" class="form-control-file"
+                       accept="image/*" id="imageUpload">
+                <label for="imageUpload" class="btn btn-outline-primary mt-2">
+                    <i class="fas fa-folder-open"></i> Choose File
+                </label>
+            </div>
+            <img id="imagePreview" class="image-preview"
+                 src="@(Model?.CurrentImageUrl ?? "/images/placeholder.png")"
+                 alt="Image preview">
+        </div>
+        <span asp-validation-for="Image" class="text-danger small"></span>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('imageUpload').addEventListener('change', function(e) {
+            const preview = document.getElementById('imagePreview');
+            const file = e.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.style.display = 'block';
+                    preview.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+} *@

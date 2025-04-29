@@ -1,0 +1,69 @@
+﻿@model CategoryVM
+@{
+    ViewData["Title"] = "تفاصيل القسم";
+    ViewData["Dir"] = "rtl"; // للدعم الكامل للعربية
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="~/css/category-details.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<div class="container py-5">
+    <div class="category-header d-flex align-items-center justify-content-center animate__animated animate__fadeInDown">
+        <h1 class="text-center text-white page-title">@ViewData["Title"]</h1>
+    </div>
+
+    <div class="category-card shadow-lg animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="row g-0">
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <div class="category-image-container animate__animated animate__zoomIn animate__delay-2s">
+                    <img src="@Model.ImageUrl" class="category-img img-fluid" alt="صورة القسم">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="category-details p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4 animate__animated animate__fadeIn animate__delay-2s">
+                        <div class="category-title-wrapper">
+                            <div class="name-container">
+                                <h2 class="category-name">
+                                    <span class="ar-name">@Model.NameAr</span>
+                                    <span class="en-name">@Model.NameEn</span>
+                                </h2>
+                            </div>
+                        </div>
+                        <span class="badge @(Model.IsDeleted ? "badge-deleted" : "badge-active") animate__animated animate__pulse animate__delay-2s">
+                            @(Model.IsDeleted ? "محذوف" : "متاح")
+                        </span>
+                    </div>
+                    <div class="category-info">
+                        <div class="info-item animate__animated animate__fadeInUp animate__delay-3s">
+                            <i class="fas fa-sort-numeric-up-alt me-2"></i>
+                            <span class="info-label">ترتيب العرض:</span>
+                            <span class="info-value">@Model.SortingNumber</span>
+                        </div>
+                        <div class="info-item animate__animated animate__fadeInUp animate__delay-4s">
+                            <i class="fas fa-calendar-alt me-2"></i>
+                            <span class="info-label">تاريخ الإنشاء:</span>
+                            <span class="info-value">@Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")</span>
+                        </div>
+                        <div class="info-item animate__animated animate__fadeInUp animate__delay-5s">
+                            <i class="fas fa-file-alt me-2"></i>
+                            <span class="info-label">الوصف بالعربية:</span>
+                            <div class="info-description">@Model.DescriptionAr</div>
+                        </div>
+                        <div class="info-item animate__animated animate__fadeInUp animate__delay-6s">
+                            <i class="fas fa-file-alt me-2"></i>
+                            <span class="info-label">الوصف بالإنجليزية:</span>
+                            <div class="info-description">@Model.DescriptionEn</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-buttons mt-4 d-flex justify-content-center animate__animated animate__fadeIn animate__delay-4s">
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="fas fa-arrow-right me-2"></i>رجوع إلى القائمة
+        </a>
+    </div>
+</div>

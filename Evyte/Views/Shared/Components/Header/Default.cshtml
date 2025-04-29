@@ -1,47 +1,38 @@
 ﻿@model HeaderVM
-<header class="main-header">
+<header class="main-header animate__animated animate__fadeIn">
     <!-- Logo -->
     <a href="@Url.Action("Index", "cp")" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>Evyte</b></span>
-        <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>Evyte</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas">
+            <i class="fas fa-bars"></i>
             <span class="sr-only">Toggle navigation</span>
         </a>
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+                <!-- Notifications Dropdown -->
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell"></i>
-                        <span class="label label-warning" style="display:@(Model.NotificationsNumber <= 0 ? "none" : "")" id="outside-notifications-number">@Model.NotificationsNumber</span>
+                        <i class="fas fa-bell"></i>
+                        <span class="label label-neon @(Model.NotificationsNumber <= 0 ? "hidden" : "")" id="outside-notifications-number">@Model.NotificationsNumber</span>
                     </a>
-                    <ul class="dropdown-menu">
-                        @if (Model.NotificationsNumber > 0)
-                        {
-                            <li class="header text-center" style="color:brown">
-                                لديك <span id="inside-notifications-number">@Model.NotificationsNumber</span> اشعار جديد
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="header text-center" style="color:blue">
-                                ليس لديك اشعارات جديدة
-                            </li>
-                        }
+                    <ul class="dropdown-menu animate__animated animate__zoomIn">
+                        <li class="header text-center">
+                            @(Model.NotificationsNumber > 0 ? $"لديك <span id='inside-notifications-number'>{Model.NotificationsNumber}</span> إشعار جديد" : "ليس لديك إشعارات جديدة")
+                        </li>
                         @if (Model.Notifications != null && Model.Notifications.Count > 0)
                         {
                             <li>
                                 <ul class="menu" id="notification-list">
                                     @foreach (var notification in Model.Notifications)
                                     {
-                                        <li id="not_@notification.Id" style="@(!notification.IsSeen ? "background-color:#f3f3f3;border-bottom: 1px solid #e4e4e4;" : "")">
-                                            <a onclick="MarkNotificationAsSeen('@notification.Id')" href="#" @*href="@HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)@notification.Link"*@ style="white-space: initial;">
-                                                <i class="fa fa-dot-circle-o text-@(notification.IsSeen == true ? "green" : "yellow")"></i>
+                                        <li id="not_@notification.Id" class="@(!notification.IsSeen ? "unseen" : "")">
+                                            <a onclick="MarkNotificationAsSeen('@notification.Id')" href="#" style="white-space: initial;">
+                                                <i class="fas fa-circle text-@(notification.IsSeen ? "seen" : "unseen")"></i>
                                                 <span>@notification.Body</span>
                                             </a>
                                         </li>
@@ -52,41 +43,30 @@
                         }
                         else
                         {
-                            <li class="footer"><a href="#">ليس هناك بيانات متاحه</a></li>
+                            <li class="footer"><a href="#">ليس هناك بيانات متاحة</a></li>
                         }
                     </ul>
                 </li>
-                <!-- User Account: style can be found in dropdown.less -->
+                <!-- User Account Dropdown -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        @if (Model.UserImage != null)
-                        {
-                            <img src="~/Content/Images/Users/@Model.UserImage" class="user-image" alt="@Model.Name" />
-                        }
-                        else
-                        {
-                            <img src="~/Content/assets/imgs/avatar.png" class="user-image" alt="@Model.Name" />
-                        }
-                        <span class="hidden-xs">@Model.Name</span>
+                        <img src="~/Images/avatar.png" class="user-image" alt="@Model.Name" />
+                        <span class="hidden-xs typing-effect" data-text="@Model.Name">@Model.Name</span>
                     </a>
-                    <ul class="dropdown-menu">
-                        <!-- User image -->
+                    <ul class="dropdown-menu animate__animated animate__slideInDown">
                         <li class="user-header">
                             <img src="~/Images/avatar.png" class="img-circle" alt="@Model.Name" />
-                            <p>
-                                @Model.Name
-                            </p>
+                            <p class="typing-effect" data-text="@Model.Name">@Model.Name</p>
                         </li>
-                        <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-right">
-                                <a href="@Url.Action("ChangePassword", "cp",new{id=ViewBag.UserId})" class="btn btn-default btn-flat">تغيير كلمه السر</a>
+                                <a href="@Url.Action("ChangePassword", "cp", new { id = ViewBag.UserId })" class="btn btn-neon">تغيير كلمة السر</a>
                             </div>
                             <div class="pull-left">
                                 @using (Html.BeginForm("Logout", "cp", FormMethod.Get))
                                 {
                                     @Html.AntiForgeryToken()
-                                    <button type="submit" href="#" class="btn btn-default btn-flat">تسجيل الخروج</button>
+                                    <button type="submit" class="btn btn-neon">تسجيل الخروج</button>
                                 }
                             </div>
                         </li>

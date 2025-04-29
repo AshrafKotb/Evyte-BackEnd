@@ -1,4 +1,6 @@
-﻿using Evyte.ApplicationCore.Services.Authantication;
+﻿using Evyte.ApplicationCore.Interfaces.Services;
+using Evyte.ApplicationCore.Services.Authantication;
+using Evyte.ApplicationCore.Services.Categories;
 using Evyte.ApplicationCore.Services.Files;
 using Evyte.ApplicationCore.Services.Mailing;
 using Evyte.ApplicationCore.Settings;
@@ -13,6 +15,7 @@ namespace Evyte.Web.Extensions
         public static IServiceCollection RegisterCustomServises(this IServiceCollection services)
         {
             services.AddScoped<IAuthanticationService, AuthanticationService>();
+            services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<IQRCodeService, QRCodeService>();
             services.AddTransient<IMailingService, MailingService>();
