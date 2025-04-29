@@ -55,7 +55,7 @@ namespace Evyte.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DesignsCategories",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -71,7 +71,7 @@ namespace Evyte.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DesignsCategories", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -263,9 +263,9 @@ namespace Evyte.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Designs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Designs_DesignsCategories_CategoryId",
+                        name: "FK_Designs_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "DesignsCategories",
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -460,7 +460,7 @@ namespace Evyte.Infrastructure.Migrations
                 name: "RequestsData");
 
             migrationBuilder.DropTable(
-                name: "DesignsCategories");
+                name: "Categories");
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Evyte.Domain.Entities
         public string WebsiteDemoUrl { get; set; }
         public int SortingNumber { get; set; }
         public Guid CategoryId { get; set; }
-        public DesignCategory Category { get; set; }
+        public Category Category { get; set; }
         public IEnumerable<Request> Requests { get; set; }
     }
 }

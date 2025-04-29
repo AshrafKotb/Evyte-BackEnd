@@ -20,7 +20,7 @@ namespace Evyte.Infrastructure
         public DbSet<RequestData> RequestsData { get; set; }
         public DbSet<RequestGalleryPhoto> RequestsGallery { get; set; }
         public DbSet<Design> Designs { get; set; }
-        public DbSet<DesignCategory> DesignsCategories { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<GeneralInfomarion> GeneralInfomarion { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

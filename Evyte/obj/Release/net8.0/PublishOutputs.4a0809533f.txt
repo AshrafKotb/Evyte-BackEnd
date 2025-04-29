@@ -12,6 +12,8 @@ C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTm
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\Microsoft.Build.dll
@@ -68,6 +70,7 @@ C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTm
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\Mono.TextTemplating.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.Bson.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\NuGet.Common.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\NuGet.Configuration.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\PubTmp\Out\NuGet.DependencyResolver.Core.dll

@@ -156,7 +156,7 @@ namespace Evyte.Infrastructure.Migrations
                     b.ToTable("Designs");
                 });
 
-            modelBuilder.Entity("Evyte.Domain.Entities.DesignCategory", b =>
+            modelBuilder.Entity("Evyte.Domain.Entities.Category", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -195,7 +195,7 @@ namespace Evyte.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DesignsCategories");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Evyte.Domain.Entities.GeneralInfomarion", b =>
@@ -633,7 +633,7 @@ namespace Evyte.Infrastructure.Migrations
 
             modelBuilder.Entity("Evyte.Domain.Entities.Design", b =>
                 {
-                    b.HasOne("Evyte.Domain.Entities.DesignCategory", "Category")
+                    b.HasOne("Evyte.Domain.Entities.Category", "Category")
                         .WithMany("Designs")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -749,7 +749,7 @@ namespace Evyte.Infrastructure.Migrations
                     b.Navigation("Requests");
                 });
 
-            modelBuilder.Entity("Evyte.Domain.Entities.DesignCategory", b =>
+            modelBuilder.Entity("Evyte.Domain.Entities.Category", b =>
                 {
                     b.Navigation("Designs");
                 });

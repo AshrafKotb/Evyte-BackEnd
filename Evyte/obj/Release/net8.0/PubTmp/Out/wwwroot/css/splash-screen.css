@@ -1,0 +1,139 @@
+:root {
+    --primary-color: #1a3c6d;
+    --secondary-color: #00a3ad;
+    --accent-color: #f4a261;
+    --text-color: #2d3436;
+    --light-bg: #f5f7fa;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
+}
+
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2c5282 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+    .splash-screen.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+.splash-content {
+    text-align: center;
+    color: #ffffff;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.splash-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.splash-title {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    animation: typing 2s steps(20) forwards;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid var(--accent-color);
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+.splash-loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto 0;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Background Particles Effect */
+.splash-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="2" fill="rgba(255,255,255,0.3)"/></svg>') repeat;
+    animation: particles 15s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes particles {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 100px 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .splash-logo {
+        width: 120px;
+    }
+
+    .splash-title {
+        font-size: 2rem;
+    }
+
+    .splash-loader {
+        width: 40px;
+        height: 40px;
+        border-width: 4px;
+    }
+}
+
+@media (max-width: 576px) {
+    .splash-logo {
+        width: 100px;
+    }
+
+    .splash-title {
+        font-size: 1.5rem;
+    }
+
+    .splash-content {
+        padding: 1.5rem;
+    }
+}

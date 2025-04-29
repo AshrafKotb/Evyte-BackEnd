@@ -102,6 +102,56 @@ namespace Evyte.Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Evyte.Domain.Entities.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DescriptionAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionEn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NameAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameEn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SortingNumber")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("Evyte.Domain.Entities.Design", b =>
                 {
                     b.Property<Guid>("Id")
@@ -151,48 +201,6 @@ namespace Evyte.Infrastructure.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Designs");
-                });
-
-            modelBuilder.Entity("Evyte.Domain.Entities.DesignCategory", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DescriptionAr")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DescriptionEn")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("NameAr")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameEn")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SortingNumber")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DesignsCategories");
                 });
 
             modelBuilder.Entity("Evyte.Domain.Entities.GeneralInfomarion", b =>
@@ -630,7 +638,7 @@ namespace Evyte.Infrastructure.Migrations
 
             modelBuilder.Entity("Evyte.Domain.Entities.Design", b =>
                 {
-                    b.HasOne("Evyte.Domain.Entities.DesignCategory", "Category")
+                    b.HasOne("Evyte.Domain.Entities.Category", "Category")
                         .WithMany("Designs")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -741,14 +749,14 @@ namespace Evyte.Infrastructure.Migrations
                     b.Navigation("Requests");
                 });
 
+            modelBuilder.Entity("Evyte.Domain.Entities.Category", b =>
+                {
+                    b.Navigation("Designs");
+                });
+
             modelBuilder.Entity("Evyte.Domain.Entities.Design", b =>
                 {
                     b.Navigation("Requests");
-                });
-
-            modelBuilder.Entity("Evyte.Domain.Entities.DesignCategory", b =>
-                {
-                    b.Navigation("Designs");
                 });
 
             modelBuilder.Entity("Evyte.Domain.Entities.Request", b =>

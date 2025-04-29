@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Fz+SjyJlg93sJBaj5rkEYk+ejSDDmrA5vEFJQ+jSLM0=",
+  "Hash": "of+EJyXrO3mMYnl2q74IpEnvT1JSAN0Py8n2dz6T/4o=",
   "Source": "Evyte",
   "BasePath": "_content/Evyte",
   "Mode": "Default",
@@ -304,8 +304,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "egwye144s1",
-      "Integrity": "MnUgFaUmHpn+jdmDH+M9VENZhn660mzp+FEIhvRSB5w=",
+      "Fingerprint": "s1qweijwao",
+      "Integrity": "4NE9cjnhyJ8/jn/VXcqAVp4XnV7vx37jth692q15iPA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\assets\\dist\\css\\AdminLTE.css"
@@ -325,8 +325,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "hmficvlf5s",
-      "Integrity": "mZdx6s9EfG12ppqhmAaTFVebRGHoWHaN373cP7cBHnI=",
+      "Fingerprint": "tq5cni0agq",
+      "Integrity": "FSe8WNPfVKxBHs4lRRxpfQWbDZWaC6Uhs+2Bj47LR7U=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\assets\\dist\\css\\AdminLTE.min.css"
@@ -12568,8 +12568,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ov1nqn0tdg",
-      "Integrity": "vEDGx7wXToXQ9124f+72XnqpvS0G+4nPnwXO/x9xD9A=",
+      "Fingerprint": "p7sx0zx3tu",
+      "Integrity": "67YSOKh5VBCVtcjML+vZZ+EkIiFVMrNL4FerDQjg6UQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\assets\\plugins\\font-awesome-4.7.0\\css\\font-awesome.css"
@@ -12589,8 +12589,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "2ee4lq6s3c",
-      "Integrity": "JqGhzg1f8E69TKEbHeDYUjd3R5eUXout4pshqSW9Uoc=",
+      "Fingerprint": "j6m1uinjmv",
+      "Integrity": "dUPzuw1z93qJFlZpTwAym6ALSkms35YnGsIwQuo/YLU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\assets\\plugins\\font-awesome-4.7.0\\css\\font-awesome.min.css"
@@ -24769,11 +24769,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "jzues29dui",
-      "Integrity": "obf71Vbyro/R4YlT/oo++coGFOavFPoYX6WquRT4GTM=",
+      "Fingerprint": "zm8ds4pd1v",
+      "Integrity": "BZffbL8PKmm8dJ9gGwPnTgNwtLLOitCLu9FMliHbt/4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\categories.css"
+    },
+    {
+      "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\category-details.css",
+      "SourceId": "Evyte",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\",
+      "BasePath": "_content/Evyte",
+      "RelativePath": "css/category-details#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kbhqryk03e",
+      "Integrity": "MN0obKCvPcVIhaP27AjEqJCBk6kWZuoiynk1JbtIa6I=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\category-details.css"
     },
     {
       "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\forms.css",
@@ -24797,6 +24818,27 @@
       "OriginalItemSpec": "wwwroot\\css\\forms.css"
     },
     {
+      "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\header-sidebar.css",
+      "SourceId": "Evyte",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\",
+      "BasePath": "_content/Evyte",
+      "RelativePath": "css/header-sidebar#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "e7b0rad7lu",
+      "Integrity": "uiszOt/4BFQFmbzuIh4S46IDpHznMZmY9xLsehn/Bms=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\header-sidebar.css"
+    },
+    {
       "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\layout.css",
       "SourceId": "Evyte",
       "SourceType": "Discovered",
@@ -24818,6 +24860,27 @@
       "OriginalItemSpec": "wwwroot\\css\\layout.css"
     },
     {
+      "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\login-style.css",
+      "SourceId": "Evyte",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\",
+      "BasePath": "_content/Evyte",
+      "RelativePath": "css/login-style#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "0f29i2wf2g",
+      "Integrity": "hDFNUC0OIXTrvYX1/8mkwqkDhgNT3shjv3KcaIiOiq8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\login-style.css"
+    },
+    {
       "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\site.css",
       "SourceId": "Evyte",
       "SourceType": "Discovered",
@@ -24837,6 +24900,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\splash-screen.css",
+      "SourceId": "Evyte",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\",
+      "BasePath": "_content/Evyte",
+      "RelativePath": "css/splash-screen#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "1e1j061q83",
+      "Integrity": "NwqtpHNbJXqg7sqamz60ROy6dsgSn/Qcdb2dGPFoXDQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\splash-screen.css"
     },
     {
       "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\favicon.ico",
@@ -24895,11 +24979,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "xqtwdae28g",
-      "Integrity": "Z6wpTl8vnYOJsDMe3thZbgxn7j6xCs+GDCjKOawD98k=",
+      "Fingerprint": "btv4u8zhpn",
+      "Integrity": "D+gvN7J29AlbviAsDUzhGlkUclq++CYpX2sPDzYU3K0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\Evyte.png"
+    },
+    {
+      "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\js\\header-sidebar.js",
+      "SourceId": "Evyte",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\",
+      "BasePath": "_content/Evyte",
+      "RelativePath": "js/header-sidebar#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "d1arq22487",
+      "Integrity": "b9LRdQ4Z9lqXV231CBUcm6xz6vJjYz6oz88IZz/IW0s=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\header-sidebar.js"
     },
     {
       "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\js\\site.js",
@@ -26144,7 +26249,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 20:04:29 GMT"
+          "Value": "Tue, 29 Apr 2025 05:45:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -26189,7 +26294,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 20:04:29 GMT"
+          "Value": "Tue, 29 Apr 2025 05:45:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27034,7 +27139,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "104343"
+          "Value": "104347"
         },
         {
           "Name": "Content-Type",
@@ -27042,11 +27147,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"MnUgFaUmHpn+jdmDH+M9VENZhn660mzp+FEIhvRSB5w=\""
+          "Value": "\"4NE9cjnhyJ8/jn/VXcqAVp4XnV7vx37jth692q15iPA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 20:04:29 GMT"
+          "Value": "Tue, 29 Apr 2025 08:09:02 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27056,52 +27161,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-MnUgFaUmHpn+jdmDH+M9VENZhn660mzp+FEIhvRSB5w="
-        }
-      ]
-    },
-    {
-      "Route": "Content/assets/dist/css/AdminLTE.egwye144s1.css",
-      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\assets\\dist\\css\\AdminLTE.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "104343"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"MnUgFaUmHpn+jdmDH+M9VENZhn660mzp+FEIhvRSB5w=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 20:04:29 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "egwye144s1"
-        },
-        {
-          "Name": "label",
-          "Value": "Content/assets/dist/css/AdminLTE.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-MnUgFaUmHpn+jdmDH+M9VENZhn660mzp+FEIhvRSB5w="
+          "Value": "sha256-4NE9cjnhyJ8/jn/VXcqAVp4XnV7vx37jth692q15iPA="
         }
       ]
     },
@@ -27116,7 +27176,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "81931"
+          "Value": "81935"
         },
         {
           "Name": "Content-Type",
@@ -27124,11 +27184,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"mZdx6s9EfG12ppqhmAaTFVebRGHoWHaN373cP7cBHnI=\""
+          "Value": "\"FSe8WNPfVKxBHs4lRRxpfQWbDZWaC6Uhs+2Bj47LR7U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 20:04:28 GMT"
+          "Value": "Tue, 29 Apr 2025 08:12:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27138,12 +27198,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-mZdx6s9EfG12ppqhmAaTFVebRGHoWHaN373cP7cBHnI="
+          "Value": "sha256-FSe8WNPfVKxBHs4lRRxpfQWbDZWaC6Uhs+2Bj47LR7U="
         }
       ]
     },
     {
-      "Route": "Content/assets/dist/css/AdminLTE.min.hmficvlf5s.css",
+      "Route": "Content/assets/dist/css/AdminLTE.min.tq5cni0agq.css",
       "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\assets\\dist\\css\\AdminLTE.min.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -27153,7 +27213,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "81931"
+          "Value": "81935"
         },
         {
           "Name": "Content-Type",
@@ -27161,11 +27221,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"mZdx6s9EfG12ppqhmAaTFVebRGHoWHaN373cP7cBHnI=\""
+          "Value": "\"FSe8WNPfVKxBHs4lRRxpfQWbDZWaC6Uhs+2Bj47LR7U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 20:04:28 GMT"
+          "Value": "Tue, 29 Apr 2025 08:12:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27175,7 +27235,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "hmficvlf5s"
+          "Value": "tq5cni0agq"
         },
         {
           "Name": "label",
@@ -27183,7 +27243,52 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-mZdx6s9EfG12ppqhmAaTFVebRGHoWHaN373cP7cBHnI="
+          "Value": "sha256-FSe8WNPfVKxBHs4lRRxpfQWbDZWaC6Uhs+2Bj47LR7U="
+        }
+      ]
+    },
+    {
+      "Route": "Content/assets/dist/css/AdminLTE.s1qweijwao.css",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\assets\\dist\\css\\AdminLTE.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "104347"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4NE9cjnhyJ8/jn/VXcqAVp4XnV7vx37jth692q15iPA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 08:09:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s1qweijwao"
+        },
+        {
+          "Name": "label",
+          "Value": "Content/assets/dist/css/AdminLTE.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4NE9cjnhyJ8/jn/VXcqAVp4XnV7vx37jth692q15iPA="
         }
       ]
     },
@@ -74922,7 +75027,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "39748"
+          "Value": "39752"
         },
         {
           "Name": "Content-Type",
@@ -74930,11 +75035,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"vEDGx7wXToXQ9124f+72XnqpvS0G+4nPnwXO/x9xD9A=\""
+          "Value": "\"67YSOKh5VBCVtcjML+vZZ+EkIiFVMrNL4FerDQjg6UQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 20:04:30 GMT"
+          "Value": "Tue, 29 Apr 2025 08:10:17 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -74944,52 +75049,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-vEDGx7wXToXQ9124f+72XnqpvS0G+4nPnwXO/x9xD9A="
-        }
-      ]
-    },
-    {
-      "Route": "Content/assets/plugins/font-awesome-4.7.0/css/font-awesome.min.2ee4lq6s3c.css",
-      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\assets\\plugins\\font-awesome-4.7.0\\css\\font-awesome.min.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "31001"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"JqGhzg1f8E69TKEbHeDYUjd3R5eUXout4pshqSW9Uoc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 20:04:30 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "2ee4lq6s3c"
-        },
-        {
-          "Name": "label",
-          "Value": "Content/assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-JqGhzg1f8E69TKEbHeDYUjd3R5eUXout4pshqSW9Uoc="
+          "Value": "sha256-67YSOKh5VBCVtcjML+vZZ+EkIiFVMrNL4FerDQjg6UQ="
         }
       ]
     },
@@ -75004,7 +75064,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "31001"
+          "Value": "31005"
         },
         {
           "Name": "Content-Type",
@@ -75012,11 +75072,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"JqGhzg1f8E69TKEbHeDYUjd3R5eUXout4pshqSW9Uoc=\""
+          "Value": "\"dUPzuw1z93qJFlZpTwAym6ALSkms35YnGsIwQuo/YLU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 20:04:30 GMT"
+          "Value": "Tue, 29 Apr 2025 08:12:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -75026,13 +75086,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-JqGhzg1f8E69TKEbHeDYUjd3R5eUXout4pshqSW9Uoc="
+          "Value": "sha256-dUPzuw1z93qJFlZpTwAym6ALSkms35YnGsIwQuo/YLU="
         }
       ]
     },
     {
-      "Route": "Content/assets/plugins/font-awesome-4.7.0/css/font-awesome.ov1nqn0tdg.css",
-      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\assets\\plugins\\font-awesome-4.7.0\\css\\font-awesome.css",
+      "Route": "Content/assets/plugins/font-awesome-4.7.0/css/font-awesome.min.j6m1uinjmv.css",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\assets\\plugins\\font-awesome-4.7.0\\css\\font-awesome.min.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -75041,7 +75101,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "39748"
+          "Value": "31005"
         },
         {
           "Name": "Content-Type",
@@ -75049,11 +75109,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"vEDGx7wXToXQ9124f+72XnqpvS0G+4nPnwXO/x9xD9A=\""
+          "Value": "\"dUPzuw1z93qJFlZpTwAym6ALSkms35YnGsIwQuo/YLU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 20:04:30 GMT"
+          "Value": "Tue, 29 Apr 2025 08:12:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -75063,7 +75123,52 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ov1nqn0tdg"
+          "Value": "j6m1uinjmv"
+        },
+        {
+          "Name": "label",
+          "Value": "Content/assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-dUPzuw1z93qJFlZpTwAym6ALSkms35YnGsIwQuo/YLU="
+        }
+      ]
+    },
+    {
+      "Route": "Content/assets/plugins/font-awesome-4.7.0/css/font-awesome.p7sx0zx3tu.css",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\assets\\plugins\\font-awesome-4.7.0\\css\\font-awesome.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "39752"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"67YSOKh5VBCVtcjML+vZZ+EkIiFVMrNL4FerDQjg6UQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 08:10:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p7sx0zx3tu"
         },
         {
           "Name": "label",
@@ -75071,7 +75176,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-vEDGx7wXToXQ9124f+72XnqpvS0G+4nPnwXO/x9xD9A="
+          "Value": "sha256-67YSOKh5VBCVtcjML+vZZ+EkIiFVMrNL4FerDQjg6UQ="
         }
       ]
     },
@@ -76656,7 +76761,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 20:04:30 GMT"
+          "Value": "Tue, 29 Apr 2025 08:13:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -76693,7 +76798,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 20:04:30 GMT"
+          "Value": "Tue, 29 Apr 2025 08:13:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -122564,7 +122669,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2662"
+          "Value": "12582"
         },
         {
           "Name": "Content-Type",
@@ -122572,11 +122677,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"obf71Vbyro/R4YlT/oo++coGFOavFPoYX6WquRT4GTM=\""
+          "Value": "\"BZffbL8PKmm8dJ9gGwPnTgNwtLLOitCLu9FMliHbt/4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 27 Apr 2025 05:38:51 GMT"
+          "Value": "Tue, 29 Apr 2025 02:54:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -122586,12 +122691,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-obf71Vbyro/R4YlT/oo++coGFOavFPoYX6WquRT4GTM="
+          "Value": "sha256-BZffbL8PKmm8dJ9gGwPnTgNwtLLOitCLu9FMliHbt/4="
         }
       ]
     },
     {
-      "Route": "css/categories.jzues29dui.css",
+      "Route": "css/categories.zm8ds4pd1v.css",
       "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\categories.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -122601,7 +122706,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2662"
+          "Value": "12582"
         },
         {
           "Name": "Content-Type",
@@ -122609,11 +122714,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"obf71Vbyro/R4YlT/oo++coGFOavFPoYX6WquRT4GTM=\""
+          "Value": "\"BZffbL8PKmm8dJ9gGwPnTgNwtLLOitCLu9FMliHbt/4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 27 Apr 2025 05:38:51 GMT"
+          "Value": "Tue, 29 Apr 2025 02:54:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -122623,7 +122728,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "jzues29dui"
+          "Value": "zm8ds4pd1v"
         },
         {
           "Name": "label",
@@ -122631,7 +122736,89 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-obf71Vbyro/R4YlT/oo++coGFOavFPoYX6WquRT4GTM="
+          "Value": "sha256-BZffbL8PKmm8dJ9gGwPnTgNwtLLOitCLu9FMliHbt/4="
+        }
+      ]
+    },
+    {
+      "Route": "css/category-details.css",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\category-details.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10003"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MN0obKCvPcVIhaP27AjEqJCBk6kWZuoiynk1JbtIa6I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 03:46:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-MN0obKCvPcVIhaP27AjEqJCBk6kWZuoiynk1JbtIa6I="
+        }
+      ]
+    },
+    {
+      "Route": "css/category-details.kbhqryk03e.css",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\category-details.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10003"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MN0obKCvPcVIhaP27AjEqJCBk6kWZuoiynk1JbtIa6I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 03:46:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kbhqryk03e"
+        },
+        {
+          "Name": "label",
+          "Value": "css/category-details.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-MN0obKCvPcVIhaP27AjEqJCBk6kWZuoiynk1JbtIa6I="
         }
       ]
     },
@@ -122718,6 +122905,88 @@
       ]
     },
     {
+      "Route": "css/header-sidebar.css",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\header-sidebar.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15894"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uiszOt/4BFQFmbzuIh4S46IDpHznMZmY9xLsehn/Bms=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 07:48:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-uiszOt/4BFQFmbzuIh4S46IDpHznMZmY9xLsehn/Bms="
+        }
+      ]
+    },
+    {
+      "Route": "css/header-sidebar.e7b0rad7lu.css",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\header-sidebar.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15894"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uiszOt/4BFQFmbzuIh4S46IDpHznMZmY9xLsehn/Bms=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 07:48:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e7b0rad7lu"
+        },
+        {
+          "Name": "label",
+          "Value": "css/header-sidebar.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-uiszOt/4BFQFmbzuIh4S46IDpHznMZmY9xLsehn/Bms="
+        }
+      ]
+    },
+    {
       "Route": "css/layout.76sotqbftu.css",
       "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\layout.css",
       "Selectors": [],
@@ -122800,6 +123069,88 @@
       ]
     },
     {
+      "Route": "css/login-style.0f29i2wf2g.css",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\login-style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8000"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hDFNUC0OIXTrvYX1/8mkwqkDhgNT3shjv3KcaIiOiq8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 06:13:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0f29i2wf2g"
+        },
+        {
+          "Name": "label",
+          "Value": "css/login-style.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hDFNUC0OIXTrvYX1/8mkwqkDhgNT3shjv3KcaIiOiq8="
+        }
+      ]
+    },
+    {
+      "Route": "css/login-style.css",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\login-style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8000"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hDFNUC0OIXTrvYX1/8mkwqkDhgNT3shjv3KcaIiOiq8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 06:13:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hDFNUC0OIXTrvYX1/8mkwqkDhgNT3shjv3KcaIiOiq8="
+        }
+      ]
+    },
+    {
       "Route": "css/site.c2tiyv64ts.css",
       "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -122878,6 +123229,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+        }
+      ]
+    },
+    {
+      "Route": "css/splash-screen.1e1j061q83.css",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\splash-screen.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2768"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NwqtpHNbJXqg7sqamz60ROy6dsgSn/Qcdb2dGPFoXDQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 03:52:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1e1j061q83"
+        },
+        {
+          "Name": "label",
+          "Value": "css/splash-screen.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-NwqtpHNbJXqg7sqamz60ROy6dsgSn/Qcdb2dGPFoXDQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/splash-screen.css",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\splash-screen.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2768"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NwqtpHNbJXqg7sqamz60ROy6dsgSn/Qcdb2dGPFoXDQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 03:52:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-NwqtpHNbJXqg7sqamz60ROy6dsgSn/Qcdb2dGPFoXDQ="
         }
       ]
     },
@@ -123210,6 +123643,51 @@
       ]
     },
     {
+      "Route": "Images/Evyte.btv4u8zhpn.png",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Evyte.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "67441"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"D+gvN7J29AlbviAsDUzhGlkUclq++CYpX2sPDzYU3K0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 01:04:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "btv4u8zhpn"
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Evyte.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-D+gvN7J29AlbviAsDUzhGlkUclq++CYpX2sPDzYU3K0="
+        }
+      ]
+    },
+    {
       "Route": "Images/Evyte.png",
       "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Evyte.png",
       "Selectors": [],
@@ -123220,7 +123698,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "52784"
+          "Value": "67441"
         },
         {
           "Name": "Content-Type",
@@ -123228,11 +123706,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Z6wpTl8vnYOJsDMe3thZbgxn7j6xCs+GDCjKOawD98k=\""
+          "Value": "\"D+gvN7J29AlbviAsDUzhGlkUclq++CYpX2sPDzYU3K0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 27 Apr 2025 01:08:44 GMT"
+          "Value": "Mon, 28 Apr 2025 01:04:58 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -123242,13 +123720,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Z6wpTl8vnYOJsDMe3thZbgxn7j6xCs+GDCjKOawD98k="
+          "Value": "sha256-D+gvN7J29AlbviAsDUzhGlkUclq++CYpX2sPDzYU3K0="
         }
       ]
     },
     {
-      "Route": "Images/Evyte.xqtwdae28g.png",
-      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Evyte.png",
+      "Route": "js/header-sidebar.d1arq22487.js",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\js\\header-sidebar.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -123257,19 +123735,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "52784"
+          "Value": "710"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/png"
+          "Value": "text/javascript"
         },
         {
           "Name": "ETag",
-          "Value": "\"Z6wpTl8vnYOJsDMe3thZbgxn7j6xCs+GDCjKOawD98k=\""
+          "Value": "\"b9LRdQ4Z9lqXV231CBUcm6xz6vJjYz6oz88IZz/IW0s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 27 Apr 2025 01:08:44 GMT"
+          "Value": "Tue, 29 Apr 2025 07:16:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -123279,15 +123757,52 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "xqtwdae28g"
+          "Value": "d1arq22487"
         },
         {
           "Name": "label",
-          "Value": "Images/Evyte.png"
+          "Value": "js/header-sidebar.js"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Z6wpTl8vnYOJsDMe3thZbgxn7j6xCs+GDCjKOawD98k="
+          "Value": "sha256-b9LRdQ4Z9lqXV231CBUcm6xz6vJjYz6oz88IZz/IW0s="
+        }
+      ]
+    },
+    {
+      "Route": "js/header-sidebar.js",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\js\\header-sidebar.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "710"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"b9LRdQ4Z9lqXV231CBUcm6xz6vJjYz6oz88IZz/IW0s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 07:16:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-b9LRdQ4Z9lqXV231CBUcm6xz6vJjYz6oz88IZz/IW0s="
         }
       ]
     },

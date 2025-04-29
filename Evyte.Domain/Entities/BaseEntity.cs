@@ -8,6 +8,10 @@ namespace Evyte.Domain.Entities
 {
     public class BaseEntity
     {
+        public BaseEntity()
+        {
+            CreatedDate = DateTime.UtcNow; 
+        }
         public Guid Id { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
