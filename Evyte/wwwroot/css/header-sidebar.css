@@ -60,7 +60,7 @@ body {
 
 .sidebar-toggle {
     color: var(--secondary-color);
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     padding: 0.75rem;
     border-radius: 50%;
     transition: var(--transition);
@@ -86,6 +86,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    direction: ltr !important;
 }
 
     .navbar-custom-menu .nav > li > a:hover {
@@ -310,8 +311,8 @@ body {
 }
 
     .user-panel .image img {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         border: 3px solid var(--secondary-color);
         box-shadow: 0 0 12px var(--secondary-color);
     }
@@ -355,7 +356,7 @@ body {
     .sidebar-menu > li > a {
         color: var(--text-light);
         padding: 0.875rem 1.25rem;
-        font-size: 1.2rem;
+        font-size: 1rem;
         display: flex;
         align-items: center;
         gap: 0.75rem;
@@ -470,7 +471,7 @@ body {
     padding: 0.75rem 1rem;
     border: 2px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.1);
-    color: var(--text-light);
+    color: black;
     transition: var(--transition);
 }
 

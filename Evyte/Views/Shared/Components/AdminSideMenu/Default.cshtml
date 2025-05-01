@@ -33,6 +33,26 @@
                     <li><a href="@Url.Action("Index", "Categories")"><i class="fas fa-list"></i> جميع الأقسام</a></li>
                 </ul>
             </li>
+            <li class="treeview @(Context.Request.Path.ToString().ToLower().Contains("designs") ? "active" : "")">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-paint-brush"></i> <span>إدارة التصميمات</span>
+                    <i class="fas fa-chevron-left pull-left"></i>
+                </a>
+                <ul class="treeview-menu @(Context.Request.Path.ToString().ToLower().Contains("designs/create") || Context.Request.Path.ToString().ToLower().Contains("designs/index") ? "menu-open" : "") animate__animated animate__slideInRight">
+                    <li><a href="@Url.Action("Create", "Designs")"><i class="fas fa-plus-square"></i> تصميم جديد</a></li>
+                    <li><a href="@Url.Action("Index", "Designs")"><i class="fas fa-th-list"></i> جميع التصميمات</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="GeneralInformation" asp-action="TermsAndConditions">
+                    <i class="fas fa-file-alt me-2"></i> الشروط والأحكام
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="GeneralInformation" asp-action="ContactInfo">
+                    <i class="fas fa-address-book me-2"></i> بيانات التواصل
+                </a>
+            </li>
         </ul>
     </section>
 </aside>

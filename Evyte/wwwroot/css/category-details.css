@@ -487,3 +487,18 @@ body {
             bottom: -5px;
         }
 }
+
+
+
+/*
+Designs*/
+.info-value a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+    .info-value a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+    }

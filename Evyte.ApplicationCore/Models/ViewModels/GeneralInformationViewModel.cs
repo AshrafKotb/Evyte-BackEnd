@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Evyte.Domain.Entities
+namespace Evyte.ApplicationCore.Models.ViewModels
 {
-    public class GeneralInfomarion : BaseEntity
+    public class GeneralInformationViewModel
     {
-        #region Social Media Data
+        public string Email { get; set; }
         public string FaceBook { get; set; }
         public string Instagram { get; set; }
         public string X { get; set; }
@@ -16,11 +15,7 @@ namespace Evyte.Domain.Entities
         public string Youtube { get; set; }
         public string WhatsApp { get; set; }
         public string Snapchat { get; set; }
-        public string Email { get; set; }
-
-        #endregion
         public string TermsAndConditionsAr { get; set; }
         public string TermsAndConditionsEn { get; set; }
-
     }
 }

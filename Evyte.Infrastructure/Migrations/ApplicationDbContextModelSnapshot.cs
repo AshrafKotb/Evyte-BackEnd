@@ -203,7 +203,7 @@ namespace Evyte.Infrastructure.Migrations
                     b.ToTable("Designs");
                 });
 
-            modelBuilder.Entity("Evyte.Domain.Entities.GeneralInfomarion", b =>
+            modelBuilder.Entity("Evyte.Domain.Entities.GeneralInformation", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -263,7 +263,7 @@ namespace Evyte.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GeneralInfomarion");
+                    b.ToTable("GeneralInformation");
                 });
 
             modelBuilder.Entity("Evyte.Domain.Entities.Notification", b =>

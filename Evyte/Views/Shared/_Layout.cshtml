@@ -37,6 +37,9 @@
     <link rel="stylesheet" href="~/css/site.css">
     <link rel="stylesheet" href="~/css/splash-screen.css">
     <link rel="stylesheet" href="~/css/header-sidebar.css">
+    <link rel="stylesheet" href="~/css/terms-and-conditions.css" />
+    <link rel="stylesheet" href="~/css/contact-info.css" />
+    <link rel="stylesheet" href="~/css/general-info.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     @await RenderSectionAsync("Styles", required: false)
@@ -71,7 +74,19 @@
     <script src="~/Content/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script src="~/Content/assets/bootstrap/js/bootstrap.min.js"></script>
-
+    <script src="https://cdn.tiny.cloud/1/cm697181gs2dmxoi2sgfygjiyj6fbdgtt1f95bidkuubz1ta/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '.tinymce',
+            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            menubar: false,
+            directionality: function () {
+                return this.getAttribute('dir') === 'rtl' ? 'rtl' : 'ltr';
+            },
+            content_style: 'body { font-family: Tajawal, sans-serif; }'
+        });
+    </script>
     <!-- AdminLTE and Plugins -->
     <script src="~/Content/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
     <script src="~/Content/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
@@ -156,16 +171,16 @@
             setTimeout(function () {
                 $('#splash-screen').addClass('hidden');
                 $('.content').removeClass('hidden');
-            }, 1000);
+            }, 100);
         };
 
         // Success Toast
         @if (TempData["Success"] != null)
         {
             <text>
-                    $(function () {
-                        toastr.success("تم بنجاح");
-                    });
+                                $(function () {
+                                    toastr.success("تم بنجاح");
+                                });
             </text>
         }
     </script>

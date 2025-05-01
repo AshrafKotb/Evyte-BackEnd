@@ -300,6 +300,8 @@ C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Mailjet
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.Build.dll
@@ -330,6 +332,8 @@ C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microso
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.Extensions.Localization.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.Extensions.Localization.Abstractions.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
@@ -355,6 +359,7 @@ C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microso
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\NuGet.Common.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\NuGet.Configuration.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\NuGet.DependencyResolver.Core.dll
@@ -545,12 +550,14 @@ C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\Evyte.G
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\Evyte.AssemblyInfoInputs.cache
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\Evyte.AssemblyInfo.cs
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\Evyte.csproj.CoreCompileInputs.cache
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\Evyte.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\Evyte.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\Evyte.RazorAssemblyInfo.cache
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\Evyte.RazorAssemblyInfo.cs
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\Evyte.sourcelink.json
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\scopedcss\Views\Shared\_LayoutDashboard.cshtml.rz.scp.css
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\scopedcss\Views\Shared\_LayoutWebsite.cshtml.rz.scp.css
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\scopedcss\bundle\Evyte.styles.css
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\scopedcss\projectbundle\Evyte.bundle.scp.css
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\staticwebassets.build.json
@@ -569,10 +576,3 @@ C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\refint\
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\Evyte.pdb
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\Evyte.genruntimeconfig.cache
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\ref\Evyte.dll
-C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\Evyte.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.Extensions.Localization.dll
-C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.Extensions.Localization.Abstractions.dll
-C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\scopedcss\Views\Shared\_LayoutWebsite.cshtml.rz.scp.css
-C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
-C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
-C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

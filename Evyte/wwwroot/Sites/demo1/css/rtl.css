@@ -1,0 +1,73 @@
+header{
+    #banner{
+        ul li{flex-shrink: 0; margin-right: 20px !important;}
+    }
+
+    .navbar .badge{right: 20px; width: fit-content;}
+}
+
+.happyCouple{
+    figcaption ul{width: auto !important;}
+}
+
+/* love story */
+.loveStory{
+    figcaption{
+        .text{margin-left: 1.5rem;}
+        .head{text-align: end !important;}
+  
+      .head::after{
+        left: 0;
+        right: unset;
+      }
+  
+      .text::after{
+        left: -22px;
+        right: unset;
+        rotate: 180deg;
+      }
+  
+    }
+  
+    
+  
+    .col-12:nth-child(even) .item{
+      &> div:nth-child(1){
+        order: 2;
+  
+        figcaption{
+          
+         .head::after{right: 0px; }
+         .text{margin-right: 1.5rem !important; margin-left: 0 !important;}
+         .text::after{right: -22px; rotate: 0deg; }
+        }
+  
+      }
+    } 
+  
+    @media screen and (max-width:768px) {
+        figcaption .head{text-align: center !important;}
+        
+        .col-12 .item > div:nth-child(2){
+            order: 2;
+        }
+
+      }
+  }
+
+.bigDay{
+    .row{
+        flex-direction: row-reverse;
+        &>div{text-align: end;}
+    }
+    .clock span{margin-right: auto;}
+}
+
+.loveQuote{
+    .row{
+        flex-direction: row-reverse;
+        &>div{text-align: end;}
+    }
+}
+
+.gift,.frindsWishes{direction: ltr;}

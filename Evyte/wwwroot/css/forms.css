@@ -29,12 +29,17 @@
     padding: 12px 15px;
     transition: all 0.3s ease;
     border: 2px solid #e0e0e0;
+    color: black;
 }
 
     .form-control:focus {
         border-color: #4b6cb7;
         box-shadow: 0 0 8px rgba(75,108,183,0.2);
     }
+
+.form-control-select {
+    padding: 0px 15px !important;
+}
 
 .input-group-icon {
     position: relative;

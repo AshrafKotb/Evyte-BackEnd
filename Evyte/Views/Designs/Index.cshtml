@@ -1,0 +1,239 @@
+﻿@model DesignIndexVM
+@{
+    ViewData["Title"] = "التصميمات";
+    Layout = "_Layout";
+    ViewData["Dir"] = "rtl";
+}
+<link rel="stylesheet" href="~/css/categories.css" />
+
+<div class="container-fluid py-4">
+    <div class="category-header d-flex align-items-center justify-content-center">
+        <h1 class="text-white page-title">@ViewData["Title"]</h1>
+    </div>
+
+    <div class="category-search-container">
+        <form asp-action="Index" method="get" class="category-search">
+            <div class="input-group">
+                <input type="text" class="form-control"
+                       name="searchTerm" value="@Model.SearchTerm"
+                       placeholder="ابحث عن تصميم...">
+                <button type="submit" class="btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="controls-container d-flex justify-content-between align-items-center mb-3">
+        <a asp-action="Create" class="btn btn-success create-btn">
+            <i class="fas fa-plus me-2"></i>إضافة تصميم جديد
+        </a>
+        <div class="page-size-selector">
+            <label for="pageSize" class="me-2">عناصر لكل صفحة:</label>
+            <form asp-action="Index" method="get" id="pageSizeForm">
+                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                <select id="pageSize" name="pageSize" class="form-select" onchange="this.form.submit()">
+                    @foreach (var option in Model.PageSizeOptions)
+                    {
+                        <option value="@option.Value" selected="@(Model.PageSize.ToString() == option.Value)">
+                            @option.Text
+                        </option>
+                    }
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <div class="category-table">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th>الترتيب</th>
+                        <th>الاسم</th>
+                        <th>القسم</th>
+                        <th>الرابط</th>
+                        @* <th>الصورة</th> *@
+                        <th>الحالة</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Designs)
+                    {
+                        <tr>
+                            <td class="text-center"><span class="badge badge-Sorting">@item.SortingNumber</span></td>
+                            <td class="text-center">@item.NameAr<br />@item.NameEn</td>
+                            <td class="text-center">@item.CategoryNameAr<br />@item.CategoryNameEn</td>
+                            <td class="text-center">
+                                @if (!string.IsNullOrEmpty(item.WebsiteDemoUrl))
+                                {
+                                    <a href="@item.WebsiteDemoUrl" target="_blank" class="btn btn-link btn-sm design-link" title="@item.WebsiteDemoUrl">
+                                        <i class="fas fa-link me-1"></i> عرض الموقع
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">غير متوفر</span>
+                                }
+                            </td>
+                            @*<td class="text-center">
+                                <img src="@item.ImageUrl" href="@item.ImageUrl" class="category-img" alt="صورة التصميم">
+                            </td>*@
+                            @if (item.IsDeleted)
+                            {
+                                <td class="text-center"><span class="badge badge-deleted">محذوف</span></td>
+                            }
+                            else
+                            {
+                                <td class="text-center"><span class="badge badge-active">متاح</span></td>
+                            }
+                            <td class="text-center">
+                                <div class="d-flex action-buttons gap-2 justify-content-center">
+                                    @if (!item.IsDeleted)
+                                    {
+                                        <a asp-action="Edit" asp-route-id="@item.Id"
+                                           class="btn btn-primary" title="تعديل">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@item.Id"
+                                           class="btn btn-info" title="التفاصيل">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    }
+                                    <button type="button" class="btn btn-action @(item.IsDeleted ? "btn-restore" : "btn-delete")"
+                                            data-id="@item.Id" data-action="@(item.IsDeleted ? "restore" : "delete")">
+                                        <i class="@(item.IsDeleted ? "fas fa-undo" : "fas fa-trash-alt")"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @if (Model.TotalPages > 1)
+        {
+            <div class="pagination-container">
+                <form id="paginationForm" asp-action="Index" method="get">
+                    <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                    <input type="hidden" name="pageSize" value="@Model.PageSize" />
+                    <nav aria-label="تصفح الصفحات">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                                <a class="page-link"
+                                   asp-action="Index"
+                                   asp-route-page="@(Model.CurrentPage - 1)"
+                                   asp-route-pageSize="@Model.PageSize"
+                                   asp-route-searchTerm="@Model.SearchTerm"
+                                   aria-label="الصفحة السابقة">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                            <li class="page-item @(Model.CurrentPage == 1 ? "active" : "")">
+                                <a class="page-link"
+                                   asp-action="Index"
+                                   asp-route-page="1"
+                                   asp-route-pageSize="@Model.PageSize"
+                                   asp-route-searchTerm="@Model.SearchTerm"
+                                   aria-current="@(Model.CurrentPage == 1 ? "page" : null)">1</a>
+                            </li>
+                            @if (Model.CurrentPage > 3)
+                            {
+                                <li class="page-item disabled">
+                                    <span class="page-link">...</span>
+                                </li>
+                            }
+                            @for (int i = Math.Max(2, Model.CurrentPage - 2); i <= Math.Min(Model.TotalPages - 1, Model.CurrentPage + 2); i++)
+                            {
+                                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                    <a class="page-link"
+                                       asp-action="Index"
+                                       asp-route-page="@i"
+                                       asp-route-pageSize="@Model.PageSize"
+                                       asp-route-searchTerm="@Model.SearchTerm"
+                                       aria-current="@(i == Model.CurrentPage ? "page" : null)">@i</a>
+                                </li>
+                            }
+                            @if (Model.CurrentPage < Model.TotalPages - 2)
+                            {
+                                <li class="page-item disabled">
+                                    <span class="page-link">...</span>
+                                </li>
+                            }
+                            @if (Model.TotalPages > 1)
+                            {
+                                <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "active" : "")">
+                                    <a class="page-link"
+                                       asp-action="Index"
+                                       asp-route-page="@Model.TotalPages"
+                                       asp-route-pageSize="@Model.PageSize"
+                                       asp-route-searchTerm="@Model.SearchTerm"
+                                       aria-current="@(Model.CurrentPage == Model.TotalPages ? "page" : null)">@Model.TotalPages</a>
+                                </li>
+                            }
+                            <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                                <a class="page-link"
+                                   asp-action="Index"
+                                   asp-route-page="@(Model.CurrentPage + 1)"
+                                   asp-route-pageSize="@Model.PageSize"
+                                   asp-route-searchTerm="@Model.SearchTerm"
+                                   aria-label="الصفحة التالية">
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </form>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="modal fade confirmation-modal" id="confirmationModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">تأكيد الإجراء</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <i class="fas fa-exclamation-circle fa-3x text-warning mb-3"></i>
+                <p id="modalMessage" class="mb-0"></p>
+            </div>
+            <div class="modal-footer">
+                <form id="actionForm" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="designId" name="id" />
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="submit" class="btn btn-confirm text-white">تأكيد</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.btn-action').click(function () {
+                const id = $(this).data('id');
+                const action = $(this).data('action');
+                const messages = {
+                    'delete': 'هل أنت متأكد من حذف هذا التصميم؟',
+                    'restore': 'هل أنت متأكد من استعادة هذا التصميم؟'
+                };
+                const urls = {
+                    'delete': '@Url.Action("Delete", "Designs")',
+                    'restore': '@Url.Action("Restore", "Designs")'
+                };
+
+                $('#modalMessage').text(messages[action]);
+                $('#designId').val(id);
+                $('#actionForm').attr('action', urls[action]);
+                $('#confirmationModal').modal('show');
+            });
+        });
+    </script>
+}

@@ -1,7 +1,10 @@
 ﻿using Evyte.ApplicationCore.Interfaces.Services;
+using Evyte.ApplicationCore.Interfaces.Services.General_Information;
 using Evyte.ApplicationCore.Services.Authantication;
 using Evyte.ApplicationCore.Services.Categories;
+using Evyte.ApplicationCore.Services.Designs;
 using Evyte.ApplicationCore.Services.Files;
+using Evyte.ApplicationCore.Services.General_Information;
 using Evyte.ApplicationCore.Services.Mailing;
 using Evyte.ApplicationCore.Settings;
 using Microsoft.Extensions.Configuration;
@@ -16,7 +19,9 @@ namespace Evyte.Web.Extensions
         {
             services.AddScoped<IAuthanticationService, AuthanticationService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IDesignService, DesignService>();
             services.AddScoped<IFileService, FileService>();
+            services.AddScoped<IGeneralInformationService, GeneralInformationService>();
             services.AddScoped<IQRCodeService, QRCodeService>();
             services.AddTransient<IMailingService, MailingService>();
 

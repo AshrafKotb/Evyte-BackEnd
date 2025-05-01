@@ -1,0 +1,23 @@
+header{
+  nav .collapse .navbar-nav{
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+}
+
+
+
+/* love story */
+.ourStory{
+  .row > div:nth-child(even) .item{margin-right: 40px; margin-left: 0px;     
+    figure::before{right: -80px;}
+}
+  .row > div:nth-child(odd) .item{margin-left: 40px; margin-right: 0px;}
+  }
+
+  .whenwhere{
+    figcaption{
+      p{padding-left: 3rem !important; padding-right: 0rem !important;}
+    }
+  }
+

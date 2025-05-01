@@ -1,0 +1,95 @@
+body {
+    direction: rtl;
+    font-family: 'Tajawal', sans-serif;
+}
+
+.info-card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.info-header {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+    padding: 20px;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.info-content {
+    background-color: #f8f9fa;
+}
+
+.social-item {
+    text-align: center;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #495057;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.social-link:hover {
+    color: #28a745;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+.social-label {
+    font-weight: 500;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #495057;
+}
+
+.form-control {
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+.text-danger {
+    font-size: 0.875rem;
+}
+
+.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #1e7e34;
+    border-color: #1e7e34;
+}
+
+.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.alert-success {
+    border-radius: 5px;
+}

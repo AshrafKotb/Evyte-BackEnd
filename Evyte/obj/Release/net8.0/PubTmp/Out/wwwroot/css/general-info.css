@@ -1,0 +1,224 @@
+/* Color Variables (Aligned with AdminLTE skin-blue) */
+:root {
+    --primary-color: #3c8dbc; /* AdminLTE primary blue */
+    --primary-hover: #367fa9; /* Darker blue for hover */
+    --secondary-color: #6c757d; /* Gray for secondary */
+    --secondary-hover: #5a6268; /* Darker gray for hover */
+    --text-color: #333; /* Dark text */
+    --muted-color: #999; /* Muted text */
+    --background-color: #ecf0f5; /* AdminLTE background */
+    --card-bg: #ffffff; /* White card background */
+}
+
+/* Info Card */
+.info-card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 20px;
+    border: 1px solid #d2d6de; /* AdminLTE border */
+}
+
+/* Info Header */
+.info-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    padding: 15px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.page-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+    color: #fff;
+}
+
+/* Info Content */
+.info-content {
+    padding: 20px;
+    background: var(--card-bg);
+}
+
+/* Info Item (for TermsAndConditions) */
+.info-item {
+    margin-bottom: 20px;
+}
+
+.info-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.info-text {
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+    white-space: pre-wrap; /* Preserves line breaks */
+}
+
+/* Social Item (for ContactInfo) */
+.social-item {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px;
+    background: #f4f4f4;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: 100%;
+    min-height: 100px;
+}
+
+    .social-link:hover {
+        background: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+.social-icon {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.social-link:hover .social-icon {
+    color: #fff;
+}
+
+.social-label {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.social-link:hover .social-label {
+    color: #fff;
+}
+
+/* Form Elements */
+.form-horizontal .form-group {
+    margin-bottom: 15px;
+}
+
+.form-horizontal .control-label {
+    font-weight: 500;
+    color: var(--text-color);
+    text-align: right;
+}
+
+.form-control {
+    border-radius: 4px;
+    border: 1px solid #d2d6de;
+    font-size: 1rem;
+    padding: 8px;
+    transition: border-color 0.3s;
+}
+
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: none;
+    }
+
+.text-danger {
+    font-size: 0.85rem;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background-color: var(--primary-hover);
+        border-color: var(--primary-hover);
+    }
+
+.btn-outline-secondary {
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+    .btn-outline-secondary:hover {
+        background: var(--secondary-hover);
+        color: #fff;
+    }
+
+/* Alerts */
+.alert-success {
+    border-radius: 4px;
+    background-color: #00a65a;
+    border-color: #008d4c;
+    color: #fff;
+}
+
+    .alert-success .close {
+        color: #fff;
+        opacity: 0.8;
+    }
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .info-card {
+        margin: 10px;
+    }
+
+    .info-header {
+        padding: 10px;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .info-content {
+        padding: 15px;
+    }
+
+    .info-title {
+        font-size: 1.2rem;
+    }
+
+    .info-text {
+        font-size: 0.9rem;
+    }
+
+    .social-link {
+        padding: 10px;
+        min-height: 80px;
+    }
+
+    .social-icon {
+        font-size: 1.5rem;
+    }
+
+    .social-label {
+        font-size: 0.85rem;
+    }
+
+    .form-horizontal .control-label {
+        text-align: right;
+        margin-bottom: 5px;
+    }
+}

@@ -1,0 +1,90 @@
+@model TermsAndConditionsViewModel
+@{
+
+    ViewData["Title"] = "الشروط والأحكام";
+    ViewData["Dir"] = "rtl";
+
+    Layout = null;
+    if (User.IsInRole(RoleName.Admin))
+    {
+        Layout = "_Layout";
+    }
+}
+@* <div class="container py-5"> *@
+<div class="info-card shadow-lg animate__animated animate__fadeInUp">
+    <div class="info-header d-flex align-items-center justify-content-center animate__animated animate__fadeInDown">
+        <h1 class="text-center text-white page-title">@ViewData["Title"]</h1>
+    </div>
+
+    <div class="info-content p-4">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (User.IsInRole(RoleName.Admin))
+        {
+            <form asp-action="TermsAndConditions" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="row g-4" dir="rtl">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="TermsAndConditionsAr" class="form-label text-end"></label>
+                            <textarea asp-for="TermsAndConditionsAr" class="form-control tinymce" rows="10"></textarea>
+                            <span asp-validation-for="TermsAndConditionsAr" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="TermsAndConditionsEn" class="form-label"></label>
+                            <textarea asp-for="TermsAndConditionsEn" class="form-control tinymce" rows="10" dir="ltr"></textarea>
+                            <span asp-validation-for="TermsAndConditionsEn" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons mt-5 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary me-2">
+                        <i class="fas fa-save me-2"></i>حفظ التغييرات
+                    </button>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-right me-2"></i>رجوع إلى الرئيسية
+                    </a>
+                </div>
+            </form>
+        }
+        else
+        {
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="info-item animate__animated animate__fadeInUp animate__delay-2s">
+                        <h3 class="info-title text-end">الشروط والأحكام بالعربية</h3>
+                        <div class="info-text text-end">@Html.Raw(Model.TermsAndConditionsAr)</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-item animate__animated animate__fadeInUp animate__delay-3s">
+                        <h3 class="info-title">Terms and Conditions (English)</h3>
+                        <div class="info-text">@Html.Raw(Model.TermsAndConditionsEn)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons mt-5 d-flex justify-content-center animate__animated animate__fadeIn animate__delay-4s">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-right me-2"></i>رجوع إلى الرئيسية
+                </a>
+            </div>
+        }
+    </div>
+</div>
+@* </div> *@
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}

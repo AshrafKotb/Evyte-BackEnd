@@ -1,0 +1,206 @@
+@model ContactInformationViewModel
+@{
+    ViewData["Title"] = "بيانات التواصل";
+    ViewData["Dir"] = "rtl";
+    Layout = null;
+    if (User.IsInRole(RoleName.Admin))
+    {
+        Layout = "_Layout";
+    }
+}
+
+@* <div class="container py-5"> *@
+<div class="info-card shadow-lg animate__animated animate__fadeInUp">
+    <div class="info-header d-flex align-items-center justify-content-center animate__animated animate__fadeInDown">
+        <h1 class="text-center text-white page-title">@ViewData["Title"]</h1>
+    </div>
+
+    <div class="info-content p-4">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (User.IsInRole(RoleName.Admin))
+        {
+            <form asp-action="ContactInfo" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Email" class="form-label text-end"></label>
+                            <input asp-for="Email" class="form-control" dir="ltr" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="FaceBook" class="form-label text-end"></label>
+                            <input asp-for="FaceBook" class="form-control" dir="ltr" />
+                            <span asp-validation-for="FaceBook" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Instagram" class="form-label text-end"></label>
+                            <input asp-for="Instagram" class="form-control" dir="ltr" />
+                            <span asp-validation-for="Instagram" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="X" class="form-label text-end"></label>
+                            <input asp-for="X" class="form-control" dir="ltr" />
+                            <span asp-validation-for="X" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Tiktok" class="form-label text-end"></label>
+                            <input asp-for="Tiktok" class="form-control" dir="ltr" />
+                            <span asp-validation-for="Tiktok" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Youtube" class="form-label text-end"></label>
+                            <input asp-for="Youtube" class="form-control" dir="ltr" />
+                            <span asp-validation-for="Youtube" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="WhatsApp" class="form-label text-end"></label>
+                            <input asp-for="WhatsApp" class="form-control" dir="ltr" />
+                            <span asp-validation-for="WhatsApp" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Snapchat" class="form-label text-end"></label>
+                            <input asp-for="Snapchat" class="form-control" dir="ltr" />
+                            <span asp-validation-for="Snapchat" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons mt-5 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary me-2">
+                        <i class="fas fa-save me-2"></i>حفظ التغييرات
+                    </button>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-right me-2"></i>رجوع إلى الرئيسية
+                    </a>
+                </div>
+            </form>
+        }
+        else
+        {
+            <div class="row g-4">
+                @if (!string.IsNullOrEmpty(Model.Email))
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="social-item animate__animated animate__fadeInUp animate__delay-2s">
+                            <a href="mailto:@Model.Email" class="social-link">
+                                <i class="fas fa-envelope social-icon"></i>
+                                <span class="social-label">البريد الإلكتروني</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.FaceBook))
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="social-item animate__animated animate__fadeInUp animate__delay-2s">
+                            <a href="@Model.FaceBook" target="_blank" class="social-link">
+                                <i class="fab fa-facebook-f social-icon"></i>
+                                <span class="social-label">فيسبوك</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.Instagram))
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="social-item animate__animated animate__fadeInUp animate__delay-2s">
+                            <a href="@Model.Instagram" target="_blank" class="social-link">
+                                <i class="fab fa-instagram social-icon"></i>
+                                <span class="social-label">إنستغرام</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.X))
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="social-item animate__animated animate__fadeInUp animate__delay-2s">
+                            <a href="@Model.X" target="_blank" class="social-link">
+                                <i class="fab fa-x-twitter social-icon"></i>
+                                <span class="social-label">إكس</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.Tiktok))
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="social-item animate__animated animate__fadeInUp animate__delay-2s">
+                            <a href="@Model.Tiktok" target="_blank" class="social-link">
+                                <i class="fab fa-tiktok social-icon"></i>
+                                <span class="social-label">تيك توك</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.Youtube))
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="social-item animate__animated animate__fadeInUp animate__delay-2s">
+                            <a href="@Model.Youtube" target="_blank" class="social-link">
+                                <i class="fab fa-youtube social-icon"></i>
+                                <span class="social-label">يوتيوب</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.WhatsApp))
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="social-item animate__animated animate__fadeInUp animate__delay-2s">
+                            <a href="@Model.WhatsApp" target="_blank" class="social-link">
+                                <i class="fab fa-whatsapp social-icon"></i>
+                                <span class="social-label">واتساب</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.Snapchat))
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="social-item animate__animated animate__fadeInUp animate__delay-2s">
+                            <a href="@Model.Snapchat" target="_blank" class="social-link">
+                                <i class="fab fa-snapchat-ghost social-icon"></i>
+                                <span class="social-label">سناب شات</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="action-buttons mt-5 d-flex justify-content-center animate__animated animate__fadeIn animate__delay-4s">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-right me-2"></i>رجوع إلى الرئيسية
+                </a>
+            </div>
+        }
+    </div>
+</div>
+@* </div> *@
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
