@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Evyte.ApplicationCore.Models.Helper;
 
 namespace Evyte.Controllers;
-[Authorize(Roles = RoleName.Admin)]
+//[Authorize(Roles = RoleName.Admin)]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

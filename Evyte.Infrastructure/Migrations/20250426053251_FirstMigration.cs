@@ -104,12 +104,12 @@ namespace Evyte.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    GroomeName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GroomeImageId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GroomeImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GroomeFacebook = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GroomeGroomeInstagram = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GroomeX = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GrommName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GrommImageId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GrommImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GrommFacebook = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GrommGrommInstagram = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GrommX = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BrideName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BrideImageId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BrideImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),

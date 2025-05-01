@@ -1190,6 +1190,7 @@ wwwroot\Images\avatar.png
 wwwroot\Images\Evyte.png
 wwwroot\js\header-sidebar.js
 wwwroot\js\site.js
+wwwroot\js\siteOld.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap.min.css

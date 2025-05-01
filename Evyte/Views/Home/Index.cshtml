@@ -1,9 +1,193 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
-    Layout = "_LayoutWebsite";
+    Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="py-12">
+    <div class="container max-w-4xl mx-auto px-4">
+        <div class="form-container bg-white rounded-2xl shadow-xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+            <div class="form-header bg-gradient-to-r from-purple-600 to-pink-500 text-white text-center py-8">
+                <h2 class="text-3xl font-bold mb-2">Create Your Wedding Website</h2>
+                <p class="opacity-90">Design a stunning website for your special day with Evyte.</p>
+            </div>
+            <form id="weddingForm" class="p-8" enctype="multipart/form-data">
+                <!-- Contact Information -->
+                <div class="form-section mb-8" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Your Contact Information</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="fullName" class="form-label block text-sm font-medium text-gray-700">Full Name <span class="text-red-500">*</span></label>
+                            <input type="text" class="form-control w-full mt-1" id="fullName" name="fullName" required />
+                        </div>
+                        <div>
+                            <label for="phoneNumber" class="form-label block text-sm font-medium text-gray-700">Phone Number <span class="text-red-500">*</span></label>
+                            <div class="input-group flex">
+                                <span class="input-group-text flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-md"><i class="fas fa-phone text-gray-500"></i></span>
+                                <input type="tel" class="form-control w-full mt-1 rounded-l-none" id="phoneNumber" name="phoneNumber" required />
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="email" class="form-label block text-sm font-medium text-gray-700">Email <span class="text-red-500">*</span></label>
+                            <div class="input-group flex">
+                                <span class="input-group-text flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-md"><i class="fas fa-envelope text-gray-500"></i></span>
+                                <input type="email" class="form-control w-full mt-1 rounded-l-none" id="email" name="email" required />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- Design Selection -->
+                <div class="form-section mb-8" data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Website Design</h4>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
+                            <label for="designId" class="form-label block text-sm font-medium text-gray-700">Select Design <span class="text-red-500">*</span></label>
+                            <select class="form-select w-full mt-1" id="designId" name="designId" required>
+                                <option value="" disabled selected>Choose a design</option>
+                                <option value="1">Elegant Bliss</option>
+                                <option value="2">Modern Romance</option>
+                                <option value="3">Classic Charm</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- Groom Information -->
+                <div class="form-section mb-8" data-aos="fade-up" data-aos-delay="400">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Groom Information</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="groomeName" class="form-label block text-sm font-medium text-gray-700">Groom Name <span class="text-red-500">*</span></label>
+                            <input type="text" class="form-control w-full mt-1" id="groomeName" name="groomeName" required />
+                        </div>
+                        <div>
+                            <label for="groomeImage" class="form-label block text-sm font-medium text-gray-700">Groom Image</label>
+                            <input type="file" class="form-control w-full mt-1" id="groomeImage" name="groomeImage" accept="image/png,image/jpeg,image/jpg" />
+                        </div>
+                        <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div>
+                                <label for="groomeFacebook" class="form-label block text-sm font-medium text-gray-700">Facebook URL</label>
+                                <input type="url" class="form-control w-full mt-1" id="groomeFacebook" name="groomeFacebook" placeholder="https://facebook.com/..." />
+                            </div>
+                            <div>
+                                <label for="groomeInstagram" class="form-label block text-sm font-medium text-gray-700">Instagram URL</label>
+                                <input type="url" class="form-control w-full mt-1" id="groomeInstagram" name="groomeInstagram" placeholder="https://instagram.com/..." />
+                            </div>
+                            <div>
+                                <label for="groomeX" class="form-label block text-sm font-medium text-gray-700">X URL</label>
+                                <input type="url" class="form-control w-full mt-1" id="groomeX" name="groomeX" placeholder="https://x.com/..." />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bride Information -->
+                <div class="form-section mb-8" data-aos="fade-up" data-aos-delay="500">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Bride Information</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="brideName" class="form-label block text-sm font-medium text-gray-700">Bride Name <span class="text-red-500">*</span></label>
+                            <input type="text" class="form-control w-full mt-1" id="brideName" name="brideName" required />
+                        </div>
+                        <div>
+                            <label for="brideImage" class="form-label block text-sm font-medium text-gray-700">Bride Image</label>
+                            <input type="file" class="form-control w-full mt-1" id="brideImage" name="brideImage" accept="image/png,image/jpeg,image/jpg" />
+                        </div>
+                        <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div>
+                                <label for="brideFacebook" class="form-label block text-sm font-medium text-gray-700">Facebook URL</label>
+                                <input type="url" class="form-control w-full mt-1" id="brideFacebook" name="brideFacebook" placeholder="https://facebook.com/..." />
+                            </div>
+                            <div>
+                                <label for="brideInstagram" class="form-label block text-sm font-medium text-gray-700">Instagram URL</label>
+                                <input type="url" class="form-control w-full mt-1" id="brideInstagram" name="brideInstagram" placeholder="https://instagram.com/..." />
+                            </div>
+                            <div>
+                                <label for="brideX" class="form-label block text-sm font-medium text-gray-700">X URL</label>
+                                <input type="url" class="form-control w-full mt-1" id="brideX" name="brideX" placeholder="https://x.com/..." />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Details -->
+                <div class="form-section mb-8" data-aos="fade-up" data-aos-delay="600">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Event Details</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label for="eventDate" class="form-label block text-sm font-medium text-gray-700">Event Date <span class="text-red-500">*</span></label>
+                            <input type="date" class="form-control w-full mt-1" id="eventDate" name="eventDate" required />
+                        </div>
+                        <div>
+                            <label for="eventTimeFrom" class="form-label block text-sm font-medium text-gray-700">Start Time <span class="text-red-500">*</span></label>
+                            <input type="time" class="form-control w-full mt-1" id="eventTimeFrom" name="eventTimeFrom" required />
+                        </div>
+                        <div>
+                            <label for="eventTimeTo" class="form-label block text-sm font-medium text-gray-700">End Time <span class="text-red-500">*</span></label>
+                            <input type="time" class="form-control w-full mt-1" id="eventTimeTo" name="eventTimeTo" required />
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="eventPlaceName" class="form-label block text-sm font-medium text-gray-700">Venue Name</label>
+                            <input type="text" class="form-control w-full mt-1" id="eventPlaceName" name="eventPlaceName" />
+                        </div>
+                        <div>
+                            <label for="eventPlaceImage" class="form-label block text-sm font-medium text-gray-700">Venue Image</label>
+                            <input type="file" class="form-control w-full mt-1" id="eventPlaceImage" name="eventPlaceImage" accept="image/png,image/jpeg,image/jpg" />
+                        </div>
+                        <div class="md:col-span-3">
+                            <label for="eventAddress" class="form-label block text-sm font-medium text-gray-700">Venue Address</label>
+                            <input type="text" class="form-control w-full mt-1" id="eventAddress" name="eventAddress" />
+                        </div>
+                        <div class="md:col-span-3">
+                            <label for="locationUrl" class="form-label block text-sm font-medium text-gray-700">Location URL</label>
+                            <input type="url" class="form-control w-full mt-1" id="locationUrl" name="locationUrl" placeholder="https://maps.google.com/..." />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Photos -->
+                <div class="form-section mb-8" data-aos="fade-up" data-aos-delay="700">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Gallery Photos</h4>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
+                            <label for="galleryPhotos" class="form-label block text-sm font-medium text-gray-700">Upload Photos (Multiple)</label>
+                            <input type="file" class="form-control w-full mt-1" id="galleryPhotos" name="galleryPhotos" accept="image/png,image/jpeg,image/jpg" multiple />
+                        </div>
+                        <div>
+                            <label for="mainSliderImage" class="form-label block text-sm font-medium text-gray-700">Main Slider Image</label>
+                            <input type="file" class="form-control w-full mt-1" id="mainSliderImage" name="mainSliderImage" accept="image/png,image/jpeg,image/jpg" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="800">
+                    <button type="submit" class="btn btn-primary inline-flex items-center px-6 py-3">
+                        <i class="fas fa-paper-plane mr-2"></i> Submit Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-xl">
+                <div class="modal-header border-0 bg-gradient-to-r from-purple-600 to-pink-500 text-white">
+                    <h5 class="modal-title font-semibold">Success</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-gray-700">
+                    Your wedding website request has been submitted successfully! We'll contact you soon.
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-primary px-4 py-2" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

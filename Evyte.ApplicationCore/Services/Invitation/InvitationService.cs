@@ -1,0 +1,172 @@
+﻿using Evyte.ApplicationCore.Models.ViewModels;
+using Evyte.ApplicationCore.Services.Files;
+using Evyte.ApplicationCore.Services.Mailing;
+using Evyte.ApplicationCore.Services.Repository;
+using Evyte.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using QRCoder;
+using System;
+using System.Drawing;
+using System.IO;
+using System.Threading.Tasks;
+using System.Web;
+
+
+public class InvitationService : IInvitationService
+{
+    private readonly IUserRepository _userRepository;
+    private readonly IRequestRepository _requestRepository;
+    private readonly IRequestDataRepository _requestDataRepository;
+    private readonly IRequestGalleryPhotoRepository _galleryPhotoRepository;
+    private readonly IFileService _fileService;
+    private readonly IQRCodeService _qrCodeService;
+    private readonly IMailingService _mailingService;
+    private readonly UserManager<ApplicationUser> _userManager;
+
+    public InvitationService(
+        IUserRepository userRepository,
+        IRequestRepository requestRepository,
+        IRequestDataRepository requestDataRepository,
+        IRequestGalleryPhotoRepository galleryPhotoRepository,
+        IFileService fileService,
+        IQRCodeService qrCodeService,
+        IMailingService mailingService,
+        UserManager<ApplicationUser> userManager)
+    {
+        _userRepository = userRepository;
+        _requestRepository = requestRepository;
+        _requestDataRepository = requestDataRepository;
+        _galleryPhotoRepository = galleryPhotoRepository;
+        _fileService = fileService;
+        _qrCodeService = qrCodeService;
+        _mailingService = mailingService;
+        _userManager = userManager;
+    }
+
+    public async Task<(string InvitationUrl, string QrCodeUrl)> CreateInvitationAsync(CreateInvitationVM dto)
+    {
+        // Step 1: Check or create user
+        var user = await _userRepository.GetUserByEmailAndPhoneAsync(dto.Email, dto.PhoneNumber);
+        string userId;
+        if (user == null)
+        {
+            user = new ApplicationUser
+            {
+                UserName = dto.Email,
+                Email = dto.Email,
+                PhoneNumber = dto.PhoneNumber,
+                FullName = dto.FullName,
+                JoinDate = DateTime.UtcNow
+            };
+            var result = await _userManager.CreateAsync(user);
+            if (!result.Succeeded)
+            {
+                throw new Exception("Failed to create user");
+            }
+            userId = user.Id;
+        }
+        else
+        {
+            userId = user.Id;
+        }
+
+        // Step 2: Create RequestData
+        var requestData = new RequestData
+        {
+            GrommName = dto.GrommName,
+            GrommFacebook = dto.GrommFacebook,
+            GrommInstagram = dto.GrommInstagram,
+            GrommX = dto.GrommX,
+            BrideName = dto.BrideName,
+            BrideFacebook = dto.BrideFacebook,
+            BrideInstagram = dto.BrideInstagram,
+            BrideX = dto.BrideX,
+            EventDate = dto.EventDate,
+            EventTimeFrom = dto.EventTimeFrom,
+            EventTimeTo = dto.EventTimeTo,
+            EventPlaceName = dto.EventPlaceName,
+            EventAddress = dto.EventAddress,
+            LocationUrl = dto.LocationUrl
+        };
+
+        // Upload images
+        if (dto.GrommImage != null)
+        {
+            (string url, string id) = await _fileService.UploadPictureAsync(dto.GrommImage, "groom");
+            requestData.GrommImageUrl = url;
+            requestData.GrommImageId = id;
+        }
+        if (dto.BrideImage != null)
+        {
+            (string url, string id) = await _fileService.UploadPictureAsync(dto.BrideImage, "bride");
+            requestData.BrideImageUrl = url;
+            requestData.BrideImageId = id;
+        }
+        if (dto.MainSliderImage != null)
+        {
+            (string url, string id) = await _fileService.UploadPictureAsync(dto.MainSliderImage, "slider");
+            requestData.MainSliderImageUrl = url;
+            requestData.MainSliderImageId = id;
+        }
+        if (dto.EventPlaceImage != null)
+        {
+            (string url, string id) = await _fileService.UploadPictureAsync(dto.EventPlaceImage, "eventplace");
+            requestData.EventPlaceImageUrl = url;
+            requestData.EventPlaceImageId = id;
+        }
+
+        await _requestDataRepository.AddRequestDataAsync(requestData);
+
+        // Step 3: Create Request
+        var request = new Request
+        {
+            DesignId = dto.DesignId,
+            UserId = userId,
+            RequestDataId = requestData.Id,
+            DomainUrl = GenerateInvitationUrl(dto.GrommName, dto.BrideName, requestData.Id)
+        };
+
+        await _requestRepository.AddRequestAsync(request);
+
+        // Step 4: Upload gallery photos
+        if (dto.GalleryPhotos != null)
+        {
+            foreach (var photo in dto.GalleryPhotos)
+            {
+                (string url, string id) = await _fileService.UploadPictureAsync(photo, "gallery");
+                var galleryPhoto = new RequestGalleryPhoto
+                {
+                    PhotoUrl = url,
+                    PhotoId = id,
+                    RequestId = request.Id
+                };
+                await _galleryPhotoRepository.AddGalleryPhotoAsync(galleryPhoto);
+            }
+        }
+
+        // Step 5: Generate and upload QR code
+        var (qrCodeUrl, qrCodeId) = await _qrCodeService.GenerateAndUploadQRCode(request.DomainUrl, "qrcodes");
+
+        // Step 6: Send email
+        var emailBody = $@"
+                <h2>Your Invitation is Ready!</h2>
+                <p>Dear {dto.FullName},</p>
+                <p>Your invitation has been created successfully. You can view it here:</p>
+                <p><a href='{request.DomainUrl}'>{request.DomainUrl}</a></p>
+                <p>Thank you for choosing our service!</p>";
+        var emailSent = await _mailingService.SendEmailAsync(dto.Email, "Your Invitation Link", emailBody);
+        if (!emailSent)
+        {
+            Console.WriteLine("Failed to send email notification");
+        }
+
+        return (request.DomainUrl, qrCodeUrl);
+    }
+
+    private string GenerateInvitationUrl(string groomName, string brideName, Guid requestId)
+    {
+        var groom = HttpUtility.UrlEncode(groomName.Replace(" ", "-").ToLower());
+        var bride = HttpUtility.UrlEncode(brideName.Replace(" ", "-").ToLower());
+        return $"https://yourwebsite.com/invitations/{groom}-{bride}/{requestId}";
+    }
+}

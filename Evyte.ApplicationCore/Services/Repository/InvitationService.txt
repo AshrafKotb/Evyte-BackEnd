@@ -1,0 +1,17 @@
+using Evyte.ApplicationCore.Services.Files;
+using Evyte.ApplicationCore.Services.Mailing;
+using Evyte.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using System;
+using System.Threading.Tasks;
+using System.Web;
+
+namespace Evyte.ApplicationCore.Services
+{
+    // Repository interfaces
+   
+
+    // Service interface
+   
+   
+}

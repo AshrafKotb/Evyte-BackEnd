@@ -420,27 +420,27 @@ namespace Evyte.Infrastructure.Migrations
                     b.Property<TimeOnly>("EventTimeTo")
                         .HasColumnType("time");
 
-                    b.Property<string>("GroomeFacebook")
+                    b.Property<string>("GrommFacebook")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GroomeGroomeInstagram")
+                    b.Property<string>("GrommGrommInstagram")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GroomeImageId")
+                    b.Property<string>("GrommImageId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GroomeImageUrl")
+                    b.Property<string>("GrommImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GroomeName")
+                    b.Property<string>("GrommName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GroomeX")
+                    b.Property<string>("GrommX")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
