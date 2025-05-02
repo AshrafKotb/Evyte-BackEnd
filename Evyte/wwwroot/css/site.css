@@ -1,7 +1,10 @@
+/* Existing styles from original site.css */
 body {
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
     background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+    position: relative;
+    overflow-x: hidden;
 }
 
 .form-container {
@@ -34,6 +37,11 @@ body {
     margin-bottom: 2rem;
     transition: all 0.3s ease;
 }
+
+    .form-section:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
 
 .contact-section {
     background: linear-gradient(145deg, #f0f9ff, #e6f0fa);
@@ -176,6 +184,7 @@ body {
     border: none;
     border-radius: 1rem;
     overflow: hidden;
+    animation: zoomIn 0.5s ease-out;
 }
 
 .modal-header {
@@ -192,6 +201,162 @@ body {
     border-top: none;
     padding: 1rem 1.5rem;
 }
+
+/* New styles for landing page */
+.confetti-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #f472b6;
+    opacity: 0.7;
+    animation: confetti-fall linear infinite;
+}
+
+    .confetti:nth-child(odd) {
+        background: #facc15;
+    }
+
+    .confetti:nth-child(even) {
+        background: #ffffff;
+    }
+
+    .confetti:nth-child(3n) {
+        background: #a78bfa;
+    }
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 0;
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+}
+
+.sparkle-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #ffffff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: sparkle 1.5s infinite;
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+.section {
+    padding: 4rem 0;
+    background: linear-gradient(145deg, #ffffff, #f9fafb);
+    border-radius: 1rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+    .section:hover {
+        transform: translateY(-5px);
+    }
+
+    .section h2 {
+        color: #1f2937;
+        font-weight: 700;
+        border-bottom: 2px solid #7c3aed;
+        padding-bottom: 0.75rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+.feature-card, .testimonial-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .feature-card:hover, .testimonial-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+.social-icons a {
+    color: #1f2937;
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+    .social-icons a:hover {
+        transform: scale(1.2);
+        color: #7c3aed;
+    }
+
+#loading-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #e5e7eb;
+    z-index: 1000;
+}
+
+    #loading-bar .progress {
+        width: 0;
+        height: 100%;
+        background: #7c3aed;
+        transition: width 0.1s ease;
+    }
 
 /* Custom Animations */
 @keyframes fadeInUp {
@@ -264,6 +429,18 @@ body {
     }
 }
 
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 .animate-field {
     animation: fadeInUp 0.5s ease-out;
 }
@@ -317,5 +494,15 @@ body {
 
     .form-section {
         padding: 1rem;
+    }
+
+    .confetti {
+        width: 8px;
+        height: 8px;
+    }
+
+    .sparkle {
+        width: 4px;
+        height: 4px;
     }
 }

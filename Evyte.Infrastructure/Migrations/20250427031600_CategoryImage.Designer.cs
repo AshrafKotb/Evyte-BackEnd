@@ -423,27 +423,27 @@ namespace Evyte.Infrastructure.Migrations
                     b.Property<TimeOnly>("EventTimeTo")
                         .HasColumnType("time");
 
-                    b.Property<string>("GrommFacebook")
+                    b.Property<string>("GroomFacebook")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GrommGrommInstagram")
+                    b.Property<string>("GroomGroomInstagram")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GrommImageId")
+                    b.Property<string>("GroomImageId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GrommImageUrl")
+                    b.Property<string>("GroomImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GrommName")
+                    b.Property<string>("GroomName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GrommX")
+                    b.Property<string>("GroomX")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -9,13 +9,13 @@ namespace Evyte.Domain.Entities
     public class RequestData : BaseEntity
     {
 
-        #region Gromm Data
-        public string GrommName { get; set; }
-        public string GrommImageId { get; set; }
-        public string GrommImageUrl { get; set; }
-        public string GrommFacebook { get; set; }
-        public string GrommInstagram { get; set; }
-        public string GrommX { get; set; }
+        #region Groom Data
+        public string GroomName { get; set; }
+        public string GroomImageId { get; set; }
+        public string GroomImageUrl { get; set; }
+        public string GroomFacebook { get; set; }
+        public string GroomInstagram { get; set; }
+        public string GroomX { get; set; }
         #endregion
 
         #region Bride Data

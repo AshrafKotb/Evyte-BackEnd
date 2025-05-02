@@ -7,11 +7,11 @@ namespace Evyte.ApplicationCore.Models.ViewModels
         public string FullName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
-        public string GrommName { get; set; }
-        public IFormFile GrommImage { get; set; }
-        public string GrommFacebook { get; set; }
-        public string GrommInstagram { get; set; }
-        public string GrommX { get; set; }
+        public string GroomName { get; set; }
+        public IFormFile GroomImage { get; set; }
+        public string GroomFacebook { get; set; }
+        public string GroomInstagram { get; set; }
+        public string GroomX { get; set; }
         public string BrideName { get; set; }
         public IFormFile BrideImage { get; set; }
         public string BrideFacebook { get; set; }

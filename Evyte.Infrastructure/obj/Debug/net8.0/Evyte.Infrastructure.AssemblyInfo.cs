@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Evyte.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff9626300f69696c53df545f1a94703f65d696ee")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3c517c18321fb0cf247c2026e32c903dd1480198")]
 [assembly: System.Reflection.AssemblyProductAttribute("Evyte.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Evyte.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

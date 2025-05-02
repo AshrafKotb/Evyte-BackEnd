@@ -23,7 +23,7 @@ public class UserRepository : IUserRepository
     public async Task<ApplicationUser> GetUserByEmailAndPhoneAsync(string email, string phone)
     {
         return await _context.Users
-            .FirstOrDefaultAsync(u => u.Email == email && u.PhoneNumber == phone && !u.IsDeleted);
+            .FirstOrDefaultAsync(u => u.Email == email /*&& u.PhoneNumber == phone */&& !u.IsDeleted);
     }
 
     public async Task<string> CreateUserAsync(ApplicationUser user)

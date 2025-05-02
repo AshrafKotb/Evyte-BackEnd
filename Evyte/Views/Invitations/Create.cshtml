@@ -1,17 +1,19 @@
 ﻿@model CreateInvitationVM
 @{
     ViewData["Title"] = "Create Invitation";
-    Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
+    Layout = "~/Views/Shared/_WebsiteLayout.cshtml";
 }
 
-<section class="py-2">
-    <div class="container max-w-4xl mx-auto px-4">
+<section class="py-4 relative">
+    <div id="particles-js" class="absolute inset-0 z-0"></div>
+    <div class="overlay absolute inset-0 z-10 bg-white bg-opacity-85"></div>
+    <div class="container max-w-4xl mx-auto px-4 relative z-20">
         <div class="form-container bg-white rounded-2xl shadow-xl overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
-            <div class="form-header bg-gradient-to-r from-purple-600 to-pink-500 text-white text-center py-8" data-aos="fade-down" data-aos-delay="200">
+            <div class="form-header bg-gradient-to-r from-purple-600 to-pink-500 text-white text-center py-6" data-aos="fade-down" data-aos-delay="200">
                 <h2 class="text-3xl font-bold mb-2 animate-bounceIn">Create Your Wedding Website</h2>
                 <p class="opacity-90">Design a stunning website for your special day with Evyte.</p>
             </div>
-            <form id="weddingForm" class="p-8" asp-action="Create" method="post" enctype="multipart/form-data">
+            <form id="weddingForm" class="p-2" asp-action="Create" method="post" enctype="multipart/form-data">
                 <input type="hidden" asp-for="DesignId" />
                 <!-- Contact Information -->
                 <div class="form-section contact-section mb-8" data-aos="slide-up" data-aos-delay="300">
@@ -48,35 +50,35 @@
                     <h4 class="text-xl font-semibold text-gray-800 mb-4">Groom Information</h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="GrommName" class="form-label block text-sm font-medium text-gray-700">Groom Name <span class="text-red-500">*</span></label>
-                            <input type="text" class="form-control w-full mt-1 animate-field" id="GrommName" asp-for="GrommName" required />
-                            <span asp-validation-for="GrommName" class="text-red-500 text-sm mt-1"></span>
+                            <label for="GroomName" class="form-label block text-sm font-medium text-gray-700">Groom Name <span class="text-red-500">*</span></label>
+                            <input type="text" class="form-control w-full mt-1 animate-field" id="GroomName" asp-for="GroomName" required />
+                            <span asp-validation-for="GroomName" class="text-red-500 text-sm mt-1"></span>
                         </div>
                         <div>
-                            <label for="GrommImage" class="form-label block text-sm font-medium text-gray-700">Groom Image</label>
-                            <input type="file" class="form-control w-full mt-1 animate-field" id="GrommImage" asp-for="GrommImage" accept="image/png,image/jpeg,image/jpg" />
-                            <div class="image-preview mt-2" id="GrommImagePreview"></div>
+                            <label for="GroomImage" class="form-label block text-sm font-medium text-gray-700">Groom Image</label>
+                            <input type="file" class="form-control w-full mt-1 animate-field" id="GroomImage" asp-for="GroomImage" accept="image/png,image/jpeg,image/jpg" />
+                            <div class="image-preview mt-2" id="GroomImagePreview"></div>
                         </div>
                         <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div class="relative">
-                                <label for="GrommFacebook" class="form-label block text-sm font-medium text-gray-700">Facebook URL</label>
+                                <label for="GroomFacebook" class="form-label block text-sm font-medium text-gray-700">Facebook URL</label>
                                 <div class="input-group flex">
-                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-md social-link" data-input="GrommFacebook"><i class="fab fa-facebook-f text-blue-600"></i></a>
-                                    <input type="url" class="form-control w-full mt-1 rounded-l-none animate-field" id="GrommFacebook" asp-for="GrommFacebook" placeholder="https://facebook.com/..." />
+                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-md social-link" data-input="GroomFacebook"><i class="fab fa-facebook-f text-blue-600"></i></a>
+                                    <input type="url" class="form-control w-full mt-1 rounded-l-none animate-field" id="GroomFacebook" asp-for="GroomFacebook" placeholder="https://facebook.com/..." />
                                 </div>
                             </div>
                             <div class="relative">
-                                <label for="GrommInstagram" class="form-label block text-sm font-medium text-gray-700">Instagram URL</label>
+                                <label for="GroomInstagram" class="form-label block text-sm font-medium text-gray-700">Instagram URL</label>
                                 <div class="input-group flex">
-                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-md social-link" data-input="GrommInstagram"><i class="fab fa-instagram text-pink-500"></i></a>
-                                    <input type="url" class="form-control w-full mt-1 rounded-l-none animate-field" id="GrommInstagram" asp-for="GrommInstagram" placeholder="https://instagram.com/..." />
+                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-md social-link" data-input="GroomInstagram"><i class="fab fa-instagram text-pink-500"></i></a>
+                                    <input type="url" class="form-control w-full mt-1 rounded-l-none animate-field" id="GroomInstagram" asp-for="GroomInstagram" placeholder="https://instagram.com/..." />
                                 </div>
                             </div>
                             <div class="relative">
-                                <label for="GrommX" class="form-label block text-sm font-medium text-gray-700">X URL</label>
+                                <label for="GroomX" class="form-label block text-sm font-medium text-gray-700">X URL</label>
                                 <div class="input-group flex">
-                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-md social-link" data-input="GrommX"><i class="fab fa-x-twitter text-black"></i></a>
-                                    <input type="url" class="form-control w-full mt-1 rounded-l-none animate-field" id="GrommX" asp-for="GrommX" placeholder="https://x.com/..." />
+                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-md social-link" data-input="GroomX"><i class="fab fa-x-twitter text-black"></i></a>
+                                    <input type="url" class="form-control w-full mt-1 rounded-l-none animate-field" id="GroomX" asp-for="GroomX" placeholder="https://x.com/..." />
                                 </div>
                             </div>
                         </div>

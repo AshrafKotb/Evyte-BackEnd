@@ -73,10 +73,10 @@ public class InvitationService : IInvitationService
         // Step 2: Create RequestData
         var requestData = new RequestData
         {
-            GrommName = dto.GrommName,
-            GrommFacebook = dto.GrommFacebook,
-            GrommInstagram = dto.GrommInstagram,
-            GrommX = dto.GrommX,
+            GroomName = dto.GroomName,
+            GroomFacebook = dto.GroomFacebook,
+            GroomInstagram = dto.GroomInstagram,
+            GroomX = dto.GroomX,
             BrideName = dto.BrideName,
             BrideFacebook = dto.BrideFacebook,
             BrideInstagram = dto.BrideInstagram,
@@ -90,11 +90,11 @@ public class InvitationService : IInvitationService
         };
 
         // Upload images
-        if (dto.GrommImage != null)
+        if (dto.GroomImage != null)
         {
-            (string url, string id) = await _fileService.UploadPictureAsync(dto.GrommImage, "groom");
-            requestData.GrommImageUrl = url;
-            requestData.GrommImageId = id;
+            (string url, string id) = await _fileService.UploadPictureAsync(dto.GroomImage, "groom");
+            requestData.GroomImageUrl = url;
+            requestData.GroomImageId = id;
         }
         if (dto.BrideImage != null)
         {
@@ -116,14 +116,13 @@ public class InvitationService : IInvitationService
         }
 
         await _requestDataRepository.AddRequestDataAsync(requestData);
-
         // Step 3: Create Request
         var request = new Request
         {
             DesignId = dto.DesignId,
             UserId = userId,
             RequestDataId = requestData.Id,
-            DomainUrl = GenerateInvitationUrl(dto.GrommName, dto.BrideName, requestData.Id)
+            DomainUrl = GenerateInvitationUrl(dto.GroomName, dto.BrideName, /*requestData.Id*/ requestData.Id)
         };
 
         await _requestRepository.AddRequestAsync(request);

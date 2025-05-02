@@ -1,193 +1,243 @@
 ﻿@{
-    Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
+    Layout = "~/Views/Shared/_WebsiteLayout.cshtml";
 }
 
-<section class="py-12">
-    <div class="container max-w-4xl mx-auto px-4">
-        <div class="form-container bg-white rounded-2xl shadow-xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-            <div class="form-header bg-gradient-to-r from-purple-600 to-pink-500 text-white text-center py-8">
-                <h2 class="text-3xl font-bold mb-2">Create Your Wedding Website</h2>
-                <p class="opacity-90">Design a stunning website for your special day with Evyte.</p>
+<style>
+    .hero-section {
+        height: 100vh;
+        position: relative;
+    }
+
+    .hero-slider .swiper-slide {
+        position: relative;
+        height: 100vh;
+    }
+
+    .section {
+        padding: 5rem 0;
+    }
+
+    .bg-overlay {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    }
+
+    .about-bg {
+        background: url('images/website/about.jpg') no-repeat center center;
+        background-size: cover;
+        position: relative;
+    }
+
+    .features-bg {
+        background: url('images/website/cover1.jpg') no-repeat center center;
+        background-size: cover;
+        position: relative;
+    }
+
+    .cta-bg {
+        background: url('images/website/cover2.jpg') no-repeat center center;
+        background-size: cover;
+        position: relative;
+    }
+
+    .contact-bg {
+        background: url('images/website/cover3.jpg') no-repeat center center;
+        background-size: cover;
+        position: relative;
+    }
+
+    .feature-card, .testimonial-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+        .feature-card:hover, .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+
+    .btn-primary {
+        background: #8b5cf6;
+        color: white;
+        padding: 0.75rem 2rem;
+        border-radius: 9999px;
+        transition: background 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background: #7c3aed;
+        }
+</style>
+
+<!-- Hero Section with Slider -->
+<section class="hero-section relative">
+    <div class="swiper hero-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="~/images/website/cover8.jpg" alt="Beach Wedding Scene 1" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-overlay flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounceIn">Evyte - Your Dream Wedding</h1>
+                        <p class="text-lg md:text-xl mb-6">Create a stunning wedding website in minutes.</p>
+                        <a href="/Invitations/Create" class="btn btn-primary animate-pulse">Get Started</a>
+                    </div>
+                </div>
             </div>
-            <form id="weddingForm" class="p-8" enctype="multipart/form-data">
-                <!-- Contact Information -->
-                <div class="form-section mb-8" data-aos="fade-up" data-aos-delay="200">
-                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Your Contact Information</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="fullName" class="form-label block text-sm font-medium text-gray-700">Full Name <span class="text-red-500">*</span></label>
-                            <input type="text" class="form-control w-full mt-1" id="fullName" name="fullName" required />
-                        </div>
-                        <div>
-                            <label for="phoneNumber" class="form-label block text-sm font-medium text-gray-700">Phone Number <span class="text-red-500">*</span></label>
-                            <div class="input-group flex">
-                                <span class="input-group-text flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-md"><i class="fas fa-phone text-gray-500"></i></span>
-                                <input type="tel" class="form-control w-full mt-1 rounded-l-none" id="phoneNumber" name="phoneNumber" required />
-                            </div>
-                        </div>
-                        <div class="md:col-span-2">
-                            <label for="email" class="form-label block text-sm font-medium text-gray-700">Email <span class="text-red-500">*</span></label>
-                            <div class="input-group flex">
-                                <span class="input-group-text flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-md"><i class="fas fa-envelope text-gray-500"></i></span>
-                                <input type="email" class="form-control w-full mt-1 rounded-l-none" id="email" name="email" required />
-                            </div>
-                        </div>
+            <div class="swiper-slide">
+                <img src="~/images/website/cover1.jpg" alt="Elegant Venue Scene" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-overlay flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounceIn">A Day to Remember</h1>
+                        <p class="text-lg md:text-xl mb-6">Craft a website that captures your love story.</p>
+                        <a href="/Invitations/Create" class="btn btn-primary animate-pulse">Begin Now</a>
                     </div>
                 </div>
-
-                <div class="section-divider"></div>
-
-                <!-- Design Selection -->
-                <div class="form-section mb-8" data-aos="fade-up" data-aos-delay="300">
-                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Website Design</h4>
-                    <div class="grid grid-cols-1 gap-6">
-                        <div>
-                            <label for="designId" class="form-label block text-sm font-medium text-gray-700">Select Design <span class="text-red-500">*</span></label>
-                            <select class="form-select w-full mt-1" id="designId" name="designId" required>
-                                <option value="" disabled selected>Choose a design</option>
-                                <option value="1">Elegant Bliss</option>
-                                <option value="2">Modern Romance</option>
-                                <option value="3">Classic Charm</option>
-                            </select>
-                        </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="~/images/website/cover2.jpg" alt="Sunset Ceremony" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-overlay flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounceIn">Love in Bloom</h1>
+                        <p class="text-lg md:text-xl mb-6">Design your perfect wedding invitation today.</p>
+                        <a href="/Invitations/Create" class="btn btn-primary animate-pulse">Start Creating</a>
                     </div>
                 </div>
-
-                <div class="section-divider"></div>
-
-                <!-- Groom Information -->
-                <div class="form-section mb-8" data-aos="fade-up" data-aos-delay="400">
-                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Groom Information</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="groomeName" class="form-label block text-sm font-medium text-gray-700">Groom Name <span class="text-red-500">*</span></label>
-                            <input type="text" class="form-control w-full mt-1" id="groomeName" name="groomeName" required />
-                        </div>
-                        <div>
-                            <label for="groomeImage" class="form-label block text-sm font-medium text-gray-700">Groom Image</label>
-                            <input type="file" class="form-control w-full mt-1" id="groomeImage" name="groomeImage" accept="image/png,image/jpeg,image/jpg" />
-                        </div>
-                        <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div>
-                                <label for="groomeFacebook" class="form-label block text-sm font-medium text-gray-700">Facebook URL</label>
-                                <input type="url" class="form-control w-full mt-1" id="groomeFacebook" name="groomeFacebook" placeholder="https://facebook.com/..." />
-                            </div>
-                            <div>
-                                <label for="groomeInstagram" class="form-label block text-sm font-medium text-gray-700">Instagram URL</label>
-                                <input type="url" class="form-control w-full mt-1" id="groomeInstagram" name="groomeInstagram" placeholder="https://instagram.com/..." />
-                            </div>
-                            <div>
-                                <label for="groomeX" class="form-label block text-sm font-medium text-gray-700">X URL</label>
-                                <input type="url" class="form-control w-full mt-1" id="groomeX" name="groomeX" placeholder="https://x.com/..." />
-                            </div>
-                        </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="~/images/website/cover4.jpg" alt="Romantic Couple" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-overlay flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounceIn">Forever Begins Here</h1>
+                        <p class="text-lg md:text-xl mb-6">Share your special day with elegance.</p>
+                        <a href="/Invitations/Create" class="btn btn-primary animate-pulse">Create Yours</a>
                     </div>
                 </div>
-
-                <!-- Bride Information -->
-                <div class="form-section mb-8" data-aos="fade-up" data-aos-delay="500">
-                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Bride Information</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="brideName" class="form-label block text-sm font-medium text-gray-700">Bride Name <span class="text-red-500">*</span></label>
-                            <input type="text" class="form-control w-full mt-1" id="brideName" name="brideName" required />
-                        </div>
-                        <div>
-                            <label for="brideImage" class="form-label block text-sm font-medium text-gray-700">Bride Image</label>
-                            <input type="file" class="form-control w-full mt-1" id="brideImage" name="brideImage" accept="image/png,image/jpeg,image/jpg" />
-                        </div>
-                        <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div>
-                                <label for="brideFacebook" class="form-label block text-sm font-medium text-gray-700">Facebook URL</label>
-                                <input type="url" class="form-control w-full mt-1" id="brideFacebook" name="brideFacebook" placeholder="https://facebook.com/..." />
-                            </div>
-                            <div>
-                                <label for="brideInstagram" class="form-label block text-sm font-medium text-gray-700">Instagram URL</label>
-                                <input type="url" class="form-control w-full mt-1" id="brideInstagram" name="brideInstagram" placeholder="https://instagram.com/..." />
-                            </div>
-                            <div>
-                                <label for="brideX" class="form-label block text-sm font-medium text-gray-700">X URL</label>
-                                <input type="url" class="form-control w-full mt-1" id="brideX" name="brideX" placeholder="https://x.com/..." />
-                            </div>
-                        </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="~/images/website/cover5.jpg" alt="Floral Decor" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-overlay flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounceIn">Your Love, Your Way</h1>
+                        <p class="text-lg md:text-xl mb-6">Personalize every detail with Evyte.</p>
+                        <a href="/Invitations/Create" class="btn btn-primary animate-pulse">Get Started</a>
                     </div>
                 </div>
-
-                <!-- Event Details -->
-                <div class="form-section mb-8" data-aos="fade-up" data-aos-delay="600">
-                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Event Details</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div>
-                            <label for="eventDate" class="form-label block text-sm font-medium text-gray-700">Event Date <span class="text-red-500">*</span></label>
-                            <input type="date" class="form-control w-full mt-1" id="eventDate" name="eventDate" required />
-                        </div>
-                        <div>
-                            <label for="eventTimeFrom" class="form-label block text-sm font-medium text-gray-700">Start Time <span class="text-red-500">*</span></label>
-                            <input type="time" class="form-control w-full mt-1" id="eventTimeFrom" name="eventTimeFrom" required />
-                        </div>
-                        <div>
-                            <label for="eventTimeTo" class="form-label block text-sm font-medium text-gray-700">End Time <span class="text-red-500">*</span></label>
-                            <input type="time" class="form-control w-full mt-1" id="eventTimeTo" name="eventTimeTo" required />
-                        </div>
-                        <div class="md:col-span-2">
-                            <label for="eventPlaceName" class="form-label block text-sm font-medium text-gray-700">Venue Name</label>
-                            <input type="text" class="form-control w-full mt-1" id="eventPlaceName" name="eventPlaceName" />
-                        </div>
-                        <div>
-                            <label for="eventPlaceImage" class="form-label block text-sm font-medium text-gray-700">Venue Image</label>
-                            <input type="file" class="form-control w-full mt-1" id="eventPlaceImage" name="eventPlaceImage" accept="image/png,image/jpeg,image/jpg" />
-                        </div>
-                        <div class="md:col-span-3">
-                            <label for="eventAddress" class="form-label block text-sm font-medium text-gray-700">Venue Address</label>
-                            <input type="text" class="form-control w-full mt-1" id="eventAddress" name="eventAddress" />
-                        </div>
-                        <div class="md:col-span-3">
-                            <label for="locationUrl" class="form-label block text-sm font-medium text-gray-700">Location URL</label>
-                            <input type="url" class="form-control w-full mt-1" id="locationUrl" name="locationUrl" placeholder="https://maps.google.com/..." />
-                        </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="~/images/website/cover6.jpg" alt="Beach Wedding Scene 2" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-overlay flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounceIn">Celebrate Your Love</h1>
+                        <p class="text-lg md:text-xl mb-6">Personalized invitations that tell your story.</p>
+                        <a href="/Invitations/Create" class="btn btn-primary animate-pulse">Start Now</a>
                     </div>
                 </div>
-
-                <!-- Gallery Photos -->
-                <div class="form-section mb-8" data-aos="fade-up" data-aos-delay="700">
-                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Gallery Photos</h4>
-                    <div class="grid grid-cols-1 gap-6">
-                        <div>
-                            <label for="galleryPhotos" class="form-label block text-sm font-medium text-gray-700">Upload Photos (Multiple)</label>
-                            <input type="file" class="form-control w-full mt-1" id="galleryPhotos" name="galleryPhotos" accept="image/png,image/jpeg,image/jpg" multiple />
-                        </div>
-                        <div>
-                            <label for="mainSliderImage" class="form-label block text-sm font-medium text-gray-700">Main Slider Image</label>
-                            <input type="file" class="form-control w-full mt-1" id="mainSliderImage" name="mainSliderImage" accept="image/png,image/jpeg,image/jpg" />
-                        </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="~/images/website/cover7.jpg" alt="Sunset Wedding Scene" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-overlay flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounceIn">Unforgettable Moments</h1>
+                        <p class="text-lg md:text-xl mb-6">Share your special day with elegance.</p>
+                        <a href="/Invitations/Create" class="btn btn-primary animate-pulse">Create Yours</a>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</section>
 
-                <!-- Submit Button -->
-                <div class="text-center" data-aos="fade-up" data-aos-delay="800">
-                    <button type="submit" class="btn btn-primary inline-flex items-center px-6 py-3">
-                        <i class="fas fa-paper-plane mr-2"></i> Submit Request
-                    </button>
-                </div>
-            </form>
+<!-- About Us -->
+<section class="section about-bg" data-aos="fade-up">
+    <div class="absolute inset-0 bg-overlay"></div>
+    <div class="container text-center relative z-10">
+        <h2 class="text-3xl font-bold text-white">About Evyte</h2>
+        <p class="text-gray-200 mx-auto max-w-2xl mt-4">
+            Evyte is the ultimate platform for crafting personalized wedding websites that capture your unique love story. With intuitive tools and elegant designs, we make it easy to create a website that your guests will love.
+        </p>
+        <a href="/Invitations/Create" class="btn btn-primary mt-6 animate-pulse">Start Creating</a>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="section features-bg" data-aos="zoom-in">
+    <div class="absolute inset-0 bg-overlay"></div>
+    <div class="container relative z-10">
+        <h2 class="text-3xl font-bold text-center text-white">Why Choose Evyte?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+            <div class="feature-card text-center p-6" data-aos="flip-up" data-aos-delay="100">
+                <i class="fas fa-paint-brush text-purple-600 text-4xl mb-4"></i>
+                <h3 class="text-xl font-semibold">Easy Customization</h3>
+                <p class="text-gray-600 mt-2">Design your website with drag-and-drop tools and stunning templates.</p>
+            </div>
+            <div class="feature-card text-center p-6" data-aos="flip-up" data-aos-delay="200">
+                <i class="fas fa-mobile-alt text-purple-600 text-4xl mb-4"></i>
+                <h3 class="text-xl font-semibold">Mobile-Friendly</h3>
+                <p class="text-gray-600 mt-2">Your website looks perfect on any device, from phones to desktops.</p>
+            </div>
+            <div class="feature-card text-center p-6" data-aos="flip-up" data-aos-delay="300">
+                <i class="fas fa-share-alt text-purple-600 text-4xl mb-4"></i>
+                <h3 class="text-xl font-semibold">Social Integration</h3>
+                <p class="text-gray-600 mt-2">Share your love story with interactive features and social media.</p>
+            </div>
         </div>
     </div>
+</section>
 
-    <!-- Success Modal -->
-    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-xl">
-                <div class="modal-header border-0 bg-gradient-to-r from-purple-600 to-pink-500 text-white">
-                    <h5 class="modal-title font-semibold">Success</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Testimonials -->
+<section class="section" data-aos="fade-up">
+    <div class="container">
+        <h2 class="text-3xl font-bold text-center">What Our Couples Say</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="~/images/website/photo1.png" alt="Couple 1" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-6">
+                    <p class="text-gray-600 italic">"Evyte made our wedding website so easy to create. Our guests were amazed!"</p>
+                    <p class="text-right font-semibold text-purple-600 mt-4">– Sarah & Ahmed</p>
                 </div>
-                <div class="modal-body text-gray-700">
-                    Your wedding website request has been submitted successfully! We'll contact you soon.
+            </div>
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="~/images/website/photo2.png" alt="Couple 2" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-6">
+                    <p class="text-gray-600 italic">"The templates were gorgeous, and the process was seamless. Highly recommend!"</p>
+                    <p class="text-right font-semibold text-purple-600 mt-4">– Layla & Omar</p>
                 </div>
-                <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-primary px-4 py-2" data-bs-dismiss="modal">Close</button>
+            </div>
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="~/images/website/photo4.jpg" alt="Couple 3" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-6">
+                    <p class="text-gray-600 italic">"Evyte helped us share our story beautifully. It was perfect!"</p>
+                    <p class="text-right font-semibold text-purple-600 mt-4">– Noor & Ali</p>
                 </div>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section cta-bg" data-aos="zoom-in">
+    <div class="absolute inset-0 bg-overlay"></div>
+    <div class="container text-center relative z-10">
+        <h2 class="text-3xl font-bold text-white">Ready to Create Your Wedding Website?</h2>
+        <p class="text-gray-200 mx-auto max-w-2xl mt-4">Join thousands of couples who trust Evyte to make their special day unforgettable.</p>
+        <a href="/Invitations/Create" class="btn btn-primary mt-6 animate-pulse">Get Started Now</a>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="section contact-bg" data-aos="fade-up">
+    <div class="absolute inset-0 bg-overlay"></div>
+    <div class="container text-center relative z-10">
+        <h2 class="text-3xl font-bold text-white">Get in Touch</h2>
+        <p class="text-gray-200 mt-4 mb-6">Have questions? We're here to help you create the perfect invitation!</p>
+        <div class="flex justify-center space-x-6 mb-6">
+            <a href="https://facebook.com/evyte" target="_blank" class="text-white hover:text-purple-600 transform hover:scale-125 transition-transform"><i class="fab fa-facebook-f text-3xl"></i></a>
+            <a href="https://instagram.com/evyte" target="_blank" class="text-white hover:text-purple-600 transform hover:scale-125 transition-transform"><i class="fab fa-instagram text-3xl"></i></a>
+            <a href="mailto:support@evyte.com" class="text-white hover:text-purple-600 transform hover:scale-125 transition-transform"><i class="fas fa-envelope text-3xl"></i></a>
+        </div>
+        <p class="text-gray-200">Email: support@evyte.com | Phone: +123-456-7890</p>
     </div>
 </section>

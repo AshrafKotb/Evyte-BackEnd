@@ -557,7 +557,6 @@ C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\Evyte.R
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\Evyte.sourcelink.json
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\scopedcss\Views\Shared\_LayoutDashboard.cshtml.rz.scp.css
-C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\scopedcss\Views\Shared\_LayoutWebsite.cshtml.rz.scp.css
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\scopedcss\bundle\Evyte.styles.css
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\scopedcss\projectbundle\Evyte.bundle.scp.css
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Debug\net8.0\staticwebassets.build.json

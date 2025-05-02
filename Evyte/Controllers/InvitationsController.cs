@@ -8,11 +8,11 @@ using System;
 namespace Evyte.ApplicationCore.Controllers
 {
     [AllowAnonymous]
-    public class InvitationController : Controller
+    public class InvitationsController : Controller
     {
         private readonly IInvitationService _invitationService;
 
-        public InvitationController(IInvitationService invitationService)
+        public InvitationsController(IInvitationService invitationService)
         {
             _invitationService = invitationService;
         }
@@ -21,6 +21,10 @@ namespace Evyte.ApplicationCore.Controllers
         [HttpGet]
         public IActionResult Create(Guid designId)
         {
+            if (designId == Guid.Empty)
+            {
+                designId = new Guid("c87af62b-f412-4c4c-8382-ecca50d3d2d7");
+            }
             var model = new CreateInvitationVM { DesignId = designId };
             return View(model);
         }

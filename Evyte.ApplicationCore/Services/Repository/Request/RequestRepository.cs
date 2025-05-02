@@ -17,7 +17,7 @@ namespace Evyte.ApplicationCore.Services.Repository
         public async Task AddRequestAsync(Request request)
         {
             _context.Requests.Add(request);
-            await _context.SaveChangesAsync();
+            var res = await _context.SaveChangesAsync();
         }
     }
 }
