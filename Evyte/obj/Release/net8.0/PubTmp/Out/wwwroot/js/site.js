@@ -1,4 +1,42 @@
 $(document).ready(function () {
+    // Initialize Particles.js
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: ['#f472b6', '#facc15', '#ffffff'] },
+            shape: {
+                type: ['circle', 'heart'],
+                stroke: { width: 0, color: '#000000' },
+                polygon: { nb_sides: 5 }
+            },
+            opacity: { value: 0.5, random: true, anim: { enable: false } },
+            size: { value: 10, random: true, anim: { enable: false } },
+            line_linked: { enable: false },
+            move: {
+                enable: true,
+                speed: 2,
+                direction: 'bottom',
+                random: true,
+                straight: false,
+                out_mode: 'out',
+                bounce: false
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: { enable: true, mode: 'grab' },
+                onclick: { enable: true, mode: 'push' },
+                resize: true
+            },
+            modes: {
+                grab: { distance: 140, line_linked: { opacity: 0.7 } },
+                push: { particles_nb: 4 }
+            }
+        },
+        retina_detect: true
+    });
+
     // Initialize form validation
     $("#weddingForm").validate({
         rules: {
@@ -61,7 +99,7 @@ $(document).ready(function () {
     });
 
     // Image preview for file inputs
-    const fileInputs = ['groomeImage', 'brideImage', 'eventPlaceImage', 'mainSliderImage', 'galleryPhotos'];
+    const fileInputs = ['GroomImage', 'BrideImage', 'EventPlaceImage', 'MainSliderImage', 'GalleryPhotos'];
     fileInputs.forEach(id => {
         $(`#${id}`).on('change', function (e) {
             const previewContainer = $(`#${id}Preview`);
@@ -88,7 +126,7 @@ $(document).ready(function () {
         }
         const submitButton = $(this).find('.btn-primary');
         submitButton.prop('disabled', true).addClass('animate-spin');
-        submitButton.html('<i class="fas fa-spinner fa-spin mr-2"></i> جاري الإرسال...');
+        submitButton.html('<i class="fas fa-spinner fa-spin ml-2"></i> جاري الإرسال...');
     });
 
     // Add animation to form fields on focus

@@ -99,7 +99,7 @@ $(document).ready(function () {
     });
 
     // Image preview for file inputs
-    const fileInputs = ['groomeImage', 'brideImage', 'eventPlaceImage', 'mainSliderImage', 'galleryPhotos'];
+    const fileInputs = ['GroomImage', 'BrideImage', 'EventPlaceImage', 'MainSliderImage', 'GalleryPhotos'];
     fileInputs.forEach(id => {
         $(`#${id}`).on('change', function (e) {
             const previewContainer = $(`#${id}Preview`);
@@ -126,7 +126,7 @@ $(document).ready(function () {
         }
         const submitButton = $(this).find('.btn-primary');
         submitButton.prop('disabled', true).addClass('animate-spin');
-        submitButton.html('<i class="fas fa-spinner fa-spin mr-2"></i> جاري الإرسال...');
+        submitButton.html('<i class="fas fa-spinner fa-spin ml-2"></i> جاري الإرسال...');
     });
 
     // Add animation to form fields on focus

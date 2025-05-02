@@ -19,5 +19,6 @@ namespace Evyte.ApplicationCore.Interfaces.Services
         Task<Design> UpdateDesignAsync(Guid id, UpdateDesignVM model);
         Task<bool> DeleteDesignAsync(Guid id);
         Task<bool> RestoreDesignAsync(Guid id);
+        Task<List<Design>> GetAllDesignsAsync();
     }
 }

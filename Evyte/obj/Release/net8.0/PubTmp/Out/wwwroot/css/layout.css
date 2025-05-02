@@ -3,13 +3,14 @@
     display: flex;
     min-height: 100vh;
     position: relative;
+    direction: rtl;
 }
 
 .layout-page {
     flex: 1;
     display: flex;
     flex-direction: column;
-    transition: margin-left 0.3s;
+    transition: margin-right 0.3s;
 }
 
 .content-wrapper {
@@ -22,7 +23,7 @@
 #splash-screen {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     width: 100%;
     height: 100%;
     background: #fff;
@@ -82,11 +83,12 @@ body.loaded #splash-screen {
     opacity: 0;
     pointer-events: none;
 }
+
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }

@@ -287,7 +287,6 @@ C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\refin
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\Evyte.pdb
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\Evyte.genruntimeconfig.cache
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\ref\Evyte.dll
-C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\obj\Release\net8.0\scopedcss\Views\Shared\_LayoutWebsite.cshtml.rz.scp.css
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Release\net8.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Release\net8.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Evyte\bin\Release\net8.0\Newtonsoft.Json.Bson.dll

@@ -65,6 +65,12 @@ namespace Evyte.ApplicationCore.Services.Designs
                 PageSize = pageSize
             };
         }
+        public async Task<List<Design>> GetAllDesignsAsync()
+        {
+            var query = _context.Designs.AsQueryable();
+            var designs = await query.OrderBy(d => d.SortingNumber).ToListAsync();
+            return designs;
+        }
 
         public async Task<DesignVM> GetDesignByIdAsync(Guid id, bool includeDeleted = false)
         {

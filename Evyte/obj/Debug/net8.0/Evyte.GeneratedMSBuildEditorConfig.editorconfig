@@ -88,12 +88,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Home/IndexEn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleEVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Invitations/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52aXRhdGlvbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Invitations/CreateEn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52aXRhdGlvbnNcQ3JlYXRlRW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Shared/Components/AdminSideMenu/Default.cshtml]

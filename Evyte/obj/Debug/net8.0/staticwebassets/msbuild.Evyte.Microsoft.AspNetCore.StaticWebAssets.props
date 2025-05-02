@@ -21234,8 +21234,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>qlrins54lp</Fingerprint>
-      <Integrity>wuztQqsim1qOmzCkIiGDY5i6+9feHLeIl+qu7v1/V/c=</Integrity>
+      <Fingerprint>96f8zrra4d</Fingerprint>
+      <Integrity>0X2DDjFwnQRgroEeZJOJPeZc4bH4wNCzodb3vt8lX84=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\evyte.css'))</OriginalItemSpec>
@@ -21306,8 +21306,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>76sotqbftu</Fingerprint>
-      <Integrity>YQYiaKjfM/Cp7OD0/IUcJ2cgYAT7kXd4GOnU3q+WCVw=</Integrity>
+      <Fingerprint>5k5s9w5n1c</Fingerprint>
+      <Integrity>JUSjsVE6DT0x8O2Iqe3p+Swtmq/H3OFVOHEUW1uxy7s=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\layout.css'))</OriginalItemSpec>
@@ -21342,8 +21342,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>2zo1wqdhs6</Fingerprint>
-      <Integrity>rgzkIxGK/AJBRNiyDXujufzgFfqKQunr/WaZVn63cTc=</Integrity>
+      <Fingerprint>skjgob3u1g</Fingerprint>
+      <Integrity>5GQujsG8jjnIEcSaBgjte4HX08InS5QaX6+t26Vn9mY=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</OriginalItemSpec>
@@ -21738,8 +21738,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>4u60np6mcg</Fingerprint>
-      <Integrity>nH1n3F5DwvIk4gHaA8QlyUQdBV84LJXEUh8Erak9sY8=</Integrity>
+      <Fingerprint>a4zkkh7t5e</Fingerprint>
+      <Integrity>Nun3sE7jCvbTX9fLm/K6avxzxDpJ6S1+RxITYPh6Mqw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\evyte.js'))</OriginalItemSpec>
@@ -21774,8 +21774,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ndiq6joui5</Fingerprint>
-      <Integrity>dS7OHgSeSsPzQUma/6fijGGC3o3kRikTc6YofresTn0=</Integrity>
+      <Fingerprint>sp6ah0g2y4</Fingerprint>
+      <Integrity>gI5VWp68AJuhTi0qBOjF7bscVcDQYgSbW2aiSfv01ig=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</OriginalItemSpec>

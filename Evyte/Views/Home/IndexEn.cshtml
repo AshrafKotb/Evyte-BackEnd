@@ -1,0 +1,243 @@
+﻿@{
+    Layout = "~/Views/Shared/_WebsiteLayout.cshtml";
+}
+
+<style>
+    .hero-section {
+        height: 100vh;
+        position: relative;
+    }
+
+    .hero-slider .swiper-slide {
+        position: relative;
+        height: 100vh;
+    }
+
+    .section {
+        padding: 5rem 0;
+    }
+
+    .bg-overlay {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    }
+
+    .about-bg {
+        background: url('images/website/about.jpg') no-repeat center center;
+        background-size: cover;
+        position: relative;
+    }
+
+    .features-bg {
+        background: url('images/website/cover1.jpg') no-repeat center center;
+        background-size: cover;
+        position: relative;
+    }
+
+    .cta-bg {
+        background: url('images/website/cover2.jpg') no-repeat center center;
+        background-size: cover;
+        position: relative;
+    }
+
+    .contact-bg {
+        background: url('images/website/cover3.jpg') no-repeat center center;
+        background-size: cover;
+        position: relative;
+    }
+
+    .feature-card, .testimonial-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+        .feature-card:hover, .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+
+    .btn-primary {
+        background: #8b5cf6;
+        color: white;
+        padding: 0.75rem 2rem;
+        border-radius: 9999px;
+        transition: background 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background: #7c3aed;
+        }
+</style>
+
+<!-- Hero Section with Slider -->
+<section class="hero-section relative">
+    <div class="swiper hero-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="~/images/website/cover8.jpg" alt="Beach Wedding Scene 1" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-overlay flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounceIn">Evyte - Your Dream Wedding</h1>
+                        <p class="text-lg md:text-xl mb-6">Create a stunning wedding website in minutes.</p>
+                        <a href="/Invitations/Create" class="btn btn-primary animate-pulse">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="~/images/website/cover1.jpg" alt="Elegant Venue Scene" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-overlay flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounceIn">A Day to Remember</h1>
+                        <p class="text-lg md:text-xl mb-6">Craft a website that captures your love story.</p>
+                        <a href="/Invitations/Create" class="btn btn-primary animate-pulse">Begin Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="~/images/website/cover2.jpg" alt="Sunset Ceremony" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-overlay flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounceIn">Love in Bloom</h1>
+                        <p class="text-lg md:text-xl mb-6">Design your perfect wedding invitation today.</p>
+                        <a href="/Invitations/Create" class="btn btn-primary animate-pulse">Start Creating</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="~/images/website/cover4.jpg" alt="Romantic Couple" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-overlay flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounceIn">Forever Begins Here</h1>
+                        <p class="text-lg md:text-xl mb-6">Share your special day with elegance.</p>
+                        <a href="/Invitations/Create" class="btn btn-primary animate-pulse">Create Yours</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="~/images/website/cover5.jpg" alt="Floral Decor" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-overlay flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounceIn">Your Love, Your Way</h1>
+                        <p class="text-lg md:text-xl mb-6">Personalize every detail with Evyte.</p>
+                        <a href="/Invitations/Create" class="btn btn-primary animate-pulse">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="~/images/website/cover6.jpg" alt="Beach Wedding Scene 2" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-overlay flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounceIn">Celebrate Your Love</h1>
+                        <p class="text-lg md:text-xl mb-6">Personalized invitations that tell your story.</p>
+                        <a href="/Invitations/Create" class="btn btn-primary animate-pulse">Start Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="~/images/website/cover7.jpg" alt="Sunset Wedding Scene" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-overlay flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounceIn">Unforgettable Moments</h1>
+                        <p class="text-lg md:text-xl mb-6">Share your special day with elegance.</p>
+                        <a href="/Invitations/Create" class="btn btn-primary animate-pulse">Create Yours</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</section>
+
+<!-- About Us -->
+<section class="section about-bg" data-aos="fade-up">
+    <div class="absolute inset-0 bg-overlay"></div>
+    <div class="container text-center relative z-10">
+        <h2 class="text-3xl font-bold text-white">About Evyte</h2>
+        <p class="text-gray-200 mx-auto max-w-2xl mt-4">
+            Evyte is the ultimate platform for crafting personalized wedding websites that capture your unique love story. With intuitive tools and elegant designs, we make it easy to create a website that your guests will love.
+        </p>
+        <a href="/Invitations/Create" class="btn btn-primary mt-6 animate-pulse">Start Creating</a>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="section features-bg" data-aos="zoom-in">
+    <div class="absolute inset-0 bg-overlay"></div>
+    <div class="container relative z-10">
+        <h2 class="text-3xl font-bold text-center text-white">Why Choose Evyte?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+            <div class="feature-card text-center p-6" data-aos="flip-up" data-aos-delay="100">
+                <i class="fas fa-paint-brush text-purple-600 text-4xl mb-4"></i>
+                <h3 class="text-xl font-semibold">Easy Customization</h3>
+                <p class="text-gray-600 mt-2">Design your website with drag-and-drop tools and stunning templates.</p>
+            </div>
+            <div class="feature-card text-center p-6" data-aos="flip-up" data-aos-delay="200">
+                <i class="fas fa-mobile-alt text-purple-600 text-4xl mb-4"></i>
+                <h3 class="text-xl font-semibold">Mobile-Friendly</h3>
+                <p class="text-gray-600 mt-2">Your website looks perfect on any device, from phones to desktops.</p>
+            </div>
+            <div class="feature-card text-center p-6" data-aos="flip-up" data-aos-delay="300">
+                <i class="fas fa-share-alt text-purple-600 text-4xl mb-4"></i>
+                <h3 class="text-xl font-semibold">Social Integration</h3>
+                <p class="text-gray-600 mt-2">Share your love story with interactive features and social media.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section" data-aos="fade-up">
+    <div class="container">
+        <h2 class="text-3xl font-bold text-center">What Our Couples Say</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="~/images/website/photo1.png" alt="Couple 1" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-6">
+                    <p class="text-gray-600 italic">"Evyte made our wedding website so easy to create. Our guests were amazed!"</p>
+                    <p class="text-right font-semibold text-purple-600 mt-4">– Sarah & Ahmed</p>
+                </div>
+            </div>
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="~/images/website/photo2.png" alt="Couple 2" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-6">
+                    <p class="text-gray-600 italic">"The templates were gorgeous, and the process was seamless. Highly recommend!"</p>
+                    <p class="text-right font-semibold text-purple-600 mt-4">– Layla & Omar</p>
+                </div>
+            </div>
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="~/images/website/photo4.jpg" alt="Couple 3" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-6">
+                    <p class="text-gray-600 italic">"Evyte helped us share our story beautifully. It was perfect!"</p>
+                    <p class="text-right font-semibold text-purple-600 mt-4">– Noor & Ali</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section cta-bg" data-aos="zoom-in">
+    <div class="absolute inset-0 bg-overlay"></div>
+    <div class="container text-center relative z-10">
+        <h2 class="text-3xl font-bold text-white">Ready to Create Your Wedding Website?</h2>
+        <p class="text-gray-200 mx-auto max-w-2xl mt-4">Join thousands of couples who trust Evyte to make their special day unforgettable.</p>
+        <a href="/Invitations/Create" class="btn btn-primary mt-6 animate-pulse">Get Started Now</a>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="section contact-bg" data-aos="fade-up">
+    <div class="absolute inset-0 bg-overlay"></div>
+    <div class="container text-center relative z-10">
+        <h2 class="text-3xl font-bold text-white">Get in Touch</h2>
+        <p class="text-gray-200 mt-4 mb-6">Have questions? We're here to help you create the perfect invitation!</p>
+        <div class="flex justify-center space-x-6 mb-6">
+            <a href="https://facebook.com/evyte" target="_blank" class="text-white hover:text-purple-600 transform hover:scale-125 transition-transform"><i class="fab fa-facebook-f text-3xl"></i></a>
+            <a href="https://instagram.com/evyte" target="_blank" class="text-white hover:text-purple-600 transform hover:scale-125 transition-transform"><i class="fab fa-instagram text-3xl"></i></a>
+            <a href="mailto:support@evyte.com" class="text-white hover:text-purple-600 transform hover:scale-125 transition-transform"><i class="fas fa-envelope text-3xl"></i></a>
+        </div>
+        <p class="text-gray-200">Email: support@evyte.com | Phone: +123-456-7890</p>
+    </div>
+</section>

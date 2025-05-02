@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\Evyte.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Evyte.s11646e9j8.bundle.scp.css"
+      "PackagePath": "staticwebassets\\Evyte.b9rakzccu5.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\Images\\avatar.png",
@@ -4713,6 +4713,66 @@
       "PackagePath": "staticwebassets\\Images\\Evyte.png"
     },
     {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\about.jpg",
+      "PackagePath": "staticwebassets\\Images\\Website\\about.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\cover1.jpg",
+      "PackagePath": "staticwebassets\\Images\\Website\\cover1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\cover2.jpg",
+      "PackagePath": "staticwebassets\\Images\\Website\\cover2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\cover3.jpg",
+      "PackagePath": "staticwebassets\\Images\\Website\\cover3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\cover4.jpg",
+      "PackagePath": "staticwebassets\\Images\\Website\\cover4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\cover5.jpg",
+      "PackagePath": "staticwebassets\\Images\\Website\\cover5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\cover6.jpg",
+      "PackagePath": "staticwebassets\\Images\\Website\\cover6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\cover7.jpg",
+      "PackagePath": "staticwebassets\\Images\\Website\\cover7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\cover8.jpg",
+      "PackagePath": "staticwebassets\\Images\\Website\\cover8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\photo1.png",
+      "PackagePath": "staticwebassets\\Images\\Website\\photo1.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\photo2.png",
+      "PackagePath": "staticwebassets\\Images\\Website\\photo2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\photo3.png",
+      "PackagePath": "staticwebassets\\Images\\Website\\photo3.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\photo4.jpg",
+      "PackagePath": "staticwebassets\\Images\\Website\\photo4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\photo5.jpg",
+      "PackagePath": "staticwebassets\\Images\\Website\\photo5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\Website\\video1.mp4",
+      "PackagePath": "staticwebassets\\Images\\Website\\video1.mp4"
+    },
+    {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\avatar.png",
       "PackagePath": "staticwebassets\\Images\\avatar.png"
     },
@@ -5525,6 +5585,10 @@
       "PackagePath": "staticwebassets\\css\\contact-info.css"
     },
     {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\evyte.css",
+      "PackagePath": "staticwebassets\\css\\evyte.css"
+    },
+    {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\forms.css",
       "PackagePath": "staticwebassets\\css\\forms.css"
     },
@@ -5559,6 +5623,10 @@
     {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\js\\evyte.js",
+      "PackagePath": "staticwebassets\\js\\evyte.js"
     },
     {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\js\\header-sidebar.js",
