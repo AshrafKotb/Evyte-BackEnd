@@ -1745,7 +1745,7 @@
       "Microsoft.Win32.SystemEvents/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
+          "lib/net6.0/_._": {
             "related": ".xml"
           }
         },
@@ -1842,16 +1842,13 @@
           }
         }
       },
-      "QRCoder/1.4.1": {
+      "QRCoder/1.6.0": {
         "type": "package",
-        "dependencies": {
-          "System.Drawing.Common": "4.7.0"
-        },
         "compile": {
-          "lib/netstandard2.0/QRCoder.dll": {}
+          "lib/net6.0/QRCoder.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/QRCoder.dll": {}
+          "lib/net6.0/QRCoder.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
@@ -2279,7 +2276,7 @@
           "Microsoft.Win32.SystemEvents": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/System.Drawing.Common.dll": {
+          "lib/net6.0/_._": {
             "related": ".xml"
           }
         },
@@ -5720,18 +5717,24 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
-    "QRCoder/1.4.1": {
-      "sha512": "W8KwCwsOJe9SI7Cm7XeIMawd08F/US6xNw34lg2Qnx6m7GYYakxbyBQaNoW1Q75oJOmX/32sJUZr6Cix2B6GUQ==",
+    "QRCoder/1.6.0": {
+      "sha512": "XmPA81eo+oRxBuyVdswsSkTGTE1d3thfF11Z1PdD7oB56A6HU4G4AAOdySmGRMb/cljwlFTMWUtosGEnwpS6GA==",
       "type": "package",
-      "path": "qrcoder/1.4.1",
+      "path": "qrcoder/1.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net35/QRCoder.dll",
         "lib/net40/QRCoder.dll",
-        "lib/netstandard1.1/QRCoder.dll",
+        "lib/net5.0-windows7.0/QRCoder.dll",
+        "lib/net5.0/QRCoder.dll",
+        "lib/net6.0-windows7.0/QRCoder.dll",
+        "lib/net6.0/QRCoder.dll",
+        "lib/netstandard1.3/QRCoder.dll",
         "lib/netstandard2.0/QRCoder.dll",
-        "qrcoder.1.4.1.nupkg.sha512",
+        "nuget-icon.png",
+        "nuget-readme.md",
+        "qrcoder.1.6.0.nupkg.sha512",
         "qrcoder.nuspec"
       ]
     },
@@ -10097,7 +10100,7 @@
       "Microsoft.AspNetCore.Identity >= 2.3.1",
       "Microsoft.AspNetCore.Mvc >= 2.3.0",
       "Microsoft.AspNetCore.Mvc.DataAnnotations >= 2.3.0",
-      "QRCoder >= 1.4.1"
+      "QRCoder >= 1.6.0"
     ]
   },
   "packageFolders": {
@@ -10181,7 +10184,7 @@
           },
           "QRCoder": {
             "target": "Package",
-            "version": "[1.4.1, )"
+            "version": "[1.6.0, )"
           }
         },
         "imports": [

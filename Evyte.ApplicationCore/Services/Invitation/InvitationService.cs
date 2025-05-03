@@ -114,18 +114,37 @@ public class InvitationService : IInvitationService
             requestData.EventPlaceImageUrl = url;
             requestData.EventPlaceImageId = id;
         }
+        try
+        {
+            await _requestDataRepository.AddRequestDataAsync(requestData);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Failed to create request", ex);
+        }
+        // Step 3: Generate QR code
 
-        await _requestDataRepository.AddRequestDataAsync(requestData);
+        var DomainUrl = GenerateInvitationUrl(dto.GroomName, dto.BrideName, /*requestData.Id*/ requestData.Id);
+        var (qrCodeUrl, qrCodeId) = await _qrCodeService.GenerateAndUploadQRCode(DomainUrl, "qrcodes");
         // Step 3: Create Request
         var request = new Request
         {
             DesignId = dto.DesignId,
             UserId = userId,
             RequestDataId = requestData.Id,
-            DomainUrl = GenerateInvitationUrl(dto.GroomName, dto.BrideName, /*requestData.Id*/ requestData.Id)
+            QrCodeImageUrl = qrCodeUrl,
+            QrCodeImageId = qrCodeId,
+            DomainUrl = DomainUrl
         };
 
-        await _requestRepository.AddRequestAsync(request);
+        try
+        {
+            await _requestRepository.AddRequestAsync(request);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Failed to create request", ex);
+        }
 
         // Step 4: Upload gallery photos
         if (dto.GalleryPhotos != null)
@@ -142,9 +161,6 @@ public class InvitationService : IInvitationService
                 await _galleryPhotoRepository.AddGalleryPhotoAsync(galleryPhoto);
             }
         }
-
-        // Step 5: Generate and upload QR code
-        var (qrCodeUrl, qrCodeId) = await _qrCodeService.GenerateAndUploadQRCode(request.DomainUrl, "qrcodes");
 
         // Step 6: Send email
         var emailBody = $@"

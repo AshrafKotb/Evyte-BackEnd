@@ -13,24 +13,24 @@ namespace Evyte.Domain.Entities
         public string GroomName { get; set; }
         public string GroomImageId { get; set; }
         public string GroomImageUrl { get; set; }
-        public string GroomFacebook { get; set; }
-        public string GroomInstagram { get; set; }
-        public string GroomX { get; set; }
+        public string? GroomFacebook { get; set; }
+        public string? GroomInstagram { get; set; }
+        public string? GroomX { get; set; }
         #endregion
 
         #region Bride Data
         public string BrideName { get; set; }
         public string BrideImageId { get; set; }
         public string BrideImageUrl { get; set; }
-        public string BrideFacebook { get; set; }
-        public string BrideInstagram { get; set; }
-        public string BrideX { get; set; }
+        public string? BrideFacebook { get; set; }
+        public string? BrideInstagram { get; set; }
+        public string? BrideX { get; set; }
         #endregion
         public string MainSliderImageId { get; set; }
         public string MainSliderImageUrl { get; set; }
-        public DateOnly EventDate { get; set; }
-        public TimeOnly EventTimeFrom { get; set; }
-        public TimeOnly EventTimeTo { get; set; }
+        public DateTime EventDate { get; set; }
+        public TimeSpan EventTimeFrom { get; set; }
+        public TimeSpan EventTimeTo { get; set; }
 
         #region EventPlace Data
         public string EventPlaceName { get; set; }

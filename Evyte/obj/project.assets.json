@@ -5015,7 +5015,7 @@
           "Microsoft.AspNetCore.Identity": "2.3.1",
           "Microsoft.AspNetCore.Mvc": "2.3.0",
           "Microsoft.AspNetCore.Mvc.DataAnnotations": "2.3.0",
-          "QRCoder": "1.4.1"
+          "QRCoder": "1.6.0"
         },
         "compile": {
           "bin/placeholder/Evyte.ApplicationCore.dll": {}

@@ -9,6 +9,8 @@ namespace Evyte.Domain.Entities
     public class Request : BaseEntity
     {
         public string DomainUrl { get; set; }
+        public string QrCodeImageUrl { get; set; }
+        public string QrCodeImageId { get; set; }
         public Guid RequestDataId { get; set; }
         public RequestData RequestData { get; set; }
         public Guid DesignId { get; set; }

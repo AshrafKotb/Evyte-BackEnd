@@ -15,7 +15,7 @@
           "Microsoft.AspNetCore.Identity": "2.3.1",
           "Microsoft.AspNetCore.Mvc": "2.3.0",
           "Microsoft.AspNetCore.Mvc.DataAnnotations": "2.3.0",
-          "QRCoder": "1.4.1"
+          "QRCoder": "1.6.0"
         },
         "runtime": {
           "Evyte.ApplicationCore.dll": {}
@@ -1323,14 +1323,11 @@
           }
         }
       },
-      "QRCoder/1.4.1": {
-        "dependencies": {
-          "System.Drawing.Common": "6.0.0"
-        },
+      "QRCoder/1.6.0": {
         "runtime": {
-          "lib/netstandard2.0/QRCoder.dll": {
-            "assemblyVersion": "1.4.1.0",
-            "fileVersion": "1.4.1.0"
+          "lib/net6.0/QRCoder.dll": {
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
@@ -2973,12 +2970,12 @@
       "path": "newtonsoft.json.bson/1.0.2",
       "hashPath": "newtonsoft.json.bson.1.0.2.nupkg.sha512"
     },
-    "QRCoder/1.4.1": {
+    "QRCoder/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-W8KwCwsOJe9SI7Cm7XeIMawd08F/US6xNw34lg2Qnx6m7GYYakxbyBQaNoW1Q75oJOmX/32sJUZr6Cix2B6GUQ==",
-      "path": "qrcoder/1.4.1",
-      "hashPath": "qrcoder.1.4.1.nupkg.sha512"
+      "sha512": "sha512-XmPA81eo+oRxBuyVdswsSkTGTE1d3thfF11Z1PdD7oB56A6HU4G4AAOdySmGRMb/cljwlFTMWUtosGEnwpS6GA==",
+      "path": "qrcoder/1.6.0",
+      "hashPath": "qrcoder.1.6.0.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
       "type": "package",

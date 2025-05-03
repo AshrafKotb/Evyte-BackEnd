@@ -44,10 +44,9 @@ namespace Evyte.Infrastructure
 
             // Request -> Design (One-to-One)
             modelBuilder.Entity<Request>()
-                .HasOne(r => r.Design)
-                .WithOne()
-                .HasForeignKey<Request>(r => r.DesignId)
-                .OnDelete(DeleteBehavior.Cascade);
+      .HasOne(r => r.Design)
+      .WithMany(d => d.Requests)
+      .HasForeignKey(r => r.DesignId);
 
             // Request -> User (Many-to-One)
             modelBuilder.Entity<Request>()

@@ -322,15 +322,20 @@ namespace Evyte.Infrastructure.Migrations
                     b.Property<Guid>("DesignId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("DesignId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("DomainUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("QrCodeImageId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("QrCodeImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("RequestDataId")
                         .HasColumnType("uniqueidentifier");
@@ -346,10 +351,7 @@ namespace Evyte.Infrastructure.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("DesignId")
-                        .IsUnique();
-
-                    b.HasIndex("DesignId1");
+                    b.HasIndex("DesignId");
 
                     b.HasIndex("RequestDataId")
                         .IsUnique();
@@ -366,7 +368,6 @@ namespace Evyte.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("BrideFacebook")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BrideImageId")
@@ -378,7 +379,6 @@ namespace Evyte.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BrideInstagram")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BrideName")
@@ -386,7 +386,6 @@ namespace Evyte.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BrideX")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
@@ -399,8 +398,8 @@ namespace Evyte.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("EventDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("EventDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("EventPlaceImageId")
                         .IsRequired()
@@ -414,14 +413,13 @@ namespace Evyte.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<TimeOnly>("EventTimeFrom")
+                    b.Property<TimeSpan>("EventTimeFrom")
                         .HasColumnType("time");
 
-                    b.Property<TimeOnly>("EventTimeTo")
+                    b.Property<TimeSpan>("EventTimeTo")
                         .HasColumnType("time");
 
                     b.Property<string>("GroomFacebook")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GroomImageId")
@@ -433,7 +431,6 @@ namespace Evyte.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GroomInstagram")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GroomName")
@@ -441,7 +438,6 @@ namespace Evyte.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GroomX")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -654,14 +650,10 @@ namespace Evyte.Infrastructure.Migrations
                         .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("Evyte.Domain.Entities.Design", "Design")
-                        .WithOne()
-                        .HasForeignKey("Evyte.Domain.Entities.Request", "DesignId")
+                        .WithMany("Requests")
+                        .HasForeignKey("DesignId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Evyte.Domain.Entities.Design", null)
-                        .WithMany("Requests")
-                        .HasForeignKey("DesignId1");
 
                     b.HasOne("Evyte.Domain.Entities.RequestData", "RequestData")
                         .WithOne()

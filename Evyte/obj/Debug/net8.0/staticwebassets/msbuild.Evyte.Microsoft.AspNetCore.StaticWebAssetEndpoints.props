@@ -14152,13 +14152,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\evyte.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"96f8zrra4d"},{"Name":"integrity","Value":"sha256-0X2DDjFwnQRgroEeZJOJPeZc4bH4wNCzodb3vt8lX84="},{"Name":"label","Value":"_content/Evyte/css/evyte.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1701"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00220X2DDjFwnQRgroEeZJOJPeZc4bH4wNCzodb3vt8lX84=\u0022"},{"Name":"Last-Modified","Value":"Fri, 02 May 2025 08:30:48 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1701"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00220X2DDjFwnQRgroEeZJOJPeZc4bH4wNCzodb3vt8lX84=\u0022"},{"Name":"Last-Modified","Value":"Sat, 03 May 2025 00:09:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/css/evyte.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\evyte.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-0X2DDjFwnQRgroEeZJOJPeZc4bH4wNCzodb3vt8lX84="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1701"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00220X2DDjFwnQRgroEeZJOJPeZc4bH4wNCzodb3vt8lX84=\u0022"},{"Name":"Last-Modified","Value":"Fri, 02 May 2025 08:30:48 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1701"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00220X2DDjFwnQRgroEeZJOJPeZc4bH4wNCzodb3vt8lX84=\u0022"},{"Name":"Last-Modified","Value":"Sat, 03 May 2025 00:09:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/css/forms.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\forms.css'))</AssetFile>
@@ -14508,17 +14508,17 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-b9LRdQ4Z9lqXV231CBUcm6xz6vJjYz6oz88IZz/IW0s="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"710"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022b9LRdQ4Z9lqXV231CBUcm6xz6vJjYz6oz88IZz/IW0s=\u0022"},{"Name":"Last-Modified","Value":"Tue, 29 Apr 2025 07:16:33 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Evyte/js/site.5ix05d7myz.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"5ix05d7myz"},{"Name":"integrity","Value":"sha256-nRLMCuoZnM0HJPqM4gKhXOeBn7pcM6PyrUVYao6XhVQ="},{"Name":"label","Value":"_content/Evyte/js/site.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"8787"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022nRLMCuoZnM0HJPqM4gKhXOeBn7pcM6PyrUVYao6XhVQ=\u0022"},{"Name":"Last-Modified","Value":"Sat, 03 May 2025 01:42:31 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/js/site.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-gI5VWp68AJuhTi0qBOjF7bscVcDQYgSbW2aiSfv01ig="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"5576"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022gI5VWp68AJuhTi0qBOjF7bscVcDQYgSbW2aiSfv01ig=\u0022"},{"Name":"Last-Modified","Value":"Fri, 02 May 2025 08:30:48 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/Evyte/js/site.sp6ah0g2y4.js">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"sp6ah0g2y4"},{"Name":"integrity","Value":"sha256-gI5VWp68AJuhTi0qBOjF7bscVcDQYgSbW2aiSfv01ig="},{"Name":"label","Value":"_content/Evyte/js/site.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"5576"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022gI5VWp68AJuhTi0qBOjF7bscVcDQYgSbW2aiSfv01ig=\u0022"},{"Name":"Last-Modified","Value":"Fri, 02 May 2025 08:30:48 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-nRLMCuoZnM0HJPqM4gKhXOeBn7pcM6PyrUVYao6XhVQ="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"8787"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022nRLMCuoZnM0HJPqM4gKhXOeBn7pcM6PyrUVYao6XhVQ=\u0022"},{"Name":"Last-Modified","Value":"Sat, 03 May 2025 01:42:31 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/js/siteOld.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\siteOld.js'))</AssetFile>

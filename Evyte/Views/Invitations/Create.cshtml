@@ -55,27 +55,29 @@
                             <span asp-validation-for="GroomName" class="text-red-500 text-sm mt-1"></span>
                         </div>
                         <div>
-                            <label for="GroomImage" class="form-label block text-sm font-medium text-gray-700">صورة العريس</label>
-                            <input type="file" class="form-control w-full mt-1 animate-field" id="GroomImage" asp-for="GroomImage" accept="image/png,image/jpeg,image/jpg" />
+                            <label for="GroomImage" class="form-label block text-sm font-medium text-gray-700">صورة العريس <span class="text-red-500">*</span></label>
+                            <input type="file" class="form-control w-full mt-1 animate-field" id="GroomImage" asp-for="GroomImage" accept="image/png,image/jpeg,image/jpg" required />
                             <div class="image-preview mt-2" id="GroomImagePreview"></div>
+                            <span asp-validation-for="GroomImage" class="text-red-500 text-sm mt-1"></span>
                         </div>
+                        <!-- Social media fields (optional) -->
                         <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div class="relative">
-                                <label for="GroomFacebook" class="form-label block text-sm font-medium text-gray-700">رابط فيسبوك</label>
+                                <label for="GroomFacebook" class="form-label block text-sm font-medium text-gray-700">رابط فيسبوك (اختياري)</label>
                                 <div class="input-group flex">
                                     <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="GroomFacebook"><i class="fab fa-facebook-f text-blue-600"></i></a>
                                     <input type="url" class="form-control w-full mt-1 rounded-r-none animate-field" id="GroomFacebook" asp-for="GroomFacebook" placeholder="https://facebook.com/..." />
                                 </div>
                             </div>
                             <div class="relative">
-                                <label for="GroomInstagram" class="form-label block text-sm font-medium text-gray-700">رابط إنستغرام</label>
+                                <label for="GroomInstagram" class="form-label block text-sm font-medium text-gray-700">رابط إنستغرام (اختياري)</label>
                                 <div class="input-group flex">
                                     <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="GroomInstagram"><i class="fab fa-instagram text-pink-500"></i></a>
                                     <input type="url" class="form-control w-full mt-1 rounded-r-none animate-field" id="GroomInstagram" asp-for="GroomInstagram" placeholder="https://instagram.com/..." />
                                 </div>
                             </div>
                             <div class="relative">
-                                <label for="GroomX" class="form-label block text-sm font-medium text-gray-700">رابط إكس</label>
+                                <label for="GroomX" class="form-label block text-sm font-medium text-gray-700">رابط إكس (اختياري)</label>
                                 <div class="input-group flex">
                                     <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="GroomX"><i class="fab fa-x-twitter text-black"></i></a>
                                     <input type="url" class="form-control w-full mt-1 rounded-r-none animate-field" id="GroomX" asp-for="GroomX" placeholder="https://x.com/..." />
@@ -90,35 +92,37 @@
                     <h4 class="text-xl font-semibold text-gray-800 mb-4">معلومات العروس</h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="brideName" class="form-label block text-sm font-medium text-gray-700">اسم العروس <span class="text-red-500">*</span></label>
-                            <input type="text" class="form-control w-full mt-1 animate-field" id="brideName" asp-for="BrideName" required />
+                            <label for="BrideName" class="form-label block text-sm font-medium text-gray-700">اسم العروس <span class="text-red-500">*</span></label>
+                            <input type="text" class="form-control w-full mt-1 animate-field" id="BrideName" asp-for="BrideName" required />
                             <span asp-validation-for="BrideName" class="text-red-500 text-sm mt-1"></span>
                         </div>
                         <div>
-                            <label for="brideImage" class="form-label block text-sm font-medium text-gray-700">صورة العروس</label>
-                            <input type="file" class="form-control w-full mt-1 animate-field" id="brideImage" asp-for="BrideImage" accept="image/png,image/jpeg,image/jpg" />
-                            <div class="image-preview mt-2" id="brideImagePreview"></div>
+                            <label for="BrideImage" class="form-label block text-sm font-medium text-gray-700">صورة العروس <span class="text-red-500">*</span></label>
+                            <input type="file" class="form-control w-full mt-1 animate-field" id="BrideImage" asp-for="BrideImage" accept="image/png,image/jpeg,image/jpg" required />
+                            <div class="image-preview mt-2" id="BrideImagePreview"></div>
+                            <span asp-validation-for="BrideImage" class="text-red-500 text-sm mt-1"></span>
                         </div>
+                        <!-- Social media fields (optional) -->
                         <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div class="relative">
-                                <label for="brideFacebook" class="form-label block text-sm font-medium text-gray-700">رابط فيسبوك</label>
+                                <label for="BrideFacebook" class="form-label block text-sm font-medium text-gray-700">رابط فيسبوك (اختياري)</label>
                                 <div class="input-group flex">
-                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="brideFacebook"><i class="fab fa-facebook-f text-blue-600"></i></a>
-                                    <input type="url" class="form-control w-full mt-1 rounded-r-none animate-field" id="brideFacebook" asp-for="BrideFacebook" placeholder="https://facebook.com/..." />
+                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="BrideFacebook"><i class="fab fa-facebook-f text-blue-600"></i></a>
+                                    <input type="url" class="form-control w-full mt-1 rounded-r-none animate-field" id="BrideFacebook" asp-for="BrideFacebook" placeholder="https://facebook.com/..." />
                                 </div>
                             </div>
                             <div class="relative">
-                                <label for="brideInstagram" class="form-label block text-sm font-medium text-gray-700">رابط إنستغرام</label>
+                                <label for="BrideInstagram" class="form-label block text-sm font-medium text-gray-700">رابط إنستغرام (اختياري)</label>
                                 <div class="input-group flex">
-                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="brideInstagram"><i class="fab fa-instagram text-pink-500"></i></a>
-                                    <input type="url" class="form-control w-full mt-1 rounded-r-none animate-field" id="brideInstagram" asp-for="BrideInstagram" placeholder="https://instagram.com/..." />
+                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="BrideInstagram"><i class="fab fa-instagram text-pink-500"></i></a>
+                                    <input type="url" class="form-control w-full mt-1 rounded-r-none animate-field" id="BrideInstagram" asp-for="BrideInstagram" placeholder="https://instagram.com/..." />
                                 </div>
                             </div>
                             <div class="relative">
-                                <label for="brideX" class="form-label block text-sm font-medium text-gray-700">رابط إكس</label>
+                                <label for="BrideX" class="form-label block text-sm font-medium text-gray-700">رابط إكس (اختياري)</label>
                                 <div class="input-group flex">
-                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="brideX"><i class="fab fa-x-twitter text-black"></i></a>
-                                    <input type="url" class="form-control w-full mt-1 rounded-r-none animate-field" id="brideX" asp-for="BrideX" placeholder="https://x.com/..." />
+                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="BrideX"><i class="fab fa-x-twitter text-black"></i></a>
+                                    <input type="url" class="form-control w-full mt-1 rounded-r-none animate-field" id="BrideX" asp-for="BrideX" placeholder="https://x.com/..." />
                                 </div>
                             </div>
                         </div>
@@ -154,21 +158,25 @@
                             <span asp-validation-for="EventTimeTo" class="text-red-500 text-sm mt-1"></span>
                         </div>
                         <div class="md:col-span-2">
-                            <label for="eventPlaceName" class="form-label block text-sm font-medium text-gray-700">اسم المكان</label>
-                            <input type="text" class="form-control w-full mt-1 animate-field" id="eventPlaceName" asp-for="EventPlaceName" />
+                            <label for="eventPlaceName" class="form-label block text-sm font-medium text-gray-700">اسم المكان <span class="text-red-500">*</span></label>
+                            <input type="text" class="form-control w-full mt-1 animate-field" id="eventPlaceName" asp-for="EventPlaceName" required />
+                            <span asp-validation-for="EventPlaceName" class="text-red-500 text-sm mt-1"></span>
                         </div>
                         <div>
-                            <label for="eventPlaceImage" class="form-label block text-sm font-medium text-gray-700">صورة المكان</label>
-                            <input type="file" class="form-control w-full mt-1 animate-field" id="eventPlaceImage" asp-for="EventPlaceImage" accept="image/png,image/jpeg,image/jpg" />
-                            <div class="image-preview mt-2" id="eventPlaceImagePreview"></div>
+                            <label for="eventPlaceImage" class="form-label block text-sm font-medium text-gray-700">صورة المكان <span class="text-red-500">*</span></label>
+                            <input type="file" class="form-control w-full mt-1 animate-field" id="EventPlaceImage" asp-for="EventPlaceImage" accept="image/png,image/jpeg,image/jpg" required />
+                            <div class="image-preview mt-2" id="EventPlaceImagePreview"></div>
+                            <span asp-validation-for="EventPlaceImage" class="text-red-500 text-sm mt-1"></span>
                         </div>
                         <div class="md:col-span-3">
-                            <label for="eventAddress" class="form-label block text-sm font-medium text-gray-700">عنوان المكان</label>
-                            <input type="text" class="form-control w-full mt-1 animate-field" id="eventAddress" asp-for="EventAddress" />
+                            <label for="eventAddress" class="form-label block text-sm font-medium text-gray-700">عنوان المكان <span class="text-red-500">*</span></label>
+                            <input type="text" class="form-control w-full mt-1 animate-field" id="eventAddress" asp-for="EventAddress" required />
+                            <span asp-validation-for="EventAddress" class="text-red-500 text-sm mt-1"></span>
                         </div>
                         <div class="md:col-span-3">
-                            <label for="locationUrl" class="form-label block text-sm font-medium text-gray-700">رابط الموقع</label>
-                            <input type="url" class="form-control w-full mt-1 animate-field" id="locationUrl" asp-for="LocationUrl" placeholder="https://maps.google.com/..." />
+                            <label for="locationUrl" class="form-label block text-sm font-medium text-gray-700">رابط الموقع <span class="text-red-500">*</span></label>
+                            <input type="url" class="form-control w-full mt-1 animate-field" id="locationUrl" asp-for="LocationUrl" placeholder="https://maps.google.com/..." required />
+                            <span asp-validation-for="LocationUrl" class="text-red-500 text-sm mt-1"></span>
                         </div>
                     </div>
                 </div>
@@ -178,14 +186,16 @@
                     <h4 class="text-xl font-semibold text-gray-800 mb-4">معرض الصور</h4>
                     <div class="grid grid-cols-1 gap-6">
                         <div>
-                            <label for="galleryPhotos" class="form-label block text-sm font-medium text-gray-700">تحميل الصور (متعددة)</label>
-                            <input type="file" class="form-control w-full mt-1 animate-field" id="galleryPhotos" asp-for="GalleryPhotos" accept="image/png,image/jpeg,image/jpg" multiple />
-                            <div class="image-preview-grid mt-2" id="galleryPhotosPreview"></div>
+                            <label for="galleryPhotos" class="form-label block text-sm font-medium text-gray-700">تحميل الصور (متعددة) <span class="text-red-500">*</span></label>
+                            <input type="file" class="form-control w-full mt-1 animate-field" id="GalleryPhotos" asp-for="GalleryPhotos" accept="image/png,image/jpeg,image/jpg" multiple required />
+                            <div class="image-preview-grid mt-2" id="GalleryPhotosPreview"></div>
+                            <span asp-validation-for="GalleryPhotos" class="text-red-500 text-sm mt-1"></span>
                         </div>
                         <div>
-                            <label for="mainSliderImage" class="form-label block text-sm font-medium text-gray-700">صورة السلايدر الرئيسية</label>
-                            <input type="file" class="form-control w-full mt-1 animate-field" id="mainSliderImage" asp-for="MainSliderImage" accept="image/png,image/jpeg,image/jpg" />
-                            <div class="image-preview mt-2" id="mainSliderImagePreview"></div>
+                            <label for="mainSliderImage" class="form-label block text-sm font-medium text-gray-700">صورة السلايدر الرئيسية <span class="text-red-500">*</span></label>
+                            <input type="file" class="form-control w-full mt-1 animate-field" id="MainSliderImage" asp-for="MainSliderImage" accept="image/png,image/jpeg,image/jpg" required />
+                            <div class="image-preview mt-2" id="MainSliderImagePreview"></div>
+                            <span asp-validation-for="MainSliderImage" class="text-red-500 text-sm mt-1"></span>
                         </div>
                     </div>
                 </div>
@@ -200,16 +210,48 @@
         </div>
     </div>
 
+    <!-- نافذة التحميل -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 flex items-center justify-center hidden">
+        <div class="text-center">
+            <div class="splash-spinner mb-4"></div>
+            <h3 class="text-2xl font-bold text-white mb-2">جاري إنشاء موقع زفافك...</h3>
+            <p class="text-gray-300">لحظات قليلة وستكون دعوتك جاهزة بأناقة وتميز!</p>
+        </div>
+    </div>
+
     <!-- نافذة النجاح -->
     <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true" dir="rtl">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-xl">
                 <div class="modal-header border-0 bg-gradient-to-r from-purple-600 to-pink-500 text-white">
-                    <h5 class="modal-title font-semibold">تم بنجاح</h5>
+                    <h5 class="modal-title font-semibold">تم بنجاح!</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-gray-700">
-                    تم إرسال طلب موقع الزفاف بنجاح! سنتواصل معك قريبًا.
+                    <p class="text-lg">تم إنشاء موقع زفافك بنجاح! يمكنك مشاركته مع ضيوفك الآن.</p>
+                    <div class="mt-4">
+                        <p><strong>رابط الدعوة:</strong> <a id="invitationUrl" href="#" target="_blank" class="text-purple-600 hover:underline"></a></p>
+                        <p><strong>رابط رمز الاستجابة السريعة:</strong> <a id="qrCodeUrl" href="#" target="_blank" class="text-purple-600 hover:underline"></a></p>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-primary px-4 py-2" data-bs-dismiss="modal">إغلاق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة الخطأ -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true" dir="rtl">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-xl">
+                <div class="modal-header border-0 bg-gradient-to-r from-red-600 to-red-400 text-white">
+                    <h5 class="modal-title font-semibold">حدث خطأ</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-gray-700">
+                    <p class="text-lg">عذرًا، حدث خطأ أثناء إنشاء موقع الزفاف. يرجى المحاولة مرة أخرى.</p>
+                    <p id="errorMessage" class="text-red-500 mt-2"></p>
                 </div>
                 <div class="modal-footer border-0">
                     <button type="button" class="btn btn-primary px-4 py-2" data-bs-dismiss="modal">إغلاق</button>
@@ -218,3 +260,7 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+}
