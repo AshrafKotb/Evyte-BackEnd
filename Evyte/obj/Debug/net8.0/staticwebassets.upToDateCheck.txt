@@ -1177,6 +1177,7 @@ wwwroot\Content\Images\logo.png
 wwwroot\css\categories.css
 wwwroot\css\category-details.css
 wwwroot\css\contact-info.css
+wwwroot\css\Customers.css
 wwwroot\css\evyte.css
 wwwroot\css\forms.css
 wwwroot\css\general-info.css

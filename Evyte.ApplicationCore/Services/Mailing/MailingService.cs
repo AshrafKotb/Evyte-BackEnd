@@ -34,7 +34,7 @@ namespace Evyte.ApplicationCore.Services.Mailing
                 //return result;
 
                 MailMessage message = new();
-                message.From = new MailAddress(_mailingSetting.Email, "Egypt Online");
+                message.From = new MailAddress(_mailingSetting.Email, "Evyte");
                 message.To.Add(new MailAddress(mailTo));
 
                 message.Subject = subject;

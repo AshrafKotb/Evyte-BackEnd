@@ -26,34 +26,6 @@ namespace Evyte.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-
-            // Request -> GalleryPhotos (One-to-Many)
-            modelBuilder.Entity<Request>()
-                .HasMany(r => r.GalleryPhotos)
-                .WithOne(p => p.Request)
-                .HasForeignKey(p => p.RequestId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            // Request -> RequestData (One-to-One)
-            modelBuilder.Entity<Request>()
-                .HasOne(r => r.RequestData)
-                .WithOne()
-                .HasForeignKey<Request>(r => r.RequestDataId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            // Request -> Design (One-to-One)
-            modelBuilder.Entity<Request>()
-      .HasOne(r => r.Design)
-      .WithMany(d => d.Requests)
-      .HasForeignKey(r => r.DesignId);
-
-            // Request -> User (Many-to-One)
-            modelBuilder.Entity<Request>()
-                .HasOne(r => r.User)
-                .WithMany()
-                .HasForeignKey(r => r.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
         }
 
     }

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Evyte.ApplicationCore.Models.ViewModels;
+using Evyte.Domain.Enums;
 
 namespace Evyte.ApplicationCore.Services.Authantication
 {
@@ -54,6 +55,7 @@ namespace Evyte.ApplicationCore.Services.Authantication
                     Email = "Admin@Evyte.com",
                     UserName = "Admin@Evyte.com",
                     FullName = "Admin",
+                    UserType = UserType.Admin,
                     PhoneNumber = "0123456789",
                     JoinDate = DateTime.UtcNow,
                 };
@@ -72,6 +74,7 @@ namespace Evyte.ApplicationCore.Services.Authantication
                     UserName = "Dev@Evyte.com",
                     FullName = "Admin2",
                     PhoneNumber = "01234567890",
+                    UserType = UserType.Admin,
                     JoinDate = DateTime.UtcNow,
                 };
 
@@ -85,7 +88,7 @@ namespace Evyte.ApplicationCore.Services.Authantication
         {
             var user = FindByEmail(model.Email);
 
-            if (user == null)
+            if (user == null || user.UserType != UserType.Admin)
             {
                 return SignInResult.Failed;
             }
@@ -105,8 +108,8 @@ namespace Evyte.ApplicationCore.Services.Authantication
         public async Task<bool> IsUserAdmin(string email)
         {
             var user = FindByEmail(email);
-            if (user == null) return false;
-                
+            if (user == null || user.UserType != UserType.Admin) return false;
+
             return await _userManager.IsInRoleAsync(user, RoleName.Admin);
         }
     }

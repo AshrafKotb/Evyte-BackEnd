@@ -1,0 +1,196 @@
+﻿@model CustomerIndexVM
+@{
+    ViewData["Title"] = "قائمة العملاء";
+    Layout = "_Layout";
+    ViewData["Dir"] = "rtl";
+}
+<link rel="stylesheet" href="~/css/Customers.css" asp-append-version="true" />
+
+<div class="container-fluid py-4">
+    <div class="category-header d-flex align-items-center justify-content-center">
+        <h1 class="text-white page-title">@ViewData["Title"]</h1>
+    </div>
+
+    <div class="category-search-container">
+        <form asp-action="Index" method="get" class="category-search">
+            <div class="input-group">
+                <input type="text" class="form-control"
+                       name="searchTerm" value="@Model.SearchTerm"
+                       placeholder="ابحث عن عميل...">
+                <button type="submit" class="btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="controls-container d-flex justify-content-between align-items-center mb-3">
+        <div></div> <!-- Empty div for symmetry -->
+        <div class="page-size-selector">
+            <label for="pageSize" class="me-2">عناصر لكل صفحة:</label>
+            <form asp-action="Index" method="get" id="pageSizeForm">
+                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                <select id="pageSize" name="pageSize" class="form-select" onchange="this.form.submit()">
+                    @foreach (var option in Model.PageSizeOptions)
+                    {
+                        <option value="@option.Value" selected="@(Model.PageSize.ToString() == option.Value)">
+                            @option.Text
+                        </option>
+                    }
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <div class="category-table">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th>الاسم الكامل</th>
+                        <th>رقم الهاتف</th>
+                        <th>البريد الإلكتروني</th>
+                        <th>عدد الدعوات</th>
+                        <th>كود QR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var customer in Model.Customers)
+                    {
+                        <tr>
+                            <td class="text-center">@customer.FullName</td>
+                            <td class="text-center">@customer.PhoneNumber</td>
+                            <td class="text-center">@customer.Email</td>
+                            <td class="text-center"><span class="badge badge-Sorting">@customer.RequestCount</span></td>
+                            <td class="text-center">
+                                @foreach (var request in customer.Requests)
+                                {
+                                    if (!string.IsNullOrEmpty(request.QrCodeImageUrl))
+                                    {
+                                        <div class="qr-frame d-flex align-items-center justify-content-center gap-2">
+                                            <!-- صورة QR Code قابلة للتكبير -->
+                                            <a href="@request.QrCodeImageUrl" class="qr-code-link" data-fancybox="qr-gallery">
+                                                <img src="@request.QrCodeImageUrl" alt="QR Code" class="qr-code-img" loading="lazy" />
+                                            </a>
+                                            <!-- أيقونة Domain URL -->
+                                            @if (!string.IsNullOrEmpty(request.DomainUrl))
+                                            {
+                                                <a href="@request.DomainUrl" class="domain-link" target="_blank" data-toggle="tooltip" data-placement="top" title="زيارة الرابط">
+                                                    <i class="fas fa-link"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <i class="fas fa-link text-muted" title="لا يوجد رابط"></i>
+                                            }
+                                        </div>
+                                    }
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @if (Model.TotalItems > Model.PageSize)
+        {
+            <div class="pagination-container">
+                <form id="paginationForm" asp-action="Index" method="get">
+                    <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                    <input type="hidden" name="pageSize" value="@Model.PageSize" />
+                    <nav aria-label="تصفح الصفحات">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                                <a class="page-link"
+                                   asp-action="Index"
+                                   asp-route-page="@(Model.CurrentPage - 1)"
+                                   asp-route-pageSize="@Model.PageSize"
+                                   asp-route-searchTerm="@Model.SearchTerm"
+                                   aria-label="الصفحة السابقة">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                            <li class="page-item @(Model.CurrentPage == 1 ? "active" : "")">
+                                <a class="page-link"
+                                   asp-action="Index"
+                                   asp-route-page="1"
+                                   asp-route-pageSize="@Model.PageSize"
+                                   asp-route-searchTerm="@Model.SearchTerm"
+                                   aria-current="@(Model.CurrentPage == 1 ? "page" : null)">1</a>
+                            </li>
+                            @if (Model.CurrentPage > 3)
+                            {
+                                <li class="page-item disabled">
+                                    <span class="page-link">...</span>
+                                </li>
+                            }
+                            @for (int i = Math.Max(2, Model.CurrentPage - 2); i <= Math.Min(Model.TotalItems / Model.PageSize + (Model.TotalItems % Model.PageSize > 0 ? 1 : 0), Model.CurrentPage + 2); i++)
+                            {
+                                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                    <a class="page-link"
+                                       asp-action="Index"
+                                       asp-route-page="@i"
+                                       asp-route-pageSize="@Model.PageSize"
+                                       asp-route-searchTerm="@Model.SearchTerm"
+                                       aria-current="@(i == Model.CurrentPage ? "page" : null)">@i</a>
+                                </li>
+                            }
+                            @if (Model.CurrentPage < (Model.TotalItems / Model.PageSize + (Model.TotalItems % Model.PageSize > 0 ? 1 : 0)) - 2)
+                            {
+                                <li class="page-item disabled">
+                                    <span class="page-link">...</span>
+                                </li>
+                            }
+                            @if (Model.TotalItems > Model.PageSize)
+                            {
+                                <li class="page-item @(Model.CurrentPage == (Model.TotalItems / Model.PageSize + (Model.TotalItems % Model.PageSize > 0 ? 1 : 0)) ? "active" : "")">
+                                    <a class="page-link"
+                                       asp-action="Index"
+                                       asp-route-page="@(Model.TotalItems / Model.PageSize + (Model.TotalItems % Model.PageSize > 0 ? 1 : 0))"
+                                       asp-route-pageSize="@Model.PageSize"
+                                       asp-route-searchTerm="@Model.SearchTerm"
+                                       aria-current="@(Model.CurrentPage == (Model.TotalItems / Model.PageSize + (Model.TotalItems % Model.PageSize > 0 ? 1 : 0)) ? "page" : null)">@(Model.TotalItems / Model.PageSize + (Model.TotalItems % Model.PageSize > 0 ? 1 : 0))</a>
+                                </li>
+                            }
+                            <li class="page-item @(Model.CurrentPage == (Model.TotalItems / Model.PageSize + (Model.TotalItems % Model.PageSize > 0 ? 1 : 0)) ? "disabled" : "")">
+                                <a class="page-link"
+                                   asp-action="Index"
+                                   asp-route-page="@(Model.CurrentPage + 1)"
+                                   asp-route-pageSize="@Model.PageSize"
+                                   asp-route-searchTerm="@Model.SearchTerm"
+                                   aria-label="الصفحة التالية">
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </form>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+    <!-- أضف مكتبة Fancybox -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // تهيئة Fancybox
+            $('[data-fancybox="qr-gallery"]').fancybox({
+                buttons: [
+                    "zoom",
+                    "share",
+                    "slideShow",
+                    "fullScreen",
+                    "download",
+                    "thumbs",
+                    "close"
+                ],
+                animationEffect: "zoom-in-out",
+                transitionEffect: "tube"
+            });
+        });
+    </script>
+}

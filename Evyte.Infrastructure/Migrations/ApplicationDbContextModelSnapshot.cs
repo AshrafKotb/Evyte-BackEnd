@@ -89,6 +89,9 @@ namespace Evyte.Infrastructure.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<int>("UserType")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -310,9 +313,6 @@ namespace Evyte.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -349,12 +349,9 @@ namespace Evyte.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
-
                     b.HasIndex("DesignId");
 
-                    b.HasIndex("RequestDataId")
-                        .IsUnique();
+                    b.HasIndex("RequestDataId");
 
                     b.HasIndex("UserId");
 
@@ -645,10 +642,6 @@ namespace Evyte.Infrastructure.Migrations
 
             modelBuilder.Entity("Evyte.Domain.Entities.Request", b =>
                 {
-                    b.HasOne("Evyte.Domain.Entities.ApplicationUser", null)
-                        .WithMany("Requests")
-                        .HasForeignKey("ApplicationUserId");
-
                     b.HasOne("Evyte.Domain.Entities.Design", "Design")
                         .WithMany("Requests")
                         .HasForeignKey("DesignId")
@@ -656,15 +649,15 @@ namespace Evyte.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("Evyte.Domain.Entities.RequestData", "RequestData")
-                        .WithOne()
-                        .HasForeignKey("Evyte.Domain.Entities.Request", "RequestDataId")
+                        .WithMany()
+                        .HasForeignKey("RequestDataId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Evyte.Domain.Entities.ApplicationUser", "User")
-                        .WithMany()
+                        .WithMany("Requests")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Design");

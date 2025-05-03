@@ -1,4 +1,13 @@
 $(document).ready(function () {
+    // Check if SweetAlert2 and confetti are loaded
+    if (typeof Swal === 'undefined') {
+        console.error('SweetAlert2 is not loaded. Please check _Layout.cshtml.');
+        return;
+    }
+    if (typeof confetti === 'undefined') {
+        console.warn('canvas-confetti is not loaded. Confetti effect will be skipped.');
+    }
+
     // Initialize form validation
     $("#weddingForm").validate({
         rules: {
@@ -40,15 +49,11 @@ $(document).ready(function () {
         errorElement: "span",
         errorClass: "text-red-500 text-sm mt-1 block",
         errorPlacement: function (error, element) {
-            // وضع رسالة الخطأ بعد الحقل أو المجموعة
             if (element.is(":file")) {
-                // بالنسبة للحقول من نوع file، حط الخطأ بعد div المعاينة
                 error.insertAfter(element.next(".image-preview, .image-preview-grid"));
             } else if (element.closest(".input-group").length) {
-                // بالنسبة للحقول داخل input-group، حط الخطأ بعد المجموعة
                 error.insertAfter(element.closest(".input-group"));
             } else {
-                // الحقول العادية، حط الخطأ بعد الحقل مباشرة
                 error.insertAfter(element);
             }
         },
@@ -64,7 +69,7 @@ $(document).ready(function () {
         }
     });
 
-    // URL validation for social media and location fields (optional but must be valid if provided)
+    // URL validation for social media and location fields
     const urlInputs = document.querySelectorAll('input[type="url"]');
     urlInputs.forEach(input => {
         input.addEventListener('input', function () {
@@ -81,7 +86,7 @@ $(document).ready(function () {
     fileInputs.forEach(id => {
         $(`#${id}`).on('change', function (e) {
             const previewContainer = $(`#${id}Preview`);
-            previewContainer.empty(); // إفراغ المعاينة القديمة
+            previewContainer.empty();
             const files = e.target.files;
             if (files && files.length > 0) {
                 for (let file of files) {
@@ -108,64 +113,165 @@ $(document).ready(function () {
                 return;
             }
 
-            e.preventDefault(); // Prevent default form submission
+            e.preventDefault();
             const submitButton = $(this).find('.btn-primary');
             submitButton.prop('disabled', true).addClass('animate-spin');
             submitButton.html('<i class="fas fa-spinner fa-spin ml-2"></i> جاري الإرسال...');
 
-            // Show loading overlay
             $("#loadingOverlay").removeClass("hidden");
 
-            // Prepare form data for AJAX
             const formData = new FormData(this);
 
-            // Send AJAX request
-            $.ajax({
-                url: $(this).attr("action"),
-                type: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
-                headers: {
-                    "X-Requested-With": "XMLHttpRequest" // Ensure controller detects AJAX
-                },
-                success: function (response) {
-                    // Hide loading overlay
-                    $("#loadingOverlay").addClass("hidden");
-                    submitButton.prop('disabled', false).removeClass('animate-spin');
-                    submitButton.html('<i class="fas fa-paper-plane ml-2"></i> إرسال الطلب');
+            try {
+                $.ajax({
+                    url: $(this).attr("action"),
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        "X-Requested-With": "XMLHttpRequest"
+                    },
+                    success: function (response) {
+                        console.log("Success response:", response);
+                        $("#loadingOverlay").addClass("hidden");
+                        submitButton.prop('disabled', false).removeClass('animate-spin');
+                        submitButton.html('<i class="fas fa-paper-plane ml-2"></i> إرسال الطلب');
 
-                    if (response.success) {
-                        // Populate success modal with URLs
-                        $("#invitationUrl").attr("href", response.invitationUrl).text(response.invitationUrl);
-                        $("#qrCodeUrl").attr("href", response.qrCodeUrl).text(response.qrCodeUrl);
+                        if (response.success) {
+                            Swal.fire({
+                                title: '<i class="fas fa-party-horn mr-2"></i> تم بنجاح!',
+                                html: `
+                                    <div class="text-right">
+                                        <p class="text-lg font-medium text-gray-700 mb-4">تم إنشاء موقع زفافك بنجاح! شاركه مع ضيوفك الآن.</p>
+                                        <p class="mb-2"><strong>رابط الدعوة:</strong> 
+                                            <a href="${response.invitationUrl}" target="_blank" class="text-purple-600 hover:text-purple-800 transition-colors duration-200">${response.invitationUrl}</a>
+                                        </p>
+                                        <p class="mb-2"><strong>رمز الاستجابة السريعة:</strong></p>
+                                        <div class="flex justify-center">
+                                            <img src="${response.qrCodeUrl}" alt="QR Code" class="w-40 h-40 object-contain bg-white p-2 rounded-lg shadow-md" onerror="this.src='/images/default-qr.png'" />
+                                        </div>
+                                    </div>
+                                `,
+                                icon: "success",
+                                confirmButtonText: "الصفحة الرئيسية",
+                                customClass: {
+                                    popup: 'swal-custom-popup',
+                                    title: 'text-xl font-bold text-gray-800',
+                                    htmlContainer: 'text-base',
+                                    confirmButton: 'btn btn-primary px-5 py-2 text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 rounded-md shadow-md'
+                                },
+                                buttonsStyling: false,
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                width: '28rem',
+                                padding: '1.5rem',
+                                backdrop: 'rgba(0,0,0,0.6)',
+                                showClass: { popup: 'animate__animated animate__fadeIn' },
+                                hideClass: { popup: 'animate__animated animate__fadeOut' }
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    console.log("Redirecting to Home/Index");
+                                    window.location.href = response.redirectUrl || "/Home/Index";
+                                }
+                            });
 
-                        // Show success modal
-                        $("#successModal").modal("show");
+                            if (typeof confetti !== 'undefined') {
+                                confetti({
+                                    particleCount: 150,
+                                    spread: 70,
+                                    origin: { y: 0.6 },
+                                    colors: ['#7c3aed', '#f472b6', '#facc15', '#a78bfa']
+                                });
+                            }
+                        } else {
+                            Swal.fire({
+                                title: "حدث خطأ",
+                                html: `<p class="text-lg font-medium text-gray-700">${response.message || "حدث خطأ غير متوقع."}</p>`,
+                                icon: "error",
+                                confirmButtonText: "حسنًا",
+                                customClass: {
+                                    popup: 'swal-custom-popup',
+                                    title: 'text-xl font-bold text-gray-800',
+                                    htmlContainer: 'text-base',
+                                    confirmButton: 'btn btn-primary px-5 py-2 text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 rounded-md shadow-md'
+                                },
+                                buttonsStyling: false,
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                width: '28rem',
+                                padding: '1.5rem',
+                                backdrop: 'rgba(0,0,0,0.6)',
+                                showClass: { popup: 'animate__animated animate__fadeIn' },
+                                hideClass: { popup: 'animate__animated animate__fadeOut' }
+                            });
+                        }
+                    },
+                    error: function (xhr) {
+                        console.log("Error response:", xhr);
+                        $("#loadingOverlay").addClass("hidden");
+                        submitButton.prop('disabled', false).removeClass('animate-spin');
+                        submitButton.html('<i class="fas fa-paper-plane ml-2"></i> إرسال الطلب');
 
-                        // Trigger confetti animation
-                        confetti({
-                            particleCount: 100,
-                            spread: 70,
-                            origin: { y: 0.6 },
-                            colors: ['#7c3aed', '#f472b6', '#facc15']
+                        let errorMessage = "حدث خطأ غير متوقع. يرجى المحاولة لاحقًا.";
+                        if (xhr.responseJSON) {
+                            if (xhr.responseJSON.message) {
+                                errorMessage = xhr.responseJSON.message;
+                            } else if (xhr.responseJSON.errors) {
+                                errorMessage = Object.values(xhr.responseJSON.errors)
+                                    .flat()
+                                    .join("<br>");
+                            }
+                        }
+
+                        Swal.fire({
+                            title: "حدث خطأ",
+                            html: `<p class="text-lg font-medium text-gray-700">${errorMessage}</p>`,
+                            icon: "error",
+                            confirmButtonText: "حسنًا",
+                            customClass: {
+                                popup: 'swal-custom-popup',
+                                title: 'text-xl font-bold text-gray-800',
+                                htmlContainer: 'text-base',
+                                confirmButton: 'btn btn-primary px-5 py-2 text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 rounded-md shadow-md'
+                            },
+                            buttonsStyling: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            width: '28rem',
+                            padding: '1.5rem',
+                            backdrop: 'rgba(0,0,0,0.6)',
+                            showClass: { popup: 'animate__animated animate__fadeIn' },
+                            hideClass: { popup: 'animate__animated animate__fadeOut' }
                         });
+                    },
+                    complete: function () {
+                        console.log("AJAX request completed, ensuring loadingOverlay is hidden");
+                        $("#loadingOverlay").addClass("hidden");
                     }
-                },
-                error: function (xhr) {
-                    // Hide loading overlay
-                    $("#loadingOverlay").addClass("hidden");
-                    submitButton.prop('disabled', false).removeClass('animate-spin');
-                    submitButton.html('<i class="fas fa-paper-plane ml-2"></i> إرسال الطلب');
-
-                    // Show error modal
-                    const errorMessage = xhr.responseJSON && xhr.responseJSON.message
-                        ? xhr.responseJSON.message
-                        : "حدث خطأ غير متوقع. يرجى المحاولة لاحقًا.";
-                    $("#errorMessage").text(errorMessage);
-                    $("#errorModal").modal("show");
-                }
-            });
+                });
+            } catch (err) {
+                console.error("AJAX error:", err);
+                $("#loadingOverlay").addClass("hidden");
+                submitButton.prop('disabled', false).removeClass('animate-spin');
+                submitButton.html('<i class="fas fa-paper-plane ml-2"></i> إرسال الطلب');
+                Swal.fire({
+                    title: "خطأ غير متوقع",
+                    html: "<p class='text-lg font-medium text-gray-700'>حدث خطأ أثناء معالجة الطلب. يرجى المحاولة لاحقًا.</p>",
+                    icon: "error",
+                    confirmButtonText: "حسنًا",
+                    customClass: {
+                        popup: 'swal-custom-popup',
+                        title: 'text-xl font-bold text-gray-800',
+                        htmlContainer: 'text-base',
+                        confirmButton: 'btn btn-primary px-5 py-2 text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 rounded-md shadow-md'
+                    },
+                    buttonsStyling: false,
+                    width: '28rem',
+                    padding: '1.5rem',
+                    backdrop: 'rgba(0,0,0,0.6)'
+                });
+            }
         });
     }
 

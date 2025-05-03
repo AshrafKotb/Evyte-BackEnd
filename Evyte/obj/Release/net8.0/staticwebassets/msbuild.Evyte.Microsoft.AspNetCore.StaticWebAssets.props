@@ -21222,6 +21222,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\contact-info.css'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Customers.css'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Evyte</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Evyte</BasePath>
+      <RelativePath>css/Customers.css</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>z7cgy6bvdw</Fingerprint>
+      <Integrity>IbSAnRDxqm2ozIM6BesYmqw3bJPEeFKc2JR1H5elXFc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Customers.css'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\evyte.css'))">
       <SourceType>Package</SourceType>
       <SourceId>Evyte</SourceId>
@@ -21342,8 +21360,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>skjgob3u1g</Fingerprint>
-      <Integrity>5GQujsG8jjnIEcSaBgjte4HX08InS5QaX6+t26Vn9mY=</Integrity>
+      <Fingerprint>d2w4daxsnj</Fingerprint>
+      <Integrity>VSAOLCsrtFA7lRiLBDMbOiH/mtPEuhYTB16eu5Z15IM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</OriginalItemSpec>
@@ -21774,8 +21792,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>xozaj1g5hr</Fingerprint>
-      <Integrity>z1UxFgUCpoaBGJ5yRT/+MipBqPzvnemSty5HL9pCxTo=</Integrity>
+      <Fingerprint>wysanrqdkr</Fingerprint>
+      <Integrity>2Kt6XRy1HUG9LgiA0Ym27W+5jdcXnXq4T44si22XJUA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</OriginalItemSpec>

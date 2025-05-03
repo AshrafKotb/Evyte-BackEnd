@@ -1,8 +1,10 @@
-﻿using Evyte.ApplicationCore.Models.ViewModels;
+﻿using Evyte.ApplicationCore.Models.Helper;
+using Evyte.ApplicationCore.Models.ViewModels;
 using Evyte.ApplicationCore.Services.Files;
 using Evyte.ApplicationCore.Services.Mailing;
 using Evyte.ApplicationCore.Services.Repository;
 using Evyte.Domain.Entities;
+using Evyte.Domain.Enums;
 using Microsoft.AspNetCore.Identity;
 using QRCoder;
 using System;
@@ -55,10 +57,13 @@ public class InvitationService : IInvitationService
                 UserName = dto.Email,
                 Email = dto.Email,
                 PhoneNumber = dto.PhoneNumber,
+                UserType = UserType.User,
                 FullName = dto.FullName,
                 JoinDate = DateTime.UtcNow
             };
             var result = await _userManager.CreateAsync(user);
+            await _userManager.AddToRoleAsync(user, RoleName.User);
+
             if (!result.Succeeded)
             {
                 throw new Exception("Failed to create user");
@@ -162,18 +167,18 @@ public class InvitationService : IInvitationService
             }
         }
 
-        // Step 6: Send email
-        var emailBody = $@"
-                <h2>Your Invitation is Ready!</h2>
-                <p>Dear {dto.FullName},</p>
-                <p>Your invitation has been created successfully. You can view it here:</p>
-                <p><a href='{request.DomainUrl}'>{request.DomainUrl}</a></p>
-                <p>Thank you for choosing our service!</p>";
-        var emailSent = await _mailingService.SendEmailAsync(dto.Email, "Your Invitation Link", emailBody);
-        if (!emailSent)
-        {
-            Console.WriteLine("Failed to send email notification");
-        }
+        //// Step 6: Send email
+        //var emailBody = $@"
+        //        <h2>Your Invitation is Ready!</h2>
+        //        <p>Dear {dto.FullName},</p>
+        //        <p>Your invitation has been created successfully. You can view it here:</p>
+        //        <p><a href='{request.DomainUrl}'>{request.DomainUrl}</a></p>
+        //        <p>Thank you for choosing our service!</p>";
+        //var emailSent = await _mailingService.SendEmailAsync(dto.Email, "Your Invitation Link", emailBody);
+        //if (!emailSent)
+        //{
+        //    Console.WriteLine("Failed to send email notification");
+        //}
 
         return (request.DomainUrl, qrCodeUrl);
     }

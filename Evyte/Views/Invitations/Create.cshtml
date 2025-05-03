@@ -218,49 +218,8 @@
             <p class="text-gray-300">لحظات قليلة وستكون دعوتك جاهزة بأناقة وتميز!</p>
         </div>
     </div>
-
-    <!-- نافذة النجاح -->
-    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true" dir="rtl">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-xl">
-                <div class="modal-header border-0 bg-gradient-to-r from-purple-600 to-pink-500 text-white">
-                    <h5 class="modal-title font-semibold">تم بنجاح!</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-gray-700">
-                    <p class="text-lg">تم إنشاء موقع زفافك بنجاح! يمكنك مشاركته مع ضيوفك الآن.</p>
-                    <div class="mt-4">
-                        <p><strong>رابط الدعوة:</strong> <a id="invitationUrl" href="#" target="_blank" class="text-purple-600 hover:underline"></a></p>
-                        <p><strong>رابط رمز الاستجابة السريعة:</strong> <a id="qrCodeUrl" href="#" target="_blank" class="text-purple-600 hover:underline"></a></p>
-                    </div>
-                </div>
-                <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-primary px-4 py-2" data-bs-dismiss="modal">إغلاق</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- نافذة الخطأ -->
-    <div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true" dir="rtl">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-xl">
-                <div class="modal-header border-0 bg-gradient-to-r from-red-600 to-red-400 text-white">
-                    <h5 class="modal-title font-semibold">حدث خطأ</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-gray-700">
-                    <p class="text-lg">عذرًا، حدث خطأ أثناء إنشاء موقع الزفاف. يرجى المحاولة مرة أخرى.</p>
-                    <p id="errorMessage" class="text-red-500 mt-2"></p>
-                </div>
-                <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-primary px-4 py-2" data-bs-dismiss="modal">إغلاق</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
 
 @section Scripts {
-        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 }

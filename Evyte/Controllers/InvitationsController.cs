@@ -34,26 +34,29 @@ namespace Evyte.ApplicationCore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateInvitationVM dto)
         {
+
             if (!ModelState.IsValid)
             {
-                return View(dto);
+                var errors = ModelState.ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                );
+                return Json(new { success = false, message = "Validation failed", errors });
             }
 
             try
             {
-                // Call the service to process the invitation
                 var result = await _invitationService.CreateInvitationAsync(dto);
-                ViewData["Result"] = new
+                return Json(new
                 {
-                    InvitationUrl = result.InvitationUrl,
-                    QrCodeUrl = result.QrCodeUrl
-                };
-                return View(dto);
+                    success = true,
+                    invitationUrl = result.InvitationUrl,
+                    qrCodeUrl = result.QrCodeUrl
+                });
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", $"An error occurred: {ex.Message}");
-                return View(dto);
+                return Json(new { success = false, message = $"An error occurred: {ex.Message}" });
             }
         }
     }
