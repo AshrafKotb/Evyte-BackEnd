@@ -1184,6 +1184,8 @@ wwwroot\css\general-info.css
 wwwroot\css\header-sidebar.css
 wwwroot\css\layout.css
 wwwroot\css\login-style.css
+wwwroot\css\Requests\details.css
+wwwroot\css\Requests\index.css
 wwwroot\css\site.css
 wwwroot\css\splash-screen.css
 wwwroot\css\terms-and-conditions.css

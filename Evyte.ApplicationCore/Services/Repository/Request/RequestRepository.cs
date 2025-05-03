@@ -25,7 +25,7 @@ namespace Evyte.ApplicationCore.Services.Repository
 
         public async Task<Request> GetRequestByIdAsync(Guid id)
         {
-            return await _context.Requests
+            return await _context.Requests.Include(x => x.User).Include(x => x.RequestData).Include(x => x.GalleryPhotos).Include(x => x.Design)
                 .FirstOrDefaultAsync(r => r.Id == id && !r.IsDeleted);
         }
 
@@ -44,7 +44,8 @@ namespace Evyte.ApplicationCore.Services.Repository
 
         public async Task DeleteRequestAsync(Guid id)
         {
-            var request = await _context.Requests.FirstOrDefaultAsync(r => r.Id == id);
+            var request = await _context.Requests.Include(x => x.User).Include(x => x.RequestData).Include(x => x.GalleryPhotos).Include(x => x.Design)
+                .FirstOrDefaultAsync(r => r.Id == id);
             if (request != null)
             {
                 request.IsDeleted = true;
@@ -54,7 +55,7 @@ namespace Evyte.ApplicationCore.Services.Repository
         }
         public async Task<PaginatedResult<Request>> GetRequestsPaginatedAsync(int pageNumber, int pageSize, string searchTerm = "")
         {
-            var query = _context.Requests
+            var query = _context.Requests.Include(x => x.User).Include(x => x.RequestData).Include(x => x.GalleryPhotos).Include(x => x.Design)
                 .Where(r => !r.IsDeleted);
 
             if (!string.IsNullOrEmpty(searchTerm))
@@ -79,16 +80,16 @@ namespace Evyte.ApplicationCore.Services.Repository
         }
         public async Task<PaginatedResult<Request>> GetRequestsByUserIdAsync(string userId)
         {
-            var query = _context.Requests
+            var query = _context.Requests.Include(x => x.User).Include(x => x.RequestData).Include(x => x.GalleryPhotos).Include(x => x.Design)
                 .Where(r => !r.IsDeleted && r.UserId == userId);
 
-       
+
             var totalCount = await query.CountAsync();
 
 
             var requests = await query.ToListAsync();
 
-            
+
             return new PaginatedResult<Request>
             {
                 Items = requests,

@@ -1,0 +1,144 @@
+@model Request
+@{
+    ViewData["Title"] = "تفاصيل الطلب";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>تفاصيل الطلب</h1>
+</section>
+
+<section class="content">
+    <div class="box box-primary details-container">
+        <div class="box-header with-border">
+            <h3 class="box-title">معلومات الطلب</h3>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>معلومات المستخدم</h4>
+                    <p><strong>الاسم:</strong> @Model.User.FullName</p>
+                    <p><strong>رقم الهاتف:</strong> @Model.User.PhoneNumber</p>
+                    <p><strong>البريد الإلكتروني:</strong> @Model.User.Email</p>
+                </div>
+                <div class="col-md-6">
+                    <h4>تفاصيل الحدث</h4>
+                    <p><strong>التاريخ:</strong> @Model.RequestData.EventDate.ToString("yyyy-MM-dd")</p>
+                    <p><strong>الوقت:</strong> @Model.RequestData.EventTimeFrom - @Model.RequestData.EventTimeTo</p>
+                    <p><strong>اسم المكان:</strong> @Model.RequestData.EventPlaceName</p>
+                    <p><strong>العنوان:</strong> @Model.RequestData.EventAddress</p>
+                    <p><strong>رابط الموقع:</strong> <a href="@Model.RequestData.LocationUrl" target="_blank">@Model.RequestData.LocationUrl</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>معلومات العريس</h4>
+                    <p><strong>الاسم:</strong> @Model.RequestData.GroomName</p>
+                    <img src="@Model.RequestData.GroomImageUrl" alt="Groom" class="img-thumbnail detail-img" onerror="this.src='/images/default-user.png'" />
+                    <p><strong>فيسبوك:</strong> <a href="@Model.RequestData.GroomFacebook" target="_blank">@Model.RequestData.GroomFacebook</a></p>
+                    <p><strong>إنستغرام:</strong> <a href="@Model.RequestData.GroomInstagram" target="_blank">@Model.RequestData.GroomInstagram</a></p>
+                    <p><strong>إكس:</strong> <a href="@Model.RequestData.GroomX" target="_blank">@Model.RequestData.GroomX</a></p>
+                </div>
+                <div class="col-md-6">
+                    <h4>معلومات العروس</h4>
+                    <p><strong>الاسم:</strong> @Model.RequestData.BrideName</p>
+                    <img src="@Model.RequestData.BrideImageUrl" alt="Bride" class="img-thumbnail detail-img" onerror="this.src='/images/default-user.png'" />
+                    <p><strong>فيسبوك:</strong> <a href="@Model.RequestData.BrideFacebook" target="_blank">@Model.RequestData.BrideFacebook</a></p>
+                    <p><strong>إنستغرام:</strong> <a href="@Model.RequestData.BrideInstagram" target="_blank">@Model.RequestData.BrideInstagram</a></p>
+                    <p><strong>إكس:</strong> <a href="@Model.RequestData.BrideX" target="_blank">@Model.RequestData.BrideX</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>صور الحدث</h4>
+                    <div class="event-images">
+                        <div class="image-card">
+                            <h5>صورة المكان</h5>
+                            <img src="@Model.RequestData.EventPlaceImageUrl" alt="Event Place" class="img-fluid" onerror="this.src='/images/default-image.png'" />
+                        </div>
+                        <div class="image-card">
+                            <h5>صورة السلايدر الرئيسية</h5>
+                            <img src="@Model.RequestData.MainSliderImageUrl" alt="Main Slider" class="img-fluid" onerror="this.src='/images/default-image.png'" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>معرض الصور</h4>
+                    <div class="gallery-grid">
+                        @if (Model.GalleryPhotos != null && Model.GalleryPhotos.Any())
+                        {
+                            foreach (var photo in Model.GalleryPhotos)
+                            {
+                                <div class="gallery-item">
+                                    <img src="@photo.PhotoUrl" alt="Gallery Photo" class="gallery-img" onerror="this.src='/images/default-image.png'" />
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <p>لا توجد صور في المعرض.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>معلومات إضافية</h4>
+                    <p><strong>رابط الدعوة:</strong> <a href="@Model.DomainUrl" target="_blank">@Model.DomainUrl</a></p>
+                    <p><strong>رمز الاستجابة السريعة:</strong></p>
+                    <img src="@Model.QrCodeImageUrl" alt="QR Code" class="qr-code" onerror="this.src='/images/default-qr.png'" />
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"><i class="fa fa-edit"></i> تعديل</a>
+            <a asp-action="Index" class="btn btn-default">رجوع</a>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/requests/details.css" />
+}
+<script type="text/javascript">
+    var gk_isXlsx = false;
+    var gk_xlsxFileLookup = {};
+    var gk_fileData = {};
+    function filledCell(cell) {
+      return cell !== '' && cell != null;
+    }
+    function loadFileData(filename) {
+    if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+        try {
+            var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+            var firstSheetName = workbook.SheetNames[0];
+            var worksheet = workbook.Sheets[firstSheetName];
+
+            // Convert sheet to JSON to filter blank rows
+            var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+            // Filter out blank rows (rows where all cells are empty, null, or undefined)
+            var filteredData = jsonData.filter(row => row.some(filledCell));
+
+            // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+            var headerRowIndex = filteredData.findIndex((row, index) =>
+              row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+            );
+            // Fallback
+            if (headerRowIndex === -1 || headerRowIndex > 25) {
+              headerRowIndex = 0;
+            }
+
+            // Convert filtered JSON back to CSV
+            var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+            csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+            return csv;
+        } catch (e) {
+            console.error(e);
+            return "";
+        }
+    }
+    return gk_fileData[filename] || "";
+    }
+</script>

@@ -114311,6 +114311,170 @@
       ]
     },
     {
+      "Route": "css/Requests/details.1cswfwrgp1.css",
+      "AssetFile": "css/Requests/details.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1931"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cfbz/KfLuy0wlAc4IjlrS90+VUqs5Fd7SuZoUDVYMas=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 03 May 2025 08:41:53 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1cswfwrgp1"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-cfbz/KfLuy0wlAc4IjlrS90+VUqs5Fd7SuZoUDVYMas="
+        },
+        {
+          "Name": "label",
+          "Value": "css/Requests/details.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/Requests/details.css",
+      "AssetFile": "css/Requests/details.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1931"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cfbz/KfLuy0wlAc4IjlrS90+VUqs5Fd7SuZoUDVYMas=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 03 May 2025 08:41:53 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-cfbz/KfLuy0wlAc4IjlrS90+VUqs5Fd7SuZoUDVYMas="
+        }
+      ]
+    },
+    {
+      "Route": "css/Requests/index.css",
+      "AssetFile": "css/Requests/index.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7840"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dDLP97Z9u8PAaSV26YwhfOh3Xki+EWlAR1ueISyJzzg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 03 May 2025 09:40:52 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dDLP97Z9u8PAaSV26YwhfOh3Xki+EWlAR1ueISyJzzg="
+        }
+      ]
+    },
+    {
+      "Route": "css/Requests/index.olktwc3f5c.css",
+      "AssetFile": "css/Requests/index.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7840"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dDLP97Z9u8PAaSV26YwhfOh3Xki+EWlAR1ueISyJzzg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 03 May 2025 09:40:52 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "olktwc3f5c"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-dDLP97Z9u8PAaSV26YwhfOh3Xki+EWlAR1ueISyJzzg="
+        },
+        {
+          "Name": "label",
+          "Value": "css/Requests/index.css"
+        }
+      ]
+    },
+    {
       "Route": "css/categories.73wzgdjgdh.css",
       "AssetFile": "css/categories.css",
       "Selectors": [],

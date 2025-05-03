@@ -14232,6 +14232,30 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-hDFNUC0OIXTrvYX1/8mkwqkDhgNT3shjv3KcaIiOiq8="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"8000"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022hDFNUC0OIXTrvYX1/8mkwqkDhgNT3shjv3KcaIiOiq8=\u0022"},{"Name":"Last-Modified","Value":"Tue, 29 Apr 2025 06:13:03 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Evyte/css/Requests/details.1cswfwrgp1.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Requests\details.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"1cswfwrgp1"},{"Name":"integrity","Value":"sha256-cfbz/KfLuy0wlAc4IjlrS90\u002BVUqs5Fd7SuZoUDVYMas="},{"Name":"label","Value":"_content/Evyte/css/Requests/details.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1931"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022cfbz/KfLuy0wlAc4IjlrS90\u002BVUqs5Fd7SuZoUDVYMas=\u0022"},{"Name":"Last-Modified","Value":"Sat, 03 May 2025 08:41:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Evyte/css/Requests/details.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Requests\details.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-cfbz/KfLuy0wlAc4IjlrS90\u002BVUqs5Fd7SuZoUDVYMas="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1931"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022cfbz/KfLuy0wlAc4IjlrS90\u002BVUqs5Fd7SuZoUDVYMas=\u0022"},{"Name":"Last-Modified","Value":"Sat, 03 May 2025 08:41:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Evyte/css/Requests/index.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Requests\index.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-dDLP97Z9u8PAaSV26YwhfOh3Xki\u002BEWlAR1ueISyJzzg="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"7840"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022dDLP97Z9u8PAaSV26YwhfOh3Xki\u002BEWlAR1ueISyJzzg=\u0022"},{"Name":"Last-Modified","Value":"Sat, 03 May 2025 09:40:52 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Evyte/css/Requests/index.olktwc3f5c.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Requests\index.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"olktwc3f5c"},{"Name":"integrity","Value":"sha256-dDLP97Z9u8PAaSV26YwhfOh3Xki\u002BEWlAR1ueISyJzzg="},{"Name":"label","Value":"_content/Evyte/css/Requests/index.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"7840"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022dDLP97Z9u8PAaSV26YwhfOh3Xki\u002BEWlAR1ueISyJzzg=\u0022"},{"Name":"Last-Modified","Value":"Sat, 03 May 2025 09:40:52 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/css/site.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

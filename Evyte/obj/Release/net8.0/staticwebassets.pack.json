@@ -5577,6 +5577,14 @@
       "PackagePath": "staticwebassets\\css\\Customers.css"
     },
     {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\Requests\\details.css",
+      "PackagePath": "staticwebassets\\css\\Requests\\details.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\Requests\\index.css",
+      "PackagePath": "staticwebassets\\css\\Requests\\index.css"
+    },
+    {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\categories.css",
       "PackagePath": "staticwebassets\\css\\categories.css"
     },
