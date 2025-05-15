@@ -1467,3 +1467,5 @@ wwwroot\Sites\demo3\webfonts\fa-solid-900.ttf
 wwwroot\Sites\demo3\webfonts\fa-solid-900.woff2
 wwwroot\Sites\demo3\webfonts\fa-v4compatibility.ttf
 wwwroot\Sites\demo3\webfonts\fa-v4compatibility.woff2
+wwwroot\templates\test\css\styles.css
+wwwroot\templates\test\css\styles2.css

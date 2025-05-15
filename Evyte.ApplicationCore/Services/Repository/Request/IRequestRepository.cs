@@ -13,5 +13,7 @@ namespace Evyte.ApplicationCore.Services.Repository
         Task DeleteRequestAsync(Guid id);
         Task<PaginatedResult<Request>> GetRequestsPaginatedAsync(int pageNumber, int pageSize, string searchTerm = "");
         Task<PaginatedResult<Request>> GetRequestsByUserIdAsync(string userId);
+
+        Task<Request> GetRequestBySlugAsync(string slug);
     }
 }

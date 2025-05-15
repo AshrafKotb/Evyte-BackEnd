@@ -232,8 +232,14 @@
             @foreach (var design in Model.Designs)
             {
                 <div class="design-card text-center" data-aos="flip-up" data-aos-delay="100">
-                    @* <img src="@design.PreviewImageUrl" alt="@design.NameAr" class="mb-0"> *@
-                    <img src="~/Images/Website/photo5.jpg" alt="@design.NameAr" class="mb-0">
+                    @if (!string.IsNullOrWhiteSpace(design.PreviewImageUrl))
+                    {
+                        <img src="@design.PreviewImageUrl" alt="@design.NameAr" class="mb-0">
+                    }
+                    else
+                    {
+                        <img src="~/Images/Website/photo5.jpg" alt="@design.NameAr" class="mb-0">
+                    }
                     <div class="design-card-content">
                         @if (!string.IsNullOrEmpty(design.WebsiteDemoUrl))
                         {

@@ -96,5 +96,14 @@ namespace Evyte.ApplicationCore.Services.Repository
                 TotalCount = totalCount,
             };
         }
+        public async Task<Request> GetRequestBySlugAsync(string slug)
+        {
+            return await _context.Requests
+                .Include(r => r.RequestData)
+                .Include(r => r.User)
+                .Include(r => r.Design)
+                .Include(r => r.GalleryPhotos)
+                .FirstOrDefaultAsync(r => r.WeddingSlug == slug);
+        }
     }
 }

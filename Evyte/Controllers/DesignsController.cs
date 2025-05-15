@@ -8,6 +8,7 @@ using System;
 using System.Threading.Tasks;
 using System.Linq;
 using Evyte.Infrastructure;
+using Evyte.Domain.Entities;
 
 namespace Evyte.Controllers
 {
@@ -152,5 +153,50 @@ namespace Evyte.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+
+
+        [Route("/design/preview/{templateName}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Preview(string templateName)
+        {
+            // ??? ??????? ????? ??? TemplateName
+            var design = await _designService.GetDesignByTemplateNameAsync(templateName);
+            if (design == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            // ????? ?????? ?????
+            var dummyRequest = new Request
+            {
+                WeddingSlug = "preview",
+                Design = design,
+                RequestData = new RequestData
+                {
+                    GroomName = "???? ????",
+                    BrideName = "???? ????",
+                    EventDate = DateTime.Now.AddDays(30),
+                    EventTimeFrom = TimeSpan.FromHours(18),
+                    EventTimeTo = TimeSpan.FromHours(23),
+                    EventPlaceName = "???? ?????",
+                    EventAddress = "???????? ???",
+                    MainSliderImageUrl = design.WebsiteDemoUrl ?? "/images/default-slider.jpg",
+                    EventPlaceImageUrl = "/images/default-place.jpg",
+                    LocationUrl = "https://maps.google.com",
+                    GroomImageUrl = "/images/default-groom.jpg",
+                    BrideImageUrl = "/images/default-bride.jpg"
+                },
+                GalleryPhotos = new List<RequestGalleryPhoto>
+                {
+                    new RequestGalleryPhoto { PhotoUrl = "/images/preview/photo1.jpg" },
+                    new RequestGalleryPhoto { PhotoUrl = "/images/preview/photo2.jpg" },
+                    new RequestGalleryPhoto { PhotoUrl = "/images/preview/photo3.jpg" }
+                }
+            };
+
+            // ??? ??? Partial View ????? ??? TemplateName
+            return View($"~/Views/Shared/Designs/_{design.TemplateName}.cshtml", dummyRequest);
+        }
+
     }
 }

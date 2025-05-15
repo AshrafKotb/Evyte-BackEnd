@@ -35,4 +35,8 @@
     <ProjectReference Include="..\Evyte.ApplicationCore\Evyte.ApplicationCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\templates\test\js\" />
+  </ItemGroup>
+
 </Project>

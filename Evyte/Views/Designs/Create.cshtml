@@ -41,7 +41,15 @@
             </div>
             <span asp-validation-for="CategoryId" class="text-danger small"></span>
         </div>
-
+        <div class="form-group mb-4">
+            <label class="form-label" asp-for="TemplateName">اسم القالب</label>
+            <div class="input-group-icon">
+                <i class="fas fa-tag"></i>
+                <input asp-for="TemplateName" class="form-control text-end" placeholder="مثال: classic أو modern" />
+                <small class="form-text text-muted">يجب أن يحتوي على حروف، أرقام، أو شرطات فقط بدون مسافات (مثل classic-wedding).</small>
+            </div>
+            <span asp-validation-for="TemplateName" class="text-danger small"></span>
+        </div>
         <div class="form-group mb-4">
             <label class="form-label" asp-for="DescriptionEn"></label>
             <div class="input-group-icon">
@@ -69,16 +77,16 @@
             <span asp-validation-for="SortingNumber" class="text-danger small"></span>
         </div>
 
-        <div class="form-group mb-4">
+        @*   <div class="form-group mb-4">
             <label class="form-label" asp-for="WebsiteDemoUrl"></label>
             <div class="input-group-icon">
                 <i class="fas fa-link"></i>
                 <input asp-for="WebsiteDemoUrl" class="form-control" placeholder="Enter website demo URL">
             </div>
             <span asp-validation-for="WebsiteDemoUrl" class="text-danger small"></span>
-        </div>
+        </div> *@
 
-        @*  <div class="form-group mb-4">
+        <div class="form-group mb-4">
             <label class="form-label">صورة التصميم (اختياري)</label>
             <div class="image-upload-container">
                 <div class="mb-3">
@@ -91,7 +99,7 @@
                 </div>
             </div>
             <span asp-validation-for="Image" class="text-danger small"></span>
-        </div> *@
+        </div>
     </div>
 
     <div class="form-group">

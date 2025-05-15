@@ -29,7 +29,7 @@ namespace Evyte.Controllers
         public IActionResult Index()
         {
             if (!User.Identity.IsAuthenticated)
-                RedirectToAction("Login");
+                return RedirectToAction("Login");
             return View();
         }
         [AllowAnonymous]

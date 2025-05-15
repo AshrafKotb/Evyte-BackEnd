@@ -129,7 +129,10 @@ public class InvitationService : IInvitationService
         }
         // Step 3: Generate QR code
 
-        var DomainUrl = GenerateInvitationUrl(dto.GroomName, dto.BrideName, /*requestData.Id*/ requestData.Id);
+        //var DomainUrl = GenerateInvitationUrl(dto.GroomName, dto.BrideName, /*requestData.Id*/ requestData.Id);
+
+        var WeddingSlug = await GenerateWeddingSlug(dto.GroomName, dto.BrideName);
+        var DomainUrl = GenerateInvitationUrl(WeddingSlug);
         var (qrCodeUrl, qrCodeId) = await _qrCodeService.GenerateAndUploadQRCode(DomainUrl, "qrcodes");
         // Step 3: Create Request
         var request = new Request
@@ -141,7 +144,7 @@ public class InvitationService : IInvitationService
             QrCodeImageId = qrCodeId,
             DomainUrl = DomainUrl
         };
-
+        request.WeddingSlug = WeddingSlug;
         try
         {
             await _requestRepository.AddRequestAsync(request);
@@ -183,10 +186,28 @@ public class InvitationService : IInvitationService
         return (request.DomainUrl, qrCodeUrl);
     }
 
-    private string GenerateInvitationUrl(string groomName, string brideName, Guid requestId)
+    private string GenerateInvitationUrl(string slug)
     {
-        var groom = HttpUtility.UrlEncode(groomName.Replace(" ", "-").ToLower());
-        var bride = HttpUtility.UrlEncode(brideName.Replace(" ", "-").ToLower());
-        return $"https://yourwebsite.com/invitations/{groom}-{bride}/{requestId}";
+        //var groom = HttpUtility.UrlEncode(groomName.Replace(" ", "-").ToLower());
+        //var bride = HttpUtility.UrlEncode(brideName.Replace(" ", "-").ToLower());
+        //return $"https://yourwebsite.com/invitations/{groom}-{bride}/{requestId}";
+
+        return $"https://evyte.runasp.net/{slug}";
+    }
+    private async Task<string> GenerateWeddingSlug(string groomName, string brideName)
+    {
+        // تنظيف الأسماء: إزالة المسافات وتحويل للحروف الصغيرة
+        var cleanGroom = groomName.Trim().Replace(" ", "-").ToLower();
+        var cleanBride = brideName.Trim().Replace(" ", "-").ToLower();
+        var slug = $"{cleanGroom}-{cleanBride}";
+
+        // التحقق من التكرار
+        var existingRequest = await _requestRepository.GetRequestBySlugAsync(slug);
+        if (existingRequest != null)
+        {
+            slug = $"{slug}-{Guid.NewGuid().ToString().Substring(0, 8)}"; // إضافة جزء من الـ ID
+        }
+
+        return slug;
     }
 }

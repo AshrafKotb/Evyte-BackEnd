@@ -1,0 +1,381 @@
+﻿@model Evyte.Domain.Entities.Request
+@{
+    ViewData["Title"] = $"{Model.RequestData.GroomName} و {Model.RequestData.BrideName}";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/Sites/demo1/css/all.min.css" />
+    <link rel="stylesheet" href="~/Sites/demo1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Sites/demo1/css/slick.css" />
+    <link rel="stylesheet" href="~/Sites/demo1/css/slick-theme.css" />
+    <link rel="stylesheet" href="~/Sites/demo1/css/aos.css" />
+    <link rel="stylesheet" href="~/Sites/demo1/css/style.css" />
+</head>
+<body class="overflow-hidden">
+    <section class="loading ovhi position-fixed top-0 start-0 end-0 bottom-0 bg-dark center" id="loading">
+        <div class="d-flex flex-column justify-content-around align-items-center h-100">
+            <p class="textMainColor titleFont text-capitalize mb-0">@Model.RequestData.GroomName</p>
+            <p class="textMainColor titleFont text-capitalize mb-0">@Model.RequestData.BrideName</p>
+        </div>
+        <span class="loader"></span>
+    </section>
+
+    <div class="row gx-0">
+        <div class="col-lg-3 bgSecondColor">
+            <aside class="fixed-top text-center py-5 h-100">
+                <a href="@Url.Action("View", "Wedding", new { slug = Model.WeddingSlug })" class="logo">
+                    <img src="@Model.RequestData.MainSliderImageUrl" alt="logo image" onerror="this.src='/images/default-logo.png'" />
+                    <h6 class="my-2 textMainColor">@Model.RequestData.GroomName و @Model.RequestData.BrideName</h6>
+                    <span>@Model.RequestData.EventDate.ToString("dd.MM.yyyy")</span>
+                </a>
+
+                <ul class="list-unstyled my-5 text-capitalize">
+                    <li class="mb-2"><a href="#home" class="transition pb-1">الرئيسية</a></li>
+                    <li class="mb-2"><a href="#couple" class="transition pb-1">العروسين</a></li>
+                    <li class="mb-2"><a href="#story" class="transition pb-1">قصتنا</a></li>
+                    <li class="mb-2"><a href="#organization" class="transition pb-1">التنظيم</a></li>
+                    <li class="mb-2"><a href="#gallery" class="transition pb-1">معرض الصور</a></li>
+                    <li class="mb-2"><a href="#when-where" class="transition pb-1">المكان والزمان</a></li>
+                </ul>
+
+                <div class="text-capitalize font-sm text-muted pt-3">
+                    <p class="mb-1">@Model.RequestData.GroomName و @Model.RequestData.BrideName</p>
+                    <p>@Model.RequestData.EventDate.ToString("dd MMMM yyyy"), @Model.RequestData.EventPlaceName</p>
+                </div>
+            </aside>
+        </div>
+
+        <div class="col-lg-9">
+            <section class="position-relative overflow-hidden d-flex vh-100" id="home">
+                <div class="iconToggle cPointer d-flex m-3 position-absolute">
+                    <i class="d-none fa fa-xmark bgMainColor center rounded-circle text-white"></i>
+                    <i class="fa fa-bars bgMainColor center rounded-circle text-white"></i>
+                </div>
+
+                <div class="content h-100 flex-grow-1">
+                    <figure class="h-100 overflow-hidden center">
+                        <img src="@Model.RequestData.MainSliderImageUrl" class="w-100 h-100 object-cover" alt="Main Slider" onerror="this.src='/images/default-image.png'" />
+                        <figcaption class="w-100 text-center text-white">
+                            <h2 class="titleFont text-capitalize space2">@Model.RequestData.GroomName و @Model.RequestData.BrideName</h2>
+                            <p class="space2">@Model.RequestData.EventDate.ToString("dd MMMM, yyyy") – @Model.RequestData.EventPlaceName</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section class="my-5 py-5 twins" id="couple">
+                <div class="container">
+                    <div class="row desc g-4">
+                        <div class="col-md-6">
+                            <div class="item row shadow-sm">
+                                <div class="col-xl-3">
+                                    <figure class="rounded-circle overflow-hidden flex-shrink-0">
+                                        <img src="@Model.RequestData.BrideImageUrl" class="w-100 h-100 transition" alt="Bride" onerror="this.src='/images/default-user.png'" />
+                                    </figure>
+                                </div>
+                                <div class="col-xl-9">
+                                    <figcaption class="px-4">
+                                        <h2 class="text-capitalize">@Model.RequestData.BrideName <i class="fa-regular fa-heart textMainColor"></i></h2>
+                                        <span class="titleFont textMainColor fs-5">العروس</span>
+                                        <p class="my-3 text-muted">تفاصيل عن العروس (يمكن إضافة حقل في RequestData لاحقًا).</p>
+                                        <ul class="list-unstyled d-flex">
+                                            @if (!string.IsNullOrEmpty(Model.RequestData.BrideFacebook))
+                                            {
+                                                <li class="me-3 rounded-circle center transition"><a href="@Model.RequestData.BrideFacebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                            }
+                                            @if (!string.IsNullOrEmpty(Model.RequestData.BrideInstagram))
+                                            {
+                                                <li class="me-3 rounded-circle center transition"><a href="@Model.RequestData.BrideInstagram"><i class="fa-brands fa-instagram"></i></a></li>
+                                            }
+                                            @if (!string.IsNullOrEmpty(Model.RequestData.BrideX))
+                                            {
+                                                <li class="me-3 rounded-circle center transition"><a href="@Model.RequestData.BrideX"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                            }
+                                        </ul>
+                                    </figcaption>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="item row shadow-sm">
+                                <div class="col-xl-3">
+                                    <figure class="rounded-circle overflow-hidden flex-shrink-0">
+                                        <img src="@Model.RequestData.GroomImageUrl" class="w-100 h-100 transition" alt="Groom" onerror="this.src='/images/default-user.png'" />
+                                    </figure>
+                                </div>
+                                <div class="col-xl-9">
+                                    <figcaption class="px-4">
+                                        <h2 class="text-capitalize">@Model.RequestData.GroomName <i class="fa-regular fa-heart textMainColor"></i></h2>
+                                        <span class="titleFont textMainColor fs-5">العريس</span>
+                                        <p class="my-3 text-muted">تفاصيل عن العريس (يمكن إضافة حقل في RequestData لاحقًا).</p>
+                                        <ul class="list-unstyled d-flex">
+                                            @if (!string.IsNullOrEmpty(Model.RequestData.GroomFacebook))
+                                            {
+                                                <li class="me-3 rounded-circle center transition"><a href="@Model.RequestData.GroomFacebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                            }
+                                            @if (!string.IsNullOrEmpty(Model.RequestData.GroomInstagram))
+                                            {
+                                                <li class="me-3 rounded-circle center transition"><a href="@Model.RequestData.GroomInstagram"><i class="fa-brands fa-instagram"></i></a></li>
+                                            }
+                                            @if (!string.IsNullOrEmpty(Model.RequestData.GroomX))
+                                            {
+                                                <li class="me-3 rounded-circle center transition"><a href="@Model.RequestData.GroomX"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                            }
+                                        </ul>
+                                    </figcaption>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="my-5 countDown">
+                <div class="container-fluid px-0">
+                    <div class="title text-center">
+                        <h2 class="text-capitalize textMainColor space2">سيصبحان عائلة!</h2>
+                        <p class="space2">@Model.RequestData.EventDate.ToString("dd MMMM, yyyy") — @Model.RequestData.EventPlaceName</p>
+                    </div>
+
+                    <div class="countDownBox text-white d-flex flex-column justify-content-center">
+                        <h2 class="text-capitalize titleFont text-center space2">سنصبح عائلة بعد</h2>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="me-4 text-center">
+                                <p id="days" class="fs-1 titleFont mb-0 fw-bold"></p>
+                                <h6 class="text-capitalize fw-semibold">أيام</h6>
+                            </div>
+                            <div class="me-4 text-center">
+                                <p id="hours" class="fs-1 titleFont mb-0 fw-bold"></p>
+                                <h6 class="text-capitalize fw-semibold">ساعات</h6>
+                            </div>
+                            <div class="me-4 text-center">
+                                <p id="minutes" class="fs-1 titleFont mb-0 fw-bold"></p>
+                                <h6 class="text-capitalize fw-semibold">دقائق</h6>
+                            </div>
+                            <div class="me-4 text-center">
+                                <p id="seconds" class="fs-1 titleFont mb-0 fw-bold"></p>
+                                <h6 class="text-capitalize fw-semibold">ثواني</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="my-5 py-5 story" id="story">
+                <div class="container">
+                    <div class="row g-4">
+                        <div class="col-md-5">
+                            <div class="item py-5 ps-4">
+                                <figure>
+                                    <img src="@Model.RequestData.MainSliderImageUrl" class="w-100 h-100 transition" alt="Story Image" onerror="this.src='/images/default-image.png'" />
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div>
+                                <div>
+                                    <h2 class="text-capitalize space2 mb-1 textMainColor titleFont">حبنا</h2>
+                                    <p class="space2 text-uppercase">قصتنا</p>
+                                </div>
+                                <p class="text-muted">كورابيت أليكويت أورسي إليت جينيس تريستيك لوريم كومودو فيتاي. توليوم تينسيدونت نيتي سيدي جرافيدا أليكوام، نيكي ليبيرو هيندريريت ماجنا، سيت أميت موليس لاكوس إيثي ماوريسي.</p>
+                                <p class="text-muted">لواليتي فرينجيلا دويمان آت إليت فينيبوس فيفيرا نيك آ لاكوس ثيمو ثي دروياني سيني سوليسيتودين مي سوبسكريت نون ساجي ثي فيرمين.</p>
+                                <p class="text-muted">فاسيلوس فيفيرا تريستيك جوستو دويس فيتاي ديام نيكي نيفاموس آك إست أوغي أرتيني أرينجيلا دوي آت إليت فينيبوس فيفيرا نيك آ لاكوس.</p>
+                                <h5>@Model.RequestData.EventDate.ToString("dd MMMM, yyyy"), قلنا نعم!</h5>
+                                <p class="text-muted">لواليتي فرينجيلا دويمان آت إليت فينيبوس فيفيرا نيك آ لاكوس ثيمو ثي دروياني سيني سوليسيتودين مي سوبسكريت نون ساجي ثي فيرمين.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="my-5 seeYou center">
+                <div class="container-fluid">
+                    <div class="text-white text-center">
+                        <p><i class="fa-regular fa-heart"></i></p>
+                        <h2 class="text-capitalize titleFont text-center space2">نتطلع إلى رؤيتكم!</h2>
+                        <h5 class="fw-bold">@Model.RequestData.EventDate.ToString("dd.MM.yyyy")</h5>
+                    </div>
+                </div>
+            </section>
+
+            <section class="my-5 pt-5 organization" id="organization">
+                <div class="container">
+                    <div class="title text-center">
+                        <h2 class="textMainColor text-capitalize mb-1">الزفاف</h2>
+                        <p class="space2 fs-5 text-uppercase">التنظيم</p>
+                    </div>
+
+                    <div class="row my-4">
+                        <div class="col-md-3 px-0">
+                            <div class="item border-end border-start text-center">
+                                <span>01</span>
+                                <h4 class="text-uppercase overflow-hidden h5">المراسم</h4>
+                                <p class="text-muted my-2">ديلتا تريستيو ثي جوسون دويسي فيتاي ديام نيكي نيفامي ميس إست أوغي أرتيني أرينجيلا ثي آت إليت فينيبوس فيفيرا.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 px-0">
+                            <div class="item border-end border-start text-center">
+                                <span>02</span>
+                                <h4 class="text-uppercase overflow-hidden h5">وقت الغداء</h4>
+                                <p class="text-muted my-2">ديلتا تريستيو ثي جوسون دويسي فيتاي ديام نيكي نيفامي ميس إست أوغي أرتيني أرينجيلا ثي آت إليت فينيبوس فيفيرا.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 px-0">
+                            <div class="item border-end border-start text-center">
+                                <span>03</span>
+                                <h4 class="text-uppercase overflow-hidden h5 transition">الحفلة</h4>
+                                <p class="text-muted my-2 transition">ديلتا تريستيو ثي جوسون دويسي فيتاي ديام نيكي نيفامي ميس إست أوغي أرتيني أرينجيلا ثي آت إليت فينيبوس فيفيرا.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 px-0">
+                            <div class="item border-end border-start text-center">
+                                <span>04</span>
+                                <h4 class="text-uppercase overflow-hidden h5">قطع الكعكة</h4>
+                                <p class="text-muted my-2">ديلتا تريستيو ثي جوسون دويسي فيتاي ديام نيكي نيفامي ميس إست أوغي أرتيني أرينجيلا ثي آت إليت فينيبوس فيفيرا.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="my-5 py-5" id="gallery">
+                <div class="container">
+                    <div class="title text-center">
+                        <h2 class="text-capitalize space2">معرض الصور</h2>
+                        <p class="space2 fs-5 text-uppercase">ذكرياتنا</p>
+                    </div>
+
+                    <div class="controls my-3 mx-auto text-center">
+                        <button type="button" class="mainBtn mx-2 px-4 mb-1" data-filter="all">الكل</button>
+                        <button type="button" class="mainBtn mx-2 px-4 mb-1 text-capitalize" data-filter=".one">المراسم</button>
+                        <button type="button" class="mainBtn mx-2 px-4 mb-1 text-capitalize" data-filter=".two">الحفلة</button>
+                    </div>
+
+                    <div class="gallary my-4 pt-4 overflow-hidden">
+                        @foreach (var photo in Model.GalleryPhotos)
+                        {
+                            <figure class="cPointer rounded-2 overflow-hidden mix one two">
+                                <img src="@photo.PhotoUrl" class="w-100 h-100 transition" alt="Gallery Photo" onerror="this.src='/images/default-image.png'" />
+                            </figure>
+                        }
+                    </div>
+                </div>
+
+                <div class="gallaryBox d-none bg-dark bg-opacity-75 d-flex justify-content-evenly align-items-center position-fixed top-0 bottom-0 start-0 end-0">
+                    <i class="prevBtn fa fa-angle-left text-white fs-2 bg-white bg-opacity-25 cPointer p-2 rounded-3"></i>
+                    <figure class="rounded-3 overflow-hidden position-relative">
+                        <img src="" class="w-100 h-100 transition" alt="Gallery Image" />
+                        <i class="closeBtn fa fa-xmark text-white fs-2 bg-dark bg-opacity-25 cPointer p-2 rounded-3 position-absolute top-0 end-0"></i>
+                    </figure>
+                    <i class="nextBtn fa fa-angle-right text-white fs-2 bg-white bg-opacity-25 cPointer p-2 rounded-3"></i>
+                </div>
+            </section>
+
+            <section class="my-5 questions" id="when-where">
+                <div class="container">
+                    <div class="title text-center">
+                        <h2 class="text-capitalize space2">الزمان والمكان</h2>
+                        <p class="space2 fs-5 text-uppercase">تفاصيل الحدث</p>
+                    </div>
+
+                    <div class="questionSlider row g-4 my-5">
+                        <div class="col-md-4">
+                            <div class="item rounded-3 overflow-hidden">
+                                <figure class="overflow-hidden mb-0">
+                                    <img src="@Model.RequestData.EventPlaceImageUrl" class="w-100 h-100 transition" alt="Event Place" onerror="this.src='/images/default-image.png'" />
+                                </figure>
+                                <figcaption class="p-3 border py-4">
+                                    <h4 class="h5 text-uppercase text-center mb-3">حفل الزفاف</h4>
+                                    <div class="d-flex text-muted mb-3">
+                                        <i class="fa fa-location-dot textMainColor me-1 pt-1"></i>
+                                        <span>@Model.RequestData.EventAddress</span>
+                                    </div>
+                                    <div class="d-flex text-muted mb-3">
+                                        <i class="fa-regular fa-clock textMainColor me-1 pt-1"></i>
+                                        <span>
+                                            @(Model.RequestData.EventTimeFrom.Hours.ToString("D2") + ":" + Model.RequestData.EventTimeFrom.Minutes.ToString("D2")) ص -
+                                            @(Model.RequestData.EventTimeTo.Hours.ToString("D2") + ":" + Model.RequestData.EventTimeTo.Minutes.ToString("D2")) م
+                                        </span>
+                                    </div>
+                                    <a href="@Model.RequestData.LocationUrl" target="_blank" class="btn btn-primary">عرض الموقع</a>
+                                </figcaption>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="py-5 bgSecondColor">
+                <div class="container-fluid px-0">
+                    <div class="center text-capitalize">
+                        <div class="p-2 text-center">
+                            <figure class="mx-auto">
+                                <img src="@Model.RequestData.MainSliderImageUrl" class="w-100 h-100 transition" alt="Logo" onerror="this.src='/images/default-logo.png'" />
+                            </figure>
+                            <h6 class="titleFont h1 space2">@Model.RequestData.GroomName و @Model.RequestData.BrideName</h6>
+                            <p class="space2">@Model.RequestData.EventDate.ToString("dd MMMM, yyyy") – @Model.RequestData.EventPlaceName</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="~/Sites/demo1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Sites/demo1/js/jquery-3.7.1.min.js"></script>
+    <script src="~/Sites/demo1/js/jquery.easing.1.3.js"></script>
+    <script src="~/Sites/demo1/js/slick.min.js"></script>
+    <script src="~/Sites/demo1/js/mixitup.min.js"></script>
+    <script src="~/Sites/demo1/js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Initialize countdown timer
+            var eventDateStr = '@Model.RequestData.EventDate.ToString("yyyy-MM-dd") ' +
+                              '@(Model.RequestData.EventTimeFrom.Hours.ToString("D2")):' +
+                              '@(Model.RequestData.EventTimeFrom.Minutes.ToString("D2")):' +
+                              '@(Model.RequestData.EventTimeFrom.Seconds.ToString("D2"))';
+            var eventDate = new Date(eventDateStr);
+
+            function updateCountdown() {
+                var now = new Date();
+                var diff = eventDate - now;
+
+                var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                $('#days').text(days < 0 ? 0 : days);
+                $('#hours').text(hours < 0 ? 0 : hours);
+                $('#minutes').text(minutes < 0 ? 0 : minutes);
+                $('#seconds').text(seconds < 0 ? 0 : seconds);
+
+                if (diff < 0) {
+                    clearInterval(countdownInterval);
+                    $('.countDownBox').html('<h2 class="text-center">لقد بدأ الحدث!</h2>');
+                }
+            }
+
+            updateCountdown();
+            var countdownInterval = setInterval(updateCountdown, 1000);
+
+            // Hide loading screen after 2 seconds
+            setTimeout(function () {
+                $('#loading').fadeOut();
+            }, 2000);
+
+            // Initialize MixItUp for gallery filtering
+            var mixer = mixitup('.gallary');
+        });
+    </script>
+</body>
+</html>

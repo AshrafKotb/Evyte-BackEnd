@@ -47,7 +47,7 @@ public class HomeController : Controller
                 Id = d.Id,
                 NameAr = d.NameAr,
                 DescriptionAr = d.DescriptionAr,
-                PreviewImageUrl = d.WebsiteDemoUrl,
+                PreviewImageUrl = d.ImageUrl,
                 WebsiteDemoUrl = d.WebsiteDemoUrl
             }).ToList();
 
@@ -69,7 +69,7 @@ public class HomeController : Controller
                 Id = d.Id,
                 NameAr = d.NameAr,
                 DescriptionAr = d.DescriptionAr,
-                PreviewImageUrl = d.WebsiteDemoUrl, // يمكن تعديل هذا الحقل بناءً على تصميم قاعدة البيانات
+                PreviewImageUrl = d.ImageUrl, // يمكن تعديل هذا الحقل بناءً على تصميم قاعدة البيانات
                 WebsiteDemoUrl = d.WebsiteDemoUrl
             }).ToList()
         };

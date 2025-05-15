@@ -14,7 +14,9 @@ namespace Evyte.ApplicationCore.Models.ViewModels.Designs
 
         public string DescriptionAr { get; set; }
         public string DescriptionEn { get; set; }
-
+        [Display(Name = "Design Image")]
+        //[FileExtensions(Extensions = "jpg,jpeg,png")]
+        public IFormFile Image { get; set; }
         [Required(ErrorMessage = "رقم الترتيب مطلوب")]
         [Range(1, int.MaxValue, ErrorMessage = "رقم الترتيب يجب أن يكون أكبر من 0")]
         public int SortingNumber { get; set; }
@@ -22,8 +24,10 @@ namespace Evyte.ApplicationCore.Models.ViewModels.Designs
         [Required(ErrorMessage = "معرف القسم مطلوب")]
         public Guid CategoryId { get; set; }
 
-        public string WebsiteDemoUrl { get; set; }
+        //public string WebsiteDemoUrl { get; set; }
 
-        //public IFormFile Image { get; set; }
+        [Required(ErrorMessage = "اسم القالب مطلوب")]
+        [RegularExpression(@"^[a-zA-Z0-9\-]+$", ErrorMessage = "اسم القالب يجب أن يحتوي على حروف، أرقام، أو شرطات فقط بدون مسافات")]
+        public string TemplateName { get; set; } // حقل لاسم القالب
     }
 }

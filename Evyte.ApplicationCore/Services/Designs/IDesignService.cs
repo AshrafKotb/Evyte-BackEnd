@@ -20,5 +20,6 @@ namespace Evyte.ApplicationCore.Interfaces.Services
         Task<bool> DeleteDesignAsync(Guid id);
         Task<bool> RestoreDesignAsync(Guid id);
         Task<List<Design>> GetAllDesignsAsync();
+        Task<Design> GetDesignByTemplateNameAsync(string templateName);
     }
 }

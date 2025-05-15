@@ -18,8 +18,9 @@ namespace Evyte.ApplicationCore.Models.ViewModels.Designs
             DescriptionEn = design.DescriptionEn;
             SortingNumber = design.SortingNumber;
             CategoryId = design.CategoryId;
-            WebsiteDemoUrl = design.WebsiteDemoUrl;
-            //CurrentImageUrl = design.ImageUrl;
+            //WebsiteDemoUrl = design.WebsiteDemoUrl;
+            CurrentImageUrl = design.ImageUrl;
+            TemplateName = design.TemplateName;
         }
 
         public Guid Id { get; set; }
@@ -40,9 +41,13 @@ namespace Evyte.ApplicationCore.Models.ViewModels.Designs
         [Required(ErrorMessage = "معرف القسم مطلوب")]
         public Guid CategoryId { get; set; }
 
-        public string WebsiteDemoUrl { get; set; }
+        //public string WebsiteDemoUrl { get; set; }
 
-        //public IFormFile Image { get; set; }
-        //public string CurrentImageUrl { get; set; }
+        [Display(Name = "Design Image")]
+        public IFormFile Image { get; set; }
+        public string CurrentImageUrl { get; set; }
+        [Required(ErrorMessage = "اسم القالب مطلوب")]
+        [RegularExpression(@"^[a-zA-Z0-9\-]+$", ErrorMessage = "اسم القالب يجب أن يحتوي على حروف، أرقام، أو شرطات فقط بدون مسافات")]
+        public string TemplateName { get; set; } // حقل لاسم القالب
     }
 }

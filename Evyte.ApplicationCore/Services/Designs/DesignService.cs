@@ -7,6 +7,7 @@ using Evyte.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Evyte.ApplicationCore.Services.Designs
@@ -71,6 +72,11 @@ namespace Evyte.ApplicationCore.Services.Designs
             var designs = await query.OrderBy(d => d.SortingNumber).ToListAsync();
             return designs;
         }
+        public async Task<Design> GetDesignByTemplateNameAsync(string templateName)
+        {
+            var design = await _context.Designs.FirstOrDefaultAsync(x => x.TemplateName == templateName);
+            return design;
+        }
 
         public async Task<DesignVM> GetDesignByIdAsync(Guid id, bool includeDeleted = false)
         {
@@ -115,14 +121,14 @@ namespace Evyte.ApplicationCore.Services.Designs
 
         public async Task<Design> CreateDesignAsync(CreateDesignVM model)
         {
-            //string imageUrl = null;
-            //string imageId = null;
+            string imageUrl = null;
+            string imageId = null;
 
-            //if (model.Image != null)
-            //{
-            //    (imageUrl, imageId) = await _fileService.UploadPictureAsync(model.Image, "designs");
-            //}
-
+            if (model.Image != null)
+            {
+                (imageUrl, imageId) = await _fileService.UploadPictureAsync(model.Image, "designs");
+            }
+            var sanitizedTemplateName = SanitizeTemplateName(model.TemplateName);
             var design = new Design
             {
                 Id = Guid.NewGuid(),
@@ -131,9 +137,11 @@ namespace Evyte.ApplicationCore.Services.Designs
                 DescriptionAr = model.DescriptionAr,
                 DescriptionEn = model.DescriptionEn,
                 SortingNumber = model.SortingNumber,
-                //ImageUrl = imageUrl,
-                //ImageId = imageId,
-                WebsiteDemoUrl = model.WebsiteDemoUrl,
+                ImageUrl = imageUrl,
+                ImageId = imageId,
+                TemplateName = sanitizedTemplateName,
+                WebsiteDemoUrl = $"/design/preview/{sanitizedTemplateName}", // توليد تلقائي
+                //WebsiteDemoUrl = model.WebsiteDemoUrl,
                 CategoryId = model.CategoryId
             };
 
@@ -149,27 +157,29 @@ namespace Evyte.ApplicationCore.Services.Designs
 
             if (design == null)
                 return null;
-
+            var sanitizedTemplateName = SanitizeTemplateName(model.TemplateName);
             design.NameAr = model.NameAr;
             design.NameEn = model.NameEn;
             design.DescriptionAr = model.DescriptionAr;
             design.DescriptionEn = model.DescriptionEn;
             design.SortingNumber = model.SortingNumber;
-            design.WebsiteDemoUrl = model.WebsiteDemoUrl;
+            //design.WebsiteDemoUrl = model.WebsiteDemoUrl;
+            design.TemplateName = sanitizedTemplateName;
+            design.WebsiteDemoUrl = $"/design/preview/{sanitizedTemplateName}"; // تحديث تلقائي
             design.CategoryId = model.CategoryId;
 
-            //if (model.Image != null)
-            //{
-            //    if (!string.IsNullOrEmpty(design.ImageId))
-            //    {
-            //        await _fileService.DeletePictureAsync(design.ImageId);
-            //    }
+            if (model.Image != null)
+            {
+                if (!string.IsNullOrEmpty(design.ImageId))
+                {
+                    await _fileService.DeletePictureAsync(design.ImageId);
+                }
 
-            //    var (newImageUrl, newImageId) = await _fileService.UploadPictureAsync(model.Image, "designs");
+                var (newImageUrl, newImageId) = await _fileService.UploadPictureAsync(model.Image, "designs");
 
-            //    design.ImageUrl = newImageUrl;
-            //    design.ImageId = newImageId;
-            //}
+                design.ImageUrl = newImageUrl;
+                design.ImageId = newImageId;
+            }
 
             _context.Designs.Update(design);
             await _context.SaveChangesAsync();
@@ -203,6 +213,17 @@ namespace Evyte.ApplicationCore.Services.Designs
             await _context.SaveChangesAsync();
 
             return true;
+        }
+        // دالة لتنظيف TemplateName
+        private string SanitizeTemplateName(string templateName)
+        {
+            if (string.IsNullOrWhiteSpace(templateName))
+                return templateName;
+
+            // استبدال المسافات بشرطات وإزالة الحروف الخاصة
+            var sanitized = Regex.Replace(templateName.Trim(), @"\s+", "-");
+            sanitized = Regex.Replace(sanitized, @"[^a-zA-Z0-9\-]", "");
+            return sanitized.ToLower();
         }
     }
 }

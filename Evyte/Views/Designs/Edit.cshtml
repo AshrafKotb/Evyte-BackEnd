@@ -34,6 +34,15 @@
             </div>
             <span asp-validation-for="NameAr" class="text-danger small"></span>
         </div>
+        <div class="form-group mb-4">
+            <label class="form-label" asp-for="TemplateName">اسم القالب</label>
+            <div class="input-group-icon">
+                <i class="fas fa-tag"></i>
+                <input asp-for="TemplateName" class="form-control text-end" placeholder="مثال: classic أو modern" />
+                <small class="form-text text-muted">يجب أن يحتوي على حروف، أرقام، أو شرطات فقط بدون مسافات (مثل classic-wedding).</small>
+            </div>
+            <span asp-validation-for="TemplateName" class="text-danger small"></span>
+        </div>
 
         <div class="form-group mb-4">
             <label class="form-label" asp-for="CategoryId"></label>
@@ -71,13 +80,35 @@
             <span asp-validation-for="SortingNumber" class="text-danger small"></span>
         </div>
 
-        <div class="form-group mb-4">
+        @*  <div class="form-group mb-4">
             <label class="form-label" asp-for="WebsiteDemoUrl"></label>
             <div class="input-group-icon">
                 <i class="fas fa-link"></i>
                 <input asp-for="WebsiteDemoUrl" class="form-control" placeholder="Enter website demo URL">
             </div>
             <span asp-validation-for="WebsiteDemoUrl" class="text-danger small"></span>
+        </div> *@
+
+        <div class="form-group mb-4">
+            <label class="form-label">Design Image (اختياري)</label>
+            <div class="image-upload-container">
+                <div class="mb-3">
+                    <i class="fas fa-cloud-upload-alt fa-2x text-muted mb-3"></i>
+                    <p class="mb-2">Drag & drop image or click to upload (اختياري)</p>
+                    <input type="file" asp-for="Image" class="form-control-file"
+                           accept="image/*" id="imageUpload">
+                    <label for="imageUpload" class="btn btn-outline-primary mt-2">
+                        <i class="fas fa-folder-open"></i> Choose File
+                    </label>
+                </div>
+                @if (!string.IsNullOrEmpty(Model.CurrentImageUrl))
+                {
+                    <div class="current-image">
+                        <span>الصورة الحالية:</span>
+                        <img src="@Model.CurrentImageUrl" class="img-thumbnail" />
+                    </div>
+                }
+            </div>
         </div>
     </div>
 

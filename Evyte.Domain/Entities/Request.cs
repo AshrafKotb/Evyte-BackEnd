@@ -9,6 +9,7 @@ namespace Evyte.Domain.Entities
     public class Request : BaseEntity
     {
         public string DomainUrl { get; set; }
+        public string WeddingSlug { get; set; } // الحقل الجديد
         public string QrCodeImageUrl { get; set; }
         public string QrCodeImageId { get; set; }
         public Guid RequestDataId { get; set; }
