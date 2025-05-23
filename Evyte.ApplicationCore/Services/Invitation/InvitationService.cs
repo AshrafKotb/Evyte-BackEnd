@@ -5,6 +5,7 @@ using Evyte.ApplicationCore.Services.Mailing;
 using Evyte.ApplicationCore.Services.Repository;
 using Evyte.Domain.Entities;
 using Evyte.Domain.Enums;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using QRCoder;
 using System;
@@ -24,7 +25,8 @@ public class InvitationService : IInvitationService
     private readonly IQRCodeService _qrCodeService;
     private readonly IMailingService _mailingService;
     private readonly UserManager<ApplicationUser> _userManager;
-
+    private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly string _productionDomain = "https://evyte.runasp.net";
     public InvitationService(
         IUserRepository userRepository,
         IRequestRepository requestRepository,
@@ -33,7 +35,8 @@ public class InvitationService : IInvitationService
         IFileService fileService,
         IQRCodeService qrCodeService,
         IMailingService mailingService,
-        UserManager<ApplicationUser> userManager)
+        UserManager<ApplicationUser> userManager,
+        IHttpContextAccessor httpContextAccessor)
     {
         _userRepository = userRepository;
         _requestRepository = requestRepository;
@@ -43,6 +46,7 @@ public class InvitationService : IInvitationService
         _qrCodeService = qrCodeService;
         _mailingService = mailingService;
         _userManager = userManager;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     public async Task<(string InvitationUrl, string QrCodeUrl)> CreateInvitationAsync(CreateInvitationVM dto)
@@ -186,13 +190,23 @@ public class InvitationService : IInvitationService
         return (request.DomainUrl, qrCodeUrl);
     }
 
+    //private string GenerateInvitationUrl(string slug)
+    //{
+    //    return $"https://evyte.runasp.net/e/{slug}";
+    //}
     private string GenerateInvitationUrl(string slug)
     {
-        //var groom = HttpUtility.UrlEncode(groomName.Replace(" ", "-").ToLower());
-        //var bride = HttpUtility.UrlEncode(brideName.Replace(" ", "-").ToLower());
-        //return $"https://yourwebsite.com/invitations/{groom}-{bride}/{requestId}";
+        var request = _httpContextAccessor.HttpContext?.Request;
+        var currentDomain = $"{request.Scheme}://{request.Host}";
 
-        return $"https://evyte.runasp.net/{slug}";
+        var isLocal = request.Host.Host.Contains("localhost") ||
+                     request.Host.Host.Contains("127.0.0.1") ||
+                     request.Host.Host.Contains("::1");
+
+        var productionDomain = "https://evyte.runasp.net";
+        var baseUrl = isLocal ? productionDomain : currentDomain;
+
+        return $"{baseUrl}/e/{slug}";
     }
     private async Task<string> GenerateWeddingSlug(string groomName, string brideName)
     {

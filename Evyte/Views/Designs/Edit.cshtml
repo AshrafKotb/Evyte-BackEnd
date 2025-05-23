@@ -16,6 +16,7 @@
         </div>
 
         <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="CurrentImageUrl" />
 
         <div class="form-group mb-4">
             <label class="form-label" asp-for="NameEn"></label>
@@ -124,4 +125,10 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+        <script>
+            $(document).ready(function () {
+                // إزالة التحقق من حقل الصورة
+                $("#Image").rules("remove", "required");
+            });
+        </script>
 }

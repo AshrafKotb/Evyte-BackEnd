@@ -1,0 +1,454 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Great+Vibes&family=Merienda:wght@300..900&display=swap');
+
+:root {
+  --mainColor: #BD945A;
+   --secondColor: #F6f1f0;
+ /* --grayColor: #dee2e6;
+  --lightColor: #c7d7d9; */
+  --shadow: rgba(145, 158, 171, 0.2) 0px 4px 5px -1px,
+    rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+    rgba(145, 158, 171, 0.12) 0px 4px 5px 0px;
+  --main-font-family: "Merienda", serif;
+  --footer-font-family: "Great Vibes", serif;
+  --dosis-font-family: "Dosis", serif;
+  --ratingColor: #ffc908;
+  --eeeColor: #eee;
+}
+body,
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 180px;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family: var(--main-font-family);
+}
+.titleFont{
+  font-family: var(--footer-font-family);
+}
+
+.size50{
+  width: 50px;
+  height: 50px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(250, 244, 244);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mainColor);
+  border-radius: 20px;
+}
+
+.textMainColor {
+  color: var(--mainColor);
+}
+
+.bgMainColor {
+  background-color: var(--mainColor);
+}
+.textSecondColor {
+  color: var(--secondColor);
+}
+.bgSecondColor {
+  background-color: var(--secondColor);
+}
+
+.bgEEE {
+  background-color: var(--eeeColor);
+}
+.textEEE {
+  color: var(--eeeColor);
+}
+
+.ratingColor {
+  color: var(--ratingColor);
+}
+
+.mainBtn {
+  background-color: var(--mainColor);
+  color: #fff;
+  border-radius: 5px;
+  border: unset;
+  padding: 5px 10px;
+  transition: all 1s;
+
+  &:hover {
+    border: 1px solid var(--mainColor);
+    color: var(--mainColor);
+    background-color: transparent;
+  }
+}
+
+
+a {
+  text-decoration: none;
+  color: #000;
+  transition: 0.8s all;
+}
+
+
+::placeholder{color: #aaa !important;}
+
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.font-sm {
+  font-size: 12px;
+}
+
+.cPointer {
+  cursor: pointer;
+}
+.title {
+  padding-bottom: 20px;
+  h2 {
+    position: relative;
+    color: var(--mainColor);
+    font-family: var(--footer-font-family);
+    font-size: 55px;
+    
+    
+  }
+}
+.space2 {
+  letter-spacing: 2px;
+}
+
+.transition{
+  transition: all 1s;
+}
+
+figure:hover img{
+  transform: rotate(2deg) scale(1.05);
+  transition: all 1s;
+}
+
+.slick-dots{
+  bottom: -40px;
+  li button::before{
+    font-size: 11px;
+    color: #000000cd;
+  }
+}
+.slick-dots li.slick-active button:before {
+  color: var(--mainColor) !important;
+}
+
+.form-control:focus {
+  color: var(--mainColor);
+  border-color: var(--mainColor);
+  box-shadow:none;
+}
+
+::marker,
+::selection {
+  color: var(--mainColor);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.heightFit {
+  height: fit-content;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--mainColor);
+  height: 16px;
+  width: 16px;
+}
+
+/* end global style */
+
+/* loading */
+
+.loading{
+  z-index: 9999;
+  p{
+    font-size: 80px;
+  }
+  .loader {
+    position: relative;
+    width: 110px;
+    height: 170px;
+    animation: heartBeat 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  
+  .loader:before,
+  .loader:after {
+    content: "";
+    background: #ff3d00 ;
+    width: 110px;
+    height: 170px;
+    border-radius: 50px 50px 0 0;
+    position: absolute;
+    left: -125%;
+    bottom: 10%;
+    transform: rotate(45deg);
+    transform-origin: 50% 68%;
+    box-shadow: 5px 4px 5px #0004 inset;
+  }
+  .loader:after {
+    transform: rotate(-45deg);
+  }
+
+}
+@keyframes heartBeat {
+  0% { transform: scale(0.95) }
+  5% { transform: scale(1.1) }
+  39% { transform: scale(0.85) }
+  45% { transform: scale(1) }
+  60% { transform: scale(0.95) }
+  100% { transform: scale(0.9) }
+}
+
+
+
+
+
+
+/* main section */
+
+aside{
+  
+  transition: all 3s;
+  width: 300px;
+  background-color: #F6F1F0;
+  .logo{
+    img{width: 90px;}
+    h6{font-size: 30px;}
+  }
+
+  ul{
+    li a:hover{border-bottom: 2px solid var(--mainColor);}
+  }
+  
+}
+
+.iconToggle{
+  z-index: 90;
+  top: 30px;
+  left: 30px;
+  visibility: hidden;
+  i{width: 40px; height: 40px;}
+  transition: all 3s;
+}
+
+.content{
+  figure{
+    background:linear-gradient(to left, rgba(0, 0, 0, 0.3) , rgba(0, 0, 0, 0.6) ),  url(../images/1.jpg) center no-repeat;
+    background-size: cover;
+  }
+  figcaption{
+    margin-left: 60px;
+    h2{font-size: 90px;}
+  }
+}
+
+@media screen  and (max-width:992px) {
+  aside{
+    transform: translateX(-100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+  }
+  .iconToggle{visibility: unset;}
+  
+}
+
+.twins{
+  .item{
+    figure{
+      width: 90px;
+      height: 90px;
+      
+    }
+    li{
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--mainColor);
+      a{color: var(--mainColor); transition: all 0.5s;}
+      &:hover{
+        border: 1px solid #fff;
+        background-color: var(--mainColor);
+        a{color: #fff;}
+
+      }
+    }
+  }
+
+  .row.desc>div:nth-child(1) .item {flex-direction: row-reverse;}
+
+  @media screen and (max-width:1200px) {
+    .item figure{margin-inline: auto;}
+    figcaption{text-align: center; ul{justify-content: center;}}
+    
+  }
+}
+
+.countDown{
+  .countDownBox{
+    height: 300px;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.5) , rgba(0, 0, 0, 0.1)) , url('../images/banner-1.jpg') center no-repeat;
+    background-size: cover;
+  }
+}
+
+.story{
+  .item{
+    background-image: url(../images/dots.png);
+    figure{
+      border: 5px solid var(--mainColor);
+      img{
+        transform: translate(-20px , -20px);
+      }
+    }
+  }
+}
+
+.seeYou{
+  height: 300px;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.5) , rgba(0, 0, 0, 0.1)) , url('../images/banner-2.jpg') center no-repeat;
+  background-size: cover;
+}
+
+.organization{
+  .row{
+    background: url('../images/banner-3.jpg') center no-repeat;
+    background-size: cover;
+    .item{
+      padding: 60px 30px;
+      background-color: #fff;
+      transition: all 1s;
+      span{
+        font-size: 75px;
+        color: transparent;
+        -webkit-text-stroke: 1px #BD945A;
+        transition: all 1s;
+      }
+      h4{height: 55px;}
+
+      &:hover{
+        background-color: transparent;
+        span{-webkit-text-stroke: 1px #fff;}
+        h4,p{color: #fff !important;}
+      }
+    }
+    @media screen and (max-width:768px) {
+      .item{
+        padding: 0px 30px 30px;
+        border: none !important;
+        border-bottom: 1px solid var(--mainColor) !important;
+      }
+    }
+  }
+}
+
+/* gallary */
+.controls{
+   button {
+    transition: 0.8s all;
+    position: relative;
+  }
+   button::after {
+    content: "";
+    border: 8px solid;
+    border-color: var(--mainColor) transparent transparent transparent;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    display: none;
+  }
+  
+   button:hover,
+   button:focus {
+    background-color: #fff;
+    box-shadow: var(--shadow);
+    color: var(--mainColor);
+    border: 1px solid var(--mainColor);
+  }
+  
+   button:hover::after,
+   button:focus::after {
+    display: block;
+  }
+}
+
+.gallary{
+  columns: 3;
+  gap: 20px;
+  
+  @media screen and (max-width:768px) {
+   columns: 2;
+  }
+  @media screen and (max-width:576px) {
+   columns: 1;
+  }
+}
+
+.gallaryBox{
+  z-index: 9999;
+
+  figure{
+    width: 60%;
+    height: 80%;
+
+    
+  }
+
+  @media screen and (max-width:586px) {
+    figure{width: 80%;}
+    
+  }
+}
+/* ------- */
+
+.questions{
+  .item{
+    margin-inline: 20px;
+    figure{
+      height: 250px;
+    }
+  }
+}
+
+
+footer{
+  margin-top: 100px;
+  figure{
+    width: 90px;
+  }
+  
+}
+
+/* wedding form */
+
+.weddingForm{
+  &>figure{
+    height: 50vh;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) , rgba(255, 255, 255, 0.3)), url('../images/slider-3.jpg') center no-repeat;
+    background-size: cover;
+
+    &:hover img{transform: none;}
+  }
+
+  .weddingFormBox{
+    width: 75%;
+    
+    @media screen and (max-width:600px){
+      width: 95%;
+    }
+  }
+}
+

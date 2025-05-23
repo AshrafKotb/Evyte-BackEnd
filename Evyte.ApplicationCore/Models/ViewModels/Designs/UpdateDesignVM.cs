@@ -45,7 +45,7 @@ namespace Evyte.ApplicationCore.Models.ViewModels.Designs
 
         [Display(Name = "Design Image")]
         public IFormFile Image { get; set; }
-        public string CurrentImageUrl { get; set; }
+        public string? CurrentImageUrl { get; set; }
         [Required(ErrorMessage = "اسم القالب مطلوب")]
         [RegularExpression(@"^[a-zA-Z0-9\-]+$", ErrorMessage = "اسم القالب يجب أن يحتوي على حروف، أرقام، أو شرطات فقط بدون مسافات")]
         public string TemplateName { get; set; } // حقل لاسم القالب

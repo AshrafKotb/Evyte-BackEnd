@@ -1,11 +1,14 @@
+using Evyte.ApplicationCore.Models.Helper;
 using Evyte.ApplicationCore.Models.ViewModels;
 using Evyte.ApplicationCore.Services.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
 
 namespace Evyte.Controllers
 {
+    [Authorize(Roles = RoleName.Admin)]
     public class CustomersController : Controller
     {
         private readonly IUserRepository _customerRepository;

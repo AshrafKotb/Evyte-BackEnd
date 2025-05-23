@@ -19,7 +19,7 @@ namespace Evyte.Controllers
             _generalInformationService = generalInformationService;
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<IActionResult> TermsAndConditions()
         {
             var generalInfo = await GetGeneralInformationAsync();
@@ -59,7 +59,7 @@ namespace Evyte.Controllers
             }
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<IActionResult> ContactInfo()
         {
             var generalInfo = await GetGeneralInformationAsync();

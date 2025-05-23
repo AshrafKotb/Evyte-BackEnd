@@ -18,7 +18,7 @@ namespace Evyte.Web.Controllers
 
 
 
-        [Route("/{slug}")]
+        [Route("e/{slug}")]
         [AllowAnonymous]
         public async Task<IActionResult> View(string slug)
         {
@@ -47,18 +47,5 @@ namespace Evyte.Web.Controllers
             return View($"~/Views/Shared/templates/_{request.Design.TemplateName}.cshtml", request);
         }
 
-
-        [Route("/test")]
-        [AllowAnonymous]
-        public async Task<IActionResult> test()
-        {
-            return View();
-        }
-        [Route("/testWithoutSideMenu")]
-        [AllowAnonymous]
-        public async Task<IActionResult> testWithoutSideMenu()
-        {
-            return View();
-        }
     }
 }

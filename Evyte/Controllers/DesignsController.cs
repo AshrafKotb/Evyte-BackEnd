@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Evyte.ApplicationCore.Models.Helper;
 using Evyte.ApplicationCore.Interfaces.Services;
@@ -159,43 +159,44 @@ namespace Evyte.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Preview(string templateName)
         {
-            // ??? ??????? ????? ??? TemplateName
             var design = await _designService.GetDesignByTemplateNameAsync(templateName);
             if (design == null)
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            // ????? ?????? ?????
             var dummyRequest = new Request
             {
                 WeddingSlug = "preview",
                 Design = design,
                 RequestData = new RequestData
                 {
-                    GroomName = "???? ????",
-                    BrideName = "???? ????",
+                    GroomName = "عمر",
+                    BrideName = "لبني",
                     EventDate = DateTime.Now.AddDays(30),
                     EventTimeFrom = TimeSpan.FromHours(18),
                     EventTimeTo = TimeSpan.FromHours(23),
-                    EventPlaceName = "???? ?????",
-                    EventAddress = "???????? ???",
-                    MainSliderImageUrl = design.WebsiteDemoUrl ?? "/images/default-slider.jpg",
-                    EventPlaceImageUrl = "/images/default-place.jpg",
-                    LocationUrl = "https://maps.google.com",
-                    GroomImageUrl = "/images/default-groom.jpg",
-                    BrideImageUrl = "/images/default-bride.jpg"
+                    EventPlaceName = "قاعة افراح الملكة",
+                    EventAddress = "الغردقه",
+                    MainSliderImageUrl = "https://ik.imagekit.io/Ashraf/slider/7ec54959-f31a-4521-961f-9dc55a3eb179?updatedAt=1746230565127",
+                    EventPlaceImageUrl = "https://ik.imagekit.io/Ashraf/eventplace/cover2.jpg",
+                    LocationUrl = "https://maps.app.goo.gl/TzDP3ivPfHLD2oGH9",
+                    GroomImageUrl = "https://ik.imagekit.io/Ashraf/groom/groom1.jpeg?updatedAt=1747490608805",
+                    BrideImageUrl = "https://ik.imagekit.io/Ashraf/bride/wedding-bride-girl.jpg?updatedAt=1747490553095"
                 },
                 GalleryPhotos = new List<RequestGalleryPhoto>
                 {
-                    new RequestGalleryPhoto { PhotoUrl = "/images/preview/photo1.jpg" },
-                    new RequestGalleryPhoto { PhotoUrl = "/images/preview/photo2.jpg" },
-                    new RequestGalleryPhoto { PhotoUrl = "/images/preview/photo3.jpg" }
+                    new RequestGalleryPhoto { PhotoUrl = "https://ik.imagekit.io/Ashraf/gallery/8f9f9886-f11c-4573-9f3a-d0cdd924902e?updatedAt=1746235167623" },
+                    new RequestGalleryPhoto { PhotoUrl = "https://ik.imagekit.io/Ashraf/gallery/16e59e13-7b10-49c8-83ef-a86f4621aaec?updatedAt=1746253016740" },
+                    new RequestGalleryPhoto { PhotoUrl = "https://ik.imagekit.io/Ashraf/gallery/efef2c2d-3d4b-4001-9f07-a7701e9b86cf?updatedAt=1746268323967" },
+                    new RequestGalleryPhoto { PhotoUrl = "https://ik.imagekit.io/Ashraf/gallery/photo5.jpg" },
+                    new RequestGalleryPhoto { PhotoUrl = "https://ik.imagekit.io/Ashraf/gallery/photo1.png" },
+                    new RequestGalleryPhoto { PhotoUrl = "https://ik.imagekit.io/Ashraf/gallery/cover7.jpg" },
+                    new RequestGalleryPhoto { PhotoUrl = "https://ik.imagekit.io/Ashraf/gallery/photo2.jpg" }
                 }
             };
 
-            // ??? ??? Partial View ????? ??? TemplateName
-            return View($"~/Views/Shared/Designs/_{design.TemplateName}.cshtml", dummyRequest);
+            return View($"~/Views/Shared/templates/_{design.TemplateName}.cshtml", dummyRequest);
         }
 
     }
