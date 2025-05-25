@@ -1,0 +1,89 @@
+﻿@model Evyte.ApplicationCore.Models.ViewModels.HomeIndexViewModel
+@{
+    Layout = "~/Views/Shared/_WebsiteLayout.cshtml";
+}
+
+<style>
+    /* Add to your style.css */
+.wpo-demo-grids .grid {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.wpo-demo-grids .inner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.preview-link {
+    display: block;
+    position: relative;
+}
+
+.preview-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(139, 92, 246, 16%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.preview-link:hover .preview-overlay {
+    opacity: 1;
+}
+
+.preview-overlay span {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+</style>
+<!-- start of demo section -->
+
+<section class="wpo-demo-section section-padding">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col col-lg-6">
+                <div class="preview-section-title">
+                    <i><img src="~/assets/images/preview/title-1.png" alt=""></i>
+                    <h2>Wedding & Invitation Homes</h2>
+                    <p>
+                        We Happily Prepared 09 Homes for Your Big Day. Pick One of Our Beautiful Homepages to
+                        Start Your Dreamy Wedding Website!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-xs-12">
+                <div class="wpo-demo-grids clearfix">
+                    @foreach (var template in Model.Designs)
+                    {
+                                                    <div class="grid wow fadeInUp" data-wow-duration="1000ms">
+                                                        <div class="inner">
+                                                            <a href="@template.WebsiteDemoUrl" target="_blank" class="preview-link">
+                                                                <img src="@template.PreviewImageUrl" alt="@template.Name">
+                                                                <div class="preview-overlay">
+                                                                    <span>preview</span>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <h3>@template.Name</h3>
+                                                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end of demo section -->

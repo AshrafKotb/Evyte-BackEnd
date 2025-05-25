@@ -45,8 +45,8 @@ public class HomeController : Controller
             .Select((d, index) => new DesignViewModel
             {
                 Id = d.Id,
-                NameAr = d.NameAr,
-                DescriptionAr = d.DescriptionAr,
+                Name = d.NameEn,
+                Description = d.DescriptionEn,
                 PreviewImageUrl = d.ImageUrl,
                 WebsiteDemoUrl = d.WebsiteDemoUrl
             }).ToList();
@@ -67,8 +67,8 @@ public class HomeController : Controller
             Designs = designs.Select(d => new DesignViewModel
             {
                 Id = d.Id,
-                NameAr = d.NameAr,
-                DescriptionAr = d.DescriptionAr,
+                Name = d.NameAr,
+                Description = d.DescriptionAr,
                 PreviewImageUrl = d.ImageUrl, // يمكن تعديل هذا الحقل بناءً على تصميم قاعدة البيانات
                 WebsiteDemoUrl = d.WebsiteDemoUrl
             }).ToList()
@@ -76,6 +76,34 @@ public class HomeController : Controller
         return View(model);
     }
 
+    public IActionResult About()
+    {
+        return View();
+    }
+    public IActionResult Contact()
+    {
+        return View();
+    }
+    public IActionResult Questions()
+    {
+        return View();
+    }
+    public async Task<IActionResult> Templates()
+    {
+        var designs = await _designService.GetAllDesignsAsync();
+        var model = new HomeIndexViewModel
+        {
+            Designs = designs.Select(d => new DesignViewModel
+            {
+                Id = d.Id,
+                Name = d.NameAr,
+                Description = d.DescriptionAr,
+                PreviewImageUrl = d.ImageUrl, // يمكن تعديل هذا الحقل بناءً على تصميم قاعدة البيانات
+                WebsiteDemoUrl = d.WebsiteDemoUrl
+            }).ToList()
+        };
+        return View(model);
+    }
     public IActionResult Privacy()
     {
         return View();

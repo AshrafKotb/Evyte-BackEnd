@@ -5577,8 +5577,2204 @@
       "PackagePath": "staticwebassets\\Sites\\demo3\\webfonts\\fa-v4compatibility.woff2"
     },
     {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\animate.css",
+      "PackagePath": "staticwebassets\\assets\\css\\animate.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\auth-pages.css",
+      "PackagePath": "staticwebassets\\assets\\css\\auth-pages.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\bootstrap-datepicker.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\bootstrap-datepicker.min.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\flaticon.css",
+      "PackagePath": "staticwebassets\\assets\\css\\flaticon.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\jquery-ui.css",
+      "PackagePath": "staticwebassets\\assets\\css\\jquery-ui.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\jquery.fancybox.css",
+      "PackagePath": "staticwebassets\\assets\\css\\jquery.fancybox.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\jquery.parallax.css",
+      "PackagePath": "staticwebassets\\assets\\css\\jquery.parallax.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\magnific-popup.css",
+      "PackagePath": "staticwebassets\\assets\\css\\magnific-popup.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\nice-select.css",
+      "PackagePath": "staticwebassets\\assets\\css\\nice-select.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\odometer-theme-default.css",
+      "PackagePath": "staticwebassets\\assets\\css\\odometer-theme-default.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\owl.carousel.css",
+      "PackagePath": "staticwebassets\\assets\\css\\owl.carousel.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\owl.theme.css",
+      "PackagePath": "staticwebassets\\assets\\css\\owl.theme.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\owl.transitions.css",
+      "PackagePath": "staticwebassets\\assets\\css\\owl.transitions.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\responsive.css",
+      "PackagePath": "staticwebassets\\assets\\css\\responsive.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\slick-theme.css",
+      "PackagePath": "staticwebassets\\assets\\css\\slick-theme.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\slick.css",
+      "PackagePath": "staticwebassets\\assets\\css\\slick.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\swiper.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\swiper.min.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\themify-icons.css",
+      "PackagePath": "staticwebassets\\assets\\css\\themify-icons.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\FontAwesome.otf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\FontAwesome.otf"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\Muli.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Muli.ttf"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\flaticon.css",
+      "PackagePath": "staticwebassets\\assets\\fonts\\flaticon.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\flaticon.css.map",
+      "PackagePath": "staticwebassets\\assets\\fonts\\flaticon.css.map"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\flaticon.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\flaticon.eot"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\flaticon.scss",
+      "PackagePath": "staticwebassets\\assets\\fonts\\flaticon.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\flaticon.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\flaticon.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\flaticon.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\flaticon.ttf"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\flaticon.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\flaticon.woff"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\flaticon.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\flaticon.woff2"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\fontawesome-webfont.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.woff"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\fontawesome-webfont.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.eot"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.ttf"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.woff"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.woff2"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\icomoon.dev.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\icomoon.dev.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\icomoon.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\icomoon.eot"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\icomoon.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\icomoon.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\icomoon.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\icomoon.ttf"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\icomoon.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\icomoon.woff"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\license.txt",
+      "PackagePath": "staticwebassets\\assets\\fonts\\license.txt"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\monallesiascript.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\monallesiascript.woff"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\monallesiascript.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\monallesiascript.woff2"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\slick.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\slick.eot"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\slick.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\slick.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\slick.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\slick.ttf"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\slick.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\slick.woff"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\themify.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\themify.eot"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\themify.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\themify.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\themify.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\themify.ttf"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\fonts\\themify.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\themify.woff"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\Group 1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\Group 1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\about\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\about\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\about\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\about\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\about\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\about\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\about\\img-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\about\\img-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\about\\signature.png",
+      "PackagePath": "staticwebassets\\assets\\images\\about\\signature.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\ajax-loader.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\ajax-loader.gif"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\at-single.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\at-single.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\best-seller\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\best-seller\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\best-seller\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\best-seller\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\best-seller\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\best-seller\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog-details\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog-details\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog-details\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog-details\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog-details\\author.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog-details\\author.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog-details\\comments-author\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog-details\\comments-author\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog-details\\comments-author\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog-details\\comments-author\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog-details\\comments-author\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog-details\\comments-author\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\ab.png",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\ab.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\about-widget.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\about-widget.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\img-13.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\img-13.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\img-14.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\img-14.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\img-15.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\img-15.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\img-16.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\img-16.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\img-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\img-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\img-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\img-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\img-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\img-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\img-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\img-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\img-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\img-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\img-9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\img-9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\shape-1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\shape-1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\blog\\shape-2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\shape-2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\cart\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\cart\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\cart\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\cart\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\cart\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\cart\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\cart\\img-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\cart\\img-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\cart\\img-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\cart\\img-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\category\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\category\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\category\\10.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\category\\10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\category\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\category\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\category\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\category\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\category\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\category\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\category\\5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\category\\5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\category\\6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\category\\6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\category\\7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\category\\7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\category\\8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\category\\8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\category\\9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\category\\9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\checkout\\img-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\checkout\\img-1.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\checkout\\img-2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\checkout\\img-2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\checkout\\img-3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\checkout\\img-3.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\checkout\\img-4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\checkout\\img-4.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\checkout\\img-5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\checkout\\img-5.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\contact\\bg.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\contact\\bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\contact\\bg2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\contact\\bg2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\contact\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\contact\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\contact\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\contact\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\Bg.png",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\Bg.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\Bg2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\Bg2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\Image.png",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\Image.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\bg-shape.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\bg-shape.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\bg.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\bg.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\bride.png",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\bride.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\couple-flower.png",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\couple-flower.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\couple-flower.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\couple-flower.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\couple-mask.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\couple-mask.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\couple-shape-2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\couple-shape-2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\couple-shape.png",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\couple-shape.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\couple-shape2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\couple-shape2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\groom.png",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\groom.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\image-bg.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\image-bg.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\img-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\img-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\left.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\left.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\mask-1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\mask-1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\mask-2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\mask-2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\right.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\right.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\vector-1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\vector-1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\couple\\vector-2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\couple\\vector-2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\date-bg.png",
+      "PackagePath": "staticwebassets\\assets\\images\\date-bg.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\date.png",
+      "PackagePath": "staticwebassets\\assets\\images\\date.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\date2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\date2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\error-404.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\error-404.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\event\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\event\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\event\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\event\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\event\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\event\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\event\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\event\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\event\\5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\event\\5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\event\\6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\event\\6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\event\\7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\event\\7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\event\\8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\event\\8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\event\\9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\event\\9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\fancybox\\blank.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\fancybox\\blank.gif"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\fancybox\\fancybox_loading.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\fancybox\\fancybox_loading.gif"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\fancybox\\fancybox_loading@2x.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\fancybox\\fancybox_loading@2x.gif"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\fancybox\\fancybox_overlay.png",
+      "PackagePath": "staticwebassets\\assets\\images\\fancybox\\fancybox_overlay.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\fancybox\\fancybox_sprite.png",
+      "PackagePath": "staticwebassets\\assets\\images\\fancybox\\fancybox_sprite.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\fancybox\\fancybox_sprite@2x.png",
+      "PackagePath": "staticwebassets\\assets\\images\\fancybox\\fancybox_sprite@2x.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\favicon.png",
+      "PackagePath": "staticwebassets\\assets\\images\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\footer-shape-1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\footer-shape-1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\footer-shape-2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\footer-shape-2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\funfact\\1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\funfact\\1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\funfact\\2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\funfact\\2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\funfact\\3.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\funfact\\3.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\funfact\\4.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\funfact\\4.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\instragram\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\instragram\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\instragram\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\instragram\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\instragram\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\instragram\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\instragram\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\instragram\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\instragram\\5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\instragram\\5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\instragram\\6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\instragram\\6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\login.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\login.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\logo-2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\logo-2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\logo.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\logo.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\my-icon.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\my-icon.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\offer.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\offer.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\offer2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\offer2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\offer3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\offer3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\offer\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\offer\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\offer\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\offer\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\offer\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\offer\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\offer\\img-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\offer\\img-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\offer\\shape.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\offer\\shape.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\order\\bg.png",
+      "PackagePath": "staticwebassets\\assets\\images\\order\\bg.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\order\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\order\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\order\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\order\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\order\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\order\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\order\\img-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\order\\img-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\page-title.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\page-title.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\partners\\1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\partners\\1.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\partners\\2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\partners\\2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\partners\\3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\partners\\3.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\partners\\4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\partners\\4.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\partners\\5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\partners\\5.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio-single\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio-single\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio-single\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio-single\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio-single\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio-single\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio-single\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio-single\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\10.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\11.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\12.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\13.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\13.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\14.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\14.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\15.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\15.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\16.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\16.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\17.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\17.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\18.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\18.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\19.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\19.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\20.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\20.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\21.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\21.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\22.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\22.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\23.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\23.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\24.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\24.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\25.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\25.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\26.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\26.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\27.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\27.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\28.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\28.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\29.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\29.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\portfolio\\9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\portfolio\\9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preloader.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\preloader.gif"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preloader.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\preloader.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\bg.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-10.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-11.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-12.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-13.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-13.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-14.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-14.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-15.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-15.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\demo\\img-9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\demo\\img-9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\flower1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\flower1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\flower2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\flower2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\footer.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\footer.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\hero-bg.png",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\hero-bg.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\icon\\1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\icon\\1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\icon\\2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\icon\\2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\icon\\3.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\icon\\3.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\icon\\4.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\icon\\4.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\icon\\5.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\icon\\5.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\icon\\6.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\icon\\6.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\img-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\img-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\img-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\img-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\img-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\img-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\middle.png",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\middle.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\mouse-scroll.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\mouse-scroll.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\shape.png",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\shape.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\shape\\1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\shape\\1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\shape\\2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\shape\\2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\shape\\3.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\shape\\3.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\shape\\4.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\shape\\4.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\title-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\title-1.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\title-2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\title-2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\preview\\title-3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\preview\\title-3.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\pricing\\shape-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\pricing\\shape-1.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\pricing\\shape-1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\pricing\\shape-1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\pricing\\shape-2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\pricing\\shape-2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\pricing\\shape-3.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\pricing\\shape-3.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\pricing\\shape-4.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\pricing\\shape-4.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\10.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\11.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\12.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\13.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\13.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\14.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\14.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\15.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\15.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\16.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\16.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\product\\9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product\\9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\recent-posts\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\recent-posts\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\recent-posts\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\recent-posts\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\recent-posts\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\recent-posts\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\rsvp\\bg.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\rsvp\\bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\rsvp\\bg2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\rsvp\\bg2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\rsvp\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\rsvp\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\rsvp\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\rsvp\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\rsvp\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\rsvp\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\rsvp\\img-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\rsvp\\img-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\rsvp\\img-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\rsvp\\img-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\rsvp\\shape.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\rsvp\\shape.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\rsvp\\shape2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\rsvp\\shape2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\rsvp\\shape3.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\rsvp\\shape3.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\rsvp\\shape4.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\rsvp\\shape4.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\rsvp\\shape5.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\rsvp\\shape5.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\rsvp\\shape6.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\rsvp\\shape6.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\select-icon.png",
+      "PackagePath": "staticwebassets\\assets\\images\\select-icon.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\select-icon2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\select-icon2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\service-single\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\service-single\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\service-single\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\service-single\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\service-single\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\service-single\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\service\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\service\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\service\\img-1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\service\\img-1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\service\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\service\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\service\\img-2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\service\\img-2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\service\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\service\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\service\\img-3.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\service\\img-3.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\service\\img-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\service\\img-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\service\\img-4.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\service\\img-4.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\shop\\mini-cart\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\shop\\mini-cart\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\shop\\mini-cart\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\shop\\mini-cart\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\shop\\shop-single\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\shop\\shop-single\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\shop\\shop-single\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\shop\\shop-single\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\shop\\shop-single\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\shop\\shop-single\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\shop\\shop-single\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\shop\\shop-single\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\shop\\shop-single\\review\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\shop\\shop-single\\review\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\shop\\shop-single\\review\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\shop\\shop-single\\review\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\shop\\shop-single\\thumb\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\shop\\shop-single\\thumb\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\shop\\shop-single\\thumb\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\shop\\shop-single\\thumb\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\shop\\shop-single\\thumb\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\shop\\shop-single\\thumb\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\shop\\shop-single\\thumb\\img-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\shop\\shop-single\\thumb\\img-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\Image.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\Image.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\bg-shape.png",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\bg-shape.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\coming.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\coming.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\corner1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\corner1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\corner2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\corner2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\corner3.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\corner3.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\corner4.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\corner4.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\date-shape.png",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\date-shape.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\frame.png",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\frame.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-10.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-11.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-12.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-13.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-13.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-14.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-14.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-15.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-15.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-16.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-16.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-17.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-17.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-18.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-18.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-18.png",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-18.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-19.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-19.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-19.png",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-19.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-20.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-20.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-bg.png",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-bg.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-bg2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-bg2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-bg22.png",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-bg22.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero-bg3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero-bg3.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\hero4-flower.png",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\hero4-flower.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\inner-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\inner-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\inner-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\inner-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\invitation-bg.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\invitation-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\invitation-bg2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\invitation-bg2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\musk.png",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\musk.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\musk.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\musk.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\rose.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\rose.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\rtl-shape.png",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\rtl-shape.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape-vector.png",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape-vector.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape10.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape10.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape11.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape11.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape12.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape12.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape13.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape13.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape14.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape14.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape15.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape15.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape16.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape16.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape17.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape17.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape3.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape3.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape4.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape4.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape5.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape5.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape6.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape6.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape7.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape7.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape8.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape8.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\shape9.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\shape9.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\slide-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\slide-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\slide-10.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\slide-10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\slide-11.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\slide-11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\slide-12.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\slide-12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\slide-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\slide-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\slide-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\slide-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\slide-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\slide-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\slide-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\slide-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\slide-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\slide-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\slide-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\slide-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\slide-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\slide-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\slide-9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\slide-9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\slider\\vector.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\vector.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\1.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\10.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\11.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\12.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\13.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\13.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\14.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\14.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\15.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\15.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\3.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\4.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\5.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\6.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\6.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\flower-2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\flower-2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\flower-shape1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\flower-shape1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\flower-shape2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\flower-shape2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\flower-shape3.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\flower-shape3.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\flower-shape4.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\flower-shape4.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\flower-shape5.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\flower-shape5.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\flower-shape6.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\flower-shape6.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\flower.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\flower.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\frame-shape-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\frame-shape-1.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\frame-shape-2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\frame-shape-2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\pin.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\pin.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\ring.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\ring.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\s-shape1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\s-shape1.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\s-shape2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\s-shape2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\s-shape3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\s-shape3.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\s-shape4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\s-shape4.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\s-shape5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\s-shape5.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\shape.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\shape.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\shape2-mask.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\shape2-mask.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\shape2-mask.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\shape2-mask.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\shape2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\shape2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\shape3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\shape3.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\story-shape.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\story-shape.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\story\\vector1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\story\\vector1.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\team\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\team\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\team\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\team\\img-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team\\img-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\team\\img-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team\\img-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\team\\img-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team\\img-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\team\\img-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team\\img-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\team\\img-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team\\img-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\team\\mask-1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\team\\mask-1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\team\\mask-2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\team\\mask-2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\team\\mask-3.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\team\\mask-3.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\team\\mask-4.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\team\\mask-4.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\testimonial\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\testimonial\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\testimonial\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\testimonial\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\testimonial\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\testimonial\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\testimonial\\shape.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\testimonial\\shape.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\testimonial\\svg-1.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\testimonial\\svg-1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\testimonial\\svg-2.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\testimonial\\svg-2.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\testimonial\\svg-3.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\testimonial\\svg-3.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\testimonial\\svg-4.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\testimonial\\svg-4.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\testimonial\\thumb-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\testimonial\\thumb-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\testimonial\\thumb-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\testimonial\\thumb-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\testimonial\\thumb-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\testimonial\\thumb-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\ui-bg_highlight-soft_75_cccccc_1x100.png",
+      "PackagePath": "staticwebassets\\assets\\images\\ui-bg_highlight-soft_75_cccccc_1x100.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\ui-icons_444444_256x240.png",
+      "PackagePath": "staticwebassets\\assets\\images\\ui-icons_444444_256x240.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\ui-icons_555555_256x240.png",
+      "PackagePath": "staticwebassets\\assets\\images\\ui-icons_555555_256x240.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\video-bg\\video.mp4",
+      "PackagePath": "staticwebassets\\assets\\images\\video-bg\\video.mp4"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\video-img\\img-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\video-img\\img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\video-img\\img-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\video-img\\img-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\video-img\\img-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\video-img\\img-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\video-img\\img-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\video-img\\img-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\wedding-date\\1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\wedding-date\\1.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\wedding-date\\2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\wedding-date\\2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\wedding-date\\3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\wedding-date\\3.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\js\\jquery-plugin-collection.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery-plugin-collection.js"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\js\\jquery.dlmenu.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery.dlmenu.js"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\js\\jquery.pointparallax.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery.pointparallax.min.js"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\js\\modernizr.custom.js",
+      "PackagePath": "staticwebassets\\assets\\js\\modernizr.custom.js"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\js\\moving-animation.js",
+      "PackagePath": "staticwebassets\\assets\\js\\moving-animation.js"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\js\\script.js",
+      "PackagePath": "staticwebassets\\assets\\js\\script.js"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\js\\sticky.js",
+      "PackagePath": "staticwebassets\\assets\\js\\sticky.js"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\js\\tilt.jquery.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\tilt.jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\base\\_base.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\base\\_base.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\base\\_color.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\base\\_color.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\components\\_blog-sidebar.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\components\\_blog-sidebar.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\components\\_buttons.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\components\\_buttons.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\components\\_form.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\components\\_form.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\components\\_page-title.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\components\\_page-title.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\components\\_pagination.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\components\\_pagination.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\components\\_preloader.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\components\\_preloader.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\components\\_section-title.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\components\\_section-title.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\components\\_shop-sidebar.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\components\\_shop-sidebar.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\components\\_social-links.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\components\\_social-links.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\components\\_sticky-header.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\components\\_sticky-header.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\helpers\\_functions.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\helpers\\_functions.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\helpers\\_mixins.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\helpers\\_mixins.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\helpers\\_variables.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\helpers\\_variables.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\layout\\_footer.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\layout\\_footer.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\layout\\_header.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\layout\\_header.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\layout\\_hero-slider.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\layout\\_hero-slider.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_blog-single.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_blog-single.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_blog.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_blog.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_cart.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_cart.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_checkout.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_checkout.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_coming-soon.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_coming-soon.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_contact.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_contact.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_error-404.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_error-404.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_home-default.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_home-default.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_home-style2.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_home-style2.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_home-style3.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_home-style3.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_home-style4.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_home-style4.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_home-style5.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_home-style5.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_home-style6.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_home-style6.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_home-style7.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_home-style7.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_home-style8.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_home-style8.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_home-style9.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_home-style9.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_invitation.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_invitation.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_portfolio-single.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_portfolio-single.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_preview.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_preview.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_rtl-home.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_rtl-home.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_service.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_service.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_shop-home-2.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_shop-home-2.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_shop-home-3.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_shop-home-3.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_shop-home.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_shop-home.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_shop-single.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_shop-single.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_shop.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_shop.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\page\\_team-single.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\page\\_team-single.scss"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\style.css",
+      "PackagePath": "staticwebassets\\assets\\sass\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\style.css.map",
+      "PackagePath": "staticwebassets\\assets\\sass\\style.css.map"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\sass\\style.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\style.scss"
+    },
+    {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\Customers.css",
       "PackagePath": "staticwebassets\\css\\Customers.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\NewInvitation.css",
+      "PackagePath": "staticwebassets\\css\\NewInvitation.css"
     },
     {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\Requests\\details.css",

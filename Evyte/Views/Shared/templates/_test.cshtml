@@ -27,6 +27,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="~/templates/test/css/styles.css" />
 </head>
+@await Html.PartialAsync("_FloatingButton", Model.Design.Id.ToString())
 <body class="bg-gradient-to-b from-pink-100 to-white">
     <!-- Decorative Elements -->
     <div class="decorative-elements"></div>
