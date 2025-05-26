@@ -4777,6 +4777,18 @@
       "PackagePath": "staticwebassets\\Images\\avatar.png"
     },
     {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\one.png",
+      "PackagePath": "staticwebassets\\Images\\one.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\three.png",
+      "PackagePath": "staticwebassets\\Images\\three.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\two.png",
+      "PackagePath": "staticwebassets\\Images\\two.png"
+    },
+    {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Music\\wedding.mp3",
       "PackagePath": "staticwebassets\\Music\\wedding.mp3"
     },

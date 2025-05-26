@@ -102,14 +102,13 @@
                 <div class="col-lg-6 col-md-12 col-12">
                     <div class="preview-middle-items">
                         <div class="preview-middle-text">
-                            <span class="wow fadeInUp" data-wow-duration="1000ms">Best Wedding Template</span>
-                            <h2 class="wow fadeInUp" data-wow-duration="1200ms">Welcome to Eventisy</h2>
+                            <span class="wow fadeInUp" data-wow-duration="1000ms">Your Invitation in A link</span>
+                            <h2 class="wow fadeInUp" data-wow-duration="1200ms">Welcome to Eventa</h2>
                             <h4 class="wow fadeInUp" data-wow-duration="1400ms">
-                                Best Wedding Multipurpose
-                                Template
+                                Design & Share Your invitations with very simple steps
                             </h4>
                             <a href="#demo"
-                               class="theme-btn-s2 wow fadeInUp" data-wow-duration="1600ms">Purchase Now</a>
+                               class="theme-btn-s2 wow fadeInUp" data-wow-duration="1600ms">Start Now</a>
                             <a href="#demo" class="scrool wow fadeInUp" data-wow-duration="1600ms">
                                 <img src="~/assets/images/preview/mouse-scroll.svg" alt="">
                             </a>
@@ -148,7 +147,7 @@
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-8 col-md-10 col-12">
                 <div class="wpo-section-title">
-                    <span>Who We Are?</span>
+                    <span>Who we are? Why Eventa?</span>
                     <h2>We are The World Best Wedding Agency</h2>
                 </div>
             </div>
@@ -158,11 +157,8 @@
                 <div class="col-xl-11 offset-xl-1 col-lg-12 col-md-12 col-12">
                     <div class="wpo-about-text wow fadeInLeftSlow" style="max-width: 100% !important;" data-wow-duration="1000ms">
                         <p>
-                            <small>M</small>ignissim adipiscing pretium libero at tristique. Diam sit mauris a
-                            interdum. In tristique eu vestibulum id amet malesuada. Quis morbi morbi sed
-                            volutpat tristique. Lacinia praesent dictum morbi et fermentum. Blandit cras ut sed
-                            quisque pellentesque iaculis elit. Lectus adipiscing semper odio lacus urna. Sit a
-                            sit ac blandit. Cursus donec mollis elit arcu donec aliquam.
+                            <small>W</small>e are simply a group of youth who believe that every occasion deserves to be special from the very first detail, even the invitation.
+                            That's why we created Evyte so you can send invitations to your wedding, engagement, or any other event in an easy, chic way, without the headache of printing and distribution .
                         </p>
                         @*  <div class="about-info">
                             <h5>Kristin Watson</h5>
@@ -197,10 +193,10 @@
             <div class="col col-lg-6">
                 <div class="preview-section-title">
                     <i><img src="~/assets/images/preview/title-1.png" alt=""></i>
-                    <h2>Wedding & Invitation Homes</h2>
+                    <h2>Ready Made Designs</h2>
                     <p>
-                        We Happily Prepared 09 Homes for Your Big Day. Pick One of Our Beautiful Homepages to
-                        Start Your Dreamy Wedding Website!
+                        We Happily Prepared 09 Designs for Your Big Day. Pick One of Our Beautiful Designs to
+                        Start Your Dreamy Invitation!
                     </p>
                 </div>
             </div>
@@ -210,17 +206,17 @@
                 <div class="wpo-demo-grids clearfix">
                     @foreach (var template in Model.Designs)
                     {
-                                            <div class="grid wow fadeInUp" data-wow-duration="1000ms">
-                                                <div class="inner">
-                                                    <a href="@template.WebsiteDemoUrl" target="_blank" class="preview-link">
-                                                        <img src="@template.PreviewImageUrl" alt="@template.Name">
-                                                        <div class="preview-overlay">
-                                                            <span>preview</span>
-                                                        </div>
-                                                    </a>
+                                                <div class="grid wow fadeInUp" data-wow-duration="1000ms">
+                                                    <div class="inner">
+                                                        <a href="@template.WebsiteDemoUrl" target="_blank" class="preview-link">
+                                                            <img src="@template.PreviewImageUrl" alt="@template.Name">
+                                                            <div class="preview-overlay">
+                                                                <span>preview</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <h3>@template.Name</h3>
                                                 </div>
-                                                <h3>@template.Name</h3>
-                                            </div>
                     }
                 </div>
             </div>
@@ -232,8 +228,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-10 col-12">
                     <div class="wpo-cta-text text-center">
-                        <h2>Explore All Our Beautiful Templates</h2>
-                        <p>Discover more stunning wedding templates designed for your special day</p>
+                        <h2>Explore All Our Beautiful Designs</h2>
+                        <p>Discover more stunning Invitation Designs designed for your special day</p>
                         <a asp-controller="Home" asp-action="Templates" class="theme-btn-s2">View All Templates</a>
                     </div>
                 </div>
@@ -243,10 +239,72 @@
     <!-- End CTA Section -->
 </section>
 
+
+<section id="features" class="wpo-features-section section-padding pt-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col col-lg-6">
+                <div class="preview-section-title">
+                    <i><img src="~/assets/images/preview/title-1.png" alt=""></i>
+                    <h2>How it Works</h2>
+                </div>
+            </div>
+        </div>
+        <div class="wpo-features-wrapper">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-features-item wow fadeInUp" data-wow-duration="1200ms">
+                        <div class="wpo-features-icon">
+                            <div class="icon">
+                                <i><img src="~/Images/one.png" alt=""></i>
+                            </div>
+                        </div>
+                        <div class="wpo-features-text">
+                            <p>Choose Your Preferred Design</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-features-item wow fadeInUp" data-wow-duration="1400ms">
+                        <div class="wpo-features-icon">
+                            <div class="icon">
+                                <i><img src="~/Images/two.png" alt=""></i>
+                            </div>
+                        </div>
+                        <div class="wpo-features-text">
+                            <p>Insert Details (names, date, place,..etc)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-features-item wow fadeInUp" data-wow-duration="1600ms">
+                        <div class="wpo-features-icon">
+                            <div class="icon">
+                                <i><img src="~/Images/three.png" alt=""></i>
+                            </div>
+                        </div>
+                        <div class="wpo-features-text">
+                            <p>Receive Your link & start Share</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- end of demo section -->
 <!-- start wpo-fun-fact-section -->
 <section class="wpo-fun-fact-section section-padding pt-0">
     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col col-lg-6">
+                <div class="preview-section-title">
+                    <i><img src="~/assets/images/preview/title-1.png" alt=""></i>
+                    <h2>Counters</h2>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col col-xs-12">
                 <div class="wpo-fun-fact-grids clearfix">
@@ -271,7 +329,7 @@
                             <p>Wedding</p>
                         </div>
                     </div>
-                    <div class="grid">
+                     <div class="grid">
                         <div class="info">
                             <div class="flower"><img src="~/assets/images/funfact/4.svg" alt=""></div>
                             <h3><span class="odometer" data-count="526">00</span>+</h3>
@@ -286,65 +344,7 @@
 <!-- end wpo-fun-fact-section -->
 
 
-<section id="features" class="wpo-features-section section-padding pt-0">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col col-lg-6">
-                <div class="preview-section-title">
-                    <i><img src="~/assets/images/preview/title-1.png" alt=""></i>
-                    <h2>Amazing Features</h2>
-                    <p>
-                        We Happily Prepared 09 Homes for Your Big Day. Pick One of Our Beautiful Homepages to
-                        Start Your Dreamy Wedding Website!
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="wpo-features-wrapper">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="wpo-features-item wow fadeInUp" data-wow-duration="1200ms">
-                        <div class="wpo-features-icon">
-                            <div class="icon">
-                                <i><img src="~/assets/images/preview/icon/2.svg" alt=""></i>
-                            </div>
-                        </div>
-                        <div class="wpo-features-text">
-                            <h2>Fully Responsive</h2>
-                            <p>We create fully responsive template for you.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="wpo-features-item wow fadeInUp" data-wow-duration="1400ms">
-                        <div class="wpo-features-icon">
-                            <div class="icon">
-                                <i><img src="~/assets/images/preview/icon/3.svg" alt=""></i>
-                            </div>
-                        </div>
-                        <div class="wpo-features-text">
-                            <h2>Lifetime License</h2>
-                            <p>We are providing you the lifetime license.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="wpo-features-item wow fadeInUp" data-wow-duration="1600ms">
-                        <div class="wpo-features-icon">
-                            <div class="icon">
-                                <i><img src="~/assets/images/preview/icon/4.svg" alt=""></i>
-                            </div>
-                        </div>
-                        <div class="wpo-features-text">
-                            <h2>Top-Notch Support</h2>
-                            <p>We guarantee the best possible fastest support .</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 @* <!--Start wpo-testimonial-section-->
 <section class="wpo-testimonial-section-s2 pt-0">
     <div class="container">

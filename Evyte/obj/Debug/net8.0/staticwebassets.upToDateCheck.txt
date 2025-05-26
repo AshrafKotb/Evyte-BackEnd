@@ -1741,6 +1741,9 @@ wwwroot\css\terms-and-conditions.css
 wwwroot\favicon.ico
 wwwroot\Images\avatar.png
 wwwroot\Images\Evyte.png
+wwwroot\Images\one.png
+wwwroot\Images\three.png
+wwwroot\Images\two.png
 wwwroot\Images\Website\about.jpg
 wwwroot\Images\Website\cover1.jpg
 wwwroot\Images\Website\cover2.jpg
