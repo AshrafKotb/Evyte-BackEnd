@@ -37,6 +37,17 @@ namespace Evyte.ApplicationCore.Models.ViewModels.Categories
     }
     public class UpdateCategoryVM
     {
+        public UpdateCategoryVM() { }
+        public UpdateCategoryVM(Category category)
+        {
+            Id = category.Id;
+            NameAr = category.NameAr;
+            NameEn = category.NameEn;
+            DescriptionAr = category.DescriptionAr;
+            DescriptionEn = category.DescriptionEn;
+            SortingNumber = category.SortingNumber;
+            CurrentImageUrl = category.ImageUrl;
+        }
         public Guid Id { get; set; }
 
         [Required]
@@ -62,15 +73,5 @@ namespace Evyte.ApplicationCore.Models.ViewModels.Categories
 
         [HiddenInput]
         public string CurrentImageUrl { get; set; }
-        public UpdateCategoryVM(Category category)
-        {
-            Id = category.Id;
-            NameAr = category.NameAr;
-            NameEn = category.NameEn;
-            DescriptionAr = category.DescriptionAr;
-            DescriptionEn = category.DescriptionEn;
-            SortingNumber = category.SortingNumber;
-            CurrentImageUrl = category.ImageUrl;
-        }
     }
 }

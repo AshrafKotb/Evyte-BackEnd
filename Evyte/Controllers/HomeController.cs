@@ -40,8 +40,7 @@ public class HomeController : Controller
         var designs = await _designService.GetAllDesignsAsync();
 
         // إنشاء قائمة تحتوي على كل تصميم مكرر 10 مرات
-        var repeatedDesigns = designs
-            //.SelectMany(d => Enumerable.Repeat(d, 6)) // كرر كل عنصر 6 مرات
+        var repeatedDesigns = designs.Take(6)
             .Select((d, index) => new DesignViewModel
             {
                 Id = d.Id,

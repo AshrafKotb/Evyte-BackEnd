@@ -8093,6 +8093,242 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome1\\Images\\3.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome1\\Images\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome1\\Images\\4.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome1\\Images\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome1\\Images\\slide-1.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome1\\Images\\slide-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome1\\Images\\slide-2.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome1\\Images\\slide-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome1\\Images\\slide-3.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome1\\Images\\slide-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome1\\Images\\slide-4.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome1\\Images\\slide-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome2\\Images\\10.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome2\\Images\\10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome2\\Images\\11.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome2\\Images\\11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome2\\Images\\12.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome2\\Images\\12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome2\\Images\\4.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome2\\Images\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome2\\Images\\5.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome2\\Images\\5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome2\\Images\\7.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome2\\Images\\7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome2\\Images\\8.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome2\\Images\\8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome2\\Images\\9.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome2\\Images\\9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome2\\Images\\event7.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome2\\Images\\event7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome2\\Images\\hero-3.jpg",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome2\\Images\\hero-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AnnouncementHome2\\Images\\hero-bg22.png",
+      "PackagePath": "staticwebassets\\templates\\AnnouncementHome2\\Images\\hero-bg22.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AsianWeddingHome\\Images\\7.jpg",
+      "PackagePath": "staticwebassets\\templates\\AsianWeddingHome\\Images\\7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\AsianWeddingHome\\Images\\hero-6.jpg",
+      "PackagePath": "staticwebassets\\templates\\AsianWeddingHome\\Images\\hero-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\MuslimWeddingHomeRTL\\Images\\hero-18.jpg",
+      "PackagePath": "staticwebassets\\templates\\MuslimWeddingHomeRTL\\Images\\hero-18.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\MuslimWeddingHomeRTL\\Images\\hero-19.jpg",
+      "PackagePath": "staticwebassets\\templates\\MuslimWeddingHomeRTL\\Images\\hero-19.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\MuslimWeddingHomeRTL\\Images\\hero-bg3.png",
+      "PackagePath": "staticwebassets\\templates\\MuslimWeddingHomeRTL\\Images\\hero-bg3.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\MuslimWeddingHomeRTL\\Images\\img-8.jpg",
+      "PackagePath": "staticwebassets\\templates\\MuslimWeddingHomeRTL\\Images\\img-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\MuslimWeddingHome\\Images\\6.jpg",
+      "PackagePath": "staticwebassets\\templates\\MuslimWeddingHome\\Images\\6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\MuslimWeddingHome\\Images\\couple-shape.png",
+      "PackagePath": "staticwebassets\\templates\\MuslimWeddingHome\\Images\\couple-shape.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\MuslimWeddingHome\\Images\\hero-4.jpg",
+      "PackagePath": "staticwebassets\\templates\\MuslimWeddingHome\\Images\\hero-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\MuslimWeddingHome\\Images\\hero-5.jpg",
+      "PackagePath": "staticwebassets\\templates\\MuslimWeddingHome\\Images\\hero-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\MuslimWeddingHome\\Images\\hero-bg2.png",
+      "PackagePath": "staticwebassets\\templates\\MuslimWeddingHome\\Images\\hero-bg2.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome1\\Images\\1.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome1\\Images\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome1\\Images\\2.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome1\\Images\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome1\\Images\\3.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome1\\Images\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome1\\Images\\4.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome1\\Images\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome1\\Images\\5.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome1\\Images\\5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome1\\Images\\6.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome1\\Images\\6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome1\\Images\\bride.png",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome1\\Images\\bride.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome1\\Images\\event1.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome1\\Images\\event1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome1\\Images\\groom.png",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome1\\Images\\groom.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome1\\Images\\hero-2.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome1\\Images\\hero-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome1\\Images\\inner-1.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome1\\Images\\inner-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome1\\Images\\inner-2.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome1\\Images\\inner-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome1\\Images\\shape9.svg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome1\\Images\\shape9.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\1.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\2.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\3.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\4.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\5.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\6.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\bg-shape.png",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\bg-shape.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\bride.png",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\bride.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\couple1.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\couple1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\couple2.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\couple2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\event1.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\event1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\groom.png",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\groom.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\hero-1.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\hero-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\hero-2.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\hero-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\inner-1.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\inner-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\inner-2.jpg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\inner-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\mask-1.svg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\mask-1.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\WeddingHome2\\Images\\shape9.svg",
+      "PackagePath": "staticwebassets\\templates\\WeddingHome2\\Images\\shape9.svg"
+    },
+    {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\templates\\first\\css\\ajax-loader.gif",
       "PackagePath": "staticwebassets\\templates\\first\\css\\ajax-loader.gif"
     },

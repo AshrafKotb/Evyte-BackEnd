@@ -69,7 +69,7 @@ namespace Evyte.ApplicationCore.Services.Designs
         public async Task<List<Design>> GetAllDesignsAsync()
         {
             var query = _context.Designs.AsQueryable();
-            var designs = await query.OrderBy(d => d.SortingNumber).ToListAsync();
+            var designs = await query.Where(x=>!x.IsDeleted).OrderBy(d => d.SortingNumber).ToListAsync();
             return designs;
         }
         public async Task<Design> GetDesignByTemplateNameAsync(string templateName)

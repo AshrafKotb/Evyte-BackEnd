@@ -1,0 +1,286 @@
+﻿@model Request
+@{
+    Layout = null;
+    var culture = new System.Globalization.CultureInfo("ar-SA");
+    culture.DateTimeFormat.Calendar = new System.Globalization.GregorianCalendar();
+}
+
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content=" " />
+
+    <!-- favIcon -->
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <title>Al 2a3aaa - Home</title>
+
+    <link rel="stylesheet" href="~/templates/first/css/all.min.css" />
+    <link rel="stylesheet" href="~/templates/first/css/bootstrap.min.css" />
+
+    <!-- slick slider css -->
+    <link rel="stylesheet" href="~/templates/first/css/slick.css" />
+    <link rel="stylesheet" href="~/templates/first/css/slick-theme.css" />
+
+    <link rel="stylesheet" href="~/templates/first/css/aos.css" />
+    <link rel="stylesheet" href="~/templates/first/css/style.css" />
+</head>
+@* @await Html.PartialAsync("_FloatingButton", Model.Design.Id.ToString()) *@
+<body class="overflow-hidden">
+
+    <div class="loading ovhi position-fixed top-0 start-0 end-0 bottom-0 bg-dark center">
+        <div class="d-flex flex-column justify-content-around align-items-center h-100">
+            <p class="textMainColor titleFont text-capitalize mb-0">man </p>
+            <p class="textMainColor titleFont text-capitalize mb-0">weman</p>
+        </div>
+        <span class="loader"></span>
+    </div>
+
+
+    <div class="row gx-0">
+
+        <div class="col-lg-3 bgSecondColor">
+            <aside class="fixed-top text-center py-5 h-100">
+                <a href="index.html" class="logo">
+                    <img src="~/templates/first/images/logo.png" alt="logo image">
+                    <h6 class="my-2 textMainColor">Olivia & Enrico</h6>
+                    <span>15.11.2023</span>
+                </a>
+
+                <ul class="list-unstyled my-5 text-capitalize">
+                    <li class="mb-2"><a href="#" class="transition pb-1">home</a></li>
+                    <li class="mb-2"><a href="#" class="transition pb-1">couple</a></li>
+                    <li class="mb-2"><a href="#" class="transition pb-1">gallery</a></li>
+                    <li class="mb-2"><a href="#" class="transition pb-1">when & where</a></li>
+                </ul>
+
+                <div class="text-capitalize font-sm text-muted pt-3">
+                    <p class="mb-1">man & weman wedding</p>
+                    <p>15 December 2023, New York</p>
+                </div>
+
+
+            </aside>
+        </div>
+
+        <div class="col-lg-9 ">
+
+            <section class="position-relative overflow-hidden d-flex vh-100">
+                <!-- aside toggle -->
+                <div class="iconToggle cPointer d-flex m-3 position-absolute ">
+                    <i class=" d-none fa fa-xmark bgMainColor center rounded-circle text-white"></i>
+                    <i class="  fa fa-bars  bgMainColor center rounded-circle text-white"></i>
+                </div>
+
+                <div class="content h-100 flex-grow-1">
+                    <figure class="h-100 overflow-hidden center ">
+                        <figcaption class="w-100 text-center text-white ">
+                            <h2 class="titleFont text-capitalize space2">man & weman</h2>
+                            <p class="space2">15 December, 2023 – New York</p>
+                        </figcaption>
+                    </figure>
+                </div>
+
+            </section>
+
+            <section class="my-5 py-5 twins">
+                <div class="container">
+                    <div class="row desc  g-4">
+                        <div class="col-md-6">
+                            <div class="item row shadow-sm">
+                                <div class="col-xl-3 ">
+                                    <figure class="rounded-circle overflow-hidden flex-shrink-0"><img src="~/templates/first/images/bride.jpg" class="w-100 h-100 transition" alt=""></figure>
+                                </div>
+                                <div class="col-xl-9 ">
+                                    <figcaption class="px-4">
+                                        <h2 class="text-capitalize">Olivia Martin <i class="fa-regular fa-heart textMainColor"></i></h2>
+                                        <span class="titleFont textMainColor fs-5">The Bride</span>
+                                        <p class="my-3 text-muted">Olivia fringilla dui at elit finibus viverra thenec a lacus seda themo the miss druane semper non the fermen.</p>
+                                        <ul class="list-unstyled d-flex ">
+                                            <li class="me-3 rounded-circle center transition"><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                            <li class="me-3 rounded-circle center transition"><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                                            <li class="me-3 rounded-circle center transition"><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                        </ul>
+                                    </figcaption>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="item row shadow-sm">
+                                <div class="col-xl-3 ">
+                                    <figure class="rounded-circle overflow-hidden flex-shrink-0"><img src="~/templates/first/images/groom.jpg" class="w-100 h-100 transition" alt=""></figure>
+                                </div>
+                                <div class="col-xl-9 ">
+                                    <figcaption class="px-4">
+                                        <h2 class="text-capitalize">Enrico Danilo <i class="fa-regular fa-heart textMainColor"></i></h2>
+                                        <span class="titleFont textMainColor fs-5">The groom</span>
+                                        <p class="my-3 text-muted">Olivia fringilla dui at elit finibus viverra thenec a lacus seda themo the miss druane semper non the fermen.</p>
+                                        <ul class="list-unstyled d-flex ">
+                                            <li class="me-3 rounded-circle center transition"><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                            <li class="me-3 rounded-circle center transition"><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                                            <li class="me-3 rounded-circle center transition"><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                        </ul>
+                                    </figcaption>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="my-5 countDown">
+                <div class="container-fluid px-0">
+                    <div class="title text-center">
+                        <h2 class="text-capitalize textMainColor space2">Are getting married!</h2>
+                        <p class="space2">December 15, 2023 — New York, Brooklyn</p>
+                    </div>
+
+                    <div class="countDownBox text-white d-flex flex-column justify-content-center">
+                        <h2 class="text-capitalize titleFont text-center  space2">We will become a family in</h2>
+                        <div class=" d-flex align-items-center justify-content-center ">
+
+                            <div class=" me-4 text-center">
+                                <p id="days" class="fs-1 titleFont mb-0 fw-bold"></p>
+                                <h6 class="text-capitalize fw-semibold">days</h6>
+                            </div>
+
+                            <div class=" me-4 text-center">
+                                <p id="hours" class="fs-1 titleFont mb-0 fw-bold"></p>
+                                <h6 class="text-capitalize fw-semibold">hours</h6>
+                            </div>
+
+                            <div class=" me-4 text-center">
+                                <p id="minutes" class="fs-1 titleFont mb-0 fw-bold"></p>
+                                <h6 class="text-capitalize fw-semibold">mins</h6>
+                            </div>
+
+                            <div class=" me-4 text-center">
+                                <p id="seconds" class="fs-1 titleFont mb-0 fw-bold"></p>
+                                <h6 class="text-capitalize fw-semibold">secs</h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="my-5 seeYou center">
+                <div class="container-fluid">
+
+                    <div class="text-white text-center  ">
+                        <p><i class="fa-regular fa-heart"></i></p>
+                        <h2 class="text-capitalize titleFont text-center  space2">Looking forward to see you!</h2>
+                        <h5 class="fw-bold">15.11.2023</h5>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- gallary -->
+            <section class="my-5 py-5">
+                <div class="container">
+                    <div class="title text-center">
+                        <h2 class="text-capitalize space2">Gallery</h2>
+                        <p class="space2 fs-5 text-uppercase">Our Memories</p>
+                    </div>
+
+
+
+                    <div class="gallary my-4 pt-4 overflow-hidden">
+                        <figure class="cPointer rounded-2 overflow-hidden mix one three">
+                            <img src="~/templates/first/images/1.jpg" class="w-100 h-100 transition" alt="gallary image">
+                        </figure>
+                        <figure class="cPointer rounded-2 overflow-hidden mix two three">
+                            <img src="~/templates/first/images/4.jpg" class="w-100 h-100 transition" alt="gallary image">
+                        </figure>
+                        <figure class="cPointer rounded-2 overflow-hidden mix one two">
+                            <img src="~/templates/first/images/2.jpg" class="w-100 h-100 transition" alt="gallary image">
+                        </figure>
+                        <figure class="cPointer rounded-2 overflow-hidden mix three ">
+                            <img src="~/templates/first/images/5.jpg" class="w-100 h-100 transition" alt="gallary image">
+                        </figure>
+                        <figure class="cPointer rounded-2 overflow-hidden mix one ">
+                            <img src="~/templates/first/images/3.jpg" class="w-100 h-100 transition" alt="gallary image">
+                        </figure>
+                        <figure class="cPointer rounded-2 overflow-hidden mix two">
+                            <img src="~/templates/first/images/6.jpg" class="w-100 h-100 transition" alt="gallary image">
+                        </figure>
+                    </div>
+                </div>
+
+            </section>
+
+            <!--gallary box slider -->
+            <div class="gallaryBox d-none bg-dark bg-opacity-75  d-flex justify-content-evenly align-items-center position-fixed top-0 bottom-0 start-0 end-0">
+                <i class="prevBtn fa fa-angle-left text-white fs-2 bg-white bg-opacity-25 cPointer p-2 rounded-3 "></i>
+                <figure class="rounded-3 overflow-hidden position-relative">
+                    <img src="" class="w-100 h-100 transition" alt="gallary image">
+                    <i class="closeBtn fa fa-xmark text-white fs-2 bg-dark bg-opacity-25 cPointer p-2 rounded-3 position-absolute top-0 end-0"></i>
+                </figure>
+                <i class="nextBtn fa fa-angle-right text-white fs-2 bg-white bg-opacity-25 cPointer p-2 rounded-3 "></i>
+
+            </div>
+
+            <section class="my-5 questions">
+                <div class="container">
+                    <div class="title text-center">
+                        <h2 class="text-capitalize space2">Questions</h2>
+                        <p class="space2 fs-5 text-uppercase">When & Where</p>
+                    </div>
+
+                    <div class="questionSlider row g-4 my-5">
+                        <div class="col-md-12">
+                            <div class="item rounded-3 overflow-hidden">
+                                <figure class="overflow-hidden mb-0"><img src="images/1.jpg" class="w-100 h-100 transition" alt=""></figure>
+                                <figcaption class="p-3 border py-4">
+                                    <h4 class="h5 text-uppercase text-center mb-3">wedding party</h4>
+                                    <div class="d-flex text-muted mb-3">
+                                        <i class="fa fa-location-dot textMainColor me-1 pt-1"></i>
+                                        <span> Fortune Brooklyn restaurant, 149 Broadway, Brooklyn, NY, USA</span>
+                                    </div>
+                                    <div class="d-flex text-muted mb-3">
+                                        <i class="fa-regular fa-clock textMainColor me-1 pt-1"></i>
+                                        <span> 12:00am - 13:00pm</span>
+                                    </div>
+                                </figcaption>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="py-5  bgSecondColor">
+                <div class="container-fluid px-0">
+                    <div class=" center text-capitalize ">
+                        <div class=" p-2 text-center">
+                            <figure class="mx-auto"><img src="~/templates/first/images/logo.png" class="w-100 h-100 transition" alt=""></figure>
+                            <h6 class="titleFont h1 space2">man & weman</h6>
+                            <p class="space2">December 15, 2023 – New York, Brooklyn</p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </footer>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="~/templates/first/js/bootstrap.bundle.min.js"></script>
+    <script src="~/templates/first/js/jquery-3.7.1.min.js"></script>
+    <script src="~/templates/first/js/jquery.easing.1.3.js"></script>
+    <script src="~/templates/first/js/slick.min.js"></script>
+    <script src="~/templates/first/js/mixitup.min.js"></script>
+
+    <script src="~/templates/first/js/main.js"></script>
+</body>
+</html>
