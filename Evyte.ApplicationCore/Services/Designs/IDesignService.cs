@@ -14,6 +14,7 @@ namespace Evyte.ApplicationCore.Interfaces.Services
     {
         Task<PaginatedResult<DesignVM>> GetDesignsPaginatedAsync(int pageNumber, int pageSize, string searchTerm = "", bool includeDeleted = false);
         Task<DesignVM> GetDesignByIdAsync(Guid id, bool includeDeleted = false);
+        bool IsExist(Guid id);
         Task<Design> GetDesignEntityByIdAsync(Guid id, bool includeDeleted = false);
         Task<Design> CreateDesignAsync(CreateDesignVM model);
         Task<Design> UpdateDesignAsync(Guid id, UpdateDesignVM model);

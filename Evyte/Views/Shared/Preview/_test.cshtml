@@ -4,7 +4,7 @@
     var culture = new System.Globalization.CultureInfo("ar-SA");
     culture.DateTimeFormat.Calendar = new System.Globalization.GregorianCalendar();
 }
-
+@await Html.PartialAsync("_FloatingButton", (string)ViewBag.Id)
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>

@@ -1725,6 +1725,7 @@ wwwroot\Content\Images\logo.png
 wwwroot\css\categories.css
 wwwroot\css\category-details.css
 wwwroot\css\contact-info.css
+wwwroot\css\Create.css
 wwwroot\css\Customers.css
 wwwroot\css\evyte.css
 wwwroot\css\forms.css
@@ -1761,8 +1762,6 @@ wwwroot\Images\Website\photo5.jpg
 wwwroot\Images\Website\video1.mp4
 wwwroot\js\evyte.js
 wwwroot\js\header-sidebar.js
-wwwroot\js\site.js
-wwwroot\js\siteOld.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap.min.css

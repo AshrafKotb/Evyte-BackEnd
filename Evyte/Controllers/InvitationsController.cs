@@ -1,3 +1,4 @@
+using Evyte.ApplicationCore.Interfaces.Services;
 using Evyte.ApplicationCore.Models.ViewModels;
 using Evyte.ApplicationCore.Services;
 using Evyte.ApplicationCore.Services.Files;
@@ -10,11 +11,13 @@ namespace Evyte.ApplicationCore.Controllers
     [AllowAnonymous]
     public class InvitationsController : Controller
     {
+        private readonly IDesignService _designService;
         private readonly IInvitationService _invitationService;
 
-        public InvitationsController(IInvitationService invitationService)
+        public InvitationsController(IDesignService designService, IInvitationService invitationService)
         {
             _invitationService = invitationService;
+            _designService = designService;
         }
 
         // GET: /Invitations/Create?designId=GUID
@@ -22,13 +25,15 @@ namespace Evyte.ApplicationCore.Controllers
         public IActionResult Create(Guid designId)
         {
             if (designId == Guid.Empty)
-            {
-                designId = new Guid("c87af62b-f412-4c4c-8382-ecca50d3d2d7");
-            }
+                RedirectToAction("Index", "Home");
+
+            var IsExist = _designService.IsExist(designId);
+            if (!IsExist)
+                return RedirectToAction("Index", "Home");
+
             var model = new CreateInvitationVM { DesignId = designId };
             return View(model);
         }
-
         // POST: /Invitations/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -59,5 +64,6 @@ namespace Evyte.ApplicationCore.Controllers
                 return Json(new { success = false, message = $"An error occurred: {ex.Message}" });
             }
         }
+
     }
 }

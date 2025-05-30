@@ -108,7 +108,14 @@ namespace Evyte.ApplicationCore.Services.Designs
 
             return design;
         }
+        public bool IsExist(Guid id)
+        {
+            var design = _context.Designs.Find(id);
 
+            if (design != null)
+                return true;
+            return false;
+        }
         public async Task<Design> GetDesignEntityByIdAsync(Guid id, bool includeDeleted = false)
         {
             var query = _context.Designs.AsQueryable();

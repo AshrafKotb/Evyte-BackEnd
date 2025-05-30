@@ -7781,6 +7781,10 @@
       "PackagePath": "staticwebassets\\assets\\sass\\style.scss"
     },
     {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\Create.css",
+      "PackagePath": "staticwebassets\\css\\Create.css"
+    },
+    {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\Customers.css",
       "PackagePath": "staticwebassets\\css\\Customers.css"
     },
@@ -7855,14 +7859,6 @@
     {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\js\\header-sidebar.js",
       "PackagePath": "staticwebassets\\js\\header-sidebar.js"
-    },
-    {
-      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\js\\site.js",
-      "PackagePath": "staticwebassets\\js\\site.js"
-    },
-    {
-      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\js\\siteOld.js",
-      "PackagePath": "staticwebassets\\js\\siteOld.js"
     },
     {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\lib\\bootstrap\\LICENSE",
