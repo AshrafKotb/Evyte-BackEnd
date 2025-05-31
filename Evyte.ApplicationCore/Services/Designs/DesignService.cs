@@ -27,8 +27,8 @@ namespace Evyte.ApplicationCore.Services.Designs
         {
             var query = _context.Designs.AsQueryable();
 
-            if (!includeDeleted)
-                query = query.Where(d => !d.IsDeleted);
+            //if (!includeDeleted)
+            //    query = query.Where(d => !d.IsDeleted);
 
             if (!string.IsNullOrEmpty(searchTerm))
             {

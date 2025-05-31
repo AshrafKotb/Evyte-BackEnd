@@ -62,8 +62,8 @@ namespace Evyte.Controllers
         // GET: Designs/Create
         public async Task<IActionResult> Create()
         {
-            var categories = await _categoryService.GetCategoriesPaginatedAsync(1, int.MaxValue);
-            ViewBag.Categories = new SelectList(categories.Items, "Id", "NameAr");
+            var categories = await _categoryService.GetAllActiveCategoriesAsync();
+            ViewBag.Categories = new SelectList(categories, "Id", "NameAr");
             return View(new CreateDesignVM());
         }
 
@@ -82,8 +82,8 @@ namespace Evyte.Controllers
                 ModelState.AddModelError("", "Error creating design");
             }
 
-            var categories = await _categoryService.GetCategoriesPaginatedAsync(1, int.MaxValue);
-            ViewBag.Categories = new SelectList(categories.Items, "Id", "NameAr", model.CategoryId);
+            var categories = await _categoryService.GetAllActiveCategoriesAsync();
+            ViewBag.Categories = new SelectList(categories, "Id", "NameAr", model.CategoryId);
             return View(model);
         }
 
@@ -97,8 +97,8 @@ namespace Evyte.Controllers
             }
 
             var model = new UpdateDesignVM(design);
-            var categories = await _categoryService.GetCategoriesPaginatedAsync(1, int.MaxValue);
-            ViewBag.Categories = new SelectList(categories.Items, "Id", "NameAr", design.CategoryId);
+            var categories = await _categoryService.GetAllActiveCategoriesAsync();
+            ViewBag.Categories = new SelectList(categories, "Id", "NameAr", design.CategoryId);
 
             return View(model);
         }
@@ -123,8 +123,8 @@ namespace Evyte.Controllers
                 ModelState.AddModelError("", "Error updating design");
             }
 
-            var categories = await _categoryService.GetCategoriesPaginatedAsync(1, int.MaxValue);
-            ViewBag.Categories = new SelectList(categories.Items, "Id", "NameAr", model.CategoryId);
+            var categories = await _categoryService.GetAllActiveCategoriesAsync();
+            ViewBag.Categories = new SelectList(categories, "Id", "NameAr", model.CategoryId);
             return View(model);
         }
 

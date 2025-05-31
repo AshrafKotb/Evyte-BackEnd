@@ -12,6 +12,7 @@ namespace Evyte.ApplicationCore.Interfaces.Services
     public interface ICategoryService
     {
         Task<PaginatedResult<CategoryVM>> GetCategoriesPaginatedAsync(int pageNumber, int pageSize, string searchTerm = "", bool includeDeleted = false);
+        Task<List<CategoryVM>> GetAllActiveCategoriesAsync();
         Task<CategoryVM> GetCategoryByIdAsync(Guid id, bool includeDeleted = false);
         Task<Category> GetCategoryEntityByIdAsync(Guid id, bool includeDeleted = false);
         Task<Category> CreateCategoryAsync(CreateCategoryVM model);

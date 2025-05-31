@@ -59,6 +59,24 @@ namespace Evyte.ApplicationCore.Services.Categories
                 PageSize = pageSize
             };
         }
+        public async Task<List<CategoryVM>> GetAllActiveCategoriesAsync()
+        {
+
+            var categories = await _context.Categories.Where(x => !x.IsDeleted)
+                .Select(c => new CategoryVM
+                {
+                    Id = c.Id,
+                    NameAr = c.NameAr,
+                    NameEn = c.NameEn,
+                    ImageUrl = c.ImageUrl,
+                    SortingNumber = c.SortingNumber,
+                    CreatedAt = c.CreatedDate,
+                    IsDeleted = c.IsDeleted
+                })
+                .ToListAsync();
+
+            return categories;
+        }
 
         public async Task<CategoryVM> GetCategoryByIdAsync(Guid id, bool includeDeleted = false)
         {

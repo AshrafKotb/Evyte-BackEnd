@@ -1,30 +1,51 @@
+/*
+ * Evyte Categories Stylesheet
+ * هذا الملف يحتوي على الأنماط الخاصة بصفحة الأقسام في تطبيق Evyte.
+ * تم تنظيم الأنماط لسهولة القراءة والصيانة، مع التركيز على الاستجابة والتصميم الجذاب.
+ */
+
+/* ==========================================================================
+   متغيرات CSS الجذرية (Root CSS Variables)
+   تستخدم لتعريف الألوان والظلال والانتقالات الشائعة في التطبيق.
+   ========================================================================== */
 :root {
-    --primary-color: #1a3c6d;
-    --secondary-color: #00a3ad;
-    --accent-color: #f4a261;
-    --text-color: #2d3436;
-    --light-bg: #f5f7fa;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    --transition: all 0.3s ease;
+    --primary-color: #1a3c6d; /* اللون الأساسي: أزرق داكن */
+    --secondary-color: #00a3ad; /* اللون الثانوي: أزرق فيروزي */
+    --accent-color: #f4a261; /* اللون المميز: برتقالي */
+    --text-color: #2d3436; /* لون النص: رمادي داكن */
+    --light-bg: #f5f7fa; /* خلفية فاتحة */
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* ظل قياسي للعناصر */
+    --transition: all 0.3s ease; /* انتقال سلس لجميع الخصائص */
+    --border-radius: 8px; /* نصف قطر الزوايا الافتراضي */
+    --white: #ffffff; /* اللون الأبيض */
+    --gray-color: #6c757d; /* لون رمادي للنصوص الثانوية */
 }
 
+/* ==========================================================================
+   الأنماط الأساسية (Base Styles)
+   تطبيق الأنماط العامة على الجسم والخطوط.
+   ========================================================================== */
 body {
-    font-family: 'Tajawal', sans-serif;
-    background: var(--light-bg);
-    color: var(--text-color);
-    direction: rtl;
-    text-align: right;
+    font-family: 'Tajawal', sans-serif; /* استخدام خط تاجوال */
+    background: var(--light-bg); /* خلفية فاتحة للجسم */
+    color: var(--text-color); /* لون النص الأساسي */
+    direction: rtl; /* اتجاه النص من اليمين لليسار */
+    text-align: right; /* محاذاة النص لليمين */
 }
 
+/* ==========================================================================
+   أنماط رأس الصفحة والعنوان (Header & Title Styles)
+   تنسيق رأس الصفحة وعنوانها مع تأثيرات بصرية.
+   ========================================================================== */
 .category-header {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2.5rem;
-    background: linear-gradient(135deg, var(--primary-color) 0%, #2c5282 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2c5282 100%); /* تدرج لوني للخلفية */
     border-radius: 16px;
     margin-bottom: 2rem;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow); /* ظل أنيق */
 }
 
 .page-title {
@@ -32,9 +53,9 @@ body {
     font-weight: 900;
     color: #ffffff;
     margin: 0;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* ظل للنص */
     position: relative;
-    animation: pulseTitle 2s ease-in-out infinite;
+    animation: pulseTitle 2s ease-in-out infinite; /* تأثير نبض على العنوان */
 }
 
     .page-title::after {
@@ -45,7 +66,7 @@ body {
         transform: translateX(50%);
         width: 120px;
         height: 5px;
-        background: var(--accent-color);
+        background: var(--accent-color); /* خط مميز أسفل العنوان */
         border-radius: 3px;
     }
 
@@ -66,6 +87,10 @@ body {
     }
 }
 
+/* ==========================================================================
+   أنماط شريط البحث (Search Bar Styles)
+   تنسيق حاوية البحث وحقل الإدخال والزر.
+   ========================================================================== */
 .category-search-container {
     margin-bottom: 2rem;
 }
@@ -95,7 +120,7 @@ body {
 
         .category-search input:focus {
             outline: none;
-            box-shadow: inset 0 0 0 2px var(--secondary-color);
+            box-shadow: inset 0 0 0 2px var(--secondary-color); /* إطار عند التركيز */
         }
 
     .category-search button {
@@ -112,9 +137,13 @@ body {
     }
 
         .category-search button:hover {
-            color: var(--accent-color);
+            color: var(--accent-color); /* تغيير اللون عند التحويم */
         }
 
+/* ==========================================================================
+   أنماط عناصر التحكم وحجم الصفحة (Controls & Page Size Styles)
+   تنسيق أزرار الإنشاء ومحدد حجم الصفحة.
+   ========================================================================== */
 .controls-container {
     display: flex;
     justify-content: space-between;
@@ -133,12 +162,12 @@ body {
     align-items: center;
     gap: 0.5rem;
     transition: var(--transition);
-    box-shadow: 0 4px 12px rgba(0, 163, 173, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 163, 173, 0.3); /* ظل للزر */
 }
 
     .create-btn:hover {
-        background: #008c95;
-        transform: translateY(-2px);
+        background: #008c95; /* لون أغمق عند التحويم */
+        transform: translateY(-2px); /* رفع الزر قليلاً */
         box-shadow: 0 8px 20px rgba(0, 163, 173, 0.4);
     }
 
@@ -170,10 +199,14 @@ body {
             box-shadow: 0 0 0 0.2rem rgba(0, 163, 173, 0.25);
         }
 
+/* ==========================================================================
+   أنماط الجدول (Table Styles)
+   تنسيق جدول الأقسام والصور داخله.
+   ========================================================================== */
 .category-table {
     background: #ffffff;
     border-radius: 16px;
-    overflow: hidden;
+    overflow: hidden; /* لإخفاء أي محتوى زائد داخل الجدول */
     box-shadow: var(--shadow);
 }
 
@@ -207,10 +240,14 @@ body {
 }
 
     .category-img:hover {
-        transform: scale(1.1);
+        transform: scale(1.1); /* تكبير الصورة عند التحويم */
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     }
 
+/* ==========================================================================
+   أنماط الشارات (Badge Styles)
+   تنسيق شارات الحالة (نشط، محذوف، فرز).
+   ========================================================================== */
 .badge {
     display: inline-flex;
     align-items: center;
@@ -225,21 +262,21 @@ body {
 }
 
 .badge-Sorting {
-    background: #989e9b;
+    background: #989e9b; /* لون رمادي للفرز */
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+    box-shadow: 0 4px 12px rgba(152, 158, 155, 0.3); /* ظل خاص */
     padding: 0.3rem 0.5rem !important;
     border-radius: 15px !important;
 }
 
 .badge-active {
-    background: #27ae60;
+    background: #27ae60; /* لون أخضر للحالة النشطة */
     color: #ffffff;
     box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
 }
 
 .badge-deleted {
-    background: #c0392b;
+    background: #c0392b; /* لون أحمر للحالة المحذوفة */
     color: #ffffff;
     box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
 }
@@ -251,6 +288,7 @@ body {
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
     }
 
+    /* تأثير تراكب لامع عند التحويم */
     .badge-active::before,
     .badge-Sorting::before,
     .badge-deleted::before {
@@ -271,6 +309,10 @@ body {
         opacity: 1;
     }
 
+/* ==========================================================================
+   أنماط أزرار الإجراءات (Action Buttons Styles)
+   تنسيق أزرار الحذف والاستعادة.
+   ========================================================================== */
 .action-buttons {
     display: flex;
     gap: 0.5rem;
@@ -293,15 +335,19 @@ body {
         }
 
 .btn-action.btn-delete {
-    background: #c0392b;
+    background: #c0392b; /* لون أحمر للحذف */
     color: #ffffff;
 }
 
 .btn-action.btn-restore {
-    background: #27ae60;
+    background: #27ae60; /* لون أخضر للاستعادة */
     color: #ffffff;
 }
 
+/* ==========================================================================
+   أنماط ترقيم الصفحات (Pagination Styles)
+   تنسيق حاوية وأزرار ترقيم الصفحات.
+   ========================================================================== */
 .pagination-container {
     margin: 2.5rem 0;
     padding: 1.5rem 0;
@@ -345,7 +391,7 @@ body {
         color: #ffffff;
         border-color: var(--secondary-color);
         box-shadow: 0 4px 12px rgba(0, 163, 173, 0.3);
-        transform: scale(1.1);
+        transform: scale(1.1); /* تكبير الرقم النشط */
     }
 
     .page-item .page-link:hover {
@@ -390,6 +436,21 @@ body {
         justify-content: center;
         cursor: default;
     }
+
+/* ==========================================================================
+   أنماط المودال (Modal Styles)
+   تنسيق النوافذ المنبثقة (المودال) لضمان ظهورها وتفاعلها بشكل صحيح.
+   تم إضافة z-index لضمان التراكب الصحيح.
+   ========================================================================== */
+/* تأكد أن المودال يظهر فوق كل شيء آخر */
+.modal {
+    z-index: 1050 !important; /* يجب أن يكون أعلى من modal-backdrop */
+}
+
+/* تأكد أن الخلفية المعتمة للمودال تظهر تحت المودال وفوق باقي المحتوى */
+.modal-backdrop {
+    z-index: 1040 !important; /* يجب أن يكون أقل من المودال وأعلى من المحتوى العادي */
+}
 
 .modal-content {
     border-radius: 20px;
@@ -449,6 +510,10 @@ body {
     font-weight: 600;
 }
 
+/* ==========================================================================
+   استعلامات الوسائط للاستجابة (Media Queries for Responsiveness)
+   تعديل الأنماط لتناسب أحجام الشاشات المختلفة.
+   ========================================================================== */
 @media (max-width: 992px) {
     .category-header {
         padding: 2rem;
@@ -573,6 +638,10 @@ body {
     }
 }
 
+/* ==========================================================================
+   أنماط متنوعة (Miscellaneous Styles)
+   أنماط إضافية لعناصر مختلفة.
+   ========================================================================== */
 .design-link {
     display: inline-flex;
     align-items: center;

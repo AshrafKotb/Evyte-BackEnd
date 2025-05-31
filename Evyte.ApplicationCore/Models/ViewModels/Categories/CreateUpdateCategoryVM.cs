@@ -71,7 +71,7 @@ namespace Evyte.ApplicationCore.Models.ViewModels.Categories
         [Display(Name = "Sorting Number")]
         public int SortingNumber { get; set; }
 
-        [HiddenInput]
-        public string CurrentImageUrl { get; set; }
+        //[HiddenInput]
+        public string? CurrentImageUrl { get; set; }
     }
 }
