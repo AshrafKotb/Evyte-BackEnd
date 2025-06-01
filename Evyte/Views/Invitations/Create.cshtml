@@ -14,7 +14,7 @@
         <div class="form-container bg-white rounded-2xl shadow-xl overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
             <div class="form-header bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center py-6" data-aos="fade-down" data-aos-delay="200">
                 <h2 class="text-3xl font-bold mb-2 animate-bounceIn">إنشاء موقع مناسبتكم</h2>
-                <p class="opacity-90">صمم موقعًا رائعًا ليومك المميز مع Evyte.</p>
+                <p class="opacity-90">صمم موقعًا رائعًا ليومك المميز مع Eventa .</p>
             </div>
             <form id="weddingForm" class="p-2" asp-action="Create" method="post" enctype="multipart/form-data">
                 <input type="hidden" asp-for="DesignId" />
@@ -46,41 +46,60 @@
                     </div>
                 </div>
 
-                 <!-- معلومات العريس -->
-                <div class="form-section groom-section mb-8" data-aos="slide-up" data-aos-delay="400">
-                    <h4 class="text-xl font-semibold text-gray-800 mb-4">معلومات العريس</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="GroomName" class="form-label block text-sm font-medium text-gray-700">اسم العريس <span class="text-red-500">*</span></label>
-                            <input type="text" class="form-control w-full mt-1" id="GroomName" asp-for="GroomName" required />
+                <!-- معلومات العريس -->
+                <div class="form-section groom-section mb-8 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 shadow-md" data-aos="fade-up" data-aos-delay="400">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-blue-200 pb-3">معلومات العريس</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-4">
+                            <label for="GroomName" class="form-label block text-base font-semibold text-gray-800">اسم العريس <span class="text-red-500">*</span></label>
+                            <input type="text" class="form-control w-full mt-1 rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-400 shadow-sm" id="GroomName" asp-for="GroomName" required />
                             <span asp-validation-for="GroomName" class="text-red-500 text-sm mt-1"></span>
                         </div>
-                        <div>
-                            <label for="GroomImage" class="form-label block text-sm font-medium text-gray-700">صورة العريس <span class="text-red-500">*</span></label>
-                            <input type="file" class="form-control w-full mt-1" id="GroomImage" asp-for="GroomImage" accept="image/png,image/jpeg,image/jpg" required />
-                            <div class="image-preview mt-2" id="GroomImagePreview"></div>
+                        <div class="space-y-4">
+                            <label for="GroomImage" class="form-label block text-base font-semibold text-gray-800">صورة العريس (اختياري)</label>
+                            <input type="file" class="form-control w-full mt-1 rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-400 shadow-sm" id="GroomImage" asp-for="GroomImage" accept="image/png,image/jpeg,image/jpg" />
+                            <label class="form-label block text-base font-semibold text-gray-800 mt-4">أو اختر صورة رمزية</label>
+                            <input type="hidden" id="GroomAvatar" asp-for="GroomAvatar" />
+                            <div class="avatar-grid grid grid-cols-3 gap-3 mt-3">
+                                <div class="avatar-option relative group" data-url="https://ik.imagekit.io/Ashraf/Avatar/groom1.jpg">
+                                    <img src="https://ik.imagekit.io/Ashraf/Avatar/groom1.jpg" alt="Groom Avatar 1" class="w-full h-28 object-cover rounded-lg border-2 border-gray-200 hover:border-blue-500 transition-all duration-300 cursor-pointer shadow-sm">
+                                    <div class="absolute inset-0 bg-blue-500 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 rounded-lg"></div>
+                                    <span class="absolute top-2 right-2 hidden text-white bg-blue-500 rounded-full p-1 text-xs font-bold selected-check">✓</span>
+                                </div>
+                                <div class="avatar-option relative group" data-url="https://ik.imagekit.io/Ashraf/Avatar/groom2.jpg">
+                                    <img src="https://ik.imagekit.io/Ashraf/Avatar/groom2.jpg" alt="Groom Avatar 2" class="w-full h-28 object-cover rounded-lg border-2 border-gray-200 hover:border-blue-500 transition-all duration-300 cursor-pointer shadow-sm">
+                                    <div class="absolute inset-0 bg-blue-500 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 rounded-lg"></div>
+                                    <span class="absolute top-2 right-2 hidden text-white bg-blue-500 rounded-full p-1 text-xs font-bold selected-check">✓</span>
+                                </div>
+                                <div class="avatar-option relative group" data-url="https://ik.imagekit.io/Ashraf/Avatar/groom3.jpg">
+                                    <img src="https://ik.imagekit.io/Ashraf/Avatar/groom3.jpg" alt="Groom Avatar 3" class="w-full h-28 object-cover rounded-lg border-2 border-gray-200 hover:border-blue-500 transition-all duration-300 cursor-pointer shadow-sm">
+                                    <div class="absolute inset-0 bg-blue-500 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 rounded-lg"></div>
+                                    <span class="absolute top-2 right-2 hidden text-white bg-blue-500 rounded-full p-1 text-xs font-bold selected-check">✓</span>
+                                </div>
+                            </div>
+                            <div class="image-preview mt-3 flex flex-wrap gap-3" id="GroomImagePreview"></div>
                             <span asp-validation-for="GroomImage" class="text-red-500 text-sm mt-1"></span>
                         </div>
                         <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div class="relative">
-                                <label for="GroomFacebook" class="form-label block text-sm font-medium text-gray-700">رابط فيسبوك (اختياري)</label>
-                                <div class="input-group flex">
-                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="GroomFacebook"><i class="fab fa-facebook-f text-blue-600"></i></a>
-                                    <input type="url" class="form-control w-full mt-1 rounded-r-none" id="GroomFacebook" asp-for="GroomFacebook" placeholder="https://facebook.com/..." />
+                            <div class="relative social-input-group">
+                                <label for="GroomFacebook" class="form-label block text-base font-semibold text-gray-800">رابط فيسبوك (اختياري)</label>
+                                <div class="flex items-center" dir="ltr">
+                                    <a href="#" class="social-icon" data-input="GroomFacebook"><i class="fab fa-facebook-f text-blue-600"></i></a>
+                                    <input type="url" class="form-control w-full" id="GroomFacebook" asp-for="GroomFacebook" placeholder="https://facebook.com/..." />
                                 </div>
                             </div>
-                            <div class="relative">
-                                <label for="GroomInstagram" class="form-label block text-sm font-medium text-gray-700">رابط إنستغرام (اختياري)</label>
-                                <div class="input-group flex">
-                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="GroomInstagram"><i class="fab fa-instagram text-pink-500"></i></a>
-                                    <input type="url" class="form-control w-full mt-1 rounded-r-none" id="GroomInstagram" asp-for="GroomInstagram" placeholder="https://instagram.com/..." />
+                            <div class="relative social-input-group">
+                                <label for="GroomInstagram" class="form-label block text-base font-semibold text-gray-800">رابط إنستغرام (اختياري)</label>
+                                <div class="flex items-center" dir="ltr">
+                                    <a href="#" class="social-icon" data-input="GroomInstagram"><i class="fab fa-instagram text-pink-500"></i></a>
+                                    <input type="url" class="form-control w-full" id="GroomInstagram" asp-for="GroomInstagram" placeholder="https://instagram.com/..." />
                                 </div>
                             </div>
-                            <div class="relative">
-                                <label for="GroomX" class="form-label block text-sm font-medium text-gray-700">رابط إكس (اختياري)</label>
-                                <div class="input-group flex">
-                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="GroomX"><i class="fab fa-x-twitter text-black"></i></a>
-                                    <input type="url" class="form-control w-full mt-1 rounded-r-none" id="GroomX" asp-for="GroomX" placeholder="https://x.com/..." />
+                            <div class="relative social-input-group">
+                                <label for="GroomX" class="form-label block text-base font-semibold text-gray-800">رابط إكس (اختياري)</label>
+                                <div class="flex items-center" dir="ltr">
+                                    <a href="#" class="social-icon" data-input="GroomX"><i class="fab fa-x-twitter text-black"></i></a>
+                                    <input type="url" class="form-control w-full" id="GroomX" asp-for="GroomX" placeholder="https://x.com/..." />
                                 </div>
                             </div>
                         </div>
@@ -88,46 +107,54 @@
                 </div>
 
                 <!-- معلومات العروس -->
-                <div class="form-section bride-section mb-8" data-aos="slide-up" data-aos-delay="500">
-                    <h4 class="text-xl font-semibold text-gray-800 mb-4">معلومات العروس</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="BrideName" class="form-label block text-sm font-medium text-gray-700">اسم العروس <span class="text-red-500">*</span></label>
-                            <input type="text" class="form-control w-full mt-1" id="BrideName" asp-for="BrideName" required />
+                <div class="form-section bride-section mb-8 bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-6 shadow-md" data-aos="fade-up" data-aos-delay="500">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-pink-200 pb-3">معلومات العروس</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-4">
+                            <label for="BrideName" class="form-label block text-base font-semibold text-gray-800">اسم العروس <span class="text-red-500">*</span></label>
+                            <input type="text" class="form-control w-full mt-1 rounded-lg border-gray-300 focus:ring-2 focus:ring-pink-400 shadow-sm" id="BrideName" asp-for="BrideName" required />
                             <span asp-validation-for="BrideName" class="text-red-500 text-sm mt-1"></span>
                         </div>
-                        <div>
-                            <label for="BrideImage" class="form-label block text-sm font-medium text-gray-700">صورة العروس <span class="text-red-500">*</span></label>
-                            <input type="file" class="form-control w-full mt-1" id="BrideImage" asp-for="BrideImage" accept="image/png,image/jpeg,image/jpg" required />
-                            <div class="image-preview mt-2" id="BrideImagePreview"></div>
+                        <div class="space-y-4">
+                            <label for="BrideImage" class="form-label block text-base font-semibold text-gray-800">صورة العروس (اختياري)</label>
+                            <input type="file" class="form-control w-full mt-1 rounded-lg border-gray-300 focus:ring-2 focus:ring-pink-400 shadow-sm" id="BrideImage" asp-for="BrideImage" accept="image/png,image/jpeg,image/jpg" />
+                            <label class="form-label block text-base font-semibold text-gray-800 mt-4">أو اختر صورة رمزية</label>
+                            <input type="hidden" id="BrideAvatar" asp-for="BrideAvatar" />
+                            <div class="avatar-grid grid grid-cols-3 gap-3 mt-3">
+                                <div class="avatar-option relative group" data-url="https://ik.imagekit.io/Ashraf/Avatar/bride1.jpg">
+                                    <img src="https://ik.imagekit.io/Ashraf/Avatar/bride1.jpg" alt="Bride Avatar 1" class="w-full h-28 object-cover rounded-lg border-2 border-gray-200 hover:border-pink-500 transition-all duration-300 cursor-pointer shadow-sm">
+                                    <div class="absolute inset-0 bg-pink-500 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 rounded-lg"></div>
+                                    <span class="absolute top-2 right-2 hidden text-white bg-pink-500 rounded-full p-1 text-xs font-bold selected-check">✓</span>
+                                </div>
+                            </div>
+                            <div class="image-preview mt-3 flex flex-wrap gap-3" id="BrideImagePreview"></div>
                             <span asp-validation-for="BrideImage" class="text-red-500 text-sm mt-1"></span>
                         </div>
                         <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div class="relative">
-                                <label for="BrideFacebook" class="form-label block text-sm font-medium text-gray-700">رابط فيسبوك (اختياري)</label>
-                                <div class="input-group flex">
-                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="BrideFacebook"><i class="fab fa-facebook-f text-blue-600"></i></a>
-                                    <input type="url" class="form-control w-full mt-1 rounded-r-none" id="BrideFacebook" asp-for="BrideFacebook" placeholder="https://facebook.com/..." />
+                            <div class="relative social-input-group">
+                                <label for="BrideFacebook" class="form-label block text-base font-semibold text-gray-800">رابط فيسبوك (اختياري)</label>
+                                <div class="flex items-center" dir="ltr">
+                                    <a href="#" class="social-icon" data-input="BrideFacebook"><i class="fab fa-facebook-f text-blue-600"></i></a>
+                                    <input type="url" class="form-control w-full" id="BrideFacebook" asp-for="BrideFacebook" placeholder="https://facebook.com/..." />
                                 </div>
                             </div>
-                            <div class="relative">
-                                <label for="BrideInstagram" class="form-label block text-sm font-medium text-gray-700">رابط إنستغرام (اختياري)</label>
-                                <div class="input-group flex">
-                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="BrideInstagram"><i class="fab fa-instagram text-pink-500"></i></a>
-                                    <input type="url" class="form-control w-full mt-1 rounded-r-none" id="BrideInstagram" asp-for="BrideInstagram" placeholder="https://instagram.com/..." />
+                            <div class="relative social-input-group">
+                                <label for="BrideInstagram" class="form-label block text-base font-semibold text-gray-800">رابط إنستغرام (اختياري)</label>
+                                <div class="flex items-center" dir="ltr">
+                                    <a href="#" class="social-icon" data-input="BrideInstagram"><i class="fab fa-instagram text-pink-500"></i></a>
+                                    <input type="url" class="form-control w-full" id="BrideInstagram" asp-for="BrideInstagram" placeholder="https://instagram.com/..." />
                                 </div>
                             </div>
-                            <div class="relative">
-                                <label for="BrideX" class="form-label block text-sm font-medium text-gray-700">رابط إكس (اختياري)</label>
-                                <div class="input-group flex">
-                                    <a href="#" class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md social-link" data-input="BrideX"><i class="fab fa-x-twitter text-black"></i></a>
-                                    <input type="url" class="form-control w-full mt-1 rounded-r-none" id="BrideX" asp-for="BrideX" placeholder="https://x.com/..." />
+                            <div class="relative social-input-group">
+                                <label for="BrideX" class="form-label block text-base font-semibold text-gray-800">رابط إكس (اختياري)</label>
+                                <div class="flex items-center" dir="ltr">
+                                    <a href="#" class="social-icon" data-input="BrideX"><i class="fab fa-x-twitter text-black"></i></a>
+                                    <input type="url" class="form-control w-full" id="BrideX" asp-for="BrideX" placeholder="https://x.com/..." />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- تفاصيل الحدث -->
                 <div class="form-section event-section mb-8" data-aos="slide-up" data-aos-delay="600">
                     <h4 class="text-xl font-semibold text-gray-800 mb-4">تفاصيل الحدث</h4>
@@ -159,8 +186,9 @@
                             <span asp-validation-for="EventPlaceName" class="text-red-500 text-sm mt-1"></span>
                         </div>
                         <div>
-                            <label for="eventPlaceImage" class="form-label block text-sm font-medium text-gray-700">صورة المكان <span class="text-red-500">*</span></label>
-                            <input type="file" class="form-control w-full mt-1" id="EventPlaceImage" asp-for="EventPlaceImage" accept="image/png,image/jpeg,image/jpg" required />
+                            <label for="eventPlaceImage" class="form-label block text-sm font-medium text-gray-700">صورة المكان (اختياري)</label>
+                            <input type="file" class="form-control w-full mt-1" id="EventPlaceImage" asp-for="EventPlaceImage" accept="image/png,image/jpeg,image/jpg" />
+                            <p class="text-sm text-gray-500 mt-1">سيتم استخدام صورة افتراضية إذا لم تقم بتحميل صورة</p>
                             <div class="image-preview mt-2" id="EventPlaceImagePreview"></div>
                             <span asp-validation-for="EventPlaceImage" class="text-red-500 text-sm mt-1"></span>
                         </div>
@@ -190,7 +218,7 @@
                         </div>
                         <div>
                             <label for="mainSliderImage" class="form-label block text-sm font-medium text-gray-700">صورة المناسبة الرئيسية <span class="text-red-500">*</span></label>
-                            <input type="file" class="form-control w-full mt-1" id="MainSliderImage" asp-for="MainSliderImage" accept="image/png,image/jpeg,image/jpg" required />
+                            <input type="file" class="form-control w-full mt-1" id="mainSliderImage" asp-for="MainSliderImage" accept="image/png,image/jpeg,image/jpg" required />
                             <div class="image-preview mt-2" id="MainSliderImagePreview"></div>
                             <span asp-validation-for="MainSliderImage" class="text-red-500 text-sm mt-1"></span>
                         </div>
@@ -267,7 +295,6 @@
                             </svg>
                             عرض QR
                         </button>
-
                     </div>
                 </div>
             </div>
@@ -275,314 +302,366 @@
     </div>
 </section>
 
-
 @section Scripts {
-        <!-- مكتبات JavaScript المطلوبة -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ar.js"></script>
+    <!-- مكتبات JavaScript المطلوبة -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ar.js"></script>
 
-        <script>
-            $(document).ready(function () {
-                // إخفاء نافذة التحميل عند بدء الصفحة
-                $("#loadingOverlay").addClass("hidden");
+    <script>
+        $(document).ready(function () {
+            // إخفاء نافذة التحميل عند بدء الصفحة
+            $("#loadingOverlay").addClass("hidden");
 
-                // تهيئة Flatpickr للتاريخ والوقت
-                flatpickr("#eventDate", {
-                    locale: "ar",
-                    dateFormat: "Y-m-d",
-                    minDate: "today",
-                    enableTime: false,
-                    altInput: true,
-                    altFormat: "j F Y",
-                    allowInput: true,
-                    disableMobile: true
-                });
+            // تهيئة Flatpickr للتاريخ والوقت
+            flatpickr("#eventDate", {
+                locale: "ar",
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                enableTime: false,
+                altInput: true,
+                altFormat: "j F Y",
+                allowInput: true,
+                disableMobile: true
+            });
 
-                flatpickr("#eventTimeFrom", {
-                    enableTime: true,
-                    noCalendar: true,
-                    dateFormat: "H:i",
-                    altInput: true,
-                    altFormat: "h:i K",
-                    time_24hr: false,
-                    allowInput: true,
-                    disableMobile: true,
-                    locale: { firstDayOfWeek: 6, amPM: ["ص", "م"] }
-                });
+            flatpickr("#eventTimeFrom", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                altInput: true,
+                altFormat: "h:i K",
+                time_24hr: false,
+                allowInput: true,
+                disableMobile: true,
+                locale: { firstDayOfWeek: 6, amPM: ["ص", "م"] }
+            });
 
-                flatpickr("#eventTimeTo", {
-                    enableTime: true,
-                    noCalendar: true,
-                    dateFormat: "H:i",
-                    altInput: true,
-                    altFormat: "h:i K",
-                    time_24hr: false,
-                    allowInput: true,
-                    disableMobile: true,
-                    locale: { firstDayOfWeek: 6, amPM: ["ص", "م"] }
-                });
+            flatpickr("#eventTimeTo", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                altInput: true,
+                altFormat: "h:i K",
+                time_24hr: false,
+                allowInput: true,
+                disableMobile: true,
+                locale: { firstDayOfWeek: 6, amPM: ["ص", "م"] }
+            });
 
-                // التحقق من صحة النموذج
-                $("#weddingForm").validate({
-                    rules: {
-                        FullName: { required: true, minlength: 2 },
-                        PhoneNumber: { required: true },
-                        Email: { required: true, email: true },
-                        GroomName: { required: true, minlength: 2 },
-                        BrideName: { required: true, minlength: 2 },
-                        EventDate: { required: true },
-                        EventTimeFrom: { required: true },
-                        EventTimeTo: { required: true },
-                        EventPlaceName: { required: true },
-                        EventAddress: { required: true },
-                        LocationUrl: { required: true, url: true },
-                        GroomImage: { required: true, accept: "image/png,image/jpeg,image/jpg" },
-                        BrideImage: { required: true, accept: "image/png,image/jpeg,image/jpg" },
-                        EventPlaceImage: { required: true, accept: "image/png,image/jpeg,image/jpg" },
-                        MainSliderImage: { required: true, accept: "image/png,image/jpeg,image/jpg" },
-                        GalleryPhotos: { required: true, accept: "image/png,image/jpeg,image/jpg" }
-                    },
-                    messages: {
-                        FullName: "يرجى إدخال الاسم الكامل (على الأقل حرفين)",
-                        PhoneNumber: "يرجى إدخال رقم هاتف صالح",
-                        Email: "يرجى إدخال بريد إلكتروني صالح",
-                        GroomName: "يرجى إدخال اسم العريس (على الأقل حرفين)",
-                        BrideName: "يرجى إدخال اسم العروس (على الأقل حرفين)",
-                        EventDate: "يرجى اختيار تاريخ الحدث",
-                        EventTimeFrom: "يرجى اختيار وقت بدء الحدث",
-                        EventTimeTo: "يرجى اختيار وقت انتهاء الحدث",
-                        EventPlaceName: "يرجى إدخال اسم المكان",
-                        EventAddress: "يرجى إدخال عنوان المكان",
-                        LocationUrl: "يرجى إدخال رابط موقع صالح",
-                        GroomImage: "يرجى تحميل صورة العريس (PNG أو JPEG)",
-                        BrideImage: "يرجى تحميل صورة العروس (PNG أو JPEG)",
-                        EventPlaceImage: "يرجى تحميل صورة المكان (PNG أو JPEG)",
-                        MainSliderImage: "يرجى تحميل صورة المناسبة الرئيسية (PNG أو JPEG)",
-                        GalleryPhotos: "يرجى تحميل صورة واحدة على الأقل للمعرض (PNG أو JPEG)"
-                    },
-                    errorElement: "span",
-                    errorClass: "text-red-500 text-sm mt-1 block",
-                    errorPlacement: function (error, element) {
-                        if (element.is(":file")) {
-                            error.insertAfter(element.next(".image-preview, .image-preview-grid"));
-                        } else if (element.closest(".input-group").length) {
-                            error.insertAfter(element.closest(".input-group"));
-                        } else {
-                            error.insertAfter(element);
-                        }
-                    },
-                    highlight: function (element) {
-                        $(element).addClass("border-red-500").removeClass("border-gray-300");
-                        $(element).closest('.form-control').addClass('animate-shake');
-                        setTimeout(() => {
-                            $(element).closest('.form-control').removeClass('animate-shake');
-                        }, 500);
-                    },
-                    unhighlight: function (element) {
-                        $(element).removeClass("border-red-500").addClass("border-gray-300");
+            // التحقق من صحة النموذج
+            $("#weddingForm").validate({
+                rules: {
+                    FullName: { required: true, minlength: 2 },
+                    PhoneNumber: { required: true },
+                    Email: { required: true, email: true },
+                    GroomName: { required: true, minlength: 2 },
+                    BrideName: { required: true, minlength: 2 },
+                    EventDate: { required: true },
+                    EventTimeFrom: { required: true },
+                    EventTimeTo: { required: true },
+                    EventPlaceName: { required: true },
+                    EventAddress: { required: true },
+                    LocationUrl: { required: true, url: true },
+                    GroomImage: { accept: "image/png,image/jpeg,image/jpg" },
+                    BrideImage: { accept: "image/png,image/jpeg,image/jpg" },
+                    EventPlaceImage: { accept: "image/png,image/jpeg,image/jpg" },
+                    MainSliderImage: { required: true, accept: "image/png,image/jpeg,image/jpg" },
+                    GalleryPhotos: { required: true, accept: "image/png,image/jpeg,image/jpg" }
+                },
+                messages: {
+                    FullName: "يرجى إدخال الاسم الكامل (على الأقل حرفين)",
+                    PhoneNumber: "يرجى إدخال رقم هاتف صالح",
+                    Email: "يرجى إدخال بريد إلكتروني صالح",
+                    GroomName: "يرجى إدخال اسم العريس (على الأقل حرفين)",
+                    BrideName: "يرجى إدخال اسم العروس (على الأقل حرفين)",
+                    EventDate: "يرجى اختيار تاريخ الحدث",
+                    EventTimeFrom: "يرجى اختيار وقت بدء الحدث",
+                    EventTimeTo: "يرجى اختيار وقت انتهاء الحدث",
+                    EventPlaceName: "يرجى إدخال اسم المكان",
+                    EventAddress: "يرجى إدخال عنوان المكان",
+                    LocationUrl: "يرجى إدخال رابط موقع صالح",
+                    GroomImage: "يرجى تحميل صورة العريس (PNG أو JPEG)",
+                    BrideImage: "يرجى تحميل صورة العروس (PNG أو JPEG)",
+                    EventPlaceImage: "يرجى تحميل صورة المكان (PNG أو JPEG)",
+                    MainSliderImage: "يرجى تحميل صورة المناسبة الرئيسية (PNG أو JPEG)",
+                    GalleryPhotos: "يرجى تحميل صورة واحدة على الأقل للمعرض (PNG أو JPEG)"
+                },
+                errorElement: "span",
+                errorClass: "text-red-500 text-sm mt-1 block",
+                errorPlacement: function (error, element) {
+                    if (element.is(":file")) {
+                        error.insertAfter(element.next(".image-preview, .image-preview-grid"));
+                    } else if (element.closest(".input-group").length) {
+                        error.insertAfter(element.closest(".input-group"));
+                    } else {
+                        error.insertAfter(element);
                     }
-                });
+                },
+                highlight: function (element) {
+                    $(element).addClass("border-red-500").removeClass("border-gray-300");
+                    $(element).closest('.form-control').addClass('animate-shake');
+                    setTimeout(() => {
+                        $(element).closest('.form-control').removeClass('animate-shake');
+                    }, 500);
+                },
+                unhighlight: function (element) {
+                    $(element).removeClass("border-red-500").addClass("border-gray-300");
+                }
+            });
 
-                // معاينة الصور وإمكانية حذفها
-                const fileInputs = ['GroomImage', 'BrideImage', 'EventPlaceImage', 'MainSliderImage', 'GalleryPhotos'];
-                fileInputs.forEach(id => {
-                    const input = $(`#${id}`);
-                    const previewContainer = $(`#${id}Preview`);
+            // معاينة الصور وإمكانية حذفها
+            const fileInputs = ['GroomImage', 'BrideImage', 'EventPlaceImage', 'MainSliderImage', 'GalleryPhotos'];
+            fileInputs.forEach(id => {
+                const input = $(`#${id}`);
+                const previewContainer = $(`#${id}Preview`);
+                const avatarGrid = input.closest('.form-section').find('.avatar-grid');
 
-                    input.on('change', function (e) {
-                        previewContainer.empty();
-                        const files = e.target.files;
-                        if (files && files.length > 0) {
-                            for (let file of files) {
-                                if (file.type.match('image.*')) {
-                                    const reader = new FileReader();
-                                    reader.onload = function (event) {
-                                        const wrapper = $('<div>').addClass('image-wrapper');
-                                        const img = $('<img>')
-                                            .attr('src', event.target.result)
-                                            .addClass('w-24 h-24 object-cover rounded-md m-1');
-                                        const removeBtn = $('<span>')
-                                            .addClass('remove-image')
-                                            .text('X')
-                                            .on('click', function () {
-                                                $(this).parent().remove();
-                                                if (id === 'GalleryPhotos') {
-                                                    updateGalleryFiles();
-                                                } else {
-                                                    input.val('');
-                                                }
-                                            });
-                                        wrapper.append(img).append(removeBtn);
-                                        previewContainer.append(wrapper);
-                                    };
-                                    reader.readAsDataURL(file);
-                                }
+                input.on('change', function (e) {
+                    previewContainer.empty();
+                    const files = e.target.files;
+                    if (files && files.length > 0) {
+                        avatarGrid.addClass('hidden');
+                        for (let file of files) {
+                            if (file.type.match('image.*')) {
+                                const reader = new FileReader();
+                                reader.onload = function (event) {
+                                    const wrapper = $('<div>').addClass('image-wrapper');
+                                    const img = $('<img>')
+                                        .attr('src', event.target.result)
+                                        .addClass('w-28 h-28 object-cover rounded-lg m-1 border border-gray-200 shadow-sm');
+                                    const removeBtn = $('<span>')
+                                        .addClass('remove-image')
+                                        .text('X')
+                                        .on('click', function () {
+                                            $(this).parent().remove();
+                                            if (id === 'GalleryPhotos') {
+                                                updateGalleryFiles();
+                                            } else {
+                                                input.val('');
+                                                $(`#${id.replace('Image', 'Avatar')}`).val('');
+                                                avatarGrid.removeClass('hidden');
+                                            }
+                                        });
+                                    wrapper.append(img).append(removeBtn);
+                                    previewContainer.append(wrapper);
+                                };
+                                reader.readAsDataURL(file);
                             }
                         }
+                    } else {
+                        avatarGrid.removeClass('hidden');
+                    }
+                });
+            });
+
+            // اختيار الصور الرمزية
+            $('.avatar-option').on('click', function () {
+                const avatarInput = $(this).closest('.form-section').find('input[id$="Avatar"]');
+                const previewContainer = $(this).closest('.form-section').find('.image-preview');
+                const imageInput = $(this).closest('.form-section').find('input[id$="Image"]');
+                const url = $(this).data('url');
+                const avatarGrid = $(this).closest('.avatar-grid');
+
+                // إلغاء اختيار الصورة المحملة
+                imageInput.val('');
+                previewContainer.empty();
+                avatarGrid.addClass('hidden');
+
+                // تعيين قيمة الصورة الرمزية
+                avatarInput.val(url);
+
+                // عرض الصورة الرمزية في المعاينة
+                const wrapper = $('<div>').addClass('image-wrapper');
+                const img = $('<img>')
+                    .attr('src', url)
+                    .addClass('w-28 h-28 object-cover rounded-lg m-1 border border-gray-200 shadow-sm');
+                const removeBtn = $('<span>')
+                    .addClass('remove-image')
+                    .text('X')
+                    .on('click', function () {
+                        $(this).parent().remove();
+                        avatarInput.val('');
+                        avatarGrid.removeClass('hidden');
+                    });
+                wrapper.append(img).append(removeBtn);
+                previewContainer.append(wrapper);
+
+                // تحديد الصورة المختارة
+                $(this).closest('.avatar-grid').find('.avatar-option').removeClass('selected').find('.selected-check').addClass('hidden');
+                $(this).addClass('selected').find('.selected-check').removeClass('hidden');
+            });
+
+            // مسح جميع صور المعرض
+            $('#clearGalleryPhotos').on('click', function () {
+                $('#GalleryPhotos').val('');
+                $('#GalleryPhotosPreview').empty();
+            });
+
+            // تحديث ملفات المعرض بعد الحذف
+            function updateGalleryFiles() {
+                const input = $('#GalleryPhotos')[0];
+                const files = Array.from(input.files);
+                const dt = new DataTransfer();
+                const previewImages = $('#GalleryPhotosPreview img');
+
+                previewImages.each(function () {
+                    const src = $(this).attr('src');
+                    files.forEach(file => {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            if (e.target.result === src) {
+                                dt.items.add(file);
+                            }
+                        };
+                        reader.readAsDataURL(file);
                     });
                 });
+                input.files = dt.files;
+            }
 
-                // مسح جميع صور المعرض
-                $('#clearGalleryPhotos').on('click', function () {
-                    $('#GalleryPhotos').val('');
-                    $('#GalleryPhotosPreview').empty();
-                });
+            // إرسال النموذج عبر AJAX
+            $("#weddingForm").on("submit", function (e) {
+                e.preventDefault();
 
-                // تحديث ملفات المعرض بعد الحذف
-                function updateGalleryFiles() {
-                    const input = $('#GalleryPhotos')[0];
-                    const files = Array.from(input.files);
-                    const dt = new DataTransfer();
-                    const previewImages = $('#GalleryPhotosPreview img');
-
-                    previewImages.each(function () {
-                        const src = $(this).attr('src');
-                        files.forEach(file => {
-                            const reader = new FileReader();
-                            reader.onload = function(e) {
-                                if (e.target.result === src) {
-                                    dt.items.add(file);
-                                }
-                            };
-                            reader.readAsDataURL(file);
-                        });
-                    });
-                    input.files = dt.files;
+                if (!$(this).valid()) {
+                    return;
                 }
 
-                // إرسال النموذج عبر AJAX
-                $("#weddingForm").on("submit", function (e) {
-                    e.preventDefault();
+                const submitButton = $(this).find('.submit-btn');
+                submitButton.prop('disabled', true).addClass('animate-spin');
+                submitButton.html('<i class="fas fa-spinner fa-spin ml-2"></i> جاري الإرسال...');
+                $("#loadingOverlay").removeClass("hidden");
 
-                    if (!$(this).valid()) {
-                        return;
-                    }
+                const formData = new FormData(this);
 
-                    const submitButton = $(this).find('.submit-btn');
-                    submitButton.prop('disabled', true).addClass('animate-spin');
-                    submitButton.html('<i class="fas fa-spinner fa-spin ml-2"></i> جاري الإرسال...');
-                    $("#loadingOverlay").removeClass("hidden");
+                $.ajax({
+                    url: $(this).attr("action"),
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        if (response.success) {
+                            // عرض النتائج في المودال
+                            $('#invitationUrlDisplay').val(response.invitationUrl);
+                            $('#qrCodeImage').attr('src', response.qrCodeUrl);
+                            $('#visitLinkBtn').attr('href', response.invitationUrl);
+                            $('#resultModal').removeClass('hidden');
 
-                    const formData = new FormData(this);
-
-                    $.ajax({
-                        url: $(this).attr("action"),
-                        type: "POST",
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function (response) {
-                            if (response.success) {
-                                // عرض النتائج في المودال
-                                $('#invitationUrlDisplay').val(response.invitationUrl);
-                                $('#qrCodeImage').attr('src', response.qrCodeUrl);
-                                $('#visitLinkBtn').attr('href', response.invitationUrl);
-                                $('#resultModal').removeClass('hidden');
-
-                                // إطلاق الألعاب النارية
-                                if (typeof confetti !== 'undefined') {
-                                    confetti({
-                                        particleCount: 150,
-                                        spread: 70,
-                                        origin: { y: 0.6 },
-                                        colors: ['#3b82f6', '#7c3aed', '#facc15', '#a78bfa']
-                                    });
-                                }
-                            } else {
-                                Swal.fire({
-                                    title: "حدث خطأ",
-                                    text: response.message || "حدث خطأ غير متوقع.",
-                                    icon: "error",
-                                    confirmButtonText: "حسنًا"
+                            // إطلاق الألعاب النارية
+                            if (typeof confetti !== 'undefined') {
+                                confetti({
+                                    particleCount: 150,
+                                    spread: 70,
+                                    origin: { y: 0.6 },
+                                    colors: ['#3b82f6', '#7c3aed', '#facc15', '#a78bfa']
                                 });
                             }
-                        },
-                        error: function (xhr) {
-                            let errorMessage = "حدث خطأ غير متوقع. يرجى المحاولة لاحقًا.";
-                            if (xhr.responseJSON) {
-                                if (xhr.responseJSON.message) {
-                                    errorMessage = xhr.responseJSON.message;
-                                } else if (xhr.responseJSON.errors) {
-                                    errorMessage = Object.values(xhr.responseJSON.errors).flat().join("<br>");
-                                }
-                            }
-
+                        } else {
                             Swal.fire({
                                 title: "حدث خطأ",
-                                html: errorMessage,
+                                text: response.message || "حدث خطأ غير متوقع.",
                                 icon: "error",
                                 confirmButtonText: "حسنًا"
                             });
-                        },
-                        complete: function() {
-                            $("#loadingOverlay").addClass("hidden");
-                            submitButton.prop('disabled', false).removeClass('animate-spin');
-                            submitButton.html('<i class="fas fa-paper-plane ml-2"></i> إرسال الطلب');
                         }
-                    });
-                });
+                    },
+                    error: function (xhr) {
+                        let errorMessage = "حدث خطأ غير متوقع. يرجى المحاولة لاحقًا.";
+                        if (xhr.responseJSON) {
+                            if (xhr.responseJSON.message) {
+                                errorMessage = xhr.responseJSON.message;
+                            } else if (xhr.responseJSON.errors) {
+                                errorMessage = Object.values(xhr.responseJSON.errors).flat().join("<br>");
+                            }
+                        }
 
-                // دالة لنسخ النص إلى الحافظة
-                window.copyToClipboard = function(elementId) {
-                    const copyText = document.getElementById(elementId);
-                    copyText.select();
-                    copyText.setSelectionRange(0, 99999);
-                    document.execCommand("copy");
-
-                    // تغيير النص مؤقتًا للإشارة إلى النسخ
-                    const originalText = copyText.value;
-                    copyText.value = "تم النسخ!";
-                    setTimeout(() => {
-                        copyText.value = originalText;
-                    }, 2000);
-                };
-
-                // دالة لتحميل صورة QR Code عند النقر على الزر
-                $('#downloadQrBtn').on('click', function() {
-                    const qrCodeUrl = $('#qrCodeImage').attr('src');
-                    if (qrCodeUrl) {
-                        const link = document.createElement('a');
-                        link.href = qrCodeUrl;
-                        link.download = 'qr-code-invitation.png';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                    } else {
                         Swal.fire({
-                            title: "خطأ",
-                            text: "لم يتم العثور على صورة QR Code للتحميل",
+                            title: "حدث خطأ",
+                            html: errorMessage,
                             icon: "error",
                             confirmButtonText: "حسنًا"
                         });
+                    },
+                    complete: function() {
+                        $("#loadingOverlay").addClass("hidden");
+                        submitButton.prop('disabled', false).removeClass('animate-spin');
+                        submitButton.html('<i class="fas fa-paper-plane ml-2"></i> إرسال الطلب');
                     }
-                });
-
-                // إعادة التوجيه إلى الصفحة الرئيسية عند إغلاق المودال
-                $('#resultModal').click(function(e) {
-                    if (e.target === this) {
-                        $(this).addClass('hidden');
-                        window.location.href = '/Home/Index';
-                    }
-                });
-
-                // إعادة التوجيه عند النقر على زر الإغلاق (إذا كان موجودًا)
-                $('[data-dismiss="modal"]').click(function() {
-                    $('#resultModal').addClass('hidden');
-                    window.location.href = '/Home/Index';
-                });
-
-                // Add animation to form fields on focus
-                $('.form-control, .form-select').on('focus', function () {
-                    $(this).addClass('animate-glow');
-                }).on('blur', function () {
-                    $(this).removeClass('animate-glow');
                 });
             });
-        </script>
-}
 
+            // دالة لنسخ النص إلى الحافظة
+            window.copyToClipboard = function(elementId) {
+                const copyText = document.getElementById(elementId);
+                copyText.select();
+                copyText.setSelectionRange(0, 99999);
+                document.execCommand("copy");
+
+                // تغيير النص مؤقتًا للإشارة إلى النسخ
+                const originalText = copyText.value;
+                copyText.value = "تم النسخ!";
+                setTimeout(() => {
+                    copyText.value = originalText;
+                }, 2000);
+            };
+
+            // دالة لتحميل صورة QR Code عند النقر على الزر
+            $('#downloadQrBtn').on('click', function() {
+                const qrCodeUrl = $('#qrCodeImage').attr('src');
+                if (qrCodeUrl) {
+                    const link = document.createElement('a');
+                    link.href = qrCodeUrl;
+                    link.download = 'qr-code-invitation.png';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    Swal.fire({
+                        title: "خطأ",
+                        text: "لم يتم العثور على صورة QR Code للتحميل",
+                        icon: "error",
+                        confirmButtonText: "حسنًا"
+                    });
+                }
+            });
+
+            // إعادة التوجيه إلى الصفحة الرئيسية عند إغلاق المودال
+            $('#resultModal').click(function(e) {
+                if (e.target === this) {
+                    $(this).addClass('hidden');
+                    window.location.href = '/Home/Index';
+                }
+            });
+
+            // إعادة التوجيه عند النقر على زر الإغلاق (إذا كان موجودًا)
+            $('[data-dismiss="modal"]').click(function() {
+                $('#resultModal').addClass('hidden');
+                window.location.href = '/Home/Index';
+            });
+
+            // Add animation to form fields on focus
+            $('.form-control').on('focus', function () {
+                $(this).addClass('animate-glow');
+            }).on('blur', function () {
+                $(this).removeClass('animate-glow');
+            });
+                $(document).ready(function () {
+            $('.social-icon').on('click', function (e) {
+                e.preventDefault();
+                const inputId = $(this).data('input');
+                const input = $(`#${inputId}`);
+                const url = input.val();
+                if (url) {
+                    window.open(url, '_blank');
+                }
+            });
+        });
+        });
+    </script>
+}

@@ -25,8 +25,8 @@ namespace Evyte.ApplicationCore.Models.ViewModels
         [MinLength(2, ErrorMessage = "اسم العريس يجب أن يكون على الأقل حرفين")]
         public string GroomName { get; set; }
 
-        [Required(ErrorMessage = "صورة العريس مطلوبة")]
-        public IFormFile GroomImage { get; set; }
+        //[Required(ErrorMessage = "صورة العريس مطلوبة")]
+        public IFormFile? GroomImage { get; set; }
 
         // Social media fields (optional)
         public string? GroomFacebook { get; set; }
@@ -38,8 +38,8 @@ namespace Evyte.ApplicationCore.Models.ViewModels
         [MinLength(2, ErrorMessage = "اسم العروس يجب أن يكون على الأقل حرفين")]
         public string BrideName { get; set; }
 
-        [Required(ErrorMessage = "صورة العروس مطلوبة")]
-        public IFormFile BrideImage { get; set; }
+        //[Required(ErrorMessage = "صورة العروس مطلوبة")]
+        public IFormFile? BrideImage { get; set; }
 
         // Social media fields (optional)
         public string? BrideFacebook { get; set; }
@@ -59,8 +59,8 @@ namespace Evyte.ApplicationCore.Models.ViewModels
         [Required(ErrorMessage = "اسم المكان مطلوب")]
         public string EventPlaceName { get; set; }
 
-        [Required(ErrorMessage = "صورة المكان مطلوبة")]
-        public IFormFile EventPlaceImage { get; set; }
+        //[Required(ErrorMessage = "صورة المكان مطلوبة")]
+        public IFormFile? EventPlaceImage { get; set; }
 
         [Required(ErrorMessage = "عنوان المكان مطلوب")]
         public string EventAddress { get; set; }
@@ -75,5 +75,8 @@ namespace Evyte.ApplicationCore.Models.ViewModels
 
         [Required(ErrorMessage = "يجب تحميل صورة واحدة على الأقل للمعرض")]
         public IFormFileCollection GalleryPhotos { get; set; }
+        // New properties for avatar selections
+        public string GroomAvatar { get; set; }
+        public string BrideAvatar { get; set; }
     }
 }

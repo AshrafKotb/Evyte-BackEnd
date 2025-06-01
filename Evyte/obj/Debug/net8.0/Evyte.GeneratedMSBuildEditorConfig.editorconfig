@@ -192,8 +192,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFByZXZpZXdcX1dlZGRpbmdIb21lMi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Shared/templates/_AnnouncementHome1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXHRlbXBsYXRlc1xfQW5ub3VuY2VtZW50SG9tZTEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Shared/templates/_AnnouncementHome2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXHRlbXBsYXRlc1xfQW5ub3VuY2VtZW50SG9tZTIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Shared/templates/_AsianWeddingHome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXHRlbXBsYXRlc1xfQXNpYW5XZWRkaW5nSG9tZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Shared/templates/_first.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXHRlbXBsYXRlc1xfZmlyc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Shared/templates/_MuslimWeddingHome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXHRlbXBsYXRlc1xfTXVzbGltV2VkZGluZ0hvbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Shared/templates/_MuslimWeddingHomeRTL.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXHRlbXBsYXRlc1xfTXVzbGltV2VkZGluZ0hvbWVSVEwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Shared/templates/_test.cshtml]
@@ -202,6 +222,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Shared/templates/_WeddingHome1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXHRlbXBsYXRlc1xfV2VkZGluZ0hvbWUxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Shared/templates/_WeddingHome2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXHRlbXBsYXRlc1xfV2VkZGluZ0hvbWUyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Shared/_FloatingButton.cshtml]

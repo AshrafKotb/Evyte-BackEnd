@@ -1741,7 +1741,7 @@ wwwroot\css\splash-screen.css
 wwwroot\css\terms-and-conditions.css
 wwwroot\favicon.ico
 wwwroot\Images\avatar.png
-wwwroot\Images\Evyte.png
+wwwroot\Images\Eventa.png
 wwwroot\Images\one.png
 wwwroot\Images\three.png
 wwwroot\Images\two.png

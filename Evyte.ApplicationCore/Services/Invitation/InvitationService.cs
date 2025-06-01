@@ -7,13 +7,8 @@ using Evyte.Domain.Entities;
 using Evyte.Domain.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using QRCoder;
 using System;
-using System.Drawing;
-using System.IO;
 using System.Threading.Tasks;
-using System.Web;
-
 
 public class InvitationService : IInvitationService
 {
@@ -27,6 +22,8 @@ public class InvitationService : IInvitationService
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly string _productionDomain = "https://evyte.runasp.net";
+    private readonly string _defaultEventPlaceImageUrl = "https://ik.imagekit.io/Ashraf/eventplace/cover3.jpg";
+
     public InvitationService(
         IUserRepository userRepository,
         IRequestRepository requestRepository,
@@ -98,31 +95,50 @@ public class InvitationService : IInvitationService
             LocationUrl = dto.LocationUrl
         };
 
-        // Upload images
+        // Upload images or use avatars/default
         if (dto.GroomImage != null)
         {
             (string url, string id) = await _fileService.UploadPictureAsync(dto.GroomImage, "groom");
             requestData.GroomImageUrl = url;
             requestData.GroomImageId = id;
         }
+        else if (!string.IsNullOrEmpty(dto.GroomAvatar))
+        {
+            requestData.GroomImageUrl = dto.GroomAvatar;
+            requestData.GroomImageId = null;
+        }
+
         if (dto.BrideImage != null)
         {
             (string url, string id) = await _fileService.UploadPictureAsync(dto.BrideImage, "bride");
             requestData.BrideImageUrl = url;
             requestData.BrideImageId = id;
         }
+        else if (!string.IsNullOrEmpty(dto.BrideAvatar))
+        {
+            requestData.BrideImageUrl = dto.BrideAvatar;
+            requestData.BrideImageId = null;
+        }
+
         if (dto.MainSliderImage != null)
         {
             (string url, string id) = await _fileService.UploadPictureAsync(dto.MainSliderImage, "slider");
             requestData.MainSliderImageUrl = url;
             requestData.MainSliderImageId = id;
         }
+
         if (dto.EventPlaceImage != null)
         {
             (string url, string id) = await _fileService.UploadPictureAsync(dto.EventPlaceImage, "eventplace");
             requestData.EventPlaceImageUrl = url;
             requestData.EventPlaceImageId = id;
         }
+        else
+        {
+            requestData.EventPlaceImageUrl = _defaultEventPlaceImageUrl;
+            requestData.EventPlaceImageId = null;
+        }
+
         try
         {
             await _requestDataRepository.AddRequestDataAsync(requestData);
@@ -131,14 +147,13 @@ public class InvitationService : IInvitationService
         {
             throw new Exception("Failed to create request", ex);
         }
+
         // Step 3: Generate QR code
-
-        //var DomainUrl = GenerateInvitationUrl(dto.GroomName, dto.BrideName, /*requestData.Id*/ requestData.Id);
-
         var WeddingSlug = await GenerateWeddingSlug(dto.GroomName, dto.BrideName);
         var DomainUrl = GenerateInvitationUrl(WeddingSlug);
         var (qrCodeUrl, qrCodeId) = await _qrCodeService.GenerateAndUploadQRCode(DomainUrl, "qrcodes");
-        // Step 3: Create Request
+
+        // Step 4: Create Request
         var request = new Request
         {
             DesignId = dto.DesignId,
@@ -146,9 +161,10 @@ public class InvitationService : IInvitationService
             RequestDataId = requestData.Id,
             QrCodeImageUrl = qrCodeUrl,
             QrCodeImageId = qrCodeId,
-            DomainUrl = DomainUrl
+            DomainUrl = DomainUrl,
+            WeddingSlug = WeddingSlug
         };
-        request.WeddingSlug = WeddingSlug;
+
         try
         {
             await _requestRepository.AddRequestAsync(request);
@@ -158,7 +174,7 @@ public class InvitationService : IInvitationService
             throw new Exception("Failed to create request", ex);
         }
 
-        // Step 4: Upload gallery photos
+        // Step 5: Upload gallery photos
         if (dto.GalleryPhotos != null)
         {
             foreach (var photo in dto.GalleryPhotos)
@@ -190,10 +206,6 @@ public class InvitationService : IInvitationService
         return (request.DomainUrl, qrCodeUrl);
     }
 
-    //private string GenerateInvitationUrl(string slug)
-    //{
-    //    return $"https://evyte.runasp.net/e/{slug}";
-    //}
     private string GenerateInvitationUrl(string slug)
     {
         var request = _httpContextAccessor.HttpContext?.Request;
@@ -208,18 +220,17 @@ public class InvitationService : IInvitationService
 
         return $"{baseUrl}/e/{slug}";
     }
+
     private async Task<string> GenerateWeddingSlug(string groomName, string brideName)
     {
-        // تنظيف الأسماء: إزالة المسافات وتحويل للحروف الصغيرة
         var cleanGroom = groomName.Trim().Replace(" ", "-").ToLower();
         var cleanBride = brideName.Trim().Replace(" ", "-").ToLower();
         var slug = $"{cleanGroom}-{cleanBride}";
 
-        // التحقق من التكرار
         var existingRequest = await _requestRepository.GetRequestBySlugAsync(slug);
         if (existingRequest != null)
         {
-            slug = $"{slug}-{Guid.NewGuid().ToString().Substring(0, 8)}"; // إضافة جزء من الـ ID
+            slug = $"{slug}-{Guid.NewGuid().ToString().Substring(0, 8)}";
         }
 
         return slug;

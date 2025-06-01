@@ -31044,8 +31044,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>73wzgdjgdh</Fingerprint>
-      <Integrity>zd6ueL9Ebib2jy3uzZorEdw3ayt0JLIUwwD1wuMalU8=</Integrity>
+      <Fingerprint>rxyjwmb8wx</Fingerprint>
+      <Integrity>nx9oVPUXHI8OBKfXOjznjCC5/5bc+ZxNBsAENnTJ1DI=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\categories.css'))</OriginalItemSpec>
@@ -31098,8 +31098,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>eazbvj05zd</Fingerprint>
-      <Integrity>mo00avyiFuX/TCSMSnaYTav9PQbrKKXVChqVaHGzUFg=</Integrity>
+      <Fingerprint>q1xspurvsf</Fingerprint>
+      <Integrity>sgjj09qNf6fYAQtKwivhuzbRpVqBXDUe7mSFagJzWIo=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Create.css'))</OriginalItemSpec>
@@ -31392,12 +31392,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\avatar.png'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Evyte.png'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Eventa.png'))">
       <SourceType>Package</SourceType>
       <SourceId>Evyte</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Evyte</BasePath>
-      <RelativePath>Images/Evyte.png</RelativePath>
+      <RelativePath>Images/Eventa.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -31408,7 +31408,7 @@
       <Integrity>D+gvN7J29AlbviAsDUzhGlkUclq++CYpX2sPDzYU3K0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Evyte.png'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Eventa.png'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\one.png'))">
       <SourceType>Package</SourceType>

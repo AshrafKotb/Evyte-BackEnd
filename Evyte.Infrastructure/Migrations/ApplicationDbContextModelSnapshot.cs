@@ -384,7 +384,6 @@ namespace Evyte.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BrideImageId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BrideImageUrl")
@@ -415,7 +414,6 @@ namespace Evyte.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("EventPlaceImageId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EventPlaceImageUrl")
@@ -436,7 +434,6 @@ namespace Evyte.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GroomImageId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GroomImageUrl")

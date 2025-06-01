@@ -11,7 +11,7 @@ namespace Evyte.Domain.Entities
 
         #region Groom Data
         public string GroomName { get; set; }
-        public string GroomImageId { get; set; }
+        public string? GroomImageId { get; set; }
         public string GroomImageUrl { get; set; }
         public string? GroomFacebook { get; set; }
         public string? GroomInstagram { get; set; }
@@ -20,7 +20,7 @@ namespace Evyte.Domain.Entities
 
         #region Bride Data
         public string BrideName { get; set; }
-        public string BrideImageId { get; set; }
+        public string? BrideImageId { get; set; }
         public string BrideImageUrl { get; set; }
         public string? BrideFacebook { get; set; }
         public string? BrideInstagram { get; set; }
@@ -34,7 +34,7 @@ namespace Evyte.Domain.Entities
 
         #region EventPlace Data
         public string EventPlaceName { get; set; }
-        public string EventPlaceImageId { get; set; }
+        public string? EventPlaceImageId { get; set; }
         public string EventPlaceImageUrl { get; set; }
         public string EventAddress { get; set; }
         public string LocationUrl { get; set; }
