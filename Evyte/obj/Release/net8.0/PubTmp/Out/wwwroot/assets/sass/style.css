@@ -938,20 +938,20 @@ a.ui-button:active, .ui-button:active,
 }
 
 .wpo-page-title {
-  background: url(../images/page-title.jpg) no-repeat center top/cover;
-  min-height: 360px;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  z-index: 1;
+    background: url(/Images/page-title.jpg) no-repeat center top/cover;
+    min-height: 360px;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    z-index: 1;
 }
 
 @media (max-width: 767px) {

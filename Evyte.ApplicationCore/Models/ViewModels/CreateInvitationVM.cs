@@ -76,7 +76,7 @@ namespace Evyte.ApplicationCore.Models.ViewModels
         [Required(ErrorMessage = "يجب تحميل صورة واحدة على الأقل للمعرض")]
         public IFormFileCollection GalleryPhotos { get; set; }
         // New properties for avatar selections
-        public string GroomAvatar { get; set; }
-        public string BrideAvatar { get; set; }
+        public string? GroomAvatar { get; set; }
+        public string? BrideAvatar { get; set; }
     }
 }

@@ -40,6 +40,14 @@ namespace Evyte.ApplicationCore.Controllers
         public async Task<IActionResult> Create(CreateInvitationVM dto)
         {
 
+            if (dto.GroomImage != null)
+            {
+                ModelState.Remove("GroomAvatar");
+            }
+            if (dto.BrideImage != null)
+            {
+                ModelState.Remove("BrideAvatar");
+            }
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.ToDictionary(

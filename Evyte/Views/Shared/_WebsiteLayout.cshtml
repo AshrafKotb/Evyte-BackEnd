@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="wpOceans">
-    <link rel="shortcut icon" type="image/png" href="~/assets/images/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="~/logo/blue.png">
     <title>Eventa</title>
 
     <!-- Tailwind CSS -->
@@ -49,6 +49,31 @@
                 </div>
             </div>
         </div>
+        <!-- Floating WhatsApp and Messenger Icons -->
+        <div class="fixed bottom-6 left-6 z-50 flex flex-col space-y-4">
+            <!-- WhatsApp Icon -->
+            <a href="https://wa.me/201063486972"
+               target="_blank"
+               class="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition duration-300 relative group"
+               title="Contact us on WhatsApp">
+                <i class="fab fa-whatsapp text-2xl"></i>
+                <span class="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition duration-300">
+                    Contact us on WhatsApp
+                </span>
+            </a>
+
+            <!-- Messenger Icon -->
+            <a href="https://m.me/Eventa"
+               target="_blank"
+               class="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition duration-300 relative group"
+               title="Contact us on Messenger">
+                <i class="fab fa-facebook-messenger text-2xl"></i>
+                <span class="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition duration-300">
+                    Contact us on Messenger
+                </span>
+            </a>
+        </div>
+
         <!-- end preloader -->
         @await Component.InvokeAsync("NavBar")
 

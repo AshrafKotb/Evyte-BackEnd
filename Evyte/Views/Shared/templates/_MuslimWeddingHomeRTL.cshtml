@@ -1,9 +1,12 @@
-﻿@{
+﻿@model Request
+@{
     Layout = null;
     var culture = new System.Globalization.CultureInfo("ar-SA");
     culture.DateTimeFormat.Calendar = new System.Globalization.GregorianCalendar();
+    var baseDate = DateTime.Today;
+    var timeFrom = baseDate.Add(Model.RequestData.EventTimeFrom);
+    var timeTo = baseDate.Add(Model.RequestData.EventTimeTo);
 }
-@await Html.PartialAsync("_FloatingButton", (string)ViewBag.Id)
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,8 +15,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="wpOceans">
-    <link rel="shortcut icon" type="image/png" href="~/assets/images/favicon.png">
-    <title>Eventa</title>
+    <link rel="shortcut icon" type="image/png" href="~/logo/blue.png">
+    <meta name="description" content="Wedding Invitation @Model.RequestData.BrideName & @Model.RequestData.GroomName" />
+    <title>Wedding @Model.RequestData.BrideName & @Model.RequestData.GroomName</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&family=Sail&display=swap"
@@ -67,15 +71,15 @@
                                         <img src="~/assets/images/slider/shape16.svg" alt="">
                                     </div>
                                     <div class="slide-title wow fadeInUp" data-wow-duration="1500ms">
-                                        <h2>عمران ونعيمة</h2>
+                                        <h2>@Model.RequestData.BrideName & @Model.RequestData.GroomName</h2>
                                     </div>
                                     <div data-swiper-parallax="400" class="slide-text wow fadeInUp"
                                          data-wow-duration="1600ms">
-                                        <p>سنتزوج في ١٥ نوفمبر ٢٠٢٢</p>
+                                        <p>سنتزوج في @Model.RequestData.EventDate.ToString("dd MMMM yyyy", culture)</p>
                                     </div>
                                     <div class="wpo-wedding-date wow fadeInUp" data-wow-duration="1700ms">
                                         <div class="clock-grids">
-                                            <div id="clock3"></div>
+                                            <div id="clock3" data-date="@Model.RequestData.EventDate.Add(Model.RequestData.EventTimeFrom).ToString("yyyy-MM-dd HH:mm:ss")"></div>
                                         </div>
                                     </div>
                                     <div class="shape-2 wow fadeInUp" data-wow-duration="1800ms">
@@ -88,7 +92,7 @@
                                 <div class="wpo-hero-img-wrap">
                                     <div class="wpo-hero-img-item">
                                         <div class="wpo-hero-img" style="mask-image: url(/assets/images/slider/musk.svg); -webkit-mask-image: url(/assets/images/slider/musk.svg);">
-                                            <img src="~/templates/MuslimWeddingHomeRTL/images/hero-18.jpg" alt="">
+                                            <img src="@Model.RequestData.GroomImageUrl" alt="">
                                         </div>
                                         <div class="musk-shape">
                                             <img src="~/assets/images/slider/rtl-shape.png" alt="">
@@ -96,7 +100,7 @@
                                     </div>
                                     <div class="wpo-hero-img-item">
                                         <div class="wpo-hero-img" style="mask-image: url(/assets/images/slider/musk.svg); -webkit-mask-image: url(/assets/images/slider/musk.svg);">
-                                            <img src="~/templates/MuslimWeddingHomeRTL/images/hero-19.jpg" alt="">
+                                            <img src="@Model.RequestData.BrideImageUrl" alt="">
                                         </div>
                                         <div class="musk-shape">
                                             <img src="~/assets/images/slider/rtl-shape.png" alt="">
@@ -117,12 +121,21 @@
                     <div class="row align-items-center">
                         <div class="col col-xl-3 col-lg-4 col-12">
                             <div class="text-grid wow fadeInRightSlow" data-wow-duration="800ms">
-                                <h3>عمران حسين</h3>
+                                <h3>@Model.RequestData.GroomName</h3>
                                 <div class="social">
                                     <ul>
-                                        <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                        <li><a href="#"><i class="ti-instagram"></i></a></li>
+                                        @if (!string.IsNullOrEmpty(Model.RequestData.GroomFacebook))
+                                        {
+                                            <li><a href="@Model.RequestData.GroomFacebook"><i class="ti-facebook"></i></a></li>
+                                        }
+                                        @if (!string.IsNullOrEmpty(Model.RequestData.GroomX))
+                                        {
+                                            <li><a href="@Model.RequestData.GroomX"><i class="ti-twitter-alt"></i></a></li>
+                                        }
+                                        @if (!string.IsNullOrEmpty(Model.RequestData.GroomInstagram))
+                                        {
+                                            <li><a href="@Model.RequestData.GroomInstagram"><i class="ti-instagram"></i></a></li>
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -131,7 +144,7 @@
                             <div class="middle-couple-pic-wrap">
                                 <div class="middle-couple-pic wow zoomIn" data-wow-duration="1000ms">
                                     <div class="middle-couple-pic-inner" style="background: url(/assets/images/couple/couple-mask.jpg) no-repeat center center">
-                                        <img src="~/templates/MuslimWeddingHomeRTL/images/img-8.jpg" alt="">
+                                        <img src="@Model.RequestData.MainSliderImageUrl" alt="">
                                     </div>
                                     <div class="couple-shape">
                                         <img src="~/assets/images/couple/couple-shape-2.png" alt="">
@@ -141,12 +154,21 @@
                         </div>
                         <div class="col col-xl-3 col-lg-4 col-12">
                             <div class="text-grid wow fadeInLeftSlow" data-wow-duration="800ms">
-                                <h3>نعيمة أنجم</h3>
+                                <h3>@Model.RequestData.BrideName</h3>
                                 <div class="social">
                                     <ul>
-                                        <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                        <li><a href="#"><i class="ti-instagram"></i></a></li>
+                                        @if (!string.IsNullOrEmpty(Model.RequestData.BrideFacebook))
+                                        {
+                                            <li><a href="@Model.RequestData.BrideFacebook"><i class="ti-facebook"></i></a></li>
+                                        }
+                                        @if (!string.IsNullOrEmpty(Model.RequestData.BrideX))
+                                        {
+                                            <li><a href="@Model.RequestData.BrideX"><i class="ti-twitter-alt"></i></a></li>
+                                        }
+                                        @if (!string.IsNullOrEmpty(Model.RequestData.BrideInstagram))
+                                        {
+                                            <li><a href="@Model.RequestData.BrideInstagram"><i class="ti-instagram"></i></a></li>
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -163,72 +185,20 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="portfolio-grids gallery-container clearfix portfolio-slide owl-carousel">
-                            <div class="grid">
-                                <div class="img-holder">
-                                    <a href="~/templates/WeddingHome2/images/1.jpg" class="fancybox"
-                                       data-fancybox-group="gall-1">
-                                        <img src="~/templates/WeddingHome2/images/1.jpg" alt class="img img-responsive">
-                                        <div class="hover-content">
-                                            <i class="ti-plus"></i>
-                                        </div>
-                                    </a>
+                            @foreach (var photo in Model.GalleryPhotos)
+                            {
+                                <div class="grid">
+                                    <div class="img-holder">
+                                        <a href="@photo.PhotoUrl" class="fancybox"
+                                           data-fancybox-group="gall-1">
+                                            <img src="@photo.PhotoUrl" alt class="img img-responsive">
+                                            <div class="hover-content">
+                                                <i class="ti-plus"></i>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-holder">
-                                    <a href="~/templates/WeddingHome2/images/2.jpg" class="fancybox"
-                                       data-fancybox-group="gall-1">
-                                        <img src="~/templates/WeddingHome2/images/2.jpg" alt class="img img-responsive">
-                                        <div class="hover-content">
-                                            <i class="ti-plus"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-holder">
-                                    <a href="~/templates/WeddingHome2/images/3.jpg" class="fancybox"
-                                       data-fancybox-group="gall-1">
-                                        <img src="~/templates/WeddingHome2/images/3.jpg" alt class="img img-responsive">
-                                        <div class="hover-content">
-                                            <i class="ti-plus"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-holder">
-                                    <a href="~/templates/WeddingHome2/images/4.jpg" class="fancybox"
-                                       data-fancybox-group="gall-1">
-                                        <img src="~/templates/WeddingHome2/images/4.jpg" alt class="img img-responsive">
-                                        <div class="hover-content">
-                                            <i class="ti-plus"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-holder">
-                                    <a href="~/templates/WeddingHome2/images/5.jpg" class="fancybox"
-                                       data-fancybox-group="gall-1">
-                                        <img src="~/templates/WeddingHome2/images/5.jpg" alt class="img img-responsive">
-                                        <div class="hover-content">
-                                            <i class="ti-plus"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-holder">
-                                    <a href="~/templates/WeddingHome2/images/6.jpg" class="fancybox"
-                                       data-fancybox-group="gall-1">
-                                        <img src="~/templates/WeddingHome2/images/6.jpg" alt class="img img-responsive">
-                                        <div class="hover-content">
-                                            <i class="ti-plus"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -247,17 +217,22 @@
                         <div>
                             <div class="wpo-event-item wow fadeInUp" data-wow-duration="1400ms">
                                 <div class="wpo-event-text">
+                                    <div class="wpo-event-img-inner">
+                                        <img src="@Model.RequestData.EventPlaceImageUrl" alt="">
+                                    </div>
                                     <div class="title">
                                         <h2>الحفل</h2>
                                     </div>
                                     <ul>
-                                        <li>الاثنين 12 أبريل 2022 <br> 1:00 م - 2:30 م</li>
-                                        <li>4517 برج خليفة ، الإمارات العربية المتحدة </li>
-                                        <li>+1 234-567-8910</li>
+                                        <li>
+                                            @Model.RequestData.EventDate.ToString("dd MMMM yyyy", culture)
+                                            <br />
+                                           @timeFrom.ToString("hh:mm tt", culture) – @timeTo.ToString("hh:mm tt", culture)
+                                        </li>
+                                        <li>@Model.RequestData.EventPlaceName</li>
                                         <li>
                                             <a class="popup-gmaps"
-                                               href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25211.21212385712!2d144.95275648773628!3d-37.82748510398018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce7e0!2zTWVsYm91cm5lIFZJQyAzMDA0LCDgpoXgprjgp43gpp_gp43gprDgp4fgprLgpr_gpq_gprzgpr4!5e0!3m2!1sbn!2sbd!4v1503742051881">
-                                                See
+                                               href="@Model.RequestData.LocationUrl">
                                                 انظر الموقع
                                             </a>
                                         </li>
@@ -271,89 +246,7 @@
             </div> <!-- end container -->
         </section>
         <!-- end wpo-event-section -->
-        <!-- start of wpo-site-footer-section -->
-        <footer class="wpo-site-footer-s2 rtl">
-            <div class="wpo-upper-footer">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col col-xl-3  col-lg-4 col-md-6 col-sm-12 col-12">
-                            <div class="widget link-widget">
-                                <div class="widget-title">
-                                    <h3>روابط مهمة</h3>
-                                </div>
-                                <div class="link-wrap">
-                                    <ul>
-                                        <li><a href="about.html">عن</a></li>
-                                        <li><a href="service.html">خدمات</a></li>
-                                        <li><a href="rsvp.html">من فضلك</a></li>
-                                    </ul>
-                                    <ul>
-                                        <li><a href="gallery.html">صالة عرض</a></li>
-                                        <li><a href="index.html">يقتبس</a></li>
-                                        <li><a href="contact.html">اتصال</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-xl-6 col-lg-4 col-md-6 col-sm-12 col-12">
-                            <div class="widget about-widget">
-                                <div class="logo widget-title">
-                                    <a class="logo" href="index.html">الزفاف</a>
-                                </div>
-                                <p>
-                                    لا يسعنا الانتظار لرؤية جميع أصدقائنا المحبوبين والأقارب في حفل زفافنا.
-                                </p>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-twitter-alt"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col col-xl-3  col-lg-4 col-md-6 col-sm-12 col-12">
-                            <div class="widget wpo-service-link-widget">
-                                <div class="widget-title">
-                                    <h3>اتصال </h3>
-                                </div>
-                                <div class="contact-ft">
-                                    <p>Habibi@wpoceans.com</p>
-                                    <p>4517 برج خليفة ، الإمارات العربية المتحدة</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- end container -->
-            </div>
-            <div class="wpo-lower-footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col col-xs-12">
-                            <p class="copyright"> &copy; حقوق النشر 2023 | <a href="index.html">الزفاف</a> | جميع الحقوق محفوظة.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ft-shape-1">
-                <img src="~/assets/images/footer-shape-1.svg" alt="">
-            </div>
-            <div class="ft-shape-2">
-                <img src="~/assets/images/footer-shape-2.svg" alt="">
-            </div>
-        </footer>
-        <!-- end of wpo-site-footer-section -->
+        @await Component.InvokeAsync("Footer")
         <!-- color-switcher -->
         <div class="color-switcher-wrap">
             <div class="color-switcher-item">
@@ -394,6 +287,50 @@
     <script src="~/assets/js/tilt.jquery.min.js"></script>
     <!-- Custom script for this template -->
     <script src="~/assets/js/script.js"></script>
+    <script>
+        // دالة لتحويل الأرقام الإنجليزية إلى عربية
+        function convertToArabicNumerals(number) {
+            const arabicNumerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+            return number.toString().replace(/\d/g, (digit) => arabicNumerals[digit]);
+        }
+
+        // تحويل جميع الأرقام في العناصر النصية
+        function convertNumbersInText() {
+            document.querySelectorAll('body *:not(script):not(style)').forEach(element => {
+                if (element.childNodes.length === 1 && element.childNodes[0].nodeType === Node.TEXT_NODE) {
+                    const text = element.textContent;
+                    element.textContent = text.replace(/\d+/g, (num) => convertToArabicNumerals(num));
+                }
+            });
+        }
+
+        // تحويل الوقت في العد التنازلي
+        function initWeddingCountdown() {
+            if ($("#clock3").length) {
+                var weddingDate = $("#clock3").data('date');
+                $('#clock3').countdown(weddingDate, function(event) {
+                    const days = convertToArabicNumerals(event.strftime('%D'));
+                    const hours = convertToArabicNumerals(event.strftime('%H'));
+                    const minutes = convertToArabicNumerals(event.strftime('%M'));
+                    const seconds = convertToArabicNumerals(event.strftime('%S'));
+
+                    $(this).html(''
+                        + '<div class="box"><div><div class="time">' + days + '</div> <span>أيام</span> </div></div>'
+                        + '<div class="box"><div><div class="time">' + hours + '</div> <span>ساعات</span> </div></div>'
+                        + '<div class="box"><div><div class="time">' + minutes + '</div> <span>دقيقة</span> </div></div>'
+                        + '<div class="box"><div><div class="time">' + seconds + '</div> <span>ثانية</span> </div></div>');
+                }).on('finish.countdown', function() {
+                    $(this).html('<div class="countdown-ended">لقد بدأ الحفل!</div>');
+                });
+            }
+        }
+
+        // تنفيذ التحويل عند تحميل الصفحة
+        $(document).ready(function() {
+            convertNumbersInText();
+            initWeddingCountdown();
+        });
+    </script>
 </body>
 
 </html>

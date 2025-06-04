@@ -1743,6 +1743,7 @@ wwwroot\favicon.ico
 wwwroot\Images\avatar.png
 wwwroot\Images\Eventa.png
 wwwroot\Images\one.png
+wwwroot\Images\page-title.jpg
 wwwroot\Images\three.png
 wwwroot\Images\two.png
 wwwroot\Images\Website\about.jpg
@@ -1819,6 +1820,12 @@ wwwroot\lib\jquery-validation\LICENSE.md
 wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
 wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
 wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+wwwroot\Logo\blue.png
+wwwroot\Logo\LogoAndText.png
+wwwroot\Logo\LogoAndTextYellow.png
+wwwroot\Logo\TextWithoutLogo.png
+wwwroot\Logo\TextWithoutLogoYellow.png
+wwwroot\Logo\yellow.png
 wwwroot\Music\wedding.mp3
 wwwroot\Sites\demo1\css\ajax-loader.gif
 wwwroot\Sites\demo1\css\all.min.css

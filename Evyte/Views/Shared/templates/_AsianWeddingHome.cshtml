@@ -1,9 +1,12 @@
-﻿@{
+﻿@model Request
+@{
     Layout = null;
-    var culture = new System.Globalization.CultureInfo("ar-SA");
+    var culture = new System.Globalization.CultureInfo("en-SA");
     culture.DateTimeFormat.Calendar = new System.Globalization.GregorianCalendar();
+    var baseDate = DateTime.Today;
+    var timeFrom = baseDate.Add(Model.RequestData.EventTimeFrom);
+    var timeTo = baseDate.Add(Model.RequestData.EventTimeTo);
 }
-@await Html.PartialAsync("_FloatingButton", (string)ViewBag.Id)
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,8 +15,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="wpOceans">
-    <link rel="shortcut icon" type="image/png" href="~/assets/images/favicon.png">
-    <title>Eventa</title>
+    <link rel="shortcut icon" type="image/png" href="~/logo/blue.png">
+    <meta name="description" content="Wedding Invitation @Model.RequestData.BrideName & @Model.RequestData.GroomName" />
+    <title>Wedding @Model.RequestData.BrideName & @Model.RequestData.GroomName</title>
     <link href="~/assets/css/themify-icons.css" rel="stylesheet">
     <link href="~/assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="~/assets/css/flaticon.css" rel="stylesheet">
@@ -50,7 +54,7 @@
             </div>
         </div>
         <!-- end preloader -->
-      <!-- start of hero -->
+        <!-- start of hero -->
         <section class="static-hero-s5">
             <div class="hero-container">
                 <div class="hero-inner">
@@ -60,18 +64,18 @@
                                 <div class="col col-xl-6 col-lg-6 col-12">
                                     <div class="wpo-static-hero-inner">
                                         <div class="slide-title wow fadeInUp" data-wow-duration="1500ms">
-                                            <h2>Ritesh & Joya</h2>
+                                            <h2>@Model.RequestData.BrideName & @Model.RequestData.GroomName</h2>
                                         </div>
                                         <div data-swiper-parallax="400" class="slide-text wow fadeInUp"
                                              data-wow-duration="1600ms">
-                                            <p>Our Big Day is November 15,2022</p>
+                                            <p>Our Big Day is @Model.RequestData.EventDate.ToString("MMMM dd yyyy", culture)</p>
                                         </div>
                                         <span class="shape wow fadeInUp" data-wow-duration="1400ms">
                                             <img src="~/assets/images/slider/date-shape.png" alt="">
                                         </span>
                                         <div class="wpo-wedding-date wow fadeInUp" data-wow-duration="1700ms">
                                             <div class="clock-grids">
-                                                <div id="clock"></div>
+                                                <div id="clock" data-date="@Model.RequestData.EventDate.Add(Model.RequestData.EventTimeFrom).ToString("yyyy-MM-dd HH:mm:ss")"></div>
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>
@@ -79,7 +83,7 @@
                                 </div>
                                 <div class="col col-xl-6 col-lg-6 col-12">
                                     <div class="wpo-hero-img">
-                                        <img src="~/templates/AsianWeddingHome/images/hero-6.jpg" alt="">
+                                        <img src="@Model.RequestData.MainSliderImageUrl" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -99,14 +103,13 @@
                 <div class="row wow fadeInUp" data-wow-duration="1600ms">
                     <div class="col col-xs-12">
                         <div class="clock-grids">
-                            <div id="clock2"></div>
+                            <div id="clock2" data-date="@Model.RequestData.EventDate.Add(Model.RequestData.EventTimeFrom).ToString("yyyy-MM-dd HH:mm:ss")"></div>
                         </div>
                     </div>
                 </div>
             </div> <!-- end container -->
         </section>
         <!-- end wpo-wedding-countdown -->
-
         <!-- start wpo-couple-section -->
         <section class="wpo-couple-section-s6 section-padding" id="couple">
             <div class="container">
@@ -114,12 +117,21 @@
                     <div class="row align-items-center">
                         <div class="col col-xl-3 col-lg-4 col-12">
                             <div class="text-grid wow fadeInLeftSlow" data-wow-duration="800ms">
-                                <h3>Ritesh Debtath</h3>
-                               <div class="social">
+                                <h3>@Model.RequestData.GroomName</h3>
+                                <div class="social">
                                     <ul>
-                                        <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                        <li><a href="#"><i class="ti-instagram"></i></a></li>
+                                        @if (!string.IsNullOrEmpty(Model.RequestData.GroomFacebook))
+                                        {
+                                            <li><a href="@Model.RequestData.GroomFacebook"><i class="ti-facebook"></i></a></li>
+                                        }
+                                        @if (!string.IsNullOrEmpty(Model.RequestData.GroomX))
+                                        {
+                                            <li><a href="@Model.RequestData.GroomX"><i class="ti-twitter-alt"></i></a></li>
+                                        }
+                                        @if (!string.IsNullOrEmpty(Model.RequestData.GroomInstagram))
+                                        {
+                                            <li><a href="@Model.RequestData.GroomInstagram"><i class="ti-instagram"></i></a></li>
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -136,12 +148,21 @@
                         </div>
                         <div class="col col-xl-3 col-lg-4 col-12">
                             <div class="text-grid wow fadeInRightSlow" data-wow-duration="800ms">
-                                <h3>Jaya Syarma</h3>
+                                <h3>@Model.RequestData.BrideName</h3>
                                 <div class="social">
                                     <ul>
-                                        <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                        <li><a href="#"><i class="ti-instagram"></i></a></li>
+                                        @if (!string.IsNullOrEmpty(Model.RequestData.BrideFacebook))
+                                        {
+                                            <li><a href="@Model.RequestData.BrideFacebook"><i class="ti-facebook"></i></a></li>
+                                        }
+                                        @if (!string.IsNullOrEmpty(Model.RequestData.BrideX))
+                                        {
+                                            <li><a href="@Model.RequestData.BrideX"><i class="ti-twitter-alt"></i></a></li>
+                                        }
+                                        @if (!string.IsNullOrEmpty(Model.RequestData.BrideInstagram))
+                                        {
+                                            <li><a href="@Model.RequestData.BrideInstagram"><i class="ti-instagram"></i></a></li>
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -160,61 +181,20 @@
                         <div class="sortable-gallery">
                             <div class="gallery-filters"></div>
                             <div class="portfolio-grids gallery-container clearfix">
-                                <div class="grid">
-                                    <div class="img-holder">
-                                        <a href="~/templates/AnnouncementHome2/images/7.jpg" class="fancybox"
-                                           data-fancybox-group="gall-1">
-                                            <img src="~/templates/AnnouncementHome2/images/7.jpg" alt class="img img-responsive">
-                                            <div class="hover-content">
-                                                <i class="ti-plus"></i>
-                                            </div>
-                                        </a>
+                                @foreach (var photo in Model.GalleryPhotos)
+                                {
+                                    <div class="grid">
+                                        <div class="img-holder">
+                                            <a href="@photo.PhotoUrl" class="fancybox"
+                                               data-fancybox-group="gall-1">
+                                                <img src="@photo.PhotoUrl" alt class="img img-responsive">
+                                                <div class="hover-content">
+                                                    <i class="ti-plus"></i>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="grid">
-                                    <div class="img-holder">
-                                        <a href="~/templates/AnnouncementHome2/images/8.jpg" class="fancybox"
-                                           data-fancybox-group="gall-1">
-                                            <img src="~/templates/AnnouncementHome2/images/8.jpg" alt class="img img-responsive">
-                                            <div class="hover-content">
-                                                <i class="ti-plus"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="grid">
-                                    <div class="img-holder">
-                                        <a href="~/templates/AnnouncementHome2/images/9.jpg" class="fancybox"
-                                           data-fancybox-group="gall-1">
-                                            <img src="~/templates/AnnouncementHome2/images/9.jpg" alt class="img img-responsive">
-                                            <div class="hover-content">
-                                                <i class="ti-plus"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="grid">
-                                    <div class="img-holder">
-                                        <a href="~/templates/AnnouncementHome2/images/10.jpg" class="fancybox"
-                                           data-fancybox-group="gall-1">
-                                            <img src="~/templates/AnnouncementHome2/images/10.jpg" alt class="img img-responsive">
-                                            <div class="hover-content">
-                                                <i class="ti-plus"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="grid">
-                                    <div class="img-holder">
-                                        <a href="~/templates/AnnouncementHome2/images/11.jpg" class="fancybox"
-                                           data-fancybox-group="gall-1">
-                                            <img src="~/templates/AnnouncementHome2/images/11.jpg" alt class="img img-responsive">
-                                            <div class="hover-content">
-                                                <i class="ti-plus"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+                                }
                             </div>
                         </div>
                     </div>
@@ -235,7 +215,7 @@
                             <div class="wpo-event-item wow fadeInUp" data-wow-duration="1400ms">
                                 <div class="wpo-event-img">
                                     <div class="wpo-event-img-inner">
-                                        <img src="~/templates/AnnouncementHome2/images/event7.jpg" alt="">
+                                        <img src="@Model.RequestData.EventPlaceImageUrl" alt="">
                                     </div>
                                 </div>
                                 <div class="wpo-event-text">
@@ -243,11 +223,15 @@
                                         <h2>The Party</h2>
                                     </div>
                                     <ul>
-                                        <li> 1:00 PM – 2:30 PM</li>
-                                        <li>Washington Ave. Manchester, 39495</li>
+                                        <li>
+                                            @Model.RequestData.EventDate.ToString("dd MMMM yyyy", culture)
+                                            <br />
+                                            @timeFrom.ToString("hh:mm tt") – @timeTo.ToString("hh:mm tt")
+                                        </li>
+                                        <li>@Model.RequestData.EventPlaceName</li>
                                         <li>
                                             <a class="popup-gmaps"
-                                               href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25211.21212385712!2d144.95275648773628!3d-37.82748510398018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce7e0!2zTWVsYm91cm5lIFZJQyAzMDA0LCDgpoXgprjgp43gpp_gp43gprDgp4fgprLgpr_gpq_gprzgpr4!5e0!3m2!1sbn!2sbd!4v1503742051881">
+                                               href="@Model.RequestData.LocationUrl">
                                                 See
                                                 Location
                                             </a>
@@ -304,6 +288,51 @@
     <script src="~/assets/js/tilt.jquery.min.js"></script>
     <!-- Custom script for this template -->
     <script src="~/assets/js/script.js"></script>
+    <script>
+                   /*------------------------------------------
+            = DYNAMIC WEDDING COUNTDOWN (CLIENT SIDE)
+        -------------------------------------------*/
+        function initWeddingCountdown() {
+            if ($("#clock").length) {
+                var weddingDate = $("#clock").data('date');
+
+                $('#clock').countdown(weddingDate, function(event) {
+                    $(this).html(event.strftime(''
+                        + '<div class="box"><div><div class="time">%D</div> <span>Days</span> </div></div>'
+                        + '<div class="box"><div><div class="time">%H</div> <span>Hours</span> </div></div>'
+                        + '<div class="box"><div><div class="time">%M</div> <span>Minutes</span> </div></div>'
+                        + '<div class="box"><div><div class="time">%S</div> <span>Seconds</span> </div></div>'));
+                }).on('finish.countdown', function() {
+                    $(this).html('<div class="countdown-ended">The Wedding Has Started!</div>');
+                });
+            }
+        }
+
+        // استدعاء الدالة عند تحميل الصفحة
+        $(document).ready(function() {
+            initWeddingCountdown();
+        });
+        function initWeddingCountdown2() {
+            if ($("#clock2").length) {
+                var weddingDate = $("#clock2").data('date');
+
+                $('#clock2').countdown(weddingDate, function(event) {
+                    $(this).html(event.strftime(''
+                        + '<div class="box"><div><div class="time">%D</div> <span>Days</span> </div></div>'
+                        + '<div class="box"><div><div class="time">%H</div> <span>Hours</span> </div></div>'
+                        + '<div class="box"><div><div class="time">%M</div> <span>Minutes</span> </div></div>'
+                        + '<div class="box"><div><div class="time">%S</div> <span>Seconds</span> </div></div>'));
+                }).on('finish.countdown', function() {
+                    $(this).html('<div class="countdown-ended">The Wedding Has Started!</div>');
+                });
+            }
+        }
+
+        // استدعاء الدالة عند تحميل الصفحة
+        $(document).ready(function() {
+            initWeddingCountdown2();
+        });
+    </script>
 </body>
 
 </html>

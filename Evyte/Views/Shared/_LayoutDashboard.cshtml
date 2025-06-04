@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Evyte | @ViewBag.Title</title>
+    <title>Eventa | @ViewBag.Title</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.4 -->
     <link rel="stylesheet" href="~/Content/assets/bootstrap/css/bootstrap.min.css">
@@ -36,7 +36,7 @@
     <link href="~/Content/assets/plugins/select2/select2.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
     <link href="https://goSellJSLib.b-cdn.net/v1.4.1/css/gosell.css" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="~/Images/Eventa.png">
+    <link rel="icon" type="image/png" href="~/logo/blue.png">
     <!-- summernote rich text editor -->
     <link href="~/Content/assets/plugins/summernote-0.8.18-dist/summernote.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
@@ -57,10 +57,11 @@
         }
     </style>
     <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/splash-screen.css" rel="stylesheet" />
 
     <style type="text/css">
         /* Always set the map height explicitly to define the size of the div
-                                * element that contains the map. */
+                                                                * element that contains the map. */
         #map {
             height: 700px;
         }
@@ -181,8 +182,8 @@
         @await Component.InvokeAsync("AdminSideMenu")
         <div class="content-wrapper">
             <!-- Splash screen -->
-            <div id="splash-screen">
-                <img src="~/Images/Eventa.png" alt="Logo">
+            <div id="splash-screen" class="splash-screen">
+                <img style="width:50px;" src="~/logo/blue.png" alt="Logo">
             </div>
             <section class="content hidden">
                 @RenderBody()
@@ -317,6 +318,6 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
- 
+
 </body>
 </html>

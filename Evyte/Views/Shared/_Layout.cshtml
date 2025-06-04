@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Eventa | @ViewBag.Title</title>
-    <link rel="icon" type="image/png" href="~/Images/Eventa.png">
+    <link rel="icon" type="image/png" href="~/logo/blue.png">
 
     <!-- ==========================================================================
          Core CSS Libraries - يجب تحميلها أولاً
@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 
+    <link href="~/css/splash-screen.css" rel="stylesheet" />
 
     <!-- ==========================================================================
          RTL and Custom Styles - يجب تحميلها أخيراً لتجاوز الأنماط الأخرى
@@ -60,7 +61,7 @@
 <body class="skin-blue sidebar-mini">
     <div id="splash-screen" class="splash-screen">
         <div class="splash-content animate__animated animate__fadeIn">
-            <img src="~/Images/Eventa.png" alt="Eventa Logo" class="splash-logo animate__animated animate__pulse animate__infinite">
+            <img src="~/logo/blue.png" alt="Eventa Logo" class="splash-logo animate__animated animate__pulse animate__infinite">
             <h1 class="splash-title animate__animated animate__fadeInUp animate__delay-1s">مرحبًا بك في Eventa</h1>
             <div class="splash-loader"></div>
         </div>
@@ -205,7 +206,7 @@
             setTimeout(function () {
                 $('#splash-screen').addClass('hidden');
                 $('.content').removeClass('hidden');
-            }, 100); // تأخير بسيط لضمان ظهور الرسوم المتحركة
+            }, 500); // تأخير بسيط لضمان ظهور الرسوم المتحركة
         };
 
         // عرض رسالة نجاح (Toast) باستخدام Toastr

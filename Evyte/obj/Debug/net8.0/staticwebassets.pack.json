@@ -4781,12 +4781,40 @@
       "PackagePath": "staticwebassets\\Images\\one.png"
     },
     {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\page-title.jpg",
+      "PackagePath": "staticwebassets\\Images\\page-title.jpg"
+    },
+    {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\three.png",
       "PackagePath": "staticwebassets\\Images\\three.png"
     },
     {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Images\\two.png",
       "PackagePath": "staticwebassets\\Images\\two.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Logo\\LogoAndText.png",
+      "PackagePath": "staticwebassets\\Logo\\LogoAndText.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Logo\\LogoAndTextYellow.png",
+      "PackagePath": "staticwebassets\\Logo\\LogoAndTextYellow.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Logo\\TextWithoutLogo.png",
+      "PackagePath": "staticwebassets\\Logo\\TextWithoutLogo.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Logo\\TextWithoutLogoYellow.png",
+      "PackagePath": "staticwebassets\\Logo\\TextWithoutLogoYellow.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Logo\\blue.png",
+      "PackagePath": "staticwebassets\\Logo\\blue.png"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Logo\\yellow.png",
+      "PackagePath": "staticwebassets\\Logo\\yellow.png"
     },
     {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Music\\wedding.mp3",

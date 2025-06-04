@@ -3,7 +3,6 @@
     var culture = new System.Globalization.CultureInfo("ar-SA");
     culture.DateTimeFormat.Calendar = new System.Globalization.GregorianCalendar();
 }
-@await Html.PartialAsync("_FloatingButton", (string)ViewBag.Id)
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="wpOceans">
-    <link rel="shortcut icon" type="image/png" href="~/assets/images/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="~/logo/blue.png">
     <title>Eventa - Wedding & Wedding Planner HTML5 Template</title>
     <link href="~/assets/css/themify-icons.css" rel="stylesheet">
     <link href="~/assets/css/font-awesome.min.css" rel="stylesheet">
@@ -400,6 +399,7 @@
     <script src="~/assets/js/tilt.jquery.min.js"></script>
     <!-- Custom script for this template -->
     <script src="~/assets/js/script.js"></script>
+@await Html.PartialAsync("_FloatingButton", (string)ViewBag.Id)
 </body>
 
 </html>

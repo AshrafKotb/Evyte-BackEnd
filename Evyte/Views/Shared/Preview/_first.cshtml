@@ -4,7 +4,6 @@
     var culture = new System.Globalization.CultureInfo("ar-SA");
     culture.DateTimeFormat.Calendar = new System.Globalization.GregorianCalendar();
 }
-@await Html.PartialAsync("_FloatingButton", (string)ViewBag.Id)
 <!DOCTYPE html>
 <html dir="ltr">
 <head>
@@ -14,8 +13,8 @@
     <meta name="keywords" content=" " />
 
     <!-- favIcon -->
-    <link rel="shortcut icon" href="" type="image/x-icon" />
-    <title>Al 2a3aaa - Home</title>
+    <link rel="shortcut icon" href="~/logo/blue.png" type="image/x-icon" />
+    <title>Eventa</title>
 
     <link rel="stylesheet" href="~/templates/first/css/all.min.css" />
     <link rel="stylesheet" href="~/templates/first/css/bootstrap.min.css" />
@@ -293,5 +292,6 @@
     <script src="~/templates/first/js/mixitup.min.js"></script>
 
     <script src="~/templates/first/js/main.js"></script>
+    @await Html.PartialAsync("_FloatingButton", (string)ViewBag.Id)
 </body>
 </html>
