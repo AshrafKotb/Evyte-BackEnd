@@ -11,11 +11,13 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly IDesignService _designService;
+    private readonly IFAQService _FAQService;
 
-    public HomeController(ILogger<HomeController> logger, IDesignService designService)
+    public HomeController(ILogger<HomeController> logger, IDesignService designService, IFAQService FAQService)
     {
         _logger = logger;
         _designService = designService;
+        _FAQService = FAQService;
     }
 
 
@@ -38,6 +40,7 @@ public class HomeController : Controller
     public async Task<IActionResult> Index()
     {
         var designs = await _designService.GetAllDesignsAsync();
+        var faqs = await _FAQService.GetAllActiveFAQsAsync();
 
         // إنشاء قائمة تحتوي على كل تصميم مكرر 10 مرات
         var repeatedDesigns = designs.Take(6)
@@ -52,7 +55,8 @@ public class HomeController : Controller
 
         var model = new HomeIndexViewModel
         {
-            Designs = repeatedDesigns
+            Designs = repeatedDesigns,
+            FAQs = faqs.Where(x => x.HomePage).ToList()
         };
 
         return View(model);
@@ -83,9 +87,11 @@ public class HomeController : Controller
     {
         return View();
     }
-    public IActionResult Questions()
+    public async Task<IActionResult> Questions()
     {
-        return View();
+        var faqs = await _FAQService.GetAllActiveFAQsAsync();
+
+        return View(faqs);
     }
     public async Task<IActionResult> Templates()
     {

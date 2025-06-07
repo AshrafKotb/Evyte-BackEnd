@@ -1,0 +1,88 @@
+﻿@model CreateFAQVM
+@{
+    ViewData["Title"] = "Create FAQ";
+}
+<link rel="stylesheet" href="~/css/forms.css" />
+
+
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-card">
+        <div class="form-header">
+            <h1>@ViewData["Title"]</h1>
+            <p class="text-muted">الرجاء ملء جميع الحقول المطلوبة</p>
+        </div>
+
+        <div class="form-group mb-4">
+            <label class="form-label" asp-for="QuestionEn"></label>
+            <div class="input-group-icon">
+                <i class="fas fa-tag"></i>
+                <input asp-for="QuestionEn" class="form-control" placeholder="Enter English name">
+            </div>
+            <span asp-validation-for="QuestionEn" class="text-danger small"></span>
+        </div>
+
+        <div class="form-group mb-4">
+            <label class="form-label" asp-for="QuestionAr"></label>
+            <div class="input-group-icon">
+                <i class="fas fa-tag"></i>
+                <input asp-for="QuestionAr" class="form-control text-end" placeholder="أدخل السؤال العربي">
+            </div>
+            <span asp-validation-for="QuestionAr" class="text-danger small"></span>
+        </div>
+        <div class="form-group mb-4">
+            <label class="form-label" asp-for="AnswerEn"></label>
+            <div class="input-group-icon">
+                <i class="fas fa-align-left"></i>
+                <textarea asp-for="AnswerEn" class="form-control"
+                          placeholder="Enter English description" rows="3">
+                  </textarea>
+            </div>
+            <span asp-validation-for="AnswerEn" class="text-danger small"></span>
+        </div>
+
+        <div class="form-group mb-4">
+            <label class="form-label" asp-for="AnswerAr"></label>
+            <div class="input-group-icon">
+                <i class="fas fa-align-right"></i>
+                <textarea asp-for="AnswerAr" class="form-control text-end"
+                          placeholder="أدخل الإجابة العربي" rows="3"></textarea>
+            </div>
+            <span asp-validation-for="AnswerAr" class="text-danger small"></span>
+        </div>
+        <div class="form-group mb-4">
+            <label class="form-label" asp-for="SortingNumber"></label>
+            <div class="input-group-icon">
+                <i class="fas fa-sort-numeric-down"></i>
+                <input asp-for="SortingNumber" class="form-control" placeholder="Enter sorting number">
+            </div>
+            <span asp-validation-for="SortingNumber" class="text-danger small"></span>
+        </div>
+        <div class="form-group mb-4">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" asp-for="HomePage">
+                <label class="form-check-label" asp-for="HomePage">
+                    Show on Home Page? (ظهور في الصفحة الرئيسية؟)
+                </label>
+            </div>
+            <span asp-validation-for="HomePage" class="text-danger small"></span>
+        </div>
+
+
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">
+            <i class="fas fa-save"></i> Create
+        </button>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+       
+    }
+}

@@ -7817,6 +7817,14 @@
       "PackagePath": "staticwebassets\\css\\Customers.css"
     },
     {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\FAQ-details.css",
+      "PackagePath": "staticwebassets\\css\\FAQ-details.css"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\FAQs.css",
+      "PackagePath": "staticwebassets\\css\\FAQs.css"
+    },
+    {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\css\\NewInvitation.css",
       "PackagePath": "staticwebassets\\css\\NewInvitation.css"
     },

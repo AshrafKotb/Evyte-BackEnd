@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Evyte.ApplicationCore.Models.ViewModels.FAQs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,5 +19,6 @@ namespace Evyte.ApplicationCore.Models.ViewModels
     public class HomeIndexViewModel
     {
         public List<DesignViewModel> Designs { get; set; } = new List<DesignViewModel>();
+        public List<FAQVM> FAQs { get; set; } = new List<FAQVM>();
     }
 }

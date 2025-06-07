@@ -3,6 +3,7 @@ using Evyte.ApplicationCore.Interfaces.Services.General_Information;
 using Evyte.ApplicationCore.Services.Authantication;
 using Evyte.ApplicationCore.Services.Categories;
 using Evyte.ApplicationCore.Services.Designs;
+using Evyte.ApplicationCore.Services.FAQs;
 using Evyte.ApplicationCore.Services.Files;
 using Evyte.ApplicationCore.Services.General_Information;
 using Evyte.ApplicationCore.Services.Mailing;
@@ -20,6 +21,7 @@ namespace Evyte.Web.Extensions
         {
             services.AddScoped<IAuthanticationService, AuthanticationService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IFAQService, FAQService>();
             services.AddScoped<IDesignService, DesignService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRequestRepository, RequestRepository>();

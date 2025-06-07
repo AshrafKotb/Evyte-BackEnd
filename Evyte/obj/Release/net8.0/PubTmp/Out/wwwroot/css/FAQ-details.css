@@ -1,0 +1,572 @@
+﻿:root {
+    --primary-color: #1a3c6d; /* أزرق داكن */
+    --secondary-color: #00a3ad; /* أزرق سماوي / تركواز */
+    --accent-color: #f4a261; /* برتقالي محروق */
+    --text-color: #343a40; /* لون نص داكن */
+    --light-text-color: #6c757d; /* لون نص أفتح */
+    --bg-color: #f8f9fa; /* لون خلفية فاتح جداً */
+    --card-bg: #ffffff; /* خلفية البطاقات بيضاء */
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.12);
+    --transition-fast: all 0.2s ease-in-out;
+    --transition-medium: all 0.3s ease;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 960px; /* تقليل العرض لتركيز المحتوى */
+    margin-inline: auto; /* لضمان التوسيط في الاتجاه العربي */
+    padding: 0 15px; /* مسافة داخلية على الأطراف */
+}
+
+/* Header Section */
+.FAQ-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2c5282 100%);
+    color: #ffffff;
+    padding: 3.5rem 2rem; /* زيادة المسافة الداخلية */
+    border-radius: 18px; /* حواف أكثر استدارة */
+    margin-bottom: 3rem; /* مسافة أكبر أسفل الهيدر */
+    box-shadow: var(--shadow-medium);
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* لإخفاء أي عناصر تتجاوز الحدود */
+}
+
+    .FAQ-header::before { /* تأثير خلفية خفيف */
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/></svg>') repeat;
+        background-size: 50px;
+        opacity: 0.3;
+        animation: headerPattern 20s linear infinite;
+    }
+
+@keyframes headerPattern {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 100px 100px;
+    }
+}
+
+.page-title {
+    font-size: 3.5rem; /* حجم أكبر للعنوان */
+    font-weight: 900;
+    margin: 0;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 1;
+    animation: fadeInScale 1s ease-out forwards;
+}
+
+    .page-title::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 180px; /* خط سفلي أطول */
+        height: 7px; /* خط سفلي أسمك */
+        background: var(--accent-color);
+        border-radius: 4px;
+        opacity: 0;
+        animation: underlineFadeIn 1.5s ease-out 0.5s forwards;
+    }
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes underlineFadeIn {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 180px;
+        opacity: 1;
+    }
+}
+
+/* FAQ Card */
+.FAQ-card {
+    border: none;
+    padding: 3rem; /* زيادة المسافة الداخلية */
+    border-radius: 25px; /* حواف أكثر استدارة */
+    background: var(--card-bg);
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition-medium);
+    margin-bottom: 2.5rem;
+    position: relative; /* لتمكين استخدام z-index للعناصر الداخلية */
+    z-index: 10; /* لجعل البطاقة فوق أي خلفيات */
+}
+
+    .FAQ-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+    }
+
+/* FAQ Details (محتوى السؤال) */
+.FAQ-details {
+    padding: 0; /* تم إزالة padding هنا لأنه موجود في .FAQ-card */
+    background: none; /* إزالة الخلفية هنا لأنه موجود في .FAQ-card */
+    box-shadow: none; /* إزالة الظل هنا */
+    border-radius: 0; /* إزالة الـ border-radius هنا */
+    position: static; /* إزالة الوضع المطلق */
+    overflow: visible;
+    width: 100%; /* ضمان ملء العرض */
+}
+
+    .FAQ-details::before { /* إزالة تأثير الخلفية الداخلية */
+        content: none;
+    }
+
+    .FAQ-details > * {
+        position: static; /* إزالة z-index */
+        z-index: auto;
+    }
+
+/* Question Title Wrapper */
+.FAQ-title-wrapper {
+    margin-bottom: 2.5rem; /* زيادة المسافة السفلية */
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05); /* خط فاصل أسفل العنوان */
+    padding-bottom: 1.5rem;
+    position: relative;
+}
+
+.name-container {
+    display: block; /* لجعل الاسم يأخذ عرض السطر بالكامل */
+    position: relative;
+}
+
+.FAQ-name {
+    font-family: 'Tajawal', sans-serif;
+    margin: 0;
+    line-height: 1.4;
+    display: block; /* لتمكين التباعد بين السطرين */
+}
+
+.ar-name {
+    font-size: 2.6rem; /* حجم أكبر للسؤال العربي */
+    font-weight: 900;
+    color: var(--primary-color);
+    letter-spacing: -0.7px;
+    padding-right: 0; /* إزالة padding-right */
+    position: relative;
+    display: block;
+}
+
+.en-name {
+    font-size: 1.7rem; /* حجم أكبر للسؤال الإنجليزي */
+    font-weight: 500;
+    color: var(--light-text-color);
+    font-style: italic;
+    opacity: 0.95;
+    letter-spacing: -0.4px;
+    margin-top: 0.5rem; /* مسافة بين الاسم العربي والإنجليزي */
+}
+
+.ar-name::after { /* خط تزييني أسفل الاسم العربي */
+    content: '';
+    position: absolute;
+    bottom: -15px; /* ضبط الموضع */
+    right: 0;
+    width: 100px; /* عرض مبدئي للخط */
+    height: 4px;
+    background: var(--secondary-color);
+    border-radius: 3px;
+    transition: var(--transition-medium);
+}
+
+.name-container:hover .ar-name::after {
+    width: 100%; /* الخط يمتد بالكامل عند التحويم */
+    background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+}
+
+/* Badges (الحالة ويظهر بالرئيسية) */
+.badge-group {
+    display: flex;
+    gap: 1rem; /* مسافة بين البادجات */
+    justify-content: flex-end; /* لمحاذاة البادجات إلى اليسار في التصميم RTL */
+    flex-wrap: wrap; /* للسماح للبادجات بالانتقال إلى سطر جديد */
+}
+
+.badge {
+    padding: 0.7rem 1.8rem; /* تعديل المسافة الداخلية */
+    border-radius: 50px;
+    font-size: 0.95rem; /* حجم خط أصغر قليلاً */
+    font-weight: 700;
+    transition: var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); /* ظل أخف */
+    cursor: default; /* منع مؤشر اليد */
+}
+
+.badge-active {
+    background: #28a745; /* أخضر أغمق قليلاً */
+    color: #ffffff;
+}
+
+.badge-deleted {
+    background: #dc3545; /* أحمر أغمق قليلاً */
+    color: #ffffff;
+}
+
+.badge-homepage-yes {
+    background: var(--accent-color); /* لون برتقالي مميز */
+    color: #ffffff;
+}
+
+.badge-homepage-no {
+    background: #6c757d; /* لون رمادي محايد */
+    color: #ffffff;
+}
+
+.badge:hover {
+    transform: translateY(-2px); /* تأثير رفع خفيف عند التحويم */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Info Section (تفاصيل السؤال) */
+.FAQ-info {
+    margin-top: 2.5rem; /* مسافة أعلى */
+    display: grid;
+    gap: 1.8rem; /* زيادة المسافة بين العناصر */
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start; /* لمحاذاة الأيقونة والنص في الأعلى */
+    padding: 1rem; /* مسافة داخلية أكبر */
+    border-bottom: none; /* إزالة الخط السفلي هنا */
+    border-radius: 12px; /* حواف مستديرة للعنصر */
+    background: var(--bg-color); /* خلفية خفيفة للعنصر */
+    box-shadow: var(--shadow-light); /* ظل خفيف */
+    transition: var(--transition-medium);
+}
+
+    .info-item:hover {
+        transform: translateX(0); /* إزالة حركة الـ translateX */
+        background: #e9ecef; /* لون خلفية أغمق قليلاً عند التحويم */
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-item i {
+        font-size: 1.6rem; /* حجم أكبر للأيقونات */
+        color: var(--secondary-color);
+        margin: 0.2rem 0 0 1rem; /* مسافة أيقونة أفضل */
+        padding: 0; /* إزالة padding */
+        min-width: 28px; /* ضمان حجم ثابت للأيقونة */
+        text-align: center;
+    }
+
+.info-label {
+    font-weight: 700; /* خط أسمك */
+    color: var(--primary-color); /* لون أزرق داكن */
+    min-width: 170px; /* عرض ثابت للتسمية */
+    font-size: 1.15rem; /* حجم خط أكبر */
+    flex-shrink: 0; /* منع التصغير */
+}
+
+.info-value, .info-description {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    flex-grow: 1; /* السماح للقيمة بالتوسع */
+}
+
+.info-description {
+    max-height: 180px; /* زيادة الارتفاع الأقصى */
+    overflow-y: auto;
+    padding: 1rem 1.2rem; /* مسافة داخلية أفضل */
+    line-height: 1.8;
+    background: #f1f3f5; /* خلفية أغمق قليلاً */
+    border-radius: 10px;
+    box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.08);
+}
+
+    .info-description::-webkit-scrollbar {
+        width: 8px;
+        background-color: #f1f3f5;
+    }
+
+    .info-description::-webkit-scrollbar-thumb {
+        background: var(--secondary-color);
+        border-radius: 10px;
+        border: 2px solid #f1f3f5; /* للحفاظ على مسافة حول الشريط */
+    }
+
+/* Action Buttons */
+.action-buttons {
+    text-align: center;
+    margin-top: 3.5rem; /* مسافة أكبر */
+}
+
+    .action-buttons .btn {
+        padding: 1rem 3.5rem; /* مسافة داخلية أكبر */
+        border-radius: 35px; /* حواف أكثر استدارة */
+        font-size: 1.2rem; /* حجم خط أكبر */
+        font-weight: 700;
+        background: var(--secondary-color);
+        border: none;
+        color: #ffffff;
+        display: inline-flex; /* لتمكين الأيقونة والنص جنبًا إلى جنب */
+        align-items: center;
+        gap: 0.8rem; /* مسافة أكبر بين الأيقونة والنص */
+        transition: var(--transition-medium);
+        box-shadow: 0 6px 15px rgba(0, 163, 173, 0.35);
+    }
+
+        .action-buttons .btn i {
+            font-size: 1.3rem; /* حجم أكبر للأيقونة */
+        }
+
+        .action-buttons .btn:hover {
+            background: #008c95; /* لون أغمق عند التحويم */
+            transform: translateY(-5px); /* تأثير رفع أكبر */
+            box-shadow: 0 12px 25px rgba(0, 163, 173, 0.45);
+        }
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .FAQ-header {
+        padding: 2.5rem 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .page-title {
+        font-size: 2.8rem;
+    }
+
+        .page-title::after {
+            width: 150px;
+            height: 6px;
+        }
+
+    .FAQ-card {
+        padding: 2.5rem;
+    }
+
+    .ar-name {
+        font-size: 2.2rem;
+    }
+
+    .en-name {
+        font-size: 1.5rem;
+    }
+
+    .info-label {
+        min-width: 150px;
+        font-size: 1.05rem;
+    }
+
+    .info-value, .info-description {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 540px;
+    }
+
+    .FAQ-header {
+        padding: 2rem 1rem;
+        border-radius: 12px;
+        margin-bottom: 1.5rem;
+    }
+
+    .page-title {
+        font-size: 2.2rem;
+    }
+
+        .page-title::after {
+            width: 120px;
+            height: 5px;
+            bottom: -10px;
+        }
+
+    .FAQ-card {
+        padding: 2rem;
+        border-radius: 18px;
+    }
+
+    .ar-name {
+        font-size: 1.8rem;
+    }
+
+    .en-name {
+        font-size: 1.3rem;
+    }
+
+    .badge-group {
+        flex-direction: column; /* جعل البادجات تظهر فوق بعضها البعض */
+        align-items: flex-end; /* محاذاتها إلى اليمين */
+        gap: 0.8rem;
+        margin-top: 1rem; /* مسافة أعلى */
+    }
+
+    .badge {
+        width: fit-content; /* جعل عرض البادج على قدر المحتوى */
+    }
+
+    .info-item {
+        flex-direction: column; /* لجعل التسمية والقيمة تظهران فوق بعضهما */
+        align-items: flex-start;
+        padding: 0.8rem;
+        gap: 0.5rem; /* مسافة بين العناصر الداخلية */
+        border-radius: 10px;
+    }
+
+        .info-item i {
+            margin: 0 0 0.5rem 0.5rem; /* تعديل مسافة الأيقونة */
+            font-size: 1.4rem;
+        }
+
+    .info-label {
+        min-width: auto; /* إزالة العرض الثابت */
+        font-size: 1rem;
+    }
+
+    .info-value, .info-description {
+        font-size: 0.95rem;
+    }
+
+    .action-buttons .btn {
+        width: 100%; /* زر الرجوع يأخذ العرض بالكامل */
+        font-size: 1.1rem;
+        padding: 0.8rem 2rem;
+        gap: 0.6rem;
+    }
+
+        .action-buttons .btn i {
+            font-size: 1.2rem;
+        }
+}
+
+@media (max-width: 576px) {
+    .FAQ-header {
+        padding: 1.5rem 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .page-title {
+        font-size: 1.8rem;
+    }
+
+        .page-title::after {
+            width: 90px;
+            height: 4px;
+            bottom: -8px;
+        }
+
+    .FAQ-card {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+
+    .FAQ-title-wrapper {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+    }
+
+    .ar-name {
+        font-size: 1.5rem;
+    }
+
+    .en-name {
+        font-size: 1.1rem;
+    }
+
+    .ar-name::after {
+        width: 60px;
+        height: 3px;
+        bottom: -10px;
+    }
+
+    .badge-group {
+        gap: 0.6rem;
+    }
+
+    .badge {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+
+    .FAQ-info {
+        margin-top: 1.8rem;
+        gap: 1.2rem;
+    }
+
+    .info-item {
+        padding: 0.6rem;
+    }
+
+        .info-item i {
+            font-size: 1.2rem;
+            margin: 0 0 0.3rem 0.3rem;
+        }
+
+    .info-label {
+        font-size: 0.95rem;
+    }
+
+    .info-value, .info-description {
+        font-size: 0.9rem;
+    }
+
+    .info-description {
+        padding: 0.8rem;
+        max-height: 150px;
+    }
+
+    .action-buttons .btn {
+        font-size: 1rem;
+        padding: 0.7rem 1.5rem;
+        gap: 0.5rem;
+    }
+
+        .action-buttons .btn i {
+            font-size: 1.1rem;
+        }
+}
+
+/* رابط داخل القيمة */
+.info-value a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    font-weight: 600;
+}
+
+    .info-value a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+    }

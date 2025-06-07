@@ -1728,6 +1728,8 @@ wwwroot\css\contact-info.css
 wwwroot\css\Create.css
 wwwroot\css\Customers.css
 wwwroot\css\evyte.css
+wwwroot\css\FAQ-details.css
+wwwroot\css\FAQs.css
 wwwroot\css\forms.css
 wwwroot\css\general-info.css
 wwwroot\css\header-sidebar.css

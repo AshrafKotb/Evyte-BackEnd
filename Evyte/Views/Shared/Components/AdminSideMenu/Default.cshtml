@@ -49,13 +49,23 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" asp-controller="GI" asp-action="TermsAndConditions">
-                    <i class="fas fa-file-alt me-2"></i> الشروط والأحكام
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" asp-controller="GI" asp-action="ContactInfo">
                     <i class="fas fa-address-book me-2"></i> بيانات التواصل
+                </a>
+            </li>
+            <li class="treeview @(Context.Request.Path.ToString().ToLower().Contains("faqs") ? "active" : "")">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-layer-group"></i> <span>إدارة الاسئلة الشائعه</span>
+                    <i class="fas fa-chevron-left pull-left"></i>
+                </a>
+                <ul class="treeview-menu @(Context.Request.Path.ToString().ToLower().Contains("faqs/create") || Context.Request.Path.ToString().ToLower().Contains("faqs/index") ? "menu-open" : "") animate__animated animate__slideInRight">
+                    <li><a href="@Url.Action("Create", "FAQs")"><i class="fas fa-plus-circle"></i> سؤال  جديد</a></li>
+                    <li><a href="@Url.Action("Index", "FAQs")"><i class="fas fa-list"></i> جميع الاسئلة</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="GI" asp-action="TermsAndConditions">
+                    <i class="fas fa-file-alt me-2"></i> الشروط والأحكام
                 </a>
             </li>
         </ul>

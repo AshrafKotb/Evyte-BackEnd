@@ -20760,6 +20760,30 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-0X2DDjFwnQRgroEeZJOJPeZc4bH4wNCzodb3vt8lX84="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1701"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00220X2DDjFwnQRgroEeZJOJPeZc4bH4wNCzodb3vt8lX84=\u0022"},{"Name":"Last-Modified","Value":"Sat, 03 May 2025 00:09:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Evyte/css/FAQ-details.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\FAQ-details.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-my/bgfSRIliauHjoliZLvBNc5N5236WalAEAnZfRKiM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"15916"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022my/bgfSRIliauHjoliZLvBNc5N5236WalAEAnZfRKiM=\u0022"},{"Name":"Last-Modified","Value":"Sat, 07 Jun 2025 03:31:42 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Evyte/css/FAQ-details.dmojpphoeq.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\FAQ-details.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"dmojpphoeq"},{"Name":"integrity","Value":"sha256-my/bgfSRIliauHjoliZLvBNc5N5236WalAEAnZfRKiM="},{"Name":"label","Value":"_content/Evyte/css/FAQ-details.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"15916"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022my/bgfSRIliauHjoliZLvBNc5N5236WalAEAnZfRKiM=\u0022"},{"Name":"Last-Modified","Value":"Sat, 07 Jun 2025 03:31:42 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Evyte/css/FAQs.3fkxl6vxmx.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\FAQs.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"3fkxl6vxmx"},{"Name":"integrity","Value":"sha256-nyIFuhGv\u002BOlrWxgq9YF8eoe03zks8m4bQN70SXEMvBM="},{"Name":"label","Value":"_content/Evyte/css/FAQs.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"19215"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022nyIFuhGv\u002BOlrWxgq9YF8eoe03zks8m4bQN70SXEMvBM=\u0022"},{"Name":"Last-Modified","Value":"Sat, 07 Jun 2025 02:29:08 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Evyte/css/FAQs.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\FAQs.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-nyIFuhGv\u002BOlrWxgq9YF8eoe03zks8m4bQN70SXEMvBM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"19215"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022nyIFuhGv\u002BOlrWxgq9YF8eoe03zks8m4bQN70SXEMvBM=\u0022"},{"Name":"Last-Modified","Value":"Sat, 07 Jun 2025 02:29:08 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/css/forms.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\forms.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
