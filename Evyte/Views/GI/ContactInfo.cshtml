@@ -33,14 +33,21 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="Email" class="form-label text-end"></label>
-                            <input asp-for="Email" class="form-control" dir="ltr" />
+                            <input asp-for="Email" required class="form-control" dir="ltr" />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label asp-for="Email2" class="form-label text-end"></label>
+                            <input asp-for="Email2" class="form-control" dir="ltr" />
+                            <span asp-validation-for="Email2" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
                             <label asp-for="FaceBook" class="form-label text-end"></label>
-                            <input asp-for="FaceBook" class="form-control" dir="ltr" />
+                            <input asp-for="FaceBook" required class="form-control" dir="ltr" />
                             <span asp-validation-for="FaceBook" class="text-danger"></span>
                         </div>
                     </div>
@@ -75,7 +82,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="WhatsApp" class="form-label text-end"></label>
-                            <input asp-for="WhatsApp" class="form-control" dir="ltr" />
+                            <input asp-for="WhatsApp" required class="form-control" dir="ltr" />
                             <span asp-validation-for="WhatsApp" class="text-danger"></span>
                         </div>
                     </div>
@@ -84,6 +91,34 @@
                             <label asp-for="Snapchat" class="form-label text-end"></label>
                             <input asp-for="Snapchat" class="form-control" dir="ltr" />
                             <span asp-validation-for="Snapchat" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber" class="form-label text-end"></label>
+                            <input asp-for="PhoneNumber" required class="form-control" dir="ltr" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber2" class="form-label text-end"></label>
+                            <input asp-for="PhoneNumber2" class="form-control" dir="ltr" />
+                            <span asp-validation-for="PhoneNumber2" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="AddressAr" class="form-label text-end"></label>
+                            <input asp-for="AddressAr" required class="form-control" dir="ltr" />
+                            <span asp-validation-for="AddressAr" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="AddressEn" class="form-label text-end"></label>
+                            <input asp-for="AddressEn" required class="form-control" dir="ltr" />
+                            <span asp-validation-for="AddressEn" class="text-danger"></span>
                         </div>
                     </div>
                 </div>

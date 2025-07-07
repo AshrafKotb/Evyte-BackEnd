@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6yMu3Dx6hG0mLNxGXK3qUk+3w9pHUkR7wtkSnHy0AnM=",
+  "Hash": "nM1UB+hWxzhc6Tm4ZP1q0mwfLHT8p1zacrJPZePx9TY=",
   "Source": "Evyte",
   "BasePath": "_content/Evyte",
   "Mode": "Default",
@@ -24958,8 +24958,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "rmiubkb4om",
-      "Integrity": "0yRjNK/ZNVtNA8y8YAKLnNzjx5EEYcPUzvI/EDbkD+U=",
+      "Fingerprint": "zahwaoc6qu",
+      "Integrity": "mwlzwSJPC5c7XkUeSwqv5BxP4wQbktEnot0XWWgLXfI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\assets\\plugins\\iCheck\\flat\\_all.css"
@@ -25042,8 +25042,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "t6yxti3a4i",
-      "Integrity": "VaAWoLBz22AoPJaacfp5sBi3ZKnyQF2PtS/XBMLUv2Q=",
+      "Fingerprint": "n70fi3wwlx",
+      "Integrity": "0+wKKMyhunwwIfkrAPzOyNFBrKkcmUsABKJfcveeuQ0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\assets\\plugins\\iCheck\\flat\\blue.css"
@@ -25987,8 +25987,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "goxvp4eke3",
-      "Integrity": "wBrkdyNudoyg4rMz3I5ejt4dK1jB9pMq0pjE6mhkT0c=",
+      "Fingerprint": "gt29zcq34u",
+      "Integrity": "hIkVTt7rsGcQeZ2wm0XmhemDyBBnCsDQC37ATSy9Sqw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\assets\\plugins\\iCheck\\minimal\\_all.css"
@@ -26071,8 +26071,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "c697k7i4a0",
-      "Integrity": "NFryakTz41ENj7ftr+1X6/bdTgwND6dfgwNdGSWelbY=",
+      "Fingerprint": "5we0trjpld",
+      "Integrity": "m7vdMO7R2ojYQANQiIE+dNmbO7ieuzcfVnryrTSQMTc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\assets\\plugins\\iCheck\\minimal\\blue.css"
@@ -26701,8 +26701,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "nl2emkqszc",
-      "Integrity": "VbWDM8FUA6qm33UTCXD4+sQDpqoEe8+SMAH11R2d/Sc=",
+      "Fingerprint": "y5xl4ka1ej",
+      "Integrity": "2jBWdR78px75UqxWO+fgyOT7+gzaDAgJSMg0UouUNHM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\assets\\plugins\\iCheck\\square\\_all.css"
@@ -26785,8 +26785,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "cpddtrlxem",
-      "Integrity": "YGB3kUIHzrPRnWKMmMXQky22SvVqKF+JkdlTPVfWXX4=",
+      "Fingerprint": "9c0gm5f5ey",
+      "Integrity": "R2CMRzVss4jmVguXaatrzILanEW8Qm/LCAj7Zs2IX+8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\assets\\plugins\\iCheck\\square\\blue.css"
@@ -142307,7 +142307,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14332"
+          "Value": "14334"
         },
         {
           "Name": "Content-Type",
@@ -142315,11 +142315,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0yRjNK/ZNVtNA8y8YAKLnNzjx5EEYcPUzvI/EDbkD+U=\""
+          "Value": "\"mwlzwSJPC5c7XkUeSwqv5BxP4wQbktEnot0XWWgLXfI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Jun 2024 14:43:23 GMT"
+          "Value": "Mon, 09 Jun 2025 18:42:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -142329,12 +142329,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0yRjNK/ZNVtNA8y8YAKLnNzjx5EEYcPUzvI/EDbkD+U="
+          "Value": "sha256-mwlzwSJPC5c7XkUeSwqv5BxP4wQbktEnot0XWWgLXfI="
         }
       ]
     },
     {
-      "Route": "Content/assets/plugins/iCheck/flat/_all.rmiubkb4om.css",
+      "Route": "Content/assets/plugins/iCheck/flat/_all.zahwaoc6qu.css",
       "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\assets\\plugins\\iCheck\\flat\\_all.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -142344,7 +142344,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14332"
+          "Value": "14334"
         },
         {
           "Name": "Content-Type",
@@ -142352,11 +142352,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0yRjNK/ZNVtNA8y8YAKLnNzjx5EEYcPUzvI/EDbkD+U=\""
+          "Value": "\"mwlzwSJPC5c7XkUeSwqv5BxP4wQbktEnot0XWWgLXfI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Jun 2024 14:43:23 GMT"
+          "Value": "Mon, 09 Jun 2025 18:42:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -142366,7 +142366,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "rmiubkb4om"
+          "Value": "zahwaoc6qu"
         },
         {
           "Name": "label",
@@ -142374,7 +142374,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-0yRjNK/ZNVtNA8y8YAKLnNzjx5EEYcPUzvI/EDbkD+U="
+          "Value": "sha256-mwlzwSJPC5c7XkUeSwqv5BxP4wQbktEnot0XWWgLXfI="
         }
       ]
     },
@@ -142680,7 +142680,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1483"
+          "Value": "1485"
         },
         {
           "Name": "Content-Type",
@@ -142688,11 +142688,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"VaAWoLBz22AoPJaacfp5sBi3ZKnyQF2PtS/XBMLUv2Q=\""
+          "Value": "\"0+wKKMyhunwwIfkrAPzOyNFBrKkcmUsABKJfcveeuQ0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Jun 2024 14:43:23 GMT"
+          "Value": "Mon, 09 Jun 2025 18:42:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -142702,7 +142702,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-VaAWoLBz22AoPJaacfp5sBi3ZKnyQF2PtS/XBMLUv2Q="
+          "Value": "sha256-0+wKKMyhunwwIfkrAPzOyNFBrKkcmUsABKJfcveeuQ0="
+        }
+      ]
+    },
+    {
+      "Route": "Content/assets/plugins/iCheck/flat/blue.n70fi3wwlx.css",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\assets\\plugins\\iCheck\\flat\\blue.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1485"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0+wKKMyhunwwIfkrAPzOyNFBrKkcmUsABKJfcveeuQ0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 09 Jun 2025 18:42:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n70fi3wwlx"
+        },
+        {
+          "Name": "label",
+          "Value": "Content/assets/plugins/iCheck/flat/blue.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-0+wKKMyhunwwIfkrAPzOyNFBrKkcmUsABKJfcveeuQ0="
         }
       ]
     },
@@ -142740,51 +142785,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-+M1xGGLe2YTE2N+3DY8PiQocyAN+iDKIoKRZ11JLPUI="
-        }
-      ]
-    },
-    {
-      "Route": "Content/assets/plugins/iCheck/flat/blue.t6yxti3a4i.css",
-      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\assets\\plugins\\iCheck\\flat\\blue.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1483"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"VaAWoLBz22AoPJaacfp5sBi3ZKnyQF2PtS/XBMLUv2Q=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 23 Jun 2024 14:43:23 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "t6yxti3a4i"
-        },
-        {
-          "Name": "label",
-          "Value": "Content/assets/plugins/iCheck/flat/blue.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-VaAWoLBz22AoPJaacfp5sBi3ZKnyQF2PtS/XBMLUv2Q="
         }
       ]
     },
@@ -146325,7 +146325,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14732"
+          "Value": "14734"
         },
         {
           "Name": "Content-Type",
@@ -146333,11 +146333,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wBrkdyNudoyg4rMz3I5ejt4dK1jB9pMq0pjE6mhkT0c=\""
+          "Value": "\"hIkVTt7rsGcQeZ2wm0XmhemDyBBnCsDQC37ATSy9Sqw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Jun 2024 14:43:23 GMT"
+          "Value": "Mon, 09 Jun 2025 18:42:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -146347,12 +146347,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-wBrkdyNudoyg4rMz3I5ejt4dK1jB9pMq0pjE6mhkT0c="
+          "Value": "sha256-hIkVTt7rsGcQeZ2wm0XmhemDyBBnCsDQC37ATSy9Sqw="
         }
       ]
     },
     {
-      "Route": "Content/assets/plugins/iCheck/minimal/_all.goxvp4eke3.css",
+      "Route": "Content/assets/plugins/iCheck/minimal/_all.gt29zcq34u.css",
       "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\assets\\plugins\\iCheck\\minimal\\_all.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -146362,7 +146362,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14732"
+          "Value": "14734"
         },
         {
           "Name": "Content-Type",
@@ -146370,11 +146370,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wBrkdyNudoyg4rMz3I5ejt4dK1jB9pMq0pjE6mhkT0c=\""
+          "Value": "\"hIkVTt7rsGcQeZ2wm0XmhemDyBBnCsDQC37ATSy9Sqw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Jun 2024 14:43:23 GMT"
+          "Value": "Mon, 09 Jun 2025 18:42:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -146384,7 +146384,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "goxvp4eke3"
+          "Value": "gt29zcq34u"
         },
         {
           "Name": "label",
@@ -146392,7 +146392,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-wBrkdyNudoyg4rMz3I5ejt4dK1jB9pMq0pjE6mhkT0c="
+          "Value": "sha256-hIkVTt7rsGcQeZ2wm0XmhemDyBBnCsDQC37ATSy9Sqw="
         }
       ]
     },
@@ -146643,7 +146643,7 @@
       ]
     },
     {
-      "Route": "Content/assets/plugins/iCheck/minimal/blue.c697k7i4a0.css",
+      "Route": "Content/assets/plugins/iCheck/minimal/blue.5we0trjpld.css",
       "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\assets\\plugins\\iCheck\\minimal\\blue.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -146653,7 +146653,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1687"
+          "Value": "1689"
         },
         {
           "Name": "Content-Type",
@@ -146661,11 +146661,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"NFryakTz41ENj7ftr+1X6/bdTgwND6dfgwNdGSWelbY=\""
+          "Value": "\"m7vdMO7R2ojYQANQiIE+dNmbO7ieuzcfVnryrTSQMTc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Jun 2024 14:43:23 GMT"
+          "Value": "Mon, 09 Jun 2025 18:42:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -146675,7 +146675,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "c697k7i4a0"
+          "Value": "5we0trjpld"
         },
         {
           "Name": "label",
@@ -146683,7 +146683,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-NFryakTz41ENj7ftr+1X6/bdTgwND6dfgwNdGSWelbY="
+          "Value": "sha256-m7vdMO7R2ojYQANQiIE+dNmbO7ieuzcfVnryrTSQMTc="
         }
       ]
     },
@@ -146698,7 +146698,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1687"
+          "Value": "1689"
         },
         {
           "Name": "Content-Type",
@@ -146706,11 +146706,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"NFryakTz41ENj7ftr+1X6/bdTgwND6dfgwNdGSWelbY=\""
+          "Value": "\"m7vdMO7R2ojYQANQiIE+dNmbO7ieuzcfVnryrTSQMTc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Jun 2024 14:43:23 GMT"
+          "Value": "Mon, 09 Jun 2025 18:42:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -146720,7 +146720,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-NFryakTz41ENj7ftr+1X6/bdTgwND6dfgwNdGSWelbY="
+          "Value": "sha256-m7vdMO7R2ojYQANQiIE+dNmbO7ieuzcfVnryrTSQMTc="
         }
       ]
     },
@@ -149113,7 +149113,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "16210"
+          "Value": "16212"
         },
         {
           "Name": "Content-Type",
@@ -149121,11 +149121,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"VbWDM8FUA6qm33UTCXD4+sQDpqoEe8+SMAH11R2d/Sc=\""
+          "Value": "\"2jBWdR78px75UqxWO+fgyOT7+gzaDAgJSMg0UouUNHM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Jun 2024 14:43:23 GMT"
+          "Value": "Mon, 09 Jun 2025 18:42:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -149135,12 +149135,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-VbWDM8FUA6qm33UTCXD4+sQDpqoEe8+SMAH11R2d/Sc="
+          "Value": "sha256-2jBWdR78px75UqxWO+fgyOT7+gzaDAgJSMg0UouUNHM="
         }
       ]
     },
     {
-      "Route": "Content/assets/plugins/iCheck/square/_all.nl2emkqszc.css",
+      "Route": "Content/assets/plugins/iCheck/square/_all.y5xl4ka1ej.css",
       "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\assets\\plugins\\iCheck\\square\\_all.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -149150,7 +149150,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "16210"
+          "Value": "16212"
         },
         {
           "Name": "Content-Type",
@@ -149158,11 +149158,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"VbWDM8FUA6qm33UTCXD4+sQDpqoEe8+SMAH11R2d/Sc=\""
+          "Value": "\"2jBWdR78px75UqxWO+fgyOT7+gzaDAgJSMg0UouUNHM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Jun 2024 14:43:23 GMT"
+          "Value": "Mon, 09 Jun 2025 18:42:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -149172,7 +149172,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "nl2emkqszc"
+          "Value": "y5xl4ka1ej"
         },
         {
           "Name": "label",
@@ -149180,7 +149180,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-VbWDM8FUA6qm33UTCXD4+sQDpqoEe8+SMAH11R2d/Sc="
+          "Value": "sha256-2jBWdR78px75UqxWO+fgyOT7+gzaDAgJSMg0UouUNHM="
         }
       ]
     },
@@ -149431,7 +149431,7 @@
       ]
     },
     {
-      "Route": "Content/assets/plugins/iCheck/square/blue.cpddtrlxem.css",
+      "Route": "Content/assets/plugins/iCheck/square/blue.9c0gm5f5ey.css",
       "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\Content\\assets\\plugins\\iCheck\\square\\blue.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -149441,7 +149441,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1672"
+          "Value": "1674"
         },
         {
           "Name": "Content-Type",
@@ -149449,11 +149449,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"YGB3kUIHzrPRnWKMmMXQky22SvVqKF+JkdlTPVfWXX4=\""
+          "Value": "\"R2CMRzVss4jmVguXaatrzILanEW8Qm/LCAj7Zs2IX+8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Jun 2024 14:43:23 GMT"
+          "Value": "Mon, 09 Jun 2025 18:42:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -149463,7 +149463,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "cpddtrlxem"
+          "Value": "9c0gm5f5ey"
         },
         {
           "Name": "label",
@@ -149471,7 +149471,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-YGB3kUIHzrPRnWKMmMXQky22SvVqKF+JkdlTPVfWXX4="
+          "Value": "sha256-R2CMRzVss4jmVguXaatrzILanEW8Qm/LCAj7Zs2IX+8="
         }
       ]
     },
@@ -149486,7 +149486,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1672"
+          "Value": "1674"
         },
         {
           "Name": "Content-Type",
@@ -149494,11 +149494,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"YGB3kUIHzrPRnWKMmMXQky22SvVqKF+JkdlTPVfWXX4=\""
+          "Value": "\"R2CMRzVss4jmVguXaatrzILanEW8Qm/LCAj7Zs2IX+8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Jun 2024 14:43:23 GMT"
+          "Value": "Mon, 09 Jun 2025 18:42:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -149508,7 +149508,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-YGB3kUIHzrPRnWKMmMXQky22SvVqKF+JkdlTPVfWXX4="
+          "Value": "sha256-R2CMRzVss4jmVguXaatrzILanEW8Qm/LCAj7Zs2IX+8="
         }
       ]
     },

@@ -65,7 +65,12 @@ namespace Evyte.Controllers
             var generalInfo = await GetGeneralInformationAsync();
             var viewModel = new ContactInformationViewModel
             {
+                AddressAr = generalInfo.AddressAr,
+                AddressEn = generalInfo.AddressEn,
                 Email = generalInfo.Email,
+                Email2 = generalInfo.Email2,
+                PhoneNumber = generalInfo.PhoneNumber,
+                PhoneNumber2 = generalInfo.PhoneNumber2,
                 FaceBook = generalInfo.FaceBook,
                 Instagram = generalInfo.Instagram,
                 X = generalInfo.X,
@@ -90,7 +95,12 @@ namespace Evyte.Controllers
             {
                 var generalInfo = new GeneralInformation
                 {
+                    AddressAr = viewModel.AddressAr,
+                    AddressEn = viewModel.AddressEn,
                     Email = viewModel.Email,
+                    Email2 = viewModel.Email2,
+                    PhoneNumber = viewModel.PhoneNumber,
+                    PhoneNumber2 = viewModel.PhoneNumber2,
                     FaceBook = viewModel.FaceBook,
                     Instagram = viewModel.Instagram,
                     X = viewModel.X,

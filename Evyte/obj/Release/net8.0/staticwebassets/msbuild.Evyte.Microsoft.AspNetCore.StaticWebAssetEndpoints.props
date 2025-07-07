@@ -14265,20 +14265,20 @@
     <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/flat/blue.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\flat\blue.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-VaAWoLBz22AoPJaacfp5sBi3ZKnyQF2PtS/XBMLUv2Q="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1483"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022VaAWoLBz22AoPJaacfp5sBi3ZKnyQF2PtS/XBMLUv2Q=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-0\u002BwKKMyhunwwIfkrAPzOyNFBrKkcmUsABKJfcveeuQ0="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1485"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00220\u002BwKKMyhunwwIfkrAPzOyNFBrKkcmUsABKJfcveeuQ0=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 18:42:19 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/flat/blue.n70fi3wwlx.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\flat\blue.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"n70fi3wwlx"},{"Name":"integrity","Value":"sha256-0\u002BwKKMyhunwwIfkrAPzOyNFBrKkcmUsABKJfcveeuQ0="},{"Name":"label","Value":"_content/Evyte/Content/assets/plugins/iCheck/flat/blue.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1485"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00220\u002BwKKMyhunwwIfkrAPzOyNFBrKkcmUsABKJfcveeuQ0=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 18:42:19 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/flat/blue.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\flat\blue.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-\u002BM1xGGLe2YTE2N\u002B3DY8PiQocyAN\u002BiDKIoKRZ11JLPUI="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1518"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022\u002BM1xGGLe2YTE2N\u002B3DY8PiQocyAN\u002BiDKIoKRZ11JLPUI=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/flat/blue.t6yxti3a4i.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\flat\blue.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"t6yxti3a4i"},{"Name":"integrity","Value":"sha256-VaAWoLBz22AoPJaacfp5sBi3ZKnyQF2PtS/XBMLUv2Q="},{"Name":"label","Value":"_content/Evyte/Content/assets/plugins/iCheck/flat/blue.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1483"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022VaAWoLBz22AoPJaacfp5sBi3ZKnyQF2PtS/XBMLUv2Q=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/flat/blue@2x.9fd0js19c9.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\flat\blue@2x.png'))</AssetFile>
@@ -14583,14 +14583,14 @@
     <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/flat/_all.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\flat\_all.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-0yRjNK/ZNVtNA8y8YAKLnNzjx5EEYcPUzvI/EDbkD\u002BU="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"14332"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00220yRjNK/ZNVtNA8y8YAKLnNzjx5EEYcPUzvI/EDbkD\u002BU=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-mwlzwSJPC5c7XkUeSwqv5BxP4wQbktEnot0XWWgLXfI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"14334"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022mwlzwSJPC5c7XkUeSwqv5BxP4wQbktEnot0XWWgLXfI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 18:42:19 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/flat/_all.rmiubkb4om.css">
+    <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/flat/_all.zahwaoc6qu.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\flat\_all.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"rmiubkb4om"},{"Name":"integrity","Value":"sha256-0yRjNK/ZNVtNA8y8YAKLnNzjx5EEYcPUzvI/EDbkD\u002BU="},{"Name":"label","Value":"_content/Evyte/Content/assets/plugins/iCheck/flat/_all.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"14332"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00220yRjNK/ZNVtNA8y8YAKLnNzjx5EEYcPUzvI/EDbkD\u002BU=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"zahwaoc6qu"},{"Name":"integrity","Value":"sha256-mwlzwSJPC5c7XkUeSwqv5BxP4wQbktEnot0XWWgLXfI="},{"Name":"label","Value":"_content/Evyte/Content/assets/plugins/iCheck/flat/_all.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"14334"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022mwlzwSJPC5c7XkUeSwqv5BxP4wQbktEnot0XWWgLXfI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 18:42:19 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/futurico/futurico.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\futurico\futurico.css'))</AssetFile>
@@ -14844,17 +14844,17 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ztqyhn1io6"},{"Name":"integrity","Value":"sha256-V7nAcUaNogEXOBTCdJa7Do8xjClF\u002Bwjh88dVMa4YTpk="},{"Name":"label","Value":"_content/Evyte/Content/assets/plugins/iCheck/minimal/aero@2x.png"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1409"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022V7nAcUaNogEXOBTCdJa7Do8xjClF\u002Bwjh88dVMa4YTpk=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/minimal/blue.c697k7i4a0.css">
+    <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/minimal/blue.5we0trjpld.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\minimal\blue.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"c697k7i4a0"},{"Name":"integrity","Value":"sha256-NFryakTz41ENj7ftr\u002B1X6/bdTgwND6dfgwNdGSWelbY="},{"Name":"label","Value":"_content/Evyte/Content/assets/plugins/iCheck/minimal/blue.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1687"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022NFryakTz41ENj7ftr\u002B1X6/bdTgwND6dfgwNdGSWelbY=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"5we0trjpld"},{"Name":"integrity","Value":"sha256-m7vdMO7R2ojYQANQiIE\u002BdNmbO7ieuzcfVnryrTSQMTc="},{"Name":"label","Value":"_content/Evyte/Content/assets/plugins/iCheck/minimal/blue.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1689"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022m7vdMO7R2ojYQANQiIE\u002BdNmbO7ieuzcfVnryrTSQMTc=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 18:42:19 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/minimal/blue.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\minimal\blue.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-NFryakTz41ENj7ftr\u002B1X6/bdTgwND6dfgwNdGSWelbY="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1687"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022NFryakTz41ENj7ftr\u002B1X6/bdTgwND6dfgwNdGSWelbY=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-m7vdMO7R2ojYQANQiIE\u002BdNmbO7ieuzcfVnryrTSQMTc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1689"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022m7vdMO7R2ojYQANQiIE\u002BdNmbO7ieuzcfVnryrTSQMTc=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 18:42:19 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/minimal/blue.f7y6sxkfni.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\minimal\blue.png'))</AssetFile>
@@ -15171,14 +15171,14 @@
     <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/minimal/_all.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\minimal\_all.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-wBrkdyNudoyg4rMz3I5ejt4dK1jB9pMq0pjE6mhkT0c="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"14732"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022wBrkdyNudoyg4rMz3I5ejt4dK1jB9pMq0pjE6mhkT0c=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-hIkVTt7rsGcQeZ2wm0XmhemDyBBnCsDQC37ATSy9Sqw="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"14734"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022hIkVTt7rsGcQeZ2wm0XmhemDyBBnCsDQC37ATSy9Sqw=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 18:42:19 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/minimal/_all.goxvp4eke3.css">
+    <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/minimal/_all.gt29zcq34u.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\minimal\_all.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"goxvp4eke3"},{"Name":"integrity","Value":"sha256-wBrkdyNudoyg4rMz3I5ejt4dK1jB9pMq0pjE6mhkT0c="},{"Name":"label","Value":"_content/Evyte/Content/assets/plugins/iCheck/minimal/_all.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"14732"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022wBrkdyNudoyg4rMz3I5ejt4dK1jB9pMq0pjE6mhkT0c=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"gt29zcq34u"},{"Name":"integrity","Value":"sha256-hIkVTt7rsGcQeZ2wm0XmhemDyBBnCsDQC37ATSy9Sqw="},{"Name":"label","Value":"_content/Evyte/Content/assets/plugins/iCheck/minimal/_all.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"14734"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022hIkVTt7rsGcQeZ2wm0XmhemDyBBnCsDQC37ATSy9Sqw=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 18:42:19 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/polaris/polaris.30x61lzw1b.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\polaris\polaris.css'))</AssetFile>
@@ -15252,17 +15252,17 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-l45jfAnqH6PPvbNAFCrYajUcH7hjhRqPuG26BfIOE58="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"4455"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022l45jfAnqH6PPvbNAFCrYajUcH7hjhRqPuG26BfIOE58=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/square/blue.cpddtrlxem.css">
+    <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/square/blue.9c0gm5f5ey.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\square\blue.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"cpddtrlxem"},{"Name":"integrity","Value":"sha256-YGB3kUIHzrPRnWKMmMXQky22SvVqKF\u002BJkdlTPVfWXX4="},{"Name":"label","Value":"_content/Evyte/Content/assets/plugins/iCheck/square/blue.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1672"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022YGB3kUIHzrPRnWKMmMXQky22SvVqKF\u002BJkdlTPVfWXX4=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"9c0gm5f5ey"},{"Name":"integrity","Value":"sha256-R2CMRzVss4jmVguXaatrzILanEW8Qm/LCAj7Zs2IX\u002B8="},{"Name":"label","Value":"_content/Evyte/Content/assets/plugins/iCheck/square/blue.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1674"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022R2CMRzVss4jmVguXaatrzILanEW8Qm/LCAj7Zs2IX\u002B8=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 18:42:19 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/square/blue.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\square\blue.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-YGB3kUIHzrPRnWKMmMXQky22SvVqKF\u002BJkdlTPVfWXX4="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1672"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022YGB3kUIHzrPRnWKMmMXQky22SvVqKF\u002BJkdlTPVfWXX4=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-R2CMRzVss4jmVguXaatrzILanEW8Qm/LCAj7Zs2IX\u002B8="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1674"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022R2CMRzVss4jmVguXaatrzILanEW8Qm/LCAj7Zs2IX\u002B8=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 18:42:19 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/square/blue.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\square\blue.png'))</AssetFile>
@@ -15579,14 +15579,14 @@
     <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/square/_all.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\square\_all.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-VbWDM8FUA6qm33UTCXD4\u002BsQDpqoEe8\u002BSMAH11R2d/Sc="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"16210"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022VbWDM8FUA6qm33UTCXD4\u002BsQDpqoEe8\u002BSMAH11R2d/Sc=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-2jBWdR78px75UqxWO\u002BfgyOT7\u002BgzaDAgJSMg0UouUNHM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"16212"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222jBWdR78px75UqxWO\u002BfgyOT7\u002BgzaDAgJSMg0UouUNHM=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 18:42:19 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/square/_all.nl2emkqszc.css">
+    <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/iCheck/square/_all.y5xl4ka1ej.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\iCheck\square\_all.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"nl2emkqszc"},{"Name":"integrity","Value":"sha256-VbWDM8FUA6qm33UTCXD4\u002BsQDpqoEe8\u002BSMAH11R2d/Sc="},{"Name":"label","Value":"_content/Evyte/Content/assets/plugins/iCheck/square/_all.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"16210"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022VbWDM8FUA6qm33UTCXD4\u002BsQDpqoEe8\u002BSMAH11R2d/Sc=\u0022"},{"Name":"Last-Modified","Value":"Sun, 23 Jun 2024 14:43:23 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"y5xl4ka1ej"},{"Name":"integrity","Value":"sha256-2jBWdR78px75UqxWO\u002BfgyOT7\u002BgzaDAgJSMg0UouUNHM="},{"Name":"label","Value":"_content/Evyte/Content/assets/plugins/iCheck/square/_all.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"16212"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222jBWdR78px75UqxWO\u002BfgyOT7\u002BgzaDAgJSMg0UouUNHM=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 18:42:19 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Evyte/Content/assets/plugins/input-mask/jquery.inputmask.date.extensions.2kligqkdkc.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Content\assets\plugins\input-mask\jquery.inputmask.date.extensions.js'))</AssetFile>

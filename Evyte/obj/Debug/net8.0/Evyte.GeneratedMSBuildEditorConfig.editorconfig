@@ -112,6 +112,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Home/Designs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXNpZ25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Home/FAQs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGQVFzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -124,16 +132,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Home/Questions.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxRdWVzdGlvbnMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Home/QuestionsAr.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxRdWVzdGlvbnNBci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Home/Templates.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZW1wbGF0ZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/iT/source/repos/AshrafKotb/Evyte-BackEnd/Evyte/Views/Invitations/Create.cshtml]

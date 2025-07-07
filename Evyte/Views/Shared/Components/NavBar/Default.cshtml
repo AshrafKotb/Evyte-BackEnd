@@ -1,4 +1,34 @@
-﻿  <!-- Start header -->
+﻿@model GeneralInformation
+@{
+    string link = "https://wa.me/2" + Model.WhatsApp;
+}
+
+<!-- Floating WhatsApp and Messenger Icons -->
+<div class="fixed bottom-6 left-6 z-50 flex flex-col space-y-4">
+    <!-- WhatsApp Icon -->
+    <a href="@link"
+       target="_blank"
+       class="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition duration-300 relative group"
+       title="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp text-2xl"></i>
+        <span class="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition duration-300">
+            Contact us on WhatsApp
+        </span>
+    </a>
+
+    <!-- Messenger Icon -->
+    <a href="https://m.me/eventa.invitation"
+       target="_blank"
+       class="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition duration-300 relative group"
+       title="Contact us on Messenger">
+        <i class="fab fa-facebook-messenger text-2xl"></i>
+        <span class="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition duration-300">
+            Contact us on Messenger
+        </span>
+    </a>
+</div>
+
+<!-- Start header -->
 <header id="header">
     <div class="wpo-site-header wpo-header-style-3">
         <nav class="navigation navbar navbar-expand-lg navbar-light">
@@ -17,7 +47,7 @@
                     <div class="col-lg-2 col-md-9 col-9">
                         <div class="navbar-header">
                             <a class="navbar-brand" style="display: ruby;" asp-controller="Home" asp-action="Index">
-                                <img width="75px" style="place-self:center" src="~/logo/blue.png" />
+                                <img width="75px" style="place-self:center" src="~/logo/yellow.png" />
                             </a>
                         </div>
                     </div>
@@ -27,8 +57,8 @@
                             <ul class="nav navbar-nav mb-2 mb-lg-0">
                                 <li><a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">Home</a></li>
                                 <li><a class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "active" : "")" asp-controller="Home" asp-action="About">About</a></li>
-                                <li><a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Templates" ? "active" : "")" asp-controller="Home" asp-action="Templates">Templates</a></li>
-                                <li><a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Questions" ? "active" : "")" asp-controller="Home" asp-action="Questions">Questions</a></li>
+                                <li><a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Designs" ? "active" : "")" asp-controller="Home" asp-action="Designs">Designs</a></li>
+                                <li><a class="@(ViewContext.RouteData.Values["Action"].ToString() == "faqs" ? "active" : "")" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
                                 <li><a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")" asp-controller="Home" asp-action="Contact">Contact</a></li>
                             </ul>
                         </div>

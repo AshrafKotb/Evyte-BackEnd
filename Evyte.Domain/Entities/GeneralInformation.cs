@@ -9,6 +9,8 @@ namespace Evyte.Domain.Entities
     public class GeneralInformation : BaseEntity
     {
         #region Social Media Data
+        public string AddressAr { get; set; }
+        public string AddressEn { get; set; }
         public string FaceBook { get; set; }
         public string Instagram { get; set; }
         public string X { get; set; }
@@ -17,6 +19,9 @@ namespace Evyte.Domain.Entities
         public string WhatsApp { get; set; }
         public string Snapchat { get; set; }
         public string Email { get; set; }
+        public string Email2 { get; set; }
+        public string PhoneNumber { get; set; }
+        public string PhoneNumber2 { get; set; }
 
         #endregion
         public string TermsAndConditionsAr { get; set; }

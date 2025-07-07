@@ -1,4 +1,5 @@
-﻿ <!-- start of wpo-site-footer-section -->
+﻿@model GeneralInformation
+<!-- start of wpo-site-footer-section -->
 <footer class="wpo-site-footer-s2">
     <div class="wpo-upper-footer">
         <div class="container">
@@ -10,14 +11,12 @@
                         </div>
                         <div class="link-wrap">
                             <ul>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="service.html">Services</a></li>
-                                <li><a href="rsvp.html">RSVP</a></li>
+                                <li><a asp-controller="Home" asp-action="About">About</a></li>
+                                <li><a asp-controller="Home" asp-action="Designs">Designs</a></li>
                             </ul>
                             <ul>
-                                <li><a href="gallery.html">Gallery</a></li>
-                                <li><a href="index.html">Get Quote</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a asp-controller="Home" asp-action="FAQs">FAQs</a></li>
+                                <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -32,21 +31,49 @@
                             and relative s at our wedding.
                         </p>
                         <ul>
-                            <li>
-                                <a href="#">
-                                    <i class="ti-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="ti-twitter-alt"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="ti-instagram"></i>
-                                </a>
-                            </li>
+                            @if (!string.IsNullOrWhiteSpace(Model.FaceBook))
+                            {
+                                <li>
+                                    <a target="_blank" href="@Model.FaceBook">
+                                        <i class="ti-facebook"></i>
+                                    </a>
+                                </li>
+                            } @if (!string.IsNullOrWhiteSpace(Model.X))
+                            {
+                                <li>
+                                    <a target="_blank" href="@Model.X">
+                                        <i class="ti-twitter-alt"></i>
+                                    </a>
+                                </li>
+                            } @if (!string.IsNullOrWhiteSpace(Model.Instagram))
+                            {
+                                <li>
+                                    <a target="_blank" href="@Model.Instagram">
+                                        <i class="ti-instagram"></i>
+                                    </a>
+                                </li>
+                            } @if (!string.IsNullOrWhiteSpace(Model.Tiktok))
+                            {
+                                <li>
+                                    <a target="_blank" href="@Model.Tiktok">
+                                        <i class="fa fa-tiktok"></i>
+                                    </a>
+                                </li>
+                            } @if (!string.IsNullOrWhiteSpace(Model.Snapchat))
+                            {
+                                <li>
+                                    <a target="_blank" href="@Model.Snapchat">
+                                        <i class="fa fa-snapchat"></i>
+                                    </a>
+                                </li>
+                            } @if (!string.IsNullOrWhiteSpace(Model.Youtube))
+                            {
+                                <li>
+                                    <a target="_blank" href="@Model.Youtube">
+                                        <i class="ti-youtube"></i>
+                                    </a>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>
@@ -57,10 +84,13 @@
                             <h3>Contact </h3>
                         </div>
                         <div class="contact-ft">
-                            <p>Eventa@wpoceans.com</p>
+                            <p>@Model.Email</p>
+                            @if (!string.IsNullOrWhiteSpace(Model.Email2))
+                            {
+                                            <p>@Model.Email2</p>
+                            }
                             <p>
-                                4517 Washington Ave. Manchester,
-                                Kentucky 39495
+                                @Model.AddressEn
                             </p>
                         </div>
                     </div>
@@ -73,7 +103,7 @@
             <div class="row">
                 <div class="col col-xs-12">
                     <p class="copyright">
-                        &copy; Copyright 2023 | <a href="index.html">Eventa</a> | All right
+                        &copy; Copyright 2025 | <a href="index.html">Eventa</a> | All right
                         reserved.
                     </p>
                 </div>

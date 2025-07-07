@@ -43,6 +43,10 @@ namespace Evyte.ApplicationCore.Services.General_Information
                     WhatsApp = "https://whatsapp.com",
                     Snapchat = "https://snapchat.com",
                     Email = "example@domain.com",
+                    AddressAr = "",
+                    AddressEn = "",
+                    PhoneNumber = "",
+                    PhoneNumber2 = "",
                     TermsAndConditionsAr = "الشروط والأحكام بالعربية هنا...",
                     TermsAndConditionsEn = "Terms and Conditions in English here...",
                     CreatedDate = DateTime.UtcNow
@@ -94,7 +98,12 @@ namespace Evyte.ApplicationCore.Services.General_Information
                     throw new Exception("GeneralInformation not found.");
                 }
 
+                existingInfo.AddressAr = contactInformation.AddressAr;
+                existingInfo.AddressEn = contactInformation.AddressEn;
                 existingInfo.Email = contactInformation.Email;
+                existingInfo.Email2 = contactInformation.Email2;
+                existingInfo.PhoneNumber = contactInformation.PhoneNumber;
+                existingInfo.PhoneNumber2 = contactInformation.PhoneNumber2;
                 existingInfo.FaceBook = contactInformation.FaceBook;
                 existingInfo.Instagram = contactInformation.Instagram;
                 existingInfo.X = contactInformation.X;

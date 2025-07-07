@@ -4,6 +4,7 @@ using Evyte.ApplicationCore.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Evyte.ApplicationCore.Models.Helper;
 using Evyte.ApplicationCore.Interfaces.Services;
+using Evyte.ApplicationCore.Interfaces.Services.General_Information;
 
 namespace Evyte.Controllers;
 //[Authorize(Roles = RoleName.Admin)]
@@ -12,12 +13,13 @@ public class HomeController : Controller
     private readonly ILogger<HomeController> _logger;
     private readonly IDesignService _designService;
     private readonly IFAQService _FAQService;
-
-    public HomeController(ILogger<HomeController> logger, IDesignService designService, IFAQService FAQService)
+    private readonly IGeneralInformationService _generalInformationService;
+    public HomeController(ILogger<HomeController> logger, IDesignService designService, IFAQService FAQService, IGeneralInformationService generalInformationService)
     {
         _logger = logger;
         _designService = designService;
         _FAQService = FAQService;
+        _generalInformationService = generalInformationService;
     }
 
 
@@ -83,17 +85,18 @@ public class HomeController : Controller
     {
         return View();
     }
-    public IActionResult Contact()
+    public async Task<IActionResult> Contact()
     {
-        return View();
+        var generalInfo = await _generalInformationService.GetGeneralInformationAsync();
+        return View(generalInfo);
     }
-    public async Task<IActionResult> Questions()
+    public async Task<IActionResult> FAQs()
     {
         var faqs = await _FAQService.GetAllActiveFAQsAsync();
 
         return View(faqs);
     }
-    public async Task<IActionResult> Templates()
+    public async Task<IActionResult> Designs()
     {
         var designs = await _designService.GetAllDesignsAsync();
         var model = new HomeIndexViewModel
