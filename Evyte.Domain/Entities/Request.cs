@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Evyte.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,10 @@ namespace Evyte.Domain.Entities
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
         public IEnumerable<RequestGalleryPhoto> GalleryPhotos { get; set; }
+        // الحقول الجديدة
+        public InvitationStatus Status { get; set; } = InvitationStatus.Pending;
+        public string RejectionReason { get; set; }
+        public DateTime? ApprovedDate { get; set; }
 
     }
 }

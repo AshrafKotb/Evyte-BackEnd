@@ -545,24 +545,47 @@
                     data: formData,
                     processData: false,
                     contentType: false,
-                    success: function (response) {
-                        if (response.success) {
-                            // عرض النتائج في المودال
-                            $('#invitationUrlDisplay').val(response.invitationUrl);
-                            $('#qrCodeImage').attr('src', response.qrCodeUrl);
-                            $('#visitLinkBtn').attr('href', response.invitationUrl);
-                            $('#resultModal').removeClass('hidden');
+                    // success: function (response) {
+                    //     if (response.success) {
+                    //         // عرض النتائج في المودال
+                    //         $('#invitationUrlDisplay').val(response.invitationUrl);
+                    //         $('#qrCodeImage').attr('src', response.qrCodeUrl);
+                    //         $('#visitLinkBtn').attr('href', response.invitationUrl);
+                    //         $('#resultModal').removeClass('hidden');
 
-                            // إطلاق الألعاب النارية
-                            if (typeof confetti !== 'undefined') {
-                                confetti({
-                                    particleCount: 150,
-                                    spread: 70,
-                                    origin: { y: 0.6 },
-                                    colors: ['#3b82f6', '#7c3aed', '#facc15', '#a78bfa']
-                                });
-                            }
-                        } else {
+                    //         // إطلاق الألعاب النارية
+                    //         if (typeof confetti !== 'undefined') {
+                    //             confetti({
+                    //                 particleCount: 150,
+                    //                 spread: 70,
+                    //                 origin: { y: 0.6 },
+                    //                 colors: ['#3b82f6', '#7c3aed', '#facc15', '#a78bfa']
+                    //             });
+                    //         }
+                    //     } else {
+                        success: function (response) {
+        if (response.success) {
+            // عرض رسالة أن الدعوة قيد المراجعة بدلاً من عرض الرابط مباشرة
+            Swal.fire({
+                title: 'تم استلام طلبك بنجاح!',
+                html: `
+                    <div class="text-center">
+                        <i class="fas fa-clock fa-4x text-primary mb-4"></i>
+                        <p class="mb-3">تم استلام طلب إنشاء دعوتك بنجاح وهي الآن قيد المراجعة.</p>
+                        <p class="text-muted small">سيتم مراجعة طلبك من قبل فريقنا وسنخطرك عبر البريد الإلكتروني عند الموافقة.</p>
+                        <div class="alert alert-info mt-3 text-start">
+                            <i class="fas fa-envelope me-2"></i>
+                            ستتلقى رسالة تأكيد على: <strong>${$('#email').val()}</strong>
+                        </div>
+                    </div>
+                `,
+                icon: 'success',
+                confirmButtonText: 'حسناً',
+                willClose: () => {
+                    window.location.href = '/';
+                }
+            });
+        } else {
                             Swal.fire({
                                 title: "حدث خطأ",
                                 text: response.message || "حدث خطأ غير متوقع.",

@@ -1,178 +1,180 @@
-﻿@model Evyte.ApplicationCore.Models.Helper.PaginatedResult<Evyte.Domain.Entities.Request>
+﻿@using Evyte.Domain.Enums
+@model Evyte.ApplicationCore.Models.Helper.PaginatedResult<Evyte.Domain.Entities.Request>
 @{
     ViewData["Title"] = "قائمة الطلبات";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <section class="content-header">
-    <h1 class="page-title">قائمة الطلبات</h1>
+    <h1 class="page-title">
+        <i class="fa fa-list"></i> قائمة الطلبات
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> الرئيسية</a></li>
+        <li class="active">قائمة الطلبات</li>
+    </ol>
 </section>
 
 <section class="content">
     <div class="requests-container">
-
-        <div class="controls-container d-flex justify-content-between align-items-center mb-3">
-            <div class="page-size-selector">
-                <label for="pageSize" class="me-2">عناصر لكل صفحة:</label>
-                <form asp-action="Index" method="get" id="pageSizeForm">
-                    <input type="hidden" name="searchTerm" value="@ViewBag.SearchTerm" />
-                    <select id="pageSize" name="pageSize" class="form-select" onchange="this.form.submit()">
-                        @{
-                            var pageSizes = new[] { 5, 10, 25, 50, 100 };
-                            foreach (var size in pageSizes)
-                            {
-                                if (ViewBag.PageSize == size)
-                                {
-                                    <option value="@size" selected>@size</option>
-                                }
-                                else
-                                {
-                                    <option value="@size">@size</option>
-                                }
-                            }
-                        }
-                    </select>
-                </form>
-            </div>
-        </div>
-        <div class="category-search-container">
-            <form asp-action="Index" method="get" class="category-search">
-                <div class="input-group">
-                    <input type="text" class="form-control" name="searchTerm" value="@ViewBag.SearchTerm" placeholder="ابحث عن طلب...">
-                    <button type="submit" class="btn"><i class="fas fa-search"></i></button>
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">فلترة الطلبات</h3>
+                <div class="box-tools pull-left">
+                    <div class="has-feedback">
+                        <form asp-action="Index" method="get" class="category-search">
+                            <div class="input-group">
+                                <input type="text" class="form-control input-sm" name="searchTerm" value="@ViewBag.SearchTerm" placeholder="ابحث عن طلب...">
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </form>
-        </div>
+            </div>
 
-        <div class="requests-table">
-            <table class="table table-hover mb-0">
-                <thead>
-                    <tr>
-                        <th>بيانات المستخدم</th>
-                        <th>تاريخ/وقت الحدث</th>
-                        <th>العريس</th>
-                        <th>العروس</th>
-                        <th>الإجراءات</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var request in Model.Items)
-                    {
-                        <tr>
-                            <td>
-                                <div class="user-info">
-                                    <p><i class="fa fa-user"></i> <strong>@request.User.FullName</strong></p>
-                                    <p><i class="fa fa-phone"></i> @request.User.PhoneNumber</p>
-                                    <p><i class="fa fa-envelope"></i> @request.User.Email</p>
-                                </div>
-                            </td>
-                            <td>@request.RequestData.EventDate.ToString("yyyy-MM-dd")<br>@request.RequestData.EventTimeFrom - @request.RequestData.EventTimeTo</td>
-                            <td>
-                                @request.RequestData.GroomName
-                                <br>
-                                <img src="@request.RequestData.GroomImageUrl" alt="Groom" class="category-img" onerror="this.src='/images/default-user.png'" />
-                            </td>
-                            <td>
-                                @request.RequestData.BrideName
-                                <br>
-                                <img src="@request.RequestData.BrideImageUrl" alt="Bride" class="category-img" onerror="this.src='/images/default-user.png'" />
-                            </td>
-                            <td>
-                                <div class="action-buttons">
-                                    <a asp-action="Details" asp-route-id="@request.Id" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> التفاصيل</a>
-                                    <a asp-action="Edit" asp-route-id="@request.Id" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> تعديل</a>
-                                </div>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-
-        @if (Model.TotalPages > 1)
-        {
-            <div class="pagination-container">
-                <form id="paginationForm" asp-action="Index" method="get">
-                    <input type="hidden" name="searchTerm" value="@ViewBag.SearchTerm" />
-                    <input type="hidden" name="pageSize" value="@Model.PageSize" />
-                    <nav aria-label="تصفح الصفحات">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
-                                <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.CurrentPage - 1)" asp-route-pageSize="@Model.PageSize" asp-route-searchTerm="@ViewBag.SearchTerm" aria-label="الصفحة السابقة"><i class="fas fa-chevron-right"></i></a>
-                            </li>
-                            <li class="page-item @(Model.CurrentPage == 1 ? "active" : "")">
-                                <a class="page-link" asp-action="Index" asp-route-pageNumber="1" asp-route-pageSize="@Model.PageSize" asp-route-searchTerm="@ViewBag.SearchTerm" aria-current="@(Model.CurrentPage == 1 ? "page" : null)">1</a>
-                            </li>
-                            @if (Model.CurrentPage > 3)
+            <div class="box-body">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" id="requestsTable">
+                        <thead>
+                            <tr>
+                                <th>بيانات المستخدم</th>
+                                <th>تاريخ/وقت الحدث</th>
+                                <th>العريس</th>
+                                <th>العروس</th>
+                                <th>الحالة</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var request in Model.Items)
                             {
-                                <li class="page-item disabled"><span class="page-link">...</span></li>
+                                <tr>
+                                    <td>
+                                        <div class="user-info">
+                                            <p><i class="fa fa-user"></i> <strong>@request.User.FullName</strong></p>
+                                            <p><i class="fa fa-phone"></i> @request.User.PhoneNumber</p>
+                                            <p><i class="fa fa-envelope"></i> @request.User.Email</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <i class="fa fa-calendar"></i> @request.RequestData.EventDate.ToString("yyyy-MM-dd")
+                                        <br>
+                                        <i class="fa fa-clock-o"></i> @request.RequestData.EventTimeFrom - @request.RequestData.EventTimeTo
+                                    </td>
+                                    <td>
+                                        @request.RequestData.GroomName
+                                        <br>
+                                        <img src="@request.RequestData.GroomImageUrl" alt="Groom" class="user-thumbnail" onerror="this.src='/images/default-user.png'" />
+                                    </td>
+                                    <td>
+                                        @request.RequestData.BrideName
+                                        <br>
+                                        <img src="@request.RequestData.BrideImageUrl" alt="Bride" class="user-thumbnail" onerror="this.src='/images/default-user.png'" />
+                                    </td>
+                                    <td>
+                                        <span class="label @(request.Status == InvitationStatus.Approved ? "label-success" :
+                                                          request.Status == InvitationStatus.Rejected ? "label-danger" : "label-warning")">
+                                            @request.Status
+                                        </span>
+                                        @if (request.Status == InvitationStatus.Approved && request.ApprovedDate.HasValue)
+                                        {
+                                            <br />
+                                            <small><i class="fa fa-calendar"></i> @request.ApprovedDate.Value.ToString("yyyy-MM-dd")</small>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <a asp-action="Details" asp-route-id="@request.Id" class="btn btn-info btn-sm" title="التفاصيل">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a asp-action="Edit" asp-route-id="@request.Id" class="btn btn-warning btn-sm" title="تعديل">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
                             }
-                            @for (int i = Math.Max(2, Model.CurrentPage - 2); i <= Math.Min(Model.TotalPages - 1, Model.CurrentPage + 2); i++)
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="box-footer clearfix">
+                <div class="pull-left">
+                    <form asp-action="Index" method="get" id="pageSizeForm">
+                        <input type="hidden" name="searchTerm" value="@ViewBag.SearchTerm" />
+                        <div class="form-inline">
+                            <label for="pageSize" class="control-label">عرض</label>
+                            <select id="pageSize" name="pageSize" class="form-control input-sm" onchange="this.form.submit()">
+                                @{
+                                    var pageSizes = new[] { 5, 10, 25, 50, 100 };
+                                    foreach (var size in pageSizes)
+                                    {
+                                        if (ViewBag.PageSize == size)
+                                        {
+                                            <option value="@size" selected>@size</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@size">@size</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                            <label for="pageSize" class="control-label">عنصر في الصفحة</label>
+                        </div>
+                    </form>
+                </div>
+
+                @if (Model.TotalPages > 1)
+                {
+                    <div class="pull-right">
+                        <ul class="pagination pagination-sm no-margin">
+                            <li class="@(Model.CurrentPage == 1 ? "disabled" : "")">
+                                <a asp-action="Index"
+                                   asp-route-pageNumber="@(Model.CurrentPage - 1)"
+                                   asp-route-pageSize="@Model.PageSize"
+                                   asp-route-searchTerm="@ViewBag.SearchTerm">
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </li>
+
+                            @for (int i = 1; i <= Model.TotalPages; i++)
                             {
-                                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
-                                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize" asp-route-searchTerm="@ViewBag.SearchTerm" aria-current="@(i == Model.CurrentPage ? "page" : null)">@i</a>
+                                <li class="@(i == Model.CurrentPage ? "active" : "")">
+                                    <a asp-action="Index"
+                                       asp-route-pageNumber="@i"
+                                       asp-route-pageSize="@Model.PageSize"
+                                       asp-route-searchTerm="@ViewBag.SearchTerm">
+                                        @i
+                                    </a>
                                 </li>
                             }
-                            @if (Model.CurrentPage < Model.TotalPages - 2)
-                            {
-                                <li class="page-item disabled"><span class="page-link">...</span></li>
-                            }
-                            @if (Model.TotalPages > 1)
-                            {
-                                <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "active" : "")">
-                                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@Model.TotalPages" asp-route-pageSize="@Model.PageSize" asp-route-searchTerm="@ViewBag.SearchTerm" aria-current="@(Model.CurrentPage == Model.TotalPages ? "page" : null)">@Model.TotalPages</a>
-                                </li>
-                            }
-                            <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
-                                <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.CurrentPage + 1)" asp-route-pageSize="@Model.PageSize" asp-route-searchTerm="@ViewBag.SearchTerm" aria-label="الصفحة التالية"><i class="fas fa-chevron-left"></i></a>
+
+                            <li class="@(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                                <a asp-action="Index"
+                                   asp-route-pageNumber="@(Model.CurrentPage + 1)"
+                                   asp-route-pageSize="@Model.PageSize"
+                                   asp-route-searchTerm="@ViewBag.SearchTerm">
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
                             </li>
                         </ul>
-                    </nav>
-                </form>
+                    </div>
+                }
             </div>
-        }
+        </div>
     </div>
 </section>
 
 @section Styles {
     <link rel="stylesheet" href="~/css/requests/index.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 }
 
 @section Scripts {
-    <script src="~/Content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/Content/assets/plugins/datatables/dataTables.bootstrap.js"></script>
-    <script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-            return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-            if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-                try {
-                    var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                    var firstSheetName = workbook.SheetNames[0];
-                    var worksheet = workbook.Sheets[firstSheetName];
-                    var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                    var filteredData = jsonData.filter(row => row.some(filledCell));
-                    var headerRowIndex = filteredData.findIndex((row, index) =>
-                        row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                    );
-                    if (headerRowIndex === -1 || headerRowIndex > 25) {
-                        headerRowIndex = 0;
-                    }
-                    var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
-                    return XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                } catch (e) {
-                    console.error(e);
-                    return "";
-                }
-            }
-            return gk_fileData[filename] || "";
-        }
-
+    <script>
         $(document).ready(function () {
             $('#requestsTable').DataTable({
                 "paging": false,
@@ -185,10 +187,6 @@
                     "infoEmpty": "عرض 0 إلى 0 من 0 طلب",
                     "lengthMenu": "عرض _MENU_ طلبات"
                 }
-            });
-
-            $('#pageSize').on('change', function () {
-                $('#pageSizeForm').submit();
             });
         });
     </script>

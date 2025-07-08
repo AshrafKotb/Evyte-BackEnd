@@ -1,5 +1,6 @@
 ﻿using Evyte.ApplicationCore.Services.Repository;
 using Evyte.Domain.Entities;
+using Evyte.Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -31,6 +32,15 @@ namespace Evyte.Web.Controllers
             if (request == null)
             {
                 return NotFound();
+            }
+            // التحقق من حالة الدعوة
+            if (request.Status == InvitationStatus.Pending)
+            {
+                return View("InvitationPending", request);
+            }
+            else if (request.Status == InvitationStatus.Rejected)
+            {
+                return View("InvitationRejected", request);
             }
 
             // التأكد من إن القيم بتاعة TimeSpan في نطاق مقبول
