@@ -6269,6 +6269,10 @@
       "PackagePath": "staticwebassets\\assets\\images\\favicon.png"
     },
     {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\first.png",
+      "PackagePath": "staticwebassets\\assets\\images\\first.png"
+    },
+    {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\footer-shape-1.svg",
       "PackagePath": "staticwebassets\\assets\\images\\footer-shape-1.svg"
     },
@@ -6863,6 +6867,10 @@
     {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\rsvp\\shape6.svg",
       "PackagePath": "staticwebassets\\assets\\images\\rsvp\\shape6.svg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\second.png",
+      "PackagePath": "staticwebassets\\assets\\images\\second.png"
     },
     {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\select-icon.png",
@@ -7535,6 +7543,10 @@
     {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\testimonial\\thumb-3.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\testimonial\\thumb-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\three.png",
+      "PackagePath": "staticwebassets\\assets\\images\\three.png"
     },
     {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\ui-bg_highlight-soft_75_cccccc_1x100.png",

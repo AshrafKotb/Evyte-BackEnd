@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Nnkl3HKa4bVXTw4dG8FumePFEy7CFSTfymnMhk0Ih+s=",
+  "Hash": "nxK5VIatdoqmhQ41/a2sYrqQupwO1n8w4G7KPqVGKqc=",
   "Source": "Evyte",
   "BasePath": "_content/Evyte",
   "Mode": "Default",
@@ -393,6 +393,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\css\\responsive.css"
+    },
+    {
+      "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\rtl.css",
+      "SourceId": "Evyte",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\",
+      "BasePath": "_content/Evyte",
+      "RelativePath": "assets/css/rtl#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "aj831vbzmq",
+      "Integrity": "CsUzR5Ci3GHy2kDd/QBFQm4rL9ULzR081xoAy04YbcQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\css\\rtl.css"
     },
     {
       "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\slick.css",
@@ -3438,6 +3459,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\favicon.png"
+    },
+    {
+      "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\first.png",
+      "SourceId": "Evyte",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\",
+      "BasePath": "_content/Evyte",
+      "RelativePath": "assets/images/first#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "1c8o60paq4",
+      "Integrity": "MRaMVdIDbMdzz3QKrtcZhsLjhPUjmqRG2CrqR9CWqS4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\first.png"
     },
     {
       "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\footer-shape-1.svg",
@@ -6588,6 +6630,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\rsvp\\shape6.svg"
+    },
+    {
+      "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\second.png",
+      "SourceId": "Evyte",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\",
+      "BasePath": "_content/Evyte",
+      "RelativePath": "assets/images/second#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ik1rm8a23w",
+      "Integrity": "slZCDWjVaFJCsIgLDrv9avNLI05xoZaRyYkpe1NrENY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\second.png"
     },
     {
       "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\select-icon.png",
@@ -10116,6 +10179,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\testimonial\\thumb-3.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\three.png",
+      "SourceId": "Evyte",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\",
+      "BasePath": "_content/Evyte",
+      "RelativePath": "assets/images/three#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "nv873ati6y",
+      "Integrity": "s8PfNOx8oD139e8zfJOxVJ8XU1ZW21Qbf2wYeko16rc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\three.png"
     },
     {
       "Identity": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\ui-bg_highlight-soft_75_cccccc_1x100.png",
@@ -46439,6 +46523,88 @@
       ]
     },
     {
+      "Route": "assets/css/rtl.aj831vbzmq.css",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\rtl.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "52"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CsUzR5Ci3GHy2kDd/QBFQm4rL9ULzR081xoAy04YbcQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 08 Jul 2025 00:42:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "aj831vbzmq"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/css/rtl.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CsUzR5Ci3GHy2kDd/QBFQm4rL9ULzR081xoAy04YbcQ="
+        }
+      ]
+    },
+    {
+      "Route": "assets/css/rtl.css",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\rtl.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "52"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CsUzR5Ci3GHy2kDd/QBFQm4rL9ULzR081xoAy04YbcQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 08 Jul 2025 00:42:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-CsUzR5Ci3GHy2kDd/QBFQm4rL9ULzR081xoAy04YbcQ="
+        }
+      ]
+    },
+    {
       "Route": "assets/css/slick.css",
       "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\slick.css",
       "Selectors": [],
@@ -58325,6 +58491,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-b8GBgL4JEnirKVisVofQr3wS1BIkV19aWHkXsjDkcxQ="
+        }
+      ]
+    },
+    {
+      "Route": "assets/images/first.1c8o60paq4.png",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\first.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2718596"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MRaMVdIDbMdzz3QKrtcZhsLjhPUjmqRG2CrqR9CWqS4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 08 Jul 2025 02:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1c8o60paq4"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/images/first.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-MRaMVdIDbMdzz3QKrtcZhsLjhPUjmqRG2CrqR9CWqS4="
+        }
+      ]
+    },
+    {
+      "Route": "assets/images/first.png",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\first.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2718596"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MRaMVdIDbMdzz3QKrtcZhsLjhPUjmqRG2CrqR9CWqS4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 08 Jul 2025 02:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-MRaMVdIDbMdzz3QKrtcZhsLjhPUjmqRG2CrqR9CWqS4="
         }
       ]
     },
@@ -70625,6 +70873,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-SR4K0CO0SkL9HIX1zWlC3u5ztX5TCe9Z0wXrvdEfcuA="
+        }
+      ]
+    },
+    {
+      "Route": "assets/images/second.ik1rm8a23w.png",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\second.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2503579"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"slZCDWjVaFJCsIgLDrv9avNLI05xoZaRyYkpe1NrENY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 08 Jul 2025 02:25:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ik1rm8a23w"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/images/second.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-slZCDWjVaFJCsIgLDrv9avNLI05xoZaRyYkpe1NrENY="
+        }
+      ]
+    },
+    {
+      "Route": "assets/images/second.png",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\second.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2503579"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"slZCDWjVaFJCsIgLDrv9avNLI05xoZaRyYkpe1NrENY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 08 Jul 2025 02:25:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-slZCDWjVaFJCsIgLDrv9avNLI05xoZaRyYkpe1NrENY="
         }
       ]
     },
@@ -84401,6 +84731,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-aaw7Xfyo0EWtGG+LI3rHDm/RCPEmh+TDAbdg6oS/XqE="
+        }
+      ]
+    },
+    {
+      "Route": "assets/images/three.nv873ati6y.png",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\three.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2854235"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"s8PfNOx8oD139e8zfJOxVJ8XU1ZW21Qbf2wYeko16rc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 08 Jul 2025 02:29:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nv873ati6y"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/images/three.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-s8PfNOx8oD139e8zfJOxVJ8XU1ZW21Qbf2wYeko16rc="
+        }
+      ]
+    },
+    {
+      "Route": "assets/images/three.png",
+      "AssetFile": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\images\\three.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2854235"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"s8PfNOx8oD139e8zfJOxVJ8XU1ZW21Qbf2wYeko16rc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 08 Jul 2025 02:29:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-s8PfNOx8oD139e8zfJOxVJ8XU1ZW21Qbf2wYeko16rc="
         }
       ]
     },

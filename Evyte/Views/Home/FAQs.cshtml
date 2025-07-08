@@ -1,7 +1,9 @@
-﻿@model List<FAQVM>
+﻿@using Microsoft.AspNetCore.Localization
+@model List<FAQVM>
 @{
     ViewData["Title"] = "Questions";
     Layout = "_WebsiteLayout";
+    var isEnglish = Context.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName]?.Split('|')[0]?.Split('=')[1] == "en";
 }
 
 <!-- start wpo-faq-section -->
@@ -10,8 +12,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="wpo-section-title">
-                    <span>Frequently Asked Questions</span>
-                    <h2>Answers to Your Queries</h2>
+                    <span>@(isEnglish ? "Frequently Asked Questions" : "الأسئلة الشائعة")</span>
+                    <h2>@(isEnglish ? "Answers to Your Queries" : "إجابات على استفساراتك")</h2>
                 </div>
             </div>
         </div>
@@ -19,28 +21,23 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12">
                     <div class="accordion" id="faqAccordion">
-
                         @foreach (var item in Model.Select((faq, index) => new { faq, index }))
                         {
-                            // توليد IDs فريدة لكل عنصر للحفاظ على وظائف Accordion
-                            var uniqueHeadingId = "heading" + item.faq.Id; // استخدم ID العنصر لضمان التفرد
+                            var uniqueHeadingId = "heading" + item.faq.Id;
                             var uniqueCollapseId = "collapse" + item.faq.Id;
-
-                            // حساب مدة الـ animation بشكل تصاعدي
-                            // يبدأ بـ 1000ms ويزيد 200ms لكل عنصر تالي
-                            var wowDuration = (item.index * 200) + 1000; // milliseconds
+                            var wowDuration = (item.index * 200) + 1000;
 
                             <div class="accordion-item wow fadeInUp" data-wow-duration="@(wowDuration)ms">
                                 <h3 class="accordion-header" id="@uniqueHeadingId">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#@uniqueCollapseId" aria-expanded="false" aria-controls="@uniqueCollapseId">
-                                        @item.faq.QuestionEn
+                                        @(isEnglish ? item.faq.QuestionEn : item.faq.QuestionAr)
                                     </button>
                                 </h3>
                                 <div id="@uniqueCollapseId" class="accordion-collapse collapse" aria-labelledby="@uniqueHeadingId"
                                      data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        @Html.Raw(item.faq.AnswerEn)
+                                        @Html.Raw(isEnglish ? item.faq.AnswerEn : item.faq.AnswerAr)
                                     </div>
                                 </div>
                             </div>

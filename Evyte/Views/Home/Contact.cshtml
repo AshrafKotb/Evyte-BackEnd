@@ -1,18 +1,21 @@
-﻿@model GeneralInformation
+﻿@using Microsoft.AspNetCore.Localization
+@model GeneralInformation
 @{
     ViewData["Title"] = "Contact";
     Layout = "_WebsiteLayout";
+    var isEnglish = Context.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName]?.Split('|')[0]?.Split('=')[1] == "en";
 }
+
 <!-- start wpo-page-title -->
 <section class="wpo-page-title">
     <div class="container">
         <div class="row">
             <div class="col col-xs-12">
                 <div class="wpo-breadcumb-wrap">
-                    <h2>Contact Us</h2>
+                    <h2>@(isEnglish ? "Contact Us" : "اتصل بنا")</h2>
                     <ol class="wpo-breadcumb-wrap">
-                        <li><a href="index.html">Home</a></li>
-                        <li>Contact</li>
+                        <li><a asp-action="index" asp-controller="home">@(isEnglish ? "Home" : "الرئيسية")</a></li>
+                        <li>@(isEnglish ? "Contact" : "اتصل بنا")</li>
                     </ol>
                 </div>
             </div>
@@ -35,8 +38,8 @@
                                     </div>
                                 </div>
                                 <div class="office-info-text">
-                                    <h2>Address</h2>
-                                    <p>@Model.AddressEn</p>
+                                    <h2>@(isEnglish ? "Address" : "العنوان")</h2>
+                                    <p>@(isEnglish ? Model.AddressEn : Model.AddressAr)</p>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +51,7 @@
                                     </div>
                                 </div>
                                 <div class="office-info-text">
-                                    <h2>Email Us</h2>
+                                    <h2>@(isEnglish ? "Email Us" : "البريد الإلكتروني")</h2>
                                     <p>@Model.Email</p>
                                     @if (!string.IsNullOrWhiteSpace(Model.Email2))
                                     {
@@ -65,7 +68,7 @@
                                     </div>
                                 </div>
                                 <div class="office-info-text">
-                                    <h2>Call Now</h2>
+                                    <h2>@(isEnglish ? "Call Now" : "اتصل الآن")</h2>
                                     <p>+2 @Model.PhoneNumber</p>
                                     @if (!string.IsNullOrWhiteSpace(Model.PhoneNumber2))
                                     {
@@ -79,7 +82,7 @@
 
                 <!-- Social Media Card -->
                 <div class="social-media-card" style="background: #f9f9f9; padding: 30px; border-radius: 10px; margin-bottom: 40px; text-align: center;">
-                    <h2 style="margin-bottom: 20px;">Follow Us On Social Media</h2>
+                    <h2 style="margin-bottom: 20px;">@(isEnglish ? "Follow Us On Social Media" : "تابعنا على وسائل التواصل الاجتماعي")</h2>
                     <div class="social-icons" style="display: flex; justify-content: center; gap: 20px;">
                         <a href="#" style="color: #3b5998; font-size: 24px;" title="Facebook"><i class="fab fa-facebook"></i></a>
                         <a href="#" style="color: #E1306C; font-size: 24px;" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -91,43 +94,45 @@
                 <!-- End Social Media Card -->
 
                 <div class="wpo-contact-title">
-                    <h2>Need help? We're always here!</h2>
+                    <h2>@(isEnglish ? "Need help? We're always here!" : "تحتاج مساعدة؟ نحن هنا دائماً!")</h2>
                     <p>
-                        If you have any questions, suggestions, or need help designing your invitation, send us a message and our team will respond to you as soon as possible .
+                        @(isEnglish ?
+                            "If you have any questions, suggestions, or need help designing your invitation, send us a message and our team will respond to you as soon as possible." :
+                            "إذا كان لديك أي استفسارات، اقتراحات، أو تحتاج مساعدة في تصميم دعوتك، أرسل لنا رسالة وسيقوم فريقنا بالرد عليك في أقرب وقت ممكن.")
                     </p>
                 </div>
                 <div class="wpo-contact-form-area">
                     <form method="post" class="contact-validation-active" id="contact-form-main">
                         <div>
                             <input type="text" class="form-control" name="name" id="name"
-                                   placeholder="Your Name*">
+                                   placeholder="@(isEnglish ? "Your Name*" : "اسمك*")">
                         </div>
                         <div>
                             <input type="email" class="form-control" name="email" id="email"
-                                   placeholder="Your Email*">
+                                   placeholder="@(isEnglish ? "Your Email*" : "بريدك الإلكتروني*")">
                         </div>
                         <div>
                             <input type="tel" class="form-control" name="Phone" id="Phone"
-                                   placeholder="Phone Number">
+                                   placeholder="@(isEnglish ? "Phone Number" : "رقم الهاتف")">
                         </div>
                         <div>
                             <select name="service" class="form-control">
-                                <option disabled="disabled" selected="">Event Type</option>
+                                <option disabled="disabled" selected="">@(isEnglish ? "Event Type" : "نوع المناسبة")</option>
                             </select>
                         </div>
                         <div class="fullwidth">
                             <textarea class="form-control" name="note" id="note"
-                                      placeholder="Message..."></textarea>
+                                      placeholder="@(isEnglish ? "Message..." : "رسالتك...")"></textarea>
                         </div>
                         <div class="submit-area">
-                            <button type="submit" class="theme-btn-s4">Get in Touch</button>
+                            <button type="submit" class="theme-btn-s4">@(isEnglish ? "Get in Touch" : "تواصل معنا")</button>
                             <div id="loader">
                                 <i class="ti-reload"></i>
                             </div>
                         </div>
                         <div class="clearfix error-handling-messages">
-                            <div id="success">Thank you</div>
-                            <div id="error"> Error occurred while sending email. Please try again later. </div>
+                            <div id="success">@(isEnglish ? "Thank you" : "شكراً لك")</div>
+                            <div id="error"> @(isEnglish ? "Error occurred while sending email. Please try again later." : "حدث خطأ أثناء إرسال البريد الإلكتروني. يرجى المحاولة مرة أخرى لاحقاً.") </div>
                         </div>
                     </form>
                 </div>
@@ -144,7 +149,7 @@
             <div class="col-xl-6 col-lg-8 col-md-10 col-12">
                 <div class="wpo-section-title">
                     <h2>
-                        Got a complaint?
+                        @(isEnglish ? "Got a complaint?" : "لديك شكوى؟")
                     </h2>
                 </div>
             </div>
@@ -154,8 +159,9 @@
                 <div class="col-xl-11 offset-xl-1 col-lg-12 col-md-12 col-12">
                     <div class="wpo-about-text wow fadeInLeftSlow" style="max-width: 100% !important;" data-wow-duration="1000ms">
                         <p>
-                            If you encounter any issues with payment, design, or receiving your invitation, we're here to resolve them immediately.
-                            Send us the details at: 📩 complaints@evyte.com -- or contact us directly on WhatsApp.
+                            @(isEnglish ?
+                                "If you encounter any issues with payment, design, or receiving your invitation, we're here to resolve them immediately. Send us the details at: 📩 complaints@evyte.com -- or contact us directly on WhatsApp." :
+                                "إذا واجهت أي مشاكل مع الدفع، التصميم، أو استلام دعوتك، نحن هنا لحلها فوراً. أرسل لنا التفاصيل على: 📩 complaints@evyte.com -- أو تواصل معنا مباشرة على واتساب.")
                         </p>
                     </div>
                 </div>
@@ -172,7 +178,7 @@
             <div class="col-xl-6 col-lg-8 col-md-10 col-12">
                 <div class="wpo-section-title">
                     <h2>
-                        Interested in collaborating with us?
+                        @(isEnglish ? "Interested in collaborating with us?" : "مهتم بالتعاون معنا؟")
                     </h2>
                 </div>
             </div>
@@ -182,10 +188,9 @@
                 <div class="col-xl-11 offset-xl-1 col-lg-12 col-md-12 col-12">
                     <div class="wpo-about-text wow fadeInLeftSlow" style="max-width: 100% !important;" data-wow-duration="1000ms">
                         <p>
-                            If you're a designer, blogger, influencer, or even a wedding planner, we'd love to hear from you and collaborate!
-                            Email us at:
-                            📩 partners@evyte.com
-                            Or send us a message using the form and indicate your interest in collaborating.
+                            @(isEnglish ?
+                                "If you're a designer, blogger, influencer, or even a wedding planner, we'd love to hear from you and collaborate! Email us at: 📩 partners@evyte.com Or send us a message using the form and indicate your interest in collaborating." :
+                                "إذا كنت مصمماً، مدوناً، مؤثراً، أو حتى مخطط حفلات زفاف، نحن نود أن نسمع منك ونعمل معاً! راسلنا على: 📩 partners@evyte.com أو أرسل لنا رسالة باستخدام النموذج واذكر رغبتك في التعاون.")
                         </p>
                     </div>
                 </div>

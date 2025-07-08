@@ -160,6 +160,7 @@ wwwroot\assets\images\fancybox\fancybox_overlay.png
 wwwroot\assets\images\fancybox\fancybox_sprite.png
 wwwroot\assets\images\fancybox\fancybox_sprite@2x.png
 wwwroot\assets\images\favicon.png
+wwwroot\assets\images\first.png
 wwwroot\assets\images\footer-shape-1.svg
 wwwroot\assets\images\footer-shape-2.svg
 wwwroot\assets\images\funfact\1.svg
@@ -310,6 +311,7 @@ wwwroot\assets\images\rsvp\shape3.svg
 wwwroot\assets\images\rsvp\shape4.svg
 wwwroot\assets\images\rsvp\shape5.svg
 wwwroot\assets\images\rsvp\shape6.svg
+wwwroot\assets\images\second.png
 wwwroot\assets\images\select-icon.png
 wwwroot\assets\images\select-icon2.png
 wwwroot\assets\images\service\img-1.jpg
@@ -478,6 +480,7 @@ wwwroot\assets\images\testimonial\svg-4.svg
 wwwroot\assets\images\testimonial\thumb-1.jpg
 wwwroot\assets\images\testimonial\thumb-2.jpg
 wwwroot\assets\images\testimonial\thumb-3.jpg
+wwwroot\assets\images\three.png
 wwwroot\assets\images\ui-bg_highlight-soft_75_cccccc_1x100.png
 wwwroot\assets\images\ui-icons_444444_256x240.png
 wwwroot\assets\images\ui-icons_555555_256x240.png

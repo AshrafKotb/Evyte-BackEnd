@@ -67,14 +67,16 @@ public class HomeController : Controller
     }
     public async Task<IActionResult> Designs()
     {
+        var language = GetCurrentLanguage();
+
         var designs = await _designService.GetAllDesignsAsync();
         var model = new HomeIndexViewModel
         {
             Designs = designs.Select(d => new DesignViewModel
             {
                 Id = d.Id,
-                Name = d.NameAr,
-                Description = d.DescriptionAr,
+                Name = language == "en" ? d.NameEn : d.NameAr,
+                Description = language == "en" ? d.DescriptionEn : d.DescriptionAr,
                 PreviewImageUrl = d.ImageUrl, // يمكن تعديل هذا الحقل بناءً على تصميم قاعدة البيانات
                 WebsiteDemoUrl = d.WebsiteDemoUrl
             }).ToList()
