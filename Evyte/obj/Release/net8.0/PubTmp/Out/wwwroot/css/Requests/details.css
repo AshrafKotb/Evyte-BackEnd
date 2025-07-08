@@ -1,111 +1,156 @@
+/* تفاصيل الطلب */
 .details-container {
+    border-top: 3px solid #3c8dbc;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.info-box {
     background: #fff;
-    border-radius: 0.75rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    border: 1px solid #f4f4f4;
 }
 
-.details-container h4 {
-    color: #1f2937;
-    font-weight: 600;
-    border-bottom: 2px solid #7c3aed;
-    padding-bottom: 0.75rem;
-    margin-bottom: 1.5rem;
+.info-box-title {
+    background: #f7f7f7;
+    padding: 10px 15px;
+    margin: 0;
+    border-bottom: 1px solid #f4f4f4;
+    font-size: 16px;
+    color: #444;
 }
 
-.details-container p {
-    margin-bottom: 1rem;
-    color: #4b5563;
-}
-
-.details-container a {
-    color: #7c3aed;
-    text-decoration: none;
-}
-
-.details-container a:hover {
-    color: #6d28d9;
-    text-decoration: underline;
+.info-box-content {
+    padding: 15px;
 }
 
 .detail-img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 0.5rem;
-    margin: 1rem 0;
-    border: 1px solid #e5e7eb;
+    max-width: 150px;
+    max-height: 150px;
+    margin: 10px auto;
+    display: block;
+    border: 1px solid #ddd;
 }
 
-.event-images {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.image-card {
-    flex: 1;
-    text-align: center;
-}
-
-.image-card h5 {
-    color: #1f2937;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.image-card img {
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 0.5rem;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+.event-img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.gallery-item {
-    overflow: hidden;
-    border-radius: 0.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
 }
 
 .gallery-img {
     width: 100%;
-    height: 200px;
+    height: 120px;
     object-fit: cover;
-    display: block;
+    border: 1px solid #ddd;
 }
 
 .qr-code {
-    width: 150px;
-    height: 150px;
-    border-radius: 0.5rem;
-    border: 1px solid #e5e7eb;
-    padding: 0.5rem;
-    background: #fff;
+    max-width: 150px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background: white;
 }
 
-.box-footer .btn-warning {
-    background: #f59e0b;
-    border: none;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
+.social-links {
+    margin-top: 10px;
 }
 
-.box-footer .btn-warning:hover {
-    background: #d97706;
+    .social-links .btn {
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+
+.status-actions {
+    margin-top: 30px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #eee;
 }
 
-.box-footer .btn-default {
-    background: #f1f5f9;
-    border: 1px solid #d1d5db;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
+    .status-actions h4 {
+        margin-top: 0;
+        color: #555;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+    }
+
+.action-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+    .action-buttons .btn {
+        margin: 0 10px;
+        min-width: 180px;
+    }
+
+.label {
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.label-success {
+    background-color: #00a65a;
+}
+
+.label-danger {
+    background-color: #dd4b39;
+}
+
+.label-warning {
+    background-color: #f39c12;
+}
+
+.label-default {
+    background-color: #777;
+}
+
+#rejectModal .modal-header {
+    background-color: #dd4b39;
+    color: white;
+    border-radius: 5px 5px 0 0;
+}
+
+#rejectModal .modal-title {
+    font-weight: bold;
+}
+
+#rejectModal textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.well {
+    background: white;
+    border: 1px solid #e3e3e3;
+    box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .detail-img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+
+    .action-buttons .btn {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
 }

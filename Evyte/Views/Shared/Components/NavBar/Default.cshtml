@@ -1,5 +1,8 @@
-﻿@model GeneralInformation
+﻿@using Microsoft.AspNetCore.Localization
+@model GeneralInformation
 @{
+    var language = ViewBag.CurrentLanguage as string ?? Context.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName]?.Split('|')[0]?.Split('=')[1] ?? "ar";
+    var isArabic = language == "ar";
     string link = "https://wa.me/2" + Model.WhatsApp;
 }
 
@@ -9,10 +12,10 @@
     <a href="@link"
        target="_blank"
        class="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition duration-300 relative group"
-       title="Contact us on WhatsApp">
+       title="@(isArabic ? "تواصل معنا على واتساب" : "Contact us on WhatsApp")">
         <i class="fab fa-whatsapp text-2xl"></i>
         <span class="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition duration-300">
-            Contact us on WhatsApp
+            @(isArabic ? "تواصل معنا على واتساب" : "Contact us on WhatsApp")
         </span>
     </a>
 
@@ -20,14 +23,13 @@
     <a href="https://m.me/eventa.invitation"
        target="_blank"
        class="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition duration-300 relative group"
-       title="Contact us on Messenger">
+       title="@(isArabic ? "تواصل معنا على ماسنجر" : "Contact us on Messenger")">
         <i class="fab fa-facebook-messenger text-2xl"></i>
         <span class="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition duration-300">
-            Contact us on Messenger
+            @(isArabic ? "تواصل معنا على ماسنجر" : "Contact us on Messenger")
         </span>
     </a>
 </div>
-
 <!-- Start header -->
 <header id="header">
     <div class="wpo-site-header wpo-header-style-3">
@@ -55,11 +57,36 @@
                         <div id="navbar" class="collapse navbar-collapse navigation-holder">
                             <button class="menu-close"><i class="ti-close"></i></button>
                             <ul class="nav navbar-nav mb-2 mb-lg-0">
-                                <li><a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">Home</a></li>
-                                <li><a class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "active" : "")" asp-controller="Home" asp-action="About">About</a></li>
-                                <li><a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Designs" ? "active" : "")" asp-controller="Home" asp-action="Designs">Designs</a></li>
-                                <li><a class="@(ViewContext.RouteData.Values["Action"].ToString() == "faqs" ? "active" : "")" asp-controller="Home" asp-action="FAQs">FAQs</a></li>
-                                <li><a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                                <li>
+                                    <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")"
+                                       asp-controller="Home" asp-action="Index">
+                                        @(isArabic ? "الرئيسية" : "Home")
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "active" : "")"
+                                       asp-controller="Home" asp-action="About">
+                                        @(isArabic ? "من نحن" : "About")
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Designs" ? "active" : "")"
+                                       asp-controller="Home" asp-action="Designs">
+                                        @(isArabic ? "التصاميم" : "Designs")
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "faqs" ? "active" : "")"
+                                       asp-controller="Home" asp-action="FAQs">
+                                        @(isArabic ? "الأسئلة الشائعة" : "FAQs")
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")"
+                                       asp-controller="Home" asp-action="Contact">
+                                        @(isArabic ? "اتصل بنا" : "Contact")
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>

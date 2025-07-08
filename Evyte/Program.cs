@@ -1,11 +1,23 @@
 using Evyte.Web.Extensions;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
+// إعدادات اللغة
+var supportedCultures = new[] { "en", "ar" };
+var localizationOptions = new RequestLocalizationOptions()
+    .SetDefaultCulture(supportedCultures[1]) // العربية افتراضية
+    .AddSupportedCultures(supportedCultures)
+    .AddSupportedUICultures(supportedCultures);
 
-var cultureInfo = new System.Globalization.CultureInfo("en-US");
-System.Globalization.CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization();
+
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+var cultureInfo = new CultureInfo("ar-EG");
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
 
 builder.Services.RegisterDbContext(builder.Configuration);
 // Identity
@@ -30,6 +42,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseRequestLocalization(localizationOptions);
 
 app.UseRouting();
 

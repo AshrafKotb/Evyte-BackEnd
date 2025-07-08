@@ -1,5 +1,7 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using Microsoft.AspNetCore.Localization
+@using System.Globalization
+<!DOCTYPE html>
+<html lang="en" dir="@(System.Globalization.CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr")">
 
 <head>
     <meta charset="utf-8">
@@ -11,9 +13,16 @@
 
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet">
-      <!-- Font Awesome للأيقونات -->
+    <!-- Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    <!-- إضافة ملفات CSS للغة العربية إذا كانت اللغة عربية -->
+    @if (System.Globalization.CultureInfo.CurrentCulture.Name.StartsWith("ar"))
+    {
+        <link href="~/assets/css/rtl.css" rel="stylesheet">
+    }
+
+    <!-- بقية روابط CSS كما هي -->
     <link href="~/assets/css/themify-icons.css" rel="stylesheet">
     <link href="~/assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="~/assets/css/flaticon.css" rel="stylesheet">
@@ -31,10 +40,42 @@
     <link href="~/assets/css/odometer-theme-default.css" rel="stylesheet">
     <link href="~/assets/css/jquery-ui.css" rel="stylesheet">
     <link href="~/assets/sass/style.css" rel="stylesheet">
+    <style>
+        /* تحسينات لزر اللغة */
+        .language-switcher select {
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            padding-right: 2.5rem !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+        }
+
+            .language-switcher select:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+        .language-switcher .fa-globe {
+            color: #8b5cf6;
+            transition: all 0.3s ease;
+        }
+
+        .language-switcher:hover .fa-globe {
+            color: #7c3aed;
+            transform: rotate(15deg);
+        }
+
+        /* لزر اللغة في الوضع المظلم */
+        .dark .language-switcher select {
+            background-color: #2d3748;
+            color: #fff;
+            border-color: #4a5568;
+        }
+    </style>
 </head>
 
 <body>
-
     <!-- start page-wrapper -->
     <div class="page-wrapper">
         <!-- start preloader -->
@@ -49,58 +90,60 @@
                 </div>
             </div>
         </div>
-      
+
         <!-- end preloader -->
         @await Component.InvokeAsync("NavBar")
-
+        <div class="language-switcher" style="position: fixed; top: 20px; @(Context.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName]?.Split('|')[0]?.Split('=')[1] == "ar" ? "left: 20px" : "right: 20px"); z-index: 9999;">
+            @{
+                var currentCulture = Context.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName]?.Split('|')[0]?.Split('=')[1] ?? "ar";
+                var isRTL = currentCulture == "ar";
+            }
+            <form asp-controller="Home" asp-action="SetLanguage" method="post" class="form-inline">
+                <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
+                <div class="relative">
+                    <select name="culture" onchange="this.form.submit()"
+                            class="appearance-none bg-white border border-purple-500 rounded-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow hover:shadow-lg">
+                        <option value="ar" selected="@(currentCulture == "ar")">العربية</option>
+                        <option value="en" selected="@(currentCulture == "en")">English</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 @(isRTL ? "left-0 ml-3" : "right-0 mr-3") flex items-center px-2 text-gray-700">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                </div>
+            </form>
+        </div>
         @RenderBody()
 
         @await Component.InvokeAsync("Footer")
 
-        <!-- color-switcher -->
-        <div class="color-switcher-wrap">
-            <div class="color-switcher-item">
-                <div class="color-toggle-btn">
-                    <i class="fa fa-cog"></i>
-                </div>
-                <ul id="switcher">
-                    <li class="btn btn1" id="Button1"></li>
-                    <li class="btn btn2" id="Button2"></li>
-                    <li class="btn btn3" id="Button3"></li>
-                    <li class="btn btn4" id="Button4"></li>
-                    <li class="btn btn5" id="Button5"></li>
-                    <li class="btn btn6" id="Button6"></li>
-                    <li class="btn btn7" id="Button7"></li>
-                    <li class="btn btn8" id="Button8"></li>
-                    <li class="btn btn9" id="Button9"></li>
-                    <li class="btn btn10" id="Button10"></li>
-                    <li class="btn btn11" id="Button11"></li>
-                    <li class="btn btn12" id="Button12"></li>
-                    <li class="btn btn13" id="Button13"></li>
-                    <li class="btn btn14" id="Button14"></li>
-                    <li class="btn btn15" id="Button15"></li>
-                </ul>
-            </div>
-        </div>
-
-
+        <!-- بقية الملف كما هو -->
     </div>
     <!-- end of page-wrapper -->
-    <!-- All JavaScript files
-   <!-- SweetAlert2 -->
+    <!-- All JavaScript files -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/assets/js/jquery.min.js"></script>
     <script src="~/assets/js/bootstrap.bundle.min.js"></script>
     <!-- Plugins for this template -->
     <script src="~/assets/js/modernizr.custom.js"></script>
-    <script src="assets/js/jquery.pointparallax.min.js"></script>
+    <script src="~/assets/js/jquery.pointparallax.min.js"></script>
     <script src="~/assets/js/jquery-plugin-collection.js"></script>
     <script src="~/assets/js/moving-animation.js"></script>
     <script src="~/assets/js/tilt.jquery.min.js"></script>
     <!-- Custom script for this template -->
     <script src="~/assets/js/script.js"></script>
+    <script>
+        // تأكد من تحديث الصفحة عند تغيير اللغة إذا لم يتم التحديث تلقائياً
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageSelect = document.querySelector('.language-switcher select');
+            if (languageSelect) {
+                languageSelect.addEventListener('change', function() {
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 100);
+                });
+            }
+        });
+    </script>
     @await RenderSectionAsync("Scripts", false)
-
 </body>
-
 </html>

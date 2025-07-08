@@ -5681,6 +5681,10 @@
       "PackagePath": "staticwebassets\\assets\\css\\responsive.css"
     },
     {
+      "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\rtl.css",
+      "PackagePath": "staticwebassets\\assets\\css\\rtl.css"
+    },
+    {
       "Id": "C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Evyte\\wwwroot\\assets\\css\\slick-theme.css",
       "PackagePath": "staticwebassets\\assets\\css\\slick-theme.css"
     },

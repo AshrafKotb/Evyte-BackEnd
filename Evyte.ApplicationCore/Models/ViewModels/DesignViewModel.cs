@@ -20,5 +20,6 @@ namespace Evyte.ApplicationCore.Models.ViewModels
     {
         public List<DesignViewModel> Designs { get; set; } = new List<DesignViewModel>();
         public List<FAQVM> FAQs { get; set; } = new List<FAQVM>();
+        public string CurrentLanguage { get; set; }
     }
 }

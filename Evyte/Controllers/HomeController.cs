@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Evyte.ApplicationCore.Models.Helper;
 using Evyte.ApplicationCore.Interfaces.Services;
 using Evyte.ApplicationCore.Interfaces.Services.General_Information;
+using Microsoft.AspNetCore.Localization;
 
 namespace Evyte.Controllers;
 //[Authorize(Roles = RoleName.Admin)]
@@ -23,64 +24,32 @@ public class HomeController : Controller
     }
 
 
-    //public async Task<IActionResult> Index()
-    //{
-    //    var designs = await _designService.GetAllDesignsAsync();
-    //    var model = new HomeIndexViewModel
-    //    {
-    //        Designs = designs.Select(d => new DesignViewModel
-    //        {
-    //            Id = d.Id,
-    //            NameAr = d.NameAr,
-    //            DescriptionAr = d.DescriptionAr,
-    //            PreviewImageUrl = d.WebsiteDemoUrl, // يمكن تعديل هذا الحقل بناءً على تصميم قاعدة البيانات
-    //            WebsiteDemoUrl = d.WebsiteDemoUrl
-    //        }).ToList()
-    //    };
-    //    return View(model);
-    //}
+    // التعديلات على Index و IndexEn لدمجهم في action واحد
     public async Task<IActionResult> Index()
     {
+        var language = GetCurrentLanguage();
         var designs = await _designService.GetAllDesignsAsync();
         var faqs = await _FAQService.GetAllActiveFAQsAsync();
 
-        // إنشاء قائمة تحتوي على كل تصميم مكرر 10 مرات
-        var repeatedDesigns = designs.Take(6)
-            .Select((d, index) => new DesignViewModel
+        var designViewModels = designs.Take(6)
+            .Select(d => new DesignViewModel
             {
                 Id = d.Id,
-                Name = d.NameEn,
-                Description = d.DescriptionEn,
+                Name = language == "en" ? d.NameEn : d.NameAr,
+                Description = language == "en" ? d.DescriptionEn : d.DescriptionAr,
                 PreviewImageUrl = d.ImageUrl,
                 WebsiteDemoUrl = d.WebsiteDemoUrl
             }).ToList();
 
         var model = new HomeIndexViewModel
         {
-            Designs = repeatedDesigns,
-            FAQs = faqs.Where(x => x.HomePage).ToList()
+            Designs = designViewModels,
+            FAQs = faqs.Where(x => x.HomePage).ToList(),
+            CurrentLanguage = language
         };
 
         return View(model);
     }
-
-    public async Task<IActionResult> IndexEn()
-    {
-        var designs = await _designService.GetAllDesignsAsync();
-        var model = new HomeIndexViewModel
-        {
-            Designs = designs.Select(d => new DesignViewModel
-            {
-                Id = d.Id,
-                Name = d.NameAr,
-                Description = d.DescriptionAr,
-                PreviewImageUrl = d.ImageUrl, // يمكن تعديل هذا الحقل بناءً على تصميم قاعدة البيانات
-                WebsiteDemoUrl = d.WebsiteDemoUrl
-            }).ToList()
-        };
-        return View(model);
-    }
-
     public IActionResult About()
     {
         return View();
@@ -111,6 +80,28 @@ public class HomeController : Controller
             }).ToList()
         };
         return View(model);
+    }
+
+    [HttpPost]
+    public IActionResult SetLanguage(string culture, string returnUrl)
+    {
+        Response.Cookies.Append(
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+            new CookieOptions
+            {
+                Expires = DateTimeOffset.UtcNow.AddYears(1),
+                IsEssential = true,
+                Path = "/"
+            }
+        );
+
+        return LocalRedirect(returnUrl);
+    }
+
+    private string GetCurrentLanguage()
+    {
+        return HttpContext.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName]?.Split('|')[0]?.Split('=')[1] ?? "ar";
     }
     public IActionResult Privacy()
     {
