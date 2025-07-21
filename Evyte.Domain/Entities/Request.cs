@@ -22,7 +22,7 @@ namespace Evyte.Domain.Entities
         public IEnumerable<RequestGalleryPhoto> GalleryPhotos { get; set; }
         // الحقول الجديدة
         public InvitationStatus Status { get; set; } = InvitationStatus.Pending;
-        public string RejectionReason { get; set; }
+        public string? RejectionReason { get; set; }
         public DateTime? ApprovedDate { get; set; }
 
     }
