@@ -189,6 +189,8 @@ public class InvitationService : IInvitationService
                 await _galleryPhotoRepository.AddGalleryPhotoAsync(galleryPhoto);
             }
         }
+        //send email to Admin telling him that his request is created
+        await SendNewRequestNotificationEmail(request);
 
         //// Step 6: Send email
         //var emailBody = $@"
@@ -234,5 +236,92 @@ public class InvitationService : IInvitationService
         }
 
         return slug;
+    }
+
+    private async Task SendNewRequestNotificationEmail(Request request)
+    {
+        var adminEmail = "ashrafkotb1512@gmail.com";
+        var subject = "طلب دعوة جديد يحتاج للمراجعة في Eventa";
+        var body = BuildNewRequestEmailBody(request);
+        await _mailingService.SendEmailAsync(adminEmail, subject, body);
+    }
+
+    private string BuildNewRequestEmailBody(Request request)
+    {
+        return $@"
+<!DOCTYPE html>
+<html dir='rtl'>
+<head>
+    <meta charset='UTF-8'>
+    <title>طلب دعوة جديد</title>
+    <style>
+        body {{ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }}
+        .container {{ max-width: 600px; margin: 0 auto; padding: 20px; background: #f9f9f9; border-radius: 10px; }}
+        .header {{ background: linear-gradient(135deg, #4a6bdf 0%, #6e48aa 100%); color: white; padding: 20px; text-align: center; border-radius: 10px 10px 0 0; }}
+        .content {{ padding: 20px; background: white; }}
+        .footer {{ text-align: center; padding: 10px; font-size: 12px; color: #777; }}
+        .button {{ display: inline-block; padding: 10px 20px; background: #4a6bdf; color: white; text-decoration: none; border-radius: 5px; margin: 10px 0; }}
+        .details-table {{ width: 100%; border-collapse: collapse; margin: 15px 0; }}
+        .details-table th, .details-table td {{ padding: 8px; text-align: right; border-bottom: 1px solid #ddd; }}
+        .details-table th {{ background-color: #f2f2f2; }}
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <div class='header'>
+            <h1>طلب دعوة جديد</h1>
+        </div>
+        <div class='content'>
+            <p>مرحباً فريق Eventa،</p>
+            <p>تم استلام طلب دعوة جديد يحتاج إلى مراجعة من قبلكم.</p>
+            
+            <table class='details-table'>
+                <tr>
+                    <th>رقم الطلب</th>
+                    <td>{request.Id}</td>
+                </tr>
+                <tr>
+                    <th>اسم العميل</th>
+                    <td>{request.User.FullName}</td>
+                </tr>
+                <tr>
+                    <th>البريد الإلكتروني</th>
+                    <td>{request.User.Email}</td>
+                </tr>
+                <tr>
+                    <th>رقم الهاتف</th>
+                    <td>{request.User.PhoneNumber}</td>
+                </tr>
+                <tr>
+                    <th>العريس والعروس</th>
+                    <td>{request.RequestData.GroomName} و {request.RequestData.BrideName}</td>
+                </tr>
+                <tr>
+                    <th>تاريخ الحدث</th>
+                    <td>{request.RequestData.EventDate.ToString("yyyy-MM-dd")}</td>
+                </tr>
+                <tr>
+                    <th>مكان الحدث</th>
+                    <td>{request.RequestData.EventPlaceName}</td>
+                </tr>
+                <tr>
+                    <th>وقت التقديم</th>
+                    <td>{request.CreatedDate.ToString("yyyy-MM-dd HH:mm")}</td>
+                </tr>
+            </table>
+
+            <div style='text-align: center; margin: 25px 0;'>
+                <a href='{_productionDomain}/Requests/Details/{request.Id}' class='button'>مراجعة الطلب</a>
+            </div>
+
+            <p>يرجى مراجعة الطلب في أقرب وقت ممكن والموافقة عليه أو رفضه مع إبداء الأسباب.</p>
+        </div>
+        <div class='footer'>
+            <p>مع أطيب التمنيات,<br>فريق Eventa</p>
+        </div>
+    </div>
+</body>
+</html>
+";
     }
 }

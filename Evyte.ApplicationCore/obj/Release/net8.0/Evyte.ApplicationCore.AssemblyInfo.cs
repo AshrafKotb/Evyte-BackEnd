@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Evyte.ApplicationCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+683525af9737078b263be7ea6a4608f87066cc44")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b047c6cd10ec62d47da2a66e008aa6279d82a4ba")]
 [assembly: System.Reflection.AssemblyProductAttribute("Evyte.ApplicationCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Evyte.ApplicationCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
