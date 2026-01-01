@@ -1,0 +1,2 @@
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa\wwwroot\css\evyte.css
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa\wwwroot\js\evyte.js

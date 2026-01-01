@@ -1,0 +1,259 @@
+@using Eventa.Domain.Enums
+@model Request
+@{
+    ViewData["Title"] = "تفاصيل الطلب";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>تفاصيل الطلب</h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> الرئيسية</a></li>
+        <li><a asp-action="Index">الطلبات</a></li>
+        <li class="active">تفاصيل الطلب</li>
+    </ol>
+</section>
+
+<section class="content">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i> نجاح!</h4>
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <div class="box box-primary details-container">
+        <div class="box-header with-border">
+            <h3 class="box-title">معلومات الطلب</h3>
+            <div class="box-tools pull-left">
+                <span class="label @(Model.Status == InvitationStatus.Approved ? "label-success" :
+                                    Model.Status == InvitationStatus.Rejected ? "label-danger" : "label-warning")">
+                    @Model.Status
+                </span>
+                @if (Model.Status == InvitationStatus.Approved && Model.ApprovedDate.HasValue)
+                {
+                    <span class="label label-default" style="margin-left: 5px;">
+                        <i class="fa fa-calendar"></i> @Model.ApprovedDate.Value.ToString("yyyy-MM-dd")
+                    </span>
+                }
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info-box">
+                        <h4 class="info-box-title">معلومات المستخدم</h4>
+                        <div class="info-box-content">
+                            <p><i class="fa fa-user"></i> <strong>الاسم:</strong> @Model.User.FullName</p>
+                            <p><i class="fa fa-phone"></i> <strong>رقم الهاتف:</strong> @Model.User.PhoneNumber</p>
+                            <p><i class="fa fa-envelope"></i> <strong>البريد الإلكتروني:</strong> @Model.User.Email</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-box">
+                        <h4 class="info-box-title">تفاصيل الحدث</h4>
+                        <div class="info-box-content">
+                            <p><i class="fa fa-calendar"></i> <strong>التاريخ:</strong> @Model.RequestData.EventDate.ToString("yyyy-MM-dd")</p>
+                            <p><i class="fa fa-clock-o"></i> <strong>الوقت:</strong> @Model.RequestData.EventTimeFrom - @Model.RequestData.EventTimeTo</p>
+                            <p><i class="fa fa-map-marker"></i> <strong>اسم المكان:</strong> @Model.RequestData.EventPlaceName</p>
+                            <p><i class="fa fa-location-arrow"></i> <strong>العنوان:</strong> @Model.RequestData.EventAddress</p>
+                            <p><i class="fa fa-link"></i> <strong>رابط الموقع:</strong> <a href="@Model.RequestData.LocationUrl" target="_blank">@Model.RequestData.LocationUrl</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info-box">
+                        <h4 class="info-box-title">معلومات العريس</h4>
+                        <div class="info-box-content">
+                            <p><i class="fa fa-male"></i> <strong>الاسم:</strong> @Model.RequestData.GroomName</p>
+                            <div class="text-center">
+                                <img src="@Model.RequestData.GroomImageUrl" alt="Groom" class="img-thumbnail detail-img" onerror="this.src='/images/default-user.png'" />
+                            </div>
+                            <div class="social-links">
+                                @if (!string.IsNullOrEmpty(Model.RequestData.GroomFacebook))
+                                {
+                                    <a href="@Model.RequestData.GroomFacebook" target="_blank" class="btn btn-facebook btn-xs"><i class="fa fa-facebook"></i> فيسبوك</a>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.RequestData.GroomInstagram))
+                                {
+                                    <a href="@Model.RequestData.GroomInstagram" target="_blank" class="btn btn-instagram btn-xs"><i class="fa fa-instagram"></i> إنستغرام</a>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.RequestData.GroomX))
+                                {
+                                    <a href="@Model.RequestData.GroomX" target="_blank" class="btn btn-twitter btn-xs"><i class="fa fa-twitter"></i> إكس</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-box">
+                        <h4 class="info-box-title">معلومات العروس</h4>
+                        <div class="info-box-content">
+                            <p><i class="fa fa-female"></i> <strong>الاسم:</strong> @Model.RequestData.BrideName</p>
+                            <div class="text-center">
+                                <img src="@Model.RequestData.BrideImageUrl" alt="Bride" class="img-thumbnail detail-img" onerror="this.src='/images/default-user.png'" />
+                            </div>
+                            <div class="social-links">
+                                @if (!string.IsNullOrEmpty(Model.RequestData.BrideFacebook))
+                                {
+                                    <a href="@Model.RequestData.BrideFacebook" target="_blank" class="btn btn-facebook btn-xs"><i class="fa fa-facebook"></i> فيسبوك</a>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.RequestData.BrideInstagram))
+                                {
+                                    <a href="@Model.RequestData.BrideInstagram" target="_blank" class="btn btn-instagram btn-xs"><i class="fa fa-instagram"></i> إنستغرام</a>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.RequestData.BrideX))
+                                {
+                                    <a href="@Model.RequestData.BrideX" target="_blank" class="btn btn-twitter btn-xs"><i class="fa fa-twitter"></i> إكس</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="info-box">
+                        <h4 class="info-box-title">صور الحدث</h4>
+                        <div class="info-box-content">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5><i class="fa fa-image"></i> صورة المكان</h5>
+                                    <img src="@Model.RequestData.EventPlaceImageUrl" alt="Event Place" class="img-thumbnail event-img" onerror="this.src='/images/default-image.png'" />
+                                </div>
+                                <div class="col-md-6">
+                                    <h5><i class="fa fa-image"></i> صورة السلايدر الرئيسية</h5>
+                                    <img src="@Model.RequestData.MainSliderImageUrl" alt="Main Slider" class="img-thumbnail event-img" onerror="this.src='/images/default-image.png'" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="info-box">
+                        <h4 class="info-box-title">معرض الصور</h4>
+                        <div class="info-box-content">
+                            @if (Model.GalleryPhotos != null && Model.GalleryPhotos.Any())
+                            {
+                                <div class="gallery-grid">
+                                    @foreach (var photo in Model.GalleryPhotos)
+                                    {
+                                        <div class="gallery-item">
+                                            <img src="@photo.PhotoUrl" alt="Gallery Photo" class="img-thumbnail gallery-img" onerror="this.src='/images/default-image.png'" />
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-info">لا توجد صور في المعرض.</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="info-box">
+                        <h4 class="info-box-title">معلومات إضافية</h4>
+                        <div class="info-box-content">
+                            <p><i class="fa fa-link"></i> <strong>رابط الدعوة:</strong> <a href="@Model.DomainUrl" target="_blank">@Model.DomainUrl</a></p>
+                            <p><i class="fa fa-qrcode"></i> <strong>رمز الاستجابة السريعة:</strong></p>
+                            <div class="text-center">
+                                <img src="@Model.QrCodeImageUrl" alt="QR Code" class="qr-code" onerror="this.src='/images/default-qr.png'" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="status-actions">
+                        <h4><i class="fa fa-cogs"></i> إدارة حالة الدعوة</h4>
+                        <div class="well">
+                            <p>
+                                <strong>الحالة الحالية:</strong>
+                                <span class="label @(Model.Status == InvitationStatus.Approved ? "label-success" :
+                                                  Model.Status == InvitationStatus.Rejected ? "label-danger" : "label-warning")">
+                                    @Model.Status
+                                </span>
+                            </p>
+
+                            @if (Model.Status == InvitationStatus.Approved)
+                            {
+                                <p><i class="fa fa-calendar-check-o"></i> <strong>تاريخ الموافقة:</strong> @Model.ApprovedDate?.ToString("yyyy-MM-dd HH:mm")</p>
+                            }
+                            else if (Model.Status == InvitationStatus.Rejected)
+                            {
+                                <p><i class="fa fa-comment"></i> <strong>سبب الرفض:</strong> @Model.RejectionReason</p>
+                            }
+                        </div>
+
+                        <div class="action-buttons">
+                            @if (Model.Status != InvitationStatus.Approved)
+                            {
+                                <form asp-action="Approve" method="post" style="display: inline;">
+                                    <input type="hidden" name="id" value="@Model.Id" />
+                                    <button type="submit" class="btn btn-success btn-lg">
+                                        <i class="fa fa-check-circle"></i> الموافقة على الدعوة
+                                    </button>
+                                </form>
+                            }
+
+                            @if (Model.Status != InvitationStatus.Rejected)
+                            {
+                                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#rejectModal">
+                                    <i class="fa fa-times-circle"></i> رفض الدعوة
+                                </button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"><i class="fa fa-edit"></i> تعديل</a>
+            <a asp-action="Index" class="btn btn-default"><i class="fa fa-arrow-left"></i> رجوع</a>
+        </div>
+    </div>
+</section>
+
+<!-- Modal لرفض الدعوة -->
+<div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="rejectModalLabel"><i class="fa fa-exclamation-triangle"></i> رفض الدعوة</h4>
+            </div>
+            <form asp-action="Reject" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <div class="form-group">
+                        <label for="rejectionReason">سبب الرفض</label>
+                        <textarea class="form-control" id="rejectionReason" name="rejectionReason" rows="5" required
+                                  placeholder="الرجاء إدخال سبب الرفض ليتم إبلاغ المستخدم..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> إلغاء</button>
+                    <button type="submit" class="btn btn-danger"><i class="fa fa-ban"></i> تأكيد الرفض</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/requests/details.css" />
+}

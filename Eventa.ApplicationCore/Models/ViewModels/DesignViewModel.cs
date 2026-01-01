@@ -1,0 +1,25 @@
+using Eventa.ApplicationCore.Models.ViewModels.FAQs;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Eventa.ApplicationCore.Models.ViewModels
+{
+    public class DesignViewModel
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string PreviewImageUrl { get; set; }
+        public string WebsiteDemoUrl { get; set; }
+    }
+
+    public class HomeIndexViewModel
+    {
+        public List<DesignViewModel> Designs { get; set; } = new List<DesignViewModel>();
+        public List<FAQVM> FAQs { get; set; } = new List<FAQVM>();
+        public string CurrentLanguage { get; set; }
+    }
+}

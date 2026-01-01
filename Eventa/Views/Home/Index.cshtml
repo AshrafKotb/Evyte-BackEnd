@@ -1,0 +1,369 @@
+﻿@model Eventa.ApplicationCore.Models.ViewModels.HomeIndexViewModel
+@{
+    Layout = "~/Views/Shared/_WebsiteLayout.cshtml";
+    var isEnglish = Model.CurrentLanguage == "en";
+}
+<style>
+    .wpo-demo-grids .grid {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .wpo-demo-grids .inner {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .preview-link {
+        display: block;
+        position: relative;
+    }
+
+    .preview-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(139, 92, 246, 16%);
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .preview-link:hover .preview-overlay {
+        opacity: 1;
+    }
+
+    .preview-overlay span {
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .theme-btn-s2 {
+        background: #8b5cf6;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .theme-btn-s2:hover {
+            background: #7c3aed;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+</style>
+
+<!-- Hero Section -->
+<section class="preview-hero" style="background: url(~/assets/images/preview/hero-bg.png) no-repeat center center;">
+    <div class="container-fluid">
+        <div class="preview-hero-wrap">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 col-12">
+                    <div class="preview-hero-items s1">
+                        <div class="preview-hero-item wow fadeInLeft" data-wow-duration="1000ms">
+                            <img src="~/assets/images/preview/img-1.jpg" alt="">
+                        </div>
+                        <div class="preview-hero-item wow fadeInLeft" data-wow-duration="1800ms">
+                            <img src="~/assets/images/preview/img-2.jpg" alt="">
+                        </div>
+                        <div class="preview-hero-item wow fadeInLeft" data-wow-duration="1200ms">
+                            <img src="~/assets/images/preview/img-3.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="preview-middle-items">
+                        <div class="preview-middle-text">
+                            <span class="wow fadeInUp" data-wow-duration="1000ms">
+                                @(isEnglish ? "Your Invitation in A link" : "دعوتك في رابط واحد")
+                            </span>
+                            <h2 class="wow fadeInUp" data-wow-duration="1200ms">
+                                @(isEnglish ? "Welcome to Eventa" : "مرحبًا بكم في إيفينتا")
+                            </h2>
+                            <h4 class="wow fadeInUp" data-wow-duration="1400ms">
+                                @(isEnglish ? "Design & Share Your invitations with very simple steps" : "صمم وشارك دعواتك بخطوات بسيطة جدًا")
+                            </h4>
+                            <a href="#demo" class="theme-btn-s2 wow fadeInUp" data-wow-duration="1600ms">
+                                @(isEnglish ? "Start Now" : "ابدأ الآن")
+                            </a>
+                            <a href="#demo" class="scrool wow fadeInUp" data-wow-duration="1600ms">
+                                <img src="~/assets/images/preview/mouse-scroll.svg" alt="">
+                            </a>
+                            <div class="flower-1"><img src="~/assets/images/preview/flower1.svg" alt=""></div>
+                            <div class="flower-2"><img src="~/assets/images/preview/flower2.svg" alt=""></div>
+                        </div>
+                        <div class="preview-middle-img-wrap">
+                            <div class="preview-middle-img wow zoomIn" data-wow-duration="1500ms">
+                                <img src="~/assets/images/preview/middle.png" alt="">
+                                <div class="f-shape"><img src="~/assets/images/preview/shape.png" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-12">
+                    <div class="preview-hero-items s2">
+                        <div class="preview-hero-item wow fadeInRight" data-wow-duration="1000ms">
+                            <img src="~/assets/images/preview/img-4.jpg" alt="">
+                        </div>
+                        <div class="preview-hero-item wow fadeInRight" data-wow-duration="1800ms">
+                            <img src="~/assets/images/preview/img-5.jpg" alt="">
+                        </div>
+                        <div class="preview-hero-item wow fadeInRight" data-wow-duration="1200ms">
+                            <img src="~/assets/images/preview/img-6.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="wpo-about-section" style="padding-bottom: 50px !important;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-8 col-md-10 col-12">
+                <div class="wpo-section-title">
+                    <span>@(isEnglish ? "Who we are? Why Eventa?" : "من نحن؟ ولماذا إيفينتا؟")</span>
+                    <h2>@(isEnglish ? "We are The World Best Wedding Agency" : "نحن أفضل وكالة دعوات لحفلات الزفاف")</h2>
+                </div>
+            </div>
+        </div>
+        <div class="wpo-about-wrap">
+            <div class="row align-items-center">
+                <div class="col-xl-11 offset-xl-1 col-lg-12 col-md-12 col-12">
+                    <div class="wpo-about-text wow fadeInLeftSlow" style="max-width: 100% !important;" data-wow-duration="1000ms">
+                        <p>
+                            @if (isEnglish)
+                            {
+                                <small>W</small>
+
+                                <text>
+                                    e are simply a group of youth who believe that every occasion deserves to be special from the very first detail, even the invitation.
+                                    That's why we created Evyte so you can send invitations to your wedding, engagement, or any other event in an easy, chic way, without the headache of printing and distribution.
+                                </text>
+                            }
+                            else
+                            {
+                                <small>نحن</small>
+
+                                <text>
+                                    ببساطة مجموعة من الشباب الذين يؤمنون بأن كل مناسبة تستحق أن تكون مميزة من أصغر التفاصيل، حتى الدعوة.
+                                    لهذا أنشأنا إيفينتا لتتمكن من إرسال دعوات لحفل زفافك، خطوبتك، أو أي حدث آخر بطريقة سهلة وعصرية، دون عناء الطباعة والتوزيع.
+                                </text>
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Designs Section -->
+<section class="wpo-demo-section section-padding" id="demo">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col col-lg-6">
+                <div class="preview-section-title">
+                    <i><img src="~/assets/images/preview/title-1.png" alt=""></i>
+                    <h2>@(isEnglish ? "Ready Made Designs" : "تصاميم جاهزة")</h2>
+                    <p>
+                        @(isEnglish ? "We Happily Prepared 09 Designs for Your Big Day. Pick One of Our Beautiful Designs to Start Your Dreamy Invitation!"
+                            : "لقد أعددنا 9 تصاميم جميلة ليومك الكبير. اختر أحد تصاميمنا الرائعة لتبدأ دعوتك الحلم!")
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-xs-12">
+                <div class="wpo-demo-grids clearfix">
+                    @foreach (var template in Model.Designs)
+                    {
+                        <div class="grid wow fadeInUp" data-wow-duration="1000ms">
+                            <div class="inner">
+                                <a href="@template.WebsiteDemoUrl" target="_blank" class="preview-link">
+                                    <img src="@template.PreviewImageUrl" alt="@template.Name">
+                                    <div class="preview-overlay">
+                                        <span>@(isEnglish ? "preview" : "معاينة")</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <h3>@template.Name</h3>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="wpo-cta-section mb-5" style="padding: 50px 0; background: #f9f3f0;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10 col-12">
+                    <div class="wpo-cta-text text-center">
+                        <h2>@(isEnglish ? "Explore All Our Beautiful Designs" : "استكشف جميع تصاميمنا الجميلة")</h2>
+                        <p>@(isEnglish ? "Discover more stunning Invitation Designs designed for your special day" : "اكتشف المزيد من تصاميم الدعوات الرائعة المصممة ليومك الخاص")</p>
+                        <a asp-controller="Home" asp-action="Designs" class="theme-btn-s2">
+                            @(isEnglish ? "View All Templates" : "عرض جميع التصميمات")
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<!-- How It Works Section -->
+<section id="features" class="wpo-features-section section-padding pt-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col col-lg-6">
+                <div class="preview-section-title">
+                    <i><img src="~/assets/images/preview/title-1.png" alt=""></i>
+                    <h2>@(isEnglish ? "How it Works" : "كيف يعمل؟")</h2>
+                </div>
+            </div>
+        </div>
+        <div class="wpo-features-wrapper">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-features-item wow fadeInUp" data-wow-duration="1200ms">
+                        <div class="wpo-features-icon">
+                            <div class="icon">
+                                <i><img src="~/Images/one.png" alt=""></i>
+                            </div>
+                        </div>
+                        <div class="wpo-features-text">
+                            <p>@(isEnglish ? "Choose Your Preferred Design" : "اختر التصميم الذي تفضله")</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-features-item wow fadeInUp" data-wow-duration="1400ms">
+                        <div class="wpo-features-icon">
+                            <div class="icon">
+                                <i><img src="~/Images/two.png" alt=""></i>
+                            </div>
+                        </div>
+                        <div class="wpo-features-text">
+                            <p>@(isEnglish ? "Insert Details (names, date, place,..etc)" : "أدخل التفاصيل (الأسماء، التاريخ، المكان، إلخ)")</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-features-item wow fadeInUp" data-wow-duration="1600ms">
+                        <div class="wpo-features-icon">
+                            <div class="icon">
+                                <i><img src="~/Images/three.png" alt=""></i>
+                            </div>
+                        </div>
+                        <div class="wpo-features-text">
+                            <p>@(isEnglish ? "Receive Your link & start Share" : "احصل على الرابط وابدأ المشاركة")</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Eventa Section -->
+<section class="wpo-fun-fact-section section-padding pt-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col col-lg-6">
+                <div class="preview-section-title">
+                    <i><img src="~/assets/images/preview/title-1.png" alt=""></i>
+                    <h2>@(isEnglish ? "Why Eventa ?" : "لماذا إيفينتا؟")</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-xs-12">
+                <div class="wpo-fun-fact-grids clearfix">
+                    <div class="grid">
+                        <div class="info">
+                            <div class="flower"><img src="~/assets/images/funfact/1.svg" alt=""></div>
+                            <h3><span class="odometer" data-count="3">00</span></h3>
+                            <p>@(isEnglish ? "Your Invitation is ready within only 3 minutes" : "تصبح دعوتك جاهزة خلال 3 دقائق فقط")</p>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="info">
+                            <div class="flower"><img src="~/assets/images/funfact/2.svg" alt=""></div>
+                            <h3><span class="odometer" data-count="6">00</span></h3>
+                            <p>@(isEnglish ? "More than 6 different designs to match your desire" : "أكثر من 6 تصاميم مختلفة تناسب ذوقك")</p>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="info">
+                            <div class="flower"><img src="~/assets/images/funfact/3.svg" alt=""></div>
+                            <h3><span class="odometer" data-count="5">00</span></h3>
+                            <p>@(isEnglish ? "Can be used with more than 5 types of events" : "يمكن استخدامها لأكثر من 5 أنواع من الأحداث")</p>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="info">
+                            <div class="flower"><img src="~/assets/images/funfact/4.svg" alt=""></div>
+                            <h3><span class="odometer" data-count="24">00</span></h3>
+                            <p>@(isEnglish ? "We're here to support you 24 hours" : "نحن هنا لدعمك على مدار 24 ساعة")</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="wpo-faq-section section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="wpo-section-title">
+                    <span>@(isEnglish ? "Frequently Asked Questions" : "الأسئلة الشائعة")</span>
+                    <h2>@(isEnglish ? "We hear a lot of questions...and here are our answers." : "نسمع الكثير من الأسئلة... وهذه هي إجاباتنا")</h2>
+                </div>
+            </div>
+        </div>
+        <div class="wpo-faq-wrapper">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12">
+                    <div class="accordion" id="faqAccordion">
+                        @foreach (var item in Model.FAQs.Select((faq, index) => new { faq, index }))
+                        {
+                            var uniqueHeadingId = "heading" + item.faq.Id;
+                            var uniqueCollapseId = "collapse" + item.faq.Id;
+                            var wowDuration = (item.index * 200) + 1000;
+
+                            <div class="accordion-item wow fadeInUp" data-wow-duration="@(wowDuration)ms">
+                                <h3 class="accordion-header" id="@uniqueHeadingId">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#@uniqueCollapseId" aria-expanded="false" aria-controls="@uniqueCollapseId">
+                                        @(isEnglish ? item.faq.QuestionEn : item.faq.QuestionAr)
+                                    </button>
+                                </h3>
+                                <div id="@uniqueCollapseId" class="accordion-collapse collapse" aria-labelledby="@uniqueHeadingId"
+                                     data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        @Html.Raw(isEnglish ? item.faq.AnswerEn : item.faq.AnswerAr)
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,13 @@
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa.Domain\bin\Debug\net8.0\Eventa.Domain.deps.json
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa.Domain\bin\Debug\net8.0\Eventa.Domain.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa.Domain\bin\Debug\net8.0\Eventa.Domain.pdb
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa.Domain\obj\Debug\net8.0\Eventa.Domain.csproj.AssemblyReference.cache
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa.Domain\obj\Debug\net8.0\Eventa.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa.Domain\obj\Debug\net8.0\Eventa.Domain.AssemblyInfoInputs.cache
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa.Domain\obj\Debug\net8.0\Eventa.Domain.AssemblyInfo.cs
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa.Domain\obj\Debug\net8.0\Eventa.Domain.csproj.CoreCompileInputs.cache
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa.Domain\obj\Debug\net8.0\Eventa.Domain.sourcelink.json
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa.Domain\obj\Debug\net8.0\Eventa.Domain.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa.Domain\obj\Debug\net8.0\refint\Eventa.Domain.dll
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa.Domain\obj\Debug\net8.0\Eventa.Domain.pdb
+C:\Users\iT\source\repos\AshrafKotb\Evyte-BackEnd\Eventa.Domain\obj\Debug\net8.0\ref\Eventa.Domain.dll
