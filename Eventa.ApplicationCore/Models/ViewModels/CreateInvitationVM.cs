@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 
@@ -8,45 +9,48 @@ namespace Eventa.ApplicationCore.Models.ViewModels
     {
         public Guid DesignId { get; set; }
 
-        // Contact Information
+        #region Contact Information
         [Required(ErrorMessage = "الاسم الكامل مطلوب")]
         [MinLength(2, ErrorMessage = "الاسم الكامل يجب أن يكون على الأقل حرفين")]
-        public string FullName { get; set; }
+        public string FullName { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "رقم الهاتف مطلوب")]
-        public string PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "البريد الإلكتروني مطلوب")]
         [EmailAddress(ErrorMessage = "يرجى إدخال بريد إلكتروني صالح")]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
+        #endregion
 
-        // Groom Information
+        #region Groom Information
         [Required(ErrorMessage = "اسم العريس مطلوب")]
         [MinLength(2, ErrorMessage = "اسم العريس يجب أن يكون على الأقل حرفين")]
-        public string GroomName { get; set; }
+        public string GroomName { get; set; } = string.Empty;
 
-        //[Required(ErrorMessage = "صورة العريس مطلوبة")]
         public IFormFile? GroomImage { get; set; }
+        public string? GroomAvatar { get; set; }
 
         // Social media fields (optional)
         public string? GroomFacebook { get; set; }
         public string? GroomInstagram { get; set; }
         public string? GroomX { get; set; }
+        #endregion
 
-        // Bride Information
+        #region Bride Information
         [Required(ErrorMessage = "اسم العروس مطلوب")]
         [MinLength(2, ErrorMessage = "اسم العروس يجب أن يكون على الأقل حرفين")]
-        public string BrideName { get; set; }
+        public string BrideName { get; set; } = string.Empty;
 
-        //[Required(ErrorMessage = "صورة العروس مطلوبة")]
         public IFormFile? BrideImage { get; set; }
+        public string? BrideAvatar { get; set; }
 
         // Social media fields (optional)
         public string? BrideFacebook { get; set; }
         public string? BrideInstagram { get; set; }
         public string? BrideX { get; set; }
+        #endregion
 
-        // Event Details
+        #region Event Details
         [Required(ErrorMessage = "تاريخ الحدث مطلوب")]
         public DateTime EventDate { get; set; }
 
@@ -57,26 +61,80 @@ namespace Eventa.ApplicationCore.Models.ViewModels
         public TimeSpan EventTimeTo { get; set; }
 
         [Required(ErrorMessage = "اسم المكان مطلوب")]
-        public string EventPlaceName { get; set; }
+        public string EventPlaceName { get; set; } = string.Empty;
 
-        //[Required(ErrorMessage = "صورة المكان مطلوبة")]
         public IFormFile? EventPlaceImage { get; set; }
 
         [Required(ErrorMessage = "عنوان المكان مطلوب")]
-        public string EventAddress { get; set; }
+        public string EventAddress { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "رابط الموقع مطلوب")]
         [Url(ErrorMessage = "يرجى إدخال رابط صالح")]
-        public string LocationUrl { get; set; }
+        public string LocationUrl { get; set; } = string.Empty;
+        #endregion
 
-        // Gallery
+        #region Photos
         [Required(ErrorMessage = "صورة السلايدر الرئيسية مطلوبة")]
-        public IFormFile MainSliderImage { get; set; }
+        public IFormFile MainSliderImage { get; set; } = null!;
 
-        [Required(ErrorMessage = "يجب تحميل صورة واحدة على الأقل للمعرض")]
-        public IFormFileCollection GalleryPhotos { get; set; }
-        // New properties for avatar selections
-        public string? GroomAvatar { get; set; }
-        public string? BrideAvatar { get; set; }
+        public IFormFileCollection? GalleryPhotos { get; set; }
+        #endregion
+
+        #region Optional Sections Flags
+        public bool HasMemories { get; set; } = false;
+        public bool HasDedications { get; set; } = false;
+        public bool HasGallery { get; set; } = false;
+        public bool HasAudio { get; set; } = false;
+        #endregion
+
+        #region Memories (Max 5)
+        public List<MemoryItemVM>? Memories { get; set; }
+        #endregion
+
+        #region Dedications (Unlimited)
+        public List<DedicationItemVM>? Dedications { get; set; }
+        #endregion
+
+        #region Audio
+        public IFormFile? AudioFile { get; set; }
+        public string? AudioName { get; set; }
+        public bool AudioAutoPlay { get; set; } = false;
+        #endregion
+    }
+
+    /// <summary>
+    /// ViewModel للذكريات/المناسبات
+    /// </summary>
+    public class MemoryItemVM
+    {
+        [Required(ErrorMessage = "عنوان الذكرى مطلوب")]
+        [MaxLength(100)]
+        public string Title { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "تاريخ الذكرى مطلوب")]
+        public DateTime EventDate { get; set; }
+
+        public IFormFile? Image { get; set; }
+
+        public int DisplayOrder { get; set; }
+    }
+
+    /// <summary>
+    /// ViewModel للإهداءات
+    /// </summary>
+    public class DedicationItemVM
+    {
+        [Required(ErrorMessage = "اسم الشخص مطلوب")]
+        [MaxLength(100)]
+        public string PersonName { get; set; } = string.Empty;
+
+        [MaxLength(50)]
+        public string? Relationship { get; set; }
+
+        [Required(ErrorMessage = "نص الإهداء مطلوب")]
+        [MaxLength(1000)]
+        public string Message { get; set; } = string.Empty;
+
+        public int DisplayOrder { get; set; }
     }
 }

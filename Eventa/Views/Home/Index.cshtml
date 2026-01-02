@@ -4,61 +4,61 @@
     var isEnglish = Model.CurrentLanguage == "en";
 }
 <style>
-    .wpo-demo-grids .grid {
-        margin-bottom: 30px;
-        text-align: center;
-    }
-
-    .wpo-demo-grids .inner {
-        position: relative;
-        overflow: hidden;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
+    /* Page-specific overrides - Main styles are in modern-home.css */
     .preview-link {
         display: block;
         position: relative;
     }
 
-    .preview-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(139, 92, 246, 16%);
+    /* Create Invitation Button */
+    .create-invitation-btn {
+        display: flex;
         align-items: center;
         justify-content: center;
+        gap: 8px;
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
         opacity: 0;
-        transition: all 0.3s ease;
-    }
-
-    .preview-link:hover .preview-overlay {
-        opacity: 1;
-    }
-
-    .preview-overlay span {
+        background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
         color: white;
-        font-weight: bold;
-        font-size: 1.2rem;
-    }
-
-    .theme-btn-s2 {
-        background: #8b5cf6;
-        color: white;
-        border: none;
-        padding: 10px 20px;
+        padding: 12px 24px;
         border-radius: 30px;
-        cursor: pointer;
-        transition: all 0.3s ease;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10;
+        white-space: nowrap;
     }
 
-        .theme-btn-s2:hover {
-            background: #7c3aed;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
+    .create-invitation-btn i {
+        font-size: 0.9rem;
+        transition: transform 0.3s ease;
+    }
+
+    .grid:hover .create-invitation-btn {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .create-invitation-btn:hover {
+        background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
+        box-shadow: 0 12px 35px rgba(139, 92, 246, 0.5);
+        transform: translateX(-50%) translateY(-3px) !important;
+        color: white;
+    }
+
+    .create-invitation-btn:hover i {
+        transform: rotate(90deg);
+    }
+
+    .grid .inner {
+        position: relative;
+        overflow: visible !important;
+    }
 </style>
 
 <!-- Hero Section -->
@@ -91,8 +91,9 @@
                             <h4 class="wow fadeInUp" data-wow-duration="1400ms">
                                 @(isEnglish ? "Design & Share Your invitations with very simple steps" : "صمم وشارك دعواتك بخطوات بسيطة جدًا")
                             </h4>
-                            <a href="#demo" class="theme-btn-s2 wow fadeInUp" data-wow-duration="1600ms">
-                                @(isEnglish ? "Start Now" : "ابدأ الآن")
+                            <a href="@Url.Action("CreateNew", "Invitations")" class="theme-btn-s2 wow fadeInUp" data-wow-duration="1600ms">
+                                <i class="fas fa-magic" style="margin-left: 8px;"></i>
+                                @(isEnglish ? "Create Your Invitation" : "أنشئ دعوتك الآن")
                             </a>
                             <a href="#demo" class="scrool wow fadeInUp" data-wow-duration="1600ms">
                                 <img src="~/assets/images/preview/mouse-scroll.svg" alt="">
@@ -196,6 +197,10 @@
                                         <span>@(isEnglish ? "preview" : "معاينة")</span>
                                     </div>
                                 </a>
+                                <a href="@Url.Action("CreateNew", "Invitations", new { designId = template.Id })" class="create-invitation-btn">
+                                    <i class="fas fa-plus"></i>
+                                    @(isEnglish ? "Create Invitation" : "إنشاء دعوة")
+                                </a>
                             </div>
                             <h3>@template.Name</h3>
                         </div>
@@ -206,16 +211,22 @@
     </div>
 
     <!-- CTA Section -->
-    <section class="wpo-cta-section mb-5" style="padding: 50px 0; background: #f9f3f0;">
+    <section class="wpo-cta-section mb-5" style="padding: 50px 0; background: linear-gradient(135deg, #faf5ff 0%, #fdf2f8 100%);">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-10 col-12">
                     <div class="wpo-cta-text text-center">
-                        <h2>@(isEnglish ? "Explore All Our Beautiful Designs" : "استكشف جميع تصاميمنا الجميلة")</h2>
-                        <p>@(isEnglish ? "Discover more stunning Invitation Designs designed for your special day" : "اكتشف المزيد من تصاميم الدعوات الرائعة المصممة ليومك الخاص")</p>
-                        <a asp-controller="Home" asp-action="Designs" class="theme-btn-s2">
-                            @(isEnglish ? "View All Templates" : "عرض جميع التصميمات")
-                        </a>
+                        <h2>@(isEnglish ? "Ready to Create Your Invitation?" : "مستعد لإنشاء دعوتك؟")</h2>
+                        <p>@(isEnglish ? "Start designing your perfect invitation in just minutes" : "ابدأ تصميم دعوتك المثالية في دقائق معدودة")</p>
+                        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <a href="@Url.Action("CreateNew", "Invitations")" class="theme-btn-s2" style="background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);">
+                                <i class="fas fa-plus" style="margin-left: 8px;"></i>
+                                @(isEnglish ? "Create Now" : "إنشاء دعوة الآن")
+                            </a>
+                            <a asp-controller="Home" asp-action="Designs" class="theme-btn-s2" style="background: transparent; border: 2px solid #8b5cf6; color: #8b5cf6;">
+                                @(isEnglish ? "View All Designs" : "عرض جميع التصميمات")
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

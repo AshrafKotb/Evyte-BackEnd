@@ -14,6 +14,6 @@ namespace Eventa.ApplicationCore.Models.ViewModels
         public long RequestId { get; set; }
         //public NotifiactionType NotificationType { get; set; }
         public string Link { get; set; }
-        public string CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

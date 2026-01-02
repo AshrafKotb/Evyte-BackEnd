@@ -154,13 +154,52 @@ namespace Eventa.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NameAr")
-                        .HasDatabaseName("IX_Category_NameAr");
-
-                    b.HasIndex("NameEn")
-                        .HasDatabaseName("IX_Category_NameEn");
-
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Eventa.Domain.Entities.Dedication", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("PersonName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Relationship")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<Guid>("RequestId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RequestId");
+
+                    b.ToTable("Dedications");
                 });
 
             modelBuilder.Entity("Eventa.Domain.Entities.Design", b =>
@@ -226,11 +265,7 @@ namespace Eventa.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId")
-                        .HasDatabaseName("IX_Design_CategoryId");
-
-                    b.HasIndex("TemplateName")
-                        .HasDatabaseName("IX_Design_TemplateName");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Designs");
                 });
@@ -367,6 +402,53 @@ namespace Eventa.Infrastructure.Migrations
                     b.ToTable("GeneralInformation");
                 });
 
+            modelBuilder.Entity("Eventa.Domain.Entities.Memory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EventDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageId")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("RequestId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RequestId");
+
+                    b.ToTable("Memories");
+                });
+
             modelBuilder.Entity("Eventa.Domain.Entities.Notification", b =>
                 {
                     b.Property<Guid>("Id")
@@ -427,7 +509,25 @@ namespace Eventa.Infrastructure.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<int?>("FeaturedOrder")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("HasAudio")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HasDedications")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HasGallery")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HasMemories")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsFeatured")
                         .HasColumnType("bit");
 
                     b.Property<string>("QrCodeImageId")
@@ -463,25 +563,59 @@ namespace Eventa.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatedDate")
-                        .HasDatabaseName("IX_Request_CreatedDate");
-
                     b.HasIndex("DesignId");
 
-                    b.HasIndex("RequestDataId")
-                        .IsUnique();
+                    b.HasIndex("RequestDataId");
 
-                    b.HasIndex("Status")
-                        .HasDatabaseName("IX_Request_Status");
-
-                    b.HasIndex("UserId")
-                        .HasDatabaseName("IX_Request_UserId");
-
-                    b.HasIndex("WeddingSlug")
-                        .IsUnique()
-                        .HasDatabaseName("IX_Request_WeddingSlug");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Requests");
+                });
+
+            modelBuilder.Entity("Eventa.Domain.Entities.RequestAudio", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AudioId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("AudioName")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("AudioUrl")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("AutoPlay")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("RequestId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RequestId")
+                        .IsUnique();
+
+                    b.ToTable("RequestAudios");
                 });
 
             modelBuilder.Entity("Eventa.Domain.Entities.RequestData", b =>
@@ -767,15 +901,37 @@ namespace Eventa.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Eventa.Domain.Entities.Dedication", b =>
+                {
+                    b.HasOne("Eventa.Domain.Entities.Request", "Request")
+                        .WithMany("Dedications")
+                        .HasForeignKey("RequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Request");
+                });
+
             modelBuilder.Entity("Eventa.Domain.Entities.Design", b =>
                 {
                     b.HasOne("Eventa.Domain.Entities.Category", "Category")
                         .WithMany("Designs")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Eventa.Domain.Entities.Memory", b =>
+                {
+                    b.HasOne("Eventa.Domain.Entities.Request", "Request")
+                        .WithMany("Memories")
+                        .HasForeignKey("RequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Request");
                 });
 
             modelBuilder.Entity("Eventa.Domain.Entities.Request", b =>
@@ -783,19 +939,19 @@ namespace Eventa.Infrastructure.Migrations
                     b.HasOne("Eventa.Domain.Entities.Design", "Design")
                         .WithMany("Requests")
                         .HasForeignKey("DesignId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Eventa.Domain.Entities.RequestData", "RequestData")
-                        .WithOne()
-                        .HasForeignKey("Eventa.Domain.Entities.Request", "RequestDataId")
+                        .WithMany()
+                        .HasForeignKey("RequestDataId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Eventa.Domain.Entities.ApplicationUser", "User")
                         .WithMany("Requests")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Design");
@@ -803,6 +959,17 @@ namespace Eventa.Infrastructure.Migrations
                     b.Navigation("RequestData");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Eventa.Domain.Entities.RequestAudio", b =>
+                {
+                    b.HasOne("Eventa.Domain.Entities.Request", "Request")
+                        .WithOne("Audio")
+                        .HasForeignKey("Eventa.Domain.Entities.RequestAudio", "RequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Request");
                 });
 
             modelBuilder.Entity("Eventa.Domain.Entities.RequestGalleryPhoto", b =>
@@ -884,7 +1051,13 @@ namespace Eventa.Infrastructure.Migrations
 
             modelBuilder.Entity("Eventa.Domain.Entities.Request", b =>
                 {
+                    b.Navigation("Audio");
+
+                    b.Navigation("Dedications");
+
                     b.Navigation("GalleryPhotos");
+
+                    b.Navigation("Memories");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,36 +1,39 @@
-﻿@model CustomerIndexVM
+@model CustomerIndexVM
 @{
     ViewData["Title"] = "قائمة العملاء";
     Layout = "_Layout";
-    ViewData["Dir"] = "rtl";
 }
-<link rel="stylesheet" href="~/css/Customers.css" asp-append-version="true" />
 
-<div class="container-fluid py-4">
-    <div class="category-header d-flex align-items-center justify-content-center">
-        <h1 class="text-white page-title">@ViewData["Title"]</h1>
+<!-- Page Header -->
+<div class="page-header animate-fade-in">
+    <div class="page-title">
+        <h1>
+            <i class="fas fa-users"></i>
+            قائمة العملاء
+        </h1>
+        <div class="page-breadcrumb">
+            <a href="@Url.Action("Index", "cp")"><i class="fas fa-home"></i></a>
+            <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+            <span>العملاء</span>
+        </div>
     </div>
+</div>
 
-    <div class="category-search-container">
-        <form asp-action="Index" method="get" class="category-search">
-            <div class="input-group">
-                <input type="text" class="form-control"
-                       name="searchTerm" value="@Model.SearchTerm"
-                       placeholder="ابحث عن عميل...">
-                <button type="submit" class="btn">
-                    <i class="fas fa-search"></i>
-                </button>
+<!-- Search & Filter Card -->
+<div class="card animate-slide-in-up" style="margin-bottom: 24px;">
+    <div class="card-body" style="padding: 20px;">
+        <form asp-action="Index" method="get" class="d-flex gap-3 align-items-end flex-wrap">
+            <div class="form-group" style="flex: 1; min-width: 250px; margin-bottom: 0;">
+                <label class="form-label">بحث</label>
+                <div style="position: relative;">
+                    <input type="text" class="form-control" name="searchTerm" value="@Model.SearchTerm"
+                           placeholder="ابحث عن عميل (الاسم، الهاتف، البريد...)" style="padding-right: 40px;">
+                    <i class="fas fa-search" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--gray-400);"></i>
+                </div>
             </div>
-        </form>
-    </div>
-
-    <div class="controls-container d-flex justify-content-between align-items-center mb-3">
-        <div></div> <!-- Empty div for symmetry -->
-        <div class="page-size-selector">
-            <label for="pageSize" class="me-2">عناصر لكل صفحة:</label>
-            <form asp-action="Index" method="get" id="pageSizeForm">
-                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
-                <select id="pageSize" name="pageSize" class="form-select" onchange="this.form.submit()">
+            <div class="form-group" style="min-width: 150px; margin-bottom: 0;">
+                <label class="form-label">عدد العناصر</label>
+                <select name="pageSize" class="form-control" onchange="this.form.submit()">
                     @foreach (var option in Model.PageSizeOptions)
                     {
                         <option value="@option.Value" selected="@(Model.PageSize.ToString() == option.Value)">
@@ -38,156 +41,337 @@
                         </option>
                     }
                 </select>
-            </form>
+            </div>
+            <button type="submit" class="btn btn-primary" style="height: 48px;">
+                <i class="fas fa-search"></i>
+                بحث
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Stats -->
+<div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 24px;">
+    <div class="stat-card gold animate-slide-in-up">
+        <div class="stat-icon">
+            <i class="fas fa-users"></i>
+        </div>
+        <div class="stat-content">
+            <h3>إجمالي العملاء</h3>
+            <div class="stat-value">@Model.TotalItems</div>
         </div>
     </div>
+</div>
 
-    <div class="category-table">
+<!-- Data Table Card -->
+<div class="card animate-slide-in-up">
+    <div class="card-header">
+        <div class="card-title">
+            <i class="fas fa-list"></i>
+            <span>جميع العملاء</span>
+        </div>
+        <div class="card-actions">
+            <span class="badge badge-gold" style="padding: 8px 15px; border-radius: 20px;">
+                @Model.TotalItems عميل
+            </span>
+        </div>
+    </div>
+    <div class="card-body" style="padding: 0;">
         <div class="table-responsive">
-            <table class="table table-hover mb-0">
+            <table class="modern-table">
                 <thead>
                     <tr>
-                        <th>الاسم الكامل</th>
+                        <th>العميل</th>
                         <th>رقم الهاتف</th>
                         <th>البريد الإلكتروني</th>
-                        <th>عدد الدعوات</th>
-                        <th>كود QR</th>
+                        <th style="width: 120px;">عدد الدعوات</th>
+                        <th style="width: 220px;">QR Code</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var customer in Model.Customers)
+                    @if (!Model.Customers.Any())
                     {
                         <tr>
-                            <td class="text-center">@customer.FullName</td>
-                            <td class="text-center">@customer.PhoneNumber</td>
-                            <td class="text-center">@customer.Email</td>
-                            <td class="text-center"><span class="badge badge-Sorting">@customer.RequestCount</span></td>
-                            <td class="text-center">
-                                @foreach (var request in customer.Requests)
-                                {
-                                    if (!string.IsNullOrEmpty(request.QrCodeImageUrl))
-                                    {
-                                        <div class="qr-frame d-flex align-items-center justify-content-center gap-2">
-                                            <!-- صورة QR Code قابلة للتكبير -->
-                                            <a href="@request.QrCodeImageUrl" class="qr-code-link" data-fancybox="qr-gallery">
-                                                <img src="@request.QrCodeImageUrl" alt="QR Code" class="qr-code-img" loading="lazy" />
-                                            </a>
-                                            <!-- أيقونة Domain URL -->
-                                            @if (!string.IsNullOrEmpty(request.DomainUrl))
-                                            {
-                                                <a href="@request.DomainUrl" class="domain-link" target="_blank" data-toggle="tooltip" data-placement="top" title="زيارة الرابط">
-                                                    <i class="fas fa-link"></i>
-                                                </a>
-                                            }
-                                            else
-                                            {
-                                                <i class="fas fa-link text-muted" title="لا يوجد رابط"></i>
-                                            }
-                                        </div>
-                                    }
-                                }
+                            <td colspan="5">
+                                <div class="empty-state">
+                                    <i class="fas fa-users"></i>
+                                    <h3>لا يوجد عملاء</h3>
+                                    <p>لم يتم العثور على أي عملاء حتى الآن.</p>
+                                </div>
                             </td>
                         </tr>
+                    }
+                    else
+                    {
+                        @foreach (var customer in Model.Customers)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="customer-info-cell">
+                                        <div class="customer-avatar">
+                                            @customer.FullName?.Substring(0, 1).ToUpper()
+                                        </div>
+                                        <strong>@customer.FullName</strong>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="tel:@customer.PhoneNumber" class="contact-link phone">
+                                        <i class="fas fa-phone"></i>
+                                        @customer.PhoneNumber
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="mailto:@customer.Email" class="contact-link email">
+                                        <i class="fas fa-envelope"></i>
+                                        @customer.Email
+                                    </a>
+                                </td>
+                                <td>
+                                    <span class="request-count-badge">
+                                        @customer.RequestCount
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="qr-codes-cell">
+                                        @foreach (var request in customer.Requests)
+                                        {
+                                            if (!string.IsNullOrEmpty(request.QrCodeImageUrl))
+                                            {
+                                                <div class="qr-code-item">
+                                                    <a href="@request.QrCodeImageUrl" class="qr-code-link" data-fancybox="qr-gallery">
+                                                        <img src="@request.QrCodeImageUrl" alt="QR Code">
+                                                    </a>
+                                                    @if (!string.IsNullOrEmpty(request.DomainUrl))
+                                                    {
+                                                        <a href="@request.DomainUrl" target="_blank" class="btn-table-action btn-external" title="زيارة الرابط">
+                                                            <i class="fas fa-external-link-alt"></i>
+                                                        </a>
+                                                    }
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
                     }
                 </tbody>
             </table>
         </div>
 
-        @if (Model.TotalItems > Model.PageSize)
+        @{
+            var totalPages = (int)Math.Ceiling((double)Model.TotalItems / Model.PageSize);
+        }
+        @if (totalPages > 1)
         {
-            <div class="pagination-container">
-                <form id="paginationForm" asp-action="Index" method="get">
-                    <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
-                    <input type="hidden" name="pageSize" value="@Model.PageSize" />
-                    <nav aria-label="تصفح الصفحات">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
-                                <a class="page-link"
-                                   asp-action="Index"
-                                   asp-route-page="@(Model.CurrentPage - 1)"
-                                   asp-route-pageSize="@Model.PageSize"
-                                   asp-route-searchTerm="@Model.SearchTerm"
-                                   aria-label="الصفحة السابقة">
-                                    <i class="fas fa-chevron-right"></i>
-                                </a>
-                            </li>
-                            <li class="page-item @(Model.CurrentPage == 1 ? "active" : "")">
-                                <a class="page-link"
-                                   asp-action="Index"
-                                   asp-route-page="1"
-                                   asp-route-pageSize="@Model.PageSize"
-                                   asp-route-searchTerm="@Model.SearchTerm"
-                                   aria-current="@(Model.CurrentPage == 1 ? "page" : null)">1</a>
-                            </li>
-                            @if (Model.CurrentPage > 3)
-                            {
-                                <li class="page-item disabled">
-                                    <span class="page-link">...</span>
-                                </li>
-                            }
-                            @for (int i = Math.Max(2, Model.CurrentPage - 2); i <= Math.Min(Model.TotalItems / Model.PageSize + (Model.TotalItems % Model.PageSize > 0 ? 1 : 0), Model.CurrentPage + 2); i++)
+            <div class="table-pagination">
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@(Model.CurrentPage - 1)"
+                               asp-route-pageSize="@Model.PageSize" asp-route-searchTerm="@Model.SearchTerm">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </li>
+
+                        @for (int i = 1; i <= totalPages; i++)
+                        {
+                            @if (i == 1 || i == totalPages || (i >= Model.CurrentPage - 2 && i <= Model.CurrentPage + 2))
                             {
                                 <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
-                                    <a class="page-link"
-                                       asp-action="Index"
-                                       asp-route-page="@i"
-                                       asp-route-pageSize="@Model.PageSize"
-                                       asp-route-searchTerm="@Model.SearchTerm"
-                                       aria-current="@(i == Model.CurrentPage ? "page" : null)">@i</a>
+                                    <a class="page-link" asp-action="Index" asp-route-page="@i"
+                                       asp-route-pageSize="@Model.PageSize" asp-route-searchTerm="@Model.SearchTerm">
+                                        @i
+                                    </a>
                                 </li>
                             }
-                            @if (Model.CurrentPage < (Model.TotalItems / Model.PageSize + (Model.TotalItems % Model.PageSize > 0 ? 1 : 0)) - 2)
+                            else if (i == Model.CurrentPage - 3 || i == Model.CurrentPage + 3)
                             {
                                 <li class="page-item disabled">
-                                    <span class="page-link">...</span>
+                                    <span class="page-link page-ellipsis">...</span>
                                 </li>
                             }
-                            @if (Model.TotalItems > Model.PageSize)
-                            {
-                                <li class="page-item @(Model.CurrentPage == (Model.TotalItems / Model.PageSize + (Model.TotalItems % Model.PageSize > 0 ? 1 : 0)) ? "active" : "")">
-                                    <a class="page-link"
-                                       asp-action="Index"
-                                       asp-route-page="@(Model.TotalItems / Model.PageSize + (Model.TotalItems % Model.PageSize > 0 ? 1 : 0))"
-                                       asp-route-pageSize="@Model.PageSize"
-                                       asp-route-searchTerm="@Model.SearchTerm"
-                                       aria-current="@(Model.CurrentPage == (Model.TotalItems / Model.PageSize + (Model.TotalItems % Model.PageSize > 0 ? 1 : 0)) ? "page" : null)">@(Model.TotalItems / Model.PageSize + (Model.TotalItems % Model.PageSize > 0 ? 1 : 0))</a>
-                                </li>
-                            }
-                            <li class="page-item @(Model.CurrentPage == (Model.TotalItems / Model.PageSize + (Model.TotalItems % Model.PageSize > 0 ? 1 : 0)) ? "disabled" : "")">
-                                <a class="page-link"
-                                   asp-action="Index"
-                                   asp-route-page="@(Model.CurrentPage + 1)"
-                                   asp-route-pageSize="@Model.PageSize"
-                                   asp-route-searchTerm="@Model.SearchTerm"
-                                   aria-label="الصفحة التالية">
-                                    <i class="fas fa-chevron-left"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </form>
+                        }
+
+                        <li class="page-item @(Model.CurrentPage == totalPages ? "disabled" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@(Model.CurrentPage + 1)"
+                               asp-route-pageSize="@Model.PageSize" asp-route-searchTerm="@Model.SearchTerm">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         }
     </div>
 </div>
+
+<style>
+    /* Customer-specific table styles */
+    .customer-info-cell {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .customer-avatar {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    .customer-info-cell strong {
+        color: var(--white);
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    /* Contact links */
+    .contact-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: var(--transition-base);
+    }
+
+    .contact-link.phone {
+        background: rgba(16, 185, 129, 0.12);
+        color: var(--accent-emerald);
+    }
+
+    .contact-link.phone:hover {
+        background: var(--accent-emerald);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+    .contact-link.email {
+        background: rgba(99, 102, 241, 0.12);
+        color: var(--primary-light);
+    }
+
+    .contact-link.email:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    .contact-link i {
+        font-size: 0.85rem;
+    }
+
+    /* Request count badge */
+    .request-count-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 50px;
+        padding: 10px 18px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-weight: 700;
+        font-size: 1.1rem;
+        border-radius: var(--radius-md);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    /* QR codes cell */
+    .qr-codes-cell {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .qr-code-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--glass-bg);
+        padding: 8px 12px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-color);
+        transition: var(--transition-base);
+    }
+
+    .qr-code-item:hover {
+        border-color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .qr-code-link img {
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        border: 2px solid var(--border-color);
+        transition: var(--transition-base);
+    }
+
+    .qr-code-link:hover img {
+        border-color: var(--primary);
+        transform: scale(1.05);
+    }
+
+    /* Gold badge */
+    .badge-gold {
+        background: rgba(212, 165, 116, 0.2);
+        color: var(--accent-gold);
+    }
+
+    /* Light mode overrides */
+    [data-theme="light"] .customer-info-cell strong {
+        color: var(--text-primary);
+    }
+
+    [data-theme="light"] .customer-avatar {
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+    }
+
+    [data-theme="light"] .contact-link.phone {
+        background: rgba(16, 185, 129, 0.1);
+    }
+
+    [data-theme="light"] .contact-link.email {
+        background: rgba(99, 102, 241, 0.1);
+    }
+
+    [data-theme="light"] .qr-code-item {
+        background: rgba(0, 0, 0, 0.02);
+        border-color: var(--border-color);
+    }
+
+    [data-theme="light"] .qr-code-link img {
+        border-color: var(--border-color);
+    }
+
+    [data-theme="light"] .badge-gold {
+        background: rgba(212, 165, 116, 0.15);
+        color: #b8860b;
+    }
+</style>
+
 @section Scripts {
-    <!-- أضف مكتبة Fancybox -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-
     <script>
         $(document).ready(function () {
-            // تهيئة Fancybox
             $('[data-fancybox="qr-gallery"]').fancybox({
-                buttons: [
-                    "zoom",
-                    "share",
-                    "slideShow",
-                    "fullScreen",
-                    "download",
-                    "thumbs",
-                    "close"
-                ],
+                buttons: ["zoom", "download", "close"],
                 animationEffect: "zoom-in-out",
                 transitionEffect: "tube"
             });

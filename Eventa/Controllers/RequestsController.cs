@@ -28,11 +28,18 @@ namespace Eventa.Web.Controllers
         }
 
         // GET: Requests
-        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 10, string searchTerm = "")
+        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 10, string searchTerm = "", string status = "")
         {
-            var paginatedRequests = await _requestRepository.GetRequestsPaginatedAsync(pageNumber, pageSize, searchTerm);
+            InvitationStatus? statusFilter = null;
+            if (!string.IsNullOrEmpty(status) && Enum.TryParse<InvitationStatus>(status, out var parsedStatus))
+            {
+                statusFilter = parsedStatus;
+            }
+
+            var paginatedRequests = await _requestRepository.GetRequestsPaginatedAsync(pageNumber, pageSize, searchTerm, statusFilter);
             ViewBag.SearchTerm = searchTerm;
             ViewBag.PageSize = pageSize;
+            ViewBag.StatusFilter = status;
             return View(paginatedRequests);
         }
 

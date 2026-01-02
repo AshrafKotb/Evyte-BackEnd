@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل المستخدم - Eventa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #d4a574;
+            --primary-dark: #b8956a;
+            --secondary: #1a1a2e;
+            --text: #333;
+            --text-light: #666;
+            --bg: #fdfbf9;
+            --card-bg: #ffffff;
+            --border: #e5e5e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        /* Header */
+        .guide-header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #16213e 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .guide-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .guide-header .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+
+        .toc h2 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toc h2 i {
+            color: var(--primary);
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-list li {
+            margin-bottom: 12px;
+        }
+
+        .toc-list a {
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .toc-list a:hover {
+            background: rgba(212, 165, 116, 0.1);
+            color: var(--primary-dark);
+        }
+
+        .toc-list .step-number {
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* Section */
+        .section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+
+        .section h2 {
+            color: var(--secondary);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .section h2 i {
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+
+        .section h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin: 25px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section h3 i {
+            color: var(--primary);
+        }
+
+        .section p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .section ul, .section ol {
+            margin: 15px 0;
+            padding-right: 25px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        /* Step Card */
+        .step-card {
+            background: linear-gradient(135deg, #faf7f4 0%, #fff 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            border-right: 4px solid var(--primary);
+        }
+
+        .step-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .step-card-number {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .step-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #e8f4fd;
+            border: 1px solid #b6d4fe;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .info-box i {
+            color: #0d6efd;
+            font-size: 1.3rem;
+            margin-top: 3px;
+        }
+
+        .info-box.warning {
+            background: #fff3cd;
+            border-color: #ffc107;
+        }
+
+        .info-box.warning i {
+            color: #856404;
+        }
+
+        .info-box.success {
+            background: #d1e7dd;
+            border-color: #a3cfbb;
+        }
+
+        .info-box.success i {
+            color: #0f5132;
+        }
+
+        /* Image Placeholder */
+        .screenshot {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px dashed #ddd;
+        }
+
+        .screenshot i {
+            font-size: 3rem;
+            color: #ccc;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .screenshot p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 165, 116, 0.4);
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-question i {
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            color: var(--text-light);
+            padding-right: 28px;
+        }
+
+        /* Footer */
+        .guide-footer {
+            background: var(--secondary);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .guide-footer p {
+            opacity: 0.8;
+        }
+
+        .guide-footer .social-links {
+            margin-top: 20px;
+        }
+
+        .guide-footer .social-links a {
+            color: white;
+            font-size: 1.3rem;
+            margin: 0 10px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .guide-footer .social-links a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guide-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 25px 20px;
+            }
+
+            .step-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="guide-header">
+        <img src="/logo/yellow.png" alt="Eventa Logo" class="logo">
+        <h1>دليل إنشاء دعوة إلكترونية</h1>
+        <p>تعلم كيف تصمم وتشارك دعوتك الإلكترونية في خطوات بسيطة وسريعة</p>
+    </header>
+
+    <div class="container">
+        <!-- Table of Contents -->
+        <nav class="toc">
+            <h2><i class="fas fa-list"></i> محتويات الدليل</h2>
+            <ol class="toc-list">
+                <li><a href="#step1"><span class="step-number">1</span> اختيار التصميم المناسب</a></li>
+                <li><a href="#step2"><span class="step-number">2</span> إدخال معلومات العروسين</a></li>
+                <li><a href="#step3"><span class="step-number">3</span> رفع صور المناسبة</a></li>
+                <li><a href="#step4"><span class="step-number">4</span> الإضافات الاختيارية</a></li>
+                <li><a href="#step5"><span class="step-number">5</span> تحديد مكان وتاريخ الحفل</a></li>
+                <li><a href="#step6"><span class="step-number">6</span> المراجعة والإرسال</a></li>
+                <li><a href="#faq"><span class="step-number"><i class="fas fa-question"></i></span> الأسئلة الشائعة</a></li>
+            </ol>
+        </nav>
+
+        <!-- Introduction -->
+        <section class="section">
+            <h2><i class="fas fa-rocket"></i> مقدمة</h2>
+            <p>
+                مرحباً بك في منصة <strong>Eventa</strong> لإنشاء الدعوات الإلكترونية. مع Eventa، يمكنك تصميم دعوة زفافك أو خطوبتك أو أي مناسبة خاصة في دقائق معدودة، ومشاركتها مع ضيوفك عبر رابط واحد فقط.
+            </p>
+            <div class="info-box">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <strong>الوقت المتوقع:</strong> 5-10 دقائق لإكمال جميع الخطوات
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 1 -->
+        <section class="section" id="step1">
+            <h2><i class="fas fa-palette"></i> الخطوة الأولى: اختيار التصميم</h2>
+
+            <div class="step-card">
+                <div class="step-card-header">
+                    <div class="step-card-number">1</div>
+                    <div class="step-card-title">تصفح التصاميم المتاحة</div>
+                </div>
+                <p>
+                    ابدأ بزيارة الصفحة الرئيسية واستعرض مجموعة التصاميم المتوفرة. كل تصميم له طابع مختلف يناسب أنواع مختلفة من المناسبات.
+                </p>
+            </div>
+
+            <h3><i class="fas fa-check-circle"></i> كيفية اختيار التصميم:</h3>
+            <ol>
+                <li>اذهب إلى الصفحة الرئيسية وانزل لقسم "تصاميم جاهزة"</li>
+                <li>انقر على زر "معاينة" لرؤية شكل التصميم كاملاً</li>
+                <li>بعد اختيار التصميم، انقر عليه لبدء إنشاء الدعوة</li>
+                <li>أو اذهب مباشرة إلى <strong>/Invitations/CreateNew</strong> واختر التصميم من القائمة</li>
+            </ol>
+
+            <div class="info-box success">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                    <strong>نصيحة:</strong> اختر تصميم يتناسب مع ألوان حفلك وطابع المناسبة (كلاسيكي، عصري، إسلامي، إلخ)
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2 -->
+        <section class="section" id="step2">
+            <h2><i class="fas fa-heart"></i> الخطوة الثانية: معلومات العروسين</h2>
+
+            <div class="step-card">
+                <div class="step-card-header">
+                    <div class="step-card-number">2</div>
+                    <div class="step-card-title">أدخل بيانات التواصل والعروسين</div>
+                </div>
+                <p>
+                    في هذه الخطوة، ستدخل معلومات الاتصال الخاصة بك ومعلومات العريس والعروسة.
+                </p>
+            </div>
+
+            <h3><i class="fas fa-user"></i> معلومات الاتصال (مطلوبة):</h3>
+            <ul>
+                <li><strong>الاسم الكامل:</strong> اسمك للتواصل معك</li>
+                <li><strong>رقم الهاتف:</strong> رقم واتساب نشط</li>
+                <li><strong>البريد الإلكتروني:</strong> لإرسال رابط الدعوة</li>
+            </ul>
+
+            <h3><i class="fas fa-user-tie"></i> معلومات العريس:</h3>
+            <ul>
+                <li><strong>اسم العريس:</strong> كما سيظهر في الدعوة</li>
+                <li><strong>صورة العريس:</strong> ارفع صورة أو اختر صورة رمزية جاهزة (Avatar)</li>
+                <li><strong>روابط السوشيال ميديا:</strong> (اختياري) فيسبوك، إنستغرام، X</li>
+            </ul>
+
+            <h3><i class="fas fa-crown"></i> معلومات العروسة:</h3>
+            <ul>
+                <li><strong>اسم العروسة:</strong> كما سيظهر في الدعوة</li>
+                <li><strong>صورة العروسة:</strong> ارفع صورة أو اختر صورة رمزية جاهزة</li>
+                <li><strong>روابط السوشيال ميديا:</strong> (اختياري)</li>
+            </ul>
+
+            <div class="info-box warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <strong>ملاحظة:</strong> تأكد من كتابة الأسماء بالشكل الصحيح لأنها ستظهر في الدعوة كما أدخلتها.
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3 -->
+        <section class="section" id="step3">
+            <h2><i class="fas fa-images"></i> الخطوة الثالثة: رفع الصور</h2>
+
+            <div class="step-card">
+                <div class="step-card-header">
+                    <div class="step-card-number">3</div>
+                    <div class="step-card-title">أضف صور المناسبة</div>
+                </div>
+                <p>
+                    الصور تجعل دعوتك أكثر تميزاً وشخصية. ستحتاج لإضافة صورة رئيسية ومجموعة صور للمعرض.
+                </p>
+            </div>
+
+            <h3><i class="fas fa-image"></i> الصورة الرئيسية (مطلوبة):</h3>
+            <ul>
+                <li>صورة عالية الجودة للعروسين معاً</li>
+                <li>ستظهر في أعلى الدعوة كصورة رئيسية</li>
+                <li>الحجم الأقصى: 5 ميجابايت</li>
+                <li>الصيغ المدعومة: JPG, PNG</li>
+            </ul>
+
+            <h3><i class="fas fa-photo-video"></i> معرض الصور (مطلوب):</h3>
+            <ul>
+                <li>يمكنك إضافة حتى <strong>10 صور</strong></li>
+                <li>صور من جلسة التصوير، الخطوبة، أو ذكريات مميزة</li>
+                <li>يمكنك اختيار عدة صور في وقت واحد</li>
+            </ul>
+
+            <div class="info-box success">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                    <strong>نصيحة:</strong> استخدم صور بأبعاد متناسقة للحصول على مظهر أفضل في المعرض
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 4 -->
+        <section class="section" id="step4">
+            <h2><i class="fas fa-plus-circle"></i> الخطوة الرابعة: الإضافات الاختيارية</h2>
+
+            <div class="step-card">
+                <div class="step-card-header">
+                    <div class="step-card-number">4</div>
+                    <div class="step-card-title">أضف لمسات خاصة لدعوتك</div>
+                </div>
+                <p>
+                    يمكنك إضافة عناصر إضافية تجعل دعوتك فريدة. يجب اختيار <strong>إضافة واحدة على الأقل</strong>.
+                </p>
+            </div>
+
+            <h3><i class="fas fa-clock"></i> الذكريات والمناسبات:</h3>
+            <p>أضف محطات مهمة في رحلة حبكما (حتى 5 ذكريات)</p>
+            <ul>
+                <li>تاريخ أول لقاء</li>
+                <li>تاريخ الخطوبة</li>
+                <li>ذكريات مميزة</li>
+            </ul>
+
+            <h3><i class="fas fa-quote-right"></i> الإهداءات:</h3>
+            <p>كلمات ورسائل من الأهل والأصدقاء</p>
+            <ul>
+                <li>اسم المهدي وصلته بالعروسين</li>
+                <li>رسالة التهنئة أو الإهداء</li>
+            </ul>
+
+            <h3><i class="fas fa-music"></i> موسيقى خلفية:</h3>
+            <p>أضف مقطع صوتي يعمل تلقائياً عند فتح الدعوة</p>
+            <ul>
+                <li>الصيغ المدعومة: MP3, WAV</li>
+                <li>الحجم الأقصى: 10 ميجابايت</li>
+                <li>خيار التشغيل التلقائي</li>
+            </ul>
+        </section>
+
+        <!-- Step 5 -->
+        <section class="section" id="step5">
+            <h2><i class="fas fa-map-marker-alt"></i> الخطوة الخامسة: مكان وتاريخ الحفل</h2>
+
+            <div class="step-card">
+                <div class="step-card-header">
+                    <div class="step-card-number">5</div>
+                    <div class="step-card-title">حدد تفاصيل الحدث</div>
+                </div>
+                <p>
+                    أدخل تاريخ ووقت ومكان الحفل ليظهر في الدعوة.
+                </p>
+            </div>
+
+            <h3><i class="fas fa-calendar-alt"></i> التاريخ والوقت:</h3>
+            <ul>
+                <li><strong>تاريخ الحفل:</strong> اختر التاريخ من التقويم</li>
+                <li><strong>وقت البدء:</strong> متى يبدأ الحفل</li>
+                <li><strong>وقت الانتهاء:</strong> متى ينتهي الحفل</li>
+            </ul>
+
+            <h3><i class="fas fa-map-marked-alt"></i> المكان:</h3>
+            <ul>
+                <li><strong>اسم المكان:</strong> اسم القاعة أو الفندق</li>
+                <li><strong>صورة المكان:</strong> (اختياري) صورة للمكان</li>
+                <li><strong>العنوان:</strong> العنوان بالتفصيل</li>
+                <li><strong>رابط الخريطة:</strong> رابط Google Maps للموقع</li>
+            </ul>
+
+            <div class="info-box">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                    <strong>كيفية الحصول على رابط الخريطة:</strong>
+                    <ol>
+                        <li>افتح Google Maps</li>
+                        <li>ابحث عن موقع الحفل</li>
+                        <li>انقر على "مشاركة"</li>
+                        <li>انسخ الرابط</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 6 -->
+        <section class="section" id="step6">
+            <h2><i class="fas fa-check-circle"></i> الخطوة السادسة: المراجعة والإرسال</h2>
+
+            <div class="step-card">
+                <div class="step-card-header">
+                    <div class="step-card-number">6</div>
+                    <div class="step-card-title">راجع بياناتك وأرسل الطلب</div>
+                </div>
+                <p>
+                    قبل الإرسال، ستظهر لك ملخص لكل البيانات التي أدخلتها. تأكد من صحتها ثم اضغط "إرسال".
+                </p>
+            </div>
+
+            <h3><i class="fas fa-clipboard-list"></i> ما الذي سيظهر في الملخص:</h3>
+            <ul>
+                <li>اسم العريس والعروسة</li>
+                <li>تاريخ ومكان الحفل</li>
+                <li>عدد الصور المرفوعة</li>
+                <li>الإضافات المختارة</li>
+            </ul>
+
+            <div class="info-box warning">
+                <i class="fas fa-hourglass-half"></i>
+                <div>
+                    <strong>ماذا بعد الإرسال؟</strong>
+                    <p>سيتم مراجعة طلبك من قبل فريقنا خلال 24 ساعة. بعد الموافقة، ستستلم رابط دعوتك ورمز QR عبر البريد الإلكتروني.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section" id="faq">
+            <h2><i class="fas fa-question-circle"></i> الأسئلة الشائعة</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-left"></i>
+                    كم تكلفة إنشاء الدعوة؟
+                </div>
+                <div class="faq-answer">
+                    تختلف التكلفة حسب التصميم والإضافات المختارة. تواصل معنا للحصول على الأسعار الحالية.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-left"></i>
+                    كم من الوقت تستغرق مراجعة الطلب؟
+                </div>
+                <div class="faq-answer">
+                    عادة ما يتم مراجعة الطلبات خلال 24 ساعة كحد أقصى. في أوقات الذروة قد يستغرق الأمر وقتاً أطول قليلاً.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-left"></i>
+                    هل يمكنني تعديل الدعوة بعد إنشائها؟
+                </div>
+                <div class="faq-answer">
+                    نعم، يمكنك طلب تعديلات بسيطة عبر التواصل مع فريق الدعم. التعديلات الكبيرة قد تتطلب رسوم إضافية.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-left"></i>
+                    ما هي صيغ الصور المدعومة؟
+                </div>
+                <div class="faq-answer">
+                    نقبل صيغ JPG و PNG. الحجم الأقصى للصورة الواحدة هو 5 ميجابايت.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-left"></i>
+                    كيف أشارك الدعوة مع الضيوف؟
+                </div>
+                <div class="faq-answer">
+                    بعد الموافقة على طلبك، ستحصل على رابط مباشر يمكنك مشاركته عبر واتساب، فيسبوك، أو أي وسيلة أخرى. كما ستحصل على رمز QR يمكن طباعته.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-left"></i>
+                    لكم من الوقت تبقى الدعوة متاحة؟
+                </div>
+                <div class="faq-answer">
+                    تبقى الدعوة متاحة لمدة 6 أشهر بعد تاريخ المناسبة، يمكنك طلب تمديد المدة إذا رغبت.
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section" style="text-align: center;">
+            <h2><i class="fas fa-rocket"></i> جاهز لإنشاء دعوتك؟</h2>
+            <p>ابدأ الآن وصمم دعوة مميزة ليومك الخاص!</p>
+            <a href="/Invitations/CreateNew" class="btn">
+                <i class="fas fa-plus"></i>
+                إنشاء دعوة جديدة
+            </a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="guide-footer">
+        <p>&copy; 2024 Eventa - جميع الحقوق محفوظة</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+</body>
+</html>

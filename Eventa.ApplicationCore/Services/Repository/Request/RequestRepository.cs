@@ -1,5 +1,6 @@
 using Eventa.ApplicationCore.Models.Helper;
 using Eventa.Domain.Entities;
+using Eventa.Domain.Enums;
 using Eventa.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -53,19 +54,31 @@ namespace Eventa.ApplicationCore.Services.Repository
                 await _context.SaveChangesAsync();
             }
         }
-        public async Task<PaginatedResult<Request>> GetRequestsPaginatedAsync(int pageNumber, int pageSize, string searchTerm = "")
+        public async Task<PaginatedResult<Request>> GetRequestsPaginatedAsync(int pageNumber, int pageSize, string searchTerm = "", InvitationStatus? status = null)
         {
             var query = _context.Requests.Include(x => x.User).Include(x => x.RequestData).Include(x => x.GalleryPhotos).Include(x => x.Design)
                 .Where(r => !r.IsDeleted);
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                query = query.Where(r => r.UserId.ToString().Contains(searchTerm) || r.QrCodeImageUrl.Contains(searchTerm));
+                query = query.Where(r =>
+                    r.User.FullName.Contains(searchTerm) ||
+                    r.User.Email.Contains(searchTerm) ||
+                    r.User.PhoneNumber.Contains(searchTerm) ||
+                    r.RequestData.GroomName.Contains(searchTerm) ||
+                    r.RequestData.BrideName.Contains(searchTerm) ||
+                    r.RequestData.EventPlaceName.Contains(searchTerm));
+            }
+
+            if (status.HasValue)
+            {
+                query = query.Where(r => r.Status == status.Value);
             }
 
             var totalCount = await query.CountAsync();
 
             var requests = await query
+                .OrderByDescending(r => r.CreatedDate)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();

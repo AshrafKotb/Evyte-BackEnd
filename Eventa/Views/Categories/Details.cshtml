@@ -1,69 +1,379 @@
-﻿@model CategoryVM
+@model CategoryVM
 @{
     ViewData["Title"] = "تفاصيل القسم";
-    ViewData["Dir"] = "rtl"; // للدعم الكامل للعربية
     Layout = "_Layout";
 }
-<link rel="stylesheet" href="~/css/category-details.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-<div class="container py-5">
-    <div class="category-header d-flex align-items-center justify-content-center animate__animated animate__fadeInDown">
-        <h1 class="text-center text-white page-title">@ViewData["Title"]</h1>
+<!-- Page Header -->
+<div class="page-header animate-fade-in">
+    <div class="page-title">
+        <h1>
+            <i class="fas fa-layer-group"></i>
+            تفاصيل القسم
+        </h1>
+        <div class="page-breadcrumb">
+            <a href="@Url.Action("Index", "cp")"><i class="fas fa-home"></i></a>
+            <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+            <a href="@Url.Action("Index", "Categories")">الأقسام</a>
+            <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+            <span>تفاصيل</span>
+        </div>
     </div>
+    <div class="page-actions">
+        @if (!Model.IsDeleted)
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">
+                <i class="fas fa-edit"></i>
+                تعديل
+            </a>
+        }
+        <a asp-action="Index" class="btn btn-ghost">
+            <i class="fas fa-arrow-right"></i>
+            رجوع للقائمة
+        </a>
+    </div>
+</div>
 
-    <div class="category-card shadow-lg animate__animated animate__fadeInUp animate__delay-1s">
-        <div class="row g-0">
-            <div class="col-md-4 d-flex align-items-center justify-content-center">
-                <div class="category-image-container animate__animated animate__zoomIn animate__delay-2s">
-                    <img src="@Model.ImageUrl" class="category-img img-fluid" alt="صورة القسم">
+<!-- Details Card -->
+<div class="card animate-slide-in-up">
+    <div class="card-body" style="padding: 0;">
+        <div class="details-layout">
+            <!-- Image Section -->
+            <div class="details-image-section">
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <div class="details-image-wrapper">
+                        <img src="@Model.ImageUrl" alt="@Model.NameAr" class="details-image">
+                    </div>
+                }
+                else
+                {
+                    <div class="details-image-placeholder">
+                        <i class="fas fa-image"></i>
+                        <span>لا توجد صورة</span>
+                    </div>
+                }
+
+                <!-- Status Badge -->
+                <div class="details-status">
+                    @if (Model.IsDeleted)
+                    {
+                        <span class="badge badge-danger badge-lg">
+                            <i class="fas fa-trash"></i>
+                            محذوف
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-success badge-lg">
+                            <i class="fas fa-check-circle"></i>
+                            متاح
+                        </span>
+                    }
                 </div>
             </div>
-            <div class="col-md-8">
-                <div class="category-details p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-4 animate__animated animate__fadeIn animate__delay-2s">
-                        <div class="category-title-wrapper">
-                            <div class="name-container">
-                                <h2 class="category-name">
-                                    <span class="ar-name">@Model.NameAr</span>
-                                    <span class="en-name">@Model.NameEn</span>
-                                </h2>
+
+            <!-- Info Section -->
+            <div class="details-info-section">
+                <!-- Category Name -->
+                <div class="details-header">
+                    <h2 class="details-title">@Model.NameAr</h2>
+                    <p class="details-subtitle">@Model.NameEn</p>
+                </div>
+
+                <!-- Info Items -->
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-sort-numeric-up-alt"></i>
+                        </div>
+                        <div class="detail-content">
+                            <span class="detail-label">ترتيب العرض</span>
+                            <span class="detail-value">@Model.SortingNumber</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="detail-content">
+                            <span class="detail-label">تاريخ الإنشاء</span>
+                            <span class="detail-value">@Model.CreatedAt.ToString("yyyy/MM/dd HH:mm")</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-item full-width">
+                        <div class="detail-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="detail-content">
+                            <span class="detail-label">الوصف بالعربية</span>
+                            <div class="detail-description">
+                                @(string.IsNullOrEmpty(Model.DescriptionAr) ? "لا يوجد وصف" : Model.DescriptionAr)
                             </div>
                         </div>
-                        <span class="badge @(Model.IsDeleted ? "badge-deleted" : "badge-active") animate__animated animate__pulse animate__delay-2s">
-                            @(Model.IsDeleted ? "محذوف" : "متاح")
-                        </span>
                     </div>
-                    <div class="category-info">
-                        <div class="info-item animate__animated animate__fadeInUp animate__delay-3s">
-                            <i class="fas fa-sort-numeric-up-alt me-2"></i>
-                            <span class="info-label">ترتيب العرض:</span>
-                            <span class="info-value">@Model.SortingNumber</span>
+
+                    <div class="detail-item full-width">
+                        <div class="detail-icon">
+                            <i class="fas fa-file-alt"></i>
                         </div>
-                        <div class="info-item animate__animated animate__fadeInUp animate__delay-4s">
-                            <i class="fas fa-calendar-alt me-2"></i>
-                            <span class="info-label">تاريخ الإنشاء:</span>
-                            <span class="info-value">@Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")</span>
-                        </div>
-                        <div class="info-item animate__animated animate__fadeInUp animate__delay-5s">
-                            <i class="fas fa-file-alt me-2"></i>
-                            <span class="info-label">الوصف بالعربية:</span>
-                            <div class="info-description">@Model.DescriptionAr</div>
-                        </div>
-                        <div class="info-item animate__animated animate__fadeInUp animate__delay-6s">
-                            <i class="fas fa-file-alt me-2"></i>
-                            <span class="info-label">الوصف بالإنجليزية:</span>
-                            <div class="info-description">@Model.DescriptionEn</div>
+                        <div class="detail-content">
+                            <span class="detail-label">الوصف بالإنجليزية</span>
+                            <div class="detail-description">
+                                @(string.IsNullOrEmpty(Model.DescriptionEn) ? "No description" : Model.DescriptionEn)
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="action-buttons mt-4 d-flex justify-content-center animate__animated animate__fadeIn animate__delay-4s">
-        <a asp-action="Index" class="btn btn-secondary">
-            <i class="fas fa-arrow-right me-2"></i>رجوع إلى القائمة
-        </a>
-    </div>
 </div>
+
+<style>
+    /* Details Page Styles */
+    .details-layout {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 0;
+        min-height: 500px;
+    }
+
+    .details-image-section {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(212, 165, 116, 0.1) 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        position: relative;
+        border-left: 1px solid var(--border-color);
+    }
+
+    .details-image-wrapper {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid var(--accent-gold);
+        box-shadow: 0 8px 32px rgba(212, 165, 116, 0.3);
+        transition: var(--transition-base);
+    }
+
+    .details-image-wrapper:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 40px rgba(212, 165, 116, 0.4);
+    }
+
+    .details-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .details-image-placeholder {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: var(--glass-bg);
+        border: 4px dashed var(--border-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        color: var(--gray-400);
+    }
+
+    .details-image-placeholder i {
+        font-size: 3rem;
+    }
+
+    .details-status {
+        margin-top: 24px;
+    }
+
+    .badge-lg {
+        padding: 12px 24px;
+        font-size: 1rem;
+        border-radius: var(--radius-full);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .details-info-section {
+        padding: 40px;
+    }
+
+    .details-header {
+        margin-bottom: 32px;
+        padding-bottom: 24px;
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .details-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 8px;
+        background: var(--gradient-gold);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .details-subtitle {
+        font-size: 1.2rem;
+        color: var(--gray-400);
+        font-style: italic;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .detail-item {
+        display: flex;
+        gap: 16px;
+        padding: 20px;
+        background: var(--glass-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        transition: var(--transition-base);
+    }
+
+    .detail-item:hover {
+        background: var(--bg-hover);
+        border-color: var(--primary);
+        transform: translateY(-2px);
+    }
+
+    .detail-item.full-width {
+        grid-column: span 2;
+    }
+
+    .detail-icon {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        background: linear-gradient(135deg, var(--primary) 0%, #764ba2 100%);
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    .detail-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .detail-label {
+        font-size: 0.85rem;
+        color: var(--gray-400);
+        font-weight: 500;
+    }
+
+    .detail-value {
+        font-size: 1.1rem;
+        color: var(--white);
+        font-weight: 600;
+    }
+
+    .detail-description {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        padding: 12px 16px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: var(--radius-md);
+        max-height: 120px;
+        overflow-y: auto;
+    }
+
+    /* Light Mode */
+    [data-theme="light"] .details-title {
+        -webkit-text-fill-color: initial;
+        color: var(--text-primary);
+        background: none;
+    }
+
+    [data-theme="light"] .details-subtitle {
+        color: var(--text-muted);
+    }
+
+    [data-theme="light"] .detail-value {
+        color: var(--text-primary);
+    }
+
+    [data-theme="light"] .detail-description {
+        background: rgba(0, 0, 0, 0.03);
+        color: var(--text-secondary);
+    }
+
+    [data-theme="light"] .details-image-section {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(212, 165, 116, 0.05) 100%);
+        border-left-color: var(--border-color);
+    }
+
+    /* Responsive */
+    @@media (max-width: 992px) {
+        .details-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .details-image-section {
+            border-left: none;
+            border-bottom: 1px solid var(--border-color);
+            padding: 30px;
+        }
+
+        .details-image-wrapper,
+        .details-image-placeholder {
+            width: 180px;
+            height: 180px;
+        }
+
+        .details-info-section {
+            padding: 30px;
+        }
+
+        .details-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .detail-item.full-width {
+            grid-column: span 1;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .details-image-wrapper,
+        .details-image-placeholder {
+            width: 150px;
+            height: 150px;
+        }
+
+        .details-title {
+            font-size: 1.5rem;
+        }
+
+        .details-info-section {
+            padding: 20px;
+        }
+
+        .detail-item {
+            padding: 16px;
+        }
+    }
+</style>

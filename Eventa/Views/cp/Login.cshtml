@@ -1,90 +1,205 @@
-﻿@{
+@{
     Layout = null;
 }
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Eventa  - تسجيل الدخول</title>
+    <title>Eventa - تسجيل الدخول</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="description" content="صفحة تسجيل الدخول Eventa">
+    <meta name="description" content="صفحة تسجيل الدخول للوحة تحكم Eventa">
     <link rel="icon" type="image/png" href="~/logo/yellow.png">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- CSS -->
-
-    <link rel="stylesheet" href="~/css/splash-screen.css">
     <link rel="stylesheet" href="~/css/login-style.css">
+    <link rel="stylesheet" href="~/css/splash-screen.css">
 </head>
 <body>
-    <!-- Splash Screen -->
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Professional Splash Screen -->
     <div id="splash-screen" class="splash-screen">
-        <div class="splash-content animate__animated animate__fadeIn">
-            <img src="~/logo/yellow.png" alt="Eventa Logo" class="splash-logo animate__animated animate__pulse animate__infinite">
-            <h1 class="splash-title animate__animated animate__fadeInUp animate__delay-1s">مرحبًا بك في Eventa</h1>
-            <div class="splash-loader"></div>
+        <!-- Decorative Circles -->
+        <div class="splash-decoration splash-decoration-1"></div>
+        <div class="splash-decoration splash-decoration-2"></div>
+
+        <div class="splash-content">
+            <!-- Logo with Animated Rings -->
+            <div class="splash-logo-wrapper">
+                <img src="~/logo/yellow.png" alt="Eventa Logo" class="splash-logo">
+            </div>
+
+            <!-- Title & Subtitle -->
+            <h1 class="splash-title">Eventa</h1>
+            <p class="splash-subtitle">منصة الدعوات الإلكترونية الاحترافية</p>
+
+            <!-- Modern Loader -->
+            <div class="splash-loader">
+                <div class="splash-loader-dot"></div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="splash-progress">
+                <div class="splash-progress-bar"></div>
+            </div>
+
+            <!-- Loading Text -->
+            <div class="splash-loading-text">
+                جاري التحميل<span>.</span><span>.</span><span>.</span>
+            </div>
         </div>
     </div>
 
     <!-- Login Container -->
     <div class="login-container">
         <div class="login-card">
+            <!-- Header -->
             <div class="login-header">
-                <h1>مرحبًا بعودتك</h1>
+                <div class="logo-wrapper">
+                    <img src="~/logo/yellow.png" alt="Eventa">
+                </div>
+                <h1>مرحباً بعودتك</h1>
                 <p>الرجاء إدخال بيانات الدخول للوصول إلى لوحة التحكم</p>
+                <!-- Decorative Wave -->
+                <div class="header-decoration">
+                    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C57.1,118.92,156.63,69.08,321.39,56.44Z"></path>
+                    </svg>
+                </div>
             </div>
 
+            <!-- Body -->
             <div class="login-body">
                 @Html.ValidationSummary(false, "", new { @class = "validation-summary-errors" })
 
-                <form class="login-form" asp-action="Login" method="post">
+                <form class="login-form" asp-action="Login" method="post" id="loginForm">
                     @Html.AntiForgeryToken()
 
+                    <!-- Email Field -->
                     <div class="form-group">
-                        <label for="Email">البريد الإلكتروني</label>
-                        <div class="form-icon">
-                            <i class="fas fa-envelope"></i>
+                        <label for="Email">
+                            <i class="fas fa-at"></i>
+                            البريد الإلكتروني
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="email"
+                                   class="form-control"
+                                   id="Email"
+                                   name="Email"
+                                   placeholder="أدخل بريدك الإلكتروني"
+                                   required
+                                   autocomplete="email">
+                            <i class="fas fa-envelope form-icon"></i>
                         </div>
-                        <input type="email" class="form-control" id="Email" name="Email" placeholder="أدخل بريدك الإلكتروني" required>
                     </div>
 
+                    <!-- Password Field -->
                     <div class="form-group">
-                        <label for="Password">كلمة المرور</label>
-                        <div class="form-icon">
-                            <i class="fas fa-lock"></i>
+                        <label for="Password">
+                            <i class="fas fa-key"></i>
+                            كلمة المرور
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="password"
+                                   class="form-control"
+                                   id="Password"
+                                   name="Password"
+                                   placeholder="أدخل كلمة المرور"
+                                   required
+                                   autocomplete="current-password">
+                            <i class="fas fa-lock form-icon"></i>
+                            <i class="fas fa-eye password-toggle" id="togglePassword"></i>
                         </div>
-                        <input type="password" class="form-control" id="Password" name="Password" placeholder="أدخل كلمة المرور" required>
-
                     </div>
 
+                    <!-- Remember Me -->
                     <div class="remember-me">
                         <input type="checkbox" id="RememberMe" name="RememberMe">
                         <label for="RememberMe">تذكرني</label>
                     </div>
 
-                    <button type="submit" class="login-btn">
-                        <i class="fas fa-sign-in-alt"></i>
-                        تسجيل الدخول
+                    <!-- Submit Button -->
+                    <button type="submit" class="login-btn" id="submitBtn">
+                        <span class="btn-text">تسجيل الدخول</span>
+                        <i class="fas fa-arrow-left"></i>
                     </button>
                 </form>
             </div>
+        </div>
+
+        <!-- Brand Badge -->
+        <div class="brand-badge">
+            <span>
+                صُنع بـ <i class="fas fa-heart"></i> بواسطة Eventa
+            </span>
         </div>
     </div>
 
     <!-- JavaScript -->
     <script>
-        // Splash Screen Transition
-        window.onload = function () {
-            setTimeout(function () {
-                document.getElementById('splash-screen').classList.add('hidden');
-            }, 2500);
-        };
+        // Professional Splash Screen Animation
+        window.addEventListener('load', function() {
+            const splashScreen = document.getElementById('splash-screen');
+            // Wait for progress bar animation to complete (3.2s total: 1.2s delay + 2s animation)
+            setTimeout(function() {
+                splashScreen.classList.add('hidden');
+            }, 3500);
+        });
 
+        // Password Toggle
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('Password');
+
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // Form Submit Loading
+        const loginForm = document.getElementById('loginForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        loginForm.addEventListener('submit', function() {
+            submitBtn.classList.add('loading');
+        });
+
+        // Input Focus Animation
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.parentElement.classList.add('focused');
+            });
+            input.addEventListener('blur', function() {
+                this.parentElement.parentElement.classList.remove('focused');
+            });
+        });
     </script>
 </body>
 </html>

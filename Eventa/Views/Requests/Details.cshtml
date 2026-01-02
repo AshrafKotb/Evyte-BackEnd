@@ -2,258 +2,1038 @@
 @model Request
 @{
     ViewData["Title"] = "تفاصيل الطلب";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "_Layout";
+
+    var statusClass = Model.Status == InvitationStatus.Approved ? "success" :
+                      Model.Status == InvitationStatus.Rejected ? "danger" : "warning";
+    var statusIcon = Model.Status == InvitationStatus.Approved ? "fa-check-circle" :
+                     Model.Status == InvitationStatus.Rejected ? "fa-times-circle" : "fa-clock";
+    var statusText = Model.Status == InvitationStatus.Approved ? "موافق عليها" :
+                     Model.Status == InvitationStatus.Rejected ? "مرفوضة" : "قيد الانتظار";
 }
 
-<section class="content-header">
-    <h1>تفاصيل الطلب</h1>
-    <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-dashboard"></i> الرئيسية</a></li>
-        <li><a asp-action="Index">الطلبات</a></li>
-        <li class="active">تفاصيل الطلب</li>
-    </ol>
-</section>
-
-<section class="content">
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <div class="alert alert-success alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4><i class="icon fa fa-check"></i> نجاح!</h4>
-            @TempData["SuccessMessage"]
-        </div>
-    }
-
-    <div class="box box-primary details-container">
-        <div class="box-header with-border">
-            <h3 class="box-title">معلومات الطلب</h3>
-            <div class="box-tools pull-left">
-                <span class="label @(Model.Status == InvitationStatus.Approved ? "label-success" :
-                                    Model.Status == InvitationStatus.Rejected ? "label-danger" : "label-warning")">
-                    @Model.Status
-                </span>
-                @if (Model.Status == InvitationStatus.Approved && Model.ApprovedDate.HasValue)
-                {
-                    <span class="label label-default" style="margin-left: 5px;">
-                        <i class="fa fa-calendar"></i> @Model.ApprovedDate.Value.ToString("yyyy-MM-dd")
-                    </span>
-                }
-            </div>
-        </div>
-        <div class="box-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="info-box">
-                        <h4 class="info-box-title">معلومات المستخدم</h4>
-                        <div class="info-box-content">
-                            <p><i class="fa fa-user"></i> <strong>الاسم:</strong> @Model.User.FullName</p>
-                            <p><i class="fa fa-phone"></i> <strong>رقم الهاتف:</strong> @Model.User.PhoneNumber</p>
-                            <p><i class="fa fa-envelope"></i> <strong>البريد الإلكتروني:</strong> @Model.User.Email</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-box">
-                        <h4 class="info-box-title">تفاصيل الحدث</h4>
-                        <div class="info-box-content">
-                            <p><i class="fa fa-calendar"></i> <strong>التاريخ:</strong> @Model.RequestData.EventDate.ToString("yyyy-MM-dd")</p>
-                            <p><i class="fa fa-clock-o"></i> <strong>الوقت:</strong> @Model.RequestData.EventTimeFrom - @Model.RequestData.EventTimeTo</p>
-                            <p><i class="fa fa-map-marker"></i> <strong>اسم المكان:</strong> @Model.RequestData.EventPlaceName</p>
-                            <p><i class="fa fa-location-arrow"></i> <strong>العنوان:</strong> @Model.RequestData.EventAddress</p>
-                            <p><i class="fa fa-link"></i> <strong>رابط الموقع:</strong> <a href="@Model.RequestData.LocationUrl" target="_blank">@Model.RequestData.LocationUrl</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="info-box">
-                        <h4 class="info-box-title">معلومات العريس</h4>
-                        <div class="info-box-content">
-                            <p><i class="fa fa-male"></i> <strong>الاسم:</strong> @Model.RequestData.GroomName</p>
-                            <div class="text-center">
-                                <img src="@Model.RequestData.GroomImageUrl" alt="Groom" class="img-thumbnail detail-img" onerror="this.src='/images/default-user.png'" />
-                            </div>
-                            <div class="social-links">
-                                @if (!string.IsNullOrEmpty(Model.RequestData.GroomFacebook))
-                                {
-                                    <a href="@Model.RequestData.GroomFacebook" target="_blank" class="btn btn-facebook btn-xs"><i class="fa fa-facebook"></i> فيسبوك</a>
-                                }
-                                @if (!string.IsNullOrEmpty(Model.RequestData.GroomInstagram))
-                                {
-                                    <a href="@Model.RequestData.GroomInstagram" target="_blank" class="btn btn-instagram btn-xs"><i class="fa fa-instagram"></i> إنستغرام</a>
-                                }
-                                @if (!string.IsNullOrEmpty(Model.RequestData.GroomX))
-                                {
-                                    <a href="@Model.RequestData.GroomX" target="_blank" class="btn btn-twitter btn-xs"><i class="fa fa-twitter"></i> إكس</a>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-box">
-                        <h4 class="info-box-title">معلومات العروس</h4>
-                        <div class="info-box-content">
-                            <p><i class="fa fa-female"></i> <strong>الاسم:</strong> @Model.RequestData.BrideName</p>
-                            <div class="text-center">
-                                <img src="@Model.RequestData.BrideImageUrl" alt="Bride" class="img-thumbnail detail-img" onerror="this.src='/images/default-user.png'" />
-                            </div>
-                            <div class="social-links">
-                                @if (!string.IsNullOrEmpty(Model.RequestData.BrideFacebook))
-                                {
-                                    <a href="@Model.RequestData.BrideFacebook" target="_blank" class="btn btn-facebook btn-xs"><i class="fa fa-facebook"></i> فيسبوك</a>
-                                }
-                                @if (!string.IsNullOrEmpty(Model.RequestData.BrideInstagram))
-                                {
-                                    <a href="@Model.RequestData.BrideInstagram" target="_blank" class="btn btn-instagram btn-xs"><i class="fa fa-instagram"></i> إنستغرام</a>
-                                }
-                                @if (!string.IsNullOrEmpty(Model.RequestData.BrideX))
-                                {
-                                    <a href="@Model.RequestData.BrideX" target="_blank" class="btn btn-twitter btn-xs"><i class="fa fa-twitter"></i> إكس</a>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="info-box">
-                        <h4 class="info-box-title">صور الحدث</h4>
-                        <div class="info-box-content">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h5><i class="fa fa-image"></i> صورة المكان</h5>
-                                    <img src="@Model.RequestData.EventPlaceImageUrl" alt="Event Place" class="img-thumbnail event-img" onerror="this.src='/images/default-image.png'" />
-                                </div>
-                                <div class="col-md-6">
-                                    <h5><i class="fa fa-image"></i> صورة السلايدر الرئيسية</h5>
-                                    <img src="@Model.RequestData.MainSliderImageUrl" alt="Main Slider" class="img-thumbnail event-img" onerror="this.src='/images/default-image.png'" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="info-box">
-                        <h4 class="info-box-title">معرض الصور</h4>
-                        <div class="info-box-content">
-                            @if (Model.GalleryPhotos != null && Model.GalleryPhotos.Any())
-                            {
-                                <div class="gallery-grid">
-                                    @foreach (var photo in Model.GalleryPhotos)
-                                    {
-                                        <div class="gallery-item">
-                                            <img src="@photo.PhotoUrl" alt="Gallery Photo" class="img-thumbnail gallery-img" onerror="this.src='/images/default-image.png'" />
-                                        </div>
-                                    }
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="alert alert-info">لا توجد صور في المعرض.</div>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="info-box">
-                        <h4 class="info-box-title">معلومات إضافية</h4>
-                        <div class="info-box-content">
-                            <p><i class="fa fa-link"></i> <strong>رابط الدعوة:</strong> <a href="@Model.DomainUrl" target="_blank">@Model.DomainUrl</a></p>
-                            <p><i class="fa fa-qrcode"></i> <strong>رمز الاستجابة السريعة:</strong></p>
-                            <div class="text-center">
-                                <img src="@Model.QrCodeImageUrl" alt="QR Code" class="qr-code" onerror="this.src='/images/default-qr.png'" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="status-actions">
-                        <h4><i class="fa fa-cogs"></i> إدارة حالة الدعوة</h4>
-                        <div class="well">
-                            <p>
-                                <strong>الحالة الحالية:</strong>
-                                <span class="label @(Model.Status == InvitationStatus.Approved ? "label-success" :
-                                                  Model.Status == InvitationStatus.Rejected ? "label-danger" : "label-warning")">
-                                    @Model.Status
-                                </span>
-                            </p>
-
-                            @if (Model.Status == InvitationStatus.Approved)
-                            {
-                                <p><i class="fa fa-calendar-check-o"></i> <strong>تاريخ الموافقة:</strong> @Model.ApprovedDate?.ToString("yyyy-MM-dd HH:mm")</p>
-                            }
-                            else if (Model.Status == InvitationStatus.Rejected)
-                            {
-                                <p><i class="fa fa-comment"></i> <strong>سبب الرفض:</strong> @Model.RejectionReason</p>
-                            }
-                        </div>
-
-                        <div class="action-buttons">
-                            @if (Model.Status != InvitationStatus.Approved)
-                            {
-                                <form asp-action="Approve" method="post" style="display: inline;">
-                                    <input type="hidden" name="id" value="@Model.Id" />
-                                    <button type="submit" class="btn btn-success btn-lg">
-                                        <i class="fa fa-check-circle"></i> الموافقة على الدعوة
-                                    </button>
-                                </form>
-                            }
-
-                            @if (Model.Status != InvitationStatus.Rejected)
-                            {
-                                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#rejectModal">
-                                    <i class="fa fa-times-circle"></i> رفض الدعوة
-                                </button>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="box-footer">
-            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"><i class="fa fa-edit"></i> تعديل</a>
-            <a asp-action="Index" class="btn btn-default"><i class="fa fa-arrow-left"></i> رجوع</a>
+<!-- Page Header -->
+<div class="page-header animate-fade-in">
+    <div class="page-title">
+        <h1>
+            <i class="fas fa-file-alt"></i>
+            تفاصيل الطلب
+        </h1>
+        <div class="page-breadcrumb">
+            <a href="@Url.Action("Index", "cp")"><i class="fas fa-home"></i></a>
+            <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+            <a href="@Url.Action("Index", "Requests")">الطلبات</a>
+            <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+            <span>تفاصيل</span>
         </div>
     </div>
-</section>
+    <div class="page-actions">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">
+            <i class="fas fa-edit"></i>
+            تعديل
+        </a>
+        <a asp-action="Index" class="btn btn-ghost">
+            <i class="fas fa-arrow-right"></i>
+            رجوع للقائمة
+        </a>
+    </div>
+</div>
 
-<!-- Modal لرفض الدعوة -->
-<div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="rejectModalLabel"><i class="fa fa-exclamation-triangle"></i> رفض الدعوة</h4>
-            </div>
-            <form asp-action="Reject" method="post">
-                <div class="modal-body">
-                    <input type="hidden" name="id" value="@Model.Id" />
-                    <div class="form-group">
-                        <label for="rejectionReason">سبب الرفض</label>
-                        <textarea class="form-control" id="rejectionReason" name="rejectionReason" rows="5" required
-                                  placeholder="الرجاء إدخال سبب الرفض ليتم إبلاغ المستخدم..."></textarea>
+<!-- Success Message -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success animate-fade-in" style="margin-bottom: 24px;">
+        <i class="fas fa-check-circle"></i>
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<!-- Status Card -->
+<div class="card status-card animate-slide-in-up" style="--delay: 0.1s;">
+    <div class="card-body">
+        <div class="status-card-content">
+            <div class="status-info">
+                <div class="status-badge status-badge-@statusClass">
+                    <i class="fas @statusIcon"></i>
+                    <span>@statusText</span>
+                </div>
+                @if (Model.Status == InvitationStatus.Approved && Model.ApprovedDate.HasValue)
+                {
+                    <div class="status-date">
+                        <i class="fas fa-calendar-check"></i>
+                        تمت الموافقة: @Model.ApprovedDate.Value.ToString("yyyy/MM/dd - HH:mm")
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> إلغاء</button>
-                    <button type="submit" class="btn btn-danger"><i class="fa fa-ban"></i> تأكيد الرفض</button>
-                </div>
-            </form>
+                }
+                @if (Model.Status == InvitationStatus.Rejected && !string.IsNullOrEmpty(Model.RejectionReason))
+                {
+                    <div class="rejection-reason">
+                        <i class="fas fa-comment-alt"></i>
+                        سبب الرفض: @Model.RejectionReason
+                    </div>
+                }
+            </div>
+            <div class="status-actions">
+                @if (Model.Status != InvitationStatus.Approved)
+                {
+                    <form asp-action="Approve" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i>
+                            الموافقة
+                        </button>
+                    </form>
+                }
+                @if (Model.Status != InvitationStatus.Rejected)
+                {
+                    <button type="button" class="btn btn-danger" onclick="openRejectModal()">
+                        <i class="fas fa-times"></i>
+                        رفض
+                    </button>
+                }
+            </div>
         </div>
     </div>
 </div>
 
-@section Styles {
-    <link rel="stylesheet" href="~/css/requests/details.css" />
+<!-- Main Details Grid -->
+<div class="details-grid-layout">
+    <!-- User Info Card -->
+    <div class="card animate-slide-in-up" style="--delay: 0.2s;">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fas fa-user"></i>
+                معلومات المستخدم
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="info-list">
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-user"></i></div>
+                    <div class="info-content">
+                        <span class="info-label">الاسم</span>
+                        <span class="info-value">@Model.User?.FullName</span>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-phone"></i></div>
+                    <div class="info-content">
+                        <span class="info-label">رقم الهاتف</span>
+                        <span class="info-value" dir="ltr">@Model.User?.PhoneNumber</span>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="info-content">
+                        <span class="info-label">البريد الإلكتروني</span>
+                        <span class="info-value">@Model.User?.Email</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Details Card -->
+    <div class="card animate-slide-in-up" style="--delay: 0.3s;">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fas fa-calendar-alt"></i>
+                تفاصيل الحدث
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="info-list">
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="info-content">
+                        <span class="info-label">التاريخ</span>
+                        <span class="info-value">@Model.RequestData?.EventDate.ToString("yyyy/MM/dd")</span>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-clock"></i></div>
+                    <div class="info-content">
+                        <span class="info-label">الوقت</span>
+                        <span class="info-value">@Model.RequestData?.EventTimeFrom - @Model.RequestData?.EventTimeTo</span>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="info-content">
+                        <span class="info-label">اسم المكان</span>
+                        <span class="info-value">@Model.RequestData?.EventPlaceName</span>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-location-arrow"></i></div>
+                    <div class="info-content">
+                        <span class="info-label">العنوان</span>
+                        <span class="info-value">@Model.RequestData?.EventAddress</span>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-link"></i></div>
+                    <div class="info-content">
+                        <span class="info-label">رابط الموقع</span>
+                        <a href="@Model.RequestData?.LocationUrl" target="_blank" class="info-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            فتح الموقع
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Groom Info Card -->
+    <div class="card animate-slide-in-up" style="--delay: 0.4s;">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fas fa-male"></i>
+                معلومات العريس
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="person-card">
+                <div class="person-avatar">
+                    <img src="@Model.RequestData?.GroomImageUrl" alt="العريس" onerror="this.src='/images/default-user.png'" />
+                </div>
+                <h4 class="person-name">@Model.RequestData?.GroomName</h4>
+                <div class="social-links">
+                    @if (!string.IsNullOrEmpty(Model.RequestData?.GroomFacebook))
+                    {
+                        <a href="@Model.RequestData.GroomFacebook" target="_blank" class="social-link facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.RequestData?.GroomInstagram))
+                    {
+                        <a href="@Model.RequestData.GroomInstagram" target="_blank" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.RequestData?.GroomX))
+                    {
+                        <a href="@Model.RequestData.GroomX" target="_blank" class="social-link twitter">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bride Info Card -->
+    <div class="card animate-slide-in-up" style="--delay: 0.5s;">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fas fa-female"></i>
+                معلومات العروس
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="person-card">
+                <div class="person-avatar">
+                    <img src="@Model.RequestData?.BrideImageUrl" alt="العروس" onerror="this.src='/images/default-user.png'" />
+                </div>
+                <h4 class="person-name">@Model.RequestData?.BrideName</h4>
+                <div class="social-links">
+                    @if (!string.IsNullOrEmpty(Model.RequestData?.BrideFacebook))
+                    {
+                        <a href="@Model.RequestData.BrideFacebook" target="_blank" class="social-link facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.RequestData?.BrideInstagram))
+                    {
+                        <a href="@Model.RequestData.BrideInstagram" target="_blank" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.RequestData?.BrideX))
+                    {
+                        <a href="@Model.RequestData.BrideX" target="_blank" class="social-link twitter">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Event Photos Card -->
+<div class="card animate-slide-in-up" style="--delay: 0.6s; margin-top: 24px;">
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="fas fa-images"></i>
+            صور الحدث
+        </h3>
+    </div>
+    <div class="card-body">
+        <div class="photos-grid">
+            <div class="photo-item">
+                <div class="photo-label">صورة المكان</div>
+                <div class="photo-wrapper">
+                    <img src="@Model.RequestData?.EventPlaceImageUrl" alt="صورة المكان" onerror="this.src='/images/default-image.png'" />
+                    <div class="photo-overlay">
+                        <a href="@Model.RequestData?.EventPlaceImageUrl" target="_blank" class="photo-zoom">
+                            <i class="fas fa-search-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="photo-item">
+                <div class="photo-label">صورة السلايدر الرئيسية</div>
+                <div class="photo-wrapper">
+                    <img src="@Model.RequestData?.MainSliderImageUrl" alt="صورة السلايدر" onerror="this.src='/images/default-image.png'" />
+                    <div class="photo-overlay">
+                        <a href="@Model.RequestData?.MainSliderImageUrl" target="_blank" class="photo-zoom">
+                            <i class="fas fa-search-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Gallery Photos Card -->
+@if (Model.GalleryPhotos != null && Model.GalleryPhotos.Any())
+{
+    <div class="card animate-slide-in-up" style="--delay: 0.7s; margin-top: 24px;">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fas fa-th"></i>
+                معرض الصور
+                <span class="badge badge-primary" style="margin-right: 8px;">@Model.GalleryPhotos.Count</span>
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="gallery-grid">
+                @foreach (var photo in Model.GalleryPhotos)
+                {
+                    <div class="gallery-item">
+                        <img src="@photo.PhotoUrl" alt="صورة المعرض" onerror="this.src='/images/default-image.png'" />
+                        <div class="gallery-overlay">
+                            <a href="@photo.PhotoUrl" target="_blank" class="gallery-zoom">
+                                <i class="fas fa-expand"></i>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
 }
+
+<!-- Invitation Link & QR Card -->
+<div class="card animate-slide-in-up" style="--delay: 0.8s; margin-top: 24px;">
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="fas fa-link"></i>
+            رابط الدعوة ورمز QR
+        </h3>
+    </div>
+    <div class="card-body">
+        <div class="invitation-link-section">
+            <div class="link-box">
+                <div class="link-label">
+                    <i class="fas fa-globe"></i>
+                    رابط الدعوة
+                </div>
+                <div class="link-content">
+                    <input type="text" class="link-input" value="@Model.DomainUrl" readonly id="invitationUrl" />
+                    <button type="button" class="btn btn-primary btn-sm" onclick="copyLink()">
+                        <i class="fas fa-copy"></i>
+                        نسخ
+                    </button>
+                    <a href="@Model.DomainUrl" target="_blank" class="btn btn-ghost btn-sm">
+                        <i class="fas fa-external-link-alt"></i>
+                        فتح
+                    </a>
+                </div>
+            </div>
+            <div class="qr-box">
+                <div class="qr-label">
+                    <i class="fas fa-qrcode"></i>
+                    رمز QR
+                </div>
+                <div class="qr-wrapper">
+                    <img src="@Model.QrCodeImageUrl" alt="QR Code" onerror="this.style.display='none'" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Reject Modal -->
+<div class="modal-overlay" id="rejectModal">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h3 class="modal-title">
+                <i class="fas fa-exclamation-triangle"></i>
+                رفض الدعوة
+            </h3>
+            <button type="button" class="modal-close" onclick="closeRejectModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <form asp-action="Reject" method="post">
+            <div class="modal-body">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <div class="form-group">
+                    <label for="rejectionReason">سبب الرفض</label>
+                    <textarea class="form-control" id="rejectionReason" name="rejectionReason" rows="5" required
+                              placeholder="الرجاء إدخال سبب الرفض ليتم إبلاغ المستخدم..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-ghost" onclick="closeRejectModal()">
+                    <i class="fas fa-times"></i>
+                    إلغاء
+                </button>
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-ban"></i>
+                    تأكيد الرفض
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    /* Status Card */
+    .status-card {
+        background: var(--glass-bg);
+        border: 1px solid var(--border-color);
+        margin-bottom: 24px;
+    }
+
+    .status-card-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .status-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        border-radius: var(--radius-full);
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    .status-badge-success {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+    .status-badge-warning {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        color: white;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+
+    .status-badge-danger {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        color: white;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    }
+
+    .status-date, .rejection-reason {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .rejection-reason {
+        color: var(--danger);
+        background: rgba(239, 68, 68, 0.1);
+        padding: 8px 12px;
+        border-radius: var(--radius-md);
+        max-width: 400px;
+    }
+
+    .status-actions {
+        display: flex;
+        gap: 12px;
+    }
+
+    /* Details Grid Layout */
+    .details-grid-layout {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    /* Info List */
+    .info-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .info-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 16px;
+        background: var(--glass-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        transition: var(--transition-base);
+    }
+
+    .info-row:hover {
+        background: var(--bg-hover);
+        border-color: var(--primary);
+        transform: translateX(-4px);
+    }
+
+    .info-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        background: linear-gradient(135deg, var(--primary) 0%, #764ba2 100%);
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.95rem;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+    }
+
+    .info-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .info-label {
+        font-size: 0.8rem;
+        color: var(--gray-400);
+        font-weight: 500;
+    }
+
+    .info-value {
+        font-size: 1rem;
+        color: var(--white);
+        font-weight: 600;
+    }
+
+    .info-link {
+        color: var(--primary);
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: var(--transition-base);
+    }
+
+    .info-link:hover {
+        color: var(--accent-gold);
+    }
+
+    /* Person Card */
+    .person-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .person-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid var(--accent-gold);
+        box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+        margin-bottom: 16px;
+        transition: var(--transition-base);
+    }
+
+    .person-avatar:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 32px rgba(212, 165, 116, 0.4);
+    }
+
+    .person-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .person-name {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 12px;
+        background: var(--gradient-gold);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 12px;
+    }
+
+    .social-link {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.9rem;
+        transition: var(--transition-base);
+    }
+
+    .social-link.facebook {
+        background: linear-gradient(135deg, #1877f2 0%, #0d5ecf 100%);
+    }
+
+    .social-link.instagram {
+        background: linear-gradient(135deg, #e4405f 0%, #c13584 100%);
+    }
+
+    .social-link.twitter {
+        background: linear-gradient(135deg, #1da1f2 0%, #0c85d0 100%);
+    }
+
+    .social-link:hover {
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Photos Grid */
+    .photos-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .photo-item {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .photo-label {
+        font-size: 0.9rem;
+        color: var(--gray-400);
+        font-weight: 500;
+    }
+
+    .photo-wrapper {
+        position: relative;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 2px solid var(--border-color);
+        aspect-ratio: 16/10;
+    }
+
+    .photo-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition-base);
+    }
+
+    .photo-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: var(--transition-base);
+    }
+
+    .photo-wrapper:hover .photo-overlay {
+        opacity: 1;
+    }
+
+    .photo-wrapper:hover img {
+        transform: scale(1.05);
+    }
+
+    .photo-zoom {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--white);
+        color: var(--gray-900);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        transition: var(--transition-base);
+    }
+
+    .photo-zoom:hover {
+        transform: scale(1.1);
+        background: var(--accent-gold);
+        color: white;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 16px;
+    }
+
+    .gallery-item {
+        position: relative;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        aspect-ratio: 1;
+        cursor: pointer;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition-base);
+    }
+
+    .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: var(--transition-base);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.1);
+    }
+
+    .gallery-zoom {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--white);
+        color: var(--gray-900);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition-base);
+    }
+
+    .gallery-zoom:hover {
+        background: var(--accent-gold);
+        color: white;
+    }
+
+    /* Invitation Link Section */
+    .invitation-link-section {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 32px;
+        align-items: start;
+    }
+
+    .link-box {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .link-label, .qr-label {
+        font-size: 0.9rem;
+        color: var(--gray-400);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .link-content {
+        display: flex;
+        gap: 8px;
+    }
+
+    .link-input {
+        flex: 1;
+        padding: 12px 16px;
+        background: var(--glass-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        color: var(--white);
+        font-family: monospace;
+        font-size: 0.9rem;
+    }
+
+    .qr-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .qr-wrapper {
+        width: 150px;
+        height: 150px;
+        background: white;
+        border-radius: var(--radius-md);
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .qr-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* Modal */
+    .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .modal-container {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-xl);
+        width: 100%;
+        max-width: 500px;
+        margin: 20px;
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-container {
+        transform: scale(1);
+    }
+
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .modal-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--danger);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .modal-close {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--glass-bg);
+        border: 1px solid var(--border-color);
+        color: var(--gray-400);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition-base);
+    }
+
+    .modal-close:hover {
+        background: var(--danger);
+        border-color: var(--danger);
+        color: white;
+    }
+
+    .modal-body {
+        padding: 24px;
+    }
+
+    .modal-body .form-group {
+        margin-bottom: 0;
+    }
+
+    .modal-body textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        padding: 16px 24px;
+        border-top: 1px solid var(--border-color);
+        background: var(--glass-bg);
+        border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+    }
+
+    /* Light Mode */
+    [data-theme="light"] .info-value {
+        color: var(--text-primary);
+    }
+
+    [data-theme="light"] .person-name {
+        -webkit-text-fill-color: initial;
+        color: var(--text-primary);
+        background: none;
+    }
+
+    [data-theme="light"] .link-input {
+        color: var(--text-primary);
+    }
+
+    /* Responsive */
+    @@media (max-width: 992px) {
+        .details-grid-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .photos-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .invitation-link-section {
+            grid-template-columns: 1fr;
+        }
+
+        .qr-box {
+            align-items: flex-start;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .status-card-content {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .status-actions {
+            width: 100%;
+        }
+
+        .status-actions .btn {
+            flex: 1;
+        }
+
+        .link-content {
+            flex-direction: column;
+        }
+
+        .link-content .btn {
+            width: 100%;
+        }
+
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Animations */
+    .animate-slide-in-up {
+        animation: slideInUp 0.5s ease forwards;
+        animation-delay: var(--delay, 0s);
+        opacity: 0;
+    }
+
+    @@keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<script>
+    function openRejectModal() {
+        document.getElementById('rejectModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeRejectModal() {
+        document.getElementById('rejectModal').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function copyLink() {
+        const input = document.getElementById('invitationUrl');
+        input.select();
+        document.execCommand('copy');
+
+        // Show feedback
+        const btn = event.target.closest('button');
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> تم النسخ';
+        btn.classList.add('btn-success');
+        btn.classList.remove('btn-primary');
+
+        setTimeout(() => {
+            btn.innerHTML = originalHtml;
+            btn.classList.remove('btn-success');
+            btn.classList.add('btn-primary');
+        }, 2000);
+    }
+
+    // Close modal on overlay click
+    document.getElementById('rejectModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeRejectModal();
+        }
+    });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeRejectModal();
+        }
+    });
+</script>

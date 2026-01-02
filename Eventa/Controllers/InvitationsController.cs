@@ -20,7 +20,24 @@ namespace Eventa.ApplicationCore.Controllers
             _designService = designService;
         }
 
-        // GET: /Invitations/Create?designId=GUID
+        // GET: /Invitations/CreateNew - New wizard-style form
+        [HttpGet]
+        public async Task<IActionResult> CreateNew(Guid? designId = null)
+        {
+            var designs = await _designService.GetAllDesignsAsync();
+            ViewBag.Designs = designs;
+            ViewBag.SelectedDesignId = designId;
+
+            var model = new CreateInvitationVM();
+            if (designId.HasValue && designId.Value != Guid.Empty)
+            {
+                model.DesignId = designId.Value;
+            }
+
+            return View(model);
+        }
+
+        // GET: /Invitations/Create?designId=GUID (legacy)
         [HttpGet]
         public IActionResult Create(Guid designId)
         {
@@ -34,12 +51,12 @@ namespace Eventa.ApplicationCore.Controllers
             var model = new CreateInvitationVM { DesignId = designId };
             return View(model);
         }
+
         // POST: /Invitations/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateInvitationVM dto)
         {
-
             if (dto.GroomImage != null)
             {
                 ModelState.Remove("GroomAvatar");
@@ -48,6 +65,13 @@ namespace Eventa.ApplicationCore.Controllers
             {
                 ModelState.Remove("BrideAvatar");
             }
+
+            // Remove validation for optional sections if not enabled
+            if (!dto.HasGallery)
+            {
+                ModelState.Remove("GalleryPhotos");
+            }
+
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.ToDictionary(

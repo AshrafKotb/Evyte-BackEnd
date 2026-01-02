@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Localization
 @model Eventa.ApplicationCore.Models.ViewModels.HomeIndexViewModel
 @{
     Layout = "~/Views/Shared/_WebsiteLayout.cshtml";
@@ -6,46 +6,108 @@
 }
 
 <style>
-    /* Add to your style.css */
-    .wpo-demo-grids .grid {
-        margin-bottom: 30px;
-        text-align: center;
-    }
-
-    .wpo-demo-grids .inner {
-        position: relative;
-        overflow: hidden;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
+    /* Page-specific styles - Main styles are in modern-home.css */
     .preview-link {
         display: block;
         position: relative;
     }
 
-    .preview-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(139, 92, 246, 16%);
+    /* Create Invitation Button */
+    .create-invitation-btn {
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 8px;
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
         opacity: 0;
-        transition: all 0.3s ease;
-    }
-
-    .preview-link:hover .preview-overlay {
-        opacity: 1;
-    }
-
-    .preview-overlay span {
+        background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
         color: white;
-        font-weight: bold;
-        font-size: 1.2rem;
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10;
+        white-space: nowrap;
+    }
+
+    .create-invitation-btn i {
+        font-size: 0.9rem;
+        transition: transform 0.3s ease;
+    }
+
+    .grid:hover .create-invitation-btn {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .create-invitation-btn:hover {
+        background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
+        box-shadow: 0 12px 35px rgba(139, 92, 246, 0.5);
+        transform: translateX(-50%) translateY(-3px) !important;
+        color: white;
+    }
+
+    .create-invitation-btn:hover i {
+        transform: rotate(90deg);
+    }
+
+    .grid .inner {
+        position: relative;
+        overflow: visible !important;
+    }
+
+    /* General CTA Button */
+    .designs-cta {
+        text-align: center;
+        padding: 60px 0;
+        background: linear-gradient(135deg, #faf5ff 0%, #fdf2f8 100%);
+        margin-top: 40px;
+    }
+
+    .designs-cta h2 {
+        font-size: 2rem;
+        color: #1f2937;
+        margin-bottom: 15px;
+    }
+
+    .designs-cta p {
+        color: #6b7280;
+        margin-bottom: 25px;
+    }
+
+    .cta-btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+        color: white;
+        padding: 15px 35px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-decoration: none;
+        box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cta-btn-primary:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(139, 92, 246, 0.5);
+        color: white;
+    }
+
+    .cta-btn-primary i {
+        transition: transform 0.3s ease;
+    }
+
+    .cta-btn-primary:hover i {
+        transform: translateX(-5px);
     }
 </style>
 
@@ -78,6 +140,10 @@
                                         <span>@(isEnglish ? "preview" : "معاينة")</span>
                                     </div>
                                 </a>
+                                <a href="@Url.Action("CreateNew", "Invitations", new { designId = template.Id })" class="create-invitation-btn">
+                                    <i class="fas fa-plus"></i>
+                                    @(isEnglish ? "Create Invitation" : "إنشاء دعوة")
+                                </a>
                             </div>
                             <h3>@template.Name</h3>
                         </div>
@@ -88,3 +154,15 @@
     </div>
 </section>
 <!-- end of demo section -->
+
+<!-- CTA Section -->
+<section class="designs-cta">
+    <div class="container">
+        <h2>@(isEnglish ? "Haven't chosen yet? No worries!" : "لم تختر بعد؟ لا تقلق!")</h2>
+        <p>@(isEnglish ? "Start creating your invitation and choose a design along the way" : "ابدأ إنشاء دعوتك واختر التصميم خلال العملية")</p>
+        <a href="@Url.Action("CreateNew", "Invitations")" class="cta-btn-primary">
+            <i class="fas fa-magic"></i>
+            @(isEnglish ? "Start Creating Now" : "ابدأ الإنشاء الآن")
+        </a>
+    </div>
+</section>

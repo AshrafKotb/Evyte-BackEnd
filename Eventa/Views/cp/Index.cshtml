@@ -1,6 +1,361 @@
-﻿@{
-    ViewData["Title"] = "Index";
+@model DashboardVM
+@{
+    ViewData["Title"] = "لوحة التحكم";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<!-- Page Header -->
+<div class="page-header animate-fade-in">
+    <div class="page-title">
+        <h1>
+            <i class="fas fa-chart-pie"></i>
+            لوحة التحكم
+        </h1>
+        <div class="page-breadcrumb">
+            <a href="@Url.Action("Index", "cp")"><i class="fas fa-home"></i></a>
+            <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+            <span>الرئيسية</span>
+        </div>
+    </div>
+    <div class="page-actions">
+        <a href="@Url.Action("Index", "Requests")" class="btn btn-primary">
+            <i class="fas fa-list"></i>
+            عرض الطلبات
+        </a>
+    </div>
+</div>
 
+<!-- Stats Cards -->
+<div class="stats-grid">
+    <!-- Total Requests -->
+    <div class="stat-card animate-slide-in-up">
+        <div class="stat-icon">
+            <i class="fas fa-envelope-open-text"></i>
+        </div>
+        <div class="stat-content">
+            <h3>إجمالي الطلبات</h3>
+            <div class="stat-value" data-target="@Model.TotalRequests">0</div>
+            <div class="stat-change">
+                <span style="color: #fbbf24;"><i class="fas fa-clock"></i> @Model.PendingRequests قيد الانتظار</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Customers -->
+    <div class="stat-card gold animate-slide-in-up">
+        <div class="stat-icon">
+            <i class="fas fa-users"></i>
+        </div>
+        <div class="stat-content">
+            <h3>إجمالي العملاء</h3>
+            <div class="stat-value" data-target="@Model.TotalCustomers">0</div>
+            <div class="stat-change">
+                <i class="fas fa-user-check"></i>
+                <span>عملاء نشطين</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Designs -->
+    <div class="stat-card emerald animate-slide-in-up">
+        <div class="stat-icon">
+            <i class="fas fa-palette"></i>
+        </div>
+        <div class="stat-content">
+            <h3>إجمالي التصميمات</h3>
+            <div class="stat-value" data-target="@Model.TotalDesigns">0</div>
+            <div class="stat-change">
+                <i class="fas fa-check"></i>
+                <span>تصميم متاح</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Categories -->
+    <div class="stat-card rose animate-slide-in-up">
+        <div class="stat-icon">
+            <i class="fas fa-layer-group"></i>
+        </div>
+        <div class="stat-content">
+            <h3>إجمالي الأقسام</h3>
+            <div class="stat-value" data-target="@Model.TotalCategories">0</div>
+            <div class="stat-change">
+                <i class="fas fa-folder"></i>
+                <span>قسم نشط</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Request Status Cards -->
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px;">
+    <div class="card animate-slide-in-up" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.05) 100%); border: 1px solid rgba(245, 158, 11, 0.3);">
+        <div class="card-body" style="display: flex; align-items: center; gap: 15px; padding: 20px;">
+            <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(245, 158, 11, 0.2); display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-clock" style="color: #fbbf24; font-size: 1.3rem;"></i>
+            </div>
+            <div>
+                <h3 style="color: #fbbf24; font-size: 1.8rem; margin: 0;">@Model.PendingRequests</h3>
+                <p style="color: #94a3b8; margin: 0; font-size: 0.9rem;">قيد الانتظار</p>
+            </div>
+        </div>
+    </div>
+    <div class="card animate-slide-in-up" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%); border: 1px solid rgba(16, 185, 129, 0.3);">
+        <div class="card-body" style="display: flex; align-items: center; gap: 15px; padding: 20px;">
+            <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(16, 185, 129, 0.2); display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-check-circle" style="color: #34d399; font-size: 1.3rem;"></i>
+            </div>
+            <div>
+                <h3 style="color: #34d399; font-size: 1.8rem; margin: 0;">@Model.ApprovedRequests</h3>
+                <p style="color: #94a3b8; margin: 0; font-size: 0.9rem;">مقبول</p>
+            </div>
+        </div>
+    </div>
+    <div class="card animate-slide-in-up" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.05) 100%); border: 1px solid rgba(239, 68, 68, 0.3);">
+        <div class="card-body" style="display: flex; align-items: center; gap: 15px; padding: 20px;">
+            <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(239, 68, 68, 0.2); display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-times-circle" style="color: #f87171; font-size: 1.3rem;"></i>
+            </div>
+            <div>
+                <h3 style="color: #f87171; font-size: 1.8rem; margin: 0;">@Model.RejectedRequests</h3>
+                <p style="color: #94a3b8; margin: 0; font-size: 0.9rem;">مرفوض</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts Row -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px; margin-bottom: 30px;">
+    <!-- Requests Chart -->
+    <div class="card animate-slide-in-up">
+        <div class="card-header">
+            <div class="card-title">
+                <i class="fas fa-chart-line"></i>
+                <span>الطلبات خلال الأشهر</span>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="chart-container">
+                <canvas id="requestsChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Distribution -->
+    <div class="card animate-slide-in-up">
+        <div class="card-header">
+            <div class="card-title">
+                <i class="fas fa-chart-pie"></i>
+                <span>توزيع الأقسام</span>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="chart-container">
+                <canvas id="categoriesChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions & Recent Activity -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px;">
+    <!-- Quick Actions -->
+    <div class="card animate-slide-in-up">
+        <div class="card-header">
+            <div class="card-title">
+                <i class="fas fa-bolt"></i>
+                <span>إجراءات سريعة</span>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="quick-actions">
+                <a href="@Url.Action("Create", "Categories")" class="quick-action-card">
+                    <i class="fas fa-folder-plus"></i>
+                    <span>قسم جديد</span>
+                </a>
+                <a href="@Url.Action("Create", "Designs")" class="quick-action-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>تصميم جديد</span>
+                </a>
+                <a href="@Url.Action("Index", "Customers")" class="quick-action-card">
+                    <i class="fas fa-user-plus"></i>
+                    <span>العملاء</span>
+                </a>
+                <a href="@Url.Action("Index", "Requests")" class="quick-action-card">
+                    <i class="fas fa-list-alt"></i>
+                    <span>الطلبات</span>
+                </a>
+                <a href="@Url.Action("ContactInfo", "GI")" class="quick-action-card">
+                    <i class="fas fa-address-card"></i>
+                    <span>بيانات التواصل</span>
+                </a>
+                <a href="@Url.Action("Create", "FAQs")" class="quick-action-card">
+                    <i class="fas fa-question"></i>
+                    <span>سؤال جديد</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Requests -->
+    <div class="card animate-slide-in-up">
+        <div class="card-header">
+            <div class="card-title">
+                <i class="fas fa-clock"></i>
+                <span>آخر الطلبات</span>
+            </div>
+            <a href="@Url.Action("Index", "Requests")" class="btn btn-ghost btn-sm">
+                عرض الكل
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+        <div class="card-body" style="padding: 0;">
+            <div class="activity-list">
+                @if (!Model.RecentRequests.Any())
+                {
+                    <div class="empty-state" style="padding: 40px 20px;">
+                        <i class="fas fa-inbox" style="font-size: 2.5rem; color: #4b5563; margin-bottom: 15px;"></i>
+                        <h3>لا توجد طلبات</h3>
+                        <p style="color: #6b7280;">لم يتم إنشاء أي طلبات بعد.</p>
+                    </div>
+                }
+                else
+                {
+                    @foreach (var request in Model.RecentRequests)
+                    {
+                        <a href="@Url.Action("Details", "Requests", new { id = request.Id })" class="activity-item" style="text-decoration: none; display: flex;">
+                            <div class="activity-icon" style="background: @(request.Status == "Pending" ? "rgba(245, 158, 11, 0.2)" : request.Status == "Approved" ? "rgba(16, 185, 129, 0.2)" : "rgba(239, 68, 68, 0.2)");">
+                                <i class="fas @(request.Status == "Pending" ? "fa-clock" : request.Status == "Approved" ? "fa-check" : "fa-times")"
+                                   style="color: @(request.Status == "Pending" ? "#fbbf24" : request.Status == "Approved" ? "#34d399" : "#f87171");"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>@request.CustomerName</h4>
+                                <p>@request.DesignName - @request.CategoryName</p>
+                            </div>
+                            <span class="activity-time">@request.TimeAgo</span>
+                        </a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Animate numbers
+        function animateNumber(element, target, duration = 1000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target.toLocaleString('ar-EG');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start).toLocaleString('ar-EG');
+                }
+            }, 16);
+        }
+
+        // Initialize animations and charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate stat values
+            document.querySelectorAll('.stat-value[data-target]').forEach(el => {
+                const target = parseInt(el.dataset.target) || 0;
+                animateNumber(el, target);
+            });
+
+            // Monthly data from server
+            const monthlyData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.MonthlyRequests));
+            const monthLabels = monthlyData.map(m => m.monthName);
+            const monthCounts = monthlyData.map(m => m.count);
+
+            // Requests Chart
+            const requestsCtx = document.getElementById('requestsChart').getContext('2d');
+            new Chart(requestsCtx, {
+                type: 'line',
+                data: {
+                    labels: monthLabels,
+                    datasets: [{
+                        label: 'الطلبات',
+                        data: monthCounts,
+                        borderColor: '#6366f1',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#6366f1',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: '#94a3b8'
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: '#94a3b8'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Category data from server
+            const categoryData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.CategoryStats));
+            const categoryLabels = categoryData.length > 0 ? categoryData.map(c => c.categoryName) : ['لا توجد بيانات'];
+            const categoryCounts = categoryData.length > 0 ? categoryData.map(c => c.requestCount) : [1];
+            const categoryColors = categoryData.length > 0 ? categoryData.map(c => c.color) : ['#6366f1'];
+
+            // Categories Chart
+            const categoriesCtx = document.getElementById('categoriesChart').getContext('2d');
+            new Chart(categoriesCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: categoryLabels,
+                    datasets: [{
+                        data: categoryCounts,
+                        backgroundColor: categoryColors,
+                        borderWidth: 0,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#94a3b8',
+                                padding: 20,
+                                usePointStyle: true
+                            }
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        });
+    </script>
+}

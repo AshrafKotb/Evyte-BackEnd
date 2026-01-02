@@ -1,38 +1,45 @@
-﻿@model CategoryIndexVM
+@model CategoryIndexVM
 @{
     ViewData["Title"] = "الأقسام";
     Layout = "_Layout";
-    ViewData["Dir"] = "rtl"; // للدعم الكامل للعربية
 }
-<link rel="stylesheet" href="~/css/categories.css" />
 
-<div class="container-fluid py-4">
-    <div class="category-header d-flex align-items-center justify-content-center">
-        <h1 class="text-white page-title">@ViewData["Title"]</h1>
+<!-- Page Header -->
+<div class="page-header animate-fade-in">
+    <div class="page-title">
+        <h1>
+            <i class="fas fa-layer-group"></i>
+            الأقسام
+        </h1>
+        <div class="page-breadcrumb">
+            <a href="@Url.Action("Index", "cp")"><i class="fas fa-home"></i></a>
+            <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+            <span>الأقسام</span>
+        </div>
     </div>
-
-    <div class="category-search-container">
-        <form asp-action="Index" method="get" class="category-search">
-            <div class="input-group">
-                <input type="text" class="form-control"
-                       name="searchTerm" value="@Model.SearchTerm"
-                       placeholder="ابحث عن قسم...">
-                <button type="submit" class="btn">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </form>
-    </div>
-
-    <div class="controls-container d-flex justify-content-between align-items-center mb-3">
-        <a asp-action="Create" class="btn btn-success create-btn">
-            <i class="fas fa-plus me-2"></i>إضافة قسم جديد
+    <div class="page-actions">
+        <a asp-action="Create" class="btn btn-gold">
+            <i class="fas fa-plus"></i>
+            إضافة قسم جديد
         </a>
-        <div class="page-size-selector">
-            <label for="pageSize" class="me-2">عناصر لكل صفحة:</label>
-            <form asp-action="Index" method="get" id="pageSizeForm">
-                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
-                <select id="pageSize" name="pageSize" class="form-select" onchange="this.form.submit()">
+    </div>
+</div>
+
+<!-- Search & Filter Card -->
+<div class="card animate-slide-in-up" style="margin-bottom: 24px;">
+    <div class="card-body" style="padding: 20px;">
+        <form asp-action="Index" method="get" class="d-flex gap-3 align-items-end flex-wrap">
+            <div class="form-group" style="flex: 1; min-width: 250px; margin-bottom: 0;">
+                <label class="form-label">بحث</label>
+                <div style="position: relative;">
+                    <input type="text" class="form-control" name="searchTerm" value="@Model.SearchTerm"
+                           placeholder="ابحث عن قسم..." style="padding-right: 40px;">
+                    <i class="fas fa-search" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--gray-400);"></i>
+                </div>
+            </div>
+            <div class="form-group" style="min-width: 150px; margin-bottom: 0;">
+                <label class="form-label">عدد العناصر</label>
+                <select name="pageSize" class="form-control" onchange="this.form.submit()">
                     @foreach (var option in Model.PageSizeOptions)
                     {
                         <option value="@option.Value" selected="@(Model.PageSize.ToString() == option.Value)">
@@ -40,59 +47,127 @@
                         </option>
                     }
                 </select>
-            </form>
+            </div>
+            <button type="submit" class="btn btn-primary" style="height: 48px;">
+                <i class="fas fa-search"></i>
+                بحث
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Data Table Card -->
+<div class="card animate-slide-in-up">
+    <div class="card-header">
+        <div class="card-title">
+            <i class="fas fa-list"></i>
+            <span>قائمة الأقسام</span>
+        </div>
+        <div class="card-actions">
+            <span class="badge badge-primary" style="padding: 8px 15px; border-radius: 20px;">
+                @Model.Categories.Count() قسم
+            </span>
         </div>
     </div>
-
-    <div class="category-table">
+    <div class="card-body" style="padding: 0;">
         <div class="table-responsive">
-            <table class="table table-hover mb-0">
+            <table class="modern-table">
                 <thead>
                     <tr>
-                        <th>الترتيب</th>
-                        <th>الاسم</th>
-                        <th>الصورة</th>
-                        <th>الحاله</th>
-                        <th>الإجراءات</th>
+                        <th style="width: 80px;">الترتيب</th>
+                        <th>القسم</th>
+                        <th style="width: 100px;">الصورة</th>
+                        <th style="width: 100px;">الحالة</th>
+                        <th style="width: 150px;">الإجراءات</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Categories)
+                    @if (!Model.Categories.Any())
                     {
                         <tr>
-                            <td class="text-center"><span class="badge badge-Sorting">@item.SortingNumber</span></td>
-                            <td class="text-center">@item.NameAr<br />@item.NameEn</td>
-                            <td class="text-center">
-                                <img src="@item.ImageUrl" href="@item.ImageUrl" class="category-img" alt="صورة الفئة">
-                            </td>
-                            @if (item.IsDeleted)
-                            {
-                                <td class="text-center"><span class="badge badge-deleted">محذوف</span></td>
-                            }
-                            else
-                            {
-                                <td class="text-center"><span class="badge badge-active">متاح</span></td>
-                            }
-                            <td class="text-center">
-                                <div class="d-flex action-buttons gap-2 justify-content-center">
-                                    @if (!item.IsDeleted)
-                                    {
-                                        <a asp-action="Edit" asp-route-id="@item.Id"
-                                           class="btn btn-primary" title="تعديل">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a asp-action="Details" asp-route-id="@item.Id"
-                                           class="btn btn-info" title="التفاصيل">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    }
-                                    <button type="button" class="btn btn-action @(item.IsDeleted ? "btn-restore" : "btn-delete")"
-                                            data-id="@item.Id" data-action="@(item.IsDeleted ? "restore" : "delete")">
-                                        <i class="@(item.IsDeleted ? "fas fa-undo" : "fas fa-trash-alt")"></i>
-                                    </button>
+                            <td colspan="5">
+                                <div class="empty-state">
+                                    <i class="fas fa-folder-open"></i>
+                                    <h3>لا توجد أقسام</h3>
+                                    <p>لم يتم العثور على أي أقسام. يمكنك إضافة قسم جديد.</p>
+                                    <a asp-action="Create" class="btn btn-gold" style="margin-top: 15px;">
+                                        <i class="fas fa-plus"></i>
+                                        إضافة قسم جديد
+                                    </a>
                                 </div>
                             </td>
                         </tr>
+                    }
+                    else
+                    {
+                        @foreach (var item in Model.Categories)
+                        {
+                            <tr class="@(item.IsDeleted ? "table-row-deleted" : "")">
+                                <td>
+                                    <span class="sort-badge">
+                                        @item.SortingNumber
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="category-info-cell">
+                                        <div class="category-icon">
+                                            <i class="fas fa-folder"></i>
+                                        </div>
+                                        <div class="category-details">
+                                            <strong>@item.NameAr</strong>
+                                            <small>@item.NameEn</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                    {
+                                        <div class="category-image">
+                                            <img src="@item.ImageUrl" alt="@item.NameAr">
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="category-image-placeholder">
+                                            <i class="fas fa-image"></i>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.IsDeleted)
+                                    {
+                                        <span class="badge badge-danger">
+                                            <i class="fas fa-trash"></i> محذوف
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-success">
+                                            <i class="fas fa-check"></i> متاح
+                                        </span>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="table-actions">
+                                        @if (!item.IsDeleted)
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn-table-action btn-edit" title="تعديل">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a asp-action="Details" asp-route-id="@item.Id" class="btn-table-action btn-view" title="التفاصيل">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        }
+                                        <button type="button" class="btn-table-action @(item.IsDeleted ? "btn-restore" : "btn-delete") btn-action"
+                                                data-id="@item.Id"
+                                                data-action="@(item.IsDeleted ? "restore" : "delete")"
+                                                title="@(item.IsDeleted ? "استعادة" : "حذف")">
+                                            <i class="@(item.IsDeleted ? "fas fa-undo" : "fas fa-trash-alt")"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
                     }
                 </tbody>
             </table>
@@ -100,138 +175,198 @@
 
         @if (Model.TotalPages > 1)
         {
-            <div class="pagination-container">
-                <form id="paginationForm" asp-action="Index" method="get">
-                    <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
-                    <input type="hidden" name="pageSize" value="@Model.PageSize" />
-                    <nav aria-label="تصفح الصفحات">
-                        <ul class="pagination justify-content-center">
-                            <!-- زر السابق -->
-                            <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
-                                <a class="page-link"
-                                   asp-action="Index"
-                                   asp-route-page="@(Model.CurrentPage - 1)"
-                                   asp-route-pageSize="@Model.PageSize"
-                                   asp-route-searchTerm="@Model.SearchTerm"
-                                   aria-label="الصفحة السابقة">
-                                    <i class="fas fa-chevron-right"></i>
-                                </a>
-                            </li>
+            <div class="table-pagination">
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@(Model.CurrentPage - 1)"
+                               asp-route-pageSize="@Model.PageSize" asp-route-searchTerm="@Model.SearchTerm">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </li>
 
-                            <!-- الصفحة الأولى -->
-                            <li class="page-item @(Model.CurrentPage == 1 ? "active" : "")">
-                                <a class="page-link"
-                                   asp-action="Index"
-                                   asp-route-page="1"
-                                   asp-route-pageSize="@Model.PageSize"
-                                   asp-route-searchTerm="@Model.SearchTerm"
-                                   aria-current="@(Model.CurrentPage == 1 ? "page" : null)">1</a>
-                            </li>
-
-                            <!-- إضافة ... إذا كانت الصفحة الحالية بعيدة عن الصفحة الأولى -->
-                            @if (Model.CurrentPage > 3)
-                            {
-                                <li class="page-item disabled">
-                                    <span class="page-link">...</span>
-                                </li>
-                            }
-
-                            <!-- الصفحات المجاورة للصفحة الحالية -->
-                            @for (int i = Math.Max(2, Model.CurrentPage - 2); i <= Math.Min(Model.TotalPages - 1, Model.CurrentPage + 2); i++)
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            @if (i == 1 || i == Model.TotalPages || (i >= Model.CurrentPage - 2 && i <= Model.CurrentPage + 2))
                             {
                                 <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
-                                    <a class="page-link"
-                                       asp-action="Index"
-                                       asp-route-page="@i"
-                                       asp-route-pageSize="@Model.PageSize"
-                                       asp-route-searchTerm="@Model.SearchTerm"
-                                       aria-current="@(i == Model.CurrentPage ? "page" : null)">@i</a>
+                                    <a class="page-link" asp-action="Index" asp-route-page="@i"
+                                       asp-route-pageSize="@Model.PageSize" asp-route-searchTerm="@Model.SearchTerm">
+                                        @i
+                                    </a>
                                 </li>
                             }
-
-                            <!-- إضافة ... إذا كانت الصفحة الحالية بعيدة عن الصفحة الأخيرة -->
-                            @if (Model.CurrentPage < Model.TotalPages - 2)
+                            else if (i == Model.CurrentPage - 3 || i == Model.CurrentPage + 3)
                             {
                                 <li class="page-item disabled">
-                                    <span class="page-link">...</span>
+                                    <span class="page-link page-ellipsis">...</span>
                                 </li>
                             }
+                        }
 
-                            <!-- الصفحة الأخيرة (إذا لم تكن الصفحة الأولى هي الأخيرة) -->
-                            @if (Model.TotalPages > 1)
-                            {
-                                <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "active" : "")">
-                                    <a class="page-link"
-                                       asp-action="Index"
-                                       asp-route-page="@Model.TotalPages"
-                                       asp-route-pageSize="@Model.PageSize"
-                                       asp-route-searchTerm="@Model.SearchTerm"
-                                       aria-current="@(Model.CurrentPage == Model.TotalPages ? "page" : null)">@Model.TotalPages</a>
-                                </li>
-                            }
-
-                            <!-- زر التالي -->
-                            <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
-                                <a class="page-link"
-                                   asp-action="Index"
-                                   asp-route-page="@(Model.CurrentPage + 1)"
-                                   asp-route-pageSize="@Model.PageSize"
-                                   asp-route-searchTerm="@Model.SearchTerm"
-                                   aria-label="الصفحة التالية">
-                                    <i class="fas fa-chevron-left"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </form>
+                        <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@(Model.CurrentPage + 1)"
+                               asp-route-pageSize="@Model.PageSize" asp-route-searchTerm="@Model.SearchTerm">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         }
     </div>
 </div>
 
-<!-- مودال التأكيد -->
-<div class="modal fade confirmation-modal" id="confirmationModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">تأكيد الإجراء</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body text-center">
-                <i class="fas fa-exclamation-circle fa-3x text-warning mb-3"></i>
-                <p id="modalMessage" class="mb-0"></p>
-            </div>
-            <div class="modal-footer">
-                <form id="actionForm" method="post">
-                    @Html.AntiForgeryToken()
-                    <input type="hidden" id="categoryId" name="id" />
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
-                    <button type="submit" class="btn btn-confirm text-white">تأكيد</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<style>
+    /* Category-specific table styles */
+    .category-info-cell {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .category-icon {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(212, 165, 116, 0.2) 0%, rgba(212, 165, 116, 0.1) 100%);
+        border-radius: var(--radius-md);
+        color: var(--accent-gold);
+        font-size: 1.2rem;
+        box-shadow: 0 4px 12px rgba(212, 165, 116, 0.2);
+    }
+
+    .category-details {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .category-details strong {
+        color: var(--white);
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    .category-details small {
+        color: var(--gray-400);
+        font-size: 0.85rem;
+    }
+
+    .category-image {
+        width: 60px;
+        height: 60px;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        border: 2px solid var(--border-color);
+        transition: var(--transition-base);
+    }
+
+    .category-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .category-image:hover img {
+        transform: scale(1.1);
+    }
+
+    .category-image-placeholder {
+        width: 60px;
+        height: 60px;
+        border-radius: var(--radius-md);
+        background: var(--glass-bg);
+        border: 2px dashed var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray-400);
+        font-size: 1.2rem;
+    }
+
+    /* Deleted row styling */
+    .table-row-deleted {
+        opacity: 0.6;
+        background: rgba(244, 63, 94, 0.05) !important;
+    }
+
+    .table-row-deleted:hover {
+        opacity: 0.8;
+    }
+
+    /* Light mode overrides */
+    [data-theme="light"] .category-details strong {
+        color: var(--text-primary);
+    }
+
+    [data-theme="light"] .category-icon {
+        background: linear-gradient(135deg, rgba(212, 165, 116, 0.15) 0%, rgba(212, 165, 116, 0.08) 100%);
+        box-shadow: 0 4px 12px rgba(212, 165, 116, 0.15);
+    }
+
+    [data-theme="light"] .category-image {
+        border-color: var(--border-color);
+    }
+
+    [data-theme="light"] .category-image-placeholder {
+        background: rgba(0, 0, 0, 0.03);
+        border-color: var(--border-color);
+    }
+</style>
 
 @section Scripts {
     <script>
-        $(document).ready(function () {
-            $('.btn-action').click(function () {
-                const id = $(this).data('id');
-                const action = $(this).data('action');
-                const messages = {
-                    'delete': 'هل أنت متأكد من حذف هذه الفئة؟',
-                    'restore': 'هل أنت متأكد من استعادة هذه الفئة؟'
-                };
-                const urls = {
-                    'delete': '@Url.Action("Delete", "Categories")',
-                    'restore': '@Url.Action("Restore", "Categories")'
-                };
+        document.querySelectorAll('.btn-action').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = this.dataset.id;
+                const action = this.dataset.action;
+                const isDelete = action === 'delete';
+                const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
 
-                $('#modalMessage').text(messages[action]);
-                $('#categoryId').val(id);
-                $('#actionForm').attr('action', urls[action]);
-                $('#confirmationModal').modal('show');
+                Swal.fire({
+                    title: isDelete ? 'حذف القسم' : 'استعادة القسم',
+                    text: isDelete ? 'هل أنت متأكد من حذف هذا القسم؟' : 'هل أنت متأكد من استعادة هذا القسم؟',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: isDelete ? '#f43f5e' : '#10b981',
+                    cancelButtonColor: '#6366f1',
+                    confirmButtonText: isDelete ? 'نعم، احذف' : 'نعم، استعد',
+                    cancelButtonText: 'إلغاء',
+                    background: isDark ? '#1a1a2e' : '#ffffff',
+                    color: isDark ? '#fff' : '#0f172a',
+                    customClass: {
+                        popup: 'swal-modern-popup',
+                        title: 'swal-modern-title',
+                        confirmButton: 'swal-modern-confirm',
+                        cancelButton: 'swal-modern-cancel'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = isDelete ? '@Url.Action("Delete", "Categories")' : '@Url.Action("Restore", "Categories")';
+
+                        const tokenInput = document.createElement('input');
+                        tokenInput.type = 'hidden';
+                        tokenInput.name = '__RequestVerificationToken';
+                        tokenInput.value = '@Html.AntiForgeryToken()'.match(/value="([^"]+)"/)[1];
+                        form.appendChild(tokenInput);
+
+                        const idInput = document.createElement('input');
+                        idInput.type = 'hidden';
+                        idInput.name = 'id';
+                        idInput.value = id;
+                        form.appendChild(idInput);
+
+                        document.body.appendChild(form);
+                        form.submit();
+                    }
+                });
             });
         });
     </script>

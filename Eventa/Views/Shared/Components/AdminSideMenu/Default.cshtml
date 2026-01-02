@@ -1,73 +1,148 @@
-﻿@model SideMenuVM
-<aside class="main-sidebar animate__animated animate__slideInLeft">
-    <section class="sidebar">
-        <!-- User Panel -->
-        <div class="user-panel">
-            <div class="pull-right image">
-                <img src="~/Images/avatar.png" class="img-circle" alt="@Model.Name" />
-            </div>
-            <div class="pull-left info">
-                <p class="typing-effect" data-text="@Model.Name">@Model.Name</p>
-                <a href="#"><i class="fas fa-circle text-success"></i> متواجد</a>
+@model SideMenuVM
+
+<aside class="sidebar" id="sidebar">
+    <!-- Logo -->
+    <div class="sidebar-logo">
+        <a href="@Url.Action("Index", "cp")">
+            <img src="~/logo/yellow.png" alt="Eventa">
+            <span class="logo-text">Eventa</span>
+        </a>
+    </div>
+
+    <!-- User Panel -->
+    <div class="sidebar-user">
+        <div class="user-avatar">
+            <img src="~/Images/avatar.png" alt="@Model.Name">
+        </div>
+        <div class="user-info">
+            <h4>@Model.Name</h4>
+            <div class="user-status">
+                <span class="status-dot"></span>
+                <span>متصل الآن</span>
             </div>
         </div>
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu">
-            <li class="treeview @(Context.Request.Path.ToString().ToLower().Contains("cp") ? "active" : "")">
-                <a href="/cp/Index" class="nav-link">
-                    <i class="fas fa-chart-bar"></i> <span>التقارير</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav">
+        <!-- Main Menu -->
+        <div class="nav-section">
+            <span class="nav-section-title">القائمة الرئيسية</span>
+
+            <!-- Dashboard -->
+            <div class="nav-item @(Context.Request.Path.ToString().ToLower().EndsWith("/cp") || Context.Request.Path.ToString().ToLower().EndsWith("/cp/index") ? "active" : "")">
+                <a href="@Url.Action("Index", "cp")" class="nav-link @(Context.Request.Path.ToString().ToLower().EndsWith("/cp") || Context.Request.Path.ToString().ToLower().EndsWith("/cp/index") ? "active" : "")">
+                    <i class="fas fa-chart-pie"></i>
+                    <span class="nav-text">لوحة التحكم</span>
                 </a>
-            </li>
-            <li class="treeview @(Context.Request.Path.ToString().ToLower().Contains("requests") ? "active" : "")">
-                <a href="/Requests/" class="nav-link">
-                    <i class="fas fa-shopping-bag"></i> <span>كل الطلبات</span>
+            </div>
+
+            <!-- Requests -->
+            <div class="nav-item @(Context.Request.Path.ToString().ToLower().Contains("requests") ? "active" : "")">
+                <a href="@Url.Action("Index", "Requests")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("requests") ? "active" : "")">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <span class="nav-text">الطلبات</span>
                 </a>
-            </li>
-            <li class="treeview @(Context.Request.Path.ToString().ToLower().Contains("categories") ? "active" : "")">
+            </div>
+        </div>
+
+        <!-- Management -->
+        <div class="nav-section">
+            <span class="nav-section-title">الإدارة</span>
+
+            <!-- Categories -->
+            <div class="nav-item has-submenu @(Context.Request.Path.ToString().ToLower().Contains("categories") ? "open" : "")">
                 <a href="#" class="nav-link">
-                    <i class="fas fa-layer-group"></i> <span>إدارة الأقسام</span>
-                    <i class="fas fa-chevron-left pull-left"></i>
+                    <i class="fas fa-layer-group"></i>
+                    <span class="nav-text">الأقسام</span>
+                    <i class="fas fa-chevron-left nav-arrow"></i>
                 </a>
-                <ul class="treeview-menu @(Context.Request.Path.ToString().ToLower().Contains("categories/create") || Context.Request.Path.ToString().ToLower().Contains("categories/index") ? "menu-open" : "") animate__animated animate__slideInRight">
-                    <li><a href="@Url.Action("Create", "Categories")"><i class="fas fa-plus-circle"></i> قسم جديد</a></li>
-                    <li><a href="@Url.Action("Index", "Categories")"><i class="fas fa-list"></i> جميع الأقسام</a></li>
-                </ul>
-            </li>
-            <li class="treeview @(Context.Request.Path.ToString().ToLower().Contains("designs") ? "active" : "")">
+                <div class="nav-submenu">
+                    <a href="@Url.Action("Index", "Categories")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("categories/index") ? "active" : "")">
+                        <i class="fas fa-circle"></i>
+                        <span class="nav-text">جميع الأقسام</span>
+                    </a>
+                    <a href="@Url.Action("Create", "Categories")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("categories/create") ? "active" : "")">
+                        <i class="fas fa-circle"></i>
+                        <span class="nav-text">إضافة قسم</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Designs -->
+            <div class="nav-item has-submenu @(Context.Request.Path.ToString().ToLower().Contains("designs") ? "open" : "")">
                 <a href="#" class="nav-link">
-                    <i class="fas fa-paint-brush"></i> <span>إدارة التصميمات</span>
-                    <i class="fas fa-chevron-left pull-left"></i>
+                    <i class="fas fa-palette"></i>
+                    <span class="nav-text">التصميمات</span>
+                    <i class="fas fa-chevron-left nav-arrow"></i>
                 </a>
-                <ul class="treeview-menu @(Context.Request.Path.ToString().ToLower().Contains("designs/create") || Context.Request.Path.ToString().ToLower().Contains("designs/index") ? "menu-open" : "") animate__animated animate__slideInRight">
-                    <li><a href="@Url.Action("Create", "Designs")"><i class="fas fa-plus-square"></i> تصميم جديد</a></li>
-                    <li><a href="@Url.Action("Index", "Designs")"><i class="fas fa-th-list"></i> جميع التصميمات</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-controller="Customers" asp-action="Index">
-                    <i class="fa fa-users"></i> <span>العملاء</span>
+                <div class="nav-submenu">
+                    <a href="@Url.Action("Index", "Designs")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("designs/index") ? "active" : "")">
+                        <i class="fas fa-circle"></i>
+                        <span class="nav-text">جميع التصميمات</span>
+                    </a>
+                    <a href="@Url.Action("Create", "Designs")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("designs/create") ? "active" : "")">
+                        <i class="fas fa-circle"></i>
+                        <span class="nav-text">إضافة تصميم</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Customers -->
+            <div class="nav-item @(Context.Request.Path.ToString().ToLower().Contains("customers") ? "active" : "")">
+                <a href="@Url.Action("Index", "Customers")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("customers") ? "active" : "")">
+                    <i class="fas fa-users"></i>
+                    <span class="nav-text">العملاء</span>
                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-controller="GI" asp-action="ContactInfo">
-                    <i class="fas fa-address-book me-2"></i> بيانات التواصل
-                </a>
-            </li>
-            <li class="treeview @(Context.Request.Path.ToString().ToLower().Contains("faqs") ? "active" : "")">
+            </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="nav-section">
+            <span class="nav-section-title">الإعدادات</span>
+
+            <!-- FAQs -->
+            <div class="nav-item has-submenu @(Context.Request.Path.ToString().ToLower().Contains("faqs") ? "open" : "")">
                 <a href="#" class="nav-link">
-                    <i class="fas fa-layer-group"></i> <span>إدارة الاسئلة الشائعه</span>
-                    <i class="fas fa-chevron-left pull-left"></i>
+                    <i class="fas fa-question-circle"></i>
+                    <span class="nav-text">الأسئلة الشائعة</span>
+                    <i class="fas fa-chevron-left nav-arrow"></i>
                 </a>
-                <ul class="treeview-menu @(Context.Request.Path.ToString().ToLower().Contains("faqs/create") || Context.Request.Path.ToString().ToLower().Contains("faqs/index") ? "menu-open" : "") animate__animated animate__slideInRight">
-                    <li><a href="@Url.Action("Create", "FAQs")"><i class="fas fa-plus-circle"></i> سؤال  جديد</a></li>
-                    <li><a href="@Url.Action("Index", "FAQs")"><i class="fas fa-list"></i> جميع الاسئلة</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-controller="GI" asp-action="TermsAndConditions">
-                    <i class="fas fa-file-alt me-2"></i> الشروط والأحكام
+                <div class="nav-submenu">
+                    <a href="@Url.Action("Index", "FAQs")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("faqs/index") ? "active" : "")">
+                        <i class="fas fa-circle"></i>
+                        <span class="nav-text">جميع الأسئلة</span>
+                    </a>
+                    <a href="@Url.Action("Create", "FAQs")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("faqs/create") ? "active" : "")">
+                        <i class="fas fa-circle"></i>
+                        <span class="nav-text">إضافة سؤال</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="nav-item @(Context.Request.Path.ToString().ToLower().Contains("contactinfo") ? "active" : "")">
+                <a href="@Url.Action("ContactInfo", "GI")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("contactinfo") ? "active" : "")">
+                    <i class="fas fa-address-book"></i>
+                    <span class="nav-text">بيانات التواصل</span>
                 </a>
-            </li>
-        </ul>
-    </section>
+            </div>
+
+            <!-- Terms -->
+            <div class="nav-item @(Context.Request.Path.ToString().ToLower().Contains("termsandconditions") ? "active" : "")">
+                <a href="@Url.Action("TermsAndConditions", "GI")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("termsandconditions") ? "active" : "")">
+                    <i class="fas fa-file-contract"></i>
+                    <span class="nav-text">الشروط والأحكام</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer" style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto;">
+        <a href="@Url.Action("LogOut", "cp")" class="nav-link" style="color: #f43f5e;">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="nav-text">تسجيل الخروج</span>
+        </a>
+    </div>
 </aside>

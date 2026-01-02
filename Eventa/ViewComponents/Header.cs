@@ -53,7 +53,7 @@ namespace Eventa.Web.ViewComponents
                             Body = n.Body,
                             Link = n.NotificationLink,
                             IsSeen = n.IsSeen,
-                            CreatedDate = n.CreatedDate.ToString("g")
+                            CreatedDate = n.CreatedDate
                         }).ToList();
                     }
                 }

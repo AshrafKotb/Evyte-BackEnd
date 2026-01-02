@@ -40,6 +40,8 @@
     <link href="~/assets/css/odometer-theme-default.css" rel="stylesheet">
     <link href="~/assets/css/jquery-ui.css" rel="stylesheet">
     <link href="~/assets/sass/style.css" rel="stylesheet">
+    <!-- Modern Home Styles with Animations -->
+    <link href="~/css/modern-home.css" rel="stylesheet">
     <style>
         /* تحسينات لزر اللغة */
         .language-switcher select {
@@ -131,6 +133,80 @@
     <script src="~/assets/js/tilt.jquery.min.js"></script>
     <!-- Custom script for this template -->
     <script src="~/assets/js/script.js"></script>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate section titles on scroll
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe section titles
+            document.querySelectorAll('.wpo-section-title, .preview-section-title').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe animate-on-scroll elements
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Parallax effect for hero images
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const heroItems = document.querySelectorAll('.preview-hero-item');
+                heroItems.forEach((item, index) => {
+                    const speed = 0.1 + (index * 0.05);
+                    item.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+
+            // Counter animation for fun facts
+            const counters = document.querySelectorAll('.odometer');
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const count = target.getAttribute('data-count');
+                        setTimeout(() => {
+                            target.innerHTML = count;
+                        }, 300);
+                        counterObserver.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => counterObserver.observe(counter));
+        });
+    </script>
+
    @*  <script>
         // تأكد من تحديث الصفحة عند تغيير اللغة إذا لم يتم التحديث تلقائياً
         document.addEventListener('DOMContentLoaded', function() {

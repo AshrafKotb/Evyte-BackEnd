@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Eventa")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1083bfa81c91de0b6d76befe7c679286d71a441")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+372437a5e4273da5e549cb147d43f7359f0bcf78")]
 [assembly: System.Reflection.AssemblyProductAttribute("Eventa")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Eventa")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

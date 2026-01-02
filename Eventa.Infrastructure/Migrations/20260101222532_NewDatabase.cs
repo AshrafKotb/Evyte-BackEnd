@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Eventa.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstMigration : Migration
+    public partial class NewDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -36,6 +36,7 @@ namespace Eventa.Infrastructure.Migrations
                     JoinDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
+                    UserType = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -59,10 +60,12 @@ namespace Eventa.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NameAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NameEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DescriptionAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DescriptionEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameAr = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    NameEn = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    DescriptionAr = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    DescriptionEn = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    ImageId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     SortingNumber = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -75,20 +78,16 @@ namespace Eventa.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GeneralInfomarion",
+                name: "FAQs",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FaceBook = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Instagram = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    X = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Tiktok = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Youtube = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    WhatsApp = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Snapchat = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TermsAndConditionsAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TermsAndConditionsEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    QuestionAr = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    QuestionEn = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    AnswerAr = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: false),
+                    AnswerEn = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: false),
+                    SortingNumber = table.Column<int>(type: "int", nullable: false),
+                    HomePage = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -96,7 +95,56 @@ namespace Eventa.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GeneralInfomarion", x => x.Id);
+                    table.PrimaryKey("PK_FAQs", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GeneralInformation",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AddressAr = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    AddressEn = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    FaceBook = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Instagram = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    X = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Tiktok = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Youtube = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    WhatsApp = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Snapchat = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    Email2 = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    PhoneNumber2 = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    TermsAndConditionsAr = table.Column<string>(type: "nvarchar(max)", maxLength: 10000, nullable: true),
+                    TermsAndConditionsEn = table.Column<string>(type: "nvarchar(max)", maxLength: 10000, nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GeneralInformation", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Notifications",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Body = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsSeen = table.Column<bool>(type: "bit", nullable: false),
+                    NotificationLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notifications", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -104,28 +152,28 @@ namespace Eventa.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    GroomName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GroomImageId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GroomImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GroomFacebook = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GroomGroomInstagram = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GroomX = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BrideName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BrideImageId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BrideImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BrideFacebook = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BrideInstagram = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BrideX = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MainSliderImageId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MainSliderImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EventDate = table.Column<DateOnly>(type: "date", nullable: false),
-                    EventTimeFrom = table.Column<TimeOnly>(type: "time", nullable: false),
-                    EventTimeTo = table.Column<TimeOnly>(type: "time", nullable: false),
-                    EventPlaceName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EventPlaceImageId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EventPlaceImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EventAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LocationUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GroomName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    GroomImageId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    GroomImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    GroomFacebook = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    GroomInstagram = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    GroomX = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    BrideName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    BrideImageId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    BrideImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    BrideFacebook = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    BrideInstagram = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    BrideX = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    MainSliderImageId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    MainSliderImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    EventDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EventTimeFrom = table.Column<TimeSpan>(type: "time", nullable: false),
+                    EventTimeTo = table.Column<TimeSpan>(type: "time", nullable: false),
+                    EventPlaceName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    EventPlaceImageId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    EventPlaceImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    EventAddress = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    LocationUrl = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -247,11 +295,14 @@ namespace Eventa.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NameAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NameEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DescriptionAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DescriptionEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    WebsiteDemoUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameAr = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    NameEn = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    TemplateName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    DescriptionAr = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    DescriptionEn = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    ImageId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    WebsiteDemoUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     SortingNumber = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -275,12 +326,22 @@ namespace Eventa.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DomainUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DomainUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    WeddingSlug = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    QrCodeImageId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    QrCodeImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     RequestDataId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DesignId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    DesignId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    RejectionReason = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    ApprovedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsFeatured = table.Column<bool>(type: "bit", nullable: false),
+                    FeaturedOrder = table.Column<int>(type: "int", nullable: true),
+                    HasMemories = table.Column<bool>(type: "bit", nullable: false),
+                    HasDedications = table.Column<bool>(type: "bit", nullable: false),
+                    HasGallery = table.Column<bool>(type: "bit", nullable: false),
+                    HasAudio = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -290,27 +351,17 @@ namespace Eventa.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Requests", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Requests_AspNetUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                    table.ForeignKey(
                         name: "FK_Requests_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Requests_Designs_DesignId",
                         column: x => x.DesignId,
                         principalTable: "Designs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Requests_Designs_DesignId1",
-                        column: x => x.DesignId1,
-                        principalTable: "Designs",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Requests_RequestsData_RequestDataId",
                         column: x => x.RequestDataId,
@@ -320,12 +371,91 @@ namespace Eventa.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Dedications",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PersonName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Relationship = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Message = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    DisplayOrder = table.Column<int>(type: "int", nullable: false),
+                    RequestId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Dedications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Dedications_Requests_RequestId",
+                        column: x => x.RequestId,
+                        principalTable: "Requests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Memories",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    EventDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ImageId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    DisplayOrder = table.Column<int>(type: "int", nullable: false),
+                    RequestId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Memories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Memories_Requests_RequestId",
+                        column: x => x.RequestId,
+                        principalTable: "Requests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RequestAudios",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AudioId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    AudioUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    AudioName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    AutoPlay = table.Column<bool>(type: "bit", nullable: false),
+                    RequestId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RequestAudios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RequestAudios_Requests_RequestId",
+                        column: x => x.RequestId,
+                        principalTable: "Requests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RequestsGallery",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PhotoId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhotoUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhotoId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    PhotoUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     RequestId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -383,31 +513,35 @@ namespace Eventa.Infrastructure.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Dedications_RequestId",
+                table: "Dedications",
+                column: "RequestId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Designs_CategoryId",
                 table: "Designs",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Requests_ApplicationUserId",
-                table: "Requests",
-                column: "ApplicationUserId");
+                name: "IX_Memories_RequestId",
+                table: "Memories",
+                column: "RequestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RequestAudios_RequestId",
+                table: "RequestAudios",
+                column: "RequestId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Requests_DesignId",
                 table: "Requests",
-                column: "DesignId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Requests_DesignId1",
-                table: "Requests",
-                column: "DesignId1");
+                column: "DesignId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Requests_RequestDataId",
                 table: "Requests",
-                column: "RequestDataId",
-                unique: true);
+                column: "RequestDataId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Requests_UserId",
@@ -439,7 +573,22 @@ namespace Eventa.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "GeneralInfomarion");
+                name: "Dedications");
+
+            migrationBuilder.DropTable(
+                name: "FAQs");
+
+            migrationBuilder.DropTable(
+                name: "GeneralInformation");
+
+            migrationBuilder.DropTable(
+                name: "Memories");
+
+            migrationBuilder.DropTable(
+                name: "Notifications");
+
+            migrationBuilder.DropTable(
+                name: "RequestAudios");
 
             migrationBuilder.DropTable(
                 name: "RequestsGallery");

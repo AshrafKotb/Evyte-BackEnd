@@ -1,3 +1,4 @@
+using Eventa.Infrastructure.Seeds;
 using Eventa.Web.Extensions;
 using System.Globalization;
 
@@ -43,6 +44,20 @@ builder.Services.RegisterCustomServises();
 builder.Services.RegisterSettings(builder.Configuration);
 
 var app = builder.Build();
+
+// Seed the database with initial data
+using (var scope = app.Services.CreateScope())
+{
+    try
+    {
+        await DesignSeeder.SeedAsync(scope.ServiceProvider);
+    }
+    catch (Exception ex)
+    {
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
 
 if (!app.Environment.IsDevelopment())
 {

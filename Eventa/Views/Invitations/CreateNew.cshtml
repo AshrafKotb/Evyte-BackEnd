@@ -1,0 +1,717 @@
+@model CreateInvitationVM
+@{
+    ViewData["Title"] = "إنشاء دعوة";
+    Layout = "~/Views/Shared/_WebsiteLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/invitation-wizard.css" asp-append-version="true" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<div class="wizard-container" dir="rtl">
+    <!-- Background Decorations -->
+    <div class="wizard-bg-decoration wizard-bg-decoration-1"></div>
+    <div class="wizard-bg-decoration wizard-bg-decoration-2"></div>
+
+    <div class="wizard-wrapper">
+        <!-- Progress Bar -->
+        <div class="wizard-progress">
+            <div class="wizard-progress-bar">
+                <div class="wizard-progress-line">
+                    <div class="wizard-progress-line-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <div class="wizard-step-indicator active" data-step="1">
+                    <div class="wizard-step-circle">
+                        <span class="wizard-step-number">1</span>
+                    </div>
+                    <span class="wizard-step-label">التصميم</span>
+                </div>
+                <div class="wizard-step-indicator" data-step="2">
+                    <div class="wizard-step-circle">
+                        <span class="wizard-step-number">2</span>
+                    </div>
+                    <span class="wizard-step-label">العروسين</span>
+                </div>
+                <div class="wizard-step-indicator" data-step="3">
+                    <div class="wizard-step-circle">
+                        <span class="wizard-step-number">3</span>
+                    </div>
+                    <span class="wizard-step-label">الصور</span>
+                </div>
+                <div class="wizard-step-indicator" data-step="4">
+                    <div class="wizard-step-circle">
+                        <span class="wizard-step-number">4</span>
+                    </div>
+                    <span class="wizard-step-label">الإضافات</span>
+                </div>
+                <div class="wizard-step-indicator" data-step="5">
+                    <div class="wizard-step-circle">
+                        <span class="wizard-step-number">5</span>
+                    </div>
+                    <span class="wizard-step-label">الموقع</span>
+                </div>
+                <div class="wizard-step-indicator" data-step="6">
+                    <div class="wizard-step-circle">
+                        <span class="wizard-step-number">6</span>
+                    </div>
+                    <span class="wizard-step-label">المراجعة</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wizard Card -->
+        <div class="wizard-card">
+            <div class="wizard-card-header">
+                <h1><i class="fas fa-ring"></i> إنشاء دعوة زفافك</h1>
+                <p>صمم دعوة مميزة ليومك الخاص في خطوات بسيطة</p>
+            </div>
+
+            <form id="wizardForm" asp-action="Create" method="post" enctype="multipart/form-data">
+                <div class="wizard-card-body">
+
+                    <!-- Step 1: Choose Design -->
+                    <div class="wizard-step-content active" data-step="1">
+                        <h2 class="wizard-step-title">
+                            <i class="fas fa-palette"></i>
+                            اختر تصميم دعوتك
+                        </h2>
+                        <p class="wizard-step-subtitle">اختر التصميم الذي يناسب ذوقك ومناسبتك</p>
+
+                        <input type="hidden" asp-for="DesignId" id="selectedDesignId" />
+
+                        <div class="designs-grid" id="designsGrid">
+                            @if (ViewBag.Designs != null)
+                            {
+                                foreach (var design in ViewBag.Designs)
+                                {
+                                    <div class="design-card" data-design-id="@design.Id">
+                                        <div class="design-card-check"><i class="fas fa-check"></i></div>
+                                        <img src="@design.ImageUrl" alt="@design.NameAr" class="design-card-image" loading="lazy" />
+                                        <div class="design-card-body">
+                                            <div class="design-card-title">@design.NameAr</div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Couple Information -->
+                    <div class="wizard-step-content" data-step="2">
+                        <h2 class="wizard-step-title">
+                            <i class="fas fa-heart"></i>
+                            معلومات العروسين
+                        </h2>
+                        <p class="wizard-step-subtitle">أدخل معلومات العريس والعروسة</p>
+
+                        <!-- Contact Info -->
+                        <div class="section-card">
+                            <h3 class="section-card-title"><i class="fas fa-user"></i> معلومات الاتصال</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label">الاسم الكامل <span class="required">*</span></label>
+                                        <input type="text" class="form-control" asp-for="FullName" placeholder="أدخل اسمك الكامل" required />
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label">رقم الهاتف <span class="required">*</span></label>
+                                        <div class="input-icon-group">
+                                            <input type="tel" class="form-control" asp-for="PhoneNumber" placeholder="01xxxxxxxxx" required />
+                                            <i class="fas fa-phone input-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label">البريد الإلكتروني <span class="required">*</span></label>
+                                        <div class="input-icon-group">
+                                            <input type="email" class="form-control" asp-for="Email" placeholder="example@email.com" required />
+                                            <i class="fas fa-envelope input-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Groom Info -->
+                        <div class="section-card groom-card">
+                            <h3 class="section-card-title"><i class="fas fa-user-tie"></i> معلومات العريس</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label">اسم العريس <span class="required">*</span></label>
+                                        <input type="text" class="form-control" asp-for="GroomName" placeholder="اسم العريس" required />
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label">صورة العريس</label>
+                                        <input type="file" class="form-control" asp-for="GroomImage" accept="image/*" id="groomImageInput" />
+                                        <input type="hidden" asp-for="GroomAvatar" id="groomAvatarInput" />
+                                        <div class="form-hint">أو اختر صورة رمزية:</div>
+                                        <div class="avatar-selection" id="groomAvatars">
+                                            <div class="avatar-option" data-url="https://ik.imagekit.io/Ashraf/Avatar/groom1.jpg">
+                                                <img src="https://ik.imagekit.io/Ashraf/Avatar/groom1.jpg" alt="Avatar 1" loading="lazy" />
+                                                <div class="avatar-check"><i class="fas fa-check"></i></div>
+                                            </div>
+                                            <div class="avatar-option" data-url="https://ik.imagekit.io/Ashraf/Avatar/groom2.jpg">
+                                                <img src="https://ik.imagekit.io/Ashraf/Avatar/groom2.jpg" alt="Avatar 2" loading="lazy" />
+                                                <div class="avatar-check"><i class="fas fa-check"></i></div>
+                                            </div>
+                                            <div class="avatar-option" data-url="https://ik.imagekit.io/Ashraf/Avatar/groom3.jpg">
+                                                <img src="https://ik.imagekit.io/Ashraf/Avatar/groom3.jpg" alt="Avatar 3" loading="lazy" />
+                                                <div class="avatar-check"><i class="fas fa-check"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label class="form-label"><i class="fab fa-facebook" style="color:#1877f2"></i> فيسبوك</label>
+                                                <input type="url" class="form-control" asp-for="GroomFacebook" placeholder="اختياري" dir="ltr" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label class="form-label"><i class="fab fa-instagram" style="color:#e4405f"></i> إنستغرام</label>
+                                                <input type="url" class="form-control" asp-for="GroomInstagram" placeholder="اختياري" dir="ltr" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label class="form-label"><i class="fab fa-x-twitter"></i> إكس</label>
+                                                <input type="url" class="form-control" asp-for="GroomX" placeholder="اختياري" dir="ltr" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bride Info -->
+                        <div class="section-card bride-card">
+                            <h3 class="section-card-title"><i class="fas fa-crown"></i> معلومات العروسة</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label">اسم العروسة <span class="required">*</span></label>
+                                        <input type="text" class="form-control" asp-for="BrideName" placeholder="اسم العروسة" required />
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label">صورة العروسة</label>
+                                        <input type="file" class="form-control" asp-for="BrideImage" accept="image/*" id="brideImageInput" />
+                                        <input type="hidden" asp-for="BrideAvatar" id="brideAvatarInput" />
+                                        <div class="form-hint">أو اختر صورة رمزية:</div>
+                                        <div class="avatar-selection" id="brideAvatars">
+                                            <div class="avatar-option" data-url="https://ik.imagekit.io/Ashraf/Avatar/bride1.jpg">
+                                                <img src="https://ik.imagekit.io/Ashraf/Avatar/bride1.jpg" alt="Avatar 1" loading="lazy" />
+                                                <div class="avatar-check"><i class="fas fa-check"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label class="form-label"><i class="fab fa-facebook" style="color:#1877f2"></i> فيسبوك</label>
+                                                <input type="url" class="form-control" asp-for="BrideFacebook" placeholder="اختياري" dir="ltr" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label class="form-label"><i class="fab fa-instagram" style="color:#e4405f"></i> إنستغرام</label>
+                                                <input type="url" class="form-control" asp-for="BrideInstagram" placeholder="اختياري" dir="ltr" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label class="form-label"><i class="fab fa-x-twitter"></i> إكس</label>
+                                                <input type="url" class="form-control" asp-for="BrideX" placeholder="اختياري" dir="ltr" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Photos -->
+                    <div class="wizard-step-content" data-step="3">
+                        <h2 class="wizard-step-title">
+                            <i class="fas fa-images"></i>
+                            صور المناسبة
+                        </h2>
+                        <p class="wizard-step-subtitle">أضف الصور الأساسية لدعوتك</p>
+
+                        <div class="section-card">
+                            <h3 class="section-card-title"><i class="fas fa-image"></i> الصورة الرئيسية</h3>
+                            <div class="form-group">
+                                <label class="form-label">صورة المناسبة الرئيسية <span class="required">*</span></label>
+                                <div class="image-upload-zone" id="mainImageZone">
+                                    <i class="fas fa-cloud-upload-alt image-upload-icon"></i>
+                                    <p class="image-upload-text">اسحب الصورة هنا أو انقر للاختيار</p>
+                                    <p class="image-upload-hint">PNG, JPG حتى 5MB</p>
+                                </div>
+                                <input type="file" style="display:none" asp-for="MainSliderImage" id="mainSliderImageInput" accept="image/*" required />
+                                <div id="mainImagePreview" class="mt-2"></div>
+                            </div>
+                        </div>
+
+                        <div class="section-card">
+                            <h3 class="section-card-title"><i class="fas fa-photo-video"></i> معرض الصور</h3>
+                            <div class="form-group">
+                                <label class="form-label">صور المعرض <span class="required">*</span> (حتى 10 صور)</label>
+                                <div class="image-upload-zone" id="galleryZone">
+                                    <i class="fas fa-images image-upload-icon"></i>
+                                    <p class="image-upload-text">اسحب الصور هنا أو انقر للاختيار</p>
+                                    <p class="image-upload-hint">يمكنك اختيار عدة صور</p>
+                                </div>
+                                <input type="file" style="display:none" asp-for="GalleryPhotos" id="galleryPhotosInput" accept="image/*" multiple required />
+                                <div id="galleryPreview" class="images-grid mt-2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Optional Sections -->
+                    <div class="wizard-step-content" data-step="4">
+                        <h2 class="wizard-step-title">
+                            <i class="fas fa-plus-circle"></i>
+                            الإضافات الاختيارية
+                        </h2>
+                        <p class="wizard-step-subtitle">اختر على الأقل إضافة واحدة</p>
+
+                        <div style="background: #dbeafe; border: 1px solid #93c5fd; border-radius: 8px; padding: 1rem; color: #1e40af; margin-bottom: 1.5rem;">
+                            <i class="fas fa-info-circle"></i>
+                            يجب اختيار <strong>إضافة واحدة على الأقل</strong>
+                        </div>
+
+                        <!-- Memories -->
+                        <div class="optional-section" id="memoriesSection">
+                            <div class="optional-section-header">
+                                <div class="optional-section-title">
+                                    <i class="fas fa-clock"></i>
+                                    <span>الذكريات والمناسبات</span>
+                                </div>
+                                <div class="optional-section-toggle"></div>
+                            </div>
+                            <div class="optional-section-content">
+                                <div class="optional-section-body">
+                                    <p class="form-hint mb-2">أضف مناسبات سابقة (حتى 5)</p>
+                                    <div class="dynamic-list" id="memoriesList"></div>
+                                    <button type="button" class="add-item-btn" id="addMemoryBtn">
+                                        <i class="fas fa-plus"></i> إضافة ذكرى
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dedications -->
+                        <div class="optional-section" id="dedicationsSection">
+                            <div class="optional-section-header">
+                                <div class="optional-section-title">
+                                    <i class="fas fa-quote-right"></i>
+                                    <span>الإهداءات</span>
+                                </div>
+                                <div class="optional-section-toggle"></div>
+                            </div>
+                            <div class="optional-section-content">
+                                <div class="optional-section-body">
+                                    <p class="form-hint mb-2">كلمات من الأهل والأصدقاء</p>
+                                    <div class="dynamic-list" id="dedicationsList"></div>
+                                    <button type="button" class="add-item-btn" id="addDedicationBtn">
+                                        <i class="fas fa-plus"></i> إضافة إهداء
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Audio -->
+                        <div class="optional-section" id="audioSection">
+                            <div class="optional-section-header">
+                                <div class="optional-section-title">
+                                    <i class="fas fa-music"></i>
+                                    <span>موسيقى خلفية</span>
+                                </div>
+                                <div class="optional-section-toggle"></div>
+                            </div>
+                            <div class="optional-section-content">
+                                <div class="optional-section-body">
+                                    <div class="form-group">
+                                        <label class="form-label">ملف الصوت</label>
+                                        <input type="file" class="form-control" name="AudioFile" accept="audio/*" />
+                                        <p class="form-hint">MP3, WAV حتى 10MB</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer">
+                                            <input type="checkbox" name="AudioAutoPlay" value="true" />
+                                            تشغيل تلقائي
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Location -->
+                    <div class="wizard-step-content" data-step="5">
+                        <h2 class="wizard-step-title">
+                            <i class="fas fa-map-marker-alt"></i>
+                            تفاصيل الحدث
+                        </h2>
+                        <p class="wizard-step-subtitle">تاريخ ومكان المناسبة</p>
+
+                        <div class="section-card">
+                            <h3 class="section-card-title"><i class="fas fa-calendar-alt"></i> التاريخ والوقت</h3>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="form-label">التاريخ <span class="required">*</span></label>
+                                        <input type="date" class="form-control" asp-for="EventDate" id="eventDateInput" required />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="form-label">من <span class="required">*</span></label>
+                                        <input type="time" class="form-control" asp-for="EventTimeFrom" required />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="form-label">إلى <span class="required">*</span></label>
+                                        <input type="time" class="form-control" asp-for="EventTimeTo" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-card">
+                            <h3 class="section-card-title"><i class="fas fa-map-marked-alt"></i> المكان</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label">اسم المكان <span class="required">*</span></label>
+                                        <input type="text" class="form-control" asp-for="EventPlaceName" placeholder="قاعة الأفراح" required />
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label">صورة المكان</label>
+                                        <input type="file" class="form-control" asp-for="EventPlaceImage" accept="image/*" />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label">العنوان <span class="required">*</span></label>
+                                        <input type="text" class="form-control" asp-for="EventAddress" placeholder="العنوان بالتفصيل" required />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label">رابط الخريطة <span class="required">*</span></label>
+                                        <input type="url" class="form-control" asp-for="LocationUrl" placeholder="https://maps.google.com/..." dir="ltr" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Review -->
+                    <div class="wizard-step-content" data-step="6">
+                        <h2 class="wizard-step-title">
+                            <i class="fas fa-check-circle"></i>
+                            مراجعة وإرسال
+                        </h2>
+                        <p class="wizard-step-subtitle">راجع بياناتك</p>
+
+                        <div class="section-card">
+                            <h3 class="section-card-title"><i class="fas fa-clipboard-list"></i> الملخص</h3>
+                            <div id="reviewSummary"></div>
+                        </div>
+
+                        <div style="background: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 1rem; color: #92400e;">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            سيتم مراجعة دعوتك قبل نشرها
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="wizard-nav">
+                        <button type="button" class="wizard-btn wizard-btn-prev" id="prevBtn" style="display:none">
+                            <i class="fas fa-arrow-right"></i> السابق
+                        </button>
+                        <button type="button" class="wizard-btn wizard-btn-next" id="nextBtn">
+                            التالي <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <button type="submit" class="wizard-btn wizard-btn-submit" id="submitBtn" style="display:none">
+                            <i class="fas fa-paper-plane"></i> إرسال
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading -->
+    <div class="wizard-loading" id="loadingOverlay">
+        <div class="wizard-loading-content">
+            <div class="wizard-loading-spinner"></div>
+            <p class="wizard-loading-text">جاري الإرسال...</p>
+        </div>
+    </div>
+
+    <!-- Success -->
+    <div class="success-modal" id="successModal">
+        <div class="success-modal-content">
+            <div class="success-icon"><i class="fas fa-check"></i></div>
+            <h3 class="success-title">تم بنجاح!</h3>
+            <p class="success-message">تم استلام طلبك وهو قيد المراجعة</p>
+            <button type="button" class="wizard-btn wizard-btn-next" onclick="window.location.href='/'">
+                العودة للرئيسية
+            </button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentStep = 1;
+            const totalSteps = 6;
+            const form = document.getElementById('wizardForm');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            const progressFill = document.getElementById('progressFill');
+
+            // Pre-select design if passed from URL and skip to step 2
+            @if (ViewBag.SelectedDesignId != null && ViewBag.SelectedDesignId != Guid.Empty)
+            {
+                <text>
+                const preselectedDesignId = '@ViewBag.SelectedDesignId';
+                const preselectedCard = document.querySelector(`.design-card[data-design-id="${preselectedDesignId}"]`);
+                if (preselectedCard) {
+                    preselectedCard.classList.add('selected');
+                    document.getElementById('selectedDesignId').value = preselectedDesignId;
+                    // Skip to step 2 since design is already selected
+                    setTimeout(() => showStep(2), 500);
+                }
+                </text>
+            }
+
+            // Flatpickr
+            flatpickr("#eventDateInput", {
+                locale: "ar",
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                altInput: true,
+                altFormat: "j F Y"
+            });
+
+            function showStep(step) {
+                document.querySelectorAll('.wizard-step-content').forEach(el => el.classList.remove('active'));
+                document.querySelector(`.wizard-step-content[data-step="${step}"]`).classList.add('active');
+
+                document.querySelectorAll('.wizard-step-indicator').forEach(el => {
+                    const s = parseInt(el.dataset.step);
+                    el.classList.remove('active', 'completed');
+                    if (s < step) el.classList.add('completed');
+                    else if (s === step) el.classList.add('active');
+                });
+
+                progressFill.style.width = `${((step - 1) / (totalSteps - 1)) * 100}%`;
+
+                prevBtn.style.display = step === 1 ? 'none' : 'inline-flex';
+                nextBtn.style.display = step === totalSteps ? 'none' : 'inline-flex';
+                submitBtn.style.display = step === totalSteps ? 'inline-flex' : 'none';
+
+                if (step === totalSteps) generateReviewSummary();
+                currentStep = step;
+            }
+
+            function validateStep(step) {
+                if (step === 1 && !document.getElementById('selectedDesignId').value) {
+                    Swal.fire({ icon: 'warning', title: 'اختر تصميماً' });
+                    return false;
+                }
+                if (step === 2) {
+                    const fields = ['FullName', 'PhoneNumber', 'Email', 'GroomName', 'BrideName'];
+                    for (let f of fields) {
+                        const input = document.querySelector(`[name="${f}"]`);
+                        if (!input.value.trim()) {
+                            input.classList.add('error');
+                            Swal.fire({ icon: 'warning', title: 'أكمل البيانات المطلوبة' });
+                            return false;
+                        }
+                        input.classList.remove('error');
+                    }
+                }
+                if (step === 3) {
+                    if (!document.getElementById('mainSliderImageInput').files.length) {
+                        Swal.fire({ icon: 'warning', title: 'الصورة الرئيسية مطلوبة' });
+                        return false;
+                    }
+                    if (!document.getElementById('galleryPhotosInput').files.length) {
+                        Swal.fire({ icon: 'warning', title: 'صور المعرض مطلوبة' });
+                        return false;
+                    }
+                }
+                if (step === 4) {
+                    const selected = document.querySelectorAll('.optional-section.selected');
+                    if (selected.length === 0) {
+                        Swal.fire({ icon: 'warning', title: 'اختر إضافة واحدة على الأقل' });
+                        return false;
+                    }
+                }
+                if (step === 5) {
+                    const fields = ['EventDate', 'EventTimeFrom', 'EventTimeTo', 'EventPlaceName', 'EventAddress', 'LocationUrl'];
+                    for (let f of fields) {
+                        const input = document.querySelector(`[name="${f}"]`);
+                        if (!input.value.trim()) {
+                            input.classList.add('error');
+                            Swal.fire({ icon: 'warning', title: 'أكمل تفاصيل الحدث' });
+                            return false;
+                        }
+                        input.classList.remove('error');
+                    }
+                }
+                return true;
+            }
+
+            nextBtn.addEventListener('click', () => { if (validateStep(currentStep) && currentStep < totalSteps) showStep(currentStep + 1); });
+            prevBtn.addEventListener('click', () => { if (currentStep > 1) showStep(currentStep - 1); });
+
+            // Design Selection
+            document.querySelectorAll('.design-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    document.querySelectorAll('.design-card').forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    document.getElementById('selectedDesignId').value = this.dataset.designId;
+                });
+            });
+
+            // Avatar Selection
+            ['groomAvatars', 'brideAvatars'].forEach(id => {
+                const container = document.getElementById(id);
+                const inputId = id === 'groomAvatars' ? 'groomAvatarInput' : 'brideAvatarInput';
+                const fileId = id === 'groomAvatars' ? 'groomImageInput' : 'brideImageInput';
+                container.querySelectorAll('.avatar-option').forEach(opt => {
+                    opt.addEventListener('click', function() {
+                        container.querySelectorAll('.avatar-option').forEach(o => o.classList.remove('selected'));
+                        this.classList.add('selected');
+                        document.getElementById(inputId).value = this.dataset.url;
+                        document.getElementById(fileId).value = '';
+                    });
+                });
+            });
+
+            // Image Upload
+            function setupUpload(zoneId, inputId, previewId, multi) {
+                const zone = document.getElementById(zoneId);
+                const input = document.getElementById(inputId);
+                const preview = document.getElementById(previewId);
+
+                zone.addEventListener('click', () => input.click());
+                zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('dragover'); });
+                zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+                zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('dragover'); input.files = e.dataTransfer.files; showPreview(); });
+                input.addEventListener('change', showPreview);
+
+                function showPreview() {
+                    preview.innerHTML = '';
+                    for (let file of input.files) {
+                        if (file.type.startsWith('image/')) {
+                            const reader = new FileReader();
+                            reader.onload = e => {
+                                const div = document.createElement('div');
+                                div.className = multi ? 'images-grid-item' : 'image-preview-container';
+                                div.innerHTML = `<img src="${e.target.result}" class="image-preview"/><button type="button" class="image-remove-btn" onclick="this.parentElement.remove()"><i class="fas fa-times"></i></button>`;
+                                preview.appendChild(div);
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    }
+                }
+            }
+
+            setupUpload('mainImageZone', 'mainSliderImageInput', 'mainImagePreview', false);
+            setupUpload('galleryZone', 'galleryPhotosInput', 'galleryPreview', true);
+
+            // Optional Sections
+            document.querySelectorAll('.optional-section .optional-section-header').forEach(h => {
+                h.addEventListener('click', () => h.closest('.optional-section').classList.toggle('selected'));
+            });
+
+            // Dynamic Lists
+            let memCount = 0, dedCount = 0;
+            document.getElementById('addMemoryBtn').addEventListener('click', function() {
+                if (memCount >= 5) { Swal.fire({ icon: 'info', title: 'الحد الأقصى 5' }); return; }
+                memCount++;
+                const item = document.createElement('div');
+                item.className = 'dynamic-list-item';
+                item.innerHTML = `<div class="dynamic-list-item-header"><span class="dynamic-list-item-number">ذكرى ${memCount}</span><button type="button" class="dynamic-list-item-remove" onclick="this.closest('.dynamic-list-item').remove()"><i class="fas fa-trash"></i></button></div><div class="row"><div class="col-6"><div class="form-group"><label class="form-label">العنوان</label><input type="text" class="form-control" name="Memories[${memCount-1}].Title" placeholder="الخطوبة"/></div></div><div class="col-6"><div class="form-group"><label class="form-label">التاريخ</label><input type="date" class="form-control" name="Memories[${memCount-1}].EventDate"/></div></div><div class="col-12"><div class="form-group"><label class="form-label">الصورة</label><input type="file" class="form-control" name="Memories[${memCount-1}].Image" accept="image/*"/></div></div></div>`;
+                document.getElementById('memoriesList').appendChild(item);
+            });
+
+            document.getElementById('addDedicationBtn').addEventListener('click', function() {
+                dedCount++;
+                const item = document.createElement('div');
+                item.className = 'dynamic-list-item';
+                item.innerHTML = `<div class="dynamic-list-item-header"><span class="dynamic-list-item-number">إهداء ${dedCount}</span><button type="button" class="dynamic-list-item-remove" onclick="this.closest('.dynamic-list-item').remove()"><i class="fas fa-trash"></i></button></div><div class="row"><div class="col-6"><div class="form-group"><label class="form-label">الاسم</label><input type="text" class="form-control" name="Dedications[${dedCount-1}].PersonName"/></div></div><div class="col-6"><div class="form-group"><label class="form-label">الصلة</label><input type="text" class="form-control" name="Dedications[${dedCount-1}].Relationship" placeholder="أخو العريس"/></div></div><div class="col-12"><div class="form-group"><label class="form-label">الرسالة</label><textarea class="form-control" name="Dedications[${dedCount-1}].Message" rows="2"></textarea></div></div></div>`;
+                document.getElementById('dedicationsList').appendChild(item);
+            });
+
+            function generateReviewSummary() {
+                const groom = document.querySelector('[name="GroomName"]').value || '-';
+                const bride = document.querySelector('[name="BrideName"]').value || '-';
+                const date = document.querySelector('[name="EventDate"]').value || '-';
+                const place = document.querySelector('[name="EventPlaceName"]').value || '-';
+                const photos = document.getElementById('galleryPhotosInput').files.length;
+
+                let opts = [];
+                if (document.getElementById('memoriesSection').classList.contains('selected')) opts.push('الذكريات');
+                if (document.getElementById('dedicationsSection').classList.contains('selected')) opts.push('الإهداءات');
+                if (document.getElementById('audioSection').classList.contains('selected')) opts.push('موسيقى');
+
+                document.getElementById('reviewSummary').innerHTML = `
+                    <div style="display:grid;gap:0.75rem">
+                        <div style="display:flex;justify-content:space-between;padding:0.75rem;background:#f9fafb;border-radius:8px"><span style="color:#6b7280">العريس:</span><strong>${groom}</strong></div>
+                        <div style="display:flex;justify-content:space-between;padding:0.75rem;background:#f9fafb;border-radius:8px"><span style="color:#6b7280">العروسة:</span><strong>${bride}</strong></div>
+                        <div style="display:flex;justify-content:space-between;padding:0.75rem;background:#f9fafb;border-radius:8px"><span style="color:#6b7280">التاريخ:</span><strong>${date}</strong></div>
+                        <div style="display:flex;justify-content:space-between;padding:0.75rem;background:#f9fafb;border-radius:8px"><span style="color:#6b7280">المكان:</span><strong>${place}</strong></div>
+                        <div style="display:flex;justify-content:space-between;padding:0.75rem;background:#f9fafb;border-radius:8px"><span style="color:#6b7280">الصور:</span><strong>${photos}</strong></div>
+                        <div style="display:flex;justify-content:space-between;padding:0.75rem;background:#f9fafb;border-radius:8px"><span style="color:#6b7280">الإضافات:</span><strong>${opts.join('، ') || '-'}</strong></div>
+                    </div>`;
+            }
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                document.getElementById('loadingOverlay').classList.add('active');
+
+                fetch(form.action, { method: 'POST', body: new FormData(form) })
+                    .then(r => r.json())
+                    .then(data => {
+                        document.getElementById('loadingOverlay').classList.remove('active');
+                        if (data.success) document.getElementById('successModal').classList.add('active');
+                        else Swal.fire({ icon: 'error', title: 'خطأ', text: data.message || 'حدث خطأ' });
+                    })
+                    .catch(() => {
+                        document.getElementById('loadingOverlay').classList.remove('active');
+                        Swal.fire({ icon: 'error', title: 'خطأ', text: 'حدث خطأ غير متوقع' });
+                    });
+            });
+
+            showStep(1);
+        });
+    </script>
+}
