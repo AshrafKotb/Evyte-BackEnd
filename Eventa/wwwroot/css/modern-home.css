@@ -248,6 +248,7 @@ body {
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-md);
     transition: all var(--transition-normal);
+    max-height: 450px;
 }
 
 .wpo-demo-grids .inner:hover {
@@ -256,11 +257,42 @@ body {
 }
 
 .wpo-demo-grids .inner img {
-    transition: transform var(--transition-slow);
+    transition: transform 0.5s ease-out;
+    width: 100%;
+    height: auto;
+    min-height: 450px;
+    object-fit: cover;
+    object-position: top;
+    transform: translateY(0);
 }
 
 .wpo-demo-grids .inner:hover img {
-    transform: scale(1.1);
+    transform: translateY(calc(-100% + 450px));
+}
+
+/* Responsive card heights */
+@media (max-width: 991px) {
+    .wpo-demo-grids .inner {
+        max-height: 380px;
+    }
+    .wpo-demo-grids .inner img {
+        min-height: 380px;
+    }
+    .wpo-demo-grids .inner:hover img {
+        transform: translateY(calc(-100% + 380px));
+    }
+}
+
+@media (max-width: 767px) {
+    .wpo-demo-grids .inner {
+        max-height: 320px;
+    }
+    .wpo-demo-grids .inner img {
+        min-height: 320px;
+    }
+    .wpo-demo-grids .inner:hover img {
+        transform: translateY(calc(-100% + 320px));
+    }
 }
 
 .preview-overlay {

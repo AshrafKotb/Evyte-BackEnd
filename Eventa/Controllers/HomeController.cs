@@ -25,6 +25,7 @@ public class HomeController : Controller
 
 
     // التعديلات على Index و IndexEn لدمجهم في action واحد
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     public async Task<IActionResult> Index()
     {
         var language = GetCurrentLanguage();
@@ -65,6 +66,7 @@ public class HomeController : Controller
 
         return View(faqs);
     }
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     public async Task<IActionResult> Designs()
     {
         var language = GetCurrentLanguage();
@@ -85,8 +87,13 @@ public class HomeController : Controller
     }
 
     [HttpPost]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     public IActionResult SetLanguage(string culture, string returnUrl)
     {
+        // حذف الكوكي القديم أولاً
+        Response.Cookies.Delete(CookieRequestCultureProvider.DefaultCookieName);
+
+        // إضافة الكوكي الجديد
         Response.Cookies.Append(
             CookieRequestCultureProvider.DefaultCookieName,
             CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
@@ -94,16 +101,31 @@ public class HomeController : Controller
             {
                 Expires = DateTimeOffset.UtcNow.AddYears(1),
                 IsEssential = true,
-                Path = "/"
+                Path = "/",
+                SameSite = SameSiteMode.Lax,
+                HttpOnly = false
             }
         );
+
+        // التأكد من أن الـ returnUrl صالح
+        if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
+        {
+            returnUrl = "/";
+        }
 
         return LocalRedirect(returnUrl);
     }
 
     private string GetCurrentLanguage()
     {
-        return HttpContext.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName]?.Split('|')[0]?.Split('=')[1] ?? "ar";
+        // استخدم الـ culture الحالية من الـ request localization
+        var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+
+        // إذا كانت ar أو ar-* نرجع ar، وإلا نرجع en
+        if (culture.StartsWith("ar", StringComparison.OrdinalIgnoreCase))
+            return "ar";
+
+        return "en";
     }
     public IActionResult Privacy()
     {

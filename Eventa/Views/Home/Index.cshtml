@@ -10,59 +10,30 @@
         position: relative;
     }
 
-    /* Create Invitation Button */
-    .create-invitation-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        position: absolute;
-        bottom: 15px;
-        left: 50%;
-        transform: translateX(-50%) translateY(20px);
-        opacity: 0;
-        background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-        color: white;
-        padding: 12px 24px;
-        border-radius: 30px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        text-decoration: none;
-        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 10;
-        white-space: nowrap;
-    }
-
-    .create-invitation-btn i {
-        font-size: 0.9rem;
-        transition: transform 0.3s ease;
-    }
-
-    .grid:hover .create-invitation-btn {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-
-    .create-invitation-btn:hover {
-        background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
-        box-shadow: 0 12px 35px rgba(139, 92, 246, 0.5);
-        transform: translateX(-50%) translateY(-3px) !important;
-        color: white;
-    }
-
-    .create-invitation-btn:hover i {
-        transform: rotate(90deg);
-    }
-
     .grid .inner {
         position: relative;
-        overflow: visible !important;
+        overflow: hidden;
+        border-radius: 16px;
+    }
+
+    /* Improved Preview Overlay - Light transparent with blur */
+    .wpo-demo-grids .preview-overlay {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(0.2px) !important;
+    }
+
+    .wpo-demo-grids .preview-overlay span {
+        background: rgba(255, 255, 255, 0.95);
+        color: #8b5cf6;
+        border: none;
+        padding: 14px 32px;
+        font-weight: 600;
+        box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
     }
 </style>
 
 <!-- Hero Section -->
-<section class="preview-hero" style="background: url(~/assets/images/preview/hero-bg.png) no-repeat center center;">
+<section class="preview-hero" style="background: url(/assets/images/preview/hero-bg.png) no-repeat center center;">
     <div class="container-fluid">
         <div class="preview-hero-wrap">
             <div class="row">
@@ -194,12 +165,8 @@
                                 <a href="@template.WebsiteDemoUrl" target="_blank" class="preview-link">
                                     <img src="@template.PreviewImageUrl" alt="@template.Name">
                                     <div class="preview-overlay">
-                                        <span>@(isEnglish ? "preview" : "معاينة")</span>
+                                        <span>@(isEnglish ? "Preview" : "معاينة")</span>
                                     </div>
-                                </a>
-                                <a href="@Url.Action("CreateNew", "Invitations", new { designId = template.Id })" class="create-invitation-btn">
-                                    <i class="fas fa-plus"></i>
-                                    @(isEnglish ? "Create Invitation" : "إنشاء دعوة")
                                 </a>
                             </div>
                             <h3>@template.Name</h3>

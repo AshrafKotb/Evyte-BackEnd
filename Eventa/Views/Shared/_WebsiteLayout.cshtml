@@ -43,36 +43,15 @@
     <!-- Modern Home Styles with Animations -->
     <link href="~/css/modern-home.css" rel="stylesheet">
     <style>
-        /* تحسينات لزر اللغة */
-        .language-switcher select {
-            -webkit-appearance: none !important;
-            -moz-appearance: none !important;
-            appearance: none !important;
-            padding-right: 2.5rem !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
+        /* Add padding-top to body for fixed header */
+        body {
+            padding-top: 90px;
         }
 
-            .language-switcher select:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        @@media (max-width: 991px) {
+            body {
+                padding-top: 70px;
             }
-
-        .language-switcher .fa-globe {
-            color: #8b5cf6;
-            transition: all 0.3s ease;
-        }
-
-        .language-switcher:hover .fa-globe {
-            color: #7c3aed;
-            transform: rotate(15deg);
-        }
-
-        /* لزر اللغة في الوضع المظلم */
-        .dark .language-switcher select {
-            background-color: #2d3748;
-            color: #fff;
-            border-color: #4a5568;
         }
     </style>
 </head>
@@ -95,25 +74,6 @@
 
         <!-- end preloader -->
         @await Component.InvokeAsync("NavBar")
-        <div class="language-switcher" style="position: fixed; top: 20px; @(Context.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName]?.Split('|')[0]?.Split('=')[1] == "ar" ? "left: 20px" : "right: 20px"); z-index: 9999;">
-            @{
-                var currentCulture = Context.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName]?.Split('|')[0]?.Split('=')[1] ?? "ar";
-                var isRTL = currentCulture == "ar";
-            }
-            <form asp-controller="Home" asp-action="SetLanguage" method="post" class="form-inline">
-                <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
-                <div class="relative">
-                    <select name="culture" onchange="this.form.submit()"
-                            class="appearance-none bg-white border border-purple-500 rounded-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow hover:shadow-lg">
-                        <option value="ar" selected="@(currentCulture == "ar")">العربية</option>
-                        <option value="en" selected="@(currentCulture == "en")">English</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 @(isRTL ? "left-0 ml-3" : "right-0 mr-3") flex items-center px-2 text-gray-700">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                </div>
-            </form>
-        </div>
         @RenderBody()
 
         @await Component.InvokeAsync("Footer")
