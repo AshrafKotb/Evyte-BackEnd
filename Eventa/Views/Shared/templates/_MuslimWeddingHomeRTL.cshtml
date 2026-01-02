@@ -39,6 +39,8 @@
     <link href="~/assets/css/odometer-theme-default.css" rel="stylesheet">
     <link href="~/assets/css/jquery-ui.css" rel="stylesheet">
     <link href="~/assets/sass/style.css" rel="stylesheet">
+    <link href="~/css/location-section-enhanced.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body dir="rtl" class="rtl-page">
@@ -286,44 +288,88 @@
         }
 
         <!-- start wpo-event-section -->
-        <section class="wpo-event-section-s4 section-padding" id="event">
+        <section class="wpo-event-section-enhanced event-theme-green" id="event">
+            <!-- Decorative Elements -->
+            <div class="event-decoration event-decoration-1"></div>
+            <div class="event-decoration event-decoration-2"></div>
+
             <div class="container">
-                <div class="wpo-section-title">
-                    <span>لدينا عرس</span>
-                    <h2>متى وأين يحدث</h2>
+                <!-- Section Title -->
+                <div class="event-section-title wow fadeInUp" data-wow-duration="800ms">
+                    <span class="subtitle">حفل زفافنا</span>
+                    <h2>متى وأين</h2>
                 </div>
-                <div class="wpo-event-wrap">
-                    <div class="row">
-                        <div>
-                            <div class="wpo-event-item wow fadeInUp" data-wow-duration="1400ms">
-                                <div class="wpo-event-text">
-                                    <div class="wpo-event-img-inner">
-                                        <img src="@Model.RequestData.EventPlaceImageUrl" alt="">
-                                    </div>
-                                    <div class="title">
-                                        <h2>الحفل</h2>
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            @Model.RequestData.EventDate.ToString("dd MMMM yyyy", culture)
-                                            <br />
-                                           @timeFrom.ToString("hh:mm tt", culture) – @timeTo.ToString("hh:mm tt", culture)
-                                        </li>
-                                        <li>@Model.RequestData.EventPlaceName</li>
-                                        <li>
-                                            <a @*class="popup-gmaps"*@
-                                               href="@Model.RequestData.LocationUrl">
-                                                انظر الموقع
-                                            </a>
-                                        </li>
-                                    </ul>
+
+                <!-- Event Card -->
+                <div class="event-card-container">
+                    <div class="event-card-enhanced wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="200ms">
+                        <div class="event-card-inner">
+                            <!-- Image Section -->
+                            <div class="event-image-wrapper">
+                                <img src="@Model.RequestData.EventPlaceImageUrl" alt="مكان الحفل">
+                                <div class="event-image-badge">
+                                    <i class="fa fa-heart"></i>
+                                    <span>الحفل</span>
                                 </div>
+                            </div>
+
+                            <!-- Details Section -->
+                            <div class="event-details-wrapper">
+                                <h3 class="event-title">انضموا إلينا</h3>
+
+                                <ul class="event-info-list">
+                                    <!-- Date & Time -->
+                                    <li class="event-info-item">
+                                        <div class="event-info-icon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <div class="event-info-content">
+                                            <h4>التاريخ والوقت</h4>
+                                            <p>
+                                                @Model.RequestData.EventDate.ToString("dddd، dd MMMM yyyy", culture)
+                                                <br>
+                                                @timeFrom.ToString("hh:mm tt", culture) – @timeTo.ToString("hh:mm tt", culture)
+                                            </p>
+                                        </div>
+                                    </li>
+
+                                    <!-- Venue -->
+                                    <li class="event-info-item">
+                                        <div class="event-info-icon">
+                                            <i class="fa fa-map-marker"></i>
+                                        </div>
+                                        <div class="event-info-content">
+                                            <h4>المكان</h4>
+                                            <p>@Model.RequestData.EventPlaceName</p>
+                                        </div>
+                                    </li>
+
+                                    <!-- Address -->
+                                    @if (!string.IsNullOrEmpty(Model.RequestData.EventAddress))
+                                    {
+                                        <li class="event-info-item">
+                                            <div class="event-info-icon">
+                                                <i class="fa fa-location-arrow"></i>
+                                            </div>
+                                            <div class="event-info-content">
+                                                <h4>العنوان</h4>
+                                                <p>@Model.RequestData.EventAddress</p>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+
+                                <!-- Location Button -->
+                                <a href="@Model.RequestData.LocationUrl" target="_blank" class="event-location-btn">
+                                    <i class="fa fa-map-marker"></i>
+                                    الاتجاهات
+                                    <i class="fa fa-arrow-left"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-
-            </div> <!-- end container -->
+            </div>
         </section>
         <!-- end wpo-event-section -->
         @await Component.InvokeAsync("Footer")

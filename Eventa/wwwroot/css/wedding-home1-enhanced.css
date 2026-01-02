@@ -1,0 +1,1126 @@
+/* ========================================
+   Wedding Home 1 - Enhanced Modern Styles
+   Professional Animations & Effects
+   ======================================== */
+
+/* ==========================================
+   CSS Variables
+   ========================================== */
+:root {
+    --wedding-primary: #d4a574;
+    --wedding-secondary: #8b6914;
+    --wedding-accent: #f8e8d8;
+    --wedding-dark: #2c1810;
+    --wedding-light: #fff9f5;
+    --wedding-rose: #e8b4b8;
+    --wedding-gold: #c9a962;
+    --wedding-shadow: rgba(44, 24, 16, 0.15);
+    --wedding-gradient: linear-gradient(135deg, var(--wedding-primary) 0%, var(--wedding-secondary) 100%);
+    --wedding-gradient-soft: linear-gradient(135deg, #f8e8d8 0%, #fff9f5 100%);
+}
+
+/* ==========================================
+   Animations Keyframes
+   ========================================== */
+
+/* Floating Hearts Animation */
+@keyframes floatHeart {
+    0%, 100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.7; }
+    25% { transform: translateY(-30px) rotate(5deg) scale(1.1); opacity: 0.9; }
+    50% { transform: translateY(-20px) rotate(-5deg) scale(1); opacity: 0.8; }
+    75% { transform: translateY(-40px) rotate(3deg) scale(1.05); opacity: 0.7; }
+}
+
+@keyframes floatHeartSlow {
+    0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+    33% { transform: translateY(-50px) translateX(20px) rotate(10deg); }
+    66% { transform: translateY(-30px) translateX(-15px) rotate(-5deg); }
+}
+
+/* Sparkle Effect */
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes sparkleMove {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    50% { transform: translateY(-50px) scale(1); opacity: 1; }
+    100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+}
+
+/* Pulse Ring */
+@keyframes pulseRing {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Gentle Float */
+@keyframes gentleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Fade Slide In */
+@keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Rotate Slow */
+@keyframes rotateSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Scale Pulse */
+@keyframes scalePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Glow Pulse */
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(212, 165, 116, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(212, 165, 116, 0.6); }
+}
+
+/* Confetti Fall */
+@keyframes confettiFall {
+    0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* Countdown Number Flip */
+@keyframes flipNumber {
+    0% { transform: rotateX(0deg); }
+    50% { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
+}
+
+/* ==========================================
+   Floating Hearts Container
+   ========================================== */
+.floating-hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 20px;
+    color: var(--wedding-rose);
+    animation: floatHeartSlow 8s ease-in-out infinite;
+    opacity: 0.5;
+}
+
+.floating-heart:nth-child(1) { left: 5%; top: 20%; animation-delay: 0s; animation-duration: 10s; }
+.floating-heart:nth-child(2) { left: 15%; top: 60%; animation-delay: 1s; animation-duration: 12s; }
+.floating-heart:nth-child(3) { left: 25%; top: 40%; animation-delay: 2s; animation-duration: 9s; }
+.floating-heart:nth-child(4) { left: 45%; top: 70%; animation-delay: 0.5s; animation-duration: 11s; }
+.floating-heart:nth-child(5) { left: 65%; top: 30%; animation-delay: 1.5s; animation-duration: 13s; }
+.floating-heart:nth-child(6) { left: 80%; top: 50%; animation-delay: 2.5s; animation-duration: 10s; }
+.floating-heart:nth-child(7) { left: 90%; top: 80%; animation-delay: 3s; animation-duration: 8s; }
+.floating-heart:nth-child(8) { left: 35%; top: 15%; animation-delay: 0.8s; animation-duration: 14s; }
+
+/* ==========================================
+   Sticky Navigation
+   ========================================== */
+.wedding-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 15px 0;
+    transform: translateY(-100%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.wedding-nav.visible {
+    transform: translateY(0);
+}
+
+.wedding-nav .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wedding-nav .couple-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    background: var(--wedding-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.wedding-nav .nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.wedding-nav .nav-links a {
+    color: var(--wedding-dark);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+}
+
+.wedding-nav .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--wedding-gradient);
+    transition: width 0.3s ease;
+}
+
+.wedding-nav .nav-links a:hover {
+    color: var(--wedding-primary);
+}
+
+.wedding-nav .nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ==========================================
+   Hero Section Enhancements
+   ========================================== */
+.static-hero-s2 {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Countdown Timer */
+.countdown-container {
+    margin-top: 40px;
+    animation: fadeSlideIn 1s ease 0.8s both;
+}
+
+.countdown-wrapper {
+    display: flex;
+    gap: 25px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+}
+
+.countdown-number {
+    width: 80px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--wedding-dark);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(212, 165, 116, 0.3);
+}
+
+.countdown-number::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), transparent);
+    border-radius: 15px 15px 0 0;
+}
+
+.countdown-number::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: rgba(212, 165, 116, 0.2);
+}
+
+.countdown-label {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--wedding-dark);
+    opacity: 0.8;
+}
+
+/* Sparkle Decorations */
+.sparkle-decoration {
+    position: absolute;
+    pointer-events: none;
+}
+
+.sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--wedding-gold);
+    border-radius: 50%;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.sparkle:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+.sparkle:nth-child(2) { top: 25%; left: 85%; animation-delay: 0.5s; }
+.sparkle:nth-child(3) { top: 60%; left: 5%; animation-delay: 1s; }
+.sparkle:nth-child(4) { top: 70%; left: 90%; animation-delay: 1.5s; }
+.sparkle:nth-child(5) { top: 40%; left: 95%; animation-delay: 0.3s; }
+.sparkle:nth-child(6) { top: 80%; left: 15%; animation-delay: 0.8s; }
+
+/* Hero Image Enhancements */
+.static-hero-img-inner {
+    position: relative;
+}
+
+.static-hero-img-inner::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border: 3px solid var(--wedding-primary);
+    border-radius: inherit;
+    animation: pulseRing 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Hero Text Animations */
+.wpo-static-hero-inner .slide-title-sub h3 {
+    animation: fadeSlideIn 1s ease 0.2s both;
+}
+
+.wpo-static-hero-inner .slide-title h2 {
+    animation: fadeSlideIn 1s ease 0.4s both;
+    background: var(--wedding-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.wpo-static-hero-inner .slide-text p {
+    animation: fadeSlideIn 1s ease 0.6s both;
+}
+
+/* ==========================================
+   Couple Section Enhancements
+   ========================================== */
+.wpo-couple-section-s2 {
+    position: relative;
+    background: var(--wedding-gradient-soft);
+}
+
+.wpo-couple-section-s2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(180deg, var(--wedding-light), transparent);
+    pointer-events: none;
+}
+
+/* 3D Card Effect for Couple Images */
+.couple-img {
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.couple-img:hover {
+    transform: perspective(1000px) rotateY(5deg) scale(1.02);
+}
+
+.couple-img img {
+    border-radius: 50%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+}
+
+.couple-img:hover img {
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+}
+
+/* Couple Text Animation */
+.couple-text h3 {
+    position: relative;
+    display: inline-block;
+}
+
+.couple-text h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--wedding-gradient);
+    border-radius: 3px;
+}
+
+/* Social Icons Enhancement */
+.couple-text .social ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.couple-text .social ul li a:hover {
+    background: var(--wedding-gradient);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(212, 165, 116, 0.4);
+}
+
+.couple-text .social ul li a:hover i {
+    color: white !important;
+}
+
+/* ==========================================
+   Gallery Section Enhancements
+   ========================================== */
+.wpo-portfolio-section {
+    background: var(--wedding-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.wpo-portfolio-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a574' fill-opacity='0.05'%3E%3Cpath d='M30 30L0 0h60L30 30zM30 30L0 60h60L30 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+/* Gallery Item Hover Effects */
+.portfolio-grids .grid {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.portfolio-grids .grid .img-holder {
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.portfolio-grids .grid .img-holder img {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-grids .grid:hover .img-holder img {
+    transform: scale(1.15);
+}
+
+.portfolio-grids .grid .hover-content {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.85), rgba(139, 105, 20, 0.85));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.portfolio-grids .grid:hover .hover-content {
+    opacity: 1;
+}
+
+.portfolio-grids .grid .hover-content i {
+    font-size: 2.5rem;
+    color: white;
+    transform: scale(0) rotate(-180deg);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-grids .grid:hover .hover-content i {
+    transform: scale(1) rotate(0deg);
+}
+
+/* ==========================================
+   Story/Memories Section Enhancements
+   ========================================== */
+.wpo-story-section {
+    position: relative;
+    background: var(--wedding-light);
+}
+
+/* Timeline Line */
+.wpo-story-wrap::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--wedding-gradient);
+    transform: translateX(-50%);
+    border-radius: 3px;
+}
+
+/* Story Item Enhancements */
+.wpo-story-item {
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.wpo-story-item::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: var(--wedding-primary);
+    border: 4px solid white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.3);
+    transition: all 0.3s ease;
+}
+
+.wpo-story-item:hover::before {
+    transform: translate(-50%, -50%) scale(1.3);
+    box-shadow: 0 0 0 8px rgba(212, 165, 116, 0.4);
+}
+
+/* Story Image Enhancement */
+.wpo-story-img {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transition: all 0.5s ease;
+}
+
+.wpo-story-item:hover .wpo-story-img {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+}
+
+.wpo-story-img img {
+    transition: all 0.6s ease;
+}
+
+.wpo-story-item:hover .wpo-story-img img {
+    transform: scale(1.05);
+}
+
+/* Story Content Enhancement */
+.wpo-story-content {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 1;
+    margin-top: -30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    transition: all 0.3s ease;
+}
+
+.wpo-story-item:hover .wpo-story-content {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+}
+
+.wpo-story-content .date {
+    display: inline-block;
+    padding: 8px 20px;
+    background: var(--wedding-gradient);
+    color: white;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.wpo-story-content h2 {
+    color: var(--wedding-dark);
+    font-weight: 600;
+}
+
+/* ==========================================
+   Dedications/Testimonials Section
+   ========================================== */
+.wpo-testimonial-section {
+    background: linear-gradient(135deg, var(--wedding-accent) 0%, var(--wedding-light) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.wpo-testimonial-section::before {
+    content: '"';
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    font-size: 200px;
+    font-family: Georgia, serif;
+    color: rgba(212, 165, 116, 0.1);
+    line-height: 1;
+}
+
+.wpo-testimonial-item {
+    background: white;
+    border-radius: 25px;
+    padding: 40px 35px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.wpo-testimonial-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--wedding-gradient);
+}
+
+.wpo-testimonial-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.12);
+}
+
+.wpo-testimonial-content p {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.wpo-testimonial-info h3 {
+    color: var(--wedding-dark);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.wpo-testimonial-info span {
+    color: var(--wedding-primary);
+    font-weight: 500;
+}
+
+.quote-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 25px;
+}
+
+.quote-icon i {
+    font-size: 3rem;
+    color: rgba(212, 165, 116, 0.2);
+}
+
+/* ==========================================
+   Event Section Enhancements
+   ========================================== */
+.wpo-event-section {
+    background: var(--wedding-dark);
+    position: relative;
+    color: white;
+}
+
+.wpo-event-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50m-40 0a40,40 0 1,0 80,0a40,40 0 1,0 -80,0' fill='none' stroke='%23d4a574' stroke-opacity='0.03' stroke-width='1'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.wpo-event-section .wpo-section-title span,
+.wpo-event-section .wpo-section-title h2 {
+    color: white;
+}
+
+.wpo-event-item {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 165, 116, 0.2);
+    transition: all 0.4s ease;
+}
+
+.wpo-event-item:hover {
+    border-color: rgba(212, 165, 116, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.wpo-event-img-inner {
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 15px;
+}
+
+.wpo-event-img-inner img {
+    transition: all 0.6s ease;
+    border-radius: 20px;
+}
+
+.wpo-event-item:hover .wpo-event-img-inner img {
+    transform: scale(1.08);
+}
+
+.wpo-event-text {
+    padding: 30px;
+}
+
+.wpo-event-text .title h2 {
+    color: white;
+    font-weight: 700;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.wpo-event-text .title h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--wedding-gradient);
+    border-radius: 3px;
+}
+
+.wpo-event-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wpo-event-text ul li {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+}
+
+.wpo-event-text ul li:last-child {
+    border-bottom: none;
+}
+
+.wpo-event-text ul li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--wedding-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 12px 25px;
+    background: rgba(212, 165, 116, 0.15);
+    border-radius: 30px;
+    margin-top: 10px;
+}
+
+.wpo-event-text ul li a:hover {
+    background: var(--wedding-gradient);
+    color: white;
+    transform: translateX(5px);
+}
+
+/* ==========================================
+   RSVP Floating Button
+   ========================================== */
+.rsvp-floating-btn {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 25px;
+    background: var(--wedding-gradient);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(212, 165, 116, 0.4);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    animation: gentleFloat 3s ease-in-out infinite;
+}
+
+.rsvp-floating-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(212, 165, 116, 0.5);
+    color: white;
+}
+
+.rsvp-floating-btn i {
+    font-size: 1.1rem;
+}
+
+/* ==========================================
+   Share Buttons
+   ========================================== */
+.share-buttons-container {
+    position: fixed;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.share-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.share-btn:hover {
+    transform: translateX(5px) scale(1.1);
+}
+
+.share-btn.whatsapp { background: #25D366; }
+.share-btn.facebook { background: #1877F2; }
+.share-btn.twitter { background: #1DA1F2; }
+.share-btn.copy-link { background: var(--wedding-primary); }
+
+.share-btn:hover { color: white; }
+
+/* ==========================================
+   Scroll Progress Indicator
+   ========================================== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: var(--wedding-gradient);
+    z-index: 9999;
+    transition: width 0.1s ease;
+}
+
+/* ==========================================
+   Section Titles Enhancement
+   ========================================== */
+.wpo-section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.wpo-section-title span {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--wedding-primary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.wpo-section-title span::before,
+.wpo-section-title span::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 2px;
+    background: var(--wedding-gradient);
+}
+
+.wpo-section-title span::before {
+    right: calc(100% + 15px);
+}
+
+.wpo-section-title span::after {
+    left: calc(100% + 15px);
+}
+
+.wpo-section-title h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--wedding-dark);
+    margin: 0;
+    font-family: 'Great Vibes', cursive;
+}
+
+/* ==========================================
+   Scroll Reveal Animations
+   ========================================== */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ==========================================
+   Confetti Effect Container
+   ========================================== */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    overflow: hidden;
+    display: none;
+}
+
+.confetti-container.active {
+    display: block;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -20px;
+    animation: confettiFall 4s linear forwards;
+}
+
+/* ==========================================
+   Responsive Styles
+   ========================================== */
+@media (max-width: 991px) {
+    .wedding-nav .nav-links {
+        display: none;
+    }
+
+    .countdown-wrapper {
+        justify-content: center;
+    }
+
+    .countdown-number {
+        width: 65px;
+        height: 75px;
+        font-size: 2rem;
+    }
+
+    .wpo-story-wrap::before {
+        left: 30px;
+    }
+
+    .wpo-story-item::before {
+        left: 30px;
+    }
+
+    .share-buttons-container {
+        left: 15px;
+        top: auto;
+        bottom: 100px;
+        transform: none;
+    }
+
+    .share-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .rsvp-floating-btn {
+        right: 15px;
+        bottom: 80px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .countdown-wrapper {
+        gap: 15px;
+    }
+
+    .countdown-number {
+        width: 55px;
+        height: 65px;
+        font-size: 1.6rem;
+    }
+
+    .countdown-label {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+
+    .wpo-section-title h2 {
+        font-size: 2rem;
+    }
+
+    .wpo-section-title span::before,
+    .wpo-section-title span::after {
+        display: none;
+    }
+
+    .floating-hearts-container .floating-heart {
+        font-size: 14px;
+    }
+
+    .rsvp-floating-btn span {
+        display: none;
+    }
+
+    .rsvp-floating-btn {
+        padding: 15px;
+        border-radius: 50%;
+    }
+}
+
+/* ==========================================
+   Preloader Enhancement
+   ========================================== */
+.preloader {
+    background: linear-gradient(135deg, var(--wedding-light) 0%, var(--wedding-accent) 100%);
+}
+
+.preloader .content {
+    position: relative;
+}
+
+.preloader .loader-circle,
+.preloader .loader-line-mask .loader-line {
+    border-color: var(--wedding-primary);
+}
+
+/* ==========================================
+   Audio Player Enhancement
+   ========================================== */
+.audio-player-floating {
+    bottom: 30px;
+    right: 30px;
+}
+
+.audio-toggle-btn {
+    width: 55px;
+    height: 55px;
+    background: var(--wedding-gradient) !important;
+}
+
+/* ==========================================
+   Color Switcher Enhancement
+   ========================================== */
+.color-switcher-wrap {
+    z-index: 998;
+}
+
+.color-switcher-item {
+    background: white;
+    border-radius: 15px 0 0 15px;
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================
+   Smooth Scrolling
+   ========================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ==========================================
+   Selection Color
+   ========================================== */
+::selection {
+    background: var(--wedding-primary);
+    color: white;
+}
+
+::-moz-selection {
+    background: var(--wedding-primary);
+    color: white;
+}

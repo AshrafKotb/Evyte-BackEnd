@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ren \"Evyte.Domain\" \"Eventa.Domain\")",
+      "Bash(ren \"Evyte.Infrastructure\" \"Eventa.Infrastructure\")",
+      "Bash(ren \"Evyte.ApplicationCore\" \"Eventa.ApplicationCore\")",
+      "Bash(ren:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File:*)",
+      "Bash(dotnet restore:*)",
+      "Bash(dotnet build:*)",
+      "Bash(del \"C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Eventa.Infrastructure\\Migrations\\20260101205754_AddIndexesAndFilters.cs\")",
+      "Bash(del \"C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Eventa.Infrastructure\\Migrations\\20260101205754_AddIndexesAndFilters.Designer.cs\")",
+      "Bash(git checkout:*)",
+      "Bash(del \"C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Eventa.Infrastructure\\Migrations\\20250502031058_EditRequestData.cs\")",
+      "Bash(del \"C:\\Users\\iT\\source\\repos\\AshrafKotb\\Evyte-BackEnd\\Eventa.Infrastructure\\Migrations\\20250502031058_EditRequestData.Designer.cs\")"
+    ]
+  }
+}

@@ -8,6 +8,8 @@ using Eventa.Domain.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 public class InvitationService : IInvitationService
@@ -16,6 +18,9 @@ public class InvitationService : IInvitationService
     private readonly IRequestRepository _requestRepository;
     private readonly IRequestDataRepository _requestDataRepository;
     private readonly IRequestGalleryPhotoRepository _galleryPhotoRepository;
+    private readonly IMemoryRepository _memoryRepository;
+    private readonly IDedicationRepository _dedicationRepository;
+    private readonly IRequestAudioRepository _audioRepository;
     private readonly IFileService _fileService;
     private readonly IQRCodeService _qrCodeService;
     private readonly IMailingService _mailingService;
@@ -29,6 +34,9 @@ public class InvitationService : IInvitationService
         IRequestRepository requestRepository,
         IRequestDataRepository requestDataRepository,
         IRequestGalleryPhotoRepository galleryPhotoRepository,
+        IMemoryRepository memoryRepository,
+        IDedicationRepository dedicationRepository,
+        IRequestAudioRepository audioRepository,
         IFileService fileService,
         IQRCodeService qrCodeService,
         IMailingService mailingService,
@@ -39,6 +47,9 @@ public class InvitationService : IInvitationService
         _requestRepository = requestRepository;
         _requestDataRepository = requestDataRepository;
         _galleryPhotoRepository = galleryPhotoRepository;
+        _memoryRepository = memoryRepository;
+        _dedicationRepository = dedicationRepository;
+        _audioRepository = audioRepository;
         _fileService = fileService;
         _qrCodeService = qrCodeService;
         _mailingService = mailingService;
@@ -188,8 +199,79 @@ public class InvitationService : IInvitationService
                 };
                 await _galleryPhotoRepository.AddGalleryPhotoAsync(galleryPhoto);
             }
+            request.HasGallery = true;
         }
-        //send email to Admin telling him that his request is created
+
+        // Step 6: Save Memories (if any)
+        if (dto.Memories != null && dto.Memories.Any())
+        {
+            var memories = new List<Memory>();
+            int order = 0;
+            foreach (var memoryDto in dto.Memories)
+            {
+                var memory = new Memory
+                {
+                    Title = memoryDto.Title,
+                    EventDate = memoryDto.EventDate,
+                    DisplayOrder = order++,
+                    RequestId = request.Id
+                };
+
+                // Upload memory image if provided
+                if (memoryDto.Image != null)
+                {
+                    (string url, string id) = await _fileService.UploadPictureAsync(memoryDto.Image, "memories");
+                    memory.ImageUrl = url;
+                    memory.ImageId = id;
+                }
+
+                memories.Add(memory);
+            }
+            await _memoryRepository.AddMemoriesAsync(memories);
+            request.HasMemories = true;
+        }
+
+        // Step 7: Save Dedications (if any)
+        if (dto.Dedications != null && dto.Dedications.Any())
+        {
+            var dedications = new List<Dedication>();
+            int order = 0;
+            foreach (var dedDto in dto.Dedications)
+            {
+                var dedication = new Dedication
+                {
+                    PersonName = dedDto.PersonName,
+                    Relationship = dedDto.Relationship,
+                    Message = dedDto.Message,
+                    DisplayOrder = order++,
+                    RequestId = request.Id
+                };
+                dedications.Add(dedication);
+            }
+            await _dedicationRepository.AddDedicationsAsync(dedications);
+            request.HasDedications = true;
+        }
+
+        // Step 8: Save Audio (if provided)
+        if (dto.AudioFile != null)
+        {
+            (string url, string id) = await _fileService.UploadFileAsync(dto.AudioFile, "audio");
+            var audio = new RequestAudio
+            {
+                AudioUrl = url,
+                AudioId = id,
+                AudioName = dto.AudioName ?? dto.AudioFile.FileName,
+                AutoPlay = dto.AudioAutoPlay,
+                RequestId = request.Id
+            };
+            await _audioRepository.AddAudioAsync(audio);
+            request.HasAudio = true;
+        }
+
+        // Update request with section flags
+        await _requestRepository.UpdateRequestAsync(request);
+
+        // Send email to Admin telling him that his request is created
         await SendNewRequestNotificationEmail(request);
 
         //// Step 6: Send email

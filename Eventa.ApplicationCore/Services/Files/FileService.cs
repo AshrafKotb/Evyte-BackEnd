@@ -93,6 +93,42 @@ namespace Eventa.ApplicationCore.Services.Files
             }
         }
 
+        public async Task<(string FileUrl, string FileId)> UploadFileAsync(IFormFile file, string folderName)
+        {
+            try
+            {
+                ImagekitClient imagekit = new(_imagekitSettings.PublicKey, _imagekitSettings.PrivateKey, _imagekitSettings.UrlEndPoint);
+
+                byte[] fileArray;
+                using (var memoryStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(memoryStream);
+                    fileArray = memoryStream.ToArray();
+                }
+
+                string base64FileRepresentation = Convert.ToBase64String(fileArray);
+
+                // Get file extension for proper file naming
+                var extension = Path.GetExtension(file.FileName);
+                var fileName = $"{Guid.NewGuid()}{extension}";
+
+                FileCreateRequest request = new()
+                {
+                    file = base64FileRepresentation,
+                    fileName = fileName,
+                    folder = folderName
+                };
+
+                Result response = imagekit.Upload(request);
+
+                return (response.url, response.fileId);
+            }
+            catch (Exception)
+            {
+                return (null, null);
+            }
+        }
+
         public string GetDefaultImage(string folderName)
         {
             // folderName  = "users" remove the last char "s" ==> user.png => default image

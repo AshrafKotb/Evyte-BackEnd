@@ -27,6 +27,9 @@ namespace Eventa.Web.Extensions
             services.AddScoped<IRequestRepository, RequestRepository>();
             services.AddScoped<IRequestDataRepository, RequestDataRepository>();
             services.AddScoped<IRequestGalleryPhotoRepository, RequestGalleryPhotoRepository>();
+            services.AddScoped<IMemoryRepository, MemoryRepository>();
+            services.AddScoped<IDedicationRepository, DedicationRepository>();
+            services.AddScoped<IRequestAudioRepository, RequestAudioRepository>();
             services.AddScoped<IInvitationService, InvitationService>();
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<IGeneralInformationService, GeneralInformationService>();

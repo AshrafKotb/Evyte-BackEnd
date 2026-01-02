@@ -37,9 +37,194 @@
     <link href="~/assets/css/odometer-theme-default.css" rel="stylesheet">
     <link href="~/assets/css/jquery-ui.css" rel="stylesheet">
     <link href="~/assets/sass/style.css" rel="stylesheet">
+    <link href="~/css/wedding-home1-enhanced.css" rel="stylesheet">
+    <link href="~/css/location-section-enhanced.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Floating Hearts -->
+    <div class="floating-hearts-container">
+        <span class="floating-heart"><i class="fa fa-heart"></i></span>
+        <span class="floating-heart"><i class="fa fa-heart"></i></span>
+        <span class="floating-heart"><i class="fa fa-heart"></i></span>
+        <span class="floating-heart"><i class="fa fa-heart"></i></span>
+        <span class="floating-heart"><i class="fa fa-heart"></i></span>
+        <span class="floating-heart"><i class="fa fa-heart"></i></span>
+        <span class="floating-heart"><i class="fa fa-heart"></i></span>
+        <span class="floating-heart"><i class="fa fa-heart"></i></span>
+    </div>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <!-- Sticky Navigation -->
+    <nav class="wedding-nav" id="weddingNav">
+        <div class="nav-container">
+            <div class="couple-names">@Model.RequestData.GroomName & @Model.RequestData.BrideName</div>
+            <ul class="nav-links">
+                <li><a href="#couple">The Couple</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                @if (Model.HasMemories && Model.Memories != null && Model.Memories.Any())
+                {
+                    <li><a href="#memories">Our Story</a></li>
+                }
+                @if (Model.HasDedications && Model.Dedications != null && Model.Dedications.Any())
+                {
+                    <li><a href="#dedications">Wishes</a></li>
+                }
+                <li><a href="#event">Event</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Share Buttons -->
+    <div class="share-buttons-container">
+        <a id="whatsappShareBtn" href="#" class="share-btn whatsapp" title="Share on WhatsApp">
+            <i class="fa fa-whatsapp"></i>
+        </a>
+        <a id="facebookShareBtn" href="#" class="share-btn facebook" title="Share on Facebook">
+            <i class="fa fa-facebook"></i>
+        </a>
+        <a id="twitterShareBtn" href="#" class="share-btn twitter" title="Share on Twitter">
+            <i class="fa fa-twitter"></i>
+        </a>
+        <button class="share-btn copy-link" id="copyLinkBtn" title="Copy Link">
+            <i class="fa fa-link"></i>
+        </button>
+        @if (!string.IsNullOrEmpty(Model.QrCodeImageUrl))
+        {
+            <button class="share-btn qr-code" id="qrCodeBtn" title="QR Code">
+                <i class="fa fa-qrcode"></i>
+            </button>
+        }
+    </div>
+
+    <!-- QR Code Modal -->
+    @if (!string.IsNullOrEmpty(Model.QrCodeImageUrl))
+    {
+        <div class="qr-modal-overlay" id="qrModalOverlay">
+            <div class="qr-modal">
+                <button class="qr-modal-close" id="qrModalClose">&times;</button>
+                <h3>Scan or Share QR Code</h3>
+                <div class="qr-image-container">
+                    <img src="@Model.QrCodeImageUrl" alt="Wedding Invitation QR Code" id="qrCodeImage">
+                </div>
+                <div class="qr-modal-actions">
+                    <button class="qr-action-btn download" id="downloadQrBtn">
+                        <i class="fa fa-download"></i> Download
+                    </button>
+                    <button class="qr-action-btn share-whatsapp" id="shareQrWhatsapp">
+                        <i class="fa fa-whatsapp"></i> WhatsApp
+                    </button>
+                    <button class="qr-action-btn share-native" id="shareQrNative">
+                        <i class="fa fa-share-alt"></i> Share
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .share-btn.qr-code { background: linear-gradient(135deg, #333 0%, #666 100%); }
+            .share-btn.qr-code:hover { background: linear-gradient(135deg, #444 0%, #777 100%); }
+
+            .qr-modal-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: none;
+                justify-content: center;
+                align-items: center;
+                z-index: 99999;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            .qr-modal-overlay.active {
+                display: flex;
+                opacity: 1;
+            }
+            .qr-modal {
+                background: white;
+                padding: 30px;
+                border-radius: 20px;
+                text-align: center;
+                max-width: 400px;
+                width: 90%;
+                position: relative;
+                transform: scale(0.8);
+                transition: transform 0.3s ease;
+            }
+            .qr-modal-overlay.active .qr-modal {
+                transform: scale(1);
+            }
+            .qr-modal-close {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                background: none;
+                border: none;
+                font-size: 28px;
+                cursor: pointer;
+                color: #666;
+                transition: color 0.3s;
+            }
+            .qr-modal-close:hover { color: #333; }
+            .qr-modal h3 {
+                margin: 0 0 20px;
+                color: #333;
+                font-family: 'Great Vibes', cursive;
+                font-size: 28px;
+            }
+            .qr-image-container {
+                background: #f8f8f8;
+                padding: 20px;
+                border-radius: 15px;
+                margin-bottom: 20px;
+            }
+            .qr-image-container img {
+                max-width: 200px;
+                width: 100%;
+                height: auto;
+            }
+            .qr-modal-actions {
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .qr-action-btn {
+                padding: 12px 20px;
+                border: none;
+                border-radius: 25px;
+                cursor: pointer;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                transition: all 0.3s ease;
+                color: white;
+            }
+            .qr-action-btn.download {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            }
+            .qr-action-btn.share-whatsapp {
+                background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            }
+            .qr-action-btn.share-native {
+                background: linear-gradient(135deg, var(--theme-primary-color, #d4a574) 0%, var(--theme-secondary-color, #8b6914) 100%);
+            }
+            .qr-action-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            }
+        </style>
+    }
 
     <!-- start page-wrapper -->
     <div class="page-wrapper">
@@ -74,8 +259,38 @@
                                          data-wow-duration="1600ms">
                                         <p>We Are Getting Married @Model.RequestData.EventDate.ToString("dd MMMM yyyy", culture)</p>
                                     </div>
+                                    <!-- Countdown Timer -->
+                                    <div class="countdown-container">
+                                        <div class="countdown-wrapper" id="weddingCountdown" data-date="@Model.RequestData.EventDate.ToString("yyyy-MM-dd")">
+                                            <div class="countdown-item">
+                                                <div class="countdown-number" id="countdownDays">00</div>
+                                                <span class="countdown-label">Days</span>
+                                            </div>
+                                            <div class="countdown-item">
+                                                <div class="countdown-number" id="countdownHours">00</div>
+                                                <span class="countdown-label">Hours</span>
+                                            </div>
+                                            <div class="countdown-item">
+                                                <div class="countdown-number" id="countdownMinutes">00</div>
+                                                <span class="countdown-label">Minutes</span>
+                                            </div>
+                                            <div class="countdown-item">
+                                                <div class="countdown-number" id="countdownSeconds">00</div>
+                                                <span class="countdown-label">Seconds</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="shape-2 wow fadeInUp" data-wow-duration="1800ms">
                                         <img src="~/assets/images/slider/shape2.svg" alt="">
+                                    </div>
+                                    <!-- Sparkle Decorations -->
+                                    <div class="sparkle-decoration">
+                                        <div class="sparkle"></div>
+                                        <div class="sparkle"></div>
+                                        <div class="sparkle"></div>
+                                        <div class="sparkle"></div>
+                                        <div class="sparkle"></div>
+                                        <div class="sparkle"></div>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -367,47 +582,88 @@
         }
 
         <!-- start wpo-event-section -->
-        <section class="wpo-event-section section-padding" id="event">
+        <section class="wpo-event-section-enhanced event-theme-gold" id="event">
+            <!-- Decorative Elements -->
+            <div class="event-decoration event-decoration-1"></div>
+            <div class="event-decoration event-decoration-2"></div>
+
             <div class="container">
-                <div class="wpo-section-title">
-                    <span>Our Wedding</span>
+                <!-- Section Title -->
+                <div class="event-section-title wow fadeInUp" data-wow-duration="800ms">
+                    <span class="subtitle">Our Wedding</span>
                     <h2>When & Where</h2>
                 </div>
-                <div class="wpo-event-wrap">
-                    <div class="row">
-                        <div class="col col-lg-12 col-md-12 col-12">
-                            <div class="wpo-event-item wow fadeInUp" data-wow-duration="1000ms">
-                                <div class="wpo-event-img">
-                                    <div class="wpo-event-img-inner">
-                                        <img src="@Model.RequestData.EventPlaceImageUrl" alt="">
-                                    </div>
+
+                <!-- Event Card -->
+                <div class="event-card-container">
+                    <div class="event-card-enhanced wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="200ms">
+                        <div class="event-card-inner">
+                            <!-- Image Section -->
+                            <div class="event-image-wrapper">
+                                <img src="@Model.RequestData.EventPlaceImageUrl" alt="Event Venue">
+                                <div class="event-image-badge">
+                                    <i class="fa fa-heart"></i>
+                                    <span>The Celebration</span>
                                 </div>
-                                <div class="wpo-event-text">
-                                    <div class="title">
-                                        <h2>The Party</h2>
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            @Model.RequestData.EventDate.ToString("dd MMMM yyyy", culture)
-                                            <br />
-                                            @timeFrom.ToString("hh:mm tt") – @timeTo.ToString("hh:mm tt")
+                            </div>
+
+                            <!-- Details Section -->
+                            <div class="event-details-wrapper">
+                                <h3 class="event-title">Join Us</h3>
+
+                                <ul class="event-info-list">
+                                    <!-- Date & Time -->
+                                    <li class="event-info-item">
+                                        <div class="event-info-icon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <div class="event-info-content">
+                                            <h4>Date & Time</h4>
+                                            <p>
+                                                @Model.RequestData.EventDate.ToString("dddd, dd MMMM yyyy", culture)
+                                                <br>
+                                                @timeFrom.ToString("hh:mm tt") – @timeTo.ToString("hh:mm tt")
+                                            </p>
+                                        </div>
+                                    </li>
+
+                                    <!-- Venue -->
+                                    <li class="event-info-item">
+                                        <div class="event-info-icon">
+                                            <i class="fa fa-map-marker"></i>
+                                        </div>
+                                        <div class="event-info-content">
+                                            <h4>Venue</h4>
+                                            <p>@Model.RequestData.EventPlaceName</p>
+                                        </div>
+                                    </li>
+
+                                    <!-- Address -->
+                                    @if (!string.IsNullOrEmpty(Model.RequestData.EventAddress))
+                                    {
+                                        <li class="event-info-item">
+                                            <div class="event-info-icon">
+                                                <i class="fa fa-location-arrow"></i>
+                                            </div>
+                                            <div class="event-info-content">
+                                                <h4>Address</h4>
+                                                <p>@Model.RequestData.EventAddress</p>
+                                            </div>
                                         </li>
-                                        <li>@Model.RequestData.EventPlaceName</li>
-                                        <li>
-                                            <a @*class="popup-gmaps"*@
-                                               href="@Model.RequestData.LocationUrl">
-                                                See
-                                                Location
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                    }
+                                </ul>
+
+                                <!-- Location Button -->
+                                <a href="@Model.RequestData.LocationUrl" target="_blank" class="event-location-btn">
+                                    <i class="fa fa-map-marker"></i>
+                                    Get Directions
+                                    <i class="fa fa-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-
-            </div> <!-- end container -->
+            </div>
         </section>
         <!-- end wpo-event-section -->
         <!-- start of wpo-site-footer-section -->
@@ -440,6 +696,12 @@
 
     </div>
     <!-- end of page-wrapper -->
+
+    <!-- RSVP Floating Button -->
+    <a href="#event" class="rsvp-floating-btn">
+        <i class="fa fa-calendar-check-o"></i>
+        <span>RSVP Now</span>
+    </a>
 
     @if (Model.HasAudio && Model.Audio != null && !string.IsNullOrEmpty(Model.Audio.AudioUrl))
     {
@@ -486,6 +748,305 @@
     <script src="~/assets/js/tilt.jquery.min.js"></script>
     <!-- Custom script for this template -->
     <script src="~/assets/js/script.js"></script>
+
+    <!-- Enhanced Wedding Animations Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ========================================
+            // Countdown Timer
+            // ========================================
+            var countdownEl = document.getElementById('weddingCountdown');
+            if (countdownEl) {
+                var eventDate = new Date(countdownEl.dataset.date + 'T00:00:00').getTime();
+
+                function updateCountdown() {
+                    var now = new Date().getTime();
+                    var distance = eventDate - now;
+
+                    if (distance > 0) {
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                        document.getElementById('countdownDays').textContent = days < 10 ? '0' + days : days;
+                        document.getElementById('countdownHours').textContent = hours < 10 ? '0' + hours : hours;
+                        document.getElementById('countdownMinutes').textContent = minutes < 10 ? '0' + minutes : minutes;
+                        document.getElementById('countdownSeconds').textContent = seconds < 10 ? '0' + seconds : seconds;
+                    } else {
+                        document.getElementById('countdownDays').textContent = '00';
+                        document.getElementById('countdownHours').textContent = '00';
+                        document.getElementById('countdownMinutes').textContent = '00';
+                        document.getElementById('countdownSeconds').textContent = '00';
+                    }
+                }
+
+                updateCountdown();
+                setInterval(updateCountdown, 1000);
+            }
+
+            // ========================================
+            // Scroll Progress Indicator
+            // ========================================
+            var progressBar = document.getElementById('scrollProgress');
+            window.addEventListener('scroll', function() {
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                var progress = (scrollTop / scrollHeight) * 100;
+                progressBar.style.width = progress + '%';
+            });
+
+            // ========================================
+            // Sticky Navigation
+            // ========================================
+            var nav = document.getElementById('weddingNav');
+            var heroSection = document.querySelector('.static-hero-s2');
+            var heroHeight = heroSection ? heroSection.offsetHeight : 500;
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > heroHeight * 0.7) {
+                    nav.classList.add('visible');
+                } else {
+                    nav.classList.remove('visible');
+                }
+            });
+
+            // Smooth scroll for nav links
+            document.querySelectorAll('.wedding-nav .nav-links a').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var targetId = this.getAttribute('href');
+                    var target = document.querySelector(targetId);
+                    if (target) {
+                        var offsetTop = target.offsetTop - 80;
+                        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // ========================================
+            // Scroll Reveal Animations
+            // ========================================
+            var revealElements = document.querySelectorAll('.wpo-story-item, .wpo-testimonial-item, .wpo-event-item, .grid');
+
+            function revealOnScroll() {
+                revealElements.forEach(function(el) {
+                    var rect = el.getBoundingClientRect();
+                    var windowHeight = window.innerHeight;
+
+                    if (rect.top < windowHeight * 0.85) {
+                        el.classList.add('revealed');
+                    }
+                });
+            }
+
+            // Add reveal-on-scroll class
+            revealElements.forEach(function(el) {
+                el.classList.add('reveal-on-scroll');
+            });
+
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Initial check
+
+            // ========================================
+            // Share Configuration
+            // ========================================
+            var invitationUrl = window.location.href;
+            var qrCodeUrl = '@(Model.QrCodeImageUrl ?? "")';
+            var groomName = '@Model.RequestData.GroomName';
+            var brideName = '@Model.RequestData.BrideName';
+            var shareText = "You're invited to " + groomName + " & " + brideName + "'s Wedding! 💍✨";
+            var shareTextWithQr = shareText + "\n\n📱 Scan the QR Code or visit: " + invitationUrl;
+
+            // WhatsApp Share (includes QR code mention)
+            var whatsappBtn = document.getElementById('whatsappShareBtn');
+            if (whatsappBtn) {
+                whatsappBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var whatsappText = shareText + "\n\n🔗 " + invitationUrl;
+                    if (qrCodeUrl) {
+                        whatsappText += "\n\n📱 QR Code: " + qrCodeUrl;
+                    }
+                    window.open('https://wa.me/?text=' + encodeURIComponent(whatsappText), '_blank');
+                });
+            }
+
+            // Facebook Share
+            var facebookBtn = document.getElementById('facebookShareBtn');
+            if (facebookBtn) {
+                facebookBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(invitationUrl) + '&quote=' + encodeURIComponent(shareText), '_blank');
+                });
+            }
+
+            // Twitter Share
+            var twitterBtn = document.getElementById('twitterShareBtn');
+            if (twitterBtn) {
+                twitterBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var twitterText = shareText;
+                    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(twitterText) + '&url=' + encodeURIComponent(invitationUrl), '_blank');
+                });
+            }
+
+            // Copy Link Button
+            var copyBtn = document.getElementById('copyLinkBtn');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function() {
+                    navigator.clipboard.writeText(window.location.href).then(function() {
+                        var icon = copyBtn.querySelector('i');
+                        icon.className = 'fa fa-check';
+                        setTimeout(function() {
+                            icon.className = 'fa fa-link';
+                        }, 2000);
+                    });
+                });
+            }
+
+            // ========================================
+            // QR Code Modal Functionality
+            // ========================================
+            var qrCodeBtn = document.getElementById('qrCodeBtn');
+            var qrModalOverlay = document.getElementById('qrModalOverlay');
+            var qrModalClose = document.getElementById('qrModalClose');
+            var downloadQrBtn = document.getElementById('downloadQrBtn');
+            var shareQrWhatsapp = document.getElementById('shareQrWhatsapp');
+            var shareQrNative = document.getElementById('shareQrNative');
+            var qrCodeImage = document.getElementById('qrCodeImage');
+
+            if (qrCodeBtn && qrModalOverlay) {
+                // Open modal
+                qrCodeBtn.addEventListener('click', function() {
+                    qrModalOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                // Close modal
+                qrModalClose.addEventListener('click', function() {
+                    qrModalOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+
+                // Close on overlay click
+                qrModalOverlay.addEventListener('click', function(e) {
+                    if (e.target === qrModalOverlay) {
+                        qrModalOverlay.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+
+                // Download QR Code
+                if (downloadQrBtn && qrCodeImage) {
+                    downloadQrBtn.addEventListener('click', function() {
+                        // Create a temporary link to download
+                        fetch(qrCodeImage.src)
+                            .then(response => response.blob())
+                            .then(blob => {
+                                var url = window.URL.createObjectURL(blob);
+                                var a = document.createElement('a');
+                                a.href = url;
+                                a.download = groomName + '-' + brideName + '-Wedding-QR.png';
+                                document.body.appendChild(a);
+                                a.click();
+                                document.body.removeChild(a);
+                                window.URL.revokeObjectURL(url);
+                            })
+                            .catch(function() {
+                                // Fallback: open in new tab
+                                window.open(qrCodeImage.src, '_blank');
+                            });
+                    });
+                }
+
+                // Share QR on WhatsApp
+                if (shareQrWhatsapp) {
+                    shareQrWhatsapp.addEventListener('click', function() {
+                        var whatsappQrText = "Scan this QR Code for " + groomName + " & " + brideName + "'s Wedding Invitation! 💍\n\n" + qrCodeUrl + "\n\nOr visit: " + invitationUrl;
+                        window.open('https://wa.me/?text=' + encodeURIComponent(whatsappQrText), '_blank');
+                    });
+                }
+
+                // Native Share (Web Share API)
+                if (shareQrNative) {
+                    shareQrNative.addEventListener('click', async function() {
+                        if (navigator.share) {
+                            try {
+                                // Try to fetch the image and share it
+                                const response = await fetch(qrCodeImage.src);
+                                const blob = await response.blob();
+                                const file = new File([blob], groomName + '-' + brideName + '-QR.png', { type: 'image/png' });
+
+                                await navigator.share({
+                                    title: groomName + ' & ' + brideName + ' Wedding',
+                                    text: 'Scan this QR Code for the wedding invitation!',
+                                    files: [file]
+                                });
+                            } catch (err) {
+                                // Fallback to sharing just the URL
+                                try {
+                                    await navigator.share({
+                                        title: groomName + ' & ' + brideName + ' Wedding QR Code',
+                                        text: 'Scan this QR Code for the wedding invitation!',
+                                        url: qrCodeUrl
+                                    });
+                                } catch (e) {
+                                    // If share fails, copy to clipboard
+                                    navigator.clipboard.writeText(qrCodeUrl);
+                                    alert('QR Code link copied to clipboard!');
+                                }
+                            }
+                        } else {
+                            // Fallback for browsers without Web Share API
+                            navigator.clipboard.writeText(qrCodeUrl).then(function() {
+                                alert('QR Code link copied to clipboard!');
+                            });
+                        }
+                    });
+                }
+            }
+
+            // ========================================
+            // Confetti Effect on Load (one-time celebration)
+            // ========================================
+            function createConfetti() {
+                var container = document.getElementById('confettiContainer');
+                var colors = ['#d4a574', '#e8b4b8', '#c9a962', '#f8e8d8', '#8b6914'];
+
+                container.classList.add('active');
+
+                for (var i = 0; i < 50; i++) {
+                    var confetti = document.createElement('div');
+                    confetti.className = 'confetti-piece';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    confetti.style.animationDuration = (3 + Math.random() * 2) + 's';
+                    container.appendChild(confetti);
+                }
+
+                setTimeout(function() {
+                    container.classList.remove('active');
+                    container.innerHTML = '';
+                }, 6000);
+            }
+
+            // Trigger confetti after preloader
+            setTimeout(createConfetti, 2000);
+
+            // ========================================
+            // Parallax Effect for Hero Images
+            // ========================================
+            var heroImg = document.querySelector('.static-hero-img-inner img.zoom');
+            if (heroImg) {
+                window.addEventListener('scroll', function() {
+                    var scrolled = window.pageYOffset;
+                    var rate = scrolled * 0.3;
+                    heroImg.style.transform = 'scale(1) translateY(' + rate + 'px)';
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
