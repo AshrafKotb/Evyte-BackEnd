@@ -1,0 +1,225 @@
+@model IEnumerable<Eventa.Domain.Entities.SplashTemplate>
+@{
+    ViewData["Title"] = "مكتبة السبلاش";
+    Layout = "_Layout";
+}
+
+<!-- Page Header -->
+<div class="page-header animate-fade-in">
+    <div class="page-title">
+        <h1>
+            <i class="fas fa-magic"></i>
+            مكتبة السبلاش
+        </h1>
+        <div class="page-breadcrumb">
+            <a href="@Url.Action("Index", "cp")"><i class="fas fa-home"></i></a>
+            <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+            <span>مكتبة السبلاش</span>
+        </div>
+    </div>
+    <div class="page-actions">
+        <a asp-action="Create" class="btn btn-gold">
+            <i class="fas fa-plus"></i>
+            إضافة سبلاش جديد
+        </a>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success animate-fade-in" style="margin-bottom: 20px;">
+        <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger animate-fade-in" style="margin-bottom: 20px;">
+        <i class="fas fa-exclamation-circle"></i> @TempData["ErrorMessage"]
+    </div>
+}
+
+<!-- Info Card -->
+<div class="card animate-slide-in-up" style="margin-bottom: 24px;">
+    <div class="card-body" style="padding: 18px 22px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+            <i class="fas fa-info-circle" style="font-size:1.6rem; color: var(--gold, #d4a574);"></i>
+            <div>
+                <strong>ملاحظات سريعة</strong>
+                <div style="color: var(--text-muted, #94a3b8); font-size: 0.9rem; margin-top: 4px;">
+                    • السبلاش الافتراضي هو اللي بيظهر للعملاء اللي مش بيختاروا سبلاش بنفسهم.<br>
+                    • مينفعش تعطّل أو تحذف السبلاش الافتراضي، لازم تختار سبلاش تاني افتراضي الأول.<br>
+                    • السبلاشات الغير مفعّلة مش بتظهر للعملاء وقت اختيار التيمبلت.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Data Table Card -->
+<div class="card animate-slide-in-up">
+    <div class="card-header">
+        <div class="card-title">
+            <i class="fas fa-list"></i>
+            <span>قائمة السبلاش</span>
+        </div>
+        <div class="card-actions">
+            <span class="badge badge-primary" style="padding: 8px 15px; border-radius: 20px;">
+                @Model.Count() سبلاش
+            </span>
+        </div>
+    </div>
+    <div class="card-body" style="padding: 0;">
+        <div class="table-responsive">
+            <table class="modern-table">
+                <thead>
+                    <tr>
+                        <th style="width: 70px;">الترتيب</th>
+                        <th style="width: 90px;">الصورة</th>
+                        <th>السبلاش</th>
+                        <th style="width: 160px;">ملف الـ Partial</th>
+                        <th style="width: 110px;">المدة</th>
+                        <th style="width: 110px;">الحالة</th>
+                        <th style="width: 100px;">الافتراضي</th>
+                        <th style="width: 220px;">الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="8">
+                            <div class="empty-state">
+                                <i class="fas fa-magic"></i>
+                                <h3>لا توجد سبلاشات</h3>
+                                <p>ابدأ بإضافة أول سبلاش لمكتبة دعواتك.</p>
+                                <a asp-action="Create" class="btn btn-gold" style="margin-top: 15px;">
+                                    <i class="fas fa-plus"></i>
+                                    إضافة سبلاش جديد
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <span class="sort-badge">@item.SortingNumber</span>
+                            </td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(item.ThumbnailUrl))
+                                {
+                                    <div class="category-image">
+                                        <img src="@item.ThumbnailUrl" alt="@item.NameAr">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="category-image-placeholder">
+                                        <i class="fas fa-image"></i>
+                                    </div>
+                                }
+                            </td>
+                            <td>
+                                <div class="category-info-cell">
+                                    <div class="category-details">
+                                        <strong>@item.NameAr</strong>
+                                        <small>@item.NameEn</small>
+                                        @if (!string.IsNullOrEmpty(item.DescriptionAr))
+                                        {
+                                            <div style="color: var(--text-muted, #94a3b8); font-size: 0.8rem; margin-top: 3px;">
+                                                @item.DescriptionAr
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <code style="background: rgba(99,102,241,0.1); padding: 4px 8px; border-radius: 6px; font-size: 0.85rem;">
+                                    _@(item.PartialName).cshtml
+                                </code>
+                            </td>
+                            <td>
+                                @if (item.RequiresInteraction)
+                                {
+                                    <span class="badge badge-warning">
+                                        <i class="fas fa-hand-pointer"></i> بتفاعل
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span style="color: var(--text-muted, #94a3b8); font-size: 0.9rem;">
+                                        @item.DurationMs ms
+                                    </span>
+                                }
+                            </td>
+                            <td>
+                                <form asp-action="ToggleActive" asp-route-id="@item.Id" method="post" style="display:inline;">
+                                    @Html.AntiForgeryToken()
+                                    @if (item.IsActive)
+                                    {
+                                        <button type="submit" class="badge badge-success" style="border:none; cursor:pointer; padding: 6px 10px;">
+                                            <i class="fas fa-check"></i> مُفعّل
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="badge badge-danger" style="border:none; cursor:pointer; padding: 6px 10px;">
+                                            <i class="fas fa-times"></i> مُعطّل
+                                        </button>
+                                    }
+                                </form>
+                            </td>
+                            <td>
+                                @if (item.IsDefault)
+                                {
+                                    <span class="badge badge-success" style="background: linear-gradient(135deg, #d4a574, #e8c591); padding: 6px 10px;">
+                                        <i class="fas fa-star"></i> افتراضي
+                                    </span>
+                                }
+                                else if (item.IsActive)
+                                {
+                                    <form asp-action="SetDefault" asp-route-id="@item.Id" method="post" style="display:inline;">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn-table-action" style="background: transparent; border: 1px solid rgba(212,165,116,0.4); color: var(--gold, #d4a574); padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem;" title="تعيين كافتراضي">
+                                            <i class="far fa-star"></i> تعيين
+                                        </button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <span style="color: var(--text-muted, #94a3b8); font-size: 0.85rem;">—</span>
+                                }
+                            </td>
+                            <td>
+                                <div class="table-actions">
+                                    <a href="@Url.Action("Preview", "SplashTemplates", new { id = item.Id })"
+                                       target="_blank"
+                                       class="btn-table-action btn-view" title="معاينة">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn-table-action btn-edit" title="تعديل">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    @if (!item.IsDefault)
+                                    {
+                                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" style="display:inline;"
+                                              onsubmit="return confirm('هل أنت متأكد من حذف هذا السبلاش؟');">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn-table-action btn-delete" title="حذف">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

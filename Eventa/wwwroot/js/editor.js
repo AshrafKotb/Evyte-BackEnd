@@ -443,6 +443,28 @@
         var galleryContainer = container.querySelector('.portfolio-grids.gallery-container');
         if (!galleryContainer) return;
 
+        // Get iframe jQuery if available to manage Owl Carousel
+        var tDoc = getTemplateDoc();
+        var iframe$ = null;
+        if (tDoc !== document) {
+            var iframeWin = document.getElementById('templateFrame');
+            if (iframeWin && iframeWin.contentWindow && iframeWin.contentWindow.jQuery) {
+                iframe$ = iframeWin.contentWindow.jQuery;
+            }
+        }
+
+        // Destroy existing Owl Carousel if active
+        try {
+            if (iframe$ && iframe$(galleryContainer).hasClass('owl-loaded')) {
+                iframe$(galleryContainer).trigger('destroy.owl.carousel');
+            }
+        } catch (e) {
+            console.warn('[Gallery] Could not destroy owl carousel:', e);
+        }
+
+        // Remove owl-carousel classes and wrapper elements that Owl creates
+        galleryContainer.className = 'portfolio-grids gallery-container clearfix';
+
         galleryContainer.innerHTML = '';
         galleryPhotos.forEach(function (photo) {
             if (photo.uploading) return;
@@ -452,10 +474,48 @@
                 '<div class="img-holder">' +
                 '<a href="' + photo.url + '" class="fancybox" data-fancybox-group="gall-1">' +
                 '<img src="' + photo.url + '" alt="" class="img img-responsive">' +
-                '<div class="hover-content"><i class="ti-plus"></i></div>' +
+                '<div class="hover-content"><i class="fas fa-search-plus"></i></div>' +
                 '</a></div>';
             galleryContainer.appendChild(div);
         });
+
+        // Re-initialize Owl Carousel if available in iframe
+        try {
+            if (iframe$ && galleryPhotos.filter(function(p) { return !p.uploading; }).length > 0) {
+                galleryContainer.className = 'portfolio-grids gallery-container clearfix portfolio-slide owl-carousel';
+                iframe$(galleryContainer).owlCarousel({
+                    items: 3,
+                    margin: 10,
+                    loop: galleryPhotos.length > 3,
+                    nav: false,
+                    dots: false,
+                    autoplay: true,
+                    autoplayTimeout: 3000,
+                    responsive: {
+                        0: { items: 1 },
+                        600: { items: 2 },
+                        1000: { items: 3 }
+                    }
+                });
+            }
+        } catch (e) {
+            console.warn('[Gallery] Could not reinitialize owl carousel, using CSS grid fallback:', e);
+            // CSS grid fallback - ensure images are sized properly without Owl
+            galleryContainer.className = 'portfolio-grids gallery-container clearfix editor-gallery-grid';
+        }
+
+        // Inject CSS grid fallback styles into iframe if not already injected
+        if (tDoc && tDoc !== document && !tDoc.getElementById('editorGalleryStyles')) {
+            var style = tDoc.createElement('style');
+            style.id = 'editorGalleryStyles';
+            style.textContent =
+                '.editor-gallery-grid { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px; }' +
+                '.editor-gallery-grid .grid { width: 100% !important; margin: 0 !important; }' +
+                '.editor-gallery-grid .grid .img-holder { width: 100%; overflow: hidden; border-radius: 10px; }' +
+                '.editor-gallery-grid .grid .img-holder img { width: 100% !important; height: 200px !important; object-fit: cover !important; display: block; }' +
+                '@media (max-width: 768px) { .editor-gallery-grid { grid-template-columns: repeat(2, 1fr); } }';
+            tDoc.head.appendChild(style);
+        }
     }
 
     // ==========================================
@@ -492,7 +552,7 @@
                 '<input type="date" class="editor-input memory-date" data-index="' + index + '" value="' + (memory.date || '') + '"></div>' +
                 '<div class="form-group"><label>صورة (اختياري)</label>' +
                 '<div class="image-upload-area memory-image-upload" data-index="' + index + '">' +
-                (memory.imageUrl ? '<img src="' + memory.imageUrl + '" class="upload-preview" style="display:block;max-width:100%;max-height:100px;border-radius:8px;">' : '<div class="upload-placeholder"><i class="fas fa-cloud-upload-alt"></i><span>اضغط لرفع صورة</span></div>') +
+                (memory.imageUrl ? '<img src="' + memory.imageUrl + '" class="upload-preview" style="display:block;max-width:100%;max-height:100px;border-radius:8px;">' : '<div class="upload-placeholder"><i class="fas fa-cloud-arrow-up"></i><span>اضغط لرفع صورة</span></div>') +
                 '<input type="file" accept="image/*" class="file-input" style="display:none;"></div></div>';
             list.appendChild(div);
         });
@@ -857,6 +917,44 @@
                 this.classList.add('selected');
             });
         });
+
+        // Splash template library — اختيار + تحديث الـ iframe preview بالسبلاش الجديد
+        document.querySelectorAll('.splash-lib-item').forEach(function (item) {
+            item.addEventListener('click', function (e) {
+                // متجاهلش الكليك على زرار المعاينة (هيتعامل لوحده)
+                if (e.target.closest('.splash-preview-btn')) return;
+
+                document.querySelectorAll('.splash-lib-item').forEach(function (i) {
+                    i.classList.remove('selected');
+                });
+                this.classList.add('selected');
+
+                var iframe = document.getElementById('templateFrame');
+                if (iframe && iframe.src) {
+                    var splashId = this.getAttribute('data-id');
+                    var baseUrl = iframe.src.split('?')[0];
+                    var params = new URLSearchParams(iframe.src.split('?')[1] || '');
+                    params.set('splashId', splashId);
+                    iframe.src = baseUrl + '?' + params.toString();
+                }
+            });
+        });
+
+        // Splash preview popups
+        document.querySelectorAll('.splash-preview-btn').forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var id = this.getAttribute('data-splash-id');
+                var groom = (document.querySelector('[data-target="GroomName"]')?.value || '').trim();
+                var bride = (document.querySelector('[data-target="BrideName"]')?.value || '').trim();
+                var params = new URLSearchParams({ id: id });
+                if (groom) params.set('groomName', groom);
+                if (bride) params.set('brideName', bride);
+                var url = '/SplashTemplates/Preview?' + params.toString();
+                window.open(url, 'splashPreview', 'width=480,height=820,resizable=yes,scrollbars=no');
+            });
+        });
     }
 
     // ==========================================
@@ -1105,7 +1203,8 @@
             customSentence2: getInputValue('CustomSentence2') || null,
             backgroundImageUrl: getSelectedBgUrl(),
             backgroundImageId: null,
-            backgroundImageLibraryId: getSelectedBgId()
+            backgroundImageLibraryId: getSelectedBgId(),
+            splashTemplateId: getSelectedSplashId()
         };
 
         // Show loading
@@ -1145,6 +1244,11 @@
 
     function getSelectedBgId() {
         var selected = document.querySelector('.bg-lib-item.selected');
+        return selected ? selected.getAttribute('data-id') : null;
+    }
+
+    function getSelectedSplashId() {
+        var selected = document.querySelector('.splash-lib-item.selected');
         return selected ? selected.getAttribute('data-id') : null;
     }
 

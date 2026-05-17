@@ -1,0 +1,145 @@
+@model Eventa.Domain.Entities.SplashTemplate
+@{
+    ViewData["Title"] = "تعديل السبلاش: " + Model.NameAr;
+    ViewData["Dir"] = "rtl";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="~/css/forms.css" />
+
+<form asp-action="Edit" asp-route-id="@Model.Id" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
+
+    <div class="form-card">
+        <div class="form-header">
+            <h1>@ViewData["Title"]</h1>
+            <p class="text-muted">عدّل بيانات السبلاش الموجود</p>
+        </div>
+
+        <div class="form-group mb-4">
+            <label class="form-label">الاسم بالعربي <span class="text-danger">*</span></label>
+            <div class="input-group-icon">
+                <i class="fas fa-tag"></i>
+                <input name="nameAr" value="@Model.NameAr" class="form-control text-end" required>
+            </div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label class="form-label">الاسم بالإنجليزي <span class="text-danger">*</span></label>
+            <div class="input-group-icon">
+                <i class="fas fa-tag"></i>
+                <input name="nameEn" value="@Model.NameEn" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label class="form-label">اسم ملف الـ Partial <span class="text-danger">*</span></label>
+            <div class="input-group-icon">
+                <i class="fas fa-file-code"></i>
+                <input name="partialName" value="@Model.PartialName" class="form-control" required>
+            </div>
+            <small class="form-text text-muted">
+                المسار النهائي: <code>~/Views/Shared/splashes/_@(Model.PartialName).cshtml</code>
+            </small>
+        </div>
+
+        <div class="form-group mb-4">
+            <label class="form-label">الوصف بالعربي</label>
+            <div class="input-group-icon">
+                <i class="fas fa-align-right"></i>
+                <textarea name="descriptionAr" class="form-control text-end" rows="2">@Model.DescriptionAr</textarea>
+            </div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label class="form-label">الوصف بالإنجليزي</label>
+            <div class="input-group-icon">
+                <i class="fas fa-align-left"></i>
+                <textarea name="descriptionEn" class="form-control" rows="2">@Model.DescriptionEn</textarea>
+            </div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label class="form-label">صورة المعاينة (Thumbnail)</label>
+            @if (!string.IsNullOrEmpty(Model.ThumbnailUrl))
+            {
+                <div style="margin-bottom: 12px;">
+                    <img src="@Model.ThumbnailUrl" alt="@Model.NameAr" style="max-width: 200px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                </div>
+            }
+            <div class="image-upload-container">
+                <div class="mb-3">
+                    <i class="fas fa-cloud-upload-alt fa-2x text-muted mb-3"></i>
+                    <p class="mb-2">اختر صورة جديدة لاستبدال القديمة (اختياري)</p>
+                    <input type="file" name="thumbnailFile" class="form-control-file" accept="image/*" id="thumbUpload">
+                    <label for="thumbUpload" class="btn btn-outline-primary mt-2">
+                        <i class="fas fa-folder-open"></i> اختر صورة
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group mb-4">
+                    <label class="form-label">مدة العرض (بالميلي ثانية)</label>
+                    <div class="input-group-icon">
+                        <i class="fas fa-clock"></i>
+                        <input type="number" name="durationMs" value="@Model.DurationMs" class="form-control" min="500" max="20000">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group mb-4">
+                    <label class="form-label">ترتيب العرض</label>
+                    <div class="input-group-icon">
+                        <i class="fas fa-sort-numeric-down"></i>
+                        <input type="number" name="sortingNumber" value="@Model.SortingNumber" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="requiresInteraction" value="true" id="reqInt" @(Model.RequiresInteraction ? "checked" : "")>
+                <label class="form-check-label" for="reqInt">
+                    يحتاج تفاعل من المستخدم (Tap to open)
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="isActive" value="true" id="isAct" @(Model.IsActive ? "checked" : "") @(Model.IsDefault ? "disabled" : "")>
+                <label class="form-check-label" for="isAct">
+                    مُفعّل (ظاهر للعملاء)
+                    @if (Model.IsDefault)
+                    {
+                        <small class="text-muted">— لا يمكن تعطيل السبلاش الافتراضي</small>
+                    }
+                </label>
+            </div>
+            @if (Model.IsDefault)
+            {
+                <input type="hidden" name="isActive" value="true" />
+            }
+        </div>
+
+        <div class="form-group mb-4">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="isDefault" value="true" id="isDef" @(Model.IsDefault ? "checked" : "")>
+                <label class="form-check-label" for="isDef">
+                    تعيين كافتراضي
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-submit text-white">
+            <i class="fas fa-save me-2"></i>حفظ التغييرات
+        </button>
+        <a asp-action="Index" class="btn btn-secondary">رجوع إلى القائمة</a>
+    </div>
+</form>

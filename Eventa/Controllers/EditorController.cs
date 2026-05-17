@@ -16,19 +16,22 @@ namespace Eventa.Web.Controllers
         private readonly IInvitationService _invitationService;
         private readonly IPredefinedTextRepository _predefinedTextRepository;
         private readonly IBackgroundImageRepository _backgroundImageRepository;
+        private readonly ISplashTemplateRepository _splashTemplateRepository;
 
         public EditorController(
             IDesignService designService,
             IFileService fileService,
             IInvitationService invitationService,
             IPredefinedTextRepository predefinedTextRepository,
-            IBackgroundImageRepository backgroundImageRepository)
+            IBackgroundImageRepository backgroundImageRepository,
+            ISplashTemplateRepository splashTemplateRepository)
         {
             _designService = designService;
             _fileService = fileService;
             _invitationService = invitationService;
             _predefinedTextRepository = predefinedTextRepository;
             _backgroundImageRepository = backgroundImageRepository;
+            _splashTemplateRepository = splashTemplateRepository;
         }
 
         [HttpGet]
@@ -83,6 +86,11 @@ namespace Eventa.Web.Controllers
             var predefinedTexts1 = await _predefinedTextRepository.GetAllAsync("sentence1");
             var predefinedTexts2 = await _predefinedTextRepository.GetAllAsync("sentence2");
             var backgroundImages = await _backgroundImageRepository.GetAllAsync();
+            var splashTemplates = await _splashTemplateRepository.GetAllAsync(activeOnly: true);
+            var defaultSplash = await _splashTemplateRepository.GetDefaultAsync();
+
+            // اربط السبلاش الافتراضي بالـ placeholder عشان الـ iframe يرسمه فوراً
+            placeholderRequest.RequestData.SplashTemplateId = defaultSplash?.Id;
 
             ViewBag.IsEditorMode = true;
             ViewBag.DesignId = design.Id;
@@ -90,6 +98,8 @@ namespace Eventa.Web.Controllers
             ViewBag.PredefinedTexts1 = predefinedTexts1;
             ViewBag.PredefinedTexts2 = predefinedTexts2;
             ViewBag.BackgroundImages = backgroundImages;
+            ViewBag.SplashTemplates = splashTemplates;
+            ViewBag.DefaultSplashTemplate = defaultSplash;
 
             return View("~/Views/Editor/Design.cshtml", placeholderRequest);
         }
@@ -143,7 +153,19 @@ namespace Eventa.Web.Controllers
                 }
             };
 
+            // اقرأ السبلاش المطلوب من الـ query (بيتبعت من الـ editor لما المستخدم يغير اختياره)
+            // ولا الافتراضي
+            Eventa.Domain.Entities.SplashTemplate? splashForPreview = null;
+            if (Guid.TryParse(Request.Query["splashId"], out var splashId))
+            {
+                splashForPreview = await _splashTemplateRepository.GetByIdAsync(splashId);
+                if (splashForPreview != null && !splashForPreview.IsActive) splashForPreview = null;
+            }
+            splashForPreview ??= await _splashTemplateRepository.GetDefaultAsync();
+
             ViewBag.IsEditorMode = true;
+            ViewBag.SplashTemplate = splashForPreview;
+            ViewBag.SplashRequest = placeholderRequest;
 
             // Return the template as a full standalone page
             return View($"~/Views/Shared/templates/_{design.TemplateName}.cshtml", placeholderRequest);

@@ -34,6 +34,7 @@ namespace Eventa.Web.Extensions
             services.AddScoped<IClientInfoRepository, ClientInfoRepository>();
             services.AddScoped<IBackgroundImageRepository, BackgroundImageRepository>();
             services.AddScoped<IPredefinedTextRepository, PredefinedTextRepository>();
+            services.AddScoped<ISplashTemplateRepository, SplashTemplateRepository>();
             services.AddScoped<IInvitationService, InvitationService>();
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<IGeneralInformationService, GeneralInformationService>();

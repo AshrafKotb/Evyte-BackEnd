@@ -1,4 +1,4 @@
-// Splash Screen Handler
+// Splash Screen Handler - RADICAL: fast, aggressive, guaranteed to disappear
 (function () {
     var splash = document.getElementById('splashScreen');
     if (!splash) return;
@@ -9,29 +9,32 @@
         if (alreadyHidden) return;
         alreadyHidden = true;
 
+        // Hide splash with transition
+        splash.style.transition = 'opacity 0.5s ease';
+        splash.style.opacity = '0';
         splash.classList.add('hidden');
+
         setTimeout(function () {
             splash.style.display = 'none';
-            // Also hide loading-spinner if it exists (belt & suspenders)
-            var spinner = document.getElementById('loading-spinner');
-            if (spinner) spinner.classList.add('hidden');
-        }, 800);
+            splash.style.pointerEvents = 'none';
+            splash.style.zIndex = '-1';
+        }, 600);
     }
 
-    // Hide splash when page is fully loaded
+    // Hide splash when page is fully loaded (fastest trigger)
     window.addEventListener('load', function () {
-        setTimeout(hideSplash, 1500);
+        setTimeout(hideSplash, 800);
     });
 
-    // If DOM is already loaded (script loaded late), hide sooner
+    // If DOM is already loaded (script loaded late), hide immediately
     if (document.readyState === 'complete') {
-        setTimeout(hideSplash, 500);
+        setTimeout(hideSplash, 200);
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        setTimeout(hideSplash, 2000);
+        setTimeout(hideSplash, 1500);
     });
 
-    // Fallback: hide after 5 seconds max regardless
-    setTimeout(hideSplash, 5000);
+    // Fallback: hide after 3 seconds max regardless of anything
+    setTimeout(hideSplash, 3000);
 })();

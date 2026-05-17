@@ -159,30 +159,30 @@
     <!-- Professional Splash Screen (Unified) -->
     @await Html.PartialAsync("_SplashLoader")
 
-    <!-- INLINE splash killer: guaranteed to run even if CDN scripts fail -->
+    <!-- INLINE splash+loader killer: guaranteed to run even if CDN scripts fail -->
     <script>
         (function(){
+            // KILL SPLASH: force hide after timeout, no dependencies
             var s = document.getElementById('splashScreen');
-            if (!s) return;
             function killSplash() {
+                if (!s) return;
                 s.style.transition = 'opacity 0.6s ease';
                 s.style.opacity = '0';
                 setTimeout(function(){
                     s.style.display = 'none';
-                    // Also hide loading spinner
-                    var sp = document.getElementById('loading-spinner');
-                    if (sp) { sp.style.opacity = '0'; sp.style.visibility = 'hidden'; }
+                    s.style.pointerEvents = 'none';
                 }, 700);
             }
-            // Kill splash after 4 seconds no matter what
-            setTimeout(killSplash, 4000);
+            // Kill splash after 3 seconds no matter what
+            setTimeout(killSplash, 3000);
             // Also try on load (faster)
-            window.addEventListener('load', function(){ setTimeout(killSplash, 1000); });
+            window.addEventListener('load', function(){ setTimeout(killSplash, 800); });
+            if (document.readyState === 'complete') setTimeout(killSplash, 300);
         })();
     </script>
 
-    <!-- Loading Spinner -->
-    <div id="loading-spinner" class="loading-spinner">
+    <!-- Loading Spinner: HIDDEN by default, only shown on-demand by Dashboard.showLoading() -->
+    <div id="loading-spinner" class="loading-spinner" style="display:none;opacity:0;visibility:hidden;">
         <div class="spinner"></div>
     </div>
 
@@ -360,14 +360,24 @@
 
             // Hide Loading
             hideLoading() {
-                setTimeout(() => {
-                    document.getElementById('loading-spinner').classList.add('hidden');
-                }, 500);
+                var sp = document.getElementById('loading-spinner');
+                if (!sp) return;
+                sp.style.opacity = '0';
+                setTimeout(function() {
+                    sp.style.display = 'none';
+                    sp.style.visibility = 'hidden';
+                    sp.classList.add('hidden');
+                }, 400);
             },
 
             // Show Loading
             showLoading() {
-                document.getElementById('loading-spinner').classList.remove('hidden');
+                var sp = document.getElementById('loading-spinner');
+                if (!sp) return;
+                sp.classList.remove('hidden');
+                sp.style.display = 'flex';
+                sp.style.visibility = 'visible';
+                sp.style.opacity = '1';
             },
 
             // Success Toast

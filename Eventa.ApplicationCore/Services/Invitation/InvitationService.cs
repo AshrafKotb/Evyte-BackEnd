@@ -98,7 +98,8 @@ public class InvitationService : IInvitationService
             LocationUrl = dto.LocationUrl,
             LocationEmbedUrl = locationEmbedUrl,
             CustomSentence1 = dto.CustomSentence1,
-            CustomSentence2 = dto.CustomSentence2
+            CustomSentence2 = dto.CustomSentence2,
+            SplashTemplateId = dto.SplashTemplateId
         };
 
         // Handle background image: upload or use library
@@ -344,7 +345,8 @@ public class InvitationService : IInvitationService
             CustomSentence2 = dto.CustomSentence2,
             BackgroundImageUrl = dto.BackgroundImageUrl,
             BackgroundImageId = dto.BackgroundImageId,
-            BackgroundImageLibraryId = dto.BackgroundImageLibraryId
+            BackgroundImageLibraryId = dto.BackgroundImageLibraryId,
+            SplashTemplateId = dto.SplashTemplateId
         };
 
         await _requestDataRepository.AddRequestDataAsync(requestData);

@@ -91,5 +91,12 @@ namespace Eventa.Domain.Entities
         [MaxLength(100)]
         public string? BackgroundImageId { get; set; }
         #endregion
+
+        #region Splash Template
+        // اختيار العميل للسبلاش - لو null هياخد الاختيار الافتراضي للـ Design أو السبلاش الافتراضي العام
+        public Guid? SplashTemplateId { get; set; }
+
+        public virtual SplashTemplate? SplashTemplate { get; set; }
+        #endregion
     }
 }

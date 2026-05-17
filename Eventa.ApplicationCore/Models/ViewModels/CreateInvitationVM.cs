@@ -92,6 +92,9 @@ namespace Eventa.ApplicationCore.Models.ViewModels
 
         public Guid? BackgroundImageLibraryId { get; set; }
         public IFormFile? BackgroundImage { get; set; }
+
+        // اختيار العميل لسبلاش من المكتبة (اختياري)
+        public Guid? SplashTemplateId { get; set; }
         #endregion
 
         #region Optional Sections Flags

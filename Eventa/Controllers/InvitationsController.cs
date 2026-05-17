@@ -16,17 +16,20 @@ namespace Eventa.ApplicationCore.Controllers
         private readonly IInvitationService _invitationService;
         private readonly IBackgroundImageRepository _backgroundImageRepository;
         private readonly IPredefinedTextRepository _predefinedTextRepository;
+        private readonly ISplashTemplateRepository _splashTemplateRepository;
 
         public InvitationsController(
             IDesignService designService,
             IInvitationService invitationService,
             IBackgroundImageRepository backgroundImageRepository,
-            IPredefinedTextRepository predefinedTextRepository)
+            IPredefinedTextRepository predefinedTextRepository,
+            ISplashTemplateRepository splashTemplateRepository)
         {
             _invitationService = invitationService;
             _designService = designService;
             _backgroundImageRepository = backgroundImageRepository;
             _predefinedTextRepository = predefinedTextRepository;
+            _splashTemplateRepository = splashTemplateRepository;
         }
 
         // GET: /Invitations/CreateNew - New wizard-style form
@@ -41,6 +44,8 @@ namespace Eventa.ApplicationCore.Controllers
             ViewBag.BackgroundImages = await _backgroundImageRepository.GetAllAsync();
             ViewBag.PredefinedTexts1 = await _predefinedTextRepository.GetAllAsync("sentence1");
             ViewBag.PredefinedTexts2 = await _predefinedTextRepository.GetAllAsync("sentence2");
+            ViewBag.SplashTemplates = await _splashTemplateRepository.GetAllAsync(activeOnly: true);
+            ViewBag.DefaultSplashTemplate = await _splashTemplateRepository.GetDefaultAsync();
 
             var model = new CreateInvitationVM();
             if (designId.HasValue && designId.Value != Guid.Empty)
@@ -66,6 +71,8 @@ namespace Eventa.ApplicationCore.Controllers
             ViewBag.BackgroundImages = await _backgroundImageRepository.GetAllAsync();
             ViewBag.PredefinedTexts1 = await _predefinedTextRepository.GetAllAsync("sentence1");
             ViewBag.PredefinedTexts2 = await _predefinedTextRepository.GetAllAsync("sentence2");
+            ViewBag.SplashTemplates = await _splashTemplateRepository.GetAllAsync(activeOnly: true);
+            ViewBag.DefaultSplashTemplate = await _splashTemplateRepository.GetDefaultAsync();
 
             var model = new CreateInvitationVM { DesignId = designId };
             return View(model);

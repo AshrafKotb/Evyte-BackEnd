@@ -1,0 +1,26 @@
+@*
+    السبلاش الافتراضي القديم - شعار Eventa مع loader.
+    PartialName: EventaDefault
+*@
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    var isArabic = culture.StartsWith("ar", StringComparison.OrdinalIgnoreCase);
+}
+<div class="splash-screen" id="splashScreen">
+    <div class="splash-decoration splash-decoration-1"></div>
+    <div class="splash-decoration splash-decoration-2"></div>
+    <div class="splash-content">
+        <div class="splash-logo-wrapper">
+            <img src="~/logo/yellow.png" alt="Eventa" class="splash-logo">
+        </div>
+        <h1 class="splash-title">Eventa</h1>
+        <p class="splash-subtitle">@(isArabic ? "دعوتك المثالية" : "Your Perfect Invitation")</p>
+        <div class="splash-loader">
+            <div class="splash-loader-dot"></div>
+        </div>
+        <div class="splash-progress">
+            <div class="splash-progress-bar"></div>
+        </div>
+        <p class="splash-loading-text">@(isArabic ? "جاري التحميل" : "Loading")<span>.</span><span>.</span><span>.</span></p>
+    </div>
+</div>

@@ -365,6 +365,65 @@
                             }
                         </div>
 
+                        <!-- Splash Template Selector -->
+                        @if (ViewBag.SplashTemplates != null && ((IEnumerable<Eventa.Domain.Entities.SplashTemplate>)ViewBag.SplashTemplates).Any())
+                        {
+                            var splashes = (IEnumerable<Eventa.Domain.Entities.SplashTemplate>)ViewBag.SplashTemplates;
+                            var defaultSplash = ViewBag.DefaultSplashTemplate as Eventa.Domain.Entities.SplashTemplate;
+                            <div class="section-card" style="margin-bottom: 1.5rem;">
+                                <h3 class="section-card-title"><i class="fas fa-magic"></i> شاشة الافتتاح (Splash)</h3>
+                                <p class="form-hint" style="margin-bottom: 1rem;">اختر الأنيميشن اللي يظهر للضيوف قبل ما الدعوة تتفتح. لو متختارش حاجة هيظهر الشكل الافتراضي.</p>
+                                <input type="hidden" asp-for="SplashTemplateId" id="splashTemplateIdInput" value="@(defaultSplash?.Id)" />
+                                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px;" id="splashLibraryGrid">
+                                    @foreach (var sp in splashes)
+                                    {
+                                        var isSelected = defaultSplash != null && sp.Id == defaultSplash.Id;
+                                        <div class="splash-lib-item @(isSelected ? "selected" : "")" data-id="@sp.Id"
+                                             style="cursor:pointer; position:relative; border-radius:10px; overflow:hidden; border:3px solid @(isSelected ? "var(--editor-success, #10b981)" : "transparent"); background: rgba(255,255,255,0.04); transition: all 0.2s;">
+                                            @if (!string.IsNullOrEmpty(sp.ThumbnailUrl))
+                                            {
+                                                <img src="@sp.ThumbnailUrl" alt="@sp.NameAr" style="width:100%; height:110px; object-fit:cover; display:block;" />
+                                            }
+                                            else
+                                            {
+                                                <div style="width:100%; height:110px; display:flex; align-items:center; justify-content:center; background: linear-gradient(135deg, #1a1a2e, #16213e); color:#d4a574;">
+                                                    <i class="fas fa-magic" style="font-size:2rem;"></i>
+                                                </div>
+                                            }
+                                            <button type="button"
+                                                    class="splash-preview-btn"
+                                                    data-splash-id="@sp.Id"
+                                                    title="معاينة"
+                                                    style="position:absolute; top:6px; left:6px; background:rgba(0,0,0,0.65); color:#fff; border:none; width:32px; height:32px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s;">
+                                                <i class="fas fa-play" style="font-size:0.75rem;"></i>
+                                            </button>
+                                            <div style="padding:8px 10px;">
+                                                <div style="font-weight:600; font-size:0.9rem;">@sp.NameAr</div>
+                                                @if (!string.IsNullOrEmpty(sp.DescriptionAr))
+                                                {
+                                                    <small style="display:block; font-size:0.72rem; opacity:0.7; margin-top:2px;">@sp.DescriptionAr</small>
+                                                }
+                                                <div style="display:flex; gap:6px; margin-top:6px; flex-wrap:wrap;">
+                                                    @if (sp.IsDefault)
+                                                    {
+                                                        <span style="font-size:0.65rem; background:rgba(212,165,116,0.2); color:#d4a574; padding:2px 6px; border-radius:10px;">
+                                                            <i class="fas fa-star"></i> افتراضي
+                                                        </span>
+                                                    }
+                                                    @if (sp.RequiresInteraction)
+                                                    {
+                                                        <span style="font-size:0.65rem; background:rgba(99,102,241,0.2); color:#818cf8; padding:2px 6px; border-radius:10px;">
+                                                            <i class="fas fa-hand-pointer"></i> بتفاعل
+                                                        </span>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+
                         <!-- Memories -->
                         <div class="optional-section" id="memoriesSection">
                             <div class="optional-section-header">
@@ -769,6 +828,37 @@
                     }
                 });
             }
+
+            // Splash Template Selection (لازم نتجاهل الكليك على زرار المعاينة)
+            document.querySelectorAll('.splash-lib-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (e.target.closest('.splash-preview-btn')) return;
+                    document.querySelectorAll('.splash-lib-item').forEach(i => {
+                        i.classList.remove('selected');
+                        i.style.borderColor = 'transparent';
+                    });
+                    this.classList.add('selected');
+                    this.style.borderColor = '#10b981';
+                    const input = document.getElementById('splashTemplateIdInput');
+                    if (input) input.value = this.dataset.id;
+                });
+            });
+
+            // Splash Preview Buttons - فتح نافذة منبثقة بمعاينة السبلاش
+            document.querySelectorAll('.splash-preview-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const id = this.dataset.splashId;
+                    const groom = (document.querySelector('input[name="GroomName"]')?.value || '').trim();
+                    const bride = (document.querySelector('input[name="BrideName"]')?.value || '').trim();
+                    const params = new URLSearchParams({ id });
+                    if (groom) params.set('groomName', groom);
+                    if (bride) params.set('brideName', bride);
+                    const url = '/SplashTemplates/Preview?' + params.toString();
+                    window.open(url, 'splashPreview', 'width=480,height=820,resizable=yes,scrollbars=no');
+                });
+            });
 
             // Background Image Library Selection
             document.querySelectorAll('.bg-lib-item').forEach(item => {

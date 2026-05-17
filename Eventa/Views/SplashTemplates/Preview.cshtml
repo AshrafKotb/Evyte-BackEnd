@@ -1,0 +1,134 @@
+@model Eventa.Domain.Entities.SplashTemplate
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>معاينة السبلاش — @Model.NameAr</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" type="image/png" href="~/logo/yellow.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="~/css/splash-screen.css" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; background: #0a0a14; overflow: hidden; }
+
+        /* شريط أدوات المعاينة */
+        .preview-toolbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 18px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            transform: translateY(0);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        .preview-toolbar.hidden { transform: translateY(-100%); opacity: 0; }
+        .preview-toolbar__info { display: flex; align-items: center; gap: 12px; }
+        .preview-toolbar__title { font-weight: 700; font-size: 0.95rem; }
+        .preview-toolbar__sub { font-size: 0.75rem; opacity: 0.7; }
+        .preview-toolbar__actions { display: flex; gap: 8px; }
+        .preview-btn {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            padding: 7px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+        .preview-btn:hover { background: rgba(255,255,255,0.18); }
+        .preview-btn--primary { background: #d4a574; border-color: #d4a574; color: #1a1a2e; font-weight: 600; }
+        .preview-btn--primary:hover { background: #e8c591; }
+        .preview-btn--danger { background: rgba(239,68,68,0.2); border-color: rgba(239,68,68,0.4); }
+        .preview-btn--danger:hover { background: rgba(239,68,68,0.35); }
+
+        /* اظهار/اخفاء التولبار بحوار الفأرة */
+        .preview-toolbar-hover {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 40px;
+            z-index: 999998;
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط الأدوات -->
+    <div class="preview-toolbar" id="previewToolbar">
+        <div class="preview-toolbar__info">
+            <i class="fas fa-eye" style="color: #d4a574;"></i>
+            <div>
+                <div class="preview-toolbar__title">معاينة: @Model.NameAr</div>
+                <div class="preview-toolbar__sub">
+                    @Model.NameEn ·
+                    @if (Model.RequiresInteraction)
+                    {
+                        <span><i class="fas fa-hand-pointer"></i> اضغط على السبلاش لإغلاقه</span>
+                    }
+                    else
+                    {
+                        <span><i class="fas fa-clock"></i> @Model.DurationMs ms</span>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="preview-toolbar__actions">
+            <button class="preview-btn preview-btn--primary" id="replayBtn">
+                <i class="fas fa-redo"></i> إعادة العرض
+            </button>
+            <button class="preview-btn preview-btn--danger" id="closeBtn">
+                <i class="fas fa-times"></i> إغلاق
+            </button>
+        </div>
+    </div>
+
+    <!-- منطقة الـ Splash -->
+    <div id="splashHost">
+        @await Html.PartialAsync("_SplashLoader")
+    </div>
+
+    <script>
+        (function () {
+            var toolbar = document.getElementById('previewToolbar');
+            var replayBtn = document.getElementById('replayBtn');
+            var closeBtn = document.getElementById('closeBtn');
+
+            // اخفاء التولبار بعد ثانيتين عشان ميغطيش السبلاش
+            setTimeout(function () { toolbar.classList.add('hidden'); }, 2000);
+
+            // اظهار التولبار لما الفأرة تقترب من فوق
+            document.addEventListener('mousemove', function (e) {
+                if (e.clientY < 80) toolbar.classList.remove('hidden');
+                else toolbar.classList.add('hidden');
+            });
+            document.addEventListener('touchstart', function () { toolbar.classList.remove('hidden'); });
+
+            // إعادة العرض = ريلود الصفحة (أبسط طريقة لإعادة كل الأنيميشن)
+            replayBtn.addEventListener('click', function () {
+                window.location.reload();
+            });
+
+            // إغلاق: لو الصفحة مفتوحة في popup نقفلها، غير كده نرجع
+            closeBtn.addEventListener('click', function () {
+                if (window.opener) window.close();
+                else if (window.history.length > 1) window.history.back();
+                else window.close();
+            });
+        })();
+    </script>
+</body>
+</html>

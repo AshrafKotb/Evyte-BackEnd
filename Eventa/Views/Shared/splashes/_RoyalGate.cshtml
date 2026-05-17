@@ -1,0 +1,94 @@
+@*
+    سبلاش "بوابة ملكية" بتتفتح بأنيميشن slide.
+    PartialName: RoyalGate
+*@
+@model Request
+@{
+    var rd = Model?.RequestData;
+    var names = !string.IsNullOrEmpty(rd?.GroomName) && !string.IsNullOrEmpty(rd?.BrideName)
+        ? $"{rd.GroomName} & {rd.BrideName}"
+        : "Wedding";
+}
+<div class="splash-screen splash-royal" id="splashScreen">
+    <div class="splash-royal__gate splash-royal__gate--left">
+        <div class="splash-royal__pattern"></div>
+    </div>
+    <div class="splash-royal__gate splash-royal__gate--right">
+        <div class="splash-royal__pattern"></div>
+    </div>
+    <div class="splash-royal__center">
+        <div class="splash-royal__crown">♛</div>
+        <div class="splash-royal__title">@names</div>
+        <div class="splash-royal__sub">A Royal Celebration</div>
+    </div>
+</div>
+
+<style>
+    .splash-royal {
+        background: #000;
+        overflow: hidden;
+        animation: none !important;
+    }
+    .splash-royal__gate {
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background:
+            linear-gradient(135deg, #4a1f2e 0%, #2a0f1a 100%);
+        z-index: 3;
+    }
+    .splash-royal__gate--left {
+        left: 0;
+        border-right: 3px solid #d4a574;
+        animation: splashRoyalGateLeft 1.6s cubic-bezier(0.7, 0, 0.3, 1) forwards 1.5s;
+    }
+    .splash-royal__gate--right {
+        right: 0;
+        border-left: 3px solid #d4a574;
+        animation: splashRoyalGateRight 1.6s cubic-bezier(0.7, 0, 0.3, 1) forwards 1.5s;
+    }
+    .splash-royal__pattern {
+        position: absolute;
+        inset: 0;
+        background:
+            repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(212,165,116,0.08) 30px, rgba(212,165,116,0.08) 31px),
+            repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(212,165,116,0.08) 30px, rgba(212,165,116,0.08) 31px);
+    }
+    .splash-royal__center {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: #d4a574;
+    }
+    .splash-royal__crown {
+        font-size: 4rem;
+        color: #d4a574;
+        text-shadow: 0 0 30px rgba(212,165,116,0.6);
+        margin-bottom: 20px;
+        animation: splashRoyalCrown 2s ease-in-out infinite;
+    }
+    .splash-royal__title {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 2.5rem;
+        color: #fff;
+        margin-bottom: 15px;
+    }
+    .splash-royal__sub {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.95rem;
+        letter-spacing: 0.4em;
+        color: rgba(212,165,116,0.8);
+    }
+    @@keyframes splashRoyalGateLeft {
+        to { transform: translateX(-100%); }
+    }
+    @@keyframes splashRoyalGateRight {
+        to { transform: translateX(100%); }
+    }
+    @@keyframes splashRoyalCrown {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+</style>

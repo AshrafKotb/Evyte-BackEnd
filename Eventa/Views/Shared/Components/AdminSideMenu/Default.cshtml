@@ -88,6 +88,25 @@
                 </div>
             </div>
 
+            <!-- Splash Templates -->
+            <div class="nav-item has-submenu @(Context.Request.Path.ToString().ToLower().Contains("splashtemplates") ? "open" : "")">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-magic"></i>
+                    <span class="nav-text">مكتبة السبلاش</span>
+                    <i class="fas fa-chevron-left nav-arrow"></i>
+                </a>
+                <div class="nav-submenu">
+                    <a href="@Url.Action("Index", "SplashTemplates")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("splashtemplates/index") || Context.Request.Path.ToString().ToLower() == "/splashtemplates" ? "active" : "")">
+                        <i class="fas fa-circle"></i>
+                        <span class="nav-text">جميع السبلاشات</span>
+                    </a>
+                    <a href="@Url.Action("Create", "SplashTemplates")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("splashtemplates/create") ? "active" : "")">
+                        <i class="fas fa-circle"></i>
+                        <span class="nav-text">إضافة سبلاش</span>
+                    </a>
+                </div>
+            </div>
+
             <!-- Customers -->
             <div class="nav-item @(Context.Request.Path.ToString().ToLower().Contains("customers") ? "active" : "")">
                 <a href="@Url.Action("Index", "Customers")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("customers") ? "active" : "")">

@@ -60,6 +60,8 @@ namespace Eventa.ApplicationCore.Models.ViewModels
         public string? BackgroundImageUrl { get; set; }
         public string? BackgroundImageId { get; set; }
         public Guid? BackgroundImageLibraryId { get; set; }
+
+        public Guid? SplashTemplateId { get; set; }
     }
 
     public class EditorMemoryDTO

@@ -1,0 +1,115 @@
+@*
+    سبلاش يكشف عن مونوجرام كبير بأنيميشن tracing ذهبي.
+    PartialName: MonogramReveal
+*@
+@model Request
+@{
+    var rd = Model?.RequestData;
+    var groomInitial = !string.IsNullOrEmpty(rd?.GroomName) ? rd.GroomName.Trim()[0].ToString().ToUpper() : "G";
+    var brideInitial = !string.IsNullOrEmpty(rd?.BrideName) ? rd.BrideName.Trim()[0].ToString().ToUpper() : "B";
+}
+<div class="splash-screen splash-monogram" id="splashScreen">
+    <div class="splash-monogram__content">
+        <div class="splash-monogram__overline">— THE WEDDING OF —</div>
+        <div class="splash-monogram__letters">
+            <span class="splash-monogram__letter splash-monogram__letter--g">@groomInitial</span>
+            <span class="splash-monogram__amp">&amp;</span>
+            <span class="splash-monogram__letter splash-monogram__letter--b">@brideInitial</span>
+        </div>
+        <div class="splash-monogram__divider">
+            <span></span><i class="splash-monogram__diamond"></i><span></span>
+        </div>
+        @if (rd != null)
+        {
+            <div class="splash-monogram__names">@rd.GroomName &amp; @rd.BrideName</div>
+        }
+    </div>
+</div>
+
+<style>
+    .splash-monogram {
+        background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a14 100%);
+        animation: none !important;
+    }
+    .splash-monogram__content { text-align: center; color: #d4a574; }
+    .splash-monogram__overline {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.85rem;
+        letter-spacing: 0.6em;
+        color: rgba(212,165,116,0.7);
+        margin-bottom: 30px;
+        opacity: 0;
+        animation: splashMonoFadeUp 0.8s ease forwards 0.3s;
+    }
+    .splash-monogram__letters {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 6rem;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        line-height: 1;
+    }
+    .splash-monogram__letter {
+        background: linear-gradient(135deg, #d4a574 0%, #f3d69b 50%, #d4a574 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        opacity: 0;
+        text-shadow: 0 0 40px rgba(212,165,116,0.3);
+    }
+    .splash-monogram__letter--g {
+        animation: splashMonoLetterIn 1s ease forwards 0.6s;
+    }
+    .splash-monogram__letter--b {
+        animation: splashMonoLetterIn 1s ease forwards 1s;
+    }
+    .splash-monogram__amp {
+        font-size: 3rem;
+        color: #d4a574;
+        opacity: 0;
+        animation: splashMonoFadeIn 0.8s ease forwards 1.3s;
+    }
+    .splash-monogram__divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin: 30px 0 15px;
+        opacity: 0;
+        animation: splashMonoFadeUp 0.8s ease forwards 1.6s;
+    }
+    .splash-monogram__divider span {
+        width: 60px;
+        height: 1px;
+        background: rgba(212,165,116,0.5);
+    }
+    .splash-monogram__diamond {
+        width: 8px;
+        height: 8px;
+        background: #d4a574;
+        transform: rotate(45deg);
+    }
+    .splash-monogram__names {
+        font-family: 'Cairo', sans-serif;
+        font-size: 1rem;
+        letter-spacing: 0.3em;
+        color: rgba(255,255,255,0.7);
+        opacity: 0;
+        animation: splashMonoFadeUp 0.8s ease forwards 1.9s;
+    }
+    @@keyframes splashMonoLetterIn {
+        0% { opacity: 0; transform: translateY(20px) scale(0.8); }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @@keyframes splashMonoFadeUp {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @@keyframes splashMonoFadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>

@@ -1,0 +1,141 @@
+@*
+    سبلاش مظروف بيتفتح ومنه طلعت بطاقة الدعوة.
+    PartialName: EnvelopeOpen
+*@
+@model Request
+@{
+    var rd = Model?.RequestData;
+    var names = !string.IsNullOrEmpty(rd?.GroomName) && !string.IsNullOrEmpty(rd?.BrideName)
+        ? $"{rd.GroomName} & {rd.BrideName}"
+        : "Wedding";
+}
+<div class="splash-screen splash-envelope" id="splashScreen">
+    <div class="splash-envelope__scene">
+        <div class="splash-envelope__shadow"></div>
+        <div class="splash-envelope__body">
+            <div class="splash-envelope__flap"></div>
+            <div class="splash-envelope__card">
+                <div class="splash-envelope__card-inner">
+                    <div class="splash-envelope__card-divider"></div>
+                    <div class="splash-envelope__card-title">@names</div>
+                    <div class="splash-envelope__card-divider"></div>
+                </div>
+            </div>
+            <div class="splash-envelope__front"></div>
+        </div>
+    </div>
+    <div class="splash-envelope__caption">Opening your invitation...</div>
+</div>
+
+<style>
+    .splash-envelope {
+        background: linear-gradient(135deg, #1a2940 0%, #2a3f5f 100%);
+        animation: none !important;
+    }
+    .splash-envelope__scene {
+        position: relative;
+        width: 280px;
+        height: 200px;
+        perspective: 1000px;
+    }
+    .splash-envelope__body {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+    }
+    .splash-envelope__shadow {
+        position: absolute;
+        bottom: -20px;
+        left: 10%;
+        width: 80%;
+        height: 20px;
+        background: rgba(0,0,0,0.4);
+        border-radius: 50%;
+        filter: blur(15px);
+        animation: splashEnvShadow 3s ease-in-out infinite;
+    }
+    .splash-envelope__front {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background: linear-gradient(135deg, #d4a574, #b88a55);
+        border-radius: 4px 4px 8px 8px;
+        z-index: 5;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .splash-envelope__flap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background: linear-gradient(135deg, #b88a55, #8a6840);
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        transform-origin: top;
+        animation: splashEnvFlap 2s ease forwards 0.5s;
+        z-index: 6;
+    }
+    .splash-envelope__card {
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        width: 80%;
+        height: 80%;
+        background: #faf6ed;
+        border-radius: 4px;
+        z-index: 4;
+        animation: splashEnvCardRise 2s ease forwards 1.5s;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .splash-envelope__card-inner {
+        text-align: center;
+        color: #5a4a2a;
+        padding: 0 20px;
+    }
+    .splash-envelope__card-divider {
+        width: 60px;
+        height: 1px;
+        background: #d4a574;
+        margin: 8px auto;
+    }
+    .splash-envelope__card-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.4rem;
+        font-style: italic;
+        color: #5a4a2a;
+    }
+    .splash-envelope__caption {
+        position: absolute;
+        bottom: 80px;
+        left: 0; right: 0;
+        text-align: center;
+        color: rgba(255,255,255,0.7);
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+        opacity: 0;
+        animation: splashEnvCaption 1s ease forwards 2.5s;
+    }
+    @@keyframes splashEnvFlap {
+        0% { transform: rotateX(0deg); }
+        100% { transform: rotateX(-180deg); }
+    }
+    @@keyframes splashEnvCardRise {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-120%); }
+    }
+    @@keyframes splashEnvShadow {
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.1); opacity: 0.7; }
+    }
+    @@keyframes splashEnvCaption {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>

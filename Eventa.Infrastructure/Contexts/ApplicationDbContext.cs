@@ -27,10 +27,32 @@ namespace Eventa.Infrastructure
         public DbSet<ClientInfo> ClientInfos { get; set; }
         public DbSet<BackgroundImage> BackgroundImages { get; set; }
         public DbSet<PredefinedText> PredefinedTexts { get; set; }
+        public DbSet<SplashTemplate> SplashTemplates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            // RequestData -> SplashTemplate (Many to One, optional)
+            modelBuilder.Entity<RequestData>()
+                .HasOne(rd => rd.SplashTemplate)
+                .WithMany()
+                .HasForeignKey(rd => rd.SplashTemplateId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .IsRequired(false);
+
+            // Design -> SplashTemplate (Many to One, optional - default per design)
+            modelBuilder.Entity<Design>()
+                .HasOne(d => d.DefaultSplashTemplate)
+                .WithMany()
+                .HasForeignKey(d => d.DefaultSplashTemplateId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .IsRequired(false);
+
+            // ضمان عدم تكرار IsDefault = true (هندير ده بـ application logic داخل الـ repository)
+            modelBuilder.Entity<SplashTemplate>()
+                .HasIndex(s => s.IsDefault)
+                .HasFilter("[IsDefault] = 1");
 
             // Memory -> Request (Many to One)
             modelBuilder.Entity<Memory>()

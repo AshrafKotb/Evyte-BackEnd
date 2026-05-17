@@ -1,0 +1,124 @@
+@*
+    سبلاش "تم استلام دعوة زفاف" بحلية ذهبية ومونوجرام في الوسط.
+    Inspired by professional wedding invite intros (tap to open style).
+    PartialName: GoldenInvitation
+*@
+@model Request
+@{
+    var rd = Model?.RequestData;
+    var groomInitial = !string.IsNullOrEmpty(rd?.GroomName) ? rd.GroomName.Trim()[0].ToString().ToUpper() : "G";
+    var brideInitial = !string.IsNullOrEmpty(rd?.BrideName) ? rd.BrideName.Trim()[0].ToString().ToUpper() : "B";
+}
+<div class="splash-screen splash-golden" id="splashScreen">
+    <div class="splash-golden__content">
+        <div class="splash-golden__top-text">YOU HAVE RECEIVED A WEDDING</div>
+        <div class="splash-golden__top-text">INVITATION</div>
+
+        <div class="splash-golden__monogram">
+            <div class="splash-golden__monogram-ring"></div>
+            <div class="splash-golden__monogram-ring splash-golden__monogram-ring--inner"></div>
+            <div class="splash-golden__monogram-text">
+                <span>@groomInitial</span>
+                <span class="splash-golden__amp">&amp;</span>
+                <span>@brideInitial</span>
+            </div>
+            <div class="splash-golden__corner splash-golden__corner--tl"></div>
+            <div class="splash-golden__corner splash-golden__corner--tr"></div>
+            <div class="splash-golden__corner splash-golden__corner--bl"></div>
+            <div class="splash-golden__corner splash-golden__corner--br"></div>
+        </div>
+
+        <div class="splash-golden__bottom-text">— tap to open —</div>
+    </div>
+</div>
+
+<style>
+    .splash-golden {
+        background: linear-gradient(180deg, #f7f0e3 0%, #ece1c8 100%);
+        cursor: pointer;
+        animation: none !important;
+    }
+    .splash-golden__content {
+        text-align: center;
+        color: #5a4a2a;
+        padding: 40px;
+        animation: splashGoldenFadeIn 1.2s ease;
+    }
+    .splash-golden__top-text {
+        font-family: 'Playfair Display', 'Cairo', serif;
+        font-size: 1rem;
+        letter-spacing: 0.4em;
+        font-weight: 300;
+        line-height: 1.8;
+        opacity: 0.85;
+    }
+    .splash-golden__monogram {
+        position: relative;
+        width: 220px;
+        height: 220px;
+        margin: 60px auto;
+        background: #0f3a32;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.18), inset 0 0 0 8px #0f3a32;
+    }
+    .splash-golden__monogram-ring {
+        position: absolute;
+        inset: 12px;
+        border: 1px solid rgba(212, 165, 116, 0.6);
+        border-radius: 50%;
+        animation: splashGoldenRing 8s linear infinite;
+    }
+    .splash-golden__monogram-ring--inner {
+        inset: 24px;
+        border-style: dashed;
+        opacity: 0.4;
+        animation-duration: 14s;
+        animation-direction: reverse;
+    }
+    .splash-golden__monogram-text {
+        font-family: 'Playfair Display', serif;
+        color: #d4a574;
+        font-size: 3rem;
+        font-style: italic;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        z-index: 2;
+    }
+    .splash-golden__amp {
+        font-size: 1.6rem;
+        opacity: 0.9;
+    }
+    .splash-golden__corner {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        border: 2px solid #d4a574;
+    }
+    .splash-golden__corner--tl { top: -4px; left: -4px; border-right: none; border-bottom: none; }
+    .splash-golden__corner--tr { top: -4px; right: -4px; border-left: none; border-bottom: none; }
+    .splash-golden__corner--bl { bottom: -4px; left: -4px; border-right: none; border-top: none; }
+    .splash-golden__corner--br { bottom: -4px; right: -4px; border-left: none; border-top: none; }
+    .splash-golden__bottom-text {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 1rem;
+        opacity: 0.6;
+        animation: splashGoldenPulse 2s ease-in-out infinite;
+    }
+    @@keyframes splashGoldenFadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @@keyframes splashGoldenRing {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    @@keyframes splashGoldenPulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+    }
+</style>

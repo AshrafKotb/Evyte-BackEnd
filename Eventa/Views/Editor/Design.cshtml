@@ -6,6 +6,8 @@
     var predefinedTexts1 = ViewBag.PredefinedTexts1 as IEnumerable<Eventa.Domain.Entities.PredefinedText> ?? Enumerable.Empty<Eventa.Domain.Entities.PredefinedText>();
     var predefinedTexts2 = ViewBag.PredefinedTexts2 as IEnumerable<Eventa.Domain.Entities.PredefinedText> ?? Enumerable.Empty<Eventa.Domain.Entities.PredefinedText>();
     var backgroundImages = ViewBag.BackgroundImages as IEnumerable<Eventa.Domain.Entities.BackgroundImage> ?? Enumerable.Empty<Eventa.Domain.Entities.BackgroundImage>();
+    var splashTemplates = ViewBag.SplashTemplates as IEnumerable<Eventa.Domain.Entities.SplashTemplate> ?? Enumerable.Empty<Eventa.Domain.Entities.SplashTemplate>();
+    var defaultSplash = ViewBag.DefaultSplashTemplate as Eventa.Domain.Entities.SplashTemplate;
 }
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -64,7 +66,7 @@
                             <div class="image-upload-area" data-target="GroomImage">
                                 <img src="" alt="" class="upload-preview" style="display:none;">
                                 <div class="upload-placeholder">
-                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <i class="fas fa-cloud-arrow-up"></i>
                                     <span>اضغط لرفع صورة</span>
                                 </div>
                                 <input type="file" accept="image/*" class="file-input" style="display:none;">
@@ -75,7 +77,7 @@
                             <div class="image-upload-area" data-target="BrideImage">
                                 <img src="" alt="" class="upload-preview" style="display:none;">
                                 <div class="upload-placeholder">
-                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <i class="fas fa-cloud-arrow-up"></i>
                                     <span>اضغط لرفع صورة</span>
                                 </div>
                                 <input type="file" accept="image/*" class="file-input" style="display:none;">
@@ -117,7 +119,7 @@
                             <div class="image-upload-area" data-target="MainSliderImage">
                                 <img src="" alt="" class="upload-preview" style="display:none;">
                                 <div class="upload-placeholder">
-                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <i class="fas fa-cloud-arrow-up"></i>
                                     <span>اضغط لرفع صورة</span>
                                 </div>
                                 <input type="file" accept="image/*" class="file-input" style="display:none;">
@@ -129,7 +131,7 @@
                 <!-- Section 3: Event Details -->
                 <div class="panel-section" data-section="event">
                     <div class="panel-section-header" data-toggle="event">
-                        <i class="fas fa-calendar-alt"></i>
+                        <i class="fas fa-calendar-days"></i>
                         <span>تفاصيل الحدث</span>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
@@ -165,7 +167,7 @@
                             <div class="image-upload-area" data-target="EventPlaceImage">
                                 <img src="" alt="" class="upload-preview" style="display:none;">
                                 <div class="upload-placeholder">
-                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <i class="fas fa-cloud-arrow-up"></i>
                                     <span>اضغط لرفع صورة</span>
                                 </div>
                                 <input type="file" accept="image/*" class="file-input" style="display:none;">
@@ -253,7 +255,7 @@
                         <div class="form-group">
                             <label>ملف صوتي</label>
                             <div class="audio-upload-area" id="audioUploadArea">
-                                <i class="fas fa-cloud-upload-alt"></i>
+                                <i class="fas fa-cloud-arrow-up"></i>
                                 <span>اضغط لرفع ملف صوتي</span>
                                 <input type="file" accept="audio/*" id="audioFileInput" style="display:none;">
                             </div>
@@ -321,6 +323,50 @@
                                     {
                                         <div class="bg-lib-item" data-id="@bg.Id" data-url="@bg.ImageUrl">
                                             <img src="@bg.ImageUrl" alt="@bg.NameAr">
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+
+                        @if (splashTemplates.Any())
+                        {
+                            <div class="form-group">
+                                <label><i class="fas fa-magic"></i> شاشة الافتتاح (Splash)</label>
+                                <p class="editor-hint" style="font-size:0.8rem; opacity:0.75; margin: 4px 0 8px;">
+                                    اختر الأنيميشن اللي يظهر للضيوف قبل ما الدعوة تتفتح.
+                                </p>
+                                <div class="splash-library-grid">
+                                    @foreach (var sp in splashTemplates)
+                                    {
+                                        var isSelected = defaultSplash != null && sp.Id == defaultSplash.Id;
+                                        <div class="splash-lib-item @(isSelected ? "selected" : "")" data-id="@sp.Id" data-name-ar="@sp.NameAr">
+                                            <button type="button" class="splash-preview-btn" data-splash-id="@sp.Id" title="معاينة">
+                                                <i class="fas fa-play"></i>
+                                            </button>
+                                            @if (!string.IsNullOrEmpty(sp.ThumbnailUrl))
+                                            {
+                                                <img src="@sp.ThumbnailUrl" alt="@sp.NameAr" class="splash-lib-thumb">
+                                            }
+                                            else
+                                            {
+                                                <div class="splash-lib-thumb splash-lib-thumb--placeholder">
+                                                    <i class="fas fa-magic"></i>
+                                                </div>
+                                            }
+                                            <div class="splash-lib-meta">
+                                                <span class="splash-lib-name">@sp.NameAr</span>
+                                                <span class="splash-lib-badges">
+                                                    @if (sp.IsDefault)
+                                                    {
+                                                        <span class="splash-lib-badge splash-lib-badge--default"><i class="fas fa-star"></i></span>
+                                                    }
+                                                    @if (sp.RequiresInteraction)
+                                                    {
+                                                        <span class="splash-lib-badge splash-lib-badge--interactive" title="بتفاعل"><i class="fas fa-hand-pointer"></i></span>
+                                                    }
+                                                </span>
+                                            </div>
                                         </div>
                                     }
                                 </div>

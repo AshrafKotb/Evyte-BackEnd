@@ -1,26 +1,70 @@
+@*
+    Splash Resolver: يفحص ViewBag.SplashTemplate ويعرض الـ partial المناسب من Views/Shared/splashes/
+    لو مفيش حاجة → يرجع للسبلاش الافتراضي القديم (_EventaDefault).
+    لو الـ partial المطلوب مش موجود → يقع على الافتراضي.
+*@
+@using Eventa.Domain.Entities
+@inject Microsoft.AspNetCore.Mvc.ViewEngines.ICompositeViewEngine ViewEngine
 @{
-    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
-    var isArabic = culture.StartsWith("ar", StringComparison.OrdinalIgnoreCase);
-}
-<!-- Splash Screen -->
-<div class="splash-screen" id="splashScreen">
-    <!-- Decorative Elements -->
-    <div class="splash-decoration splash-decoration-1"></div>
-    <div class="splash-decoration splash-decoration-2"></div>
+    var splash = ViewBag.SplashTemplate as SplashTemplate;
+    var fallbackPath = "splashes/_EventaDefault";
+    var partialPath = fallbackPath;
 
-    <!-- Content -->
-    <div class="splash-content">
-        <div class="splash-logo-wrapper">
-            <img src="~/logo/yellow.png" alt="Eventa" class="splash-logo">
-        </div>
-        <h1 class="splash-title">Eventa</h1>
-        <p class="splash-subtitle">@(isArabic ? "دعوتك المثالية" : "Your Perfect Invitation")</p>
-        <div class="splash-loader">
-            <div class="splash-loader-dot"></div>
-        </div>
-        <div class="splash-progress">
-            <div class="splash-progress-bar"></div>
-        </div>
-        <p class="splash-loading-text">@(isArabic ? "جاري التحميل" : "Loading")<span>.</span><span>.</span><span>.</span></p>
-    </div>
-</div>
+    if (splash != null && !string.IsNullOrWhiteSpace(splash.PartialName))
+    {
+        var candidate = $"splashes/_{splash.PartialName}";
+        var found = ViewEngine.FindView(ViewContext, candidate, isMainPage: false);
+        if (found.Success)
+        {
+            partialPath = candidate;
+        }
+    }
+
+    var splashRequest = ViewBag.SplashRequest as Request;
+}
+
+@if (splashRequest != null)
+{
+    @await Html.PartialAsync(partialPath, splashRequest)
+}
+else
+{
+    @await Html.PartialAsync(partialPath)
+}
+
+@if (splash != null && !splash.RequiresInteraction && splash.DurationMs > 0)
+{
+    <script>
+        (function () {
+            var s = document.getElementById('splashScreen');
+            if (!s) return;
+            setTimeout(function () {
+                s.style.transition = 'opacity 0.6s ease, visibility 0.6s';
+                s.style.opacity = '0';
+                setTimeout(function () {
+                    s.style.display = 'none';
+                    s.style.pointerEvents = 'none';
+                }, 650);
+            }, @splash.DurationMs);
+        })();
+    </script>
+}
+else if (splash != null && splash.RequiresInteraction)
+{
+    <script>
+        (function () {
+            var s = document.getElementById('splashScreen');
+            if (!s) return;
+            s.style.cursor = 'pointer';
+            s.addEventListener('click', function () {
+                s.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                s.style.opacity = '0';
+                s.style.transform = 'scale(1.05)';
+                setTimeout(function () {
+                    s.style.display = 'none';
+                    s.style.pointerEvents = 'none';
+                }, 850);
+            });
+        })();
+    </script>
+}

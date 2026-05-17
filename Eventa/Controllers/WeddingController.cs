@@ -11,10 +11,14 @@ namespace Eventa.Web.Controllers
     public class WeddingController : Controller
     {
         private readonly IRequestRepository _requestRepository;
+        private readonly ISplashTemplateRepository _splashRepository;
 
-        public WeddingController(IRequestRepository requestRepository)
+        public WeddingController(
+            IRequestRepository requestRepository,
+            ISplashTemplateRepository splashRepository)
         {
             _requestRepository = requestRepository;
+            _splashRepository = splashRepository;
         }
 
 
@@ -54,6 +58,19 @@ namespace Eventa.Web.Controllers
             {
                 request.RequestData.EventTimeTo = TimeSpan.FromHours(request.RequestData.EventTimeTo.TotalHours % 24);
             }
+
+            // اختيار السبلاش: اختيار العميل → افتراضي التيمبلت → الافتراضي العام
+            var splashId = request.RequestData?.SplashTemplateId
+                         ?? request.Design?.DefaultSplashTemplateId;
+            Eventa.Domain.Entities.SplashTemplate? splash = null;
+            if (splashId.HasValue)
+            {
+                splash = await _splashRepository.GetByIdAsync(splashId.Value);
+                if (splash != null && !splash.IsActive) splash = null;
+            }
+            splash ??= await _splashRepository.GetDefaultAsync();
+            ViewBag.SplashTemplate = splash;
+            ViewBag.SplashRequest = request;
 
             return base.View($"~/Views/Shared/templates/_{request.Design.TemplateName}.cshtml", request);
         }

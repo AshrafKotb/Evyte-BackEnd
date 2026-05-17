@@ -34,6 +34,11 @@ namespace Eventa.Domain.Entities
 
         public virtual Category? Category { get; set; }
 
+        // السبلاش الافتراضي المُربط بهذا التصميم - يستخدم لو العميل لم يختر سبلاش بنفسه
+        public Guid? DefaultSplashTemplateId { get; set; }
+
+        public virtual SplashTemplate? DefaultSplashTemplate { get; set; }
+
         public virtual ICollection<Request> Requests { get; set; } = new List<Request>();
     }
 }
