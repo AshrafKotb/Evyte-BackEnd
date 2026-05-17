@@ -97,12 +97,12 @@
 
 <!-- Main Details Grid -->
 <div class="details-grid-layout">
-    <!-- User Info Card -->
+    <!-- User/Client Info Card -->
     <div class="card animate-slide-in-up" style="--delay: 0.2s;">
         <div class="card-header">
             <h3 class="card-title">
                 <i class="fas fa-user"></i>
-                معلومات المستخدم
+                معلومات العميل
             </h3>
         </div>
         <div class="card-body">
@@ -111,21 +111,31 @@
                     <div class="info-icon"><i class="fas fa-user"></i></div>
                     <div class="info-content">
                         <span class="info-label">الاسم</span>
-                        <span class="info-value">@Model.User?.FullName</span>
+                        <span class="info-value">@(Model.ClientInfo?.FullName ?? Model.User?.FullName)</span>
                     </div>
                 </div>
                 <div class="info-row">
                     <div class="info-icon"><i class="fas fa-phone"></i></div>
                     <div class="info-content">
                         <span class="info-label">رقم الهاتف</span>
-                        <span class="info-value" dir="ltr">@Model.User?.PhoneNumber</span>
+                        <span class="info-value" dir="ltr">@(Model.ClientInfo?.PhoneNumber ?? Model.User?.PhoneNumber)</span>
                     </div>
                 </div>
+                @if (Model.ClientInfo != null)
+                {
+                    <div class="info-row">
+                        <div class="info-icon"><i class="fab fa-whatsapp" style="color: #25D366;"></i></div>
+                        <div class="info-content">
+                            <span class="info-label">رقم الواتساب</span>
+                            <span class="info-value" dir="ltr">@Model.ClientInfo.WhatsAppNumber</span>
+                        </div>
+                    </div>
+                }
                 <div class="info-row">
                     <div class="info-icon"><i class="fas fa-envelope"></i></div>
                     <div class="info-content">
                         <span class="info-label">البريد الإلكتروني</span>
-                        <span class="info-value">@Model.User?.Email</span>
+                        <span class="info-value">@(Model.ClientInfo?.Email ?? Model.User?.Email)</span>
                     </div>
                 </div>
             </div>

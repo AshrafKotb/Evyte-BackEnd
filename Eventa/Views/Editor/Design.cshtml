@@ -1,0 +1,424 @@
+@model Eventa.Domain.Entities.Request
+@{
+    Layout = null;
+    var designId = ViewBag.DesignId;
+    var designName = ViewBag.DesignName;
+    var predefinedTexts1 = ViewBag.PredefinedTexts1 as IEnumerable<Eventa.Domain.Entities.PredefinedText> ?? Enumerable.Empty<Eventa.Domain.Entities.PredefinedText>();
+    var predefinedTexts2 = ViewBag.PredefinedTexts2 as IEnumerable<Eventa.Domain.Entities.PredefinedText> ?? Enumerable.Empty<Eventa.Domain.Entities.PredefinedText>();
+    var backgroundImages = ViewBag.BackgroundImages as IEnumerable<Eventa.Domain.Entities.BackgroundImage> ?? Enumerable.Empty<Eventa.Domain.Entities.BackgroundImage>();
+}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <title>Live Editor - @designName</title>
+    <link rel="shortcut icon" type="image/png" href="~/logo/yellow.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="~/css/editor.css?v=@DateTime.Now.Ticks" rel="stylesheet">
+</head>
+<body>
+    <!-- Editor Toolbar -->
+    <div class="editor-toolbar" id="editorToolbar">
+        <div class="toolbar-right">
+            <img src="~/logo/yellow.png" alt="Eventa" class="toolbar-logo">
+            <span class="toolbar-title">Live Editor</span>
+        </div>
+        <div class="toolbar-left">
+            <button class="toolbar-btn btn-preview" id="btnPreview" title="معاينة">
+                <i class="fas fa-eye"></i>
+                <span>معاينة</span>
+            </button>
+            <button class="toolbar-btn btn-submit" id="btnSubmit" title="إرسال">
+                <i class="fas fa-paper-plane"></i>
+                <span>إرسال الطلب</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Editor Layout -->
+    <div class="editor-layout" id="editorLayout">
+        <!-- Editor Panel (Sidebar) -->
+        <div class="editor-panel" id="editorPanel">
+            <div class="panel-content">
+                <!-- Section 1: Couple -->
+                <div class="panel-section" data-section="couple">
+                    <div class="panel-section-header" data-toggle="couple">
+                        <i class="fas fa-heart"></i>
+                        <span>العروسين</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="panel-section-body" id="section-couple">
+                        <div class="form-group">
+                            <label>اسم العريس</label>
+                            <input type="text" class="editor-input" data-target="GroomName" placeholder="اسم العريس">
+                        </div>
+                        <div class="form-group">
+                            <label>اسم العروسة</label>
+                            <input type="text" class="editor-input" data-target="BrideName" placeholder="اسم العروسة">
+                        </div>
+                        <div class="form-group">
+                            <label>صورة العريس</label>
+                            <div class="image-upload-area" data-target="GroomImage">
+                                <img src="" alt="" class="upload-preview" style="display:none;">
+                                <div class="upload-placeholder">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>اضغط لرفع صورة</span>
+                                </div>
+                                <input type="file" accept="image/*" class="file-input" style="display:none;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>صورة العروسة</label>
+                            <div class="image-upload-area" data-target="BrideImage">
+                                <img src="" alt="" class="upload-preview" style="display:none;">
+                                <div class="upload-placeholder">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>اضغط لرفع صورة</span>
+                                </div>
+                                <input type="file" accept="image/*" class="file-input" style="display:none;">
+                            </div>
+                        </div>
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label><i class="fab fa-facebook"></i> فيسبوك العريس</label>
+                                <input type="url" class="editor-input" data-target="GroomFacebook" placeholder="رابط فيسبوك">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fab fa-instagram"></i> انستجرام العريس</label>
+                                <input type="url" class="editor-input" data-target="GroomInstagram" placeholder="رابط انستجرام">
+                            </div>
+                        </div>
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label><i class="fab fa-facebook"></i> فيسبوك العروسة</label>
+                                <input type="url" class="editor-input" data-target="BrideFacebook" placeholder="رابط فيسبوك">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fab fa-instagram"></i> انستجرام العروسة</label>
+                                <input type="url" class="editor-input" data-target="BrideInstagram" placeholder="رابط انستجرام">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Main Image -->
+                <div class="panel-section" data-section="mainimage">
+                    <div class="panel-section-header" data-toggle="mainimage">
+                        <i class="fas fa-image"></i>
+                        <span>الصورة الرئيسية</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="panel-section-body" id="section-mainimage">
+                        <div class="form-group">
+                            <label>صورة المناسبة</label>
+                            <div class="image-upload-area" data-target="MainSliderImage">
+                                <img src="" alt="" class="upload-preview" style="display:none;">
+                                <div class="upload-placeholder">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>اضغط لرفع صورة</span>
+                                </div>
+                                <input type="file" accept="image/*" class="file-input" style="display:none;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Event Details -->
+                <div class="panel-section" data-section="event">
+                    <div class="panel-section-header" data-toggle="event">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>تفاصيل الحدث</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="panel-section-body" id="section-event">
+                        <div class="form-group">
+                            <label>تاريخ الحدث</label>
+                            <input type="date" class="editor-input" data-target="EventDate">
+                        </div>
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label>وقت البدء</label>
+                                <input type="time" class="editor-input" data-target="EventTimeFrom" value="18:00">
+                            </div>
+                            <div class="form-group">
+                                <label>وقت الانتهاء</label>
+                                <input type="time" class="editor-input" data-target="EventTimeTo" value="23:00">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>اسم المكان</label>
+                            <input type="text" class="editor-input" data-target="EventPlaceName" placeholder="اسم قاعة الأفراح">
+                        </div>
+                        <div class="form-group">
+                            <label>العنوان</label>
+                            <input type="text" class="editor-input" data-target="EventAddress" placeholder="عنوان المكان">
+                        </div>
+                        <div class="form-group">
+                            <label>رابط الموقع (خرائط جوجل)</label>
+                            <input type="url" class="editor-input" data-target="LocationUrl" placeholder="https://maps.google.com/...">
+                        </div>
+                        <div class="form-group">
+                            <label>صورة المكان</label>
+                            <div class="image-upload-area" data-target="EventPlaceImage">
+                                <img src="" alt="" class="upload-preview" style="display:none;">
+                                <div class="upload-placeholder">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>اضغط لرفع صورة</span>
+                                </div>
+                                <input type="file" accept="image/*" class="file-input" style="display:none;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Gallery -->
+                <div class="panel-section" data-section="gallery">
+                    <div class="panel-section-header" data-toggle="gallery">
+                        <i class="fas fa-images"></i>
+                        <span>معرض الصور</span>
+                        <div class="section-toggle-switch">
+                            <input type="checkbox" id="toggleGallery" class="section-toggle" checked>
+                            <label for="toggleGallery"></label>
+                        </div>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="panel-section-body" id="section-gallery">
+                        <div class="gallery-upload-grid" id="galleryGrid">
+                            <!-- Gallery items will be added here dynamically -->
+                        </div>
+                        <button class="btn-add-item" id="btnAddGalleryPhoto">
+                            <i class="fas fa-plus"></i> أضف صورة (حتى 10)
+                        </button>
+                        <input type="file" accept="image/*" id="galleryFileInput" style="display:none;" multiple>
+                    </div>
+                </div>
+
+                <!-- Section 5: Memories -->
+                <div class="panel-section" data-section="memories">
+                    <div class="panel-section-header" data-toggle="memories">
+                        <i class="fas fa-book-open"></i>
+                        <span>الذكريات</span>
+                        <div class="section-toggle-switch">
+                            <input type="checkbox" id="toggleMemories" class="section-toggle" checked>
+                            <label for="toggleMemories"></label>
+                        </div>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="panel-section-body" id="section-memories">
+                        <div id="memoriesList">
+                            <!-- Memory items will be added here dynamically -->
+                        </div>
+                        <button class="btn-add-item" id="btnAddMemory">
+                            <i class="fas fa-plus"></i> أضف ذكرى (حتى 5)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 6: Dedications -->
+                <div class="panel-section" data-section="dedications">
+                    <div class="panel-section-header" data-toggle="dedications">
+                        <i class="fas fa-quote-right"></i>
+                        <span>الإهداءات</span>
+                        <div class="section-toggle-switch">
+                            <input type="checkbox" id="toggleDedications" class="section-toggle" checked>
+                            <label for="toggleDedications"></label>
+                        </div>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="panel-section-body" id="section-dedications">
+                        <div id="dedicationsList">
+                            <!-- Dedication items will be added here dynamically -->
+                        </div>
+                        <button class="btn-add-item" id="btnAddDedication">
+                            <i class="fas fa-plus"></i> أضف إهداء
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 7: Audio -->
+                <div class="panel-section" data-section="audio">
+                    <div class="panel-section-header" data-toggle="audio">
+                        <i class="fas fa-music"></i>
+                        <span>الموسيقى</span>
+                        <div class="section-toggle-switch">
+                            <input type="checkbox" id="toggleAudio" class="section-toggle">
+                            <label for="toggleAudio"></label>
+                        </div>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="panel-section-body" id="section-audio">
+                        <div class="form-group">
+                            <label>ملف صوتي</label>
+                            <div class="audio-upload-area" id="audioUploadArea">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>اضغط لرفع ملف صوتي</span>
+                                <input type="file" accept="audio/*" id="audioFileInput" style="display:none;">
+                            </div>
+                            <div class="audio-preview" id="audioPreview" style="display:none;">
+                                <span id="audioFileName"></span>
+                                <button class="btn-remove-audio" id="btnRemoveAudio"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>اسم الأغنية/الموسيقى</label>
+                            <input type="text" class="editor-input" data-target="AudioName" placeholder="اسم الأغنية">
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="audioAutoPlay"> تشغيل تلقائي
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 8: Custom Content -->
+                <div class="panel-section" data-section="custom">
+                    <div class="panel-section-header" data-toggle="custom">
+                        <i class="fas fa-paint-brush"></i>
+                        <span>تخصيص</span>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="panel-section-body" id="section-custom">
+                        <div class="form-group">
+                            <label>جملة مخصصة 1</label>
+                            @if (predefinedTexts1.Any())
+                            {
+                                <select class="editor-select predefined-select" data-target-input="CustomSentence1">
+                                    <option value="">-- اختر من النصوص الجاهزة --</option>
+                                    @foreach (var text in predefinedTexts1)
+                                    {
+                                        <option value="@text.TextAr">@text.TextAr</option>
+                                    }
+                                    <option value="__custom__">كتابة نص حر...</option>
+                                </select>
+                            }
+                            <input type="text" class="editor-input" data-target="CustomSentence1" placeholder="اكتب نص مخصص">
+                        </div>
+                        <div class="form-group">
+                            <label>جملة مخصصة 2</label>
+                            @if (predefinedTexts2.Any())
+                            {
+                                <select class="editor-select predefined-select" data-target-input="CustomSentence2">
+                                    <option value="">-- اختر من النصوص الجاهزة --</option>
+                                    @foreach (var text in predefinedTexts2)
+                                    {
+                                        <option value="@text.TextAr">@text.TextAr</option>
+                                    }
+                                    <option value="__custom__">كتابة نص حر...</option>
+                                </select>
+                            }
+                            <input type="text" class="editor-input" data-target="CustomSentence2" placeholder="اكتب نص مخصص">
+                        </div>
+                        @if (backgroundImages.Any())
+                        {
+                            <div class="form-group">
+                                <label>صورة الخلفية</label>
+                                <div class="bg-library-grid">
+                                    @foreach (var bg in backgroundImages)
+                                    {
+                                        <div class="bg-lib-item" data-id="@bg.Id" data-url="@bg.ImageUrl">
+                                            <img src="@bg.ImageUrl" alt="@bg.NameAr">
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Panel Toggle (legacy - hidden on new mobile layout) -->
+        <div class="mobile-panel-toggle" id="mobilePanelToggle">
+            <i class="fas fa-chevron-up"></i>
+            <span>لوحة التحرير</span>
+        </div>
+
+        <!-- Mobile Floating Preview/Edit Button -->
+        <button class="mobile-preview-fab" id="mobilePreviewFab">
+            <i class="fas fa-eye"></i>
+            <span>معاينة الدعوة</span>
+        </button>
+
+        <!-- Template Canvas (iframe for full CSS/JS isolation) -->
+        <div class="editor-canvas" id="editorCanvas">
+            <iframe id="templateFrame"
+                    src="@Url.Action("TemplatePreview", "Editor", new { id = designId })"
+                    class="template-iframe"
+                    frameborder="0"
+                    scrolling="yes"></iframe>
+        </div>
+    </div>
+
+    <!-- Contact Info Modal (shown on Submit) -->
+    <div class="modal-overlay" id="contactModal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-user"></i> بيانات التواصل</h3>
+                <button class="modal-close" id="closeContactModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">أدخل بياناتك حتى نتمكن من التواصل معك</p>
+                <div class="form-group">
+                    <label>الاسم الكامل *</label>
+                    <input type="text" class="editor-input" id="contactFullName" placeholder="الاسم الكامل" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف *</label>
+                    <input type="tel" class="editor-input" id="contactPhone" placeholder="رقم الهاتف" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الواتساب *</label>
+                    <input type="tel" class="editor-input" id="contactWhatsApp" placeholder="رقم الواتساب" required>
+                </div>
+                <div class="form-group">
+                    <label>البريد الإلكتروني *</label>
+                    <input type="email" class="editor-input" id="contactEmail" placeholder="البريد الإلكتروني" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modal-submit" id="btnConfirmSubmit">
+                    <i class="fas fa-paper-plane"></i> إرسال الطلب
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal" style="display:none;">
+        <div class="modal-content success-modal">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>تم إرسال طلبك بنجاح!</h3>
+            <p>سيتم مراجعة طلبك والموافقة عليه قريباً. ستتلقى إشعاراً عند الموافقة.</p>
+            <div class="success-details" id="successDetails" style="display:none;">
+                <p>رابط الدعوة: <a href="#" id="successInvitationUrl" target="_blank"></a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display:none;">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>جاري الإرسال...</p>
+        </div>
+    </div>
+
+    <!-- Editor Data -->
+    <script>
+        window.EDITOR_CONFIG = {
+            designId: '@designId',
+            uploadImageUrl: '@Url.Action("UploadImage", "Editor", null, Context.Request.Scheme)',
+            uploadAudioUrl: '@Url.Action("UploadAudio", "Editor", null, Context.Request.Scheme)',
+            submitUrl: '@Url.Action("Submit", "Editor", null, Context.Request.Scheme)'
+        };
+        console.log('[Editor Config]', JSON.stringify(window.EDITOR_CONFIG));
+    </script>
+    <script src="~/js/editor.js?v=@DateTime.Now.Ticks"></script>
+</body>
+</html>

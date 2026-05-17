@@ -59,10 +59,10 @@ namespace Eventa.ApplicationCore.Services.Files
 
                 return (response.url, response.fileId);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // if something went wrong return the default image 
-                return (GetDefaultImage(folderName), null);
+                // Re-throw so the API can return a proper JSON error (success: false) instead of silently returning a default image
+                throw new InvalidOperationException("فشل رفع الصورة. تأكد من اتصال الإنترنت وحجم الملف ثم أعد المحاولة.", ex);
             }
 
         }
@@ -86,10 +86,9 @@ namespace Eventa.ApplicationCore.Services.Files
 
                 return (response.url, response.fileId);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // if something went wrong return the default image 
-                return (GetDefaultImage(folderName), null);
+                throw new InvalidOperationException("فشل رفع الصورة. تأكد من اتصال الإنترنت وحجم الملف ثم أعد المحاولة.", ex);
             }
         }
 

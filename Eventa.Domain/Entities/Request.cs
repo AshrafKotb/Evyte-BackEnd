@@ -25,10 +25,14 @@ namespace Eventa.Domain.Entities
 
         public virtual Design? Design { get; set; }
 
-        [Required, MaxLength(450)]
-        public string UserId { get; set; } = string.Empty;
+        [MaxLength(450)]
+        public string? UserId { get; set; }
 
         public virtual ApplicationUser? User { get; set; }
+
+        public Guid? ClientInfoId { get; set; }
+
+        public virtual ClientInfo? ClientInfo { get; set; }
 
         // حالات الطلبات
         public InvitationStatus Status { get; set; } = InvitationStatus.Pending;

@@ -83,11 +83,11 @@
     }
 
     .create-btn {
-        background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+        background: linear-gradient(135deg, #C5A55A 0%, #D4BA7A 100%);
     }
 
     .create-btn:hover {
-        background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
+        background: linear-gradient(135deg, #A8893E 0%, #B8963E 100%);
     }
 
     .whatsapp-btn {
@@ -253,7 +253,7 @@
                                 <i class="fas fa-chevron-down chevron-icon"></i>
                             </button>
                             <div class="lang-dropdown-menu" id="langDropdownMenu">
-                                <form asp-controller="Home" asp-action="SetLanguage" asp-antiforgery="false" method="post" id="langForm">
+                                <form action="@Url.Action("SetLanguage", "Home")" method="post" id="langForm">
                                     <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
                                     <input type="hidden" name="culture" id="cultureInput" value="" />
                                     <button type="button" class="lang-option @(isArabic ? "active" : "")" data-culture="ar">
@@ -344,6 +344,28 @@
 
 <!-- Modern Header & Navbar Styles -->
 <style>
+    /* Override legacy sticky-header styles from template's style.css.
+       The old code cloned .navigation to create a duplicate sticky header,
+       but our modern-header is already position:fixed. We disable the clone
+       behavior and prevent any legacy sticky CSS from breaking our header. */
+    .modern-header .navigation.sticky-header {
+        display: none !important;
+    }
+
+    .modern-header .navigation.original {
+        /* Undo the 'original' class that the old clone code used to add */
+        position: static;
+    }
+
+    .modern-header .navigation.sticky-on {
+        /* Prevent style.css sticky-on from overriding our header position */
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        top: auto;
+        box-shadow: none;
+    }
+
     /* Modern Header */
     .modern-header {
         position: fixed;
@@ -359,7 +381,7 @@
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-        border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        border-bottom: 1px solid rgba(197, 165, 90, 0.1);
     }
 
     .modern-header.scrolled .wpo-site-header {
@@ -432,15 +454,15 @@
         left: 50%;
         width: 0;
         height: 2px;
-        background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+        background: linear-gradient(135deg, #C5A55A 0%, #D4BA7A 100%);
         transition: all 0.3s ease;
         transform: translateX(-50%);
         border-radius: 2px;
     }
 
     .nav-link-modern:hover {
-        color: #8b5cf6 !important;
-        background: rgba(139, 92, 246, 0.08);
+        color: #C5A55A !important;
+        background: rgba(197, 165, 90, 0.08);
     }
 
     .nav-link-modern:hover::before {
@@ -448,8 +470,8 @@
     }
 
     .nav-link-modern.active {
-        color: #8b5cf6 !important;
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(236, 72, 153, 0.08) 100%);
+        color: #C5A55A !important;
+        background: linear-gradient(135deg, rgba(197, 165, 90, 0.12) 0%, rgba(212, 186, 122, 0.08) 100%);
     }
 
     .nav-link-modern.active::before {
@@ -471,8 +493,8 @@
         align-items: center;
         gap: 8px;
         padding: 10px 18px;
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.08) 100%);
-        border: 1px solid rgba(139, 92, 246, 0.2);
+        background: linear-gradient(135deg, rgba(197, 165, 90, 0.1) 0%, rgba(212, 186, 122, 0.08) 100%);
+        border: 1px solid rgba(197, 165, 90, 0.2);
         border-radius: 50px;
         font-size: 0.9rem;
         font-weight: 500;
@@ -482,15 +504,15 @@
     }
 
     .lang-btn:hover {
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(236, 72, 153, 0.12) 100%);
-        border-color: rgba(139, 92, 246, 0.3);
-        color: #8b5cf6;
+        background: linear-gradient(135deg, rgba(197, 165, 90, 0.15) 0%, rgba(212, 186, 122, 0.12) 100%);
+        border-color: rgba(197, 165, 90, 0.3);
+        color: #C5A55A;
         transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+        box-shadow: 0 4px 15px rgba(197, 165, 90, 0.2);
     }
 
     .lang-btn .fa-globe {
-        color: #8b5cf6;
+        color: #C5A55A;
         font-size: 1rem;
         transition: transform 0.3s ease;
     }
@@ -517,7 +539,7 @@
         background: white;
         border-radius: 16px;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-        border: 1px solid rgba(139, 92, 246, 0.1);
+        border: 1px solid rgba(197, 165, 90, 0.1);
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px) scale(0.95);
@@ -557,18 +579,18 @@
     }
 
     .lang-option:hover {
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(236, 72, 153, 0.05) 100%);
-        color: #8b5cf6;
+        background: linear-gradient(135deg, rgba(197, 165, 90, 0.08) 0%, rgba(212, 186, 122, 0.05) 100%);
+        color: #C5A55A;
     }
 
     .lang-option.active {
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(236, 72, 153, 0.08) 100%);
-        color: #8b5cf6;
+        background: linear-gradient(135deg, rgba(197, 165, 90, 0.12) 0%, rgba(212, 186, 122, 0.08) 100%);
+        color: #C5A55A;
     }
 
     .lang-option .fa-check {
         margin-left: auto;
-        color: #8b5cf6;
+        color: #C5A55A;
         font-size: 0.85rem;
     }
 
@@ -598,7 +620,7 @@
         width: 44px;
         height: 44px;
         padding: 10px;
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.08) 100%);
+        background: linear-gradient(135deg, rgba(197, 165, 90, 0.1) 0%, rgba(212, 186, 122, 0.08) 100%);
         border: none;
         border-radius: 12px;
         cursor: pointer;
@@ -607,14 +629,14 @@
     }
 
     .hamburger-btn:hover {
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(236, 72, 153, 0.12) 100%);
+        background: linear-gradient(135deg, rgba(197, 165, 90, 0.15) 0%, rgba(212, 186, 122, 0.12) 100%);
         transform: scale(1.05);
     }
 
     .hamburger-line {
         width: 22px;
         height: 2.5px;
-        background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+        background: linear-gradient(135deg, #C5A55A 0%, #D4BA7A 100%);
         border-radius: 2px;
         transition: all 0.3s ease;
     }
@@ -689,8 +711,8 @@
         align-items: center;
         justify-content: space-between;
         padding: 20px;
-        border-bottom: 1px solid rgba(139, 92, 246, 0.1);
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(236, 72, 153, 0.03) 100%);
+        border-bottom: 1px solid rgba(197, 165, 90, 0.1);
+        background: linear-gradient(135deg, rgba(197, 165, 90, 0.05) 0%, rgba(212, 186, 122, 0.03) 100%);
     }
 
     .mobile-logo img {
@@ -703,17 +725,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(139, 92, 246, 0.1);
+        background: rgba(197, 165, 90, 0.1);
         border: none;
         border-radius: 50%;
-        color: #8b5cf6;
+        color: #C5A55A;
         font-size: 1.1rem;
         cursor: pointer;
         transition: all 0.3s ease;
     }
 
     .mobile-close-btn:hover {
-        background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+        background: linear-gradient(135deg, #C5A55A 0%, #D4BA7A 100%);
         color: white;
         transform: rotate(90deg);
     }
@@ -756,19 +778,19 @@
         width: 24px;
         text-align: center;
         font-size: 1.1rem;
-        color: #8b5cf6;
+        color: #C5A55A;
         transition: transform 0.3s ease;
     }
 
     .mobile-nav a:hover {
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(236, 72, 153, 0.05) 100%);
-        color: #8b5cf6;
-        border-left-color: #8b5cf6;
+        background: linear-gradient(135deg, rgba(197, 165, 90, 0.08) 0%, rgba(212, 186, 122, 0.05) 100%);
+        color: #C5A55A;
+        border-left-color: #C5A55A;
     }
 
     [dir="rtl"] .mobile-nav a:hover {
         border-left-color: transparent;
-        border-right-color: #8b5cf6;
+        border-right-color: #C5A55A;
     }
 
     .mobile-nav a:hover i {
@@ -776,21 +798,21 @@
     }
 
     .mobile-nav a.active {
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(236, 72, 153, 0.08) 100%);
-        color: #8b5cf6;
-        border-left-color: #8b5cf6;
+        background: linear-gradient(135deg, rgba(197, 165, 90, 0.12) 0%, rgba(212, 186, 122, 0.08) 100%);
+        color: #C5A55A;
+        border-left-color: #C5A55A;
     }
 
     [dir="rtl"] .mobile-nav a.active {
         border-left-color: transparent;
-        border-right-color: #8b5cf6;
+        border-right-color: #C5A55A;
     }
 
     /* Mobile Menu Footer */
     .mobile-menu-footer {
         padding: 20px;
-        border-top: 1px solid rgba(139, 92, 246, 0.1);
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0%, rgba(236, 72, 153, 0.02) 100%);
+        border-top: 1px solid rgba(197, 165, 90, 0.1);
+        background: linear-gradient(135deg, rgba(197, 165, 90, 0.03) 0%, rgba(212, 186, 122, 0.02) 100%);
     }
 
     .mobile-cta-btn {
@@ -800,19 +822,19 @@
         gap: 10px;
         width: 100%;
         padding: 14px 20px;
-        background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+        background: linear-gradient(135deg, #C5A55A 0%, #D4BA7A 100%);
         color: white;
         text-decoration: none;
         border-radius: 50px;
         font-weight: 600;
         font-size: 0.95rem;
-        box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        box-shadow: 0 4px 15px rgba(197, 165, 90, 0.3);
         transition: all 0.3s ease;
     }
 
     .mobile-cta-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        box-shadow: 0 8px 25px rgba(197, 165, 90, 0.4);
         color: white;
     }
 
@@ -893,14 +915,23 @@
             });
         }
 
-        if (langOptions && cultureInput && langForm) {
+        if (langOptions && langForm) {
             langOptions.forEach(option => {
                 option.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     const culture = this.getAttribute('data-culture');
                     if (culture) {
-                        cultureInput.value = culture;
+                        // Set the hidden input value
+                        var cInput = document.getElementById('cultureInput');
+                        if (cInput) {
+                            cInput.value = culture;
+                        }
+                        // Ensure the form has valid action before submitting
+                        var formAction = langForm.getAttribute('action');
+                        if (!formAction || formAction === '') {
+                            langForm.action = '/Home/SetLanguage';
+                        }
                         langForm.submit();
                     }
                 });

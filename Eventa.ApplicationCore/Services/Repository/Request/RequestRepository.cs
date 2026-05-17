@@ -26,7 +26,7 @@ namespace Eventa.ApplicationCore.Services.Repository
 
         public async Task<Request> GetRequestByIdAsync(Guid id)
         {
-            return await _context.Requests.Include(x => x.User).Include(x => x.RequestData).Include(x => x.GalleryPhotos).Include(x => x.Design)
+            return await _context.Requests.Include(x => x.User).Include(x => x.ClientInfo).Include(x => x.RequestData).Include(x => x.GalleryPhotos).Include(x => x.Design)
                 .FirstOrDefaultAsync(r => r.Id == id && !r.IsDeleted);
         }
 
@@ -56,15 +56,18 @@ namespace Eventa.ApplicationCore.Services.Repository
         }
         public async Task<PaginatedResult<Request>> GetRequestsPaginatedAsync(int pageNumber, int pageSize, string searchTerm = "", InvitationStatus? status = null)
         {
-            var query = _context.Requests.Include(x => x.User).Include(x => x.RequestData).Include(x => x.GalleryPhotos).Include(x => x.Design)
+            var query = _context.Requests.Include(x => x.User).Include(x => x.ClientInfo).Include(x => x.RequestData).Include(x => x.GalleryPhotos).Include(x => x.Design)
                 .Where(r => !r.IsDeleted);
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 query = query.Where(r =>
-                    r.User.FullName.Contains(searchTerm) ||
+                    (r.User != null && (r.User.FullName.Contains(searchTerm) ||
                     r.User.Email.Contains(searchTerm) ||
-                    r.User.PhoneNumber.Contains(searchTerm) ||
+                    r.User.PhoneNumber.Contains(searchTerm))) ||
+                    (r.ClientInfo != null && (r.ClientInfo.FullName.Contains(searchTerm) ||
+                    r.ClientInfo.Email.Contains(searchTerm) ||
+                    r.ClientInfo.PhoneNumber.Contains(searchTerm))) ||
                     r.RequestData.GroomName.Contains(searchTerm) ||
                     r.RequestData.BrideName.Contains(searchTerm) ||
                     r.RequestData.EventPlaceName.Contains(searchTerm));
@@ -114,6 +117,7 @@ namespace Eventa.ApplicationCore.Services.Repository
             return await _context.Requests
                 .Include(r => r.RequestData)
                 .Include(r => r.User)
+                .Include(r => r.ClientInfo)
                 .Include(r => r.Design)
                 .Include(r => r.GalleryPhotos)
                 .FirstOrDefaultAsync(r => r.WeddingSlug == slug);

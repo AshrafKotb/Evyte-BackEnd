@@ -24,7 +24,10 @@ CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 builder.Services.AddResponseCaching();
 builder.Services.AddOutputCache(options =>
 {
-    options.AddBasePolicy(builder => builder.Expire(TimeSpan.FromMinutes(5)));
+    options.AddBasePolicy(builder => builder
+        .Expire(TimeSpan.FromMinutes(5))
+        .SetVaryByHeader("Cookie")
+        .SetVaryByQuery("culture"));
     options.AddPolicy("StaticContent", builder => builder.Expire(TimeSpan.FromHours(1)));
 });
 
@@ -61,18 +64,50 @@ using (var scope = app.Services.CreateScope())
 
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+    // Return JSON for AJAX/API requests instead of redirecting to HTML error page
+    app.UseExceptionHandler(errorApp =>
+    {
+        errorApp.Run(async context =>
+        {
+            var acceptHeader = context.Request.Headers["Accept"].ToString();
+            if (acceptHeader.Contains("application/json") ||
+                context.Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                context.Response.ContentType = "application/json";
+                context.Response.StatusCode = 500;
+                await context.Response.WriteAsync(
+                    System.Text.Json.JsonSerializer.Serialize(new { success = false, message = "حدث خطأ في الخادم. أعد المحاولة." }));
+            }
+            else
+            {
+                context.Response.Redirect("/Home/Error");
+            }
+        });
+    });
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 
-// Static files with caching headers
+// Static files with smart caching headers
 app.UseStaticFiles(new StaticFileOptions
 {
     OnPrepareResponse = ctx =>
     {
-        ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=31536000");
+        var path = ctx.File.Name;
+        // Long cache for images, fonts, and vendor assets
+        if (path.EndsWith(".png") || path.EndsWith(".jpg") || path.EndsWith(".jpeg") ||
+            path.EndsWith(".gif") || path.EndsWith(".svg") || path.EndsWith(".ico") ||
+            path.EndsWith(".woff") || path.EndsWith(".woff2") || path.EndsWith(".ttf") ||
+            path.EndsWith(".eot"))
+        {
+            ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=31536000");
+        }
+        else
+        {
+            // Short cache for JS, CSS - revalidate frequently
+            ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=3600,must-revalidate");
+        }
     }
 });
 

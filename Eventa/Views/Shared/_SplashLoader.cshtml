@@ -1,0 +1,26 @@
+@{
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    var isArabic = culture.StartsWith("ar", StringComparison.OrdinalIgnoreCase);
+}
+<!-- Splash Screen -->
+<div class="splash-screen" id="splashScreen">
+    <!-- Decorative Elements -->
+    <div class="splash-decoration splash-decoration-1"></div>
+    <div class="splash-decoration splash-decoration-2"></div>
+
+    <!-- Content -->
+    <div class="splash-content">
+        <div class="splash-logo-wrapper">
+            <img src="~/logo/yellow.png" alt="Eventa" class="splash-logo">
+        </div>
+        <h1 class="splash-title">Eventa</h1>
+        <p class="splash-subtitle">@(isArabic ? "دعوتك المثالية" : "Your Perfect Invitation")</p>
+        <div class="splash-loader">
+            <div class="splash-loader-dot"></div>
+        </div>
+        <div class="splash-progress">
+            <div class="splash-progress-bar"></div>
+        </div>
+        <p class="splash-loading-text">@(isArabic ? "جاري التحميل" : "Loading")<span>.</span><span>.</span><span>.</span></p>
+    </div>
+</div>

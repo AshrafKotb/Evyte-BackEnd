@@ -87,6 +87,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
+    [IgnoreAntiforgeryToken]
     [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     public IActionResult SetLanguage(string culture, string returnUrl)
     {

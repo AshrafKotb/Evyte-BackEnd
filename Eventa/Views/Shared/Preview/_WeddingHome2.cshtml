@@ -1,4 +1,4 @@
-﻿@{
+@{
     Layout = null;
     var culture = new System.Globalization.CultureInfo("ar-SA");
     culture.DateTimeFormat.Calendar = new System.Globalization.GregorianCalendar();
@@ -30,7 +30,7 @@
     <link href="~/assets/css/odometer-theme-default.css" rel="stylesheet">
     <link href="~/assets/css/jquery-ui.css" rel="stylesheet">
     <link href="~/assets/sass/style.css" rel="stylesheet">
-    <link href="~/css/modern-preloader.css" rel="stylesheet">
+    <link href="~/css/splash-screen.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 
@@ -38,43 +38,8 @@
 
     <!-- start page-wrapper -->
     <div class="page-wrapper">
-        <!-- start preloader -->
-        <div class="preloader">
-            <!-- Corner decorations -->
-            <div class="preloader-corner top-left"></div>
-            <div class="preloader-corner top-right"></div>
-            <div class="preloader-corner bottom-left"></div>
-            <div class="preloader-corner bottom-right"></div>
-
-            <!-- Floating hearts -->
-            <div class="preloader-hearts">
-                <span class="preloader-heart"><i class="fa fa-heart"></i></span>
-                <span class="preloader-heart"><i class="fa fa-heart"></i></span>
-                <span class="preloader-heart"><i class="fa fa-heart"></i></span>
-                <span class="preloader-heart"><i class="fa fa-heart"></i></span>
-                <span class="preloader-heart"><i class="fa fa-heart"></i></span>
-                <span class="preloader-heart"><i class="fa fa-heart"></i></span>
-            </div>
-
-            <div class="vertical-centered-box">
-                <div class="content">
-                    <div class="loader-circle"></div>
-                    <div class="loader-line-mask">
-                        <div class="loader-line"></div>
-                    </div>
-                    <img src="~/logo/yellow.png" alt="Eventa">
-                </div>
-            </div>
-
-            <!-- Loading text -->
-            <div class="preloader-text">Loading your invitation...</div>
-
-            <!-- Progress bar -->
-            <div class="preloader-progress">
-                <div class="preloader-progress-bar"></div>
-            </div>
-        </div>
-        <!-- end preloader -->
+        <!-- Unified Splash Loader -->
+        @await Html.PartialAsync("_SplashLoader")
         <!-- start of hero -->
         <section class="static-hero">
             <div class="hero-container">
@@ -375,6 +340,7 @@
     <!-- end of page-wrapper -->
     <!-- All JavaScript files
     ================================================== -->
+    <script src="~/js/splash.js"></script>
     <script src="~/assets/js/jquery.min.js"></script>
     <script src="~/assets/js/bootstrap.bundle.min.js"></script>
     <!-- Plugins for this template -->

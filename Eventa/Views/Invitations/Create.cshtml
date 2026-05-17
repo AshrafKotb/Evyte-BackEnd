@@ -35,6 +35,14 @@
                             </div>
                             <span asp-validation-for="PhoneNumber" class="text-red-500 text-sm mt-1"></span>
                         </div>
+                        <div>
+                            <label for="whatsAppNumber" class="form-label block text-sm font-medium text-gray-700">رقم الواتساب <span class="text-red-500">*</span></label>
+                            <div class="input-group flex">
+                                <span class="input-group-text flex items-center px-3 bg-gray-50 border border-l-0 border-gray-300 rounded-r-md"><i class="fab fa-whatsapp text-green-500"></i></span>
+                                <input type="tel" class="form-control w-full mt-1 rounded-r-none" id="whatsAppNumber" asp-for="WhatsAppNumber" required />
+                            </div>
+                            <span asp-validation-for="WhatsAppNumber" class="text-red-500 text-sm mt-1"></span>
+                        </div>
                         <div class="md:col-span-2">
                             <label for="email" class="form-label block text-sm font-medium text-gray-700">البريد الإلكتروني <span class="text-red-500">*</span></label>
                             <div class="input-group flex">
@@ -205,6 +213,78 @@
                     </div>
                 </div>
 
+                <!-- النصوص المخصصة -->
+                <div class="form-section custom-text-section mb-8 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-6 shadow-md" data-aos="fade-up" data-aos-delay="650">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-amber-200 pb-3">النصوص المخصصة</h4>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
+                            <label class="form-label block text-base font-semibold text-gray-800 mb-2">الجملة الأولى</label>
+                            @if (ViewBag.PredefinedTexts1 != null && ((IEnumerable<Eventa.Domain.Entities.PredefinedText>)ViewBag.PredefinedTexts1).Any())
+                            {
+                                <select id="predefinedText1Select" class="form-control w-full mt-1 rounded-lg border-gray-300 mb-2">
+                                    <option value="">-- اختر من النصوص الجاهزة أو اكتب نصك --</option>
+                                    @foreach (var text in (IEnumerable<Eventa.Domain.Entities.PredefinedText>)ViewBag.PredefinedTexts1)
+                                    {
+                                        <option value="@text.TextAr">@text.TextAr</option>
+                                    }
+                                    <option value="__custom__">كتابة نص مخصص...</option>
+                                </select>
+                            }
+                            <input type="text" class="form-control w-full mt-1 rounded-lg border-gray-300" id="CustomSentence1" asp-for="CustomSentence1" placeholder="اكتب الجملة الأولى هنا..." maxlength="500" />
+                            <span asp-validation-for="CustomSentence1" class="text-red-500 text-sm mt-1"></span>
+                        </div>
+                        <div>
+                            <label class="form-label block text-base font-semibold text-gray-800 mb-2">الجملة الثانية</label>
+                            @if (ViewBag.PredefinedTexts2 != null && ((IEnumerable<Eventa.Domain.Entities.PredefinedText>)ViewBag.PredefinedTexts2).Any())
+                            {
+                                <select id="predefinedText2Select" class="form-control w-full mt-1 rounded-lg border-gray-300 mb-2">
+                                    <option value="">-- اختر من النصوص الجاهزة أو اكتب نصك --</option>
+                                    @foreach (var text in (IEnumerable<Eventa.Domain.Entities.PredefinedText>)ViewBag.PredefinedTexts2)
+                                    {
+                                        <option value="@text.TextAr">@text.TextAr</option>
+                                    }
+                                    <option value="__custom__">كتابة نص مخصص...</option>
+                                </select>
+                            }
+                            <input type="text" class="form-control w-full mt-1 rounded-lg border-gray-300" id="CustomSentence2" asp-for="CustomSentence2" placeholder="اكتب الجملة الثانية هنا..." maxlength="500" />
+                            <span asp-validation-for="CustomSentence2" class="text-red-500 text-sm mt-1"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- صورة الخلفية -->
+                <div class="form-section background-section mb-8 bg-gradient-to-br from-green-50 to-teal-50 rounded-xl p-6 shadow-md" data-aos="fade-up" data-aos-delay="670">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-green-200 pb-3">صورة الخلفية</h4>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
+                            <label class="form-label block text-base font-semibold text-gray-800 mb-2">رفع صورة من جهازك</label>
+                            <input type="file" class="form-control w-full mt-1 rounded-lg border-gray-300" id="BackgroundImage" asp-for="BackgroundImage" accept="image/png,image/jpeg,image/jpg" />
+                            <div class="image-preview mt-2" id="BackgroundImagePreview"></div>
+                        </div>
+                        @if (ViewBag.BackgroundImages != null && ((IEnumerable<Eventa.Domain.Entities.BackgroundImage>)ViewBag.BackgroundImages).Any())
+                        {
+                            <div>
+                                <label class="form-label block text-base font-semibold text-gray-800 mb-2">أو اختر من المكتبة</label>
+                                <input type="hidden" id="BackgroundImageLibraryId" asp-for="BackgroundImageLibraryId" />
+                                <div class="grid grid-cols-3 md:grid-cols-4 gap-3" id="bgImageLibrary">
+                                    @foreach (var img in (IEnumerable<Eventa.Domain.Entities.BackgroundImage>)ViewBag.BackgroundImages)
+                                    {
+                                        <div class="bg-library-option relative group cursor-pointer" data-id="@img.Id" data-url="@img.ImageUrl">
+                                            <img src="@img.ImageUrl" alt="@img.NameAr" class="w-full h-24 object-cover rounded-lg border-2 border-gray-200 hover:border-green-500 transition-all duration-300 shadow-sm" />
+                                            <div class="absolute inset-0 bg-green-500 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 rounded-lg"></div>
+                                            <span class="absolute top-1 right-1 hidden text-white bg-green-500 rounded-full p-1 text-xs font-bold bg-selected-check">✓</span>
+                                            @if (!string.IsNullOrEmpty(img.NameAr))
+                                            {
+                                                <p class="text-xs text-center mt-1 text-gray-600">@img.NameAr</p>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
                 <!-- معرض الصور -->
                 <div class="form-section gallery-section mb-8" data-aos="slide-up" data-aos-delay="700">
                     <h4 class="text-xl font-semibold text-gray-800 mb-4">معرض الصور</h4>
@@ -353,11 +433,80 @@
                 locale: { firstDayOfWeek: 6, amPM: ["ص", "م"] }
             });
 
+            // معالجة اختيار النصوص الجاهزة
+            $('#predefinedText1Select').on('change', function () {
+                var val = $(this).val();
+                if (val && val !== '__custom__') {
+                    $('#CustomSentence1').val(val);
+                } else if (val === '__custom__') {
+                    $('#CustomSentence1').val('').focus();
+                }
+            });
+
+            $('#predefinedText2Select').on('change', function () {
+                var val = $(this).val();
+                if (val && val !== '__custom__') {
+                    $('#CustomSentence2').val(val);
+                } else if (val === '__custom__') {
+                    $('#CustomSentence2').val('').focus();
+                }
+            });
+
+            // معالجة اختيار صورة الخلفية من المكتبة
+            $(document).on('click', '.bg-library-option', function () {
+                var id = $(this).data('id');
+                var url = $(this).data('url');
+
+                // إلغاء اختيار أي صورة سابقة
+                $('.bg-library-option').find('.bg-selected-check').addClass('hidden');
+                $('.bg-library-option').find('img').removeClass('border-green-500').addClass('border-gray-200');
+
+                // تحديد الصورة الحالية
+                $(this).find('.bg-selected-check').removeClass('hidden');
+                $(this).find('img').removeClass('border-gray-200').addClass('border-green-500');
+
+                // تعيين القيمة
+                $('#BackgroundImageLibraryId').val(id);
+
+                // مسح الصورة المرفوعة
+                $('#BackgroundImage').val('');
+                $('#BackgroundImagePreview').empty();
+            });
+
+            // عند رفع صورة خلفية من الجهاز، إلغاء اختيار المكتبة
+            $('#BackgroundImage').on('change', function (e) {
+                if (e.target.files.length > 0) {
+                    $('#BackgroundImageLibraryId').val('');
+                    $('.bg-library-option').find('.bg-selected-check').addClass('hidden');
+                    $('.bg-library-option').find('img').removeClass('border-green-500').addClass('border-gray-200');
+
+                    // عرض معاينة الصورة
+                    var previewContainer = $('#BackgroundImagePreview');
+                    previewContainer.empty();
+                    var file = e.target.files[0];
+                    if (file.type.match('image.*')) {
+                        var reader = new FileReader();
+                        reader.onload = function (event) {
+                            var wrapper = $('<div>').addClass('image-wrapper');
+                            var img = $('<img>').attr('src', event.target.result).addClass('w-28 h-28 object-cover rounded-lg m-1 border border-gray-200 shadow-sm');
+                            var removeBtn = $('<span>').addClass('remove-image').text('X').on('click', function () {
+                                $(this).parent().remove();
+                                $('#BackgroundImage').val('');
+                            });
+                            wrapper.append(img).append(removeBtn);
+                            previewContainer.append(wrapper);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                }
+            });
+
             // التحقق من صحة النموذج
             $("#weddingForm").validate({
                 rules: {
                     FullName: { required: true, minlength: 2 },
                     PhoneNumber: { required: true },
+                    WhatsAppNumber: { required: true },
                     Email: { required: true, email: true },
                     GroomName: { required: true, minlength: 2 },
                     BrideName: { required: true, minlength: 2 },
@@ -376,6 +525,7 @@
                 messages: {
                     FullName: "يرجى إدخال الاسم الكامل (على الأقل حرفين)",
                     PhoneNumber: "يرجى إدخال رقم هاتف صالح",
+                    WhatsAppNumber: "يرجى إدخال رقم واتساب صالح",
                     Email: "يرجى إدخال بريد إلكتروني صالح",
                     GroomName: "يرجى إدخال اسم العريس (على الأقل حرفين)",
                     BrideName: "يرجى إدخال اسم العروس (على الأقل حرفين)",

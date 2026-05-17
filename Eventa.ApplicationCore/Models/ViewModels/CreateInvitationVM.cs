@@ -17,6 +17,9 @@ namespace Eventa.ApplicationCore.Models.ViewModels
         [Required(ErrorMessage = "رقم الهاتف مطلوب")]
         public string PhoneNumber { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "رقم الواتساب مطلوب")]
+        public string WhatsAppNumber { get; set; } = string.Empty;
+
         [Required(ErrorMessage = "البريد الإلكتروني مطلوب")]
         [EmailAddress(ErrorMessage = "يرجى إدخال بريد إلكتروني صالح")]
         public string Email { get; set; } = string.Empty;
@@ -78,6 +81,17 @@ namespace Eventa.ApplicationCore.Models.ViewModels
         public IFormFile MainSliderImage { get; set; } = null!;
 
         public IFormFileCollection? GalleryPhotos { get; set; }
+        #endregion
+
+        #region Custom Content
+        [MaxLength(500)]
+        public string? CustomSentence1 { get; set; }
+
+        [MaxLength(500)]
+        public string? CustomSentence2 { get; set; }
+
+        public Guid? BackgroundImageLibraryId { get; set; }
+        public IFormFile? BackgroundImage { get; set; }
         #endregion
 
         #region Optional Sections Flags

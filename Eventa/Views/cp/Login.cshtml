@@ -1,5 +1,6 @@
 @{
     Layout = null;
+    ViewBag.SplashLoadingText = "جاري التحميل...";
 }
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -42,38 +43,8 @@
         <div class="particle"></div>
     </div>
 
-    <!-- Professional Splash Screen -->
-    <div id="splash-screen" class="splash-screen">
-        <!-- Decorative Circles -->
-        <div class="splash-decoration splash-decoration-1"></div>
-        <div class="splash-decoration splash-decoration-2"></div>
-
-        <div class="splash-content">
-            <!-- Logo with Animated Rings -->
-            <div class="splash-logo-wrapper">
-                <img src="~/logo/yellow.png" alt="Eventa Logo" class="splash-logo">
-            </div>
-
-            <!-- Title & Subtitle -->
-            <h1 class="splash-title">Eventa</h1>
-            <p class="splash-subtitle">منصة الدعوات الإلكترونية الاحترافية</p>
-
-            <!-- Modern Loader -->
-            <div class="splash-loader">
-                <div class="splash-loader-dot"></div>
-            </div>
-
-            <!-- Progress Bar -->
-            <div class="splash-progress">
-                <div class="splash-progress-bar"></div>
-            </div>
-
-            <!-- Loading Text -->
-            <div class="splash-loading-text">
-                جاري التحميل<span>.</span><span>.</span><span>.</span>
-            </div>
-        </div>
-    </div>
+    <!-- Unified Splash Loader -->
+    @await Html.PartialAsync("_SplashLoader")
 
     <!-- Login Container -->
     <div class="login-container">
@@ -161,16 +132,8 @@
     </div>
 
     <!-- JavaScript -->
+    <script src="~/js/splash.js"></script>
     <script>
-        // Professional Splash Screen Animation
-        window.addEventListener('load', function() {
-            const splashScreen = document.getElementById('splash-screen');
-            // Wait for progress bar animation to complete (3.2s total: 1.2s delay + 2s animation)
-            setTimeout(function() {
-                splashScreen.classList.add('hidden');
-            }, 3500);
-        });
-
         // Password Toggle
         const togglePassword = document.getElementById('togglePassword');
         const passwordInput = document.getElementById('Password');

@@ -24,6 +24,9 @@ namespace Eventa.Infrastructure
         public DbSet<Memory> Memories { get; set; }
         public DbSet<Dedication> Dedications { get; set; }
         public DbSet<RequestAudio> RequestAudios { get; set; }
+        public DbSet<ClientInfo> ClientInfos { get; set; }
+        public DbSet<BackgroundImage> BackgroundImages { get; set; }
+        public DbSet<PredefinedText> PredefinedTexts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -56,6 +59,22 @@ namespace Eventa.Infrastructure
                 .WithMany(r => r.GalleryPhotos)
                 .HasForeignKey(p => p.RequestId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // Request -> ClientInfo (Many to One, optional)
+            modelBuilder.Entity<Request>()
+                .HasOne(r => r.ClientInfo)
+                .WithMany(c => c.Requests)
+                .HasForeignKey(r => r.ClientInfoId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .IsRequired(false);
+
+            // Request -> ApplicationUser (optional now)
+            modelBuilder.Entity<Request>()
+                .HasOne(r => r.User)
+                .WithMany(u => u.Requests)
+                .HasForeignKey(r => r.UserId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .IsRequired(false);
         }
     }
 }

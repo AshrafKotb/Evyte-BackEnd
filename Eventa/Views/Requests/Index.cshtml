@@ -158,9 +158,13 @@
                                             <i class="fas fa-user"></i>
                                         </div>
                                         <div class="user-details">
-                                            <strong>@request.User?.FullName</strong>
-                                            <small><i class="fas fa-phone"></i> @request.User?.PhoneNumber</small>
-                                            <small><i class="fas fa-envelope"></i> @request.User?.Email</small>
+                                            <strong>@(request.ClientInfo?.FullName ?? request.User?.FullName)</strong>
+                                            <small><i class="fas fa-phone"></i> @(request.ClientInfo?.PhoneNumber ?? request.User?.PhoneNumber)</small>
+                                            @if (!string.IsNullOrEmpty(request.ClientInfo?.WhatsAppNumber))
+                                            {
+                                                <small><i class="fab fa-whatsapp" style="color: #25d366;"></i> @request.ClientInfo.WhatsAppNumber</small>
+                                            }
+                                            <small><i class="fas fa-envelope"></i> @(request.ClientInfo?.Email ?? request.User?.Email)</small>
                                         </div>
                                     </div>
                                 </td>

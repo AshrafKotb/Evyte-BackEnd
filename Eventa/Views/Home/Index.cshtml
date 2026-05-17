@@ -24,11 +24,11 @@
 
     .wpo-demo-grids .preview-overlay span {
         background: rgba(255, 255, 255, 0.95);
-        color: #8b5cf6;
+        color: #C5A55A;
         border: none;
         padding: 14px 32px;
         font-weight: 600;
-        box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+        box-shadow: 0 4px 20px rgba(197, 165, 90, 0.3);
     }
 </style>
 
@@ -178,7 +178,7 @@
     </div>
 
     <!-- CTA Section -->
-    <section class="wpo-cta-section mb-5" style="padding: 50px 0; background: linear-gradient(135deg, #faf5ff 0%, #fdf2f8 100%);">
+    <section class="wpo-cta-section mb-5" style="padding: 50px 0; background: linear-gradient(135deg, #fdf8ee 0%, #faf5e8 100%);">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-10 col-12">
@@ -186,11 +186,11 @@
                         <h2>@(isEnglish ? "Ready to Create Your Invitation?" : "مستعد لإنشاء دعوتك؟")</h2>
                         <p>@(isEnglish ? "Start designing your perfect invitation in just minutes" : "ابدأ تصميم دعوتك المثالية في دقائق معدودة")</p>
                         <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                            <a href="@Url.Action("CreateNew", "Invitations")" class="theme-btn-s2" style="background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);">
+                            <a href="@Url.Action("CreateNew", "Invitations")" class="theme-btn-s2">
                                 <i class="fas fa-plus" style="margin-left: 8px;"></i>
                                 @(isEnglish ? "Create Now" : "إنشاء دعوة الآن")
                             </a>
-                            <a asp-controller="Home" asp-action="Designs" class="theme-btn-s2" style="background: transparent; border: 2px solid #8b5cf6; color: #8b5cf6;">
+                            <a asp-controller="Home" asp-action="Designs" class="theme-btn-s2" style="background: transparent; border: 2px solid #C5A55A; color: #C5A55A;">
                                 @(isEnglish ? "View All Designs" : "عرض جميع التصميمات")
                             </a>
                         </div>

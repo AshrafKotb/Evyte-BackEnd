@@ -96,16 +96,22 @@ namespace Eventa.Web.Controllers
 
         private async Task SendApprovalEmail(Request request)
         {
+            var recipientEmail = request.ClientInfo?.Email ?? request.User?.Email;
+            if (string.IsNullOrEmpty(recipientEmail)) return;
+
             var subject = "تمت الموافقة على دعوتك في Eventa";
             var body = BuildApprovalEmailBody(request);
-            await _mailingService.SendEmailAsync(request.User.Email, subject, body);
+            await _mailingService.SendEmailAsync(recipientEmail, subject, body);
         }
 
         private async Task SendRejectionEmail(Request request, string rejectionReason)
         {
+            var recipientEmail = request.ClientInfo?.Email ?? request.User?.Email;
+            if (string.IsNullOrEmpty(recipientEmail)) return;
+
             var subject = "حول حالة دعوتك في Eventa";
             var body = BuildRejectionEmailBody(request, rejectionReason);
-            await _mailingService.SendEmailAsync(request.User.Email, subject, body);
+            await _mailingService.SendEmailAsync(recipientEmail, subject, body);
         }
 
         private string BuildApprovalEmailBody(Request request)
@@ -132,8 +138,8 @@ namespace Eventa.Web.Controllers
             <h1>تهانينا! تمت الموافقة على دعوتك</h1>
         </div>
         <div class='content'>
-            <p>مرحباً {request.User.FullName},</p>
-            <p>يسرنا إعلامك بأن دعوتك الخاصة بـ <strong>{request.RequestData.BrideName} و {request.RequestData.GroomName}</strong> قد تمت الموافقة عليها بنجاح.</p>
+            <p>مرحباً {request.ClientInfo?.FullName ?? request.User?.FullName},</p>
+            <p>يسرنا إعلامك بأن دعوتك الخاصة بـ <strong>{request.RequestData?.BrideName} و {request.RequestData?.GroomName}</strong> قد تمت الموافقة عليها بنجاح.</p>
             <p>يمكنك الآن مشاركة دعوتك مع ضيوفك من خلال الرابط التالي:</p>
             
             <div style='text-align: center; margin: 20px 0;'>
@@ -149,10 +155,10 @@ namespace Eventa.Web.Controllers
 
             <p>تفاصيل الحدث:</p>
             <ul>
-                <li><strong>التاريخ:</strong> {request.RequestData.EventDate.ToString("yyyy-MM-dd")}</li>
-                <li><strong>الوقت:</strong> {request.RequestData.EventTimeFrom} - {request.RequestData.EventTimeTo}</li>
-                <li><strong>المكان:</strong> {request.RequestData.EventPlaceName}</li>
-                <li><strong>العنوان:</strong> {request.RequestData.EventAddress}</li>
+                <li><strong>التاريخ:</strong> {request.RequestData?.EventDate.ToString("yyyy-MM-dd")}</li>
+                <li><strong>الوقت:</strong> {request.RequestData?.EventTimeFrom} - {request.RequestData?.EventTimeTo}</li>
+                <li><strong>المكان:</strong> {request.RequestData?.EventPlaceName}</li>
+                <li><strong>العنوان:</strong> {request.RequestData?.EventAddress}</li>
             </ul>
 
             <p>في حال وجود أي استفسار، لا تتردد في التواصل معنا.</p>
@@ -189,8 +195,8 @@ namespace Eventa.Web.Controllers
             <h1>حول حالة دعوتك</h1>
         </div>
         <div class='content'>
-            <p>مرحباً {request.User.FullName},</p>
-            <p>نأسف لإبلاغك بأن دعوتك الخاصة بـ <strong>{request.RequestData.BrideName} و {request.RequestData.GroomName}</strong> قد تم رفضها بعد المراجعة.</p>
+            <p>مرحباً {request.ClientInfo?.FullName ?? request.User?.FullName},</p>
+            <p>نأسف لإبلاغك بأن دعوتك الخاصة بـ <strong>{request.RequestData?.BrideName} و {request.RequestData?.GroomName}</strong> قد تم رفضها بعد المراجعة.</p>
             
             <div class='reason-box'>
                 <h3>سبب الرفض:</h3>

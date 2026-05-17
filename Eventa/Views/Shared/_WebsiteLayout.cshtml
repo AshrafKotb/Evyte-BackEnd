@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Localization
 @using System.Globalization
 <!DOCTYPE html>
 <html lang="en" dir="@(System.Globalization.CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr")">
@@ -11,8 +11,6 @@
     <link rel="shortcut icon" type="image/png" href="~/logo/yellow.png">
     <title>Eventa</title>
 
-    <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet">
     <!-- Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -40,6 +38,7 @@
     <link href="~/assets/css/odometer-theme-default.css" rel="stylesheet">
     <link href="~/assets/css/jquery-ui.css" rel="stylesheet">
     <link href="~/assets/sass/style.css" rel="stylesheet">
+    <link href="~/css/splash-screen.css" rel="stylesheet">
     <!-- Modern Home Styles with Animations -->
     <link href="~/css/modern-home.css" rel="stylesheet">
     <style>
@@ -53,26 +52,23 @@
                 padding-top: 70px;
             }
         }
+
+        /* Kill legacy sticky-header clone completely */
+        .navigation.sticky-header {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            overflow: hidden !important;
+            pointer-events: none !important;
+        }
     </style>
 </head>
 
 <body>
     <!-- start page-wrapper -->
     <div class="page-wrapper">
-        <!-- start preloader -->
-        <div class="preloader">
-            <div class="vertical-centered-box">
-                <div class="content">
-                    <div class="loader-circle"></div>
-                    <div class="loader-line-mask">
-                        <div class="loader-line"></div>
-                    </div>
-                    <img src="~/assets/images/preloader.gif" alt="">
-                </div>
-            </div>
-        </div>
-
-        <!-- end preloader -->
+        <!-- Unified Splash Loader -->
+        @await Html.PartialAsync("_SplashLoader")
         @await Component.InvokeAsync("NavBar")
         @RenderBody()
 
@@ -82,6 +78,7 @@
     </div>
     <!-- end of page-wrapper -->
     <!-- All JavaScript files -->
+    <script src="~/js/splash.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/assets/js/jquery.min.js"></script>
     <script src="~/assets/js/bootstrap.bundle.min.js"></script>
@@ -93,6 +90,19 @@
     <script src="~/assets/js/tilt.jquery.min.js"></script>
     <!-- Custom script for this template -->
     <script src="~/assets/js/script.js"></script>
+
+    <!-- Remove any cloned sticky-header elements created by legacy script.js -->
+    <script>
+        (function() {
+            document.querySelectorAll('.navigation.sticky-header').forEach(function(el) {
+                el.parentNode.removeChild(el);
+            });
+            // Also remove the 'original' class from the real navigation
+            document.querySelectorAll('.navigation.original').forEach(function(el) {
+                el.classList.remove('original');
+            });
+        })();
+    </script>
 
     <!-- Scroll Animation Script -->
     <script>

@@ -1,44 +1,13 @@
-﻿@model Request
+@model Request
 @{
-    Layout = "_WebsiteLayout";
+    Layout = "~/Views/Shared/_LayoutMinimal.cshtml";
     ViewData["Title"] = "تم رفض الدعوة";
 }
 
-<div class="container my-5 py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8 text-center">
-            <div class="card shadow-lg border-0 rounded-lg">
-                <div class="card-header bg-gradient-danger text-white py-4">
-                    <h2 class="m-0">تم رفض الدعوة</h2>
-                </div>
-                <div class="card-body p-5">
-                    <div class="mb-4">
-                        <i class="fas fa-times-circle fa-4x text-danger mb-3"></i>
-                        <h3 class="text-dark">عذراً @Model.User.FullName</h3>
-                        <p class="lead text-muted">
-                            نأسف لإبلاغك بأن دعوتك الخاصة بـ @Model.RequestData.BrideName و @Model.RequestData.GroomName قد تم رفضها.
-                        </p>
-                        @if (!string.IsNullOrEmpty(Model.RejectionReason))
-                        {
-                            <div class="alert alert-warning mt-4">
-                                <h5 class="alert-heading">سبب الرفض:</h5>
-                                <p>@Model.RejectionReason</p>
-                            </div>
-                        }
-                        <p class="text-muted mt-3">
-                            يمكنك تعديل بيانات الدعوة وإعادة تقديمها مرة أخرى إذا كنت ترغب في ذلك.
-                        </p>
-                    </div>
-                </div>
-                <div class="card-footer bg-transparent py-3">
-                    <a href="/" class="btn btn-primary me-2">
-                        <i class="fas fa-home me-2"></i> العودة للصفحة الرئيسية
-                    </a>
-                    <a href="/contact" class="btn btn-outline-secondary">
-                        <i class="fas fa-headset me-2"></i> التواصل مع الدعم
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<h1><i class="fas fa-times-circle text-danger me-2"></i>تم رفض الدعوة</h1>
+<p>نأسف لإبلاغك بأن دعوتك الخاصة بـ <strong>@Model.RequestData?.BrideName</strong> و <strong>@Model.RequestData?.GroomName</strong> قد تم رفضها.</p>
+@if (!string.IsNullOrEmpty(Model?.RejectionReason))
+{
+    <p class="small text-warning mb-2">سبب الرفض: @Model.RejectionReason</p>
+}
+<p class="mb-2">يمكنك تعديل بيانات الدعوة وإعادة تقديمها أو التواصل مع الدعم من الصفحة الرئيسية.</p>

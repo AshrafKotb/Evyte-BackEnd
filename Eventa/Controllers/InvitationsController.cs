@@ -2,6 +2,7 @@ using Eventa.ApplicationCore.Interfaces.Services;
 using Eventa.ApplicationCore.Models.ViewModels;
 using Eventa.ApplicationCore.Services;
 using Eventa.ApplicationCore.Services.Files;
+using Eventa.ApplicationCore.Services.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,11 +14,19 @@ namespace Eventa.ApplicationCore.Controllers
     {
         private readonly IDesignService _designService;
         private readonly IInvitationService _invitationService;
+        private readonly IBackgroundImageRepository _backgroundImageRepository;
+        private readonly IPredefinedTextRepository _predefinedTextRepository;
 
-        public InvitationsController(IDesignService designService, IInvitationService invitationService)
+        public InvitationsController(
+            IDesignService designService,
+            IInvitationService invitationService,
+            IBackgroundImageRepository backgroundImageRepository,
+            IPredefinedTextRepository predefinedTextRepository)
         {
             _invitationService = invitationService;
             _designService = designService;
+            _backgroundImageRepository = backgroundImageRepository;
+            _predefinedTextRepository = predefinedTextRepository;
         }
 
         // GET: /Invitations/CreateNew - New wizard-style form
@@ -27,6 +36,11 @@ namespace Eventa.ApplicationCore.Controllers
             var designs = await _designService.GetAllDesignsAsync();
             ViewBag.Designs = designs;
             ViewBag.SelectedDesignId = designId;
+
+            // Load background images library and predefined texts
+            ViewBag.BackgroundImages = await _backgroundImageRepository.GetAllAsync();
+            ViewBag.PredefinedTexts1 = await _predefinedTextRepository.GetAllAsync("sentence1");
+            ViewBag.PredefinedTexts2 = await _predefinedTextRepository.GetAllAsync("sentence2");
 
             var model = new CreateInvitationVM();
             if (designId.HasValue && designId.Value != Guid.Empty)
@@ -39,7 +53,7 @@ namespace Eventa.ApplicationCore.Controllers
 
         // GET: /Invitations/Create?designId=GUID (legacy)
         [HttpGet]
-        public IActionResult Create(Guid designId)
+        public async Task<IActionResult> Create(Guid designId)
         {
             if (designId == Guid.Empty)
                 RedirectToAction("Index", "Home");
@@ -47,6 +61,11 @@ namespace Eventa.ApplicationCore.Controllers
             var IsExist = _designService.IsExist(designId);
             if (!IsExist)
                 return RedirectToAction("Index", "Home");
+
+            // Load background images library and predefined texts
+            ViewBag.BackgroundImages = await _backgroundImageRepository.GetAllAsync();
+            ViewBag.PredefinedTexts1 = await _predefinedTextRepository.GetAllAsync("sentence1");
+            ViewBag.PredefinedTexts2 = await _predefinedTextRepository.GetAllAsync("sentence2");
 
             var model = new CreateInvitationVM { DesignId = designId };
             return View(model);

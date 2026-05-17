@@ -7,6 +7,7 @@ using Eventa.ApplicationCore.Services.FAQs;
 using Eventa.ApplicationCore.Services.Files;
 using Eventa.ApplicationCore.Services.General_Information;
 using Eventa.ApplicationCore.Services.Mailing;
+using Eventa.ApplicationCore.Services.Maps;
 using Eventa.ApplicationCore.Services.Repository;
 using Eventa.ApplicationCore.Settings;
 using Microsoft.Extensions.Configuration;
@@ -30,10 +31,14 @@ namespace Eventa.Web.Extensions
             services.AddScoped<IMemoryRepository, MemoryRepository>();
             services.AddScoped<IDedicationRepository, DedicationRepository>();
             services.AddScoped<IRequestAudioRepository, RequestAudioRepository>();
+            services.AddScoped<IClientInfoRepository, ClientInfoRepository>();
+            services.AddScoped<IBackgroundImageRepository, BackgroundImageRepository>();
+            services.AddScoped<IPredefinedTextRepository, PredefinedTextRepository>();
             services.AddScoped<IInvitationService, InvitationService>();
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<IGeneralInformationService, GeneralInformationService>();
             services.AddScoped<IQRCodeService, QRCodeService>();
+            services.AddScoped<IGoogleMapsService, GoogleMapsService>();
             services.AddTransient<IMailingService, MailingService>();
 
             return services;

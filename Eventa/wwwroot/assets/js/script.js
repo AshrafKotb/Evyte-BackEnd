@@ -337,6 +337,9 @@
 
 
             });
+        } else {
+            // No preloader found, init WOW directly
+            wow.init();
         }
     }
 
@@ -502,39 +505,14 @@
             = STICKY HEADER
         -------------------------------------------*/
 
-    // Function for clone an element for sticky menu
-    function cloneNavForSticyMenu($ele, $newElmClass) {
-        $ele.addClass('original').clone().insertAfter($ele).addClass($newElmClass).removeClass('original');
-    }
+    // DISABLED: Legacy sticky header clone removed.
+    // The modern-header component uses position:fixed and handles scroll
+    // effects via its own JavaScript. The old clone created a duplicate
+    // navigation without event listeners, causing buttons not to work.
 
-    // clone home style 1 navigation for sticky menu
-    if ($('.wpo-site-header .navigation').length) {
-        cloneNavForSticyMenu($('.wpo-site-header .navigation'), "sticky-header");
-    }
-
-    var lastScrollTop = '';
-
-    function stickyMenu($targetMenu, $toggleClass, $topOffset) {
-        var st = $(window).scrollTop();
-        var mainMenuTop = $('.wpo-site-header .navigation');
-
-        if ($(window).scrollTop() > 500) {
-            if (st > lastScrollTop) {
-                // hide sticky menu on scroll down
-                $targetMenu.addClass($toggleClass);
-
-            } else {
-                // active sticky menu on scroll up
-                $targetMenu.addClass($toggleClass);
-            }
-
-        } else {
-            $targetMenu.removeClass($toggleClass);
-        }
-
-        lastScrollTop = st;
-
-
+    // Keep function stub so any remaining calls don't throw errors
+    function stickyMenu() {
+        // no-op: modern header handles sticky behavior
     }
 
 

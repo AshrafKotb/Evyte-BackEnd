@@ -1,38 +1,13 @@
-﻿@model Request
+@model Request
 @{
-    Layout = "_WebsiteLayout";
+    Layout = "~/Views/Shared/_LayoutMinimal.cshtml";
     ViewData["Title"] = "دعوتك قيد المراجعة";
 }
 
-<div class="container my-5 py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8 text-center">
-            <div class="card shadow-lg border-0 rounded-lg">
-                <div class="card-header bg-gradient-primary text-white py-4">
-                    <h2 class="m-0">دعوتك قيد المراجعة</h2>
-                </div>
-                <div class="card-body p-5">
-                    <div class="mb-4">
-                        <i class="fas fa-clock fa-4x text-primary mb-3"></i>
-                        <h3 class="text-dark">شكراً لك @Model.User.FullName</h3>
-                        <p class="lead text-muted">
-                            دعوتك الخاصة بـ @Model.RequestData.BrideName و @Model.RequestData.GroomName قيد المراجعة حالياً من قبل فريقنا.
-                        </p>
-                        <p class="text-muted">
-                            سنقوم بمراجعة طلبك بعناية وسنخطرك فور الموافقة عليه. عادةً ما تستغرق هذه العملية من 24 إلى 48 ساعة.
-                        </p>
-                    </div>
-                    <div class="alert alert-info mt-4">
-                        <i class="fas fa-info-circle me-2"></i>
-                        يمكنك متابعة حالة دعوتك عبر البريد الإلكتروني المسجل: <strong>@Model.User.Email</strong>
-                    </div>
-                </div>
-                <div class="card-footer bg-transparent py-3">
-                    <a href="/" class="btn btn-primary">
-                        <i class="fas fa-home me-2"></i> العودة للصفحة الرئيسية
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<h1><i class="fas fa-clock text-info me-2"></i>دعوتك قيد المراجعة</h1>
+<p>دعوتك الخاصة بـ <strong>@Model.RequestData?.BrideName</strong> و <strong>@Model.RequestData?.GroomName</strong> قيد المراجعة حالياً من قبل فريقنا.</p>
+<p class="mb-2">سنقوم بمراجعة طلبك بعناية وسنخطرك فور الموافقة عليه. عادةً ما تستغرق هذه العملية من 24 إلى 48 ساعة.</p>
+@if (Model?.User != null)
+{
+    <p class="small text-muted">يمكنك متابعة حالة دعوتك عبر البريد الإلكتروني: <strong>@Model.User.Email</strong></p>
+}

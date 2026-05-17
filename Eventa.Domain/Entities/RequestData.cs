@@ -71,6 +71,25 @@ namespace Eventa.Domain.Entities
 
         [MaxLength(1000)]
         public string? LocationUrl { get; set; }
+
+        [MaxLength(1000)]
+        public string? LocationEmbedUrl { get; set; }
+        #endregion
+
+        #region Custom Content
+        [MaxLength(500)]
+        public string? CustomSentence1 { get; set; }
+
+        [MaxLength(500)]
+        public string? CustomSentence2 { get; set; }
+
+        public Guid? BackgroundImageLibraryId { get; set; }
+
+        [MaxLength(500)]
+        public string? BackgroundImageUrl { get; set; }
+
+        [MaxLength(100)]
+        public string? BackgroundImageId { get; set; }
         #endregion
     }
 }

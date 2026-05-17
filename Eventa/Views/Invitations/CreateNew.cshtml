@@ -123,7 +123,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label">رقم الواتساب <span class="required">*</span></label>
+                                        <div class="input-icon-group">
+                                            <input type="tel" class="form-control" asp-for="WhatsAppNumber" placeholder="01xxxxxxxxx" required />
+                                            <i class="fab fa-whatsapp input-icon" style="color: #25d366;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label class="form-label">البريد الإلكتروني <span class="required">*</span></label>
                                         <div class="input-icon-group">
@@ -290,6 +299,70 @@
                         <div style="background: #dbeafe; border: 1px solid #93c5fd; border-radius: 8px; padding: 1rem; color: #1e40af; margin-bottom: 1.5rem;">
                             <i class="fas fa-info-circle"></i>
                             يجب اختيار <strong>إضافة واحدة على الأقل</strong>
+                        </div>
+
+                        <!-- Custom Texts -->
+                        <div class="section-card" style="margin-bottom: 1.5rem;">
+                            <h3 class="section-card-title"><i class="fas fa-pen-fancy"></i> النصوص المخصصة</h3>
+                            <div class="form-group">
+                                <label class="form-label">الجملة الأولى</label>
+                                @if (ViewBag.PredefinedTexts1 != null && ((IEnumerable<Eventa.Domain.Entities.PredefinedText>)ViewBag.PredefinedTexts1).Any())
+                                {
+                                    <select id="predefinedText1Select" class="form-control" style="margin-bottom: 0.5rem;">
+                                        <option value="">-- اختر من النصوص الجاهزة أو اكتب نصك --</option>
+                                        @foreach (var text in (IEnumerable<Eventa.Domain.Entities.PredefinedText>)ViewBag.PredefinedTexts1)
+                                        {
+                                            <option value="@text.TextAr">@text.TextAr</option>
+                                        }
+                                        <option value="__custom__">كتابة نص مخصص...</option>
+                                    </select>
+                                }
+                                <input type="text" class="form-control" asp-for="CustomSentence1" placeholder="اكتب الجملة الأولى هنا..." maxlength="500" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">الجملة الثانية</label>
+                                @if (ViewBag.PredefinedTexts2 != null && ((IEnumerable<Eventa.Domain.Entities.PredefinedText>)ViewBag.PredefinedTexts2).Any())
+                                {
+                                    <select id="predefinedText2Select" class="form-control" style="margin-bottom: 0.5rem;">
+                                        <option value="">-- اختر من النصوص الجاهزة أو اكتب نصك --</option>
+                                        @foreach (var text in (IEnumerable<Eventa.Domain.Entities.PredefinedText>)ViewBag.PredefinedTexts2)
+                                        {
+                                            <option value="@text.TextAr">@text.TextAr</option>
+                                        }
+                                        <option value="__custom__">كتابة نص مخصص...</option>
+                                    </select>
+                                }
+                                <input type="text" class="form-control" asp-for="CustomSentence2" placeholder="اكتب الجملة الثانية هنا..." maxlength="500" />
+                            </div>
+                        </div>
+
+                        <!-- Background Image -->
+                        <div class="section-card" style="margin-bottom: 1.5rem;">
+                            <h3 class="section-card-title"><i class="fas fa-image"></i> صورة الخلفية</h3>
+                            <div class="form-group">
+                                <label class="form-label">رفع صورة من جهازك</label>
+                                <input type="file" class="form-control" asp-for="BackgroundImage" accept="image/*" id="bgImageUpload" />
+                                <div id="bgImageUploadPreview" style="margin-top: 0.5rem;"></div>
+                            </div>
+                            @if (ViewBag.BackgroundImages != null && ((IEnumerable<Eventa.Domain.Entities.BackgroundImage>)ViewBag.BackgroundImages).Any())
+                            {
+                                <div class="form-group">
+                                    <label class="form-label">أو اختر من المكتبة</label>
+                                    <input type="hidden" asp-for="BackgroundImageLibraryId" id="bgLibraryIdInput" />
+                                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;" id="bgLibraryGrid">
+                                        @foreach (var img in (IEnumerable<Eventa.Domain.Entities.BackgroundImage>)ViewBag.BackgroundImages)
+                                        {
+                                            <div class="bg-lib-item" data-id="@img.Id" style="cursor:pointer; position:relative; border-radius:8px; overflow:hidden; border:2px solid transparent;">
+                                                <img src="@img.ImageUrl" alt="@img.NameAr" style="width:100%; height:80px; object-fit:cover;" />
+                                                @if (!string.IsNullOrEmpty(img.NameAr))
+                                                {
+                                                    <small style="display:block; text-align:center; padding:2px 0; font-size:0.75rem;">@img.NameAr</small>
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
                         </div>
 
                         <!-- Memories -->
@@ -545,7 +618,7 @@
                     return false;
                 }
                 if (step === 2) {
-                    const fields = ['FullName', 'PhoneNumber', 'Email', 'GroomName', 'BrideName'];
+                    const fields = ['FullName', 'PhoneNumber', 'WhatsAppNumber', 'Email', 'GroomName', 'BrideName'];
                     for (let f of fields) {
                         const input = document.querySelector(`[name="${f}"]`);
                         if (!input.value.trim()) {
@@ -670,6 +743,67 @@
                 item.innerHTML = `<div class="dynamic-list-item-header"><span class="dynamic-list-item-number">إهداء ${dedCount}</span><button type="button" class="dynamic-list-item-remove" onclick="this.closest('.dynamic-list-item').remove()"><i class="fas fa-trash"></i></button></div><div class="row"><div class="col-6"><div class="form-group"><label class="form-label">الاسم</label><input type="text" class="form-control" name="Dedications[${dedCount-1}].PersonName"/></div></div><div class="col-6"><div class="form-group"><label class="form-label">الصلة</label><input type="text" class="form-control" name="Dedications[${dedCount-1}].Relationship" placeholder="أخو العريس"/></div></div><div class="col-12"><div class="form-group"><label class="form-label">الرسالة</label><textarea class="form-control" name="Dedications[${dedCount-1}].Message" rows="2"></textarea></div></div></div>`;
                 document.getElementById('dedicationsList').appendChild(item);
             });
+
+            // Predefined Text Selection
+            const pt1Select = document.getElementById('predefinedText1Select');
+            const pt2Select = document.getElementById('predefinedText2Select');
+            if (pt1Select) {
+                pt1Select.addEventListener('change', function() {
+                    const input = document.querySelector('[name="CustomSentence1"]');
+                    if (this.value && this.value !== '__custom__') {
+                        input.value = this.value;
+                    } else if (this.value === '__custom__') {
+                        input.value = '';
+                        input.focus();
+                    }
+                });
+            }
+            if (pt2Select) {
+                pt2Select.addEventListener('change', function() {
+                    const input = document.querySelector('[name="CustomSentence2"]');
+                    if (this.value && this.value !== '__custom__') {
+                        input.value = this.value;
+                    } else if (this.value === '__custom__') {
+                        input.value = '';
+                        input.focus();
+                    }
+                });
+            }
+
+            // Background Image Library Selection
+            document.querySelectorAll('.bg-lib-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    document.querySelectorAll('.bg-lib-item').forEach(i => i.style.borderColor = 'transparent');
+                    this.style.borderColor = '#10b981';
+                    document.getElementById('bgLibraryIdInput').value = this.dataset.id;
+                    // Clear file upload
+                    const fileInput = document.getElementById('bgImageUpload');
+                    if (fileInput) fileInput.value = '';
+                    const preview = document.getElementById('bgImageUploadPreview');
+                    if (preview) preview.innerHTML = '';
+                });
+            });
+
+            // Background Image Upload Preview
+            const bgUploadInput = document.getElementById('bgImageUpload');
+            if (bgUploadInput) {
+                bgUploadInput.addEventListener('change', function() {
+                    // Clear library selection
+                    document.querySelectorAll('.bg-lib-item').forEach(i => i.style.borderColor = 'transparent');
+                    const libInput = document.getElementById('bgLibraryIdInput');
+                    if (libInput) libInput.value = '';
+                    // Show preview
+                    const preview = document.getElementById('bgImageUploadPreview');
+                    preview.innerHTML = '';
+                    if (this.files.length > 0) {
+                        const reader = new FileReader();
+                        reader.onload = e => {
+                            preview.innerHTML = `<img src="${e.target.result}" style="max-width:150px; border-radius:8px; border:1px solid #ddd;" />`;
+                        };
+                        reader.readAsDataURL(this.files[0]);
+                    }
+                });
+            }
 
             function generateReviewSummary() {
                 const groom = document.querySelector('[name="GroomName"]').value || '-';

@@ -6,6 +6,7 @@ namespace Eventa.ApplicationCore.Services.Files
     public interface IInvitationService
     {
         Task<(string InvitationUrl, string QrCodeUrl)> CreateInvitationAsync(CreateInvitationVM dto);
+        Task<(string InvitationUrl, string QrCodeUrl)> CreateFromEditorAsync(EditorSubmitDTO dto);
     }
 
 }

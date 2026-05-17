@@ -25,22 +25,24 @@ namespace Eventa.Web.Controllers
         {
             if (string.IsNullOrEmpty(slug))
             {
-                return NotFound();
+                Response.StatusCode = 404;
+                return base.View("InvitationNotFound");
             }
 
             var request = await _requestRepository.GetRequestBySlugAsync(slug);
             if (request == null)
             {
-                return NotFound();
+                Response.StatusCode = 404;
+                return base.View("InvitationNotFound");
             }
-            // ?????? ?? ???? ??????
+            // دعوة تحت المراجعة
             if (request.Status == InvitationStatus.Pending)
             {
-                return View("InvitationPending", request);
+                return base.View("InvitationPending", request);
             }
             else if (request.Status == InvitationStatus.Rejected)
             {
-                return View("InvitationRejected", request);
+                return base.View("InvitationRejected", request);
             }
 
             // ?????? ?? ?? ????? ????? TimeSpan ?? ???? ?????
@@ -53,8 +55,7 @@ namespace Eventa.Web.Controllers
                 request.RequestData.EventTimeTo = TimeSpan.FromHours(request.RequestData.EventTimeTo.TotalHours % 24);
             }
 
-            // ??? ??? Partial View ????? ??? TemplateName
-            return View($"~/Views/Shared/templates/_{request.Design.TemplateName}.cshtml", request);
+            return base.View($"~/Views/Shared/templates/_{request.Design.TemplateName}.cshtml", request);
         }
 
     }
