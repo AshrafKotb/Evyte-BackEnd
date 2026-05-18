@@ -226,6 +226,7 @@ namespace Eventa.Web.Controllers
                 return Json(new { success = false, message = "البيانات غير صحيحة" });
             }
 
+            // تحقق شامل من الحقول الأساسية - يمنع حفظ طلبات فاضية
             if (string.IsNullOrWhiteSpace(dto.GroomName) || string.IsNullOrWhiteSpace(dto.BrideName))
             {
                 return Json(new { success = false, message = "اسم العريس والعروسة مطلوبان" });
@@ -233,7 +234,28 @@ namespace Eventa.Web.Controllers
 
             if (string.IsNullOrWhiteSpace(dto.FullName) || string.IsNullOrWhiteSpace(dto.PhoneNumber) || string.IsNullOrWhiteSpace(dto.Email))
             {
-                return Json(new { success = false, message = "بيانات التواصل مطلوبة" });
+                return Json(new { success = false, message = "بيانات التواصل مطلوبة (الاسم، الهاتف، البريد الإلكتروني)" });
+            }
+
+            if (string.IsNullOrWhiteSpace(dto.WhatsAppNumber))
+            {
+                return Json(new { success = false, message = "رقم الواتساب مطلوب" });
+            }
+
+            if (string.IsNullOrWhiteSpace(dto.EventPlaceName) || string.IsNullOrWhiteSpace(dto.EventAddress))
+            {
+                return Json(new { success = false, message = "اسم المكان والعنوان مطلوبان" });
+            }
+
+            if (dto.DesignId == Guid.Empty)
+            {
+                return Json(new { success = false, message = "يرجى اختيار تصميم" });
+            }
+
+            if (!ModelState.IsValid)
+            {
+                var firstError = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).FirstOrDefault();
+                return Json(new { success = false, message = firstError ?? "البيانات غير مكتملة" });
             }
 
             try

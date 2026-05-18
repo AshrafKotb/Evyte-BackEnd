@@ -1,0 +1,244 @@
+@*
+    Nile river sunset with palm silhouettes and gentle reflections - romantic Egyptian vibe.
+    PartialName: NileSunset
+*@
+@model Request
+@{
+    var rd = Model?.RequestData;
+    var names = !string.IsNullOrEmpty(rd?.GroomName) && !string.IsNullOrEmpty(rd?.BrideName)
+        ? $"{rd.GroomName} & {rd.BrideName}"
+        : "حُبُّنَا حِكَايَة";
+}
+<div class="splash-screen splash-nile" id="splashScreen">
+    <!-- Sky and sun -->
+    <div class="splash-nile__sky"></div>
+    <div class="splash-nile__sun"></div>
+    <div class="splash-nile__sun-reflection"></div>
+
+    <!-- Birds -->
+    <div class="splash-nile__birds">
+        <span class="splash-nile__bird splash-nile__bird--1">v</span>
+        <span class="splash-nile__bird splash-nile__bird--2">v</span>
+        <span class="splash-nile__bird splash-nile__bird--3">v</span>
+    </div>
+
+    <!-- Sunset-colored floating hearts -->
+    <div class="splash-nile__hearts">
+        @for (int i = 0; i < 10; i++)
+        {
+            <span class="splash-nile__heart" style="--x:@(8 + i * 9)%; --d:@(i * 0.5)s; --s:@(0.55 + (i % 3) * 0.25);">♥</span>
+        }
+    </div>
+
+    <!-- Palm silhouettes -->
+    <div class="splash-nile__palms">
+        <svg viewBox="0 0 800 200" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+            <!-- Palm tree 1 -->
+            <g transform="translate(80, 200)">
+                <rect x="-3" y="-100" width="6" height="100" fill="#1a0a0a"/>
+                <path d="M0 -100 Q-40 -110 -55 -90 M0 -100 Q-30 -125 -50 -125 M0 -100 Q40 -110 55 -90 M0 -100 Q30 -125 50 -125 M0 -100 Q-10 -130 0 -135 M0 -100 Q10 -130 0 -135"
+                      stroke="#1a0a0a" stroke-width="4" fill="none" stroke-linecap="round"/>
+            </g>
+            <!-- Palm tree 2 (taller) -->
+            <g transform="translate(700, 200)">
+                <rect x="-4" y="-130" width="8" height="130" fill="#1a0a0a"/>
+                <path d="M0 -130 Q-50 -140 -65 -115 M0 -130 Q-35 -160 -55 -160 M0 -130 Q50 -140 65 -115 M0 -130 Q35 -160 55 -160 M0 -130 Q-15 -165 0 -175 M0 -130 Q15 -165 0 -175"
+                      stroke="#1a0a0a" stroke-width="5" fill="none" stroke-linecap="round"/>
+            </g>
+            <!-- Felucca boat in distance -->
+            <g transform="translate(400, 150)">
+                <path d="M-20 20 L20 20 L15 25 L-15 25 Z" fill="#1a0a0a"/>
+                <path d="M0 20 L0 -20 L18 18 Z" fill="#1a0a0a" opacity="0.7"/>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Water -->
+    <div class="splash-nile__water">
+        <div class="splash-nile__water-shimmer"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="splash-nile__content">
+        <div class="splash-nile__eyebrow">— SAVE THE DATE —</div>
+        <div class="splash-nile__names">@names</div>
+        @if (rd != null)
+        {
+            <div class="splash-nile__date">@rd.EventDate.ToString("dd MMMM yyyy")</div>
+        }
+        <div class="splash-nile__quote">"تَحْتَ سَمَاءِ مِصْر، نَكْتُبُ قِصَّتَنَا"</div>
+    </div>
+</div>
+
+<style>
+    .splash-nile {
+        background: linear-gradient(180deg, #2c1810 0%, #5c2818 30%, #8b3a1f 60%, #d97532 80%, #f4a261 100%);
+        overflow: hidden;
+        animation: none !important;
+        flex-direction: column !important;
+    }
+
+    .splash-nile__sky {
+        position: absolute; top: 0; left: 0; right: 0;
+        height: 70%;
+        background:
+            radial-gradient(ellipse at 50% 80%, #f4a261 0%, transparent 50%),
+            radial-gradient(ellipse at 30% 30%, rgba(212,73,55,0.4) 0%, transparent 60%);
+    }
+
+    .splash-nile__sun {
+        position: absolute;
+        top: 35%; left: 50%;
+        transform: translateX(-50%);
+        width: 140px; height: 140px;
+        background: radial-gradient(circle, #fff8dc 0%, #ffd700 40%, #ff8c42 80%, transparent 100%);
+        border-radius: 50%;
+        filter: blur(2px);
+        box-shadow: 0 0 80px rgba(255,200,100,0.6);
+        opacity: 0;
+        animation: spnileSun 2s ease forwards 0.5s;
+    }
+    @@keyframes spnileSun {
+        from { opacity: 0; transform: translateX(-50%) translateY(40px) scale(0.5); }
+        to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+    }
+    .splash-nile__sun-reflection {
+        position: absolute;
+        top: 55%; left: 50%;
+        transform: translateX(-50%);
+        width: 80px; height: 30%;
+        background: linear-gradient(180deg, rgba(255,200,100,0.6), rgba(255,200,100,0.1));
+        filter: blur(8px);
+        animation: spnileShimmer 4s ease-in-out infinite;
+        opacity: 0;
+        animation: spnileShimmer 4s ease-in-out infinite 1.5s, spnileSunRefl 1.5s ease forwards 1.5s;
+    }
+    @@keyframes spnileSunRefl { to { opacity: 0.7; } }
+    @@keyframes spnileShimmer {
+        0%, 100% { transform: translateX(-50%) scaleY(1); }
+        50% { transform: translateX(-50%) scaleY(1.15); }
+    }
+
+    .splash-nile__birds {
+        position: absolute; top: 25%; left: 0; right: 0;
+    }
+    .splash-nile__bird {
+        position: absolute;
+        color: #1a0a0a; font-size: 0.9rem; font-weight: 700;
+        opacity: 0;
+        animation: spnileBird 12s linear infinite;
+    }
+    .splash-nile__bird--1 { top: 0; animation-delay: 0s; }
+    .splash-nile__bird--2 { top: 10px; animation-delay: -3s; }
+    .splash-nile__bird--3 { top: -5px; animation-delay: -6s; }
+    @@keyframes spnileBird {
+        0% { left: -5%; opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { left: 105%; opacity: 0; }
+    }
+
+    /* Sunset glow hearts */
+    .splash-nile__hearts { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+    .splash-nile__heart {
+        position: absolute;
+        bottom: -5%; left: var(--x);
+        font-size: 1.1rem;
+        opacity: 0;
+        transform: scale(var(--s));
+        background: linear-gradient(135deg, #ffd700, #ff8c42, #d97532);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 8px rgba(255,140,66,0.7));
+        animation: spnileHeartFloat 11s linear infinite var(--d);
+    }
+    @@keyframes spnileHeartFloat {
+        0% { transform: translateY(0) scale(var(--s)) rotate(0); opacity: 0; }
+        15% { opacity: 0.85; }
+        100% { transform: translateY(-110vh) translateX(20px) scale(calc(var(--s) * 0.5)) rotate(360deg); opacity: 0; }
+    }
+
+    .splash-nile__palms {
+        position: absolute; bottom: 25%;
+        left: 0; right: 0; height: 35%;
+        z-index: 3;
+    }
+    .splash-nile__palms svg { width: 100%; height: 100%; }
+
+    .splash-nile__water {
+        position: absolute; bottom: 0; left: 0; right: 0;
+        height: 28%;
+        background:
+            linear-gradient(180deg, rgba(101,67,33,0.4) 0%, #1a0a05 100%);
+        overflow: hidden;
+    }
+    .splash-nile__water-shimmer {
+        position: absolute; inset: 0;
+        background-image: repeating-linear-gradient(
+            180deg,
+            transparent,
+            transparent 8px,
+            rgba(255,200,100,0.15) 8px,
+            rgba(255,200,100,0.15) 10px
+        );
+        animation: spnileWater 6s linear infinite;
+    }
+    @@keyframes spnileWater {
+        from { background-position: 0 0; }
+        to { background-position: 0 -50px; }
+    }
+
+    .splash-nile__content {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 10;
+        padding: 30px;
+        background: rgba(0,0,0,0.2);
+        backdrop-filter: blur(4px);
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+    .splash-nile__eyebrow {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.75rem; letter-spacing: 0.5em;
+        color: rgba(255,255,255,0.85);
+        margin-bottom: 14px;
+        opacity: 0; animation: spnileFadeUp 1s ease forwards 1s;
+    }
+    .splash-nile__names {
+        font-family: 'Amiri', 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 2.4rem; font-weight: 700;
+        color: #fff;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.6), 0 0 40px rgba(255,200,100,0.4);
+        margin-bottom: 12px;
+        line-height: 1.3;
+        opacity: 0; animation: spnileFadeUp 1s ease forwards 1.3s;
+    }
+    .splash-nile__date {
+        font-family: 'Cairo', sans-serif;
+        font-size: 1rem; letter-spacing: 0.3em;
+        color: #ffd700;
+        margin-bottom: 14px;
+        opacity: 0; animation: spnileFadeUp 1s ease forwards 1.6s;
+    }
+    .splash-nile__quote {
+        font-family: 'Amiri', 'Cairo', serif;
+        font-style: italic;
+        font-size: 0.95rem;
+        color: rgba(255,255,255,0.85);
+        opacity: 0; animation: spnileFadeUp 1s ease forwards 1.9s;
+    }
+    @@keyframes spnileFadeUp {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @@media (max-width: 480px) {
+        .splash-nile__sun { width: 100px; height: 100px; }
+        .splash-nile__names { font-size: 1.7rem; }
+        .splash-nile__content { padding: 24px; }
+    }
+</style>

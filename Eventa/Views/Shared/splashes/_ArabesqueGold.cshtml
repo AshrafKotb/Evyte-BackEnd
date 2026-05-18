@@ -1,0 +1,231 @@
+@*
+    Elegant Arabic-style splash with arabesque pattern and Arabic typography.
+    PartialName: ArabesqueGold
+*@
+@model Request
+@{
+    var rd = Model?.RequestData;
+}
+<div class="splash-screen splash-arab" id="splashScreen">
+    <svg class="splash-arab__pattern" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+            <pattern id="arabesque" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M20 0 Q30 10 20 20 Q10 10 20 0 M20 20 Q30 30 20 40 Q10 30 20 20 M0 20 Q10 30 20 20 Q10 10 0 20 M20 20 Q30 10 40 20 Q30 30 20 20"
+                      fill="none" stroke="rgba(212,165,116,0.15)" stroke-width="0.8"/>
+            </pattern>
+        </defs>
+        <rect width="200" height="200" fill="url(#arabesque)"/>
+    </svg>
+
+    <div class="splash-arab__hearts">
+        @for (int i = 0; i < 10; i++)
+        {
+            <span class="splash-arab__heart" style="--x:@(8 + i * 9)%; --d:@(i * 0.5)s; --s:@(0.5 + (i % 3) * 0.25);">♥</span>
+        }
+    </div>
+
+    <div class="splash-arab__frame">
+        <div class="splash-arab__corner splash-arab__corner--tl"></div>
+        <div class="splash-arab__corner splash-arab__corner--tr"></div>
+        <div class="splash-arab__corner splash-arab__corner--bl"></div>
+        <div class="splash-arab__corner splash-arab__corner--br"></div>
+
+        <div class="splash-arab__inner">
+            <div class="splash-arab__bismillah">﷽</div>
+            <div class="splash-arab__divider">
+                <span></span>
+                <svg width="24" height="14" viewBox="0 0 24 14" fill="none">
+                    <path d="M12 0L14 4L18 4L15 7L16 11L12 9L8 11L9 7L6 4L10 4L12 0Z" fill="#d4a574"/>
+                </svg>
+                <span></span>
+            </div>
+            <div class="splash-arab__phrase">يَتَشَرَّفُ بِدَعْوَتِكُمْ</div>
+            <div class="splash-arab__phrase-small">لِحُضُورِ حَفْلِ زِفَافِ</div>
+
+            @if (rd != null)
+            {
+                <div class="splash-arab__names">
+                    <span class="splash-arab__name">@rd.GroomName</span>
+                    <span class="splash-arab__amp">&amp;</span>
+                    <span class="splash-arab__name">@rd.BrideName</span>
+                </div>
+            }
+            else
+            {
+                <div class="splash-arab__names">
+                    <span class="splash-arab__name">العريس</span>
+                    <span class="splash-arab__amp">&amp;</span>
+                    <span class="splash-arab__name">العروسة</span>
+                </div>
+            }
+
+            <div class="splash-arab__divider">
+                <span></span>
+                <svg width="24" height="14" viewBox="0 0 24 14" fill="none">
+                    <path d="M12 0L14 4L18 4L15 7L16 11L12 9L8 11L9 7L6 4L10 4L12 0Z" fill="#d4a574"/>
+                </svg>
+                <span></span>
+            </div>
+
+            <div class="splash-arab__footer">— شرفونا بحضوركم —</div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .splash-arab {
+        background:
+            radial-gradient(ellipse at center, #1a3a32 0%, #0a1f1a 100%);
+        animation: none !important;
+        overflow: hidden;
+    }
+    .splash-arab__pattern {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        opacity: 0.6;
+        animation: sparPattern 30s linear infinite;
+    }
+    @@keyframes sparPattern {
+        from { transform: rotate(0); }
+        to { transform: rotate(360deg); }
+    }
+
+    /* Golden hearts with arabesque feel */
+    .splash-arab__hearts { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+    .splash-arab__heart {
+        position: absolute;
+        bottom: -5%; left: var(--x);
+        color: #d4a574;
+        font-size: 1rem;
+        opacity: 0;
+        transform: scale(var(--s));
+        text-shadow: 0 0 10px rgba(212,165,116,0.7), 0 0 20px rgba(212,165,116,0.4);
+        animation: sparHeartFloat 11s linear infinite var(--d);
+    }
+    @@keyframes sparHeartFloat {
+        0% { transform: translateY(0) scale(var(--s)) rotate(0); opacity: 0; }
+        15% { opacity: 0.65; }
+        100% { transform: translateY(-110vh) scale(calc(var(--s) * 0.5)) rotate(360deg); opacity: 0; }
+    }
+
+    .splash-arab__frame {
+        position: relative;
+        background:
+            radial-gradient(ellipse at top, rgba(212,165,116,0.08) 0%, transparent 60%),
+            linear-gradient(180deg, rgba(15,40,32,0.95) 0%, rgba(10,30,25,0.95) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(212,165,116,0.4);
+        border-radius: 4px;
+        padding: 60px 50px;
+        max-width: 480px; width: calc(100% - 40px);
+        text-align: center; color: #d4a574;
+        box-shadow:
+            0 30px 80px rgba(0,0,0,0.5),
+            inset 0 0 60px rgba(212,165,116,0.05);
+        z-index: 5;
+        animation: sparFrameIn 1.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @@keyframes sparFrameIn {
+        0% { opacity: 0; transform: scale(0.85); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+
+    .splash-arab__corner {
+        position: absolute;
+        width: 50px; height: 50px;
+        border: 2px solid #d4a574;
+    }
+    .splash-arab__corner::before,
+    .splash-arab__corner::after {
+        content: ''; position: absolute;
+        background: #d4a574;
+    }
+    .splash-arab__corner::before { width: 4px; height: 4px; border-radius: 50%; }
+    .splash-arab__corner--tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+    .splash-arab__corner--tl::before { top: 0; left: 0; }
+    .splash-arab__corner--tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+    .splash-arab__corner--tr::before { top: 0; right: 0; }
+    .splash-arab__corner--bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+    .splash-arab__corner--bl::before { bottom: 0; left: 0; }
+    .splash-arab__corner--br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+    .splash-arab__corner--br::before { bottom: 0; right: 0; }
+
+    .splash-arab__bismillah {
+        font-family: 'Amiri', 'Cairo', serif;
+        font-size: 3.5rem;
+        color: #f3d69b;
+        text-shadow: 0 0 30px rgba(212,165,116,0.6);
+        line-height: 1;
+        margin-bottom: 28px;
+        opacity: 0; animation: sparFadeUp 1s ease forwards 0.4s;
+    }
+
+    .splash-arab__divider {
+        display: flex; align-items: center; justify-content: center; gap: 12px;
+        margin: 18px 0;
+        opacity: 0; animation: sparFadeUp 0.8s ease forwards 0.7s;
+    }
+    .splash-arab__divider span {
+        width: 60px; height: 1px;
+        background: linear-gradient(90deg, transparent, #d4a574, transparent);
+    }
+
+    .splash-arab__phrase {
+        font-family: 'Amiri', 'Cairo', serif;
+        font-size: 1.4rem;
+        color: #f3d69b;
+        font-weight: 600;
+        line-height: 1.5;
+        opacity: 0; animation: sparFadeUp 1s ease forwards 0.9s;
+    }
+    .splash-arab__phrase-small {
+        font-family: 'Cairo', sans-serif;
+        font-size: 1rem;
+        color: rgba(212,165,116,0.8);
+        margin-top: 6px;
+        opacity: 0; animation: sparFadeUp 1s ease forwards 1.1s;
+    }
+
+    .splash-arab__names {
+        display: flex; align-items: center; justify-content: center; gap: 12px;
+        margin: 28px 0;
+        flex-wrap: wrap;
+        opacity: 0; animation: sparFadeUp 1s ease forwards 1.3s;
+    }
+    .splash-arab__name {
+        font-family: 'Amiri', 'Playfair Display', serif;
+        font-size: 2rem;
+        color: #fff;
+        background: linear-gradient(135deg, #fff 0%, #f3d69b 50%, #d4a574 100%);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    .splash-arab__amp {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 1.5rem;
+        color: #d4a574;
+    }
+
+    .splash-arab__footer {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.9rem; letter-spacing: 0.15em;
+        color: rgba(212,165,116,0.7);
+        margin-top: 14px;
+        opacity: 0; animation: sparFadeUp 1s ease forwards 1.6s;
+    }
+
+    @@keyframes sparFadeUp {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @@media (max-width: 480px) {
+        .splash-arab__frame { padding: 40px 24px; }
+        .splash-arab__bismillah { font-size: 2.5rem; }
+        .splash-arab__phrase { font-size: 1.1rem; }
+        .splash-arab__name { font-size: 1.5rem; }
+    }
+</style>

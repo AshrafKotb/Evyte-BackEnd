@@ -36,6 +36,7 @@
     <link href="~/assets/css/jquery-ui.css" rel="stylesheet">
     <link href="~/assets/sass/style.css" rel="stylesheet">
     <link href="~/css/splash-screen.css" rel="stylesheet">
+    <link href="~/css/template-animations.css" rel="stylesheet">
     <link href="~/css/location-section-enhanced.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -71,8 +72,8 @@
         <section class="wpo-hero-wedding-date">
             <div class="wpo-wedding-date-inner">
                 <span class="wow fadeInUp" data-wow-duration="800ms">Save the Date</span>
-                <h2 class="wow fadeInUp" data-wow-duration="1000ms">@Model.RequestData.BrideName & @Model.RequestData.GroomName</h2>
-                <p class="wow fadeInUp" data-wow-duration="1200ms">We Are Getting Married @Model.RequestData.EventDate.ToString("MMMM dd yyyy", culture)</p>
+                <h2 class="wow fadeInUp" data-wow-duration="1000ms"><span data-editor-field="BrideName" data-editor-type="text">@Model.RequestData.BrideName</span> & <span data-editor-field="GroomName" data-editor-type="text">@Model.RequestData.GroomName</span></h2>
+                <p class="wow fadeInUp" data-wow-duration="1200ms">We Are Getting Married <span data-editor-field="EventDate" data-editor-type="date">@Model.RequestData.EventDate.ToString("MMMM dd yyyy", culture)</span></p>
                 <span class="shape wow fadeInUp" data-wow-duration="1400ms">
                     <img src="~/assets/images/wedding-date/1.png"
                          alt="">
@@ -103,7 +104,7 @@
                                 <div class="vector">
                                     <img src="~/assets/images/couple/vector-1.svg" alt="">
                                 </div>
-                                <h3>@Model.RequestData.GroomName</h3>
+                                <h3 data-editor-field="GroomName" data-editor-type="text">@Model.RequestData.GroomName</h3>
                                 <div class="social">
                                     <ul>
                                         @if (!string.IsNullOrEmpty(Model.RequestData.GroomFacebook))
@@ -125,7 +126,7 @@
                         <div class="col col-xl-6 col-lg-4 col-12">
                             <div class="middle-couple-pic wow fadeInUp" data-wow-duration="1000ms">
                                 <div class="middle-couple-pic-inner">
-                                    <img src="@Model.RequestData.MainSliderImageUrl" alt="">
+                                    <img data-editor-field="MainSliderImage" data-editor-type="image" src="@Model.RequestData.MainSliderImageUrl" alt="">
                                 </div>
                                 <div class="couple-flower">
                                     <img src="~/assets/images/couple/couple-flower.png" alt="">
@@ -137,7 +138,7 @@
                                 <div class="vector">
                                     <img src="~/assets/images/couple/vector-2.svg" alt="">
                                 </div>
-                                <h3>@Model.RequestData.BrideName</h3>
+                                <h3 data-editor-field="BrideName" data-editor-type="text">@Model.RequestData.BrideName</h3>
                                 <div class="social">
                                     <ul>
                                         @if (!string.IsNullOrEmpty(Model.RequestData.BrideFacebook))
@@ -260,7 +261,7 @@
                         <div class="event-card-inner">
                             <!-- Image Section -->
                             <div class="event-image-wrapper">
-                                <img src="@Model.RequestData.EventPlaceImageUrl" alt="Event Venue">
+                                <img data-editor-field="EventPlaceImage" data-editor-type="image" src="@Model.RequestData.EventPlaceImageUrl" alt="Event Venue">
                                 <div class="event-image-badge">
                                     <i class="fa fa-heart"></i>
                                     <span>The Celebration</span>
@@ -294,7 +295,7 @@
                                         </div>
                                         <div class="event-info-content">
                                             <h4>Venue</h4>
-                                            <p>@Model.RequestData.EventPlaceName</p>
+                                            <p data-editor-field="EventPlaceName" data-editor-type="text">@Model.RequestData.EventPlaceName</p>
                                         </div>
                                     </li>
 
@@ -307,7 +308,7 @@
                                             </div>
                                             <div class="event-info-content">
                                                 <h4>Address</h4>
-                                                <p>@Model.RequestData.EventAddress</p>
+                                                <p data-editor-field="EventAddress" data-editor-type="text">@Model.RequestData.EventAddress</p>
                                             </div>
                                         </li>
                                     }

@@ -1,18 +1,35 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Eventa.ApplicationCore.Models.ViewModels
 {
     public class EditorSubmitDTO
     {
         // Contact Info
+        [Required(ErrorMessage = "الاسم الكامل مطلوب")]
+        [MinLength(2, ErrorMessage = "الاسم الكامل يجب أن يكون على الأقل حرفين")]
         public string FullName { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "رقم الهاتف مطلوب")]
         public string PhoneNumber { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "رقم الواتساب مطلوب")]
         public string WhatsAppNumber { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "البريد الإلكتروني مطلوب")]
+        [EmailAddress(ErrorMessage = "يرجى إدخال بريد إلكتروني صالح")]
         public string Email { get; set; } = string.Empty;
 
         // Design
+        [Required]
         public Guid DesignId { get; set; }
 
         // Couple
+        [Required(ErrorMessage = "اسم العريس مطلوب")]
+        [MinLength(2, ErrorMessage = "اسم العريس يجب أن يكون على الأقل حرفين")]
         public string GroomName { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "اسم العروسة مطلوب")]
+        [MinLength(2, ErrorMessage = "اسم العروسة يجب أن يكون على الأقل حرفين")]
         public string BrideName { get; set; } = string.Empty;
         public string? GroomImageUrl { get; set; }
         public string? GroomImageId { get; set; }

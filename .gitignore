@@ -181,3 +181,7 @@ _ReSharper*/
 
 # JetBrains Rider
 *.sln.iml
+
+# Data Protection Keys (لازم يتجاهلوا - متخصصين بكل سيرفر، لو شيلتهم السيشنز هتفصل)
+DataProtectionKeys/
+Eventa/DataProtectionKeys/

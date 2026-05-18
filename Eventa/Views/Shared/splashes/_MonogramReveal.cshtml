@@ -1,5 +1,5 @@
 @*
-    سبلاش يكشف عن مونوجرام كبير بأنيميشن tracing ذهبي.
+    Elegant monogram reveal with golden particle burst, light beams, and shimmering names.
     PartialName: MonogramReveal
 *@
 @model Request
@@ -8,108 +8,239 @@
     var groomInitial = !string.IsNullOrEmpty(rd?.GroomName) ? rd.GroomName.Trim()[0].ToString().ToUpper() : "G";
     var brideInitial = !string.IsNullOrEmpty(rd?.BrideName) ? rd.BrideName.Trim()[0].ToString().ToUpper() : "B";
 }
-<div class="splash-screen splash-monogram" id="splashScreen">
-    <div class="splash-monogram__content">
-        <div class="splash-monogram__overline">— THE WEDDING OF —</div>
-        <div class="splash-monogram__letters">
-            <span class="splash-monogram__letter splash-monogram__letter--g">@groomInitial</span>
-            <span class="splash-monogram__amp">&amp;</span>
-            <span class="splash-monogram__letter splash-monogram__letter--b">@brideInitial</span>
+<div class="splash-screen splash-mono" id="splashScreen">
+    <div class="splash-mono__beams">
+        <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="splash-mono__particles">
+        @for (int i = 0; i < 20; i++)
+        {
+            <span class="splash-mono__particle" style="--i:@i;"></span>
+        }
+    </div>
+
+    <div class="splash-mono__hearts">
+        @for (int i = 0; i < 8; i++)
+        {
+            <span class="splash-mono__heart" style="--angle:@(i * 45)deg; --d:@(2.2 + i * 0.1)s;">♥</span>
+        }
+    </div>
+
+    <div class="splash-mono__floating-hearts">
+        @for (int i = 0; i < 8; i++)
+        {
+            <span class="splash-mono__float-heart" style="--x:@(12 + i * 11)%; --d:@(i * 0.7)s; --s:@(0.6 + (i % 3) * 0.25);">♥</span>
+        }
+    </div>
+
+    <div class="splash-mono__content">
+        <div class="splash-mono__overline">
+            <span class="splash-mono__hairline"></span>
+            <span>THE WEDDING OF</span>
+            <span class="splash-mono__hairline"></span>
         </div>
-        <div class="splash-monogram__divider">
-            <span></span><i class="splash-monogram__diamond"></i><span></span>
+        <div class="splash-mono__letters">
+            <span class="splash-mono__letter splash-mono__letter--g">@groomInitial</span>
+            <div class="splash-mono__amp-wrap">
+                <span class="splash-mono__amp">&amp;</span>
+            </div>
+            <span class="splash-mono__letter splash-mono__letter--b">@brideInitial</span>
+        </div>
+        <div class="splash-mono__divider">
+            <span class="splash-mono__divider-line"></span>
+            <i class="splash-mono__diamond"></i>
+            <span class="splash-mono__divider-line"></span>
         </div>
         @if (rd != null)
         {
-            <div class="splash-monogram__names">@rd.GroomName &amp; @rd.BrideName</div>
+            <div class="splash-mono__names">@rd.GroomName &amp; @rd.BrideName</div>
         }
+        <div class="splash-mono__date">
+            @if (rd != null)
+            {
+                @rd.EventDate.ToString("dd MMMM yyyy")
+            }
+        </div>
     </div>
 </div>
 
 <style>
-    .splash-monogram {
-        background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a14 100%);
+    .splash-mono {
+        background:
+            radial-gradient(circle at 50% 30%, #1f1f3a 0%, #0a0a14 70%);
         animation: none !important;
+        overflow: hidden;
     }
-    .splash-monogram__content { text-align: center; color: #d4a574; }
-    .splash-monogram__overline {
-        font-family: 'Cairo', sans-serif;
-        font-size: 0.85rem;
-        letter-spacing: 0.6em;
-        color: rgba(212,165,116,0.7);
-        margin-bottom: 30px;
+
+    /* Light beams */
+    .splash-mono__beams {
+        position: absolute; inset: 0; pointer-events: none;
+        opacity: 0; animation: spmoFadeIn 1.5s ease forwards 0.4s;
+    }
+    .splash-mono__beams span {
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 2px; height: 200vh;
+        background: linear-gradient(to bottom, transparent, rgba(212,165,116,0.15), transparent);
+        transform-origin: top center;
+    }
+    .splash-mono__beams span:nth-child(1) { transform: translate(-50%, -100%) rotate(15deg); }
+    .splash-mono__beams span:nth-child(2) { transform: translate(-50%, -100%) rotate(-25deg); }
+    .splash-mono__beams span:nth-child(3) { transform: translate(-50%, -100%) rotate(40deg); }
+    .splash-mono__beams span:nth-child(4) { transform: translate(-50%, -100%) rotate(-55deg); }
+
+    /* Particle burst */
+    .splash-mono__particles {
+        position: absolute; top: 50%; left: 50%;
+        width: 0; height: 0;
+    }
+    .splash-mono__particle {
+        position: absolute; top: 0; left: 0;
+        width: 4px; height: 4px;
+        background: radial-gradient(circle, #f3d69b 0%, #d4a574 60%, transparent 100%);
+        border-radius: 50%;
         opacity: 0;
-        animation: splashMonoFadeUp 0.8s ease forwards 0.3s;
+        --angle: calc(var(--i) * 18deg);
+        --dist: calc(120px + (var(--i) * 6px));
+        animation: spmoParticle 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.5s;
     }
-    .splash-monogram__letters {
+    @@keyframes spmoParticle {
+        0% { opacity: 1; transform: rotate(var(--angle)) translateX(0) scale(0); }
+        40% { opacity: 1; transform: rotate(var(--angle)) translateX(calc(var(--dist) * 0.5)) scale(1.2); }
+        100% { opacity: 0; transform: rotate(var(--angle)) translateX(var(--dist)) scale(0.3); }
+    }
+
+    /* Hearts burst from center */
+    .splash-mono__hearts {
+        position: absolute; top: 50%; left: 50%;
+        width: 0; height: 0; z-index: 4;
+    }
+    .splash-mono__heart {
+        position: absolute; top: 0; left: 0;
+        color: #d4a574;
+        font-size: 1.4rem;
+        opacity: 0;
+        text-shadow: 0 0 12px rgba(212,165,116,0.8);
+        animation: spmoHeartBurst 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards var(--d);
+    }
+    @@keyframes spmoHeartBurst {
+        0% { opacity: 1; transform: rotate(var(--angle)) translateX(0) scale(0); }
+        30% { opacity: 1; transform: rotate(var(--angle)) translateX(100px) scale(1.3); }
+        100% { opacity: 0; transform: rotate(var(--angle)) translateX(220px) scale(0.4); }
+    }
+
+    /* Floating hearts in background */
+    .splash-mono__floating-hearts { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+    .splash-mono__float-heart {
+        position: absolute;
+        bottom: -5%; left: var(--x);
+        color: rgba(212,165,116,0.5);
+        font-size: 0.9rem;
+        opacity: 0;
+        transform: scale(var(--s));
+        animation: spmoFloatHeart 9s linear infinite var(--d);
+    }
+    @@keyframes spmoFloatHeart {
+        0% { transform: translateY(0) scale(var(--s)) rotate(0); opacity: 0; }
+        15% { opacity: 0.6; }
+        100% { transform: translateY(-110vh) scale(calc(var(--s) * 0.5)) rotate(540deg); opacity: 0; }
+    }
+
+    .splash-mono__content { text-align: center; color: #d4a574; z-index: 5; position: relative; }
+    .splash-mono__overline {
+        display: flex; align-items: center; justify-content: center; gap: 14px;
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.8rem; letter-spacing: 0.55em;
+        color: rgba(212,165,116,0.7);
+        margin-bottom: 36px;
+        opacity: 0; animation: spmoFadeUp 1s ease forwards 0.3s;
+    }
+    .splash-mono__hairline {
+        width: 50px; height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(212,165,116,0.6), transparent);
+    }
+
+    .splash-mono__letters {
         font-family: 'Playfair Display', serif;
         font-style: italic;
-        font-size: 6rem;
-        font-weight: 400;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        line-height: 1;
+        font-size: 6.5rem; font-weight: 400;
+        display: flex; align-items: center; justify-content: center;
+        gap: 8px; line-height: 1;
     }
-    .splash-monogram__letter {
-        background: linear-gradient(135deg, #d4a574 0%, #f3d69b 50%, #d4a574 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+    .splash-mono__letter {
+        background: linear-gradient(135deg, #f3d69b 0%, #d4a574 30%, #8a6840 50%, #d4a574 70%, #f3d69b 100%);
+        background-size: 200% 200%;
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
         opacity: 0;
-        text-shadow: 0 0 40px rgba(212,165,116,0.3);
+        text-shadow: 0 0 50px rgba(212,165,116,0.4);
+        animation: spmoLetterIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, spmoGoldShine 4s ease-in-out infinite 3s;
+        position: relative;
     }
-    .splash-monogram__letter--g {
-        animation: splashMonoLetterIn 1s ease forwards 0.6s;
+    .splash-mono__letter--g { animation-delay: 0.6s, 3s; }
+    .splash-mono__letter--b { animation-delay: 1.1s, 3.2s; }
+
+    @@keyframes spmoLetterIn {
+        0% { opacity: 0; transform: translateY(40px) scale(0.5) rotate(-10deg); filter: blur(8px); }
+        100% { opacity: 1; transform: translateY(0) scale(1) rotate(0); filter: blur(0); }
     }
-    .splash-monogram__letter--b {
-        animation: splashMonoLetterIn 1s ease forwards 1s;
+    @@keyframes spmoGoldShine {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
     }
-    .splash-monogram__amp {
-        font-size: 3rem;
-        color: #d4a574;
-        opacity: 0;
-        animation: splashMonoFadeIn 0.8s ease forwards 1.3s;
+
+    .splash-mono__amp-wrap {
+        opacity: 0; animation: spmoAmpIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 1.5s;
     }
-    .splash-monogram__divider {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        margin: 30px 0 15px;
-        opacity: 0;
-        animation: splashMonoFadeUp 0.8s ease forwards 1.6s;
+    .splash-mono__amp {
+        font-size: 3.5rem; color: #d4a574;
+        display: inline-block;
+        animation: spmoAmpFloat 3s ease-in-out infinite 2.5s;
     }
-    .splash-monogram__divider span {
-        width: 60px;
-        height: 1px;
-        background: rgba(212,165,116,0.5);
+    @@keyframes spmoAmpIn {
+        0% { opacity: 0; transform: scale(0) rotate(180deg); }
+        100% { opacity: 1; transform: scale(1) rotate(0); }
     }
-    .splash-monogram__diamond {
-        width: 8px;
-        height: 8px;
-        background: #d4a574;
+    @@keyframes spmoAmpFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
+
+    .splash-mono__divider {
+        display: flex; align-items: center; justify-content: center; gap: 14px;
+        margin: 36px 0 18px;
+        opacity: 0; animation: spmoFadeUp 1s ease forwards 1.9s;
+    }
+    .splash-mono__divider-line {
+        width: 70px; height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(212,165,116,0.7), transparent);
+    }
+    .splash-mono__diamond {
+        width: 10px; height: 10px; background: #d4a574;
         transform: rotate(45deg);
+        box-shadow: 0 0 12px rgba(212,165,116,0.6);
     }
-    .splash-monogram__names {
+
+    .splash-mono__names {
         font-family: 'Cairo', sans-serif;
-        font-size: 1rem;
-        letter-spacing: 0.3em;
-        color: rgba(255,255,255,0.7);
-        opacity: 0;
-        animation: splashMonoFadeUp 0.8s ease forwards 1.9s;
+        font-size: 1.1rem; letter-spacing: 0.35em;
+        color: rgba(255,255,255,0.85);
+        opacity: 0; animation: spmoFadeUp 1s ease forwards 2.2s;
     }
-    @@keyframes splashMonoLetterIn {
-        0% { opacity: 0; transform: translateY(20px) scale(0.8); }
-        100% { opacity: 1; transform: translateY(0) scale(1); }
+    .splash-mono__date {
+        font-family: 'Playfair Display', serif;
+        font-style: italic; font-size: 0.95rem;
+        color: rgba(212,165,116,0.7);
+        margin-top: 12px; letter-spacing: 0.25em;
+        opacity: 0; animation: spmoFadeUp 1s ease forwards 2.5s;
     }
-    @@keyframes splashMonoFadeUp {
-        from { opacity: 0; transform: translateY(15px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    @@keyframes splashMonoFadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+
+    @@keyframes spmoFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @@keyframes spmoFadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    @@media (max-width: 480px) {
+        .splash-mono__letters { font-size: 4.5rem; }
+        .splash-mono__overline { font-size: 0.7rem; letter-spacing: 0.4em; gap: 8px; margin-bottom: 24px; }
+        .splash-mono__hairline { width: 30px; }
     }
 </style>

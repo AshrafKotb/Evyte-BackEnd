@@ -3,17 +3,61 @@ using Eventa.ApplicationCore.Services.Repository;
 using Eventa.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
+using Microsoft.AspNetCore.OutputCaching;
 
 namespace Eventa.Web.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class SplashTemplatesController : Controller
     {
+        // تشغيل سبلاش مباشر بالـ partial name - أسرع وأكثر موثوقية من Preview
+        // الـ partial name بيتمرر في الـ URL مباشرة فمفيش مجال لخطأ في الـ lookup
+        [AllowAnonymous]
+        [HttpGet]
+        [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
+        [OutputCache(NoStore = true)]
+        public IActionResult Play(string? partialName = null, string? partial = null, int? duration = null, string? groomName = null, string? brideName = null)
+        {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
+            // partialName في الـ query (الاسم الجديد) — partial للتوافق مع روابط قديمة
+            var resolvedPartial = !string.IsNullOrWhiteSpace(partialName) ? partialName : partial;
+            if (string.IsNullOrWhiteSpace(resolvedPartial))
+                return NotFound();
+
+            // sanitize: عشان متبقاش security issue
+            resolvedPartial = new string(resolvedPartial.Where(c => char.IsLetterOrDigit(c) || c == '_').ToArray());
+
+            // تأكد إن الـ partial فعلاً موجود — بنستخدم الـ view engine عشان يشتغل مع الـ
+            // precompiled views على الـ production (لأن .cshtml مش بتبقى ملفات على الـ disk بعد النشر)
+            var partialViewPath = $"~/Views/Shared/splashes/_{resolvedPartial}.cshtml";
+            var viewResult = _viewEngine.GetView(executingFilePath: null, viewPath: partialViewPath, isMainPage: false);
+            if (!viewResult.Success)
+                return NotFound($"Splash partial '_{resolvedPartial}.cshtml' not found");
+
+            ViewBag.PartialName = resolvedPartial;
+            ViewBag.DurationMs = duration ?? 4000;
+            ViewBag.GroomName = string.IsNullOrWhiteSpace(groomName) ? "محمد" : groomName;
+            ViewBag.BrideName = string.IsNullOrWhiteSpace(brideName) ? "سارة" : brideName;
+
+            return View();
+        }
+
         // معاينة السبلاش كصفحة كاملة - متاحة للجميع (العملاء يستخدموها وقت اختيار السبلاش)
         [AllowAnonymous]
         [HttpGet]
+        [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
+        [OutputCache(NoStore = true)]
         public async Task<IActionResult> Preview(Guid id, string? groomName = null, string? brideName = null)
         {
+            // منع أي caching من المتصفح
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             var splash = await _splashRepository.GetByIdAsync(id);
             if (splash == null || !splash.IsActive)
                 return NotFound();
@@ -38,13 +82,16 @@ namespace Eventa.Web.Controllers
 
         private readonly ISplashTemplateRepository _splashRepository;
         private readonly IFileService _fileService;
+        private readonly ICompositeViewEngine _viewEngine;
 
         public SplashTemplatesController(
             ISplashTemplateRepository splashRepository,
-            IFileService fileService)
+            IFileService fileService,
+            ICompositeViewEngine viewEngine)
         {
             _splashRepository = splashRepository;
             _fileService = fileService;
+            _viewEngine = viewEngine;
         }
 
         public async Task<IActionResult> Index()

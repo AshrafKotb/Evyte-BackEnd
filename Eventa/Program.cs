@@ -1,5 +1,8 @@
 using Eventa.Infrastructure.Seeds;
 using Eventa.Web.Extensions;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,13 +36,42 @@ builder.Services.AddOutputCache(options =>
 
 builder.Services.RegisterDbContext(builder.Configuration);
 
+// ======== Data Protection - مهم جداً ========
+// بيخلي مفاتيح التشفير تتحفظ على الـ filesystem
+// فلما السيرفر يعمل restart بعد كل رفع، الـ cookies القديمة تفضل شغالة
+var dataProtectionKeysPath = Path.Combine(builder.Environment.ContentRootPath, "DataProtectionKeys");
+Directory.CreateDirectory(dataProtectionKeysPath);
+builder.Services.AddDataProtection()
+    .PersistKeysToFileSystem(new DirectoryInfo(dataProtectionKeysPath))
+    .SetApplicationName("Eventa")
+    .SetDefaultKeyLifetime(TimeSpan.FromDays(365));
+
 // Identity
 builder.Services.SetIdentityConfigs(builder.Configuration);
+
+// إعدادات الـ cookie - سيشن طويلة جداً (سنة) مع sliding expiration
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/cp/Login";
     options.AccessDeniedPath = "/cp/AccessDenied";
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+
+    // السيشن سنة كاملة - متفصلش الا لو سجل خروج بنفسه
+    options.ExpireTimeSpan = TimeSpan.FromDays(365);
+    options.SlidingExpiration = true; // يتجدد مع كل استخدام
+
+    // الـ cookie يفضل في المتصفح حتى بعد قفله
+    options.Cookie.MaxAge = TimeSpan.FromDays(365);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SameSite = SameSiteMode.Lax;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+    options.Cookie.IsEssential = true;
+    options.Cookie.Name = "Eventa.Auth";
+});
+
+// SecurityStampValidator - يتحقق كل 30 يوم بدل 30 دقيقة
+builder.Services.Configure<SecurityStampValidatorOptions>(options =>
+{
+    options.ValidationInterval = TimeSpan.FromDays(30);
 });
 
 // RegisterCustomServises

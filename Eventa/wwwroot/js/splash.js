@@ -1,40 +1,29 @@
-// Splash Screen Handler - RADICAL: fast, aggressive, guaranteed to disappear
+// Splash Screen Handler - يحترم window.SPLASH_DURATION_MS لو متعين من _SplashLoader
 (function () {
     var splash = document.getElementById('splashScreen');
     if (!splash) return;
 
+    // لو السبلاش بيحتاج تفاعل (RequiresInteraction)، خلّيه - الـ _SplashLoader هيتعامل معاه
+    if (splash.dataset.requiresInteraction === 'true') return;
+
     var alreadyHidden = false;
+    var durationMs = (typeof window.SPLASH_DURATION_MS === 'number' && window.SPLASH_DURATION_MS > 0)
+        ? window.SPLASH_DURATION_MS
+        : 3000;
 
     function hideSplash() {
         if (alreadyHidden) return;
         alreadyHidden = true;
-
-        // Hide splash with transition
-        splash.style.transition = 'opacity 0.5s ease';
+        splash.style.transition = 'opacity 0.6s ease';
         splash.style.opacity = '0';
         splash.classList.add('hidden');
-
         setTimeout(function () {
             splash.style.display = 'none';
             splash.style.pointerEvents = 'none';
             splash.style.zIndex = '-1';
-        }, 600);
+        }, 700);
     }
 
-    // Hide splash when page is fully loaded (fastest trigger)
-    window.addEventListener('load', function () {
-        setTimeout(hideSplash, 800);
-    });
-
-    // If DOM is already loaded (script loaded late), hide immediately
-    if (document.readyState === 'complete') {
-        setTimeout(hideSplash, 200);
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        setTimeout(hideSplash, 1500);
-    });
-
-    // Fallback: hide after 3 seconds max regardless of anything
-    setTimeout(hideSplash, 3000);
+    // اخفي بعد المدة المحددة من السبلاش تيمبلت (مش 3 ثواني hardcoded)
+    setTimeout(hideSplash, durationMs);
 })();

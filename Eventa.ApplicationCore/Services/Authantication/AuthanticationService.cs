@@ -93,10 +93,12 @@ namespace Eventa.ApplicationCore.Services.Authantication
                 return SignInResult.Failed;
             }
 
+            // دائماً isPersistent: true - السيشن متفصلش بقفل المتصفح
+            // المستخدم لازم يضغط "تسجيل خروج" بنفسه عشان يطلع
             return await _signInManager.PasswordSignInAsync(
                 user,
                 model.Password,
-                model.RememberMe,
+                isPersistent: true,
                 lockoutOnFailure: false);
         }
 

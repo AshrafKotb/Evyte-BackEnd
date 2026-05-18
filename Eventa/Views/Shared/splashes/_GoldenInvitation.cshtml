@@ -1,6 +1,5 @@
 @*
-    سبلاش "تم استلام دعوة زفاف" بحلية ذهبية ومونوجرام في الوسط.
-    Inspired by professional wedding invite intros (tap to open style).
+    Premium golden invitation card with ornamental frame, shimmer, and tap-to-open interaction.
     PartialName: GoldenInvitation
 *@
 @model Request
@@ -10,17 +9,41 @@
     var brideInitial = !string.IsNullOrEmpty(rd?.BrideName) ? rd.BrideName.Trim()[0].ToString().ToUpper() : "B";
 }
 <div class="splash-screen splash-golden" id="splashScreen">
+    <div class="splash-golden__bokeh"></div>
+    <div class="splash-golden__bokeh splash-golden__bokeh--2"></div>
+    <div class="splash-golden__hearts">
+        @for (int i = 0; i < 12; i++)
+        {
+            <span class="splash-golden__heart" style="--x:@(8 + i * 7)%; --d:@(i * 0.5)s; --s:@(0.6 + (i % 4) * 0.2);">♥</span>
+        }
+    </div>
+
     <div class="splash-golden__content">
-        <div class="splash-golden__top-text">YOU HAVE RECEIVED A WEDDING</div>
-        <div class="splash-golden__top-text">INVITATION</div>
+        <div class="splash-golden__top">
+            <span class="splash-golden__line"></span>
+            <span class="splash-golden__top-text">YOU HAVE RECEIVED</span>
+            <span class="splash-golden__line"></span>
+        </div>
+        <div class="splash-golden__top-text splash-golden__top-text--big">A WEDDING INVITATION</div>
 
         <div class="splash-golden__monogram">
-            <div class="splash-golden__monogram-ring"></div>
-            <div class="splash-golden__monogram-ring splash-golden__monogram-ring--inner"></div>
-            <div class="splash-golden__monogram-text">
-                <span>@groomInitial</span>
-                <span class="splash-golden__amp">&amp;</span>
-                <span>@brideInitial</span>
+            <svg class="splash-golden__ring" viewBox="0 0 200 200" aria-hidden="true">
+                <circle cx="100" cy="100" r="92" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="3 6" />
+                <defs>
+                    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#f3d69b"/>
+                        <stop offset="50%" stop-color="#d4a574"/>
+                        <stop offset="100%" stop-color="#8a6840"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <div class="splash-golden__disc">
+                <div class="splash-golden__shimmer"></div>
+                <div class="splash-golden__monogram-text">
+                    <span class="splash-golden__letter">@groomInitial</span>
+                    <span class="splash-golden__amp">&amp;</span>
+                    <span class="splash-golden__letter">@brideInitial</span>
+                </div>
             </div>
             <div class="splash-golden__corner splash-golden__corner--tl"></div>
             <div class="splash-golden__corner splash-golden__corner--tr"></div>
@@ -28,97 +51,184 @@
             <div class="splash-golden__corner splash-golden__corner--br"></div>
         </div>
 
-        <div class="splash-golden__bottom-text">— tap to open —</div>
+        @if (rd != null)
+        {
+            <div class="splash-golden__names">@rd.GroomName &amp; @rd.BrideName</div>
+        }
+
+        <div class="splash-golden__bottom">
+            <span class="splash-golden__pulse"></span>
+            <span class="splash-golden__cta">— TAP TO OPEN —</span>
+            <span class="splash-golden__pulse"></span>
+        </div>
     </div>
 </div>
 
 <style>
     .splash-golden {
-        background: linear-gradient(180deg, #f7f0e3 0%, #ece1c8 100%);
+        background:
+            radial-gradient(ellipse at center, #f9f0d8 0%, #ece1c8 55%, #ddc9a6 100%);
         cursor: pointer;
         animation: none !important;
+        overflow: hidden;
+    }
+    .splash-golden__bokeh {
+        position: absolute;
+        width: 600px; height: 600px;
+        background: radial-gradient(circle, rgba(212,165,116,0.35) 0%, transparent 60%);
+        border-radius: 50%;
+        filter: blur(40px);
+        top: -200px; left: -200px;
+        animation: spgBokeh 14s ease-in-out infinite alternate;
+    }
+    .splash-golden__bokeh--2 {
+        background: radial-gradient(circle, rgba(15,58,50,0.25) 0%, transparent 60%);
+        top: auto; left: auto; bottom: -250px; right: -200px;
+        animation-duration: 18s; animation-delay: -4s;
+    }
+    @@keyframes spgBokeh {
+        0% { transform: translate(0,0) scale(1); }
+        100% { transform: translate(80px,60px) scale(1.15); }
+    }
+    .splash-golden__hearts { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+    .splash-golden__heart {
+        position: absolute;
+        bottom: -5%; left: var(--x);
+        color: #d4a574;
+        font-size: 1rem;
+        opacity: 0;
+        transform: scale(var(--s));
+        text-shadow: 0 0 8px rgba(212,165,116,0.6);
+        animation: spgHeartFloat 10s linear infinite var(--d);
+    }
+    @@keyframes spgHeartFloat {
+        0% { transform: translateY(0) scale(var(--s)) rotate(0); opacity: 0; }
+        10% { opacity: 0.7; }
+        50% { transform: translateY(-50vh) scale(calc(var(--s) * 1.1)) rotate(180deg); opacity: 0.9; }
+        90% { opacity: 0.5; }
+        100% { transform: translateY(-110vh) scale(calc(var(--s) * 0.5)) rotate(360deg); opacity: 0; }
     }
     .splash-golden__content {
         text-align: center;
-        color: #5a4a2a;
-        padding: 40px;
-        animation: splashGoldenFadeIn 1.2s ease;
+        color: #4a3a1f;
+        padding: 40px 24px;
+        position: relative;
+        z-index: 2;
+        animation: spgFadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .splash-golden__top {
+        display: flex; align-items: center; gap: 14px; justify-content: center;
+        opacity: 0; animation: spgFadeUp 1s ease forwards 0.3s;
+    }
+    .splash-golden__line {
+        width: 40px; height: 1px;
+        background: linear-gradient(90deg, transparent, #b88a55, transparent);
     }
     .splash-golden__top-text {
-        font-family: 'Playfair Display', 'Cairo', serif;
-        font-size: 1rem;
-        letter-spacing: 0.4em;
+        font-family: 'Playfair Display', serif;
+        font-size: 0.85rem;
+        letter-spacing: 0.45em;
         font-weight: 300;
-        line-height: 1.8;
-        opacity: 0.85;
+        color: #8a6840;
+    }
+    .splash-golden__top-text--big {
+        display: block; margin-top: 8px;
+        letter-spacing: 0.55em; font-weight: 400;
+        opacity: 0; animation: spgFadeUp 1s ease forwards 0.55s;
     }
     .splash-golden__monogram {
         position: relative;
-        width: 220px;
-        height: 220px;
-        margin: 60px auto;
-        background: #0f3a32;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.18), inset 0 0 0 8px #0f3a32;
+        width: 240px; height: 240px;
+        margin: 48px auto;
+        opacity: 0;
+        animation: spgMonogramIn 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.8s;
     }
-    .splash-golden__monogram-ring {
-        position: absolute;
-        inset: 12px;
-        border: 1px solid rgba(212, 165, 116, 0.6);
-        border-radius: 50%;
-        animation: splashGoldenRing 8s linear infinite;
+    .splash-golden__ring {
+        position: absolute; inset: 0;
+        animation: spgSpin 30s linear infinite;
     }
-    .splash-golden__monogram-ring--inner {
-        inset: 24px;
-        border-style: dashed;
-        opacity: 0.4;
-        animation-duration: 14s;
-        animation-direction: reverse;
+    .splash-golden__disc {
+        position: absolute; inset: 22px;
+        background:
+            radial-gradient(ellipse at 30% 30%, #1c4a3f 0%, #0f3a32 70%);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow:
+            inset 0 0 0 6px #0f3a32,
+            inset 0 0 0 8px rgba(212,165,116,0.6),
+            0 30px 60px rgba(15, 58, 50, 0.4),
+            0 0 80px rgba(212,165,116,0.2);
+        overflow: hidden;
+    }
+    .splash-golden__shimmer {
+        position: absolute; inset: 0;
+        background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
+        animation: spgShimmer 4s ease-in-out infinite;
     }
     .splash-golden__monogram-text {
         font-family: 'Playfair Display', serif;
-        color: #d4a574;
-        font-size: 3rem;
+        color: #f3d69b;
+        font-size: 3.2rem;
         font-style: italic;
-        display: flex;
-        align-items: center;
-        gap: 6px;
+        display: flex; align-items: center; gap: 8px;
         z-index: 2;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .splash-golden__letter {
+        background: linear-gradient(135deg, #f3d69b 0%, #d4a574 50%, #f3d69b 100%);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
     .splash-golden__amp {
-        font-size: 1.6rem;
-        opacity: 0.9;
+        font-size: 1.6rem; opacity: 0.9; color: #d4a574;
+        -webkit-text-fill-color: #d4a574;
     }
     .splash-golden__corner {
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        border: 2px solid #d4a574;
+        position: absolute; width: 22px; height: 22px;
+        border: 2px solid #b88a55;
+        opacity: 0; animation: spgFadeIn 0.6s ease forwards 1.6s;
     }
-    .splash-golden__corner--tl { top: -4px; left: -4px; border-right: none; border-bottom: none; }
-    .splash-golden__corner--tr { top: -4px; right: -4px; border-left: none; border-bottom: none; }
-    .splash-golden__corner--bl { bottom: -4px; left: -4px; border-right: none; border-top: none; }
-    .splash-golden__corner--br { bottom: -4px; right: -4px; border-left: none; border-top: none; }
-    .splash-golden__bottom-text {
+    .splash-golden__corner--tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+    .splash-golden__corner--tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+    .splash-golden__corner--bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+    .splash-golden__corner--br { bottom: 0; right: 0; border-left: none; border-top: none; }
+    .splash-golden__names {
         font-family: 'Playfair Display', serif;
         font-style: italic;
-        font-size: 1rem;
-        opacity: 0.6;
-        animation: splashGoldenPulse 2s ease-in-out infinite;
+        font-size: 1.3rem;
+        color: #5a4a2a;
+        margin-top: 14px;
+        opacity: 0; animation: spgFadeUp 1s ease forwards 1.8s;
+        letter-spacing: 0.05em;
     }
-    @@keyframes splashGoldenFadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
+    .splash-golden__bottom {
+        margin-top: 40px;
+        display: flex; align-items: center; justify-content: center; gap: 12px;
+        opacity: 0; animation: spgFadeUp 1s ease forwards 2.2s;
     }
-    @@keyframes splashGoldenRing {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+    .splash-golden__cta {
+        font-family: 'Playfair Display', serif;
+        font-style: italic; font-size: 0.95rem;
+        color: #8a6840;
+        letter-spacing: 0.3em;
     }
-    @@keyframes splashGoldenPulse {
-        0%, 100% { opacity: 0.6; }
-        50% { opacity: 1; }
+    .splash-golden__pulse {
+        width: 6px; height: 6px; border-radius: 50%; background: #d4a574;
+        animation: spgPulse 1.8s ease-in-out infinite;
+        box-shadow: 0 0 12px #d4a574;
+    }
+    .splash-golden__pulse:last-child { animation-delay: 0.6s; }
+
+    @@keyframes spgFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @@keyframes spgFadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    @@keyframes spgMonogramIn { 0% { opacity: 0; transform: scale(0.6) rotate(-20deg); } 100% { opacity: 1; transform: scale(1) rotate(0); } }
+    @@keyframes spgSpin { to { transform: rotate(360deg); } }
+    @@keyframes spgShimmer { 0%, 100% { transform: translateX(-100%); } 50% { transform: translateX(100%); } }
+    @@keyframes spgPulse { 0%, 100% { opacity: 0.4; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.4); } }
+
+    @@media (max-width: 480px) {
+        .splash-golden__monogram { width: 200px; height: 200px; margin: 36px auto; }
+        .splash-golden__monogram-text { font-size: 2.6rem; }
+        .splash-golden__top-text { font-size: 0.75rem; letter-spacing: 0.35em; }
     }
 </style>

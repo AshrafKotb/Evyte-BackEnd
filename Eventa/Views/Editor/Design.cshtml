@@ -17,7 +17,9 @@
     <base href="/">
     <title>Live Editor - @designName</title>
     <link rel="shortcut icon" type="image/png" href="~/logo/yellow.png">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!-- Font Awesome - استخدم النسخة 6.4.0 المستقرة من cdnjs، مع backup من use.fontawesome.com -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"
+          onerror="this.onerror=null; this.href='https://use.fontawesome.com/releases/v6.4.0/css/all.css';">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="~/css/editor.css?v=@DateTime.Now.Ticks" rel="stylesheet">
 </head>
@@ -30,11 +32,11 @@
         </div>
         <div class="toolbar-left">
             <button class="toolbar-btn btn-preview" id="btnPreview" title="معاينة">
-                <i class="fas fa-eye"></i>
+                <span class="emoji-icon">👁</span>
                 <span>معاينة</span>
             </button>
             <button class="toolbar-btn btn-submit" id="btnSubmit" title="إرسال">
-                <i class="fas fa-paper-plane"></i>
+                <span class="emoji-icon">📨</span>
                 <span>إرسال الطلب</span>
             </button>
         </div>
@@ -48,9 +50,9 @@
                 <!-- Section 1: Couple -->
                 <div class="panel-section" data-section="couple">
                     <div class="panel-section-header" data-toggle="couple">
-                        <i class="fas fa-heart"></i>
+                        <span class="emoji-icon">💑</span>
                         <span>العروسين</span>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
+                        <span class="toggle-icon emoji-icon">⌄</span>
                     </div>
                     <div class="panel-section-body" id="section-couple">
                         <div class="form-group">
@@ -66,7 +68,7 @@
                             <div class="image-upload-area" data-target="GroomImage">
                                 <img src="" alt="" class="upload-preview" style="display:none;">
                                 <div class="upload-placeholder">
-                                    <i class="fas fa-cloud-arrow-up"></i>
+                                    <span class="emoji-icon">📤</span>
                                     <span>اضغط لرفع صورة</span>
                                 </div>
                                 <input type="file" accept="image/*" class="file-input" style="display:none;">
@@ -77,7 +79,7 @@
                             <div class="image-upload-area" data-target="BrideImage">
                                 <img src="" alt="" class="upload-preview" style="display:none;">
                                 <div class="upload-placeholder">
-                                    <i class="fas fa-cloud-arrow-up"></i>
+                                    <span class="emoji-icon">📤</span>
                                     <span>اضغط لرفع صورة</span>
                                 </div>
                                 <input type="file" accept="image/*" class="file-input" style="display:none;">
@@ -85,21 +87,21 @@
                         </div>
                         <div class="form-group-row">
                             <div class="form-group">
-                                <label><i class="fab fa-facebook"></i> فيسبوك العريس</label>
+                                <label><span class="emoji-icon">📘</span> فيسبوك العريس</label>
                                 <input type="url" class="editor-input" data-target="GroomFacebook" placeholder="رابط فيسبوك">
                             </div>
                             <div class="form-group">
-                                <label><i class="fab fa-instagram"></i> انستجرام العريس</label>
+                                <label><span class="emoji-icon">📷</span> انستجرام العريس</label>
                                 <input type="url" class="editor-input" data-target="GroomInstagram" placeholder="رابط انستجرام">
                             </div>
                         </div>
                         <div class="form-group-row">
                             <div class="form-group">
-                                <label><i class="fab fa-facebook"></i> فيسبوك العروسة</label>
+                                <label><span class="emoji-icon">📘</span> فيسبوك العروسة</label>
                                 <input type="url" class="editor-input" data-target="BrideFacebook" placeholder="رابط فيسبوك">
                             </div>
                             <div class="form-group">
-                                <label><i class="fab fa-instagram"></i> انستجرام العروسة</label>
+                                <label><span class="emoji-icon">📷</span> انستجرام العروسة</label>
                                 <input type="url" class="editor-input" data-target="BrideInstagram" placeholder="رابط انستجرام">
                             </div>
                         </div>
@@ -109,9 +111,9 @@
                 <!-- Section 2: Main Image -->
                 <div class="panel-section" data-section="mainimage">
                     <div class="panel-section-header" data-toggle="mainimage">
-                        <i class="fas fa-image"></i>
+                        <span class="emoji-icon">🖼️</span>
                         <span>الصورة الرئيسية</span>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
+                        <span class="toggle-icon emoji-icon">⌄</span>
                     </div>
                     <div class="panel-section-body" id="section-mainimage">
                         <div class="form-group">
@@ -119,7 +121,7 @@
                             <div class="image-upload-area" data-target="MainSliderImage">
                                 <img src="" alt="" class="upload-preview" style="display:none;">
                                 <div class="upload-placeholder">
-                                    <i class="fas fa-cloud-arrow-up"></i>
+                                    <span class="emoji-icon">📤</span>
                                     <span>اضغط لرفع صورة</span>
                                 </div>
                                 <input type="file" accept="image/*" class="file-input" style="display:none;">
@@ -131,9 +133,9 @@
                 <!-- Section 3: Event Details -->
                 <div class="panel-section" data-section="event">
                     <div class="panel-section-header" data-toggle="event">
-                        <i class="fas fa-calendar-days"></i>
+                        <span class="emoji-icon">📅</span>
                         <span>تفاصيل الحدث</span>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
+                        <span class="toggle-icon emoji-icon">⌄</span>
                     </div>
                     <div class="panel-section-body" id="section-event">
                         <div class="form-group">
@@ -167,7 +169,7 @@
                             <div class="image-upload-area" data-target="EventPlaceImage">
                                 <img src="" alt="" class="upload-preview" style="display:none;">
                                 <div class="upload-placeholder">
-                                    <i class="fas fa-cloud-arrow-up"></i>
+                                    <span class="emoji-icon">📤</span>
                                     <span>اضغط لرفع صورة</span>
                                 </div>
                                 <input type="file" accept="image/*" class="file-input" style="display:none;">
@@ -179,20 +181,20 @@
                 <!-- Section 4: Gallery -->
                 <div class="panel-section" data-section="gallery">
                     <div class="panel-section-header" data-toggle="gallery">
-                        <i class="fas fa-images"></i>
+                        <span class="emoji-icon">📸</span>
                         <span>معرض الصور</span>
                         <div class="section-toggle-switch">
                             <input type="checkbox" id="toggleGallery" class="section-toggle" checked>
                             <label for="toggleGallery"></label>
                         </div>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
+                        <span class="toggle-icon emoji-icon">⌄</span>
                     </div>
                     <div class="panel-section-body" id="section-gallery">
                         <div class="gallery-upload-grid" id="galleryGrid">
                             <!-- Gallery items will be added here dynamically -->
                         </div>
                         <button class="btn-add-item" id="btnAddGalleryPhoto">
-                            <i class="fas fa-plus"></i> أضف صورة (حتى 10)
+                            <span class="emoji-icon">➕</span> أضف صورة (حتى 10)
                         </button>
                         <input type="file" accept="image/*" id="galleryFileInput" style="display:none;" multiple>
                     </div>
@@ -201,20 +203,20 @@
                 <!-- Section 5: Memories -->
                 <div class="panel-section" data-section="memories">
                     <div class="panel-section-header" data-toggle="memories">
-                        <i class="fas fa-book-open"></i>
+                        <span class="emoji-icon">📖</span>
                         <span>الذكريات</span>
                         <div class="section-toggle-switch">
                             <input type="checkbox" id="toggleMemories" class="section-toggle" checked>
                             <label for="toggleMemories"></label>
                         </div>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
+                        <span class="toggle-icon emoji-icon">⌄</span>
                     </div>
                     <div class="panel-section-body" id="section-memories">
                         <div id="memoriesList">
                             <!-- Memory items will be added here dynamically -->
                         </div>
                         <button class="btn-add-item" id="btnAddMemory">
-                            <i class="fas fa-plus"></i> أضف ذكرى (حتى 5)
+                            <span class="emoji-icon">➕</span> أضف ذكرى (حتى 5)
                         </button>
                     </div>
                 </div>
@@ -222,20 +224,20 @@
                 <!-- Section 6: Dedications -->
                 <div class="panel-section" data-section="dedications">
                     <div class="panel-section-header" data-toggle="dedications">
-                        <i class="fas fa-quote-right"></i>
+                        <span class="emoji-icon">💬</span>
                         <span>الإهداءات</span>
                         <div class="section-toggle-switch">
                             <input type="checkbox" id="toggleDedications" class="section-toggle" checked>
                             <label for="toggleDedications"></label>
                         </div>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
+                        <span class="toggle-icon emoji-icon">⌄</span>
                     </div>
                     <div class="panel-section-body" id="section-dedications">
                         <div id="dedicationsList">
                             <!-- Dedication items will be added here dynamically -->
                         </div>
                         <button class="btn-add-item" id="btnAddDedication">
-                            <i class="fas fa-plus"></i> أضف إهداء
+                            <span class="emoji-icon">➕</span> أضف إهداء
                         </button>
                     </div>
                 </div>
@@ -243,25 +245,25 @@
                 <!-- Section 7: Audio -->
                 <div class="panel-section" data-section="audio">
                     <div class="panel-section-header" data-toggle="audio">
-                        <i class="fas fa-music"></i>
+                        <span class="emoji-icon">🎵</span>
                         <span>الموسيقى</span>
                         <div class="section-toggle-switch">
                             <input type="checkbox" id="toggleAudio" class="section-toggle">
                             <label for="toggleAudio"></label>
                         </div>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
+                        <span class="toggle-icon emoji-icon">⌄</span>
                     </div>
                     <div class="panel-section-body" id="section-audio">
                         <div class="form-group">
                             <label>ملف صوتي</label>
                             <div class="audio-upload-area" id="audioUploadArea">
-                                <i class="fas fa-cloud-arrow-up"></i>
+                                <span class="emoji-icon">📤</span>
                                 <span>اضغط لرفع ملف صوتي</span>
                                 <input type="file" accept="audio/*" id="audioFileInput" style="display:none;">
                             </div>
                             <div class="audio-preview" id="audioPreview" style="display:none;">
                                 <span id="audioFileName"></span>
-                                <button class="btn-remove-audio" id="btnRemoveAudio"><i class="fas fa-times"></i></button>
+                                <button class="btn-remove-audio" id="btnRemoveAudio"><span class="emoji-icon">✕</span></button>
                             </div>
                         </div>
                         <div class="form-group">
@@ -279,9 +281,9 @@
                 <!-- Section 8: Custom Content -->
                 <div class="panel-section" data-section="custom">
                     <div class="panel-section-header" data-toggle="custom">
-                        <i class="fas fa-paint-brush"></i>
+                        <span class="emoji-icon">🎨</span>
                         <span>تخصيص</span>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
+                        <span class="toggle-icon emoji-icon">⌄</span>
                     </div>
                     <div class="panel-section-body" id="section-custom">
                         <div class="form-group">
@@ -332,7 +334,7 @@
                         @if (splashTemplates.Any())
                         {
                             <div class="form-group">
-                                <label><i class="fas fa-magic"></i> شاشة الافتتاح (Splash)</label>
+                                <label>✨ شاشة الافتتاح (Splash)</label>
                                 <p class="editor-hint" style="font-size:0.8rem; opacity:0.75; margin: 4px 0 8px;">
                                     اختر الأنيميشن اللي يظهر للضيوف قبل ما الدعوة تتفتح.
                                 </p>
@@ -340,30 +342,25 @@
                                     @foreach (var sp in splashTemplates)
                                     {
                                         var isSelected = defaultSplash != null && sp.Id == defaultSplash.Id;
-                                        <div class="splash-lib-item @(isSelected ? "selected" : "")" data-id="@sp.Id" data-name-ar="@sp.NameAr">
-                                            <button type="button" class="splash-preview-btn" data-splash-id="@sp.Id" title="معاينة">
-                                                <i class="fas fa-play"></i>
-                                            </button>
+                                        <div class="splash-lib-item @(isSelected ? "selected" : "")" data-id="@sp.Id" data-partial="@sp.PartialName" data-name-ar="@sp.NameAr" data-duration="@sp.DurationMs">
                                             @if (!string.IsNullOrEmpty(sp.ThumbnailUrl))
                                             {
                                                 <img src="@sp.ThumbnailUrl" alt="@sp.NameAr" class="splash-lib-thumb">
                                             }
                                             else
                                             {
-                                                <div class="splash-lib-thumb splash-lib-thumb--placeholder">
-                                                    <i class="fas fa-magic"></i>
-                                                </div>
+                                                <div class="splash-lib-thumb splash-lib-thumb--placeholder">✨</div>
                                             }
                                             <div class="splash-lib-meta">
                                                 <span class="splash-lib-name">@sp.NameAr</span>
                                                 <span class="splash-lib-badges">
                                                     @if (sp.IsDefault)
                                                     {
-                                                        <span class="splash-lib-badge splash-lib-badge--default"><i class="fas fa-star"></i></span>
+                                                        <span class="splash-lib-badge splash-lib-badge--default" title="افتراضي">★</span>
                                                     }
                                                     @if (sp.RequiresInteraction)
                                                     {
-                                                        <span class="splash-lib-badge splash-lib-badge--interactive" title="بتفاعل"><i class="fas fa-hand-pointer"></i></span>
+                                                        <span class="splash-lib-badge splash-lib-badge--interactive" title="بتفاعل">☝</span>
                                                     }
                                                 </span>
                                             </div>
@@ -379,13 +376,13 @@
 
         <!-- Mobile Panel Toggle (legacy - hidden on new mobile layout) -->
         <div class="mobile-panel-toggle" id="mobilePanelToggle">
-            <i class="fas fa-chevron-up"></i>
+            <span class="emoji-icon">⌃</span>
             <span>لوحة التحرير</span>
         </div>
 
         <!-- Mobile Floating Preview/Edit Button -->
         <button class="mobile-preview-fab" id="mobilePreviewFab">
-            <i class="fas fa-eye"></i>
+            <span class="emoji-icon">👁</span>
             <span>معاينة الدعوة</span>
         </button>
 
@@ -399,12 +396,17 @@
         </div>
     </div>
 
+    <!-- Splash Play Overlay - يلعب السبلاش fullscreen بعد ما المستخدم يختاره -->
+    <div id="splashPlayOverlay" style="position:fixed;inset:0;z-index:999999;display:none;background:#000;">
+        <div id="splashPlayHost" style="width:100%;height:100%;position:relative;"></div>
+    </div>
+
     <!-- Contact Info Modal (shown on Submit) -->
     <div class="modal-overlay" id="contactModal" style="display:none;">
         <div class="modal-content">
             <div class="modal-header">
-                <h3><i class="fas fa-user"></i> بيانات التواصل</h3>
-                <button class="modal-close" id="closeContactModal"><i class="fas fa-times"></i></button>
+                <h3><span class="emoji-icon">👤</span> بيانات التواصل</h3>
+                <button class="modal-close" id="closeContactModal"><span class="emoji-icon">✕</span></button>
             </div>
             <div class="modal-body">
                 <p class="modal-desc">أدخل بياناتك حتى نتمكن من التواصل معك</p>
@@ -427,7 +429,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn-modal-submit" id="btnConfirmSubmit">
-                    <i class="fas fa-paper-plane"></i> إرسال الطلب
+                    <span class="emoji-icon">📨</span> إرسال الطلب
                 </button>
             </div>
         </div>
@@ -437,7 +439,7 @@
     <div class="modal-overlay" id="successModal" style="display:none;">
         <div class="modal-content success-modal">
             <div class="success-icon">
-                <i class="fas fa-check-circle"></i>
+                <span class="emoji-icon">✅</span>
             </div>
             <h3>تم إرسال طلبك بنجاح!</h3>
             <p>سيتم مراجعة طلبك والموافقة عليه قريباً. ستتلقى إشعاراً عند الموافقة.</p>
@@ -450,7 +452,7 @@
     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay" style="display:none;">
         <div class="loading-spinner">
-            <i class="fas fa-spinner fa-spin"></i>
+            <span class="emoji-icon emoji-spin">⏳</span>
             <p>جاري الإرسال...</p>
         </div>
     </div>

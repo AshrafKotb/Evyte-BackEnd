@@ -1,0 +1,59 @@
+@{
+    Layout = null;
+    var partialName = ViewBag.PartialName as string ?? "EventaDefault";
+    var durationMs = ViewBag.DurationMs as int? ?? 4000;
+    var groomName = ViewBag.GroomName as string ?? "محمد";
+    var brideName = ViewBag.BrideName as string ?? "سارة";
+
+    // ابنِ placeholder Request للـ partial
+    var placeholder = new Eventa.Domain.Entities.Request
+    {
+        RequestData = new Eventa.Domain.Entities.RequestData
+        {
+            GroomName = groomName,
+            BrideName = brideName,
+            EventDate = DateTime.Now.AddMonths(3),
+            EventPlaceName = "—",
+            EventAddress = "—"
+        }
+    };
+
+    // المسار المطلق للـ partial - مفيش غموض هنا
+    var absolutePartialPath = $"~/Views/Shared/splashes/_{partialName}.cshtml";
+}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Splash: @partialName</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="~/css/splash-screen.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; background: #0a0a14; overflow: hidden; height: 100vh; }
+        /* ضمان إن الـ splash يأخذ كل الشاشة */
+        .splash-screen { position: fixed !important; inset: 0; }
+    </style>
+</head>
+<body>
+    @* رندر الـ partial مباشرة بالـ absolute path *@
+    @await Html.PartialAsync(absolutePartialPath, placeholder)
+
+    <script>
+        // معلومات للديباج في الـ console
+        console.log('[SplashPlay] Loaded partial: _@(partialName).cshtml | duration: @durationMs ms | query:', window.location.search);
+        // العنوان للتأكد إن الصفحة الصح اتحملت
+        document.title = 'Splash: @partialName';
+
+        // إخفاء تلقائي بعد المدة
+        var DURATION = @durationMs;
+        setTimeout(function () {
+            var s = document.getElementById('splashScreen');
+            if (!s) return;
+            s.style.transition = 'opacity 0.5s ease';
+            s.style.opacity = '0';
+        }, DURATION);
+    </script>
+</body>
+</html>

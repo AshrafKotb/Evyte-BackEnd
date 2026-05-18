@@ -1,9 +1,12 @@
 using Eventa.ApplicationCore.Services.Files;
 using Eventa.ApplicationCore.Services.Repository;
 using Eventa.Domain.Entities;
+using Eventa.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Eventa.ApplicationCore.Services.Mailing;
 using Eventa.Domain.Enums;
@@ -16,15 +19,45 @@ namespace Eventa.Web.Controllers
         private readonly IRequestRepository _requestRepository;
         private readonly IFileService _fileService;
         private readonly IMailingService _mailingService;
+        private readonly ApplicationDbContext _dbContext;
 
         public RequestsController(
             IRequestRepository requestRepository,
             IFileService fileService,
-            IMailingService mailingService)
+            IMailingService mailingService,
+            ApplicationDbContext dbContext)
         {
             _requestRepository = requestRepository;
             _fileService = fileService;
             _mailingService = mailingService;
+            _dbContext = dbContext;
+        }
+
+        // POST: حذف كل الطلبات الفاضية (Pending) - بيانات بدون GroomName أو BrideName
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteEmpty()
+        {
+            var emptyRequests = await _dbContext.Requests
+                .Include(r => r.RequestData)
+                .Where(r => !r.IsDeleted
+                    && r.Status == InvitationStatus.Pending
+                    && (r.RequestData == null
+                        || string.IsNullOrEmpty(r.RequestData.GroomName)
+                        || string.IsNullOrEmpty(r.RequestData.BrideName)))
+                .ToListAsync();
+
+            int count = emptyRequests.Count;
+            foreach (var req in emptyRequests)
+            {
+                req.IsDeleted = true;
+                req.DeletedDate = DateTime.UtcNow;
+            }
+
+            await _dbContext.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = $"تم حذف {count} طلب فاضي بنجاح";
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Requests

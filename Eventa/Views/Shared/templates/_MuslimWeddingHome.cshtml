@@ -36,6 +36,7 @@
     <link href="~/assets/css/jquery-ui.css" rel="stylesheet">
     <link href="~/assets/sass/style.css" rel="stylesheet">
     <link href="~/css/splash-screen.css" rel="stylesheet">
+    <link href="~/css/template-animations.css" rel="stylesheet">
     <link href="~/css/location-section-enhanced.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -55,8 +56,8 @@
                         <div class="row align-items-center">
                             <div class="col col-xl-4 col-lg-4 col-12 layer" data-depth="0.10">
                                 <div class="wpo-hero-img">
-                                    <img src="@Model.RequestData.BrideImageUrl" alt="">
-                                    <h3>@Model.RequestData.BrideName</h3>
+                                    <img data-editor-field="BrideImage" data-editor-type="image" src="@Model.RequestData.BrideImageUrl" alt="">
+                                    <h3 data-editor-field="BrideName" data-editor-type="text">@Model.RequestData.BrideName</h3>
                                 </div>
                             </div>
                             <div class="col col-xl-4 col-lg-4 col-12">
@@ -66,7 +67,7 @@
                                     </div>
                                     <div data-swiper-parallax="400" class="slide-text wow fadeInDown"
                                          data-wow-duration="1600ms">
-                                        <p>We Are Getting Married @Model.RequestData.EventDate.ToString("dd MMMM yyyy", culture)</p>
+                                        <p>We Are Getting Married <span data-editor-field="EventDate" data-editor-type="date">@Model.RequestData.EventDate.ToString("dd MMMM yyyy", culture)</span></p>
                                     </div>
                                     <div data-swiper-parallax="400" class="slide-flower">
                                         <img src="~/assets/images/slider/rose.svg" alt="">
@@ -76,8 +77,8 @@
                             </div>
                             <div class="col col-xl-4 col-lg-4 col-12 layer" data-depth="0.15">
                                 <div class="wpo-hero-img">
-                                    <img src="@Model.RequestData.GroomImageUrl" alt="">
-                                    <h3>@Model.RequestData.GroomName</h3>
+                                    <img data-editor-field="GroomImage" data-editor-type="image" src="@Model.RequestData.GroomImageUrl" alt="">
+                                    <h3 data-editor-field="GroomName" data-editor-type="text">@Model.RequestData.GroomName</h3>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +108,7 @@
                     <div class="row align-items-center">
                         <div class="col col-xl-3 col-lg-4 col-12">
                             <div class="text-grid wow fadeInLeftSlow" data-wow-duration="800ms">
-                                <h3>@Model.RequestData.BrideName</h3>
+                                <h3 data-editor-field="BrideName" data-editor-type="text">@Model.RequestData.BrideName</h3>
                                 <div class="social">
                                     <ul>
                                         @if (!string.IsNullOrEmpty(Model.RequestData.BrideFacebook))
@@ -130,7 +131,7 @@
                             <div class="middle-couple-pic-wrap">
                                 <div class="middle-couple-pic wow zoomIn" data-wow-duration="1000ms">
                                     <div class="middle-couple-pic-inner">
-                                        <img src="@Model.RequestData.MainSliderImageUrl" alt="">
+                                        <img data-editor-field="MainSliderImage" data-editor-type="image" src="@Model.RequestData.MainSliderImageUrl" alt="">
                                     </div>
                                 </div>
                                 <div class="couple-shape">
@@ -140,7 +141,7 @@
                         </div>
                         <div class="col col-xl-3 col-lg-4 col-12">
                             <div class="text-grid wow fadeInRightSlow" data-wow-duration="800ms">
-                                <h3>@Model.RequestData.GroomName</h3>
+                                <h3 data-editor-field="GroomName" data-editor-type="text">@Model.RequestData.GroomName</h3>
                                 <div class="social">
                                     <ul>
                                         @if (!string.IsNullOrEmpty(Model.RequestData.GroomFacebook))
@@ -290,7 +291,7 @@
                         <div class="event-card-inner">
                             <!-- Image Section -->
                             <div class="event-image-wrapper">
-                                <img src="@Model.RequestData.EventPlaceImageUrl" alt="Event Venue">
+                                <img data-editor-field="EventPlaceImage" data-editor-type="image" src="@Model.RequestData.EventPlaceImageUrl" alt="Event Venue">
                                 <div class="event-image-badge">
                                     <i class="fa fa-heart"></i>
                                     <span>The Celebration</span>
@@ -324,7 +325,7 @@
                                         </div>
                                         <div class="event-info-content">
                                             <h4>Venue</h4>
-                                            <p>@Model.RequestData.EventPlaceName</p>
+                                            <p data-editor-field="EventPlaceName" data-editor-type="text">@Model.RequestData.EventPlaceName</p>
                                         </div>
                                     </li>
 
@@ -337,7 +338,7 @@
                                             </div>
                                             <div class="event-info-content">
                                                 <h4>Address</h4>
-                                                <p>@Model.RequestData.EventAddress</p>
+                                                <p data-editor-field="EventAddress" data-editor-type="text">@Model.RequestData.EventAddress</p>
                                             </div>
                                         </li>
                                     }

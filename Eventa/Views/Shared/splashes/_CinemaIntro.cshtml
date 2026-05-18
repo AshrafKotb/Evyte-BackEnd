@@ -1,5 +1,5 @@
 @*
-    سبلاش على طريقة افتتاحية الأفلام (Netflix-style "A LOVE STORY").
+    Cinematic intro with letterbox bars, lens flare, and dramatic title reveal.
     PartialName: CinemaIntro
 *@
 @model Request
@@ -8,16 +8,43 @@
     var names = !string.IsNullOrEmpty(rd?.GroomName) && !string.IsNullOrEmpty(rd?.BrideName)
         ? $"{rd.GroomName.ToUpper()} & {rd.BrideName.ToUpper()}"
         : "A WEDDING";
+    var year = (rd?.EventDate.Year ?? DateTime.Now.Year).ToString();
 }
 <div class="splash-screen splash-cinema" id="splashScreen">
+    <div class="splash-cinema__noise"></div>
     <div class="splash-cinema__bars splash-cinema__bars--top"></div>
     <div class="splash-cinema__bars splash-cinema__bars--bottom"></div>
 
+    <div class="splash-cinema__flare"></div>
+
+    <div class="splash-cinema__hearts">
+        @for (int i = 0; i < 9; i++)
+        {
+            <span class="splash-cinema__heart" style="--x:@(10 + i * 10)%; --d:@(i * 0.6)s; --s:@(0.5 + (i % 3) * 0.25);">♥</span>
+        }
+    </div>
+
     <div class="splash-cinema__content">
-        <div class="splash-cinema__presents">A LOVE STORY</div>
-        <div class="splash-cinema__title">@names</div>
-        <div class="splash-cinema__year">— @(rd?.EventDate.Year ?? DateTime.Now.Year) —</div>
-        <div class="splash-cinema__tagline">A Wedding Film</div>
+        <div class="splash-cinema__intro">
+            <span class="splash-cinema__brand">EVENTA</span>
+            <span class="splash-cinema__brand-tagline">PRESENTS</span>
+        </div>
+
+        <div class="splash-cinema__title-wrap">
+            <span class="splash-cinema__title-line splash-cinema__title-line--top"></span>
+            <h1 class="splash-cinema__title">@names</h1>
+            <span class="splash-cinema__title-line splash-cinema__title-line--bottom"></span>
+        </div>
+
+        <div class="splash-cinema__meta">
+            <span>@year</span>
+            <span class="splash-cinema__meta-dot"></span>
+            <span>A LOVE STORY</span>
+            <span class="splash-cinema__meta-dot"></span>
+            <span>RATED ❤︎</span>
+        </div>
+
+        <div class="splash-cinema__tagline">~ A Wedding Film ~</div>
     </div>
 </div>
 
@@ -27,79 +54,145 @@
         overflow: hidden;
         animation: none !important;
     }
+    .splash-cinema__noise {
+        position: absolute; inset: 0;
+        background-image:
+            radial-gradient(circle at 25% 25%, rgba(255,255,255,0.04) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, rgba(212,165,116,0.04) 0%, transparent 50%);
+        animation: spcineNoise 8s ease-in-out infinite;
+    }
+    @@keyframes spcineNoise {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.05); opacity: 0.7; }
+    }
+
     .splash-cinema__bars {
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: 12vh;
-        background: #000;
-        z-index: 2;
+        position: absolute; left: 0; right: 0;
+        height: 14vh; background: #000; z-index: 3;
+        box-shadow: 0 0 30px rgba(0,0,0,0.8);
     }
     .splash-cinema__bars--top {
-        top: -12vh;
-        animation: splashCinemaBarTop 1s ease forwards 0.3s;
+        top: -14vh;
+        animation: spcineBarTop 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.2s;
     }
     .splash-cinema__bars--bottom {
-        bottom: -12vh;
-        animation: splashCinemaBarBottom 1s ease forwards 0.3s;
+        bottom: -14vh;
+        animation: spcineBarBottom 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.2s;
     }
-    .splash-cinema__content {
-        text-align: center;
-        color: #fff;
-        z-index: 5;
-        position: relative;
-    }
-    .splash-cinema__presents {
-        font-family: 'Cairo', sans-serif;
-        font-size: 0.85rem;
-        letter-spacing: 0.7em;
-        color: rgba(255,255,255,0.6);
-        margin-bottom: 25px;
+    @@keyframes spcineBarTop { to { top: 0; } }
+    @@keyframes spcineBarBottom { to { bottom: 0; } }
+
+    .splash-cinema__flare {
+        position: absolute; top: 50%; left: 50%;
+        width: 800px; height: 800px;
+        background: radial-gradient(circle, rgba(212,165,116,0.15) 0%, transparent 50%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
         opacity: 0;
-        animation: splashCinemaFade 1s ease forwards 1.2s;
+        animation: spcineFlare 4s ease-in-out infinite 2s;
     }
+    @@keyframes spcineFlare {
+        0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    /* Cinematic hearts - subtle and elegant */
+    .splash-cinema__hearts { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+    .splash-cinema__heart {
+        position: absolute;
+        bottom: 14vh; left: var(--x);
+        color: rgba(212,165,116,0.55);
+        font-size: 1.1rem;
+        opacity: 0;
+        transform: scale(var(--s));
+        text-shadow: 0 0 10px rgba(212,165,116,0.8);
+        animation: spcineHeartRise 8s ease-in infinite var(--d);
+    }
+    @@keyframes spcineHeartRise {
+        0% { transform: translateY(0) scale(var(--s)) rotate(0); opacity: 0; }
+        15% { opacity: 0.7; }
+        100% { transform: translateY(-72vh) scale(calc(var(--s) * 0.4)) rotate(20deg); opacity: 0; }
+    }
+
+    .splash-cinema__content { text-align: center; color: #fff; z-index: 5; position: relative; padding: 30px; }
+    .splash-cinema__intro {
+        display: flex; flex-direction: column; gap: 8px;
+        margin-bottom: 50px;
+        opacity: 0; animation: spcineFadeIn 1s ease forwards 1.5s;
+    }
+    .splash-cinema__brand {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.4rem; letter-spacing: 0.6em;
+        color: #d4a574; font-weight: 700;
+    }
+    .splash-cinema__brand-tagline {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.7rem; letter-spacing: 0.8em;
+        color: rgba(255,255,255,0.5);
+    }
+
+    .splash-cinema__title-wrap {
+        position: relative;
+        padding: 24px 0;
+        margin-bottom: 30px;
+    }
+    .splash-cinema__title-line {
+        position: absolute; left: 50%; transform: translateX(-50%);
+        height: 1px; width: 0;
+        background: linear-gradient(90deg, transparent, #d4a574, transparent);
+        animation: spcineLineExpand 1.5s ease forwards 2.3s;
+    }
+    .splash-cinema__title-line--top { top: 0; }
+    .splash-cinema__title-line--bottom { bottom: 0; animation-delay: 2.5s; }
+    @@keyframes spcineLineExpand { to { width: 320px; } }
+
     .splash-cinema__title {
         font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        font-size: 3rem;
+        font-weight: 700; font-size: 3.2rem;
         letter-spacing: 0.15em;
-        background: linear-gradient(135deg, #fff 0%, #d4a574 50%, #fff 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        background: linear-gradient(135deg, #fff 0%, #d4a574 30%, #fff 50%, #d4a574 70%, #fff 100%);
+        background-size: 200% 100%;
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
         opacity: 0;
-        animation: splashCinemaTitle 1.5s ease forwards 1.6s;
+        animation: spcineTitle 2s cubic-bezier(0.16, 1, 0.3, 1) forwards 2s, spcineTitleShine 5s ease-in-out infinite 4s;
         line-height: 1.2;
+        text-shadow: 0 0 30px rgba(212,165,116,0.3);
     }
-    .splash-cinema__year {
+    @@keyframes spcineTitle {
+        0% { opacity: 0; transform: scale(0.92); letter-spacing: 0.05em; filter: blur(10px); }
+        100% { opacity: 1; transform: scale(1); letter-spacing: 0.15em; filter: blur(0); }
+    }
+    @@keyframes spcineTitleShine {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+
+    .splash-cinema__meta {
+        display: flex; align-items: center; justify-content: center; gap: 14px;
         font-family: 'Cairo', sans-serif;
-        font-size: 1rem;
+        font-size: 0.75rem; letter-spacing: 0.3em;
         color: rgba(255,255,255,0.5);
-        margin: 20px 0 12px;
-        letter-spacing: 0.4em;
-        opacity: 0;
-        animation: splashCinemaFade 1s ease forwards 2.4s;
+        margin-bottom: 16px;
+        opacity: 0; animation: spcineFadeIn 1s ease forwards 3.2s;
     }
+    .splash-cinema__meta-dot {
+        width: 4px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 50%;
+    }
+
     .splash-cinema__tagline {
         font-family: 'Playfair Display', serif;
-        font-style: italic;
-        font-size: 0.95rem;
-        color: rgba(212, 165, 116, 0.8);
-        opacity: 0;
-        animation: splashCinemaFade 1s ease forwards 2.8s;
+        font-style: italic; font-size: 1rem;
+        color: rgba(212,165,116,0.85);
+        opacity: 0; animation: spcineFadeIn 1s ease forwards 3.6s;
+        letter-spacing: 0.1em;
     }
-    @@keyframes splashCinemaBarTop {
-        to { top: 0; }
-    }
-    @@keyframes splashCinemaBarBottom {
-        to { bottom: 0; }
-    }
-    @@keyframes splashCinemaFade {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    @@keyframes splashCinemaTitle {
-        0% { opacity: 0; transform: scale(0.95); letter-spacing: 0.05em; }
-        100% { opacity: 1; transform: scale(1); letter-spacing: 0.15em; }
+
+    @@keyframes spcineFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    @@media (max-width: 480px) {
+        .splash-cinema__title { font-size: 2.2rem; }
+        .splash-cinema__brand { font-size: 1.1rem; letter-spacing: 0.4em; }
+        .splash-cinema__meta { font-size: 0.65rem; gap: 8px; letter-spacing: 0.2em; }
     }
 </style>

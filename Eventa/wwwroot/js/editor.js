@@ -51,6 +51,7 @@
     // ==========================================
     document.addEventListener('DOMContentLoaded', function () {
         var iframe = document.getElementById('templateFrame');
+        initSplashLibrary();
 
         function initAll() {
             // Cache the iframe document
@@ -917,43 +918,107 @@
                 this.classList.add('selected');
             });
         });
+    }
 
-        // Splash template library — اختيار + تحديث الـ iframe preview بالسبلاش الجديد
-        document.querySelectorAll('.splash-lib-item').forEach(function (item) {
-            item.addEventListener('click', function (e) {
-                // متجاهلش الكليك على زرار المعاينة (هيتعامل لوحده)
-                if (e.target.closest('.splash-preview-btn')) return;
+    // ==========================================
+    // SPLASH LIBRARY (once per page — not inside initAll)
+    // ==========================================
+    var splashPlayOverlay = null;
+    var splashPlayHost = null;
+    var splashPlayTimer = null;
+    var splashPlayToken = 0;
 
-                document.querySelectorAll('.splash-lib-item').forEach(function (i) {
-                    i.classList.remove('selected');
-                });
-                this.classList.add('selected');
+    function buildSplashUrl(partialName, durationMs) {
+        var groom = (document.querySelector('[data-target="GroomName"]')?.value || '').trim();
+        var bride = (document.querySelector('[data-target="BrideName"]')?.value || '').trim();
+        var params = new URLSearchParams();
+        params.set('partialName', partialName);
+        params.set('duration', String(durationMs || 4000));
+        params.set('_t', String(Date.now()) + '_' + Math.random().toString(36).slice(2));
+        if (groom) params.set('groomName', groom);
+        if (bride) params.set('brideName', bride);
+        return '/SplashTemplates/Play?' + params.toString();
+    }
 
-                var iframe = document.getElementById('templateFrame');
-                if (iframe && iframe.src) {
-                    var splashId = this.getAttribute('data-id');
-                    var baseUrl = iframe.src.split('?')[0];
-                    var params = new URLSearchParams(iframe.src.split('?')[1] || '');
-                    params.set('splashId', splashId);
-                    iframe.src = baseUrl + '?' + params.toString();
+    function hideSplashPlay() {
+        if (splashPlayTimer) { clearTimeout(splashPlayTimer); splashPlayTimer = null; }
+        if (!splashPlayOverlay) return;
+        splashPlayOverlay.style.pointerEvents = 'none';
+        splashPlayOverlay.style.transition = 'opacity 0.5s ease';
+        splashPlayOverlay.style.opacity = '0';
+        setTimeout(function () {
+            splashPlayOverlay.style.display = 'none';
+            splashPlayOverlay.style.opacity = '1';
+            splashPlayOverlay.style.transition = '';
+            splashPlayOverlay.style.pointerEvents = '';
+            if (splashPlayHost) splashPlayHost.innerHTML = '';
+            document.body.style.overflow = '';
+        }, 500);
+    }
+
+    function playSplashFullscreen(partialName, durationMs) {
+        if (!splashPlayOverlay || !splashPlayHost || !partialName) return;
+        var token = ++splashPlayToken;
+        console.log('[Splash Play] token:', token, '| partial:', partialName, '| duration:', durationMs);
+
+        if (splashPlayTimer) { clearTimeout(splashPlayTimer); splashPlayTimer = null; }
+        splashPlayHost.innerHTML = '';
+
+        var url = buildSplashUrl(partialName, durationMs);
+        console.log('[Splash Play] URL:', url);
+        var iframe = document.createElement('iframe');
+        iframe.src = url;
+        iframe.setAttribute('frameborder', '0');
+        iframe.style.cssText = 'width:100%;height:100%;border:none;background:#0a0a14;display:block;';
+        splashPlayHost.appendChild(iframe);
+
+        splashPlayOverlay.style.display = 'block';
+        splashPlayOverlay.style.opacity = '1';
+        splashPlayOverlay.style.pointerEvents = 'auto';
+        document.body.style.overflow = 'hidden';
+
+        var totalMs = (durationMs && durationMs > 0 ? durationMs : 4000) + 1500;
+        splashPlayTimer = setTimeout(hideSplashPlay, totalMs);
+    }
+
+    function initSplashLibrary() {
+        splashPlayOverlay = document.getElementById('splashPlayOverlay');
+        splashPlayHost = document.getElementById('splashPlayHost');
+
+        if (splashPlayOverlay && !splashPlayOverlay.dataset.splashOverlayBound) {
+            splashPlayOverlay.dataset.splashOverlayBound = '1';
+            splashPlayOverlay.addEventListener('click', function (e) {
+                if (e.target === splashPlayOverlay || e.target === splashPlayHost) {
+                    hideSplashPlay();
                 }
             });
-        });
-
-        // Splash preview popups
-        document.querySelectorAll('.splash-preview-btn').forEach(function (btn) {
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                var id = this.getAttribute('data-splash-id');
-                var groom = (document.querySelector('[data-target="GroomName"]')?.value || '').trim();
-                var bride = (document.querySelector('[data-target="BrideName"]')?.value || '').trim();
-                var params = new URLSearchParams({ id: id });
-                if (groom) params.set('groomName', groom);
-                if (bride) params.set('brideName', bride);
-                var url = '/SplashTemplates/Preview?' + params.toString();
-                window.open(url, 'splashPreview', 'width=480,height=820,resizable=yes,scrollbars=no');
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && splashPlayOverlay && splashPlayOverlay.style.display !== 'none') {
+                    hideSplashPlay();
+                }
             });
+        }
+
+        var splashGrid = document.querySelector('.splash-library-grid');
+        if (!splashGrid || splashGrid.dataset.splashHandlerBound) return;
+        splashGrid.dataset.splashHandlerBound = '1';
+
+        splashGrid.addEventListener('click', function (e) {
+            var item = e.target.closest('.splash-lib-item');
+            if (!item || !splashGrid.contains(item)) return;
+
+            var id = item.getAttribute('data-id');
+            var partial = item.getAttribute('data-partial');
+            var duration = parseInt(item.getAttribute('data-duration'), 10) || 4000;
+            console.log('[Splash Select] id:', id, '| partial:', partial, '| duration:', duration,
+                '| target:', e.target.className || e.target.tagName);
+
+            splashGrid.querySelectorAll('.splash-lib-item').forEach(function (i) {
+                i.classList.remove('selected');
+            });
+            item.classList.add('selected');
+
+            playSplashFullscreen(partial, duration);
         });
     }
 

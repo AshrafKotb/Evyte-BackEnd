@@ -1,6 +1,9 @@
 @model Eventa.Domain.Entities.SplashTemplate
 @{
     Layout = null;
+    // ?play=true → السبلاش يلعب ويختفي طبيعياً (auto-hide)
+    // الافتراضي: السبلاش يفضل ظاهر (للمعاينة في tab منفصل)
+    var playMode = Context.Request.Query["play"].ToString() == "true";
 }
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -67,8 +70,8 @@
     </style>
 </head>
 <body>
-    <!-- شريط الأدوات -->
-    <div class="preview-toolbar" id="previewToolbar">
+    <!-- شريط الأدوات (مخفي في play mode) -->
+    <div class="preview-toolbar @(playMode ? "hidden" : "")" id="previewToolbar" style="@(playMode ? "display:none;" : "")">
         <div class="preview-toolbar__info">
             <i class="fas fa-eye" style="color: #d4a574;"></i>
             <div>
@@ -100,6 +103,42 @@
     <div id="splashHost">
         @await Html.PartialAsync("_SplashLoader")
     </div>
+
+    @if (!playMode)
+    {
+        <!-- وضع المعاينة الكامل: السبلاش يفضل ظاهر -->
+        <script>
+            (function () {
+                window.SPLASH_PREVIEW_MODE = true;
+                window.SPLASH_DURATION_MS = 999999999;
+
+                var splash = document.getElementById('splashScreen');
+                if (splash) {
+                    splash.style.opacity = '1';
+                    splash.style.visibility = 'visible';
+                    splash.style.display = '';
+                    splash.style.pointerEvents = '';
+                    splash.classList.remove('hidden');
+                    splash.addEventListener('click', function (e) {
+                        e.stopImmediatePropagation();
+                        e.preventDefault();
+                    }, true);
+                }
+
+                setInterval(function () {
+                    var s = document.getElementById('splashScreen');
+                    if (!s) return;
+                    if (s.style.opacity === '0' || s.style.display === 'none' || s.classList.contains('hidden')) {
+                        s.style.opacity = '1';
+                        s.style.visibility = 'visible';
+                        s.style.display = '';
+                        s.style.pointerEvents = '';
+                        s.classList.remove('hidden');
+                    }
+                }, 500);
+            })();
+        </script>
+    }
 
     <script>
         (function () {

@@ -1,5 +1,5 @@
 @*
-    سبلاش رومانسي بتصميم ورود متفتحة وألوان pastel.
+    Romantic blossom design with falling cherry petals, glass heart, and floral border reveal.
     PartialName: BlossomReveal
 *@
 @model Request
@@ -8,99 +8,211 @@
 }
 <div class="splash-screen splash-blossom" id="splashScreen">
     <div class="splash-blossom__petals">
-        @for (int i = 0; i < 12; i++)
+        @for (int i = 0; i < 18; i++)
         {
-            <span class="splash-blossom__petal" style="--i:@i;"></span>
+            <span class="splash-blossom__petal" style="--i:@i; --x:@((i * 5.5) % 100)%; --d:@(i * 0.3)s; --s:@(0.6 + (i % 5) * 0.15);"></span>
         }
     </div>
-    <div class="splash-blossom__content">
-        <div class="splash-blossom__circle">
-            <div class="splash-blossom__heart">❦</div>
-        </div>
-        <div class="splash-blossom__line"></div>
-        <div class="splash-blossom__title">You're Invited</div>
-        @if (rd != null)
+
+    <!-- Pink floating hearts -->
+    <div class="splash-blossom__hearts">
+        @for (int i = 0; i < 12; i++)
         {
-            <div class="splash-blossom__names">@rd.GroomName &amp; @rd.BrideName</div>
+            <span class="splash-blossom__heart" style="--x:@(7 + i * 8)%; --d:@(i * 0.45)s; --s:@(0.6 + (i % 4) * 0.2);">♥</span>
         }
-        <div class="splash-blossom__line"></div>
+    </div>
+
+    <div class="splash-blossom__content">
+        <div class="splash-blossom__frame">
+            <i class="splash-blossom__corner splash-blossom__corner--tl">❀</i>
+            <i class="splash-blossom__corner splash-blossom__corner--tr">❀</i>
+            <i class="splash-blossom__corner splash-blossom__corner--bl">❀</i>
+            <i class="splash-blossom__corner splash-blossom__corner--br">❀</i>
+
+            <div class="splash-blossom__circle">
+                <div class="splash-blossom__circle-glow"></div>
+                <div class="splash-blossom__heart">❦</div>
+            </div>
+
+            <div class="splash-blossom__divider">
+                <span></span><i>✿</i><span></span>
+            </div>
+
+            <div class="splash-blossom__title">You're Invited</div>
+
+            @if (rd != null)
+            {
+                <div class="splash-blossom__names">@rd.GroomName <span>&amp;</span> @rd.BrideName</div>
+                <div class="splash-blossom__date">@rd.EventDate.ToString("dd MMMM yyyy")</div>
+            }
+
+            <div class="splash-blossom__divider">
+                <span></span><i>✿</i><span></span>
+            </div>
+        </div>
     </div>
 </div>
 
 <style>
     .splash-blossom {
-        background: linear-gradient(135deg, #fce8e8 0%, #f7d6e0 50%, #e8c5d8 100%);
+        background:
+            radial-gradient(ellipse at 30% 20%, #fdeeef 0%, transparent 50%),
+            radial-gradient(ellipse at 70% 80%, #ead5e2 0%, transparent 50%),
+            linear-gradient(135deg, #fce8e8 0%, #f7d6e0 50%, #e8c5d8 100%);
         overflow: hidden;
         animation: none !important;
     }
-    .splash-blossom__petals {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-    }
+
+    .splash-blossom__petals { position: absolute; inset: 0; pointer-events: none; }
     .splash-blossom__petal {
         position: absolute;
-        width: 14px;
-        height: 14px;
-        background: radial-gradient(circle at 30% 30%, #fff 0%, #e89cc0 70%);
+        width: 16px; height: 16px;
+        background:
+            radial-gradient(circle at 30% 30%, #fff 0%, #ffb3cf 50%, #e89cc0 100%);
         border-radius: 50% 0 50% 50%;
-        top: -10%;
-        left: calc((var(--i) * 8.33%) + 4%);
-        opacity: 0.7;
-        animation: splashBlossomFall calc(6s + var(--i) * 0.4s) linear infinite;
-        animation-delay: calc(var(--i) * -0.5s);
+        top: -5%; left: var(--x);
+        opacity: 0;
+        transform: scale(var(--s));
+        animation: spblPetalFall calc(7s + var(--i) * 0.3s) linear infinite var(--d);
+        box-shadow: 0 2px 4px rgba(201,122,161,0.2);
     }
-    .splash-blossom__content {
-        text-align: center;
-        color: #8a3c5e;
-        z-index: 5;
+    @@keyframes spblPetalFall {
+        0% { transform: translateY(0) rotate(0deg) scale(var(--s)); opacity: 0; }
+        10% { opacity: 0.9; }
+        90% { opacity: 0.7; }
+        100% { transform: translateY(110vh) rotate(900deg) scale(var(--s)); opacity: 0; }
+    }
+
+    /* Pink hearts rising */
+    .splash-blossom__hearts { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+    .splash-blossom__heart {
+        position: absolute;
+        bottom: -5%; left: var(--x);
+        font-size: 1.3rem;
+        opacity: 0;
+        transform: scale(var(--s));
+        background: linear-gradient(135deg, #ff6b9d, #c97aa1, #8a3c5e);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 10px rgba(255,107,157,0.6));
+        animation: spblHeartFloat 9s ease-out infinite var(--d);
+    }
+    @@keyframes spblHeartFloat {
+        0% { transform: translateY(0) scale(var(--s)) rotate(-10deg); opacity: 0; }
+        15% { opacity: 0.9; }
+        50% { transform: translateY(-50vh) scale(calc(var(--s) * 1.15)) rotate(10deg); opacity: 1; }
+        100% { transform: translateY(-110vh) scale(calc(var(--s) * 0.5)) rotate(30deg); opacity: 0; }
+    }
+
+    .splash-blossom__content { z-index: 5; position: relative; padding: 30px; }
+    .splash-blossom__frame {
         position: relative;
-        padding: 40px;
+        padding: 50px 40px;
+        background: rgba(255,255,255,0.4);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.6);
+        text-align: center; color: #8a3c5e;
+        box-shadow: 0 30px 70px rgba(201,122,161,0.2);
+        animation: spblFrameIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+    @@keyframes spblFrameIn {
+        0% { opacity: 0; transform: scale(0.85); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+
+    .splash-blossom__corner {
+        position: absolute;
+        font-size: 1.4rem; color: #c97aa1; opacity: 0.8; font-style: normal;
+        animation: spblCornerSpin 8s linear infinite;
+    }
+    .splash-blossom__corner--tl { top: 10px; left: 10px; }
+    .splash-blossom__corner--tr { top: 10px; right: 10px; animation-direction: reverse; }
+    .splash-blossom__corner--bl { bottom: 10px; left: 10px; animation-direction: reverse; }
+    .splash-blossom__corner--br { bottom: 10px; right: 10px; }
+    @@keyframes spblCornerSpin { to { transform: rotate(360deg); } }
+
     .splash-blossom__circle {
-        width: 110px;
-        height: 110px;
+        position: relative;
+        width: 110px; height: 110px;
         margin: 0 auto 25px;
-        background: rgba(255,255,255,0.5);
+        background: rgba(255,255,255,0.6);
         border: 2px solid #c97aa1;
         border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        backdrop-filter: blur(8px);
-        animation: splashBlossomCircle 2s ease-in-out infinite;
+        display: flex; align-items: center; justify-content: center;
+        animation: spblCirclePulse 2.5s ease-in-out infinite;
+    }
+    .splash-blossom__circle-glow {
+        position: absolute; inset: -8px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(201,122,161,0.4), transparent 70%);
+        animation: spblGlow 2.5s ease-in-out infinite;
+        z-index: -1;
+    }
+    @@keyframes spblCirclePulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.06); }
+    }
+    @@keyframes spblGlow {
+        0%, 100% { opacity: 0.4; transform: scale(1); }
+        50% { opacity: 0.8; transform: scale(1.2); }
     }
     .splash-blossom__heart {
-        font-size: 2.5rem;
-        color: #c97aa1;
+        font-size: 2.8rem; color: #c97aa1;
+        text-shadow: 0 4px 20px rgba(201,122,161,0.4);
+        animation: spblHeartBeat 1.5s ease-in-out infinite;
     }
-    .splash-blossom__line {
-        width: 80px;
-        height: 1px;
-        background: #c97aa1;
-        margin: 18px auto;
-        opacity: 0.5;
+    @@keyframes spblHeartBeat {
+        0%, 100% { transform: scale(1); }
+        20% { transform: scale(1.1); }
+        40% { transform: scale(0.95); }
+        60% { transform: scale(1.05); }
     }
+
+    .splash-blossom__divider {
+        display: flex; align-items: center; justify-content: center; gap: 10px;
+        margin: 18px 0;
+    }
+    .splash-blossom__divider span {
+        width: 50px; height: 1px;
+        background: linear-gradient(90deg, transparent, #c97aa1, transparent);
+    }
+    .splash-blossom__divider i { color: #c97aa1; font-size: 0.9rem; font-style: normal; }
+
     .splash-blossom__title {
         font-family: 'Playfair Display', serif;
-        font-style: italic;
-        font-size: 2.2rem;
+        font-style: italic; font-size: 2.2rem;
         color: #8a3c5e;
+        opacity: 0; animation: spblFadeUp 1s ease forwards 0.4s;
     }
     .splash-blossom__names {
         font-family: 'Cairo', sans-serif;
-        font-size: 1rem;
-        margin-top: 8px;
-        color: #a0556f;
+        font-size: 1.1rem;
+        margin-top: 10px; color: #a0556f;
         letter-spacing: 0.2em;
+        opacity: 0; animation: spblFadeUp 1s ease forwards 0.7s;
     }
-    @@keyframes splashBlossomFall {
-        0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-        10% { opacity: 0.8; }
-        100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    .splash-blossom__names span {
+        color: #c97aa1;
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        margin: 0 6px;
     }
-    @@keyframes splashBlossomCircle {
-        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(201,122,161,0.4); }
-        50% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(201,122,161,0); }
+    .splash-blossom__date {
+        font-family: 'Playfair Display', serif;
+        font-style: italic; font-size: 0.95rem;
+        color: #c97aa1; margin-top: 8px;
+        opacity: 0; animation: spblFadeUp 1s ease forwards 1s;
+    }
+
+    @@keyframes spblFadeUp {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @@media (max-width: 480px) {
+        .splash-blossom__frame { padding: 36px 24px; }
+        .splash-blossom__title { font-size: 1.7rem; }
     }
 </style>

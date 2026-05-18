@@ -5,6 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{
+    // عد الطلبات الفاضية (اللي ملهاش بيانات أساسية)
+    var emptyCount = Model.Items.Count(r => r.RequestData == null
+        || string.IsNullOrWhiteSpace(r.RequestData.GroomName)
+        || string.IsNullOrWhiteSpace(r.RequestData.BrideName));
+}
+
 <!-- Page Header -->
 <div class="page-header animate-fade-in">
     <div class="page-title">
@@ -18,7 +25,27 @@
             <span>الطلبات</span>
         </div>
     </div>
+    @if (emptyCount > 0)
+    {
+        <div class="page-actions">
+            <form asp-action="DeleteEmpty" method="post" style="display:inline;"
+                  onsubmit="return confirm('سيتم حذف كل الطلبات الفاضية (بدون اسم عريس/عروسة) قيد الانتظار. هل أنت متأكد؟');">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-broom"></i>
+                    حذف الطلبات الفاضية
+                </button>
+            </form>
+        </div>
+    }
 </div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success animate-fade-in" style="margin-bottom: 20px;">
+        <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+    </div>
+}
 
 <!-- Search & Filter Card -->
 <div class="card animate-slide-in-up" style="margin-bottom: 24px;">
@@ -249,7 +276,7 @@
                                         </a>
                                         @if (request.Status == InvitationStatus.Approved && !string.IsNullOrEmpty(request.WeddingSlug))
                                         {
-                                            <a href="/@request.WeddingSlug" target="_blank" class="btn-table-action btn-external" title="عرض الدعوة">
+                                            <a href="/e/@request.WeddingSlug" target="_blank" class="btn-table-action btn-external" title="عرض الدعوة">
                                                 <i class="fas fa-external-link-alt"></i>
                                             </a>
                                         }

@@ -114,13 +114,18 @@ namespace Eventa.ApplicationCore.Services.Repository
         }
         public async Task<Request> GetRequestBySlugAsync(string slug)
         {
+            // لو في أكتر من طلب بنفس الـ slug (بسبب race في إنشاء الـ slug قديماً)،
+            // نفضّل الـ Approved الأحدث على الـ Pending/Rejected عشان الزائر يشوف الدعوة الفعلية.
             return await _context.Requests
                 .Include(r => r.RequestData)
                 .Include(r => r.User)
                 .Include(r => r.ClientInfo)
                 .Include(r => r.Design)
                 .Include(r => r.GalleryPhotos)
-                .FirstOrDefaultAsync(r => r.WeddingSlug == slug);
+                .Where(r => r.WeddingSlug == slug)
+                .OrderBy(r => r.Status == InvitationStatus.Approved ? 0 : 1)
+                .ThenByDescending(r => r.ApprovedDate ?? r.CreatedDate)
+                .FirstOrDefaultAsync();
         }
     }
 }

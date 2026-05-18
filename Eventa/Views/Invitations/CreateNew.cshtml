@@ -378,7 +378,7 @@
                                     @foreach (var sp in splashes)
                                     {
                                         var isSelected = defaultSplash != null && sp.Id == defaultSplash.Id;
-                                        <div class="splash-lib-item @(isSelected ? "selected" : "")" data-id="@sp.Id"
+                                        <div class="splash-lib-item @(isSelected ? "selected" : "")" data-id="@sp.Id" data-partial="@sp.PartialName" data-duration="@sp.DurationMs"
                                              style="cursor:pointer; position:relative; border-radius:10px; overflow:hidden; border:3px solid @(isSelected ? "var(--editor-success, #10b981)" : "transparent"); background: rgba(255,255,255,0.04); transition: all 0.2s;">
                                             @if (!string.IsNullOrEmpty(sp.ThumbnailUrl))
                                             {
@@ -387,16 +387,9 @@
                                             else
                                             {
                                                 <div style="width:100%; height:110px; display:flex; align-items:center; justify-content:center; background: linear-gradient(135deg, #1a1a2e, #16213e); color:#d4a574;">
-                                                    <i class="fas fa-magic" style="font-size:2rem;"></i>
+                                                    <span style="font-size:2rem;">✨</span>
                                                 </div>
                                             }
-                                            <button type="button"
-                                                    class="splash-preview-btn"
-                                                    data-splash-id="@sp.Id"
-                                                    title="معاينة"
-                                                    style="position:absolute; top:6px; left:6px; background:rgba(0,0,0,0.65); color:#fff; border:none; width:32px; height:32px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s;">
-                                                <i class="fas fa-play" style="font-size:0.75rem;"></i>
-                                            </button>
                                             <div style="padding:8px 10px;">
                                                 <div style="font-weight:600; font-size:0.9rem;">@sp.NameAr</div>
                                                 @if (!string.IsNullOrEmpty(sp.DescriptionAr))
@@ -588,6 +581,11 @@
                 </div>
             </form>
         </div>
+    </div>
+
+    <!-- Splash Play Overlay (fullscreen, auto-hides after splash duration) -->
+    <div id="splashPlayOverlay" style="position:fixed;inset:0;z-index:999999;display:none;background:#000;">
+        <div id="splashPlayHost" style="width:100%;height:100%;position:relative;"></div>
     </div>
 
     <!-- Loading -->
@@ -829,34 +827,81 @@
                 });
             }
 
-            // Splash Template Selection (لازم نتجاهل الكليك على زرار المعاينة)
+            // Splash Template - اختيار + يلعب fullscreen
+            const splashPlayOverlay = document.getElementById('splashPlayOverlay');
+            const splashPlayHost = document.getElementById('splashPlayHost');
+            let splashPlayTimer = null;
+
+            function buildSplashUrl(partialName, durationMs) {
+                const groom = (document.querySelector('input[name="GroomName"]')?.value || '').trim();
+                const bride = (document.querySelector('input[name="BrideName"]')?.value || '').trim();
+                const params = new URLSearchParams();
+                params.set('partialName', partialName);
+                params.set('duration', String(durationMs || 4000));
+                params.set('_t', String(Date.now()) + '_' + Math.random().toString(36).slice(2));
+                if (groom) params.set('groomName', groom);
+                if (bride) params.set('brideName', bride);
+                return '/SplashTemplates/Play?' + params.toString();
+            }
+
+            function hideSplashPlay() {
+                if (splashPlayTimer) { clearTimeout(splashPlayTimer); splashPlayTimer = null; }
+                if (!splashPlayOverlay) return;
+                splashPlayOverlay.style.transition = 'opacity 0.5s ease';
+                splashPlayOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    splashPlayOverlay.style.display = 'none';
+                    splashPlayOverlay.style.opacity = '1';
+                    splashPlayOverlay.style.transition = '';
+                    if (splashPlayHost) splashPlayHost.innerHTML = '';
+                    document.body.style.overflow = '';
+                }, 500);
+            }
+
+            function playSplashFullscreen(partialName, durationMs) {
+                if (!splashPlayOverlay || !splashPlayHost || !partialName) return;
+                console.log('[Splash Play] Playing partial:', partialName, 'duration:', durationMs);
+                splashPlayHost.innerHTML = '';
+                const url = buildSplashUrl(partialName, durationMs);
+                console.log('[Splash Play] URL:', url);
+                const iframe = document.createElement('iframe');
+                iframe.src = url;
+                iframe.setAttribute('frameborder', '0');
+                iframe.style.cssText = 'width:100%;height:100%;border:none;background:#0a0a14;display:block;';
+                splashPlayHost.appendChild(iframe);
+                splashPlayOverlay.style.display = 'block';
+                splashPlayOverlay.style.opacity = '1';
+                document.body.style.overflow = 'hidden';
+                const totalMs = (durationMs && durationMs > 0 ? durationMs : 4000) + 1500;
+                splashPlayTimer = setTimeout(hideSplashPlay, totalMs);
+            }
+
+            if (splashPlayOverlay) splashPlayOverlay.addEventListener('click', hideSplashPlay);
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && splashPlayOverlay && splashPlayOverlay.style.display !== 'none') {
+                    hideSplashPlay();
+                }
+            });
+
+            // عند الضغط على سبلاش: اختر + شغّل fullscreen بالـ partial name
             document.querySelectorAll('.splash-lib-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    if (e.target.closest('.splash-preview-btn')) return;
+                item.addEventListener('click', function() {
+                    const id = this.dataset.id;
+                    const partial = this.dataset.partial;
+                    const duration = parseInt(this.dataset.duration, 10) || 4000;
+                    console.log('[Splash Select] id:', id, '| partial:', partial, '| duration:', duration);
+
                     document.querySelectorAll('.splash-lib-item').forEach(i => {
                         i.classList.remove('selected');
                         i.style.borderColor = 'transparent';
                     });
                     this.classList.add('selected');
                     this.style.borderColor = '#10b981';
-                    const input = document.getElementById('splashTemplateIdInput');
-                    if (input) input.value = this.dataset.id;
-                });
-            });
 
-            // Splash Preview Buttons - فتح نافذة منبثقة بمعاينة السبلاش
-            document.querySelectorAll('.splash-preview-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const id = this.dataset.splashId;
-                    const groom = (document.querySelector('input[name="GroomName"]')?.value || '').trim();
-                    const bride = (document.querySelector('input[name="BrideName"]')?.value || '').trim();
-                    const params = new URLSearchParams({ id });
-                    if (groom) params.set('groomName', groom);
-                    if (bride) params.set('brideName', bride);
-                    const url = '/SplashTemplates/Preview?' + params.toString();
-                    window.open(url, 'splashPreview', 'width=480,height=820,resizable=yes,scrollbars=no');
+                    const input = document.getElementById('splashTemplateIdInput');
+                    if (input) input.value = id;
+
+                    playSplashFullscreen(partial, duration);
                 });
             });
 

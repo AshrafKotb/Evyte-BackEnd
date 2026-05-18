@@ -1,5 +1,6 @@
 @*
-    سبلاش مظروف بيتفتح ومنه طلعت بطاقة الدعوة.
+    Polished envelope animation: closed envelope → seal breaks → flap opens →
+    invitation card slides up and stays visible with full details. Hearts float around.
     PartialName: EnvelopeOpen
 *@
 @model Request
@@ -8,134 +9,425 @@
     var names = !string.IsNullOrEmpty(rd?.GroomName) && !string.IsNullOrEmpty(rd?.BrideName)
         ? $"{rd.GroomName} & {rd.BrideName}"
         : "Wedding";
+    var date = rd?.EventDate.ToString("dd · MM · yyyy") ?? "";
+    var groomInit = !string.IsNullOrEmpty(rd?.GroomName) ? rd.GroomName.Trim()[0].ToString().ToUpper() : "M";
+    var brideInit = !string.IsNullOrEmpty(rd?.BrideName) ? rd.BrideName.Trim()[0].ToString().ToUpper() : "S";
 }
-<div class="splash-screen splash-envelope" id="splashScreen">
-    <div class="splash-envelope__scene">
-        <div class="splash-envelope__shadow"></div>
-        <div class="splash-envelope__body">
-            <div class="splash-envelope__flap"></div>
-            <div class="splash-envelope__card">
-                <div class="splash-envelope__card-inner">
-                    <div class="splash-envelope__card-divider"></div>
-                    <div class="splash-envelope__card-title">@names</div>
-                    <div class="splash-envelope__card-divider"></div>
+<div class="splash-screen splash-env" id="splashScreen">
+    <!-- Background atmosphere -->
+    <div class="splash-env__bg-glow"></div>
+    <div class="splash-env__stars">
+        @for (int i = 0; i < 35; i++)
+        {
+            <span class="splash-env__star" style="--x:@((i * 11) % 100)%; --y:@((i * 17) % 100)%; --d:@(i * 0.15)s;"></span>
+        }
+    </div>
+
+    <!-- Floating hearts -->
+    <div class="splash-env__hearts">
+        @for (int i = 0; i < 14; i++)
+        {
+            <span class="splash-env__heart" style="--x:@(6 + i * 7)%; --d:@(3 + i * 0.35)s; --s:@(0.6 + (i % 4) * 0.2);">♥</span>
+        }
+    </div>
+
+    <!-- Main scene: card on top, envelope at bottom -->
+    <div class="splash-env__scene">
+
+        <!-- Invitation card (rises out of envelope and stays) -->
+        <div class="splash-env__card">
+            <div class="splash-env__card-shimmer"></div>
+            <div class="splash-env__card-content">
+                <div class="splash-env__card-flourish">❀</div>
+                <span class="splash-env__card-eyebrow">SAVE THE DATE</span>
+                <span class="splash-env__card-line"></span>
+                <div class="splash-env__card-monogram">
+                    <span>@groomInit</span>
+                    <i class="splash-env__card-heart">♥</i>
+                    <span>@brideInit</span>
+                </div>
+                <div class="splash-env__card-title">@names</div>
+                @if (!string.IsNullOrEmpty(date))
+                {
+                    <div class="splash-env__card-date">@date</div>
+                }
+                <span class="splash-env__card-line"></span>
+                <div class="splash-env__card-flourish">❀</div>
+            </div>
+        </div>
+
+        <!-- Envelope (sits below the card) -->
+        <div class="splash-env__envelope">
+            <!-- Sparkles burst when seal breaks -->
+            <div class="splash-env__sparkles">
+                @for (int i = 0; i < 12; i++)
+                {
+                    <span class="splash-env__sparkle" style="--angle:@(i * 30)deg;"></span>
+                }
+            </div>
+
+            <!-- Back wall (deepest layer) -->
+            <div class="splash-env__back"></div>
+
+            <!-- Inner triangle (the "open mouth" shape visible after flap opens) -->
+            <div class="splash-env__inside"></div>
+
+            <!-- Front pocket of envelope -->
+            <div class="splash-env__front">
+                <div class="splash-env__front-shine"></div>
+            </div>
+
+            <!-- Flap with seal (closes the envelope at start, then opens) -->
+            <div class="splash-env__flap-wrap">
+                <div class="splash-env__flap"></div>
+                <div class="splash-env__seal">
+                    <div class="splash-env__seal-glow"></div>
+                    <span class="splash-env__seal-letter">♥</span>
                 </div>
             </div>
-            <div class="splash-envelope__front"></div>
         </div>
     </div>
-    <div class="splash-envelope__caption">Opening your invitation...</div>
+
+    <!-- Bottom caption -->
+    <div class="splash-env__caption">
+        <span class="splash-env__caption-line"></span>
+        <span>You are cordially invited</span>
+        <span class="splash-env__caption-line"></span>
+    </div>
 </div>
 
 <style>
-    .splash-envelope {
-        background: linear-gradient(135deg, #1a2940 0%, #2a3f5f 100%);
+    .splash-env {
+        background:
+            radial-gradient(ellipse at 50% 35%, #3a5680 0%, #1a2940 45%, #0a1428 100%);
         animation: none !important;
+        overflow: hidden;
     }
-    .splash-envelope__scene {
-        position: relative;
-        width: 280px;
-        height: 200px;
-        perspective: 1000px;
-    }
-    .splash-envelope__body {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        transform-style: preserve-3d;
-    }
-    .splash-envelope__shadow {
-        position: absolute;
-        bottom: -20px;
-        left: 10%;
-        width: 80%;
-        height: 20px;
-        background: rgba(0,0,0,0.4);
-        border-radius: 50%;
-        filter: blur(15px);
-        animation: splashEnvShadow 3s ease-in-out infinite;
-    }
-    .splash-envelope__front {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 70%;
-        background: linear-gradient(135deg, #d4a574, #b88a55);
-        border-radius: 4px 4px 8px 8px;
-        z-index: 5;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .splash-envelope__flap {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 70%;
-        background: linear-gradient(135deg, #b88a55, #8a6840);
-        clip-path: polygon(0 0, 100% 0, 50% 100%);
-        transform-origin: top;
-        animation: splashEnvFlap 2s ease forwards 0.5s;
-        z-index: 6;
-    }
-    .splash-envelope__card {
-        position: absolute;
-        top: 10%;
-        left: 10%;
-        width: 80%;
-        height: 80%;
-        background: #faf6ed;
-        border-radius: 4px;
-        z-index: 4;
-        animation: splashEnvCardRise 2s ease forwards 1.5s;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .splash-envelope__card-inner {
-        text-align: center;
-        color: #5a4a2a;
-        padding: 0 20px;
-    }
-    .splash-envelope__card-divider {
-        width: 60px;
-        height: 1px;
-        background: #d4a574;
-        margin: 8px auto;
-    }
-    .splash-envelope__card-title {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.4rem;
-        font-style: italic;
-        color: #5a4a2a;
-    }
-    .splash-envelope__caption {
-        position: absolute;
-        bottom: 80px;
-        left: 0; right: 0;
-        text-align: center;
-        color: rgba(255,255,255,0.7);
-        font-family: 'Cairo', sans-serif;
-        font-size: 0.95rem;
-        letter-spacing: 1px;
+
+    /* Background glow */
+    .splash-env__bg-glow {
+        position: absolute; top: 50%; left: 50%;
+        width: 700px; height: 700px;
+        background: radial-gradient(circle, rgba(212,165,116,0.25) 0%, transparent 60%);
+        transform: translate(-50%, -50%);
         opacity: 0;
-        animation: splashEnvCaption 1s ease forwards 2.5s;
+        animation: spenvBgGlow 2s ease forwards 0.5s;
     }
-    @@keyframes splashEnvFlap {
+    @@keyframes spenvBgGlow { to { opacity: 1; } }
+
+    /* Stars */
+    .splash-env__stars { position: absolute; inset: 0; pointer-events: none; }
+    .splash-env__star {
+        position: absolute;
+        top: var(--y); left: var(--x);
+        width: 3px; height: 3px;
+        background: #fff; border-radius: 50%;
+        opacity: 0;
+        box-shadow: 0 0 6px #fff, 0 0 12px rgba(255,255,255,0.5);
+        animation: spenvTwinkle 3s ease-in-out infinite var(--d);
+    }
+    @@keyframes spenvTwinkle {
+        0%, 100% { opacity: 0; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.4); }
+    }
+
+    /* Hearts */
+    .splash-env__hearts { position: absolute; inset: 0; pointer-events: none; z-index: 20; }
+    .splash-env__heart {
+        position: absolute;
+        bottom: -5%; left: var(--x);
+        color: #ff6b9d;
+        font-size: 1.3rem;
+        opacity: 0;
+        transform: scale(var(--s));
+        text-shadow: 0 0 14px rgba(255,107,157,0.7), 0 0 28px rgba(255,107,157,0.4);
+        animation: spenvHeartUp 7s ease-out infinite var(--d);
+    }
+    @@keyframes spenvHeartUp {
+        0% { transform: translateY(0) scale(var(--s)) rotate(-15deg); opacity: 0; }
+        15% { opacity: 1; }
+        50% { transform: translateY(-50vh) translateX(15px) scale(calc(var(--s) * 1.1)) rotate(15deg); opacity: 1; }
+        100% { transform: translateY(-100vh) scale(calc(var(--s) * 0.4)) rotate(40deg); opacity: 0; }
+    }
+
+    /* Scene container */
+    .splash-env__scene {
+        position: relative;
+        width: 340px; height: 480px;
+        display: flex; flex-direction: column;
+        align-items: center;
+        z-index: 5;
+        animation: spenvSceneFloat 4s ease-in-out infinite 4s;
+    }
+    @@keyframes spenvSceneFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    /* ============== INVITATION CARD ============== */
+    .splash-env__card {
+        position: relative;
+        width: 280px; height: 320px;
+        background:
+            linear-gradient(180deg, #fefaf0 0%, #f8eed4 60%, #f0e4c8 100%);
+        border-radius: 6px;
+        box-shadow:
+            0 20px 50px rgba(0,0,0,0.5),
+            inset 0 0 0 1px rgba(212,165,116,0.5),
+            inset 0 0 0 6px rgba(255,255,255,0.4),
+            inset 0 0 0 7px rgba(212,165,116,0.4);
+        overflow: hidden;
+        z-index: 4;
+        opacity: 0;
+        transform: translateY(140px) scale(0.6);
+        animation: spenvCardRise 1.2s cubic-bezier(0.34, 1.2, 0.64, 1) forwards 1.8s;
+    }
+    @@keyframes spenvCardRise {
+        0% { opacity: 0; transform: translateY(140px) scale(0.6); }
+        25% { opacity: 1; }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .splash-env__card-shimmer {
+        position: absolute; inset: 0;
+        background: linear-gradient(110deg, transparent 30%, rgba(243,214,155,0.45) 50%, transparent 70%);
+        animation: spenvCardShimmer 3s ease-in-out infinite 3.5s;
+        pointer-events: none;
+        z-index: 1;
+    }
+    @@keyframes spenvCardShimmer {
+        0%, 100% { transform: translateX(-100%); }
+        50% { transform: translateX(100%); }
+    }
+
+    .splash-env__card-content {
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        gap: 10px; padding: 24px;
+        color: #5a4a2a;
+    }
+
+    /* All card content elements fade in together quickly while card is rising */
+    .splash-env__card-flourish,
+    .splash-env__card-line,
+    .splash-env__card-eyebrow,
+    .splash-env__card-monogram,
+    .splash-env__card-title,
+    .splash-env__card-date {
+        opacity: 0;
+        animation: spenvCardFade 0.5s ease forwards 2.6s;
+    }
+
+    .splash-env__card-flourish {
+        font-size: 1.4rem; color: #d4a574;
+        line-height: 0.5;
+    }
+
+    .splash-env__card-line {
+        width: 80px; height: 1px;
+        background: linear-gradient(90deg, transparent, #d4a574, transparent);
+    }
+
+    .splash-env__card-eyebrow {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.75rem; letter-spacing: 0.55em; font-weight: 600;
+        color: #8a6840;
+    }
+
+    .splash-env__card-monogram {
+        font-family: 'Playfair Display', serif;
+        font-style: italic; font-size: 2.6rem; font-weight: 700;
+        color: #4a3a1f;
+        display: flex; align-items: center; gap: 12px;
+        line-height: 1;
+    }
+    .splash-env__card-heart {
+        color: #d2122e;
+        font-size: 1.4rem;
+        font-style: normal;
+        animation: spenvHeartBeat 1.2s ease-in-out infinite 3s;
+        text-shadow: 0 0 12px rgba(210,18,46,0.5);
+    }
+    @@keyframes spenvHeartBeat {
+        0%, 100% { transform: scale(1); }
+        20% { transform: scale(1.3); }
+        40% { transform: scale(1); }
+    }
+
+    .splash-env__card-title {
+        font-family: 'Playfair Display', serif;
+        font-style: italic; font-size: 1.5rem;
+        color: #5a4a2a; line-height: 1.2;
+        text-align: center;
+    }
+
+    .splash-env__card-date {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.85rem; letter-spacing: 0.3em;
+        color: #8a6840;
+    }
+
+    @@keyframes spenvCardFade { to { opacity: 1; } }
+
+    /* ============== ENVELOPE ============== */
+    .splash-env__envelope {
+        position: relative;
+        width: 320px; height: 200px;
+        margin-top: -40px; /* overlap with card bottom for natural "card came from here" */
+        opacity: 0;
+        animation: spenvEnvelopeIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.1s;
+    }
+    @@keyframes spenvEnvelopeIn {
+        from { opacity: 0; transform: scale(0.5) translateY(40px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Back wall of envelope */
+    .splash-env__back {
+        position: absolute; inset: 0;
+        background: linear-gradient(135deg, #6b5535 0%, #4a3a1f 100%);
+        border-radius: 6px 6px 12px 12px;
+        z-index: 1;
+        box-shadow:
+            0 20px 50px rgba(0,0,0,0.5),
+            inset 0 0 30px rgba(0,0,0,0.3);
+    }
+
+    /* Open inside of envelope (visible after flap opens) */
+    .splash-env__inside {
+        position: absolute; top: 0; left: 0; right: 0;
+        height: 60%;
+        background: linear-gradient(180deg, #2c1810 0%, #3d2418 100%);
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        z-index: 2;
+    }
+
+    /* Front pocket */
+    .splash-env__front {
+        position: absolute; bottom: 0; left: 0; right: 0;
+        height: 65%;
+        background:
+            linear-gradient(135deg, #f5cd92 0%, #e8c591 30%, #d4a574 60%, #b88a55 100%);
+        border-radius: 4px 4px 12px 12px;
+        z-index: 5;
+        box-shadow:
+            inset 0 2px 8px rgba(255,255,255,0.3),
+            inset 0 -3px 8px rgba(0,0,0,0.15);
+        clip-path: polygon(0 35%, 50% 0, 100% 35%, 100% 100%, 0 100%);
+    }
+    .splash-env__front-shine {
+        position: absolute; inset: 0;
+        background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+    }
+
+    /* Flap wrapper (for proper 3D rotation origin) */
+    .splash-env__flap-wrap {
+        position: absolute; top: 0; left: 0; right: 0;
+        height: 65%;
+        z-index: 6;
+        transform-origin: top;
+        transform-style: preserve-3d;
+        animation: spenvFlapOpen 1s cubic-bezier(0.65, 0, 0.35, 1) forwards 1.2s;
+    }
+    @@keyframes spenvFlapOpen {
         0% { transform: rotateX(0deg); }
         100% { transform: rotateX(-180deg); }
     }
-    @@keyframes splashEnvCardRise {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-120%); }
+
+    /* Flap shape */
+    .splash-env__flap {
+        position: absolute; inset: 0;
+        background: linear-gradient(135deg, #b08550 0%, #8a6840 50%, #6b5535 100%);
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        backface-visibility: hidden;
     }
-    @@keyframes splashEnvShadow {
-        0%, 100% { transform: scale(1); opacity: 0.5; }
-        50% { transform: scale(1.1); opacity: 0.7; }
+
+    /* Wax seal */
+    .splash-env__seal {
+        position: absolute; bottom: 22%; left: 50%;
+        transform: translateX(-50%);
+        width: 50px; height: 50px;
+        background:
+            radial-gradient(ellipse at 35% 35%, #ff5577 0%, #d2122e 35%, #8b0a1f 75%, #5c0613 100%);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow:
+            0 4px 10px rgba(139,10,31,0.6),
+            inset 0 -3px 6px rgba(0,0,0,0.4),
+            inset 0 2px 4px rgba(255,255,255,0.35);
+        z-index: 2;
+        backface-visibility: hidden;
+        animation: spenvSealCrack 0.4s ease forwards 0.8s;
     }
-    @@keyframes splashEnvCaption {
-        from { opacity: 0; transform: translateY(10px); }
+    @@keyframes spenvSealCrack {
+        0% { transform: translateX(-50%) scale(1); opacity: 1; }
+        50% { transform: translateX(-50%) scale(1.25); opacity: 1; }
+        100% { transform: translateX(-50%) scale(0.4); opacity: 0; }
+    }
+    .splash-env__seal-letter {
+        color: #f3d69b;
+        font-size: 1.4rem; font-weight: 700; line-height: 1;
+        text-shadow: 0 0 8px rgba(0,0,0,0.6);
+    }
+    .splash-env__seal-glow {
+        position: absolute; inset: -10px;
+        background: radial-gradient(circle, rgba(255,80,100,0.7) 0%, transparent 70%);
+        border-radius: 50%;
+        opacity: 0;
+        animation: spenvSealGlow 0.4s ease forwards 0.8s;
+    }
+    @@keyframes spenvSealGlow { 50% { opacity: 1; } 100% { opacity: 0; } }
+
+    /* Sparkles burst from seal break */
+    .splash-env__sparkles {
+        position: absolute; top: 35%; left: 50%;
+        width: 0; height: 0;
+        z-index: 10;
+    }
+    .splash-env__sparkle {
+        position: absolute; top: 0; left: 0;
+        width: 7px; height: 7px;
+        background: radial-gradient(circle, #fff 0%, #f3d69b 50%, transparent 100%);
+        border-radius: 50%;
+        opacity: 0;
+        box-shadow: 0 0 10px #f3d69b;
+        animation: spenvSparkle 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.9s;
+    }
+    @@keyframes spenvSparkle {
+        0% { opacity: 1; transform: rotate(var(--angle)) translateX(0) scale(1.8); }
+        100% { opacity: 0; transform: rotate(var(--angle)) translateX(110px) scale(0); }
+    }
+
+    /* Bottom caption */
+    .splash-env__caption {
+        position: absolute; bottom: 60px; left: 0; right: 0;
+        display: flex; align-items: center; justify-content: center; gap: 14px;
+        color: rgba(243,214,155,0.75);
+        font-family: 'Playfair Display', serif;
+        font-style: italic; font-size: 1rem; letter-spacing: 0.2em;
+        opacity: 0;
+        animation: spenvCaption 0.8s ease forwards 3.2s;
+        z-index: 15;
+    }
+    .splash-env__caption-line {
+        width: 50px; height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(243,214,155,0.5), transparent);
+    }
+    @@keyframes spenvCaption {
+        from { opacity: 0; transform: translateY(15px); }
         to { opacity: 1; transform: translateY(0); }
+    }
+
+    @@media (max-width: 480px) {
+        .splash-env__scene { width: 280px; height: 420px; }
+        .splash-env__card { width: 240px; height: 280px; }
+        .splash-env__envelope { width: 280px; height: 175px; }
+        .splash-env__card-title { font-size: 1.3rem; }
+        .splash-env__card-monogram { font-size: 2.2rem; }
+        .splash-env__caption { font-size: 0.85rem; bottom: 40px; }
     }
 </style>

@@ -1,0 +1,202 @@
+@*
+    Mashrabiya wooden lattice opens to reveal the invitation - Egyptian heritage.
+    PartialName: MashrabiyaReveal
+*@
+@model Request
+@{
+    var rd = Model?.RequestData;
+}
+<div class="splash-screen splash-mash" id="splashScreen">
+    <div class="splash-mash__bg-gradient"></div>
+
+    <!-- Mashrabiya lattice (opens like blinds) -->
+    <div class="splash-mash__lattice">
+        @for (int i = 0; i < 8; i++)
+        {
+            <div class="splash-mash__bar" style="--i:@i;"></div>
+        }
+    </div>
+
+    <!-- Mashrabiya pattern overlay -->
+    <svg class="splash-mash__pattern" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+            <pattern id="mashPattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+                <circle cx="40" cy="40" r="8" fill="none" stroke="rgba(139,90,43,0.5)" stroke-width="1.5"/>
+                <path d="M40 20 L48 32 L60 32 L52 42 L56 56 L40 48 L24 56 L28 42 L20 32 L32 32 Z"
+                      fill="none" stroke="rgba(139,90,43,0.4)" stroke-width="1"/>
+                <circle cx="0" cy="0" r="6" fill="none" stroke="rgba(139,90,43,0.4)" stroke-width="1"/>
+                <circle cx="80" cy="0" r="6" fill="none" stroke="rgba(139,90,43,0.4)" stroke-width="1"/>
+                <circle cx="0" cy="80" r="6" fill="none" stroke="rgba(139,90,43,0.4)" stroke-width="1"/>
+                <circle cx="80" cy="80" r="6" fill="none" stroke="rgba(139,90,43,0.4)" stroke-width="1"/>
+            </pattern>
+        </defs>
+        <rect width="80" height="80" fill="url(#mashPattern)"/>
+    </svg>
+
+    <!-- Romantic floating hearts -->
+    <div class="splash-mash__hearts">
+        @for (int i = 0; i < 10; i++)
+        {
+            <span class="splash-mash__heart-bg" style="--x:@(8 + i * 9)%; --d:@(2.5 + i * 0.4)s; --s:@(0.6 + (i % 3) * 0.25);">♥</span>
+        }
+    </div>
+
+    <div class="splash-mash__content">
+        <div class="splash-mash__lamp">🕌</div>
+        <div class="splash-mash__overline">— الفرح يبدأ بدعوة مميزة —</div>
+        @if (rd != null)
+        {
+            <div class="splash-mash__names">
+                @rd.GroomName <span class="splash-mash__heart">♡</span> @rd.BrideName
+            </div>
+            <div class="splash-mash__date">@rd.EventDate.ToString("dddd dd MMMM yyyy")</div>
+        }
+        else
+        {
+            <div class="splash-mash__names">دعوة زفافنا</div>
+        }
+        <div class="splash-mash__tagline">— شرفونا بحضوركم —</div>
+    </div>
+</div>
+
+<style>
+    .splash-mash {
+        background:
+            radial-gradient(circle at center, #d4a574 0%, #8b5a2b 60%, #3d2817 100%);
+        overflow: hidden;
+        animation: none !important;
+    }
+    .splash-mash__bg-gradient {
+        position: absolute; inset: 0;
+        background:
+            radial-gradient(ellipse at 50% 30%, rgba(255,210,140,0.4) 0%, transparent 60%),
+            radial-gradient(ellipse at 50% 70%, rgba(0,0,0,0.4) 0%, transparent 70%);
+    }
+
+    .splash-mash__pattern {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        opacity: 0.35;
+        z-index: 2;
+    }
+
+    /* Lattice bars open like blinds */
+    .splash-mash__lattice {
+        position: absolute; inset: 0;
+        display: flex;
+        z-index: 3;
+        pointer-events: none;
+    }
+    .splash-mash__bar {
+        flex: 1;
+        background:
+            linear-gradient(180deg, #5c3920 0%, #3d2817 50%, #5c3920 100%);
+        border-right: 1px solid rgba(0,0,0,0.3);
+        box-shadow: inset 2px 0 4px rgba(255,255,255,0.05), inset -2px 0 4px rgba(0,0,0,0.3);
+        animation: spmashBarOpen 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        transform-origin: top;
+    }
+    .splash-mash__bar:nth-child(odd) { animation-delay: calc(var(--i) * 0.08s + 1.5s); }
+    .splash-mash__bar:nth-child(even) {
+        animation-name: spmashBarOpenEven;
+        animation-delay: calc(var(--i) * 0.08s + 1.5s);
+        transform-origin: bottom;
+    }
+    @@keyframes spmashBarOpen {
+        0% { transform: scaleY(1); }
+        100% { transform: scaleY(0); opacity: 0; }
+    }
+    @@keyframes spmashBarOpenEven {
+        0% { transform: scaleY(1); }
+        100% { transform: scaleY(0); opacity: 0; }
+    }
+
+    /* Sunset/gold hearts */
+    .splash-mash__hearts { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+    .splash-mash__heart-bg {
+        position: absolute;
+        bottom: -5%; left: var(--x);
+        font-size: 1.2rem;
+        opacity: 0;
+        transform: scale(var(--s));
+        background: linear-gradient(135deg, #ff6b9d, #f3d69b, #d4a574);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 10px rgba(255,210,140,0.7));
+        animation: spmashHeartUp 9s ease-out infinite var(--d);
+    }
+    @@keyframes spmashHeartUp {
+        0% { transform: translateY(0) scale(var(--s)) rotate(0); opacity: 0; }
+        15% { opacity: 0.9; }
+        100% { transform: translateY(-110vh) translateX(25px) scale(calc(var(--s) * 0.4)) rotate(360deg); opacity: 0; }
+    }
+
+    .splash-mash__content {
+        text-align: center; color: #fff;
+        z-index: 5; position: relative;
+        opacity: 0;
+        animation: spmashContentIn 1s ease forwards 2.4s;
+        padding: 20px;
+    }
+    @@keyframes spmashContentIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .splash-mash__lamp {
+        font-size: 3.5rem;
+        margin-bottom: 18px;
+        filter: drop-shadow(0 8px 20px rgba(255,200,120,0.6));
+        animation: spmashLamp 3s ease-in-out infinite;
+    }
+    @@keyframes spmashLamp {
+        0%, 100% { transform: translateY(0) rotate(-2deg); }
+        50% { transform: translateY(-10px) rotate(2deg); }
+    }
+
+    .splash-mash__overline {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.9rem; letter-spacing: 0.2em;
+        color: #f3d69b;
+        margin-bottom: 16px;
+    }
+
+    .splash-mash__names {
+        font-family: 'Amiri', 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 2.6rem;
+        color: #fff;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 40px rgba(255,210,140,0.4);
+        font-weight: 700;
+        margin-bottom: 14px;
+        line-height: 1.3;
+    }
+    .splash-mash__heart {
+        color: #ff6b9d;
+        font-size: 2rem;
+        margin: 0 8px;
+        display: inline-block;
+        animation: spmashHeart 1.5s ease-in-out infinite;
+    }
+    @@keyframes spmashHeart {
+        0%, 100% { transform: scale(1); }
+        20% { transform: scale(1.2); }
+        40% { transform: scale(1); }
+    }
+    .splash-mash__date {
+        font-family: 'Cairo', sans-serif;
+        font-size: 1rem; letter-spacing: 0.2em;
+        color: rgba(255,255,255,0.85);
+        margin-bottom: 18px;
+    }
+    .splash-mash__tagline {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.9rem; letter-spacing: 0.2em;
+        color: #f3d69b;
+    }
+
+    @@media (max-width: 480px) {
+        .splash-mash__names { font-size: 1.8rem; }
+        .splash-mash__lamp { font-size: 2.5rem; }
+    }
+</style>

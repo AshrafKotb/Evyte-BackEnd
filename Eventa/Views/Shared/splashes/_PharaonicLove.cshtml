@@ -1,0 +1,199 @@
+@*
+    Pharaonic theme with hieroglyphs, ankh symbol, and sandstone elegance.
+    PartialName: PharaonicLove
+*@
+@model Request
+@{
+    var rd = Model?.RequestData;
+}
+<div class="splash-screen splash-phar" id="splashScreen">
+    <div class="splash-phar__sun"></div>
+    <div class="splash-phar__sand"></div>
+
+    <div class="splash-phar__hearts">
+        @for (int i = 0; i < 9; i++)
+        {
+            <span class="splash-phar__heart" style="--x:@(10 + i * 10)%; --d:@(i * 0.6)s; --s:@(0.55 + (i % 3) * 0.25);">♥</span>
+        }
+    </div>
+
+    <div class="splash-phar__cartouche">
+        <div class="splash-phar__cartouche-top"></div>
+        <div class="splash-phar__cartouche-body">
+            <div class="splash-phar__hieroglyphs splash-phar__hieroglyphs--top">
+                𓊪 𓏏 𓉔 𓊃 𓄿
+            </div>
+
+            <div class="splash-phar__ankh">
+                <svg viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="35" r="22" fill="none" stroke="url(#ankhGold)" stroke-width="4"/>
+                    <rect x="46" y="55" width="8" height="80" fill="url(#ankhGold)" rx="2"/>
+                    <rect x="20" y="75" width="60" height="8" fill="url(#ankhGold)" rx="2"/>
+                    <defs>
+                        <linearGradient id="ankhGold" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#f3d69b"/>
+                            <stop offset="50%" stop-color="#d4a574"/>
+                            <stop offset="100%" stop-color="#8a6840"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <div class="splash-phar__overline">— حُبٌّ خَالِدٌ كَالْأَهْرَامَات —</div>
+
+            @if (rd != null)
+            {
+                <div class="splash-phar__names">@rd.GroomName &amp; @rd.BrideName</div>
+                <div class="splash-phar__date">@rd.EventDate.ToString("dd · MM · yyyy")</div>
+            }
+
+            <div class="splash-phar__hieroglyphs splash-phar__hieroglyphs--bottom">
+                𓋹 𓂀 𓆣 𓅓 𓏏
+            </div>
+        </div>
+        <div class="splash-phar__cartouche-top splash-phar__cartouche-top--bottom"></div>
+    </div>
+</div>
+
+<style>
+    .splash-phar {
+        background:
+            radial-gradient(ellipse at 50% 20%, #f5d896 0%, #d9a85a 40%, #8b5a2b 80%, #3d2817 100%);
+        overflow: hidden;
+        animation: none !important;
+    }
+    .splash-phar__sun {
+        position: absolute;
+        top: 12%; left: 50%;
+        transform: translateX(-50%);
+        width: 200px; height: 200px;
+        background: radial-gradient(circle, #fff5d6 0%, #ffd700 30%, transparent 70%);
+        border-radius: 50%;
+        filter: blur(20px);
+        opacity: 0.7;
+        animation: spphSun 8s ease-in-out infinite;
+    }
+    @@keyframes spphSun {
+        0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+        50% { transform: translateX(-50%) scale(1.15); opacity: 0.85; }
+    }
+    .splash-phar__sand {
+        position: absolute; bottom: 0; left: 0; right: 0;
+        height: 30%;
+        background:
+            linear-gradient(180deg, transparent 0%, rgba(61,40,23,0.4) 100%);
+    }
+
+    /* Sandstone-gold hearts */
+    .splash-phar__hearts { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+    .splash-phar__heart {
+        position: absolute;
+        bottom: -5%; left: var(--x);
+        color: #f3d69b;
+        font-size: 1.1rem;
+        opacity: 0;
+        transform: scale(var(--s));
+        text-shadow: 0 0 12px rgba(243,214,155,0.8), 0 0 24px rgba(212,165,116,0.5);
+        animation: spphHeartFloat 10s linear infinite var(--d);
+    }
+    @@keyframes spphHeartFloat {
+        0% { transform: translateY(0) scale(var(--s)) rotate(0); opacity: 0; }
+        15% { opacity: 0.8; }
+        100% { transform: translateY(-110vh) scale(calc(var(--s) * 0.4)) rotate(45deg); opacity: 0; }
+    }
+
+    .splash-phar__cartouche {
+        position: relative;
+        background:
+            linear-gradient(180deg, rgba(61,40,23,0.4) 0%, rgba(20,12,5,0.6) 100%);
+        backdrop-filter: blur(8px);
+        border: 2px solid #d4a574;
+        padding: 0;
+        max-width: 380px; width: calc(100% - 40px);
+        text-align: center;
+        z-index: 5;
+        box-shadow:
+            0 30px 60px rgba(0,0,0,0.5),
+            inset 0 0 40px rgba(212,165,116,0.1);
+        animation: spphCartIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border-radius: 80px;
+        overflow: hidden;
+    }
+    @@keyframes spphCartIn {
+        from { opacity: 0; transform: scaleY(0.5); }
+        to { opacity: 1; transform: scaleY(1); }
+    }
+
+    .splash-phar__cartouche-top {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 30px;
+        background: linear-gradient(90deg, transparent, #d4a574, transparent);
+        opacity: 0.4;
+    }
+    .splash-phar__cartouche-top--bottom {
+        top: auto; bottom: 0;
+    }
+
+    .splash-phar__cartouche-body {
+        padding: 50px 35px;
+        color: #f3d69b;
+    }
+
+    .splash-phar__hieroglyphs {
+        font-size: 1.6rem; letter-spacing: 0.6em;
+        color: rgba(212,165,116,0.6);
+        line-height: 1;
+        font-family: 'Noto Sans Egyptian Hieroglyphs', serif;
+    }
+    .splash-phar__hieroglyphs--top { margin-bottom: 24px; opacity: 0; animation: spphFadeUp 1s ease forwards 0.5s; }
+    .splash-phar__hieroglyphs--bottom { margin-top: 24px; opacity: 0; animation: spphFadeUp 1s ease forwards 2s; }
+
+    .splash-phar__ankh {
+        width: 80px; height: 110px; margin: 0 auto 24px;
+        opacity: 0;
+        animation: spphAnkhIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.7s;
+        filter: drop-shadow(0 6px 16px rgba(212,165,116,0.4));
+    }
+    @@keyframes spphAnkhIn {
+        from { opacity: 0; transform: scale(0) rotate(-180deg); }
+        to { opacity: 1; transform: scale(1) rotate(0); }
+    }
+
+    .splash-phar__overline {
+        font-family: 'Amiri', 'Cairo', serif;
+        font-size: 1rem; color: #f3d69b;
+        margin-bottom: 16px;
+        opacity: 0; animation: spphFadeUp 1s ease forwards 1.1s;
+    }
+
+    .splash-phar__names {
+        font-family: 'Amiri', 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 2.2rem; font-weight: 700;
+        background: linear-gradient(135deg, #fff5d6 0%, #f3d69b 50%, #d4a574 100%);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+        line-height: 1.3;
+        opacity: 0; animation: spphFadeUp 1s ease forwards 1.4s;
+    }
+
+    .splash-phar__date {
+        font-family: 'Cairo', sans-serif;
+        font-size: 1rem; letter-spacing: 0.3em;
+        color: rgba(243,214,155,0.8);
+        opacity: 0; animation: spphFadeUp 1s ease forwards 1.7s;
+    }
+
+    @@keyframes spphFadeUp {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @@media (max-width: 480px) {
+        .splash-phar__cartouche-body { padding: 36px 24px; }
+        .splash-phar__names { font-size: 1.7rem; }
+        .splash-phar__hieroglyphs { font-size: 1.3rem; }
+    }
+</style>

@@ -1,0 +1,188 @@
+@*
+    Minimalist Swiss-style splash - bold typography, geometric simplicity.
+    PartialName: MinimalSwiss
+*@
+@model Request
+@{
+    var rd = Model?.RequestData;
+    var groom = rd?.GroomName ?? "GROOM";
+    var bride = rd?.BrideName ?? "BRIDE";
+    var date = rd?.EventDate ?? DateTime.Now.AddMonths(3);
+}
+<div class="splash-screen splash-swiss" id="splashScreen">
+    <div class="splash-swiss__top">
+        <span class="splash-swiss__top-num">01</span>
+        <span class="splash-swiss__top-text">WEDDING / INVITATION</span>
+        <span class="splash-swiss__top-num">@date.Year</span>
+    </div>
+
+    <div class="splash-swiss__hero">
+        <div class="splash-swiss__hero-line"></div>
+        <div class="splash-swiss__hero-text">
+            <span class="splash-swiss__name splash-swiss__name--top">@groom.ToUpper()</span>
+            <span class="splash-swiss__amp">+</span>
+            <span class="splash-swiss__name splash-swiss__name--bot">@bride.ToUpper()</span>
+        </div>
+        <div class="splash-swiss__hero-line"></div>
+    </div>
+
+    <div class="splash-swiss__bottom">
+        <div class="splash-swiss__meta">
+            <span class="splash-swiss__meta-label">DATE</span>
+            <span class="splash-swiss__meta-value">@date.ToString("dd.MM.yyyy")</span>
+        </div>
+        <div class="splash-swiss__bar"></div>
+        <div class="splash-swiss__meta">
+            <span class="splash-swiss__meta-label">TIME</span>
+            <span class="splash-swiss__meta-value">@(rd?.EventTimeFrom.ToString(@"hh\:mm") ?? "18:00")</span>
+        </div>
+        <div class="splash-swiss__bar"></div>
+        <div class="splash-swiss__meta">
+            <span class="splash-swiss__meta-label">PLACE</span>
+            <span class="splash-swiss__meta-value">@(rd?.EventPlaceName ?? "—")</span>
+        </div>
+    </div>
+
+    <div class="splash-swiss__corner splash-swiss__corner--tl">·</div>
+    <div class="splash-swiss__corner splash-swiss__corner--tr">·</div>
+    <div class="splash-swiss__corner splash-swiss__corner--bl">·</div>
+    <div class="splash-swiss__corner splash-swiss__corner--br">·</div>
+
+    <!-- Bold red hearts that bounce in like punctuation -->
+    <div class="splash-swiss__hearts">
+        <span class="splash-swiss__heart splash-swiss__heart--1">♥</span>
+        <span class="splash-swiss__heart splash-swiss__heart--2">♥</span>
+        <span class="splash-swiss__heart splash-swiss__heart--3">♥</span>
+        <span class="splash-swiss__heart splash-swiss__heart--4">♥</span>
+    </div>
+</div>
+
+<style>
+    .splash-swiss {
+        background: #f5f3ef;
+        overflow: hidden;
+        animation: none !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        padding: 40px 30px;
+        color: #1a1a1a;
+    }
+    .splash-swiss__top, .splash-swiss__bottom {
+        width: 100%;
+        display: flex; align-items: center;
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.8rem; letter-spacing: 0.25em;
+        opacity: 0; animation: spswFadeIn 0.8s ease forwards;
+    }
+    .splash-swiss__top { justify-content: space-between; animation-delay: 0.2s; }
+    .splash-swiss__top-num { font-weight: 700; font-size: 1.1rem; }
+    .splash-swiss__top-text { color: #666; }
+
+    .splash-swiss__hero { width: 100%; text-align: center; }
+    .splash-swiss__hero-line {
+        height: 1px; background: #1a1a1a; width: 100%;
+        transform: scaleX(0); transform-origin: left;
+        animation: spswLineExpand 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.5s;
+    }
+    .splash-swiss__hero-line:last-child { transform-origin: right; animation-delay: 0.7s; }
+    @@keyframes spswLineExpand { to { transform: scaleX(1); } }
+
+    .splash-swiss__hero-text {
+        padding: 50px 0;
+        display: flex; flex-direction: column;
+        align-items: stretch; justify-content: center; gap: 0;
+        position: relative;
+    }
+    .splash-swiss__name {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(3.5rem, 14vw, 8rem);
+        font-weight: 900;
+        line-height: 0.9;
+        letter-spacing: -0.02em;
+        color: #1a1a1a;
+        overflow: hidden;
+    }
+    .splash-swiss__name--top {
+        text-align: left;
+        opacity: 0; transform: translateX(-50px);
+        animation: spswSlideRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 1s;
+    }
+    .splash-swiss__name--bot {
+        text-align: right;
+        opacity: 0; transform: translateX(50px);
+        animation: spswSlideLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.3s;
+    }
+    .splash-swiss__amp {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 8vw, 4rem);
+        color: #d4351c;
+        font-weight: 700;
+        animation: spswAmpIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 1.6s;
+        background: #f5f3ef;
+        padding: 0 12px;
+    }
+
+    @@keyframes spswSlideRight { to { opacity: 1; transform: translateX(0); } }
+    @@keyframes spswSlideLeft { to { opacity: 1; transform: translateX(0); } }
+    @@keyframes spswAmpIn { to { transform: translate(-50%, -50%) scale(1); } }
+
+    .splash-swiss__bottom {
+        justify-content: space-between; gap: 20px;
+        animation-delay: 1.9s;
+    }
+    .splash-swiss__meta {
+        display: flex; flex-direction: column; gap: 4px;
+        flex: 1;
+    }
+    .splash-swiss__meta-label {
+        font-size: 0.65rem; color: #999; letter-spacing: 0.3em;
+    }
+    .splash-swiss__meta-value {
+        font-family: 'Playfair Display', serif;
+        font-size: 1rem; font-weight: 700; letter-spacing: 0.05em;
+        color: #1a1a1a;
+    }
+    .splash-swiss__bar {
+        width: 1px; height: 36px; background: #1a1a1a;
+    }
+
+    .splash-swiss__corner {
+        position: absolute;
+        font-size: 2rem; color: #d4351c;
+        line-height: 0;
+        opacity: 0; animation: spswFadeIn 0.5s ease forwards 2.2s;
+    }
+    .splash-swiss__corner--tl { top: 18px; left: 18px; }
+    .splash-swiss__corner--tr { top: 18px; right: 18px; }
+    .splash-swiss__corner--bl { bottom: 18px; left: 18px; }
+    .splash-swiss__corner--br { bottom: 18px; right: 18px; }
+
+    @@keyframes spswFadeIn { to { opacity: 1; } }
+
+    /* Bold red hearts - Swiss accent dots */
+    .splash-swiss__hearts { position: absolute; inset: 0; pointer-events: none; }
+    .splash-swiss__heart {
+        position: absolute;
+        color: #d4351c;
+        font-size: 1.4rem;
+        opacity: 0;
+        animation: spswHeartPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, spswHeartBeat 1.5s ease-in-out infinite;
+    }
+    .splash-swiss__heart--1 { top: 18%; left: 8%; animation-delay: 2.4s, 3s; }
+    .splash-swiss__heart--2 { top: 30%; right: 12%; animation-delay: 2.6s, 3.1s; font-size: 1rem; }
+    .splash-swiss__heart--3 { bottom: 24%; left: 12%; animation-delay: 2.8s, 3.2s; font-size: 1.1rem; }
+    .splash-swiss__heart--4 { bottom: 34%; right: 8%; animation-delay: 3s, 3.3s; font-size: 1.3rem; }
+
+    @@keyframes spswHeartPop {
+        0% { opacity: 0; transform: scale(0) rotate(180deg); }
+        100% { opacity: 1; transform: scale(1) rotate(0); }
+    }
+    @@keyframes spswHeartBeat {
+        0%, 100% { transform: scale(1); }
+        20% { transform: scale(1.25); }
+        40% { transform: scale(1); }
+    }
+</style>

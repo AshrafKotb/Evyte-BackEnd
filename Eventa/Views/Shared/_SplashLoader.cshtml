@@ -1,55 +1,59 @@
 @*
     Splash Resolver: يفحص ViewBag.SplashTemplate ويعرض الـ partial المناسب من Views/Shared/splashes/
-    لو مفيش حاجة → يرجع للسبلاش الافتراضي القديم (_EventaDefault).
-    لو الـ partial المطلوب مش موجود → يقع على الافتراضي.
+    لو مفيش حاجة → يرجع للسبلاش الافتراضي (_EventaDefault).
+    بيعيّن window.SPLASH_DURATION_MS عشان splash.js يحترم المدة المحددة.
 *@
 @using Eventa.Domain.Entities
-@inject Microsoft.AspNetCore.Mvc.ViewEngines.ICompositeViewEngine ViewEngine
 @{
     var splash = ViewBag.SplashTemplate as SplashTemplate;
-    var fallbackPath = "splashes/_EventaDefault";
-    var partialPath = fallbackPath;
-
-    if (splash != null && !string.IsNullOrWhiteSpace(splash.PartialName))
-    {
-        var candidate = $"splashes/_{splash.PartialName}";
-        var found = ViewEngine.FindView(ViewContext, candidate, isMainPage: false);
-        if (found.Success)
-        {
-            partialPath = candidate;
-        }
-    }
+    var partialName = (splash != null && !string.IsNullOrWhiteSpace(splash.PartialName))
+        ? splash.PartialName
+        : "EventaDefault";
+    var partialPath = $"splashes/_{partialName}";
 
     var splashRequest = ViewBag.SplashRequest as Request;
+    var durationMs = splash?.DurationMs ?? 3000;
+    var requiresInteraction = splash?.RequiresInteraction ?? false;
 }
 
-@if (splashRequest != null)
-{
-    @await Html.PartialAsync(partialPath, splashRequest)
-}
-else
-{
-    @await Html.PartialAsync(partialPath)
-}
+@* عيّن المدة وحالة التفاعل عالميًا قبل ما splash.js يشتغل *@
+<script>
+    window.SPLASH_DURATION_MS = @durationMs;
+    window.SPLASH_REQUIRES_INTERACTION = @(requiresInteraction.ToString().ToLower());
+</script>
 
-@if (splash != null && !splash.RequiresInteraction && splash.DurationMs > 0)
-{
-    <script>
-        (function () {
-            var s = document.getElementById('splashScreen');
-            if (!s) return;
-            setTimeout(function () {
-                s.style.transition = 'opacity 0.6s ease, visibility 0.6s';
-                s.style.opacity = '0';
-                setTimeout(function () {
-                    s.style.display = 'none';
-                    s.style.pointerEvents = 'none';
-                }, 650);
-            }, @splash.DurationMs);
-        })();
-    </script>
+@{
+    Microsoft.AspNetCore.Html.IHtmlContent splashHtml;
+    try
+    {
+        if (splashRequest != null)
+        {
+            splashHtml = await Html.PartialAsync(partialPath, splashRequest);
+        }
+        else
+        {
+            splashHtml = await Html.PartialAsync(partialPath);
+        }
+    }
+    catch
+    {
+        // لو الـ partial المطلوب مش موجود (اسم غلط في DB)، استخدم الافتراضي
+        splashHtml = await Html.PartialAsync("splashes/_EventaDefault");
+    }
 }
-else if (splash != null && splash.RequiresInteraction)
+@splashHtml
+
+<script>
+    (function () {
+        var s = document.getElementById('splashScreen');
+        if (!s) return;
+        if (window.SPLASH_REQUIRES_INTERACTION) {
+            s.dataset.requiresInteraction = 'true';
+        }
+    })();
+</script>
+
+@if (requiresInteraction)
 {
     <script>
         (function () {
@@ -65,6 +69,30 @@ else if (splash != null && splash.RequiresInteraction)
                     s.style.pointerEvents = 'none';
                 }, 850);
             });
+        })();
+    </script>
+}
+else
+{
+    <script>
+        (function () {
+            // في وضع المعاينة (Preview mode)، السبلاش يفضل ظاهر مايختفيش
+            if (window.SPLASH_PREVIEW_MODE === true) return;
+
+            // لو splash.js مش متحمل في الصفحة دي، نضمن نخفي السبلاش بنفسنا
+            var s = document.getElementById('splashScreen');
+            if (!s) return;
+            setTimeout(function () {
+                if (window.SPLASH_PREVIEW_MODE === true) return; // double-check وقت التنفيذ
+                if (s.classList.contains('hidden') || s.style.display === 'none') return;
+                s.style.transition = 'opacity 0.6s ease, visibility 0.6s';
+                s.style.opacity = '0';
+                setTimeout(function () {
+                    if (window.SPLASH_PREVIEW_MODE === true) return;
+                    s.style.display = 'none';
+                    s.style.pointerEvents = 'none';
+                }, 650);
+            }, @durationMs);
         })();
     </script>
 }

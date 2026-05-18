@@ -1,0 +1,178 @@
+@*
+    Modern glassmorphism splash with floating orbs and a frosted card.
+    PartialName: GlassMorph
+*@
+@model Request
+@{
+    var rd = Model?.RequestData;
+    var groomInitial = !string.IsNullOrEmpty(rd?.GroomName) ? rd.GroomName.Trim()[0].ToString().ToUpper() : "M";
+    var brideInitial = !string.IsNullOrEmpty(rd?.BrideName) ? rd.BrideName.Trim()[0].ToString().ToUpper() : "S";
+}
+<div class="splash-screen splash-glass" id="splashScreen">
+    <div class="splash-glass__orb splash-glass__orb--1"></div>
+    <div class="splash-glass__orb splash-glass__orb--2"></div>
+    <div class="splash-glass__orb splash-glass__orb--3"></div>
+
+    <div class="splash-glass__hearts">
+        @for (int i = 0; i < 14; i++)
+        {
+            <span class="splash-glass__heart" style="--x:@(7 + i * 7)%; --d:@(i * 0.4)s; --s:@(0.6 + (i % 4) * 0.25);">♥</span>
+        }
+    </div>
+
+    <div class="splash-glass__card">
+        <div class="splash-glass__inner">
+            <span class="splash-glass__eyebrow">— wedding invitation —</span>
+            <div class="splash-glass__monogram">
+                <span>@groomInitial</span><i>+</i><span>@brideInitial</span>
+            </div>
+            @if (rd != null)
+            {
+                <div class="splash-glass__names">@rd.GroomName &amp; @rd.BrideName</div>
+                <div class="splash-glass__date">@rd.EventDate.ToString("dd MMM yyyy")</div>
+            }
+            <div class="splash-glass__loader">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .splash-glass {
+        background:
+            linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        overflow: hidden;
+        animation: none !important;
+    }
+    .splash-glass__orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        animation: spglOrbFloat 10s ease-in-out infinite;
+    }
+    .splash-glass__orb--1 {
+        width: 300px; height: 300px;
+        background: rgba(255, 119, 153, 0.7);
+        top: -80px; left: -80px;
+    }
+    .splash-glass__orb--2 {
+        width: 400px; height: 400px;
+        background: rgba(99, 179, 237, 0.6);
+        bottom: -120px; right: -120px;
+        animation-delay: -3s;
+    }
+    .splash-glass__orb--3 {
+        width: 250px; height: 250px;
+        background: rgba(252, 211, 77, 0.5);
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        animation-delay: -6s; animation-duration: 14s;
+    }
+    @@keyframes spglOrbFloat {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(60px, -40px) scale(1.2); }
+    }
+    .splash-glass__orb--3 {
+        animation-name: spglCenterOrb;
+    }
+    @@keyframes spglCenterOrb {
+        0%, 100% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-30%, -60%) scale(1.3); }
+    }
+
+    /* Glass hearts - translucent and shimmering */
+    .splash-glass__hearts { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+    .splash-glass__heart {
+        position: absolute;
+        bottom: -5%; left: var(--x);
+        font-size: 1.2rem;
+        opacity: 0;
+        transform: scale(var(--s));
+        background: linear-gradient(135deg, #fff, #ff9bb8, #ffd6e8);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 8px rgba(255,255,255,0.8));
+        animation: spglHeartFloat 8s linear infinite var(--d);
+    }
+    @@keyframes spglHeartFloat {
+        0% { transform: translateY(0) scale(var(--s)) rotate(0); opacity: 0; }
+        15% { opacity: 0.9; }
+        100% { transform: translateY(-110vh) translateX(40px) scale(calc(var(--s) * 0.5)) rotate(360deg); opacity: 0; }
+    }
+
+    .splash-glass__card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 28px;
+        padding: 50px 60px;
+        text-align: center;
+        color: #fff;
+        box-shadow:
+            0 30px 80px rgba(0,0,0,0.25),
+            inset 0 1px 0 rgba(255,255,255,0.4);
+        z-index: 5;
+        position: relative;
+        animation: spglCardIn 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @@keyframes spglCardIn {
+        from { opacity: 0; transform: scale(0.9) translateY(20px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .splash-glass__inner { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .splash-glass__eyebrow {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.78rem; letter-spacing: 0.5em;
+        color: rgba(255,255,255,0.85);
+        text-transform: uppercase;
+        opacity: 0; animation: spglFadeUp 0.8s ease forwards 0.4s;
+    }
+    .splash-glass__monogram {
+        display: flex; align-items: center; gap: 12px;
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 5rem; font-weight: 600;
+        color: #fff;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        opacity: 0; animation: spglFadeUp 0.8s ease forwards 0.6s;
+    }
+    .splash-glass__monogram i {
+        font-size: 2.2rem; opacity: 0.7; font-style: normal;
+    }
+    .splash-glass__names {
+        font-family: 'Cairo', sans-serif;
+        font-size: 1.05rem; letter-spacing: 0.25em;
+        color: rgba(255,255,255,0.9);
+        opacity: 0; animation: spglFadeUp 0.8s ease forwards 0.8s;
+    }
+    .splash-glass__date {
+        font-family: 'Playfair Display', serif;
+        font-style: italic; font-size: 0.95rem;
+        color: rgba(255,255,255,0.7);
+        letter-spacing: 0.2em;
+        opacity: 0; animation: spglFadeUp 0.8s ease forwards 1s;
+    }
+    .splash-glass__loader {
+        display: flex; gap: 6px; margin-top: 8px;
+        opacity: 0; animation: spglFadeUp 0.8s ease forwards 1.2s;
+    }
+    .splash-glass__loader span {
+        width: 8px; height: 8px; background: #fff; border-radius: 50%;
+        animation: spglBounce 1.4s ease-in-out infinite;
+    }
+    .splash-glass__loader span:nth-child(2) { animation-delay: 0.2s; }
+    .splash-glass__loader span:nth-child(3) { animation-delay: 0.4s; }
+    @@keyframes spglBounce {
+        0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+        40% { transform: scale(1.2); opacity: 1; }
+    }
+    @@keyframes spglFadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    @@media (max-width: 480px) {
+        .splash-glass__card { padding: 40px 30px; }
+        .splash-glass__monogram { font-size: 3.5rem; }
+    }
+</style>

@@ -1,0 +1,206 @@
+@*
+    Neon-glow hearts with retro arcade vibes - modern romantic.
+    PartialName: NeonHearts
+*@
+@model Request
+@{
+    var rd = Model?.RequestData;
+    var names = !string.IsNullOrEmpty(rd?.GroomName) && !string.IsNullOrEmpty(rd?.BrideName)
+        ? $"{rd.GroomName} & {rd.BrideName}"
+        : "TOGETHER FOREVER";
+}
+<div class="splash-screen splash-neon" id="splashScreen">
+    <div class="splash-neon__grid"></div>
+
+    <!-- Background floating neon hearts -->
+    <div class="splash-neon__bg-hearts">
+        @for (int i = 0; i < 14; i++)
+        {
+            var color = (i % 3) switch { 0 => "pink", 1 => "blue", _ => "purple" };
+            <span class="splash-neon__bg-heart splash-neon__bg-heart--@color" style="--x:@(6 + i * 7)%; --d:@(i * 0.5)s; --s:@(0.5 + (i % 4) * 0.2);">♥</span>
+        }
+    </div>
+
+    <div class="splash-neon__content">
+        <div class="splash-neon__heart-row">
+            <span class="splash-neon__heart splash-neon__heart--pink">♥</span>
+            <span class="splash-neon__heart splash-neon__heart--blue">♥</span>
+            <span class="splash-neon__heart splash-neon__heart--purple">♥</span>
+        </div>
+
+        <div class="splash-neon__title">SAVE THE DATE</div>
+        <div class="splash-neon__names">@names</div>
+
+        @if (rd != null)
+        {
+            <div class="splash-neon__date">@rd.EventDate.ToString("dd / MM / yyyy")</div>
+        }
+
+        <div class="splash-neon__cta">
+            <span class="splash-neon__cta-line"></span>
+            PRESS START
+            <span class="splash-neon__cta-line"></span>
+        </div>
+    </div>
+</div>
+
+<style>
+    .splash-neon {
+        background: #0a0a1e;
+        overflow: hidden;
+        animation: none !important;
+    }
+    .splash-neon__grid {
+        position: absolute; inset: 0;
+        background-image:
+            linear-gradient(rgba(255,0,200,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,200,255,0.1) 1px, transparent 1px);
+        background-size: 50px 50px;
+        transform: perspective(500px) rotateX(60deg) translateY(50%) scale(2);
+        transform-origin: center top;
+        animation: spneoGrid 8s linear infinite;
+    }
+    @@keyframes spneoGrid {
+        from { background-position: 0 0; }
+        to { background-position: 0 50px; }
+    }
+
+    /* Background floating neon hearts in 3 colors */
+    .splash-neon__bg-hearts { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+    .splash-neon__bg-heart {
+        position: absolute;
+        bottom: -5%; left: var(--x);
+        font-size: 1rem;
+        opacity: 0;
+        transform: scale(var(--s));
+        animation: spneoBgHeart 9s linear infinite var(--d);
+    }
+    .splash-neon__bg-heart--pink {
+        color: #ff007f;
+        text-shadow: 0 0 8px #ff007f, 0 0 16px rgba(255,0,127,0.5);
+    }
+    .splash-neon__bg-heart--blue {
+        color: #00d4ff;
+        text-shadow: 0 0 8px #00d4ff, 0 0 16px rgba(0,212,255,0.5);
+    }
+    .splash-neon__bg-heart--purple {
+        color: #b026ff;
+        text-shadow: 0 0 8px #b026ff, 0 0 16px rgba(176,38,255,0.5);
+    }
+    @@keyframes spneoBgHeart {
+        0% { transform: translateY(0) scale(var(--s)) rotate(0); opacity: 0; }
+        15% { opacity: 0.7; }
+        50% { opacity: 1; }
+        100% { transform: translateY(-110vh) translateX(30px) scale(calc(var(--s) * 0.4)) rotate(360deg); opacity: 0; }
+    }
+
+    .splash-neon__content { text-align: center; z-index: 5; position: relative; padding: 30px; }
+
+    .splash-neon__heart-row {
+        display: flex; justify-content: center; gap: 30px;
+        margin-bottom: 40px;
+    }
+    .splash-neon__heart {
+        font-size: 3rem;
+        opacity: 0;
+        animation: spneoHeartIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, spneoHeartBeat 1.5s ease-in-out infinite;
+        display: inline-block;
+    }
+    .splash-neon__heart--pink {
+        color: #ff007f;
+        text-shadow:
+            0 0 10px #ff007f,
+            0 0 20px #ff007f,
+            0 0 40px #ff007f,
+            0 0 80px #ff00ff;
+        animation-delay: 0.2s, 1.5s;
+    }
+    .splash-neon__heart--blue {
+        color: #00d4ff;
+        text-shadow:
+            0 0 10px #00d4ff,
+            0 0 20px #00d4ff,
+            0 0 40px #00d4ff,
+            0 0 80px #00ffff;
+        animation-delay: 0.4s, 2s;
+    }
+    .splash-neon__heart--purple {
+        color: #b026ff;
+        text-shadow:
+            0 0 10px #b026ff,
+            0 0 20px #b026ff,
+            0 0 40px #b026ff,
+            0 0 80px #d00aff;
+        animation-delay: 0.6s, 2.5s;
+    }
+    @@keyframes spneoHeartIn {
+        0% { opacity: 0; transform: scale(0) rotate(-180deg); }
+        100% { opacity: 1; transform: scale(1) rotate(0); }
+    }
+    @@keyframes spneoHeartBeat {
+        0%, 100% { transform: scale(1); }
+        20% { transform: scale(1.15); }
+        40% { transform: scale(1); }
+    }
+
+    .splash-neon__title {
+        font-family: 'Cairo', sans-serif;
+        font-size: 1.1rem; letter-spacing: 0.65em; font-weight: 700;
+        color: #00d4ff;
+        text-shadow:
+            0 0 8px #00d4ff,
+            0 0 16px #00d4ff,
+            0 0 32px rgba(0,212,255,0.6);
+        margin-bottom: 18px;
+        opacity: 0; animation: spneoFadeUp 1s ease forwards 1s;
+    }
+    .splash-neon__names {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.6rem; font-weight: 700;
+        color: #fff;
+        text-shadow:
+            0 0 10px #fff,
+            0 0 20px #ff007f,
+            0 0 40px #ff007f,
+            0 0 80px rgba(255,0,127,0.5);
+        margin-bottom: 18px;
+        opacity: 0; animation: spneoFadeUp 1s ease forwards 1.3s, spneoFlicker 6s ease-in-out infinite 3s;
+        line-height: 1.2;
+    }
+    @@keyframes spneoFlicker {
+        0%, 100% { opacity: 1; }
+        92%, 94%, 96% { opacity: 0.6; }
+        93%, 95% { opacity: 1; }
+    }
+    .splash-neon__date {
+        font-family: 'Cairo', sans-serif;
+        font-size: 1rem; letter-spacing: 0.4em;
+        color: #b026ff;
+        text-shadow: 0 0 8px #b026ff, 0 0 16px #b026ff;
+        margin-bottom: 36px;
+        opacity: 0; animation: spneoFadeUp 1s ease forwards 1.6s;
+    }
+    .splash-neon__cta {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.8rem; letter-spacing: 0.5em;
+        color: rgba(0,212,255,0.8);
+        display: flex; align-items: center; justify-content: center; gap: 12px;
+        opacity: 0; animation: spneoFadeUp 1s ease forwards 1.9s, spneoCTA 1.5s ease-in-out infinite 3s;
+    }
+    .splash-neon__cta-line {
+        width: 30px; height: 1px; background: rgba(0,212,255,0.6);
+        box-shadow: 0 0 6px #00d4ff;
+    }
+    @@keyframes spneoCTA {
+        0%, 100% { opacity: 0.7; }
+        50% { opacity: 1; }
+    }
+    @@keyframes spneoFadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+    @@media (max-width: 480px) {
+        .splash-neon__heart { font-size: 2.2rem; }
+        .splash-neon__heart-row { gap: 20px; }
+        .splash-neon__names { font-size: 1.8rem; }
+        .splash-neon__title { font-size: 0.85rem; letter-spacing: 0.4em; }
+    }
+</style>

@@ -1,0 +1,263 @@
+@*
+    Dramatic theatrical velvet curtain opens to reveal the couple - opulent and high-class.
+    PartialName: VelvetCurtain
+*@
+@model Request
+@{
+    var rd = Model?.RequestData;
+    var names = !string.IsNullOrEmpty(rd?.GroomName) && !string.IsNullOrEmpty(rd?.BrideName)
+        ? $"{rd.GroomName} & {rd.BrideName}"
+        : "A Royal Affair";
+}
+<div class="splash-screen splash-velvet" id="splashScreen">
+    <!-- Stage backdrop -->
+    <div class="splash-velvet__stage">
+        <div class="splash-velvet__spotlights">
+            <span class="splash-velvet__spot splash-velvet__spot--l"></span>
+            <span class="splash-velvet__spot splash-velvet__spot--r"></span>
+        </div>
+        <div class="splash-velvet__floor"></div>
+    </div>
+
+    <!-- Top curtain valance -->
+    <div class="splash-velvet__valance">
+        @for (int i = 0; i < 10; i++)
+        {
+            <span class="splash-velvet__tassel"></span>
+        }
+    </div>
+
+    <!-- Left curtain -->
+    <div class="splash-velvet__curtain splash-velvet__curtain--left">
+        <div class="splash-velvet__pleats"></div>
+        <div class="splash-velvet__rope"></div>
+    </div>
+
+    <!-- Right curtain -->
+    <div class="splash-velvet__curtain splash-velvet__curtain--right">
+        <div class="splash-velvet__pleats"></div>
+        <div class="splash-velvet__rope"></div>
+    </div>
+
+    <!-- Theatrical hearts that float in after curtains open -->
+    <div class="splash-velvet__hearts">
+        @for (int i = 0; i < 10; i++)
+        {
+            <span class="splash-velvet__heart" style="--x:@(10 + i * 9)%; --d:@(3.2 + i * 0.4)s; --s:@(0.55 + (i % 3) * 0.3);">♥</span>
+        }
+    </div>
+
+    <!-- Center content -->
+    <div class="splash-velvet__content">
+        <div class="splash-velvet__crest">
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 5 L35 20 L50 22 L38 32 L42 47 L30 39 L18 47 L22 32 L10 22 L25 20 Z"
+                      fill="url(#starGold)" stroke="#fff" stroke-width="0.5"/>
+                <defs>
+                    <linearGradient id="starGold" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#f3d69b"/>
+                        <stop offset="100%" stop-color="#8a6840"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <div class="splash-velvet__eyebrow">— TONIGHT'S PERFORMANCE —</div>
+        <div class="splash-velvet__title">@names</div>
+        @if (rd != null)
+        {
+            <div class="splash-velvet__date">@rd.EventDate.ToString("dddd · dd MMMM yyyy")</div>
+        }
+        <div class="splash-velvet__tagline">A Wedding to Remember</div>
+    </div>
+</div>
+
+<style>
+    .splash-velvet {
+        background: #0a0408;
+        overflow: hidden;
+        animation: none !important;
+    }
+
+    /* Stage */
+    .splash-velvet__stage {
+        position: absolute; inset: 0;
+        background:
+            radial-gradient(ellipse at 50% 60%, #4a1a1a 0%, #1a0808 60%, #000 100%);
+    }
+    .splash-velvet__floor {
+        position: absolute; bottom: 0; left: 0; right: 0;
+        height: 20%;
+        background:
+            linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.6) 100%);
+    }
+    .splash-velvet__spotlights {
+        position: absolute; inset: 0;
+        opacity: 0; animation: spvelSpots 2s ease forwards 2.5s;
+    }
+    @@keyframes spvelSpots { to { opacity: 1; } }
+    .splash-velvet__spot {
+        position: absolute;
+        top: 0; width: 0; height: 0;
+        border-style: solid;
+    }
+    .splash-velvet__spot--l {
+        left: 0;
+        border-width: 0 50vw 80vh 0;
+        border-color: transparent rgba(255,220,160,0.12) transparent transparent;
+    }
+    .splash-velvet__spot--r {
+        right: 0;
+        border-width: 80vh 50vw 0 0;
+        border-color: transparent rgba(255,220,160,0.12) transparent transparent;
+        transform: scaleX(-1);
+    }
+
+    /* Valance */
+    .splash-velvet__valance {
+        position: absolute; top: 0; left: 0; right: 0;
+        height: 60px;
+        background:
+            linear-gradient(180deg, #8b0a1f 0%, #5c0613 100%);
+        display: flex; justify-content: space-around;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+        z-index: 8;
+    }
+    .splash-velvet__tassel {
+        width: 4px;
+        background: linear-gradient(180deg, transparent 50%, #d4a574 60%, transparent 70%);
+        background-size: 4px 12px;
+        background-repeat: repeat-y;
+        animation: spvelTassel 2s ease-in-out infinite alternate;
+    }
+    .splash-velvet__tassel:nth-child(odd) { animation-delay: -1s; }
+    @@keyframes spvelTassel {
+        from { transform: translateY(0); }
+        to { transform: translateY(4px); }
+    }
+
+    /* Curtains */
+    .splash-velvet__curtain {
+        position: absolute; top: 60px; bottom: 0;
+        width: 52%;
+        background:
+            linear-gradient(135deg, #8b0a1f 0%, #5c0613 50%, #8b0a1f 100%);
+        z-index: 7;
+        box-shadow: inset -20px 0 40px rgba(0,0,0,0.6);
+    }
+    .splash-velvet__curtain--left {
+        left: 0;
+        animation: spvelLeftOpen 2.5s cubic-bezier(0.65, 0, 0.35, 1) forwards 1.5s;
+        transform-origin: top left;
+    }
+    .splash-velvet__curtain--right {
+        right: 0;
+        animation: spvelRightOpen 2.5s cubic-bezier(0.65, 0, 0.35, 1) forwards 1.5s;
+        transform-origin: top right;
+        box-shadow: inset 20px 0 40px rgba(0,0,0,0.6);
+    }
+    @@keyframes spvelLeftOpen {
+        to { transform: translateX(-90%) skewX(5deg); }
+    }
+    @@keyframes spvelRightOpen {
+        to { transform: translateX(90%) skewX(-5deg); }
+    }
+
+    /* Theatrical hearts - red velvet to gold */
+    .splash-velvet__hearts { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+    .splash-velvet__heart {
+        position: absolute;
+        bottom: -5%; left: var(--x);
+        font-size: 1.2rem;
+        opacity: 0;
+        transform: scale(var(--s));
+        background: linear-gradient(135deg, #f3d69b, #d2122e, #8b0a1f);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 10px rgba(212,18,46,0.6));
+        animation: spvelHeartRise 8s ease-out infinite var(--d);
+    }
+    @@keyframes spvelHeartRise {
+        0% { transform: translateY(0) scale(var(--s)) rotate(0); opacity: 0; }
+        15% { opacity: 0.9; }
+        100% { transform: translateY(-100vh) scale(calc(var(--s) * 0.5)) rotate(30deg); opacity: 0; }
+    }
+
+    .splash-velvet__pleats {
+        position: absolute; inset: 0;
+        background-image: repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 20px,
+            rgba(0,0,0,0.25) 20px,
+            rgba(0,0,0,0.25) 22px,
+            transparent 22px,
+            transparent 40px
+        );
+    }
+    .splash-velvet__rope {
+        position: absolute; top: 40%;
+        width: 30px; height: 60px;
+        background: linear-gradient(180deg, #d4a574 0%, #8a6840 100%);
+        border-radius: 4px;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+    }
+    .splash-velvet__curtain--left .splash-velvet__rope { right: 8px; }
+    .splash-velvet__curtain--right .splash-velvet__rope { left: 8px; }
+
+    /* Content */
+    .splash-velvet__content {
+        position: relative;
+        text-align: center; color: #fff;
+        z-index: 5;
+        opacity: 0;
+        animation: spvelContentIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards 3s;
+        padding: 30px;
+    }
+    @@keyframes spvelContentIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+    .splash-velvet__crest {
+        width: 60px; height: 60px;
+        margin: 0 auto 18px;
+        filter: drop-shadow(0 4px 14px rgba(243,214,155,0.6));
+        animation: spvelCrest 3s ease-in-out infinite;
+    }
+    @@keyframes spvelCrest {
+        0%, 100% { transform: rotate(0); }
+        50% { transform: rotate(360deg); }
+    }
+    .splash-velvet__eyebrow {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.8rem; letter-spacing: 0.55em;
+        color: #d4a574;
+        margin-bottom: 18px;
+    }
+    .splash-velvet__title {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 3rem; font-weight: 700;
+        background: linear-gradient(135deg, #fff 0%, #f3d69b 50%, #fff 100%);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 18px;
+        text-shadow: 0 4px 30px rgba(243,214,155,0.4);
+        line-height: 1.2;
+    }
+    .splash-velvet__date {
+        font-family: 'Cairo', sans-serif;
+        font-size: 1rem; letter-spacing: 0.25em;
+        color: rgba(255,255,255,0.85);
+        margin-bottom: 14px;
+    }
+    .splash-velvet__tagline {
+        font-family: 'Playfair Display', serif;
+        font-style: italic; font-size: 0.95rem;
+        color: rgba(212,165,116,0.8);
+    }
+
+    @@media (max-width: 480px) {
+        .splash-velvet__title { font-size: 2rem; }
+        .splash-velvet__rope { width: 22px; height: 45px; }
+    }
+</style>

@@ -1,0 +1,233 @@
+@*
+    White marble texture with gold veins - timeless luxury.
+    PartialName: MarbleGold
+*@
+@model Request
+@{
+    var rd = Model?.RequestData;
+}
+<div class="splash-screen splash-marble" id="splashScreen">
+    <!-- Marble veins SVG -->
+    <svg class="splash-marble__veins" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="vein1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#d4a574" stop-opacity="0.6"/>
+                <stop offset="50%" stop-color="#b88a55" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#d4a574" stop-opacity="0.4"/>
+            </linearGradient>
+        </defs>
+        <path d="M0 100 Q200 50 400 150 T800 100" stroke="url(#vein1)" stroke-width="2" fill="none" opacity="0.6"/>
+        <path d="M0 250 Q300 200 500 280 T800 220" stroke="url(#vein1)" stroke-width="1.5" fill="none" opacity="0.5"/>
+        <path d="M0 400 Q200 350 400 450 T800 380" stroke="url(#vein1)" stroke-width="1" fill="none" opacity="0.4"/>
+        <path d="M100 0 Q150 200 250 400 T350 600" stroke="url(#vein1)" stroke-width="1.5" fill="none" opacity="0.5"/>
+        <path d="M500 0 Q550 250 600 500" stroke="url(#vein1)" stroke-width="1" fill="none" opacity="0.4"/>
+        <path d="M0 500 Q250 480 500 550 T800 500" stroke="url(#vein1)" stroke-width="1.5" fill="none" opacity="0.6"/>
+    </svg>
+
+    <div class="splash-marble__hearts">
+        @for (int i = 0; i < 10; i++)
+        {
+            <span class="splash-marble__heart" style="--x:@(8 + i * 9)%; --d:@(i * 0.5)s; --s:@(0.5 + (i % 3) * 0.25);">♥</span>
+        }
+    </div>
+
+    <div class="splash-marble__content">
+        <div class="splash-marble__monogram-frame">
+            <span class="splash-marble__diamond-tl"></span>
+            <span class="splash-marble__diamond-tr"></span>
+            <span class="splash-marble__diamond-bl"></span>
+            <span class="splash-marble__diamond-br"></span>
+
+            <div class="splash-marble__eyebrow">— EST. @(rd?.EventDate.Year ?? DateTime.Now.Year) —</div>
+
+            <div class="splash-marble__monogram">
+                @if (rd != null)
+                {
+                    var groomInit = !string.IsNullOrEmpty(rd.GroomName) ? rd.GroomName.Trim()[0].ToString().ToUpper() : "G";
+                    var brideInit = !string.IsNullOrEmpty(rd.BrideName) ? rd.BrideName.Trim()[0].ToString().ToUpper() : "B";
+                    <span class="splash-marble__letter">@groomInit</span>
+                    <span class="splash-marble__amp">&amp;</span>
+                    <span class="splash-marble__letter">@brideInit</span>
+                }
+                else
+                {
+                    <span class="splash-marble__letter">M</span>
+                    <span class="splash-marble__amp">&amp;</span>
+                    <span class="splash-marble__letter">S</span>
+                }
+            </div>
+
+            <div class="splash-marble__divider">
+                <span></span><i></i><span></span>
+            </div>
+
+            @if (rd != null)
+            {
+                <div class="splash-marble__names">@rd.GroomName <span>·</span> @rd.BrideName</div>
+            }
+
+            <div class="splash-marble__tagline">A TIMELESS LOVE STORY</div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .splash-marble {
+        background:
+            radial-gradient(ellipse at 20% 30%, #fdfaf3 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 70%, #f5ede0 0%, transparent 60%),
+            linear-gradient(135deg, #fafaf0 0%, #f0e8d8 100%);
+        overflow: hidden;
+        animation: none !important;
+    }
+    .splash-marble__veins {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        opacity: 0.7;
+        animation: spmrbVein 30s ease-in-out infinite;
+    }
+    @@keyframes spmrbVein {
+        0%, 100% { transform: scale(1) rotate(0); }
+        50% { transform: scale(1.05) rotate(2deg); }
+    }
+
+    /* Subtle gold hearts on marble */
+    .splash-marble__hearts { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+    .splash-marble__heart {
+        position: absolute;
+        bottom: -5%; left: var(--x);
+        font-size: 1.1rem;
+        opacity: 0;
+        transform: scale(var(--s));
+        background: linear-gradient(180deg, #d4a574 0%, #8a6840 50%, #5c4028 100%);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 6px rgba(184,138,85,0.5));
+        animation: spmrbHeartFloat 12s linear infinite var(--d);
+    }
+    @@keyframes spmrbHeartFloat {
+        0% { transform: translateY(0) scale(var(--s)) rotate(0); opacity: 0; }
+        15% { opacity: 0.7; }
+        100% { transform: translateY(-110vh) scale(calc(var(--s) * 0.5)) rotate(360deg); opacity: 0; }
+    }
+
+    .splash-marble__content {
+        z-index: 5; position: relative; padding: 30px;
+    }
+
+    .splash-marble__monogram-frame {
+        position: relative;
+        padding: 70px 60px;
+        background: rgba(255,255,255,0.3);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(184, 138, 85, 0.3);
+        text-align: center;
+        animation: spmrbFrameIn 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 30px 80px rgba(184, 138, 85, 0.15);
+    }
+    @@keyframes spmrbFrameIn {
+        from { opacity: 0; transform: scale(0.92); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .splash-marble__diamond-tl,
+    .splash-marble__diamond-tr,
+    .splash-marble__diamond-bl,
+    .splash-marble__diamond-br {
+        position: absolute;
+        width: 10px; height: 10px;
+        background: linear-gradient(135deg, #d4a574, #8a6840);
+        transform: rotate(45deg);
+        opacity: 0; animation: spmrbDiamond 0.6s ease forwards 0.8s;
+        box-shadow: 0 2px 8px rgba(184,138,85,0.4);
+    }
+    .splash-marble__diamond-tl { top: -5px; left: -5px; }
+    .splash-marble__diamond-tr { top: -5px; right: -5px; }
+    .splash-marble__diamond-bl { bottom: -5px; left: -5px; }
+    .splash-marble__diamond-br { bottom: -5px; right: -5px; }
+    @@keyframes spmrbDiamond { to { opacity: 1; } }
+
+    .splash-marble__eyebrow {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.78rem; letter-spacing: 0.6em;
+        color: #8a6840;
+        margin-bottom: 30px;
+        opacity: 0; animation: spmrbFadeUp 1s ease forwards 0.3s;
+    }
+
+    .splash-marble__monogram {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 5.5rem; font-weight: 400;
+        display: flex; align-items: center; justify-content: center; gap: 14px;
+        line-height: 1;
+        margin-bottom: 30px;
+    }
+    .splash-marble__letter {
+        background: linear-gradient(180deg, #d4a574 0%, #8a6840 50%, #5c4028 100%);
+        background-size: 100% 200%;
+        background-position: 0 0;
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        opacity: 0;
+        animation: spmrbLetterIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.5s;
+        text-shadow: 0 4px 20px rgba(184,138,85,0.3);
+    }
+    .splash-marble__letter:last-child { animation-delay: 0.8s; }
+    .splash-marble__amp {
+        font-size: 2.4rem; color: #b88a55;
+        opacity: 0;
+        animation: spmrbAmpIn 0.8s ease forwards 1.1s;
+    }
+    @@keyframes spmrbLetterIn {
+        from { opacity: 0; transform: translateY(20px) scale(0.7); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @@keyframes spmrbAmpIn {
+        from { opacity: 0; transform: scale(0); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .splash-marble__divider {
+        display: flex; align-items: center; justify-content: center; gap: 12px;
+        margin-bottom: 20px;
+        opacity: 0; animation: spmrbFadeUp 1s ease forwards 1.3s;
+    }
+    .splash-marble__divider span {
+        width: 60px; height: 1px;
+        background: linear-gradient(90deg, transparent, #b88a55, transparent);
+    }
+    .splash-marble__divider i {
+        width: 6px; height: 6px; background: #b88a55;
+        transform: rotate(45deg);
+    }
+
+    .splash-marble__names {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 1.3rem; color: #4a3a1f;
+        margin-bottom: 18px;
+        opacity: 0; animation: spmrbFadeUp 1s ease forwards 1.5s;
+    }
+    .splash-marble__names span {
+        color: #b88a55; margin: 0 8px;
+    }
+
+    .splash-marble__tagline {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.78rem; letter-spacing: 0.55em;
+        color: #b88a55;
+        opacity: 0; animation: spmrbFadeUp 1s ease forwards 1.8s;
+    }
+
+    @@keyframes spmrbFadeUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @@media (max-width: 480px) {
+        .splash-marble__monogram-frame { padding: 50px 30px; }
+        .splash-marble__monogram { font-size: 4rem; }
+        .splash-marble__eyebrow { font-size: 0.7rem; letter-spacing: 0.4em; }
+    }
+</style>

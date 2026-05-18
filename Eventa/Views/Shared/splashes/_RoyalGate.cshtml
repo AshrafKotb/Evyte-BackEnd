@@ -1,5 +1,5 @@
 @*
-    سبلاش "بوابة ملكية" بتتفتح بأنيميشن slide.
+    Royal gate that opens dramatically to reveal an ornate crest with the couple's names.
     PartialName: RoyalGate
 *@
 @model Request
@@ -10,85 +10,203 @@
         : "Wedding";
 }
 <div class="splash-screen splash-royal" id="splashScreen">
+    <div class="splash-royal__bg-glow"></div>
+
+    <div class="splash-royal__hearts">
+        @for (int i = 0; i < 10; i++)
+        {
+            <span class="splash-royal__heart" style="--x:@(10 + i * 9)%; --d:@(3.2 + i * 0.4)s; --s:@(0.6 + (i % 3) * 0.3);">♥</span>
+        }
+    </div>
+
     <div class="splash-royal__gate splash-royal__gate--left">
         <div class="splash-royal__pattern"></div>
+        <div class="splash-royal__handle"></div>
+        <div class="splash-royal__door-edge"></div>
     </div>
     <div class="splash-royal__gate splash-royal__gate--right">
         <div class="splash-royal__pattern"></div>
+        <div class="splash-royal__handle"></div>
+        <div class="splash-royal__door-edge splash-royal__door-edge--right"></div>
     </div>
+
     <div class="splash-royal__center">
-        <div class="splash-royal__crown">♛</div>
+        <div class="splash-royal__crest">
+            <div class="splash-royal__crown">♛</div>
+            <div class="splash-royal__crest-ring"></div>
+        </div>
+        <div class="splash-royal__overline">— BY ROYAL DECREE —</div>
         <div class="splash-royal__title">@names</div>
+        <div class="splash-royal__seal-row">
+            <span class="splash-royal__seal-line"></span>
+            <span class="splash-royal__seal-icon">✦</span>
+            <span class="splash-royal__seal-line"></span>
+        </div>
         <div class="splash-royal__sub">A Royal Celebration</div>
     </div>
 </div>
 
 <style>
     .splash-royal {
-        background: #000;
+        background:
+            radial-gradient(ellipse at center, #1a0a14 0%, #000 100%);
         overflow: hidden;
         animation: none !important;
     }
-    .splash-royal__gate {
+    .splash-royal__bg-glow {
+        position: absolute; top: 50%; left: 50%;
+        width: 70%; height: 70%;
+        background: radial-gradient(circle, rgba(212,165,116,0.25) 0%, transparent 60%);
+        transform: translate(-50%, -50%);
+        opacity: 0; animation: sproGlowIn 2s ease forwards 1.2s;
+    }
+    @@keyframes sproGlowIn { to { opacity: 1; } }
+
+    /* Royal hearts emerge after gates open */
+    .splash-royal__hearts { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+    .splash-royal__heart {
         position: absolute;
-        top: 0;
-        width: 50%;
-        height: 100%;
+        bottom: -5%; left: var(--x);
+        color: #d4a574;
+        font-size: 1.2rem;
+        opacity: 0;
+        transform: scale(var(--s));
+        text-shadow: 0 0 14px rgba(212,165,116,0.8), 0 0 30px rgba(212,165,116,0.4);
+        animation: sproHeartRise 8s ease-out infinite var(--d);
+    }
+    @@keyframes sproHeartRise {
+        0% { transform: translateY(0) scale(var(--s)) rotate(0); opacity: 0; }
+        20% { opacity: 0.9; }
+        100% { transform: translateY(-110vh) scale(calc(var(--s) * 0.4)) rotate(45deg); opacity: 0; }
+    }
+
+    .splash-royal__gate {
+        position: absolute; top: 0;
+        width: 50%; height: 100%;
         background:
-            linear-gradient(135deg, #4a1f2e 0%, #2a0f1a 100%);
+            linear-gradient(135deg, #4a1f2e 0%, #2a0f1a 50%, #1a050a 100%);
         z-index: 3;
+        box-shadow: inset 0 0 80px rgba(0,0,0,0.6);
     }
     .splash-royal__gate--left {
         left: 0;
-        border-right: 3px solid #d4a574;
-        animation: splashRoyalGateLeft 1.6s cubic-bezier(0.7, 0, 0.3, 1) forwards 1.5s;
+        animation: sproGateLeft 1.8s cubic-bezier(0.7, 0, 0.3, 1) forwards 1.8s;
     }
     .splash-royal__gate--right {
         right: 0;
-        border-left: 3px solid #d4a574;
-        animation: splashRoyalGateRight 1.6s cubic-bezier(0.7, 0, 0.3, 1) forwards 1.5s;
+        animation: sproGateRight 1.8s cubic-bezier(0.7, 0, 0.3, 1) forwards 1.8s;
     }
+    @@keyframes sproGateLeft { to { transform: translateX(-100%); } }
+    @@keyframes sproGateRight { to { transform: translateX(100%); } }
+
     .splash-royal__pattern {
-        position: absolute;
-        inset: 0;
+        position: absolute; inset: 0;
         background:
-            repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(212,165,116,0.08) 30px, rgba(212,165,116,0.08) 31px),
-            repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(212,165,116,0.08) 30px, rgba(212,165,116,0.08) 31px);
+            repeating-linear-gradient(45deg, transparent, transparent 28px, rgba(212,165,116,0.12) 28px, rgba(212,165,116,0.12) 30px),
+            repeating-linear-gradient(-45deg, transparent, transparent 28px, rgba(212,165,116,0.12) 28px, rgba(212,165,116,0.12) 30px),
+            radial-gradient(circle at center, rgba(212,165,116,0.15) 0%, transparent 50%);
     }
+    .splash-royal__handle {
+        position: absolute; top: 50%; right: 16px;
+        width: 18px; height: 60px;
+        background: linear-gradient(180deg, #d4a574, #8a6840);
+        border-radius: 10px;
+        transform: translateY(-50%);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.5), inset 0 2px 4px rgba(255,255,255,0.3);
+    }
+    .splash-royal__gate--right .splash-royal__handle { right: auto; left: 16px; }
+
+    .splash-royal__door-edge {
+        position: absolute; top: 0; bottom: 0; right: 0;
+        width: 4px;
+        background: linear-gradient(180deg, #d4a574, #8a6840, #d4a574);
+        box-shadow: 0 0 12px rgba(212,165,116,0.5);
+    }
+    .splash-royal__door-edge--right { left: 0; right: auto; }
+
     .splash-royal__center {
         position: relative;
         z-index: 2;
         text-align: center;
         color: #d4a574;
+        opacity: 0; animation: sproCenterIn 1s ease forwards 3s;
+    }
+    @@keyframes sproCenterIn {
+        from { opacity: 0; transform: scale(0.92); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .splash-royal__crest {
+        position: relative;
+        width: 120px; height: 120px;
+        margin: 0 auto 24px;
+        display: flex; align-items: center; justify-content: center;
+    }
+    .splash-royal__crest-ring {
+        position: absolute; inset: 0;
+        border: 2px solid rgba(212,165,116,0.6);
+        border-radius: 50%;
+        animation: sproRingPulse 3s ease-in-out infinite;
+    }
+    @@keyframes sproRingPulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(212,165,116,0.4); }
+        50% { box-shadow: 0 0 0 18px rgba(212,165,116,0); }
     }
     .splash-royal__crown {
-        font-size: 4rem;
-        color: #d4a574;
-        text-shadow: 0 0 30px rgba(212,165,116,0.6);
-        margin-bottom: 20px;
-        animation: splashRoyalCrown 2s ease-in-out infinite;
+        font-size: 4.2rem;
+        color: #f3d69b;
+        text-shadow:
+            0 0 30px rgba(212,165,116,0.8),
+            0 4px 8px rgba(0,0,0,0.5);
+        animation: sproCrownFloat 3s ease-in-out infinite;
     }
+    @@keyframes sproCrownFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
+
+    .splash-royal__overline {
+        font-family: 'Cairo', sans-serif;
+        font-size: 0.75rem; letter-spacing: 0.55em;
+        color: rgba(212,165,116,0.7);
+        margin-bottom: 18px;
+    }
+
     .splash-royal__title {
         font-family: 'Playfair Display', serif;
         font-style: italic;
-        font-size: 2.5rem;
+        font-size: 2.8rem;
         color: #fff;
-        margin-bottom: 15px;
+        background: linear-gradient(135deg, #fff 0%, #f3d69b 50%, #fff 100%);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 18px;
+        text-shadow: 0 4px 20px rgba(212,165,116,0.3);
+        line-height: 1.2;
     }
+
+    .splash-royal__seal-row {
+        display: flex; align-items: center; justify-content: center; gap: 14px;
+        margin-bottom: 14px;
+    }
+    .splash-royal__seal-line {
+        width: 60px; height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(212,165,116,0.7), transparent);
+    }
+    .splash-royal__seal-icon {
+        color: #d4a574; font-size: 1rem;
+    }
+
     .splash-royal__sub {
         font-family: 'Cairo', sans-serif;
-        font-size: 0.95rem;
-        letter-spacing: 0.4em;
+        font-size: 0.95rem; letter-spacing: 0.4em;
         color: rgba(212,165,116,0.8);
     }
-    @@keyframes splashRoyalGateLeft {
-        to { transform: translateX(-100%); }
-    }
-    @@keyframes splashRoyalGateRight {
-        to { transform: translateX(100%); }
-    }
-    @@keyframes splashRoyalCrown {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
+
+    @@media (max-width: 480px) {
+        .splash-royal__crown { font-size: 3rem; }
+        .splash-royal__crest { width: 90px; height: 90px; }
+        .splash-royal__title { font-size: 2rem; }
+        .splash-royal__sub { font-size: 0.8rem; letter-spacing: 0.25em; }
     }
 </style>

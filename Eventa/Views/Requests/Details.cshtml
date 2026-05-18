@@ -10,6 +10,23 @@
                      Model.Status == InvitationStatus.Rejected ? "fa-times-circle" : "fa-clock";
     var statusText = Model.Status == InvitationStatus.Approved ? "موافق عليها" :
                      Model.Status == InvitationStatus.Rejected ? "مرفوضة" : "قيد الانتظار";
+
+    // Helper لعرض القيم - بيرجع "—" بدل الفراغ
+    Func<string, string> orDash = (string val) => string.IsNullOrWhiteSpace(val) ? "—" : val;
+
+    // Check if request has minimum data
+    var hasData = Model.RequestData != null &&
+                  (!string.IsNullOrWhiteSpace(Model.RequestData.GroomName) ||
+                   !string.IsNullOrWhiteSpace(Model.RequestData.BrideName));
+    var hasClient = Model.ClientInfo != null || Model.User != null;
+}
+
+@if (!hasData || !hasClient)
+{
+    <div class="alert alert-warning animate-fade-in" style="margin-bottom: 24px; padding: 16px 20px; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 12px; color: #f59e0b;">
+        <strong><i class="fas fa-exclamation-triangle"></i> تنبيه:</strong>
+        هذا الطلب يحتوي على بيانات ناقصة. ربما تم إنشاؤه أثناء فترة التجارب أو بسبب خطأ في الإرسال.
+    </div>
 }
 
 <!-- Page Header -->
@@ -111,14 +128,14 @@
                     <div class="info-icon"><i class="fas fa-user"></i></div>
                     <div class="info-content">
                         <span class="info-label">الاسم</span>
-                        <span class="info-value">@(Model.ClientInfo?.FullName ?? Model.User?.FullName)</span>
+                        <span class="info-value">@orDash(Model.ClientInfo?.FullName ?? Model.User?.FullName)</span>
                     </div>
                 </div>
                 <div class="info-row">
                     <div class="info-icon"><i class="fas fa-phone"></i></div>
                     <div class="info-content">
                         <span class="info-label">رقم الهاتف</span>
-                        <span class="info-value" dir="ltr">@(Model.ClientInfo?.PhoneNumber ?? Model.User?.PhoneNumber)</span>
+                        <span class="info-value" dir="ltr">@orDash(Model.ClientInfo?.PhoneNumber ?? Model.User?.PhoneNumber)</span>
                     </div>
                 </div>
                 @if (Model.ClientInfo != null)
@@ -135,7 +152,7 @@
                     <div class="info-icon"><i class="fas fa-envelope"></i></div>
                     <div class="info-content">
                         <span class="info-label">البريد الإلكتروني</span>
-                        <span class="info-value">@(Model.ClientInfo?.Email ?? Model.User?.Email)</span>
+                        <span class="info-value">@orDash(Model.ClientInfo?.Email ?? Model.User?.Email)</span>
                     </div>
                 </div>
             </div>
@@ -170,14 +187,14 @@
                     <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <div class="info-content">
                         <span class="info-label">اسم المكان</span>
-                        <span class="info-value">@Model.RequestData?.EventPlaceName</span>
+                        <span class="info-value">@orDash(Model.RequestData?.EventPlaceName)</span>
                     </div>
                 </div>
                 <div class="info-row">
                     <div class="info-icon"><i class="fas fa-location-arrow"></i></div>
                     <div class="info-content">
                         <span class="info-label">العنوان</span>
-                        <span class="info-value">@Model.RequestData?.EventAddress</span>
+                        <span class="info-value">@orDash(Model.RequestData?.EventAddress)</span>
                     </div>
                 </div>
                 <div class="info-row">
@@ -207,7 +224,7 @@
                 <div class="person-avatar">
                     <img src="@Model.RequestData?.GroomImageUrl" alt="العريس" onerror="this.src='/images/default-user.png'" />
                 </div>
-                <h4 class="person-name">@Model.RequestData?.GroomName</h4>
+                <h4 class="person-name">@orDash(Model.RequestData?.GroomName)</h4>
                 <div class="social-links">
                     @if (!string.IsNullOrEmpty(Model.RequestData?.GroomFacebook))
                     {
@@ -245,7 +262,7 @@
                 <div class="person-avatar">
                     <img src="@Model.RequestData?.BrideImageUrl" alt="العروس" onerror="this.src='/images/default-user.png'" />
                 </div>
-                <h4 class="person-name">@Model.RequestData?.BrideName</h4>
+                <h4 class="person-name">@orDash(Model.RequestData?.BrideName)</h4>
                 <div class="social-links">
                     @if (!string.IsNullOrEmpty(Model.RequestData?.BrideFacebook))
                     {
