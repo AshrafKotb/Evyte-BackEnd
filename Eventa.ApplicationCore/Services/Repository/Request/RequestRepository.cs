@@ -114,18 +114,79 @@ namespace Eventa.ApplicationCore.Services.Repository
         }
         public async Task<Request> GetRequestBySlugAsync(string slug)
         {
-            // لو في أكتر من طلب بنفس الـ slug (بسبب race في إنشاء الـ slug قديماً)،
-            // نفضّل الـ Approved الأحدث على الـ Pending/Rejected عشان الزائر يشوف الدعوة الفعلية.
             return await _context.Requests
                 .Include(r => r.RequestData)
                 .Include(r => r.User)
                 .Include(r => r.ClientInfo)
                 .Include(r => r.Design)
                 .Include(r => r.GalleryPhotos)
-                .Where(r => r.WeddingSlug == slug)
+                .Where(r => !r.IsDeleted && r.WeddingSlug == slug)
                 .OrderBy(r => r.Status == InvitationStatus.Approved ? 0 : 1)
                 .ThenByDescending(r => r.ApprovedDate ?? r.CreatedDate)
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<PaginatedResult<Request>> GetDeletedRequestsPaginatedAsync(int pageNumber, int pageSize, string searchTerm = "")
+        {
+            var query = _context.Requests
+                .Include(x => x.User)
+                .Include(x => x.ClientInfo)
+                .Include(x => x.RequestData)
+                .Include(x => x.Design)
+                .Where(r => r.IsDeleted);
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query = query.Where(r =>
+                    (r.User != null && (r.User.FullName.Contains(searchTerm) ||
+                    r.User.Email.Contains(searchTerm) ||
+                    r.User.PhoneNumber.Contains(searchTerm))) ||
+                    (r.ClientInfo != null && (r.ClientInfo.FullName.Contains(searchTerm) ||
+                    r.ClientInfo.Email.Contains(searchTerm) ||
+                    r.ClientInfo.PhoneNumber.Contains(searchTerm))) ||
+                    (r.RequestData != null && (r.RequestData.GroomName.Contains(searchTerm) ||
+                    r.RequestData.BrideName.Contains(searchTerm))));
+            }
+
+            var totalCount = await query.CountAsync();
+
+            var requests = await query
+                .OrderByDescending(r => r.DeletedDate)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return new PaginatedResult<Request>
+            {
+                Items = requests,
+                TotalCount = totalCount,
+                CurrentPage = pageNumber,
+                PageSize = pageSize
+            };
+        }
+
+        public async Task RestoreRequestAsync(Guid id)
+        {
+            var request = await _context.Requests.FirstOrDefaultAsync(r => r.Id == id && r.IsDeleted);
+            if (request != null)
+            {
+                request.IsDeleted = false;
+                request.DeletedDate = default;
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task PermanentDeleteRequestAsync(Guid id)
+        {
+            var request = await _context.Requests
+                .Include(r => r.RequestData)
+                .Include(r => r.GalleryPhotos)
+                .FirstOrDefaultAsync(r => r.Id == id && r.IsDeleted);
+            if (request != null)
+            {
+                _context.Requests.Remove(request);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

@@ -38,11 +38,22 @@
             </div>
 
             <!-- Requests -->
-            <div class="nav-item @(Context.Request.Path.ToString().ToLower().Contains("requests") ? "active" : "")">
-                <a href="@Url.Action("Index", "Requests")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("requests") ? "active" : "")">
+            <div class="nav-item has-submenu @(Context.Request.Path.ToString().ToLower().Contains("requests") ? "open" : "")">
+                <a href="#" class="nav-link">
                     <i class="fas fa-envelope-open-text"></i>
                     <span class="nav-text">الطلبات</span>
+                    <i class="fas fa-chevron-left nav-arrow"></i>
                 </a>
+                <div class="nav-submenu">
+                    <a href="@Url.Action("Index", "Requests")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("requests/index") || Context.Request.Path.ToString().ToLower().EndsWith("/requests") ? "active" : "")">
+                        <i class="fas fa-circle"></i>
+                        <span class="nav-text">جميع الطلبات</span>
+                    </a>
+                    <a href="@Url.Action("Deleted", "Requests")" class="nav-link @(Context.Request.Path.ToString().ToLower().Contains("requests/deleted") ? "active" : "")">
+                        <i class="fas fa-circle"></i>
+                        <span class="nav-text">الطلبات المحذوفة</span>
+                    </a>
+                </div>
             </div>
         </div>
 

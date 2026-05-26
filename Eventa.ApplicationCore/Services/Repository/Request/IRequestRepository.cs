@@ -16,5 +16,8 @@ namespace Eventa.ApplicationCore.Services.Repository
         Task<PaginatedResult<Request>> GetRequestsByUserIdAsync(string userId);
 
         Task<Request> GetRequestBySlugAsync(string slug);
+        Task<PaginatedResult<Request>> GetDeletedRequestsPaginatedAsync(int pageNumber, int pageSize, string searchTerm = "");
+        Task RestoreRequestAsync(Guid id);
+        Task PermanentDeleteRequestAsync(Guid id);
     }
 }

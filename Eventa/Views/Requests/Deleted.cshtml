@@ -1,0 +1,409 @@
+@using Eventa.Domain.Enums
+@model Eventa.ApplicationCore.Models.Helper.PaginatedResult<Eventa.Domain.Entities.Request>
+@{
+    ViewData["Title"] = "الطلبات المحذوفة";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Header -->
+<div class="page-header animate-fade-in">
+    <div class="page-title">
+        <h1>
+            <i class="fas fa-trash-alt"></i>
+            الطلبات المحذوفة
+        </h1>
+        <div class="page-breadcrumb">
+            <a href="@Url.Action("Index", "cp")"><i class="fas fa-home"></i></a>
+            <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+            <a href="@Url.Action("Index", "Requests")">الطلبات</a>
+            <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+            <span>المحذوفة</span>
+        </div>
+    </div>
+    <div class="page-actions">
+        <a href="@Url.Action("Index", "Requests")" class="btn btn-primary">
+            <i class="fas fa-arrow-right"></i>
+            العودة للطلبات
+        </a>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success animate-fade-in" style="margin-bottom: 20px;">
+        <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+    </div>
+}
+
+<!-- Search Card -->
+<div class="card animate-slide-in-up" style="margin-bottom: 24px;">
+    <div class="card-body" style="padding: 20px;">
+        <form asp-action="Deleted" method="get" class="d-flex gap-3 align-items-end flex-wrap">
+            <div class="form-group" style="flex: 1; min-width: 250px; margin-bottom: 0;">
+                <label class="form-label">بحث</label>
+                <div style="position: relative;">
+                    <input type="text" class="form-control" name="searchTerm" value="@ViewBag.SearchTerm"
+                           placeholder="ابحث عن طلب محذوف..." style="padding-right: 40px;">
+                    <i class="fas fa-search" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--gray-400);"></i>
+                </div>
+            </div>
+            <div class="form-group" style="min-width: 120px; margin-bottom: 0;">
+                <label class="form-label">عدد العناصر</label>
+                <select name="pageSize" class="form-control" onchange="this.form.submit()">
+                    @{
+                        var pageSizes = new[] { 5, 10, 25, 50, 100 };
+                        foreach (var size in pageSizes)
+                        {
+                            <option value="@size" selected="@(ViewBag.PageSize == size)">@size</option>
+                        }
+                    }
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="height: 48px;">
+                <i class="fas fa-search"></i>
+                بحث
+            </button>
+            @if (!string.IsNullOrEmpty(ViewBag.SearchTerm as string))
+            {
+                <a asp-action="Deleted" class="btn btn-ghost" style="height: 48px;">
+                    <i class="fas fa-times"></i>
+                    إلغاء الفلتر
+                </a>
+            }
+        </form>
+    </div>
+</div>
+
+<!-- Stats -->
+<div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 24px;">
+    <div class="stat-card rose animate-slide-in-up">
+        <div class="stat-icon">
+            <i class="fas fa-trash"></i>
+        </div>
+        <div class="stat-content">
+            <h3>إجمالي المحذوفة</h3>
+            <div class="stat-value">@Model.TotalCount</div>
+        </div>
+    </div>
+</div>
+
+<!-- Data Table Card -->
+<div class="card animate-slide-in-up">
+    <div class="card-header">
+        <div class="card-title">
+            <i class="fas fa-trash-alt"></i>
+            <span>الطلبات المحذوفة</span>
+        </div>
+        <div class="card-actions">
+            <span class="badge badge-danger" style="padding: 8px 15px; border-radius: 20px;">
+                @Model.TotalCount طلب محذوف
+            </span>
+        </div>
+    </div>
+    <div class="card-body" style="padding: 0;">
+        <div class="table-responsive">
+            <table class="modern-table">
+                <thead>
+                    <tr>
+                        <th>بيانات المستخدم</th>
+                        <th>العروسين</th>
+                        <th>التصميم</th>
+                        <th>الحالة قبل الحذف</th>
+                        <th>تاريخ الحذف</th>
+                        <th style="width: 180px;">الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Items.Any())
+                    {
+                        <tr>
+                            <td colspan="6">
+                                <div class="empty-state">
+                                    <i class="fas fa-trash"></i>
+                                    <h3>لا توجد طلبات محذوفة</h3>
+                                    <p>سلة المحذوفات فارغة.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var request in Model.Items)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="user-info-cell">
+                                        <div class="user-avatar-icon">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <div class="user-details">
+                                            <strong>@(request.ClientInfo?.FullName ?? request.User?.FullName ?? "غير معروف")</strong>
+                                            <small><i class="fas fa-phone"></i> @(request.ClientInfo?.PhoneNumber ?? request.User?.PhoneNumber)</small>
+                                            <small><i class="fas fa-envelope"></i> @(request.ClientInfo?.Email ?? request.User?.Email)</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="couple-cell">
+                                        <div class="person groom">
+                                            <div class="person-placeholder">
+                                                <i class="fas fa-user-tie"></i>
+                                            </div>
+                                            <span>@(request.RequestData?.GroomName ?? "---")</span>
+                                        </div>
+                                        <i class="fas fa-heart heart-icon"></i>
+                                        <div class="person bride">
+                                            <div class="person-placeholder bride">
+                                                <i class="fas fa-crown"></i>
+                                            </div>
+                                            <span>@(request.RequestData?.BrideName ?? "---")</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="design-name">@(request.Design?.NameAr ?? "غير محدد")</span>
+                                </td>
+                                <td>
+                                    @switch (request.Status)
+                                    {
+                                        case InvitationStatus.Pending:
+                                            <span class="badge badge-warning">
+                                                <i class="fas fa-clock"></i> قيد الانتظار
+                                            </span>
+                                            break;
+                                        case InvitationStatus.Approved:
+                                            <span class="badge badge-success">
+                                                <i class="fas fa-check"></i> مقبول
+                                            </span>
+                                            break;
+                                        case InvitationStatus.Rejected:
+                                            <span class="badge badge-danger">
+                                                <i class="fas fa-times"></i> مرفوض
+                                            </span>
+                                            break;
+                                    }
+                                </td>
+                                <td>
+                                    <div class="event-date-cell">
+                                        <div class="date-main">
+                                            <i class="fas fa-calendar-times" style="color: #f87171;"></i>
+                                            @(request.DeletedDate != default ? request.DeletedDate.ToString("yyyy/MM/dd") : "---")
+                                        </div>
+                                        @if (request.DeletedDate != default)
+                                        {
+                                            <small>
+                                                <i class="fas fa-clock"></i>
+                                                @request.DeletedDate.ToString("hh:mm tt")
+                                            </small>
+                                        }
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="table-actions" style="gap: 8px;">
+                                        <form asp-action="Restore" asp-route-id="@request.Id" method="post" style="display:inline;">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn-table-action btn-restore" title="استعادة الطلب"
+                                                    onclick="return confirm('هل تريد استعادة هذا الطلب؟');">
+                                                <i class="fas fa-undo-alt"></i>
+                                            </button>
+                                        </form>
+                                        <form asp-action="PermanentDelete" asp-route-id="@request.Id" method="post" style="display:inline;">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn-table-action btn-permanent-delete" title="حذف نهائي"
+                                                    onclick="return confirm('هل أنت متأكد من الحذف النهائي؟ لا يمكن التراجع عن هذا الإجراء!');">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @if (Model.TotalPages > 1)
+        {
+            <div class="table-pagination">
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                            <a class="page-link" asp-action="Deleted" asp-route-pageNumber="@(Model.CurrentPage - 1)"
+                               asp-route-pageSize="@Model.PageSize" asp-route-searchTerm="@ViewBag.SearchTerm">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </li>
+
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            @if (i == 1 || i == Model.TotalPages || (i >= Model.CurrentPage - 2 && i <= Model.CurrentPage + 2))
+                            {
+                                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                    <a class="page-link" asp-action="Deleted" asp-route-pageNumber="@i"
+                                       asp-route-pageSize="@Model.PageSize" asp-route-searchTerm="@ViewBag.SearchTerm">
+                                        @i
+                                    </a>
+                                </li>
+                            }
+                            else if (i == Model.CurrentPage - 3 || i == Model.CurrentPage + 3)
+                            {
+                                <li class="page-item disabled">
+                                    <span class="page-link page-ellipsis">...</span>
+                                </li>
+                            }
+                        }
+
+                        <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                            <a class="page-link" asp-action="Deleted" asp-route-pageNumber="@(Model.CurrentPage + 1)"
+                               asp-route-pageSize="@Model.PageSize" asp-route-searchTerm="@ViewBag.SearchTerm">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .user-info-cell {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .user-avatar-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0.1) 100%);
+        border-radius: var(--radius-md);
+        color: var(--primary-light);
+        font-size: 1rem;
+    }
+
+    .user-details {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .user-details strong {
+        color: var(--white);
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    .user-details small {
+        color: var(--gray-400);
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .user-details small i {
+        color: var(--primary-light);
+        font-size: 0.7rem;
+    }
+
+    .couple-cell {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .person {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .person-placeholder {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(99, 102, 241, 0.2);
+        color: var(--primary-light);
+    }
+
+    .person-placeholder.bride {
+        background: rgba(244, 63, 94, 0.2);
+        color: var(--accent-rose);
+    }
+
+    .person span {
+        color: var(--gray-300);
+        font-size: 0.85rem;
+        text-align: center;
+        max-width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .heart-icon {
+        color: var(--accent-rose);
+        font-size: 1rem;
+    }
+
+    .event-date-cell {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .date-main {
+        color: var(--white);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .event-date-cell small {
+        color: var(--gray-400);
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .design-name {
+        color: var(--gray-300);
+        font-weight: 500;
+    }
+
+    .btn-table-action.btn-restore {
+        background: rgba(16, 185, 129, 0.15);
+        color: var(--accent-emerald);
+    }
+
+    .btn-table-action.btn-restore:hover {
+        background: var(--accent-emerald);
+        color: var(--white);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-table-action.btn-permanent-delete {
+        background: rgba(239, 68, 68, 0.15);
+        color: #f87171;
+    }
+
+    .btn-table-action.btn-permanent-delete:hover {
+        background: #ef4444;
+        color: var(--white);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    }
+</style>

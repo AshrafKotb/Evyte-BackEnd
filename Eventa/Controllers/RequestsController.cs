@@ -107,6 +107,35 @@ namespace Eventa.Web.Controllers
             return RedirectToAction(nameof(Details), new { id });
         }
 
+        // GET: Requests/Deleted
+        public async Task<IActionResult> Deleted(int pageNumber = 1, int pageSize = 10, string searchTerm = "")
+        {
+            var paginatedRequests = await _requestRepository.GetDeletedRequestsPaginatedAsync(pageNumber, pageSize, searchTerm);
+            ViewBag.SearchTerm = searchTerm;
+            ViewBag.PageSize = pageSize;
+            return View(paginatedRequests);
+        }
+
+        // POST: Requests/Restore/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Restore(Guid id)
+        {
+            await _requestRepository.RestoreRequestAsync(id);
+            TempData["SuccessMessage"] = "تم استعادة الطلب بنجاح";
+            return RedirectToAction(nameof(Deleted));
+        }
+
+        // POST: Requests/PermanentDelete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> PermanentDelete(Guid id)
+        {
+            await _requestRepository.PermanentDeleteRequestAsync(id);
+            TempData["SuccessMessage"] = "تم حذف الطلب نهائياً";
+            return RedirectToAction(nameof(Deleted));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Reject(Guid id, string rejectionReason)
         {

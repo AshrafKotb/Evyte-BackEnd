@@ -43,18 +43,18 @@ namespace Eventa.Controllers
             var sixMonthsAgo = now.AddMonths(-6);
 
             // Get counts
-            var totalRequests = await _context.Requests.CountAsync();
-            var totalCustomers = await _context.Users.CountAsync(u => u.Requests.Any());
+            var totalRequests = await _context.Requests.CountAsync(r => !r.IsDeleted);
+            var totalCustomers = await _context.Users.CountAsync(u => u.Requests.Any(r => !r.IsDeleted));
             var totalDesigns = await _context.Designs.CountAsync(d => !d.IsDeleted);
             var totalCategories = await _context.Categories.CountAsync(c => !c.IsDeleted);
 
             // Request status counts
-            var pendingRequests = await _context.Requests.CountAsync(r => r.Status == InvitationStatus.Pending);
-            var approvedRequests = await _context.Requests.CountAsync(r => r.Status == InvitationStatus.Approved);
-            var rejectedRequests = await _context.Requests.CountAsync(r => r.Status == InvitationStatus.Rejected);
+            var pendingRequests = await _context.Requests.CountAsync(r => !r.IsDeleted && r.Status == InvitationStatus.Pending);
+            var approvedRequests = await _context.Requests.CountAsync(r => !r.IsDeleted && r.Status == InvitationStatus.Approved);
+            var rejectedRequests = await _context.Requests.CountAsync(r => !r.IsDeleted && r.Status == InvitationStatus.Rejected);
 
             // Recent requests
-            var recentRequests = await _context.Requests
+            var recentRequests = await _context.Requests.Where(r => !r.IsDeleted)
                 .Include(r => r.User)
                 .Include(r => r.Design)
                 .ThenInclude(d => d!.Category)
@@ -78,7 +78,7 @@ namespace Eventa.Controllers
                 .Select(c => new CategoryStatsVM
                 {
                     CategoryName = c.NameAr,
-                    RequestCount = c.Designs.SelectMany(d => d.Requests).Count()
+                    RequestCount = c.Designs.SelectMany(d => d.Requests).Count(r => !r.IsDeleted)
                 })
                 .OrderByDescending(c => c.RequestCount)
                 .Take(5)
@@ -102,7 +102,7 @@ namespace Eventa.Controllers
                 var endOfMonth = startOfMonth.AddMonths(1);
 
                 var count = await _context.Requests
-                    .CountAsync(r => r.CreatedDate >= startOfMonth && r.CreatedDate < endOfMonth);
+                    .CountAsync(r => !r.IsDeleted && r.CreatedDate >= startOfMonth && r.CreatedDate < endOfMonth);
 
                 monthlyRequests.Add(new MonthlyRequestVM
                 {

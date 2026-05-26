@@ -22,7 +22,9 @@
       "Bash(curl:*)",
       "Bash(netstat:*)",
       "Bash(tasklist:*)",
-      "WebFetch(domain:ik.imagekit.io)"
+      "WebFetch(domain:ik.imagekit.io)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\iT\\\\source\\\\repos\\\\AshrafKotb\\\\Evyte-BackEnd\" -Directory)",
+      "Bash(Select-Object Name)"
     ]
   }
 }
